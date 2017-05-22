@@ -8,5 +8,24 @@
     <artifactId>Final</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+
+        <!-- Adding hibernate to the project -->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.10.Final</version>
+        </dependency>
+
+        <!-- Adding mssql connector to the project -->
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.1.6.jre8-preview</version>
+        </dependency>
+
+    </dependencies>
     
 </project>
