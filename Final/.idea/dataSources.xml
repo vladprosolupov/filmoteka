@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="filmotekaDb@filmoteka-appz.database.windows.net" uuid="da753fd3-9e58-4780-9803-124d27802801">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;databaseName=filmotekaDb</jdbc-url>
+    </data-source>
+  </component>
+</project>
