@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -10,9 +11,10 @@ import javax.persistence.*;
 public class StudioEntity {
     private int id;
     private String studioName;
+    private Collection<FilmStudioEntity> filmStudiosById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -22,7 +24,7 @@ public class StudioEntity {
     }
 
     @Basic
-    @Column(name = "studio_name")
+    @Column(name = "studio_name", nullable = true, length = 64)
     public String getStudioName() {
         return studioName;
     }
@@ -49,5 +51,14 @@ public class StudioEntity {
         int result = id;
         result = 31 * result + (studioName != null ? studioName.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "studioByIdStudio")
+    public Collection<FilmStudioEntity> getFilmStudiosById() {
+        return filmStudiosById;
+    }
+
+    public void setFilmStudiosById(Collection<FilmStudioEntity> filmStudiosById) {
+        this.filmStudiosById = filmStudiosById;
     }
 }

@@ -9,37 +9,17 @@ import javax.persistence.*;
 @Table(name = "Film_director", schema = "dbo", catalog = "filmotekaDb")
 public class FilmDirectorEntity {
     private int id;
-    private int idFilm;
-    private int idDirector;
+    private FilmEntity filmByIdFilm;
+    private DirectorEntity directorByIdDirector;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    @Basic
-    @Column(name = "id_director")
-    public int getIdDirector() {
-        return idDirector;
-    }
-
-    public void setIdDirector(int idDirector) {
-        this.idDirector = idDirector;
     }
 
     @Override
@@ -50,17 +30,32 @@ public class FilmDirectorEntity {
         FilmDirectorEntity that = (FilmDirectorEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
-        if (idDirector != that.idDirector) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + idFilm;
-        result = 31 * result + idDirector;
-        return result;
+        return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_director", referencedColumnName = "id", nullable = false)
+    public DirectorEntity getDirectorByIdDirector() {
+        return directorByIdDirector;
+    }
+
+    public void setDirectorByIdDirector(DirectorEntity directorByIdDirector) {
+        this.directorByIdDirector = directorByIdDirector;
     }
 }

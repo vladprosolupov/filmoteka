@@ -7,5 +7,13 @@
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;databaseName=filmotekaDb</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="2c6606cf-24f8-49e6-be69-4f1fe5d05992">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;databaseName=filmotekaDb</jdbc-url>
+    </data-source>
   </component>
 </project>

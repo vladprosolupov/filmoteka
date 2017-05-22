@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -9,11 +10,12 @@ import javax.persistence.*;
 @Table(name = "Link_to_network", schema = "dbo", catalog = "filmotekaDb")
 public class LinkToNetworkEntity {
     private int id;
-    private int idNetwork;
     private String link;
+    private Collection<FilmNetworkEntity> filmNetworksById;
+    private NetworkEntity networkByIdNetwork;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,17 +25,7 @@ public class LinkToNetworkEntity {
     }
 
     @Basic
-    @Column(name = "id_network")
-    public int getIdNetwork() {
-        return idNetwork;
-    }
-
-    public void setIdNetwork(int idNetwork) {
-        this.idNetwork = idNetwork;
-    }
-
-    @Basic
-    @Column(name = "link")
+    @Column(name = "link", nullable = true, length = -1)
     public String getLink() {
         return link;
     }
@@ -50,7 +42,6 @@ public class LinkToNetworkEntity {
         LinkToNetworkEntity that = (LinkToNetworkEntity) o;
 
         if (id != that.id) return false;
-        if (idNetwork != that.idNetwork) return false;
         if (link != null ? !link.equals(that.link) : that.link != null) return false;
 
         return true;
@@ -59,8 +50,26 @@ public class LinkToNetworkEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + idNetwork;
         result = 31 * result + (link != null ? link.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "linkToNetworkByIdLinkToNetwork")
+    public Collection<FilmNetworkEntity> getFilmNetworksById() {
+        return filmNetworksById;
+    }
+
+    public void setFilmNetworksById(Collection<FilmNetworkEntity> filmNetworksById) {
+        this.filmNetworksById = filmNetworksById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_network", referencedColumnName = "id", nullable = false)
+    public NetworkEntity getNetworkByIdNetwork() {
+        return networkByIdNetwork;
+    }
+
+    public void setNetworkByIdNetwork(NetworkEntity networkByIdNetwork) {
+        this.networkByIdNetwork = networkByIdNetwork;
     }
 }

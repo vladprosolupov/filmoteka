@@ -11,13 +11,13 @@ import java.sql.Timestamp;
 public class CommentRatingEntity {
     private int id;
     private String commentText;
-    private int idClient;
     private Double filmRating;
     private Timestamp commentDate;
-    private int idFilm;
+    private ClientEntity clientByIdClient;
+    private FilmEntity filmByIdFilm;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class CommentRatingEntity {
     }
 
     @Basic
-    @Column(name = "comment_text")
+    @Column(name = "comment_text", nullable = true, length = -1)
     public String getCommentText() {
         return commentText;
     }
@@ -37,17 +37,7 @@ public class CommentRatingEntity {
     }
 
     @Basic
-    @Column(name = "id_client")
-    public int getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
-
-    @Basic
-    @Column(name = "Film_rating")
+    @Column(name = "Film_rating", nullable = true, precision = 0)
     public Double getFilmRating() {
         return filmRating;
     }
@@ -57,23 +47,13 @@ public class CommentRatingEntity {
     }
 
     @Basic
-    @Column(name = "comment_date")
+    @Column(name = "comment_date", nullable = true)
     public Timestamp getCommentDate() {
         return commentDate;
     }
 
     public void setCommentDate(Timestamp commentDate) {
         this.commentDate = commentDate;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
     }
 
     @Override
@@ -84,8 +64,6 @@ public class CommentRatingEntity {
         CommentRatingEntity that = (CommentRatingEntity) o;
 
         if (id != that.id) return false;
-        if (idClient != that.idClient) return false;
-        if (idFilm != that.idFilm) return false;
         if (commentText != null ? !commentText.equals(that.commentText) : that.commentText != null) return false;
         if (filmRating != null ? !filmRating.equals(that.filmRating) : that.filmRating != null) return false;
         if (commentDate != null ? !commentDate.equals(that.commentDate) : that.commentDate != null) return false;
@@ -97,10 +75,28 @@ public class CommentRatingEntity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (commentText != null ? commentText.hashCode() : 0);
-        result = 31 * result + idClient;
         result = 31 * result + (filmRating != null ? filmRating.hashCode() : 0);
         result = 31 * result + (commentDate != null ? commentDate.hashCode() : 0);
-        result = 31 * result + idFilm;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    public ClientEntity getClientByIdClient() {
+        return clientByIdClient;
+    }
+
+    public void setClientByIdClient(ClientEntity clientByIdClient) {
+        this.clientByIdClient = clientByIdClient;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
     }
 }

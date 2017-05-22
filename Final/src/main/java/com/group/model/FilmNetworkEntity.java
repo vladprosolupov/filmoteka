@@ -9,37 +9,17 @@ import javax.persistence.*;
 @Table(name = "Film_network", schema = "dbo", catalog = "filmotekaDb")
 public class FilmNetworkEntity {
     private int id;
-    private int idFilm;
-    private int idLinkToNetwork;
+    private FilmEntity filmByIdFilm;
+    private LinkToNetworkEntity linkToNetworkByIdLinkToNetwork;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    @Basic
-    @Column(name = "id_link_to_network")
-    public int getIdLinkToNetwork() {
-        return idLinkToNetwork;
-    }
-
-    public void setIdLinkToNetwork(int idLinkToNetwork) {
-        this.idLinkToNetwork = idLinkToNetwork;
     }
 
     @Override
@@ -50,17 +30,32 @@ public class FilmNetworkEntity {
         FilmNetworkEntity that = (FilmNetworkEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
-        if (idLinkToNetwork != that.idLinkToNetwork) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + idFilm;
-        result = 31 * result + idLinkToNetwork;
-        return result;
+        return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_link_to_network", referencedColumnName = "id", nullable = false)
+    public LinkToNetworkEntity getLinkToNetworkByIdLinkToNetwork() {
+        return linkToNetworkByIdLinkToNetwork;
+    }
+
+    public void setLinkToNetworkByIdLinkToNetwork(LinkToNetworkEntity linkToNetworkByIdLinkToNetwork) {
+        this.linkToNetworkByIdLinkToNetwork = linkToNetworkByIdLinkToNetwork;
     }
 }

@@ -9,37 +9,17 @@ import javax.persistence.*;
 @Table(name = "Film_Category", schema = "dbo", catalog = "filmotekaDb")
 public class FilmCategoryEntity {
     private int id;
-    private int idFilm;
-    private int idCategory;
+    private FilmEntity filmByIdFilm;
+    private CategoryEntity categoryByIdCategory;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    @Basic
-    @Column(name = "id_category")
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
     }
 
     @Override
@@ -50,17 +30,32 @@ public class FilmCategoryEntity {
         FilmCategoryEntity that = (FilmCategoryEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
-        if (idCategory != that.idCategory) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + idFilm;
-        result = 31 * result + idCategory;
-        return result;
+        return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false)
+    public CategoryEntity getCategoryByIdCategory() {
+        return categoryByIdCategory;
+    }
+
+    public void setCategoryByIdCategory(CategoryEntity categoryByIdCategory) {
+        this.categoryByIdCategory = categoryByIdCategory;
     }
 }

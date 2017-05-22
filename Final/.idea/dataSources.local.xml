@@ -11,5 +11,15 @@
       <user-name>FilmotekaAdmin</user-name>
       <introspection-schemas>filmotekaDb:dbo</introspection-schemas>
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="2c6606cf-24f8-49e6-be69-4f1fe5d05992">
+      <database-info product="Microsoft SQL Server" version="12.00.304" jdbc-version="4.0" driver-name="Microsoft JDBC Driver 4.0 for SQL Server" driver-version="4.0.2206.100">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>FilmotekaAdmin</user-name>
+      <introspection-schemas>filmotekaDb:dbo</introspection-schemas>
+    </data-source>
   </component>
 </project>

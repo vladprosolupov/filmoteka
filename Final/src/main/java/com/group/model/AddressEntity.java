@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -13,10 +14,11 @@ public class AddressEntity {
     private String address2;
     private String district;
     private String postalCode;
-    private int idCity;
+    private CityEntity cityByIdCity;
+    private Collection<ClientEntity> clientsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class AddressEntity {
     }
 
     @Basic
-    @Column(name = "address")
+    @Column(name = "address", nullable = true, length = -1)
     public String getAddress() {
         return address;
     }
@@ -36,7 +38,7 @@ public class AddressEntity {
     }
 
     @Basic
-    @Column(name = "address2")
+    @Column(name = "address2", nullable = true, length = -1)
     public String getAddress2() {
         return address2;
     }
@@ -46,7 +48,7 @@ public class AddressEntity {
     }
 
     @Basic
-    @Column(name = "district")
+    @Column(name = "district", nullable = true, length = 64)
     public String getDistrict() {
         return district;
     }
@@ -56,23 +58,13 @@ public class AddressEntity {
     }
 
     @Basic
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", nullable = true, length = 32)
     public String getPostalCode() {
         return postalCode;
     }
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
-    }
-
-    @Basic
-    @Column(name = "id_city")
-    public int getIdCity() {
-        return idCity;
-    }
-
-    public void setIdCity(int idCity) {
-        this.idCity = idCity;
     }
 
     @Override
@@ -83,7 +75,6 @@ public class AddressEntity {
         AddressEntity that = (AddressEntity) o;
 
         if (id != that.id) return false;
-        if (idCity != that.idCity) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (address2 != null ? !address2.equals(that.address2) : that.address2 != null) return false;
         if (district != null ? !district.equals(that.district) : that.district != null) return false;
@@ -99,7 +90,25 @@ public class AddressEntity {
         result = 31 * result + (address2 != null ? address2.hashCode() : 0);
         result = 31 * result + (district != null ? district.hashCode() : 0);
         result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
-        result = 31 * result + idCity;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_city", referencedColumnName = "id", nullable = false)
+    public CityEntity getCityByIdCity() {
+        return cityByIdCity;
+    }
+
+    public void setCityByIdCity(CityEntity cityByIdCity) {
+        this.cityByIdCity = cityByIdCity;
+    }
+
+    @OneToMany(mappedBy = "addressByIdAddress")
+    public Collection<ClientEntity> getClientsById() {
+        return clientsById;
+    }
+
+    public void setClientsById(Collection<ClientEntity> clientsById) {
+        this.clientsById = clientsById;
     }
 }

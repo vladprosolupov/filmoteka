@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -11,10 +12,11 @@ public class DirectorEntity {
     private int id;
     private String firstName;
     private String lastName;
-    private int idCountry;
+    private CountryEntity countryByIdCountry;
+    private Collection<FilmDirectorEntity> filmDirectorsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class DirectorEntity {
     }
 
     @Basic
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = true, length = 64)
     public String getFirstName() {
         return firstName;
     }
@@ -34,23 +36,13 @@ public class DirectorEntity {
     }
 
     @Basic
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = true, length = 64)
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    @Basic
-    @Column(name = "id_country")
-    public int getIdCountry() {
-        return idCountry;
-    }
-
-    public void setIdCountry(int idCountry) {
-        this.idCountry = idCountry;
     }
 
     @Override
@@ -61,7 +53,6 @@ public class DirectorEntity {
         DirectorEntity that = (DirectorEntity) o;
 
         if (id != that.id) return false;
-        if (idCountry != that.idCountry) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
 
@@ -73,7 +64,25 @@ public class DirectorEntity {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + idCountry;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
+    public CountryEntity getCountryByIdCountry() {
+        return countryByIdCountry;
+    }
+
+    public void setCountryByIdCountry(CountryEntity countryByIdCountry) {
+        this.countryByIdCountry = countryByIdCountry;
+    }
+
+    @OneToMany(mappedBy = "directorByIdDirector")
+    public Collection<FilmDirectorEntity> getFilmDirectorsById() {
+        return filmDirectorsById;
+    }
+
+    public void setFilmDirectorsById(Collection<FilmDirectorEntity> filmDirectorsById) {
+        this.filmDirectorsById = filmDirectorsById;
     }
 }

@@ -9,37 +9,17 @@ import javax.persistence.*;
 @Table(name = "Film_studio", schema = "dbo", catalog = "filmotekaDb")
 public class FilmStudioEntity {
     private int id;
-    private int idFilm;
-    private int idStudio;
+    private FilmEntity filmByIdFilm;
+    private StudioEntity studioByIdStudio;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    @Basic
-    @Column(name = "id_studio")
-    public int getIdStudio() {
-        return idStudio;
-    }
-
-    public void setIdStudio(int idStudio) {
-        this.idStudio = idStudio;
     }
 
     @Override
@@ -50,17 +30,32 @@ public class FilmStudioEntity {
         FilmStudioEntity that = (FilmStudioEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
-        if (idStudio != that.idStudio) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + idFilm;
-        result = 31 * result + idStudio;
-        return result;
+        return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_studio", referencedColumnName = "id", nullable = false)
+    public StudioEntity getStudioByIdStudio() {
+        return studioByIdStudio;
+    }
+
+    public void setStudioByIdStudio(StudioEntity studioByIdStudio) {
+        this.studioByIdStudio = studioByIdStudio;
     }
 }

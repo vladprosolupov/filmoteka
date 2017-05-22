@@ -2,6 +2,7 @@ package com.group.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -13,12 +14,14 @@ public class ClientEntity {
     private String firstName;
     private String lastName;
     private String email;
-    private int idAddress;
     private Timestamp creationDate;
     private String login;
+    private AddressEntity addressByIdAddress;
+    private Collection<ClientDataEntity> clientDataById;
+    private Collection<CommentRatingEntity> commentRatingsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -28,7 +31,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = true, length = 64)
     public String getFirstName() {
         return firstName;
     }
@@ -38,7 +41,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = true, length = 64)
     public String getLastName() {
         return lastName;
     }
@@ -48,7 +51,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = true, length = 128)
     public String getEmail() {
         return email;
     }
@@ -58,17 +61,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "id_address")
-    public int getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
-    }
-
-    @Basic
-    @Column(name = "creation_date")
+    @Column(name = "creation_date", nullable = true)
     public Timestamp getCreationDate() {
         return creationDate;
     }
@@ -78,7 +71,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "login")
+    @Column(name = "login", nullable = false, length = 64)
     public String getLogin() {
         return login;
     }
@@ -95,7 +88,6 @@ public class ClientEntity {
         ClientEntity that = (ClientEntity) o;
 
         if (id != that.id) return false;
-        if (idAddress != that.idAddress) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
@@ -111,9 +103,36 @@ public class ClientEntity {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + idAddress;
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_address", referencedColumnName = "id", nullable = false)
+    public AddressEntity getAddressByIdAddress() {
+        return addressByIdAddress;
+    }
+
+    public void setAddressByIdAddress(AddressEntity addressByIdAddress) {
+        this.addressByIdAddress = addressByIdAddress;
+    }
+
+    @OneToMany(mappedBy = "clientByIdClient")
+    public Collection<ClientDataEntity> getClientDataById() {
+        return clientDataById;
+    }
+
+    public void setClientDataById(Collection<ClientDataEntity> clientDataById) {
+        this.clientDataById = clientDataById;
+    }
+
+    @OneToMany(mappedBy = "clientByIdClient")
+    public Collection<CommentRatingEntity> getCommentRatingsById() {
+        return commentRatingsById;
+    }
+
+    public void setCommentRatingsById(Collection<CommentRatingEntity> commentRatingsById) {
+        this.commentRatingsById = commentRatingsById;
     }
 }

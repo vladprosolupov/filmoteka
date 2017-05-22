@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -10,10 +11,11 @@ import javax.persistence.*;
 public class CityEntity {
     private int id;
     private String name;
-    private int idCountry;
+    private Collection<AddressEntity> addressesById;
+    private CountryEntity countryByIdCountry;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,23 +25,13 @@ public class CityEntity {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 64)
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Basic
-    @Column(name = "id_country")
-    public int getIdCountry() {
-        return idCountry;
-    }
-
-    public void setIdCountry(int idCountry) {
-        this.idCountry = idCountry;
     }
 
     @Override
@@ -50,7 +42,6 @@ public class CityEntity {
         CityEntity that = (CityEntity) o;
 
         if (id != that.id) return false;
-        if (idCountry != that.idCountry) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -60,7 +51,25 @@ public class CityEntity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + idCountry;
         return result;
+    }
+
+    @OneToMany(mappedBy = "cityByIdCity")
+    public Collection<AddressEntity> getAddressesById() {
+        return addressesById;
+    }
+
+    public void setAddressesById(Collection<AddressEntity> addressesById) {
+        this.addressesById = addressesById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
+    public CountryEntity getCountryByIdCountry() {
+        return countryByIdCountry;
+    }
+
+    public void setCountryByIdCountry(CountryEntity countryByIdCountry) {
+        this.countryByIdCountry = countryByIdCountry;
     }
 }

@@ -1,0 +1,5 @@
+        hibernate.connection.driver_class = com.microsoft.sqlserver.jdbc.SQLServerDriver
+        hibernate.connection.url = jdbc:sqlserver://filmoteka-appz.database.windows.net:1433/filmotekaDb
+        hibernate.connection.username = FilmotekaAdmin
+        hibernate.connection.password = VladRostykGerman!
+        hibernate.dialect = org.hibernate.dialect.SQLServerDialect

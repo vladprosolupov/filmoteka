@@ -9,37 +9,17 @@ import javax.persistence.*;
 @Table(name = "Client_data", schema = "dbo", catalog = "filmotekaDb")
 public class ClientDataEntity {
     private int id;
-    private int idClient;
-    private int idFilm;
+    private ClientEntity clientByIdClient;
+    private FilmEntity filmByIdFilm;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_client")
-    public int getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
     }
 
     @Override
@@ -50,17 +30,32 @@ public class ClientDataEntity {
         ClientDataEntity that = (ClientDataEntity) o;
 
         if (id != that.id) return false;
-        if (idClient != that.idClient) return false;
-        if (idFilm != that.idFilm) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + idClient;
-        result = 31 * result + idFilm;
-        return result;
+        return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    public ClientEntity getClientByIdClient() {
+        return clientByIdClient;
+    }
+
+    public void setClientByIdClient(ClientEntity clientByIdClient) {
+        this.clientByIdClient = clientByIdClient;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
     }
 }

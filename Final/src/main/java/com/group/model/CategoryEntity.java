@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -10,9 +11,10 @@ import javax.persistence.*;
 public class CategoryEntity {
     private int id;
     private String name;
+    private Collection<FilmCategoryEntity> filmCategoriesById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -22,7 +24,7 @@ public class CategoryEntity {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 128)
     public String getName() {
         return name;
     }
@@ -49,5 +51,14 @@ public class CategoryEntity {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "categoryByIdCategory")
+    public Collection<FilmCategoryEntity> getFilmCategoriesById() {
+        return filmCategoriesById;
+    }
+
+    public void setFilmCategoriesById(Collection<FilmCategoryEntity> filmCategoriesById) {
+        this.filmCategoriesById = filmCategoriesById;
     }
 }

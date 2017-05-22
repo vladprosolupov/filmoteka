@@ -18,13 +18,38 @@
             <version>5.2.10.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>4.0.1.Final</version>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.1.8.Final</version>
+        </dependency>
+
         <!-- Adding mssql connector to the project -->
 
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>6.1.6.jre8-preview</version>
+            <version>6.1.0.jre8</version>
         </dependency>
+
+        <!-- Adding Tomcat to the maven project -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>8.5.14</version>
+        </dependency>
+
 
     </dependencies>
     

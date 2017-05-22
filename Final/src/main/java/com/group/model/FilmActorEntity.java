@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Table(name = "Film_Actor", schema = "dbo", catalog = "filmotekaDb")
 public class FilmActorEntity {
     private int id;
-    private int idFilm;
-    private int idActor;
     private String role;
+    private FilmEntity filmByIdFilm;
+    private ActorEntity actorByIdActor;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,27 +24,7 @@ public class FilmActorEntity {
     }
 
     @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    @Basic
-    @Column(name = "id_actor")
-    public int getIdActor() {
-        return idActor;
-    }
-
-    public void setIdActor(int idActor) {
-        this.idActor = idActor;
-    }
-
-    @Basic
-    @Column(name = "role")
+    @Column(name = "role", nullable = true, length = 64)
     public String getRole() {
         return role;
     }
@@ -61,8 +41,6 @@ public class FilmActorEntity {
         FilmActorEntity that = (FilmActorEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
-        if (idActor != that.idActor) return false;
         if (role != null ? !role.equals(that.role) : that.role != null) return false;
 
         return true;
@@ -71,9 +49,27 @@ public class FilmActorEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + idFilm;
-        result = 31 * result + idActor;
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_actor", referencedColumnName = "id", nullable = false)
+    public ActorEntity getActorByIdActor() {
+        return actorByIdActor;
+    }
+
+    public void setActorByIdActor(ActorEntity actorByIdActor) {
+        this.actorByIdActor = actorByIdActor;
     }
 }

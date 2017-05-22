@@ -11,10 +11,10 @@ public class AwardEntity {
     private int id;
     private String awardName;
     private Integer awardYear;
-    private int idFilm;
+    private FilmEntity filmByIdFilm;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class AwardEntity {
     }
 
     @Basic
-    @Column(name = "award_name")
+    @Column(name = "award_name", nullable = true, length = 64)
     public String getAwardName() {
         return awardName;
     }
@@ -34,23 +34,13 @@ public class AwardEntity {
     }
 
     @Basic
-    @Column(name = "award_year")
+    @Column(name = "award_year", nullable = true)
     public Integer getAwardYear() {
         return awardYear;
     }
 
     public void setAwardYear(Integer awardYear) {
         this.awardYear = awardYear;
-    }
-
-    @Basic
-    @Column(name = "id_film")
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
     }
 
     @Override
@@ -61,7 +51,6 @@ public class AwardEntity {
         AwardEntity that = (AwardEntity) o;
 
         if (id != that.id) return false;
-        if (idFilm != that.idFilm) return false;
         if (awardName != null ? !awardName.equals(that.awardName) : that.awardName != null) return false;
         if (awardYear != null ? !awardYear.equals(that.awardYear) : that.awardYear != null) return false;
 
@@ -73,7 +62,16 @@ public class AwardEntity {
         int result = id;
         result = 31 * result + (awardName != null ? awardName.hashCode() : 0);
         result = 31 * result + (awardYear != null ? awardYear.hashCode() : 0);
-        result = 31 * result + idFilm;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    public FilmEntity getFilmByIdFilm() {
+        return filmByIdFilm;
+    }
+
+    public void setFilmByIdFilm(FilmEntity filmByIdFilm) {
+        this.filmByIdFilm = filmByIdFilm;
     }
 }

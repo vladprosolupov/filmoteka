@@ -2,6 +2,7 @@ package com.group.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -13,10 +14,11 @@ public class ActorEntity {
     private String firstName;
     private String lastName;
     private Timestamp birthdate;
-    private int idCountry;
+    private CountryEntity countryByIdCountry;
+    private Collection<FilmActorEntity> filmActorsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class ActorEntity {
     }
 
     @Basic
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = true, length = 64)
     public String getFirstName() {
         return firstName;
     }
@@ -36,7 +38,7 @@ public class ActorEntity {
     }
 
     @Basic
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = true, length = 64)
     public String getLastName() {
         return lastName;
     }
@@ -46,23 +48,13 @@ public class ActorEntity {
     }
 
     @Basic
-    @Column(name = "birthdate")
+    @Column(name = "birthdate", nullable = true)
     public Timestamp getBirthdate() {
         return birthdate;
     }
 
     public void setBirthdate(Timestamp birthdate) {
         this.birthdate = birthdate;
-    }
-
-    @Basic
-    @Column(name = "id_country")
-    public int getIdCountry() {
-        return idCountry;
-    }
-
-    public void setIdCountry(int idCountry) {
-        this.idCountry = idCountry;
     }
 
     @Override
@@ -73,7 +65,6 @@ public class ActorEntity {
         ActorEntity that = (ActorEntity) o;
 
         if (id != that.id) return false;
-        if (idCountry != that.idCountry) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (birthdate != null ? !birthdate.equals(that.birthdate) : that.birthdate != null) return false;
@@ -87,7 +78,25 @@ public class ActorEntity {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
-        result = 31 * result + idCountry;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
+    public CountryEntity getCountryByIdCountry() {
+        return countryByIdCountry;
+    }
+
+    public void setCountryByIdCountry(CountryEntity countryByIdCountry) {
+        this.countryByIdCountry = countryByIdCountry;
+    }
+
+    @OneToMany(mappedBy = "actorByIdActor")
+    public Collection<FilmActorEntity> getFilmActorsById() {
+        return filmActorsById;
+    }
+
+    public void setFilmActorsById(Collection<FilmActorEntity> filmActorsById) {
+        this.filmActorsById = filmActorsById;
     }
 }

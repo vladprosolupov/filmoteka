@@ -1,6 +1,7 @@
 package com.group.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by 1rost on 5/22/2017.
@@ -11,9 +12,10 @@ public class NetworkEntity {
     private int id;
     private String networkName;
     private String networkLogo;
+    private Collection<LinkToNetworkEntity> linkToNetworksById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +25,7 @@ public class NetworkEntity {
     }
 
     @Basic
-    @Column(name = "network_name")
+    @Column(name = "network_name", nullable = true, length = 64)
     public String getNetworkName() {
         return networkName;
     }
@@ -33,7 +35,7 @@ public class NetworkEntity {
     }
 
     @Basic
-    @Column(name = "network_logo")
+    @Column(name = "network_logo", nullable = true, length = -1)
     public String getNetworkLogo() {
         return networkLogo;
     }
@@ -62,5 +64,14 @@ public class NetworkEntity {
         result = 31 * result + (networkName != null ? networkName.hashCode() : 0);
         result = 31 * result + (networkLogo != null ? networkLogo.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "networkByIdNetwork")
+    public Collection<LinkToNetworkEntity> getLinkToNetworksById() {
+        return linkToNetworksById;
+    }
+
+    public void setLinkToNetworksById(Collection<LinkToNetworkEntity> linkToNetworksById) {
+        this.linkToNetworksById = linkToNetworksById;
     }
 }

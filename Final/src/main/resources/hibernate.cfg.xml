@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="connection.url">jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;database=filmotekaDb;
+            user=FilmotekaAdmin@filmoteka-appz;password=VladRostykGerman!;
+            encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+
+        <!--&lt;!&ndash; User info &ndash;&gt;-->
+        <!--<property name="connection.username">FilmotekaAdmin</property>-->
+        <!--<property name="connection.password">VladRostykGerman!</property>-->
+        <!-- Mapping -->
+
+        <mapping class="com.group.model.ActorEntity"/>
+        <mapping class="com.group.model.AddressEntity"/>
+        <mapping class="com.group.model.AwardEntity"/>
+        <mapping class="com.group.model.CategoryEntity"/>
+        <mapping class="com.group.model.CityEntity"/>
+        <mapping class="com.group.model.ClientEntity"/>
+        <mapping class="com.group.model.ClientDataEntity"/>
+        <mapping class="com.group.model.CommentRatingEntity"/>
+        <mapping class="com.group.model.CountryEntity"/>
+        <mapping class="com.group.model.DirectorEntity"/>
+        <mapping class="com.group.model.FilmEntity"/>
+        <mapping class="com.group.model.FilmActorEntity"/>
+        <mapping class="com.group.model.FilmCategoryEntity"/>
+        <mapping class="com.group.model.FilmDirectorEntity"/>
+        <mapping class="com.group.model.FilmNetworkEntity"/>
+        <mapping class="com.group.model.FilmStudioEntity"/>
+        <mapping class="com.group.model.LanguageEntity"/>
+        <mapping class="com.group.model.LinkToNetworkEntity"/>
+        <mapping class="com.group.model.NetworkEntity"/>
+        <mapping class="com.group.model.ScreenshotEntity"/>
+        <mapping class="com.group.model.StudioEntity"/>
+        <mapping class="com.group.model.TrailerEntity"/>
+
+    </session-factory>
+</hibernate-configuration>
