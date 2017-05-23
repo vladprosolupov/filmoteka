@@ -35,6 +35,13 @@
             <version>4.1.8.Final</version>
         </dependency>
 
+        <!-- Adding Play!Framework dependency-->
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play_2.11</artifactId>
+            <version>2.5.15</version>
+        </dependency>
+
         <!-- Adding mssql connector to the project -->
 
         <dependency>
