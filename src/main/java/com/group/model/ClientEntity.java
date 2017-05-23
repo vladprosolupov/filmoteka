@@ -21,6 +21,7 @@ public class ClientEntity {
     private Collection<CommentRatingEntity> commentRatingsById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

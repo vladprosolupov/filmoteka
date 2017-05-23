@@ -15,6 +15,7 @@ public class NetworkEntity {
     private Collection<LinkToNetworkEntity> linkToNetworksById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
