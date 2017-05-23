@@ -15,8 +15,9 @@ public class Main {
         Session session = HibernateSession.getSessionFactory().openSession();
         session.beginTransaction();
         CountryEntity countryEntity = new CountryEntity();
-        countryEntity.setName("Russia");
+        countryEntity.setName("USA");
         session.save(countryEntity);
+        session.delete(session.createQuery("FROM CountryEntity ").list().get(4));
         System.out.println(countryEntity.getId());
         session.getTransaction().commit();
         System.out.println(session.createQuery("FROM CountryEntity ").list());
