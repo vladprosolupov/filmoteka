@@ -24,6 +24,7 @@ public class Main {
         session.close();
         System.out.println("German loh");
 
+
         HibernateSession.shutdown();
 
     }
