@@ -6,8 +6,23 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="hibernate.connection.url">jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;database=filmotekaDb;user=FilmotekaAdmin@filmoteka-appz;password=VladRostykGerman!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
-        <property name="hibernate.connection.username">FilmotekaAdmin</property>
-        <property name="hibernate.connection.password">VladRostykGerman!</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;database=filmotekaDb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
+        <mapping class="dao.ActorDb"/>
+        <mapping class="dao.AddressDb"/>
+        <mapping class="dao.AwardDb"/>
+        <mapping class="dao.CategoryDb"/>
+        <mapping class="dao.CityDb"/>
+        <mapping class="dao.ClientDb"/>
+        <mapping class="dao.ClientDataDb"/>
+        <mapping class="dao.CountryDb"/>
+        <mapping class="dao.DirectorDb"/>
+        <mapping class="dao.FilmDb"/>
+        <mapping class="dao.FilmActorDb"/>
+        <mapping class="dao.LanguageDb"/>
+        <mapping class="dao.LinkToNetworkDb"/>
+        <mapping class="dao.NetworkDb"/>
+        <mapping class="dao.ScreenshotDb"/>
+        <mapping class="dao.StudioDb"/>
+        <mapping class="dao.TrailerDb"/>
     </session-factory>
 </hibernate-configuration>

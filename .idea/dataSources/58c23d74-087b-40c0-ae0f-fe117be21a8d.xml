@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="hibernate.cfg.xml/Hibernate">
-  <database-model serializer="dbm" rdbms="MSSQL" format-version="4.0">
+  <database-model serializer="dbm" rdbms="MSSQL" format-version="4.2">
     <root id="1"/>
     <database id="2" parent="1" name="filmotekaDb">
       <ObjectId>5</ObjectId>
@@ -12,7 +12,7 @@
     </database>
     <schema id="4" parent="2" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2017-06-11.10:01:59.307</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-06-11.15:13:47.897</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -113,91 +113,86 @@
       <ModifiedTimestamp>2017-04-18.19:48:13.770</ModifiedTimestamp>
     </table>
     <table id="29" parent="4" name="Film_country">
-      <ObjectId>1314103722</ObjectId>
-      <CreatedTimestamp>2017-06-10.18:51:47.590</CreatedTimestamp>
-      <ModifiedTimestamp>2017-06-10.18:52:00.767</ModifiedTimestamp>
-    </table>
-    <table id="30" parent="4" name="Film_coutry">
       <ObjectId>1346103836</ObjectId>
       <CreatedTimestamp>2017-06-10.18:56:51.297</CreatedTimestamp>
-      <ModifiedTimestamp>2017-06-10.18:56:51.297</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-06-11.14:53:39.083</ModifiedTimestamp>
     </table>
-    <table id="31" parent="4" name="Film_director">
+    <table id="30" parent="4" name="Film_director">
       <ObjectId>978102525</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.910</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.910</ModifiedTimestamp>
     </table>
-    <table id="32" parent="4" name="Film_network">
+    <table id="31" parent="4" name="Film_network">
       <ObjectId>866102126</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.890</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.890</ModifiedTimestamp>
     </table>
-    <table id="33" parent="4" name="Film_studio">
+    <table id="32" parent="4" name="Film_studio">
       <ObjectId>722101613</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.857</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.857</ModifiedTimestamp>
     </table>
-    <table id="34" parent="4" name="Language">
+    <table id="33" parent="4" name="Language">
       <ObjectId>98099390</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.650</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.663</ModifiedTimestamp>
     </table>
-    <table id="35" parent="4" name="Link_to_network">
+    <table id="34" parent="4" name="Link_to_network">
       <ObjectId>818101955</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.880</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.893</ModifiedTimestamp>
     </table>
-    <table id="36" parent="4" name="Network">
+    <table id="35" parent="4" name="Network">
       <ObjectId>786101841</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.870</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.880</ModifiedTimestamp>
     </table>
-    <table id="37" parent="4" name="Screenshot">
+    <table id="36" parent="4" name="Screenshot">
       <ObjectId>226099846</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.683</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.683</ModifiedTimestamp>
     </table>
-    <table id="38" parent="4" name="Studio">
+    <table id="37" parent="4" name="Studio">
       <ObjectId>690101499</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.813</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.860</ModifiedTimestamp>
     </table>
-    <table id="39" parent="4" name="Trailer">
+    <table id="38" parent="4" name="Trailer">
       <ObjectId>178099675</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.673</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.673</ModifiedTimestamp>
     </table>
-    <column id="40" parent="17" name="id">
+    <column id="39" parent="17" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="41" parent="17" name="first_name">
+    <column id="40" parent="17" name="first_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="42" parent="17" name="last_name">
+    <column id="41" parent="17" name="last_name">
       <Position>3</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="43" parent="17" name="birthdate">
+    <column id="42" parent="17" name="birthdate">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="44" parent="17" name="id_country">
+    <column id="43" parent="17" name="id_country">
       <Position>5</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="45" parent="17" name="PK__Actor__3213E83F2742F071">
+    <index id="44" parent="17" name="PK__Actor__3213E83F2742F071">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="46" parent="17" name="PK__Actor__3213E83F2742F071">
+    <key id="45" parent="17" name="PK__Actor__3213E83F2742F071">
       <ObjectId>66099276</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.643</CreatedTimestamp>
@@ -206,50 +201,51 @@
       <UnderlyingIndexName>PK__Actor__3213E83F2742F071</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="47" parent="17" name="FK__Actor__id_countr__04E4BC85">
+    <foreign-key id="46" parent="17" name="FK__Actor__id_countr__04E4BC85">
       <ObjectId>82099333</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.643</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.643</ModifiedTimestamp>
       <ColNames>id_country</ColNames>
       <RefTableName>Country</RefTableName>
+      <RefKeyName>PK__Country__3213E83FAFEBEBD8</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="48" parent="18" name="id">
+    <column id="47" parent="18" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="49" parent="18" name="address">
+    <column id="48" parent="18" name="address">
       <Position>2</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="50" parent="18" name="address2">
+    <column id="49" parent="18" name="address2">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="51" parent="18" name="district">
+    <column id="50" parent="18" name="district">
       <Position>4</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="52" parent="18" name="postal_code">
+    <column id="51" parent="18" name="postal_code">
       <Position>5</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="53" parent="18" name="id_city">
+    <column id="52" parent="18" name="id_city">
       <Position>6</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="54" parent="18" name="PK__Address__3213E83F33730298">
+    <index id="53" parent="18" name="PK__Address__3213E83F33730298">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="55" parent="18" name="PK__Address__3213E83F33730298">
+    <key id="54" parent="18" name="PK__Address__3213E83F33730298">
       <ObjectId>338100245</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.703</CreatedTimestamp>
@@ -258,42 +254,43 @@
       <UnderlyingIndexName>PK__Address__3213E83F33730298</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="56" parent="18" name="FK__Address__id_city__151B244E">
+    <foreign-key id="55" parent="18" name="FK__Address__id_city__151B244E">
       <ObjectId>354100302</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.720</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.720</ModifiedTimestamp>
       <ColNames>id_city</ColNames>
       <RefTableName>City</RefTableName>
+      <RefKeyName>PK__City__3213E83F179C17E5</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="57" parent="19" name="id">
+    <column id="56" parent="19" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="58" parent="19" name="award_name">
+    <column id="57" parent="19" name="award_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="59" parent="19" name="award_year">
+    <column id="58" parent="19" name="award_year">
       <Position>3</Position>
       <DataType>int|0</DataType>
     </column>
-    <column id="60" parent="19" name="id_film">
+    <column id="59" parent="19" name="id_film">
       <Position>4</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="61" parent="19" name="PK__Award__3213E83FD3CC7DCC">
+    <index id="60" parent="19" name="PK__Award__3213E83FD3CC7DCC">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="62" parent="19" name="PK__Award__3213E83FD3CC7DCC">
+    <key id="61" parent="19" name="PK__Award__3213E83FD3CC7DCC">
       <ObjectId>1058102810</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.963</CreatedTimestamp>
@@ -302,33 +299,34 @@
       <UnderlyingIndexName>PK__Award__3213E83FD3CC7DCC</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="63" parent="19" name="FK__Award__id_film__40058253">
+    <foreign-key id="62" parent="19" name="FK__Award__id_film__40058253">
       <ObjectId>1074102867</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.963</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.963</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="64" parent="20" name="id">
+    <column id="63" parent="20" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="65" parent="20" name="name">
+    <column id="64" parent="20" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0</DataType>
     </column>
-    <index id="66" parent="20" name="PK__Category__3213E83F6C57A122">
+    <index id="65" parent="20" name="PK__Category__3213E83F6C57A122">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="67" parent="20" name="PK__Category__3213E83F6C57A122">
+    <key id="66" parent="20" name="PK__Category__3213E83F6C57A122">
       <ObjectId>2099048</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.613</CreatedTimestamp>
@@ -337,30 +335,30 @@
       <UnderlyingIndexName>PK__Category__3213E83F6C57A122</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="68" parent="21" name="id">
+    <column id="67" parent="21" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="69" parent="21" name="name">
+    <column id="68" parent="21" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="70" parent="21" name="id_country">
+    <column id="69" parent="21" name="id_country">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="71" parent="21" name="PK__City__3213E83F179C17E5">
+    <index id="70" parent="21" name="PK__City__3213E83F179C17E5">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="72" parent="21" name="PK__City__3213E83F179C17E5">
+    <key id="71" parent="21" name="PK__City__3213E83F179C17E5">
       <ObjectId>290100074</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.693</CreatedTimestamp>
@@ -369,81 +367,82 @@
       <UnderlyingIndexName>PK__City__3213E83F179C17E5</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="73" parent="21" name="FK__City__id_country__123EB7A3">
+    <foreign-key id="72" parent="21" name="FK__City__id_country__123EB7A3">
       <ObjectId>306100131</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.693</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.693</ModifiedTimestamp>
       <ColNames>id_country</ColNames>
       <RefTableName>Country</RefTableName>
+      <RefKeyName>PK__Country__3213E83FAFEBEBD8</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="74" parent="22" name="id">
+    <column id="73" parent="22" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="75" parent="22" name="first_name">
+    <column id="74" parent="22" name="first_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="76" parent="22" name="last_name">
+    <column id="75" parent="22" name="last_name">
       <Position>3</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="77" parent="22" name="email">
+    <column id="76" parent="22" name="email">
       <Position>4</Position>
       <DataType>varchar(128)|0</DataType>
     </column>
-    <column id="78" parent="22" name="id_address">
+    <column id="77" parent="22" name="id_address">
       <Position>5</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="79" parent="22" name="creation_date">
+    <column id="78" parent="22" name="creation_date">
       <Position>6</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="80" parent="22" name="login">
+    <column id="79" parent="22" name="login">
       <Position>7</Position>
       <DataType>varchar(64)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="81" parent="22" name="password">
+    <column id="80" parent="22" name="password">
       <Position>8</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="82" parent="22" name="enabled">
+    <column id="81" parent="22" name="enabled">
       <Position>10</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="83" parent="22" name="phone_number">
+    <column id="82" parent="22" name="phone_number">
       <Position>11</Position>
       <DataType>nvarchar(20)|0</DataType>
     </column>
-    <column id="84" parent="22" name="role">
+    <column id="83" parent="22" name="role">
       <Position>14</Position>
       <DataType>varchar(10)|0</DataType>
       <DefaultExpression>&apos;user&apos;</DefaultExpression>
     </column>
-    <index id="85" parent="22" name="PK__Client__3213E83FF4ED1DB0">
+    <index id="84" parent="22" name="PK__Client__3213E83FF4ED1DB0">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="86" parent="22" name="UQ__Client__7838F272E8F35D69">
+    <index id="85" parent="22" name="UQ__Client__7838F272E8F35D69">
       <Position>2</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="87" parent="22" name="PK__Client__3213E83FF4ED1DB0">
+    <key id="86" parent="22" name="PK__Client__3213E83FF4ED1DB0">
       <ObjectId>386100416</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.727</CreatedTimestamp>
@@ -452,7 +451,7 @@
       <UnderlyingIndexName>PK__Client__3213E83FF4ED1DB0</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="88" parent="22" name="UQ__Client__7838F272E8F35D69">
+    <key id="87" parent="22" name="UQ__Client__7838F272E8F35D69">
       <ObjectId>402100473</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.727</CreatedTimestamp>
@@ -460,39 +459,40 @@
       <ColNames>login</ColNames>
       <UnderlyingIndexName>UQ__Client__7838F272E8F35D69</UnderlyingIndexName>
     </key>
-    <foreign-key id="89" parent="22" name="FK__Client__id_addre__18EBB532">
+    <foreign-key id="88" parent="22" name="FK__Client__id_addre__18EBB532">
       <ObjectId>418100530</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.727</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.727</ModifiedTimestamp>
       <ColNames>id_address</ColNames>
       <RefTableName>Address</RefTableName>
+      <RefKeyName>PK__Address__3213E83F33730298</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="90" parent="23" name="id">
+    <column id="89" parent="23" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="91" parent="23" name="id_client">
+    <column id="90" parent="23" name="id_client">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="92" parent="23" name="id_film">
+    <column id="91" parent="23" name="id_film">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="93" parent="23" name="PK__Client_d__3213E83FBD225EFC">
+    <index id="92" parent="23" name="PK__Client_d__3213E83FBD225EFC">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="94" parent="23" name="PK__Client_d__3213E83FBD225EFC">
+    <key id="93" parent="23" name="PK__Client_d__3213E83FBD225EFC">
       <ObjectId>450100644</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.750</CreatedTimestamp>
@@ -501,42 +501,44 @@
       <UnderlyingIndexName>PK__Client_d__3213E83FBD225EFC</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="95" parent="23" name="FK__Client_da__id_cl__1BC821DD">
+    <foreign-key id="94" parent="23" name="FK__Client_da__id_cl__1BC821DD">
       <ObjectId>466100701</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.750</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.750</ModifiedTimestamp>
       <ColNames>id_client</ColNames>
       <RefTableName>Client</RefTableName>
+      <RefKeyName>PK__Client__3213E83FF4ED1DB0</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="96" parent="23" name="FK__Client_da__id_fi__1CBC4616">
+    <foreign-key id="95" parent="23" name="FK__Client_da__id_fi__1CBC4616">
       <ObjectId>482100758</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.750</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.750</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="97" parent="24" name="id">
+    <column id="96" parent="24" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="98" parent="24" name="name">
+    <column id="97" parent="24" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <index id="99" parent="24" name="PK__Country__3213E83FAFEBEBD8">
+    <index id="98" parent="24" name="PK__Country__3213E83FAFEBEBD8">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="100" parent="24" name="PK__Country__3213E83FAFEBEBD8">
+    <key id="99" parent="24" name="PK__Country__3213E83FAFEBEBD8">
       <ObjectId>34099162</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.633</CreatedTimestamp>
@@ -545,33 +547,33 @@
       <UnderlyingIndexName>PK__Country__3213E83FAFEBEBD8</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="101" parent="25" name="id">
+    <column id="100" parent="25" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="102" parent="25" name="first_name">
+    <column id="101" parent="25" name="first_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="103" parent="25" name="last_name">
+    <column id="102" parent="25" name="last_name">
       <Position>3</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="104" parent="25" name="id_country">
+    <column id="103" parent="25" name="id_country">
       <Position>4</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="105" parent="25" name="PK__Director__3213E83FDA54011F">
+    <index id="104" parent="25" name="PK__Director__3213E83FDA54011F">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="106" parent="25" name="PK__Director__3213E83FDA54011F">
+    <key id="105" parent="25" name="PK__Director__3213E83FDA54011F">
       <ObjectId>946102411</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.900</CreatedTimestamp>
@@ -580,66 +582,67 @@
       <UnderlyingIndexName>PK__Director__3213E83FDA54011F</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="107" parent="25" name="FK__Director__id_cou__395884C4">
+    <foreign-key id="106" parent="25" name="FK__Director__id_cou__395884C4">
       <ObjectId>962102468</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.903</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.903</ModifiedTimestamp>
       <ColNames>id_country</ColNames>
       <RefTableName>Country</RefTableName>
+      <RefKeyName>PK__Country__3213E83FAFEBEBD8</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="108" parent="26" name="id">
+    <column id="107" parent="26" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="109" parent="26" name="title">
+    <column id="108" parent="26" name="title">
       <Position>2</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="110" parent="26" name="release_date">
+    <column id="109" parent="26" name="release_date">
       <Position>3</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="111" parent="26" name="id_language">
+    <column id="110" parent="26" name="id_language">
       <Position>4</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="112" parent="26" name="lenght">
+    <column id="111" parent="26" name="lenght">
       <Position>5</Position>
       <DataType>int|0</DataType>
     </column>
-    <column id="113" parent="26" name="description">
+    <column id="112" parent="26" name="description">
       <Position>6</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="114" parent="26" name="slogan">
+    <column id="113" parent="26" name="slogan">
       <Position>8</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="115" parent="26" name="rating">
+    <column id="114" parent="26" name="rating">
       <Position>9</Position>
       <DataType>float|0</DataType>
     </column>
-    <column id="116" parent="26" name="age">
+    <column id="115" parent="26" name="age">
       <Position>10</Position>
       <DataType>int|0</DataType>
     </column>
-    <column id="117" parent="26" name="budget">
+    <column id="116" parent="26" name="budget">
       <Position>11</Position>
       <DataType>nvarchar(255)|0</DataType>
     </column>
-    <index id="118" parent="26" name="PK__Film__3213E83FCA3035CE">
+    <index id="117" parent="26" name="PK__Film__3213E83FCA3035CE">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="119" parent="26" name="PK__Film__3213E83FCA3035CE">
+    <key id="118" parent="26" name="PK__Film__3213E83FCA3035CE">
       <ObjectId>146099561</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.660</CreatedTimestamp>
@@ -648,43 +651,44 @@
       <UnderlyingIndexName>PK__Film__3213E83FCA3035CE</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="120" parent="26" name="FK__Film__id_languag__09A971A2">
+    <foreign-key id="119" parent="26" name="FK__Film__id_languag__09A971A2">
       <ObjectId>162099618</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.663</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.663</ModifiedTimestamp>
       <ColNames>id_language</ColNames>
       <RefTableName>Language</RefTableName>
+      <RefKeyName>PK__Language__3213E83F96372264</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="121" parent="27" name="id">
+    <column id="120" parent="27" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="122" parent="27" name="id_film">
+    <column id="121" parent="27" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="123" parent="27" name="id_actor">
+    <column id="122" parent="27" name="id_actor">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="124" parent="27" name="role">
+    <column id="123" parent="27" name="role">
       <Position>4</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <index id="125" parent="27" name="PK__Film_Act__3213E83FD917905E">
+    <index id="124" parent="27" name="PK__Film_Act__3213E83FD917905E">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="126" parent="27" name="PK__Film_Act__3213E83FD917905E">
+    <key id="125" parent="27" name="PK__Film_Act__3213E83FD917905E">
       <ObjectId>642101328</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.797</CreatedTimestamp>
@@ -693,48 +697,50 @@
       <UnderlyingIndexName>PK__Film_Act__3213E83FD917905E</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="127" parent="27" name="FK__Film_Acto__id_fi__2739D489">
+    <foreign-key id="126" parent="27" name="FK__Film_Acto__id_fi__2739D489">
       <ObjectId>658101385</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.797</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.797</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="128" parent="27" name="FK__Film_Acto__id_ac__282DF8C2">
+    <foreign-key id="127" parent="27" name="FK__Film_Acto__id_ac__282DF8C2">
       <ObjectId>674101442</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.807</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.807</ModifiedTimestamp>
       <ColNames>id_actor</ColNames>
       <RefTableName>Actor</RefTableName>
+      <RefKeyName>PK__Actor__3213E83F2742F071</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="129" parent="28" name="id">
+    <column id="128" parent="28" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="130" parent="28" name="id_film">
+    <column id="129" parent="28" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="131" parent="28" name="id_category">
+    <column id="130" parent="28" name="id_category">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="132" parent="28" name="PK__Film_Cat__3213E83FDF51033A">
+    <index id="131" parent="28" name="PK__Film_Cat__3213E83FDF51033A">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="133" parent="28" name="PK__Film_Cat__3213E83FDF51033A">
+    <key id="132" parent="28" name="PK__Film_Cat__3213E83FDF51033A">
       <ObjectId>578101100</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.773</CreatedTimestamp>
@@ -743,69 +749,50 @@
       <UnderlyingIndexName>PK__Film_Cat__3213E83FDF51033A</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="134" parent="28" name="FK__Film_Cate__id_fi__236943A5">
+    <foreign-key id="133" parent="28" name="FK__Film_Cate__id_fi__236943A5">
       <ObjectId>594101157</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.773</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.773</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="135" parent="28" name="FK__Film_Cate__id_ca__245D67DE">
+    <foreign-key id="134" parent="28" name="FK__Film_Cate__id_ca__245D67DE">
       <ObjectId>610101214</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.773</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.773</ModifiedTimestamp>
       <ColNames>id_category</ColNames>
       <RefTableName>Category</RefTableName>
+      <RefKeyName>PK__Category__3213E83F6C57A122</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="136" parent="29" name="id">
-      <Position>1</Position>
-      <DataType>int|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="137" parent="29" name="PK__Film_cou__3213E83F875761CC">
-      <Position>1</Position>
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Clustering>1</Clustering>
-      <Unique>1</Unique>
-    </index>
-    <key id="138" parent="29" name="PK__Film_cou__3213E83F875761CC">
-      <ObjectId>1330103779</ObjectId>
-      <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2017-06-10.18:52:00.767</CreatedTimestamp>
-      <ModifiedTimestamp>2017-06-10.18:52:00.767</ModifiedTimestamp>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>PK__Film_cou__3213E83F875761CC</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="139" parent="30" name="id">
+    <column id="135" parent="29" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="140" parent="30" name="id_film">
+    <column id="136" parent="29" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="141" parent="30" name="id_country">
+    <column id="137" parent="29" name="id_country">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="142" parent="30" name="PK__Film_cou__3213E83FDCBBD9BD">
+    <index id="138" parent="29" name="PK__Film_cou__3213E83FDCBBD9BD">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="143" parent="30" name="PK__Film_cou__3213E83FDCBBD9BD">
+    <key id="139" parent="29" name="PK__Film_cou__3213E83FDCBBD9BD">
       <ObjectId>1362103893</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-06-10.18:56:51.300</CreatedTimestamp>
@@ -814,48 +801,50 @@
       <UnderlyingIndexName>PK__Film_cou__3213E83FDCBBD9BD</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="144" parent="30" name="FK__Film_cout__id_fi__5224328E">
+    <foreign-key id="140" parent="29" name="FK__Film_cout__id_fi__5224328E">
       <ObjectId>1378103950</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-06-10.18:56:51.300</CreatedTimestamp>
       <ModifiedTimestamp>2017-06-10.18:56:51.300</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="145" parent="30" name="FK__Film_cout__id_co__531856C7">
+    <foreign-key id="141" parent="29" name="FK__Film_cout__id_co__531856C7">
       <ObjectId>1394104007</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-06-10.18:56:51.300</CreatedTimestamp>
       <ModifiedTimestamp>2017-06-10.18:56:51.300</ModifiedTimestamp>
       <ColNames>id_country</ColNames>
       <RefTableName>Country</RefTableName>
+      <RefKeyName>PK__Country__3213E83FAFEBEBD8</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="146" parent="31" name="id">
+    <column id="142" parent="30" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="147" parent="31" name="id_film">
+    <column id="143" parent="30" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="148" parent="31" name="id_director">
+    <column id="144" parent="30" name="id_director">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="149" parent="31" name="PK__Film_dir__3213E83F36581CB7">
+    <index id="145" parent="30" name="PK__Film_dir__3213E83F36581CB7">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="150" parent="31" name="PK__Film_dir__3213E83F36581CB7">
+    <key id="146" parent="30" name="PK__Film_dir__3213E83F36581CB7">
       <ObjectId>994102582</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.920</CreatedTimestamp>
@@ -864,48 +853,50 @@
       <UnderlyingIndexName>PK__Film_dir__3213E83F36581CB7</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="151" parent="31" name="FK__Film_dire__id_fi__3C34F16F">
+    <foreign-key id="147" parent="30" name="FK__Film_dire__id_fi__3C34F16F">
       <ObjectId>1010102639</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.920</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.920</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="152" parent="31" name="FK__Film_dire__id_di__3D2915A8">
+    <foreign-key id="148" parent="30" name="FK__Film_dire__id_di__3D2915A8">
       <ObjectId>1026102696</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.920</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.920</ModifiedTimestamp>
       <ColNames>id_director</ColNames>
       <RefTableName>Director</RefTableName>
+      <RefKeyName>PK__Director__3213E83FDA54011F</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="153" parent="32" name="id">
+    <column id="149" parent="31" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="154" parent="32" name="id_film">
+    <column id="150" parent="31" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="155" parent="32" name="id_link_to_network">
+    <column id="151" parent="31" name="id_link_to_network">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="156" parent="32" name="PK__Film_net__3213E83FEF4DC966">
+    <index id="152" parent="31" name="PK__Film_net__3213E83FEF4DC966">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="157" parent="32" name="PK__Film_net__3213E83FEF4DC966">
+    <key id="153" parent="31" name="PK__Film_net__3213E83FEF4DC966">
       <ObjectId>882102183</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.893</CreatedTimestamp>
@@ -914,48 +905,50 @@
       <UnderlyingIndexName>PK__Film_net__3213E83FEF4DC966</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="158" parent="32" name="FK__Film_netw__id_fi__3587F3E0">
+    <foreign-key id="154" parent="31" name="FK__Film_netw__id_fi__3587F3E0">
       <ObjectId>898102240</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.893</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.893</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="159" parent="32" name="FK__Film_netw__id_li__367C1819">
+    <foreign-key id="155" parent="31" name="FK__Film_netw__id_li__367C1819">
       <ObjectId>914102297</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.893</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.893</ModifiedTimestamp>
       <ColNames>id_link_to_network</ColNames>
       <RefTableName>Link_to_network</RefTableName>
+      <RefKeyName>PK__Link_to___3213E83FCB473DC4</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="160" parent="33" name="id">
+    <column id="156" parent="32" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="161" parent="33" name="id_film">
+    <column id="157" parent="32" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="162" parent="33" name="id_studio">
+    <column id="158" parent="32" name="id_studio">
       <Position>3</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="163" parent="33" name="PK__Film_stu__3213E83F75F7EA48">
+    <index id="159" parent="32" name="PK__Film_stu__3213E83F75F7EA48">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="164" parent="33" name="PK__Film_stu__3213E83F75F7EA48">
+    <key id="160" parent="32" name="PK__Film_stu__3213E83F75F7EA48">
       <ObjectId>738101670</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.860</CreatedTimestamp>
@@ -964,42 +957,44 @@
       <UnderlyingIndexName>PK__Film_stu__3213E83F75F7EA48</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="165" parent="33" name="FK__Film_stud__id_fi__2CF2ADDF">
+    <foreign-key id="161" parent="32" name="FK__Film_stud__id_fi__2CF2ADDF">
       <ObjectId>754101727</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.860</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.860</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="166" parent="33" name="FK__Film_stud__id_st__2DE6D218">
+    <foreign-key id="162" parent="32" name="FK__Film_stud__id_st__2DE6D218">
       <ObjectId>770101784</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.860</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.860</ModifiedTimestamp>
       <ColNames>id_studio</ColNames>
       <RefTableName>Studio</RefTableName>
+      <RefKeyName>PK__Studio__3213E83FD7A0C4F0</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="167" parent="34" name="id">
+    <column id="163" parent="33" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="168" parent="34" name="name">
+    <column id="164" parent="33" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <index id="169" parent="34" name="PK__Language__3213E83F96372264">
+    <index id="165" parent="33" name="PK__Language__3213E83F96372264">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="170" parent="34" name="PK__Language__3213E83F96372264">
+    <key id="166" parent="33" name="PK__Language__3213E83F96372264">
       <ObjectId>114099447</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.650</CreatedTimestamp>
@@ -1008,29 +1003,29 @@
       <UnderlyingIndexName>PK__Language__3213E83F96372264</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="171" parent="35" name="id">
+    <column id="167" parent="34" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="172" parent="35" name="id_network">
+    <column id="168" parent="34" name="id_network">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="173" parent="35" name="link">
+    <column id="169" parent="34" name="link">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <index id="174" parent="35" name="PK__Link_to___3213E83FCB473DC4">
+    <index id="170" parent="34" name="PK__Link_to___3213E83FCB473DC4">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="175" parent="35" name="PK__Link_to___3213E83FCB473DC4">
+    <key id="171" parent="34" name="PK__Link_to___3213E83FCB473DC4">
       <ObjectId>834102012</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.880</CreatedTimestamp>
@@ -1039,37 +1034,38 @@
       <UnderlyingIndexName>PK__Link_to___3213E83FCB473DC4</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="176" parent="35" name="FK__Link_to_n__id_ne__32AB8735">
+    <foreign-key id="172" parent="34" name="FK__Link_to_n__id_ne__32AB8735">
       <ObjectId>850102069</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.880</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.880</ModifiedTimestamp>
       <ColNames>id_network</ColNames>
       <RefTableName>Network</RefTableName>
+      <RefKeyName>PK__Network__3213E83FFF566F9D</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="177" parent="36" name="id">
+    <column id="173" parent="35" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="178" parent="36" name="network_name">
+    <column id="174" parent="35" name="network_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <column id="179" parent="36" name="network_logo">
+    <column id="175" parent="35" name="network_logo">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <index id="180" parent="36" name="PK__Network__3213E83FFF566F9D">
+    <index id="176" parent="35" name="PK__Network__3213E83FFF566F9D">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="181" parent="36" name="PK__Network__3213E83FFF566F9D">
+    <key id="177" parent="35" name="PK__Network__3213E83FFF566F9D">
       <ObjectId>802101898</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.870</CreatedTimestamp>
@@ -1078,29 +1074,29 @@
       <UnderlyingIndexName>PK__Network__3213E83FFF566F9D</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="182" parent="37" name="id">
+    <column id="178" parent="36" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="183" parent="37" name="id_film">
+    <column id="179" parent="36" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="184" parent="37" name="link">
+    <column id="180" parent="36" name="link">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <index id="185" parent="37" name="PK__Screensh__3213E83F2110D88E">
+    <index id="181" parent="36" name="PK__Screensh__3213E83F2110D88E">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="186" parent="37" name="PK__Screensh__3213E83F2110D88E">
+    <key id="182" parent="36" name="PK__Screensh__3213E83F2110D88E">
       <ObjectId>242099903</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.683</CreatedTimestamp>
@@ -1109,33 +1105,34 @@
       <UnderlyingIndexName>PK__Screensh__3213E83F2110D88E</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="187" parent="37" name="FK__Screensho__id_fi__0F624AF8">
+    <foreign-key id="183" parent="36" name="FK__Screensho__id_fi__0F624AF8">
       <ObjectId>258099960</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.683</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.683</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="188" parent="38" name="id">
+    <column id="184" parent="37" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="189" parent="38" name="studio_name">
+    <column id="185" parent="37" name="studio_name">
       <Position>2</Position>
       <DataType>varchar(64)|0</DataType>
     </column>
-    <index id="190" parent="38" name="PK__Studio__3213E83FD7A0C4F0">
+    <index id="186" parent="37" name="PK__Studio__3213E83FD7A0C4F0">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="191" parent="38" name="PK__Studio__3213E83FD7A0C4F0">
+    <key id="187" parent="37" name="PK__Studio__3213E83FD7A0C4F0">
       <ObjectId>706101556</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.813</CreatedTimestamp>
@@ -1144,29 +1141,29 @@
       <UnderlyingIndexName>PK__Studio__3213E83FD7A0C4F0</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="192" parent="39" name="id">
+    <column id="188" parent="38" name="id">
       <Position>1</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="193" parent="39" name="id_film">
+    <column id="189" parent="38" name="id_film">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="194" parent="39" name="link">
+    <column id="190" parent="38" name="link">
       <Position>3</Position>
       <DataType>text|0</DataType>
     </column>
-    <index id="195" parent="39" name="PK__Trailer__3213E83F089B2F55">
+    <index id="191" parent="38" name="PK__Trailer__3213E83F089B2F55">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="196" parent="39" name="PK__Trailer__3213E83F089B2F55">
+    <key id="192" parent="38" name="PK__Trailer__3213E83F089B2F55">
       <ObjectId>194099732</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.677</CreatedTimestamp>
@@ -1175,13 +1172,14 @@
       <UnderlyingIndexName>PK__Trailer__3213E83F089B2F55</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="197" parent="39" name="FK__Trailer__id_film__0C85DE4D">
+    <foreign-key id="193" parent="38" name="FK__Trailer__id_film__0C85DE4D">
       <ObjectId>210099789</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-04-18.19:48:13.677</CreatedTimestamp>
       <ModifiedTimestamp>2017-04-18.19:48:13.677</ModifiedTimestamp>
       <ColNames>id_film</ColNames>
       <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
   </database-model>
