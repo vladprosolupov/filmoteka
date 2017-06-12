@@ -14,6 +14,7 @@ public class CategoryDb {
     private Set<FilmDb> filmCategories;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

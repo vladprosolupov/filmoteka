@@ -14,6 +14,7 @@ public class FilmActorDb {
     private ActorDb actorByIdActor;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

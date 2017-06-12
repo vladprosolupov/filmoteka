@@ -18,6 +18,7 @@ public class AddressDb {
     private Collection<ClientDb> clientsById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

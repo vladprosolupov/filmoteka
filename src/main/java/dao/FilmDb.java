@@ -32,6 +32,7 @@ public class FilmDb {
     private Set<CountryDb> filmCountries;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
