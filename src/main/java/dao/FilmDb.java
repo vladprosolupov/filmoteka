@@ -1,7 +1,7 @@
 package dao;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ import java.util.Set;
 public class FilmDb {
     private int id;
     private String title;
-    private Timestamp releaseDate;
+    private Date releaseDate;
     private Integer lenght;
     private String description;
     private String slogan;
@@ -54,11 +54,11 @@ public class FilmDb {
 
     @Basic
     @Column(name = "release_date", nullable = true)
-    public Timestamp getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Timestamp releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 

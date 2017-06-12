@@ -15,8 +15,8 @@ public class CountryDb {
     private Collection<ActorDb> actorsById;
     private Collection<CityDb> citiesById;
     private Collection<DirectorDb> directorsById;
-    private Set<FilmDb> coutryFilms;
-    private Set<FilmDb> countryFilms;
+//    private Set<FilmDb> coutryFilms;
+//    private Set<FilmDb> countryFilms;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,21 +86,4 @@ public class CountryDb {
         this.directorsById = directorsById;
     }
 
-    @ManyToMany(mappedBy = "filmCountries")
-    public Set<FilmDb> getCoutryFilms() {
-        return coutryFilms;
-    }
-
-    public void setCoutryFilms(Set<FilmDb> coutryFilms) {
-        this.coutryFilms = coutryFilms;
-    }
-
-    @ManyToMany(mappedBy = "filmCountries")
-    public Set<FilmDb> getCountryFilms() {
-        return countryFilms;
-    }
-
-    public void setCountryFilms(Set<FilmDb> countryFilms) {
-        this.countryFilms = countryFilms;
-    }
 }

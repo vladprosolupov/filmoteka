@@ -11,7 +11,6 @@ import java.util.Collection;
 public class LanguageDb {
     private int id;
     private String name;
-    private Collection<FilmDb> filmsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,14 +51,5 @@ public class LanguageDb {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "languageByIdLanguage")
-    public Collection<FilmDb> getFilmsById() {
-        return filmsById;
-    }
-
-    public void setFilmsById(Collection<FilmDb> filmsById) {
-        this.filmsById = filmsById;
     }
 }
