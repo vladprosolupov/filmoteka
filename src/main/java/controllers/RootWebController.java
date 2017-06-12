@@ -10,9 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class RootWebController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/index")
     public String index(){
         return "index";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping(value = "/403")
+    public String error(){
+        return "403";
     }
 
 }

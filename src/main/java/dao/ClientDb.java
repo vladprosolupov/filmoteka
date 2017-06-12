@@ -95,7 +95,7 @@ public class ClientDb {
     }
 
     @Basic
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "enabled", nullable = false, columnDefinition = "int default 1")
     public int getEnabled() {
         return enabled;
     }
