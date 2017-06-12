@@ -18,13 +18,14 @@ public class FilmController {
 
     @RequestMapping(value = "/all", method = RequestMethod.POST)
     public @ResponseBody
-    List<FilmDb> getAllFilms(){
+    List<FilmDb> getAllFilms() {
         return FilmService.getAllFilms();
     }
 
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public @ResponseBody String saveOrUpdate(@RequestParam FilmDb filmToSave){
+    public @ResponseBody
+    String saveOrUpdate(@RequestParam FilmDb filmToSave) {
         FilmService.saveOrUpdate(filmToSave);
         return "OK";
     }
