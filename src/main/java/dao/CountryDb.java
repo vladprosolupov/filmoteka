@@ -12,11 +12,6 @@ import java.util.Set;
 public class CountryDb {
     private int id;
     private String name;
-    private Collection<ActorDb> actorsById;
-    private Collection<CityDb> citiesById;
-    private Collection<DirectorDb> directorsById;
-//    private Set<FilmDb> coutryFilms;
-//    private Set<FilmDb> countryFilms;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,33 +52,6 @@ public class CountryDb {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "countryByIdCountry")
-    public Collection<ActorDb> getActorsById() {
-        return actorsById;
-    }
-
-    public void setActorsById(Collection<ActorDb> actorsById) {
-        this.actorsById = actorsById;
-    }
-
-    @OneToMany(mappedBy = "countryByIdCountry")
-    public Collection<CityDb> getCitiesById() {
-        return citiesById;
-    }
-
-    public void setCitiesById(Collection<CityDb> citiesById) {
-        this.citiesById = citiesById;
-    }
-
-    @OneToMany(mappedBy = "countryByIdCountry")
-    public Collection<DirectorDb> getDirectorsById() {
-        return directorsById;
-    }
-
-    public void setDirectorsById(Collection<DirectorDb> directorsById) {
-        this.directorsById = directorsById;
     }
 
 }

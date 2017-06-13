@@ -16,7 +16,8 @@ import java.util.List;
 @RequestMapping(value = "/film")
 public class FilmController {
 
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<FilmDb> getAllFilms() {
         return FilmService.getAllFilms();

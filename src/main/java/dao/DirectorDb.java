@@ -12,7 +12,6 @@ public class DirectorDb {
     private int id;
     private String firstName;
     private String lastName;
-    private Set<FilmDb> directorFilms;
     private CountryDb countryByIdCountry;
 
     @Id
@@ -66,15 +65,6 @@ public class DirectorDb {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
-    }
-
-    @ManyToMany(mappedBy = "filmDirectors")
-    public Set<FilmDb> getDirectorFilms() {
-        return directorFilms;
-    }
-
-    public void setDirectorFilms(Set<FilmDb> directorFilms) {
-        this.directorFilms = directorFilms;
     }
 
     @ManyToOne

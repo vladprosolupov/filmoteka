@@ -7,6 +7,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.connection.url">jdbc:sqlserver://filmoteka-appz.database.windows.net:1433;database=filmotekaDb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
+        <property name="hibernate.connection.username">FilmotekaAdmin</property>
+        <property name="hibernate.connection.password">VladRostykGerman!</property>
+
         <mapping class="dao.ActorDb"/>
         <mapping class="dao.AddressDb"/>
         <mapping class="dao.AwardDb"/>

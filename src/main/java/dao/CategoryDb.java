@@ -11,7 +11,6 @@ import java.util.Set;
 public class CategoryDb {
     private int id;
     private String name;
-    private Set<FilmDb> filmCategories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,14 +51,5 @@ public class CategoryDb {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @ManyToMany(mappedBy = "filmCategories")
-    public Set<FilmDb> getFilmCategories() {
-        return filmCategories;
-    }
-
-    public void setFilmCategories(Set<FilmDb> filmCategories) {
-        this.filmCategories = filmCategories;
     }
 }

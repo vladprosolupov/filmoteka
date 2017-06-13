@@ -14,7 +14,6 @@ public class FilmService {
     public static List<FilmDb> getAllFilms(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
-        session.close();
         return listOfFilms;
     }
 

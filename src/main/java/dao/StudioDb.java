@@ -11,7 +11,6 @@ import java.util.Set;
 public class StudioDb {
     private int id;
     private String studioName;
-    private Set<FilmDb> filmStudios;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,14 +51,5 @@ public class StudioDb {
         int result = id;
         result = 31 * result + (studioName != null ? studioName.hashCode() : 0);
         return result;
-    }
-
-    @ManyToMany(mappedBy = "filmStudios")
-    public Set<FilmDb> getFilmStudios() {
-        return filmStudios;
-    }
-
-    public void setFilmStudios(Set<FilmDb> filmStudios) {
-        this.filmStudios = filmStudios;
     }
 }
