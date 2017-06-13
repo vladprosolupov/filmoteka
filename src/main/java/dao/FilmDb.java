@@ -20,6 +20,7 @@ public class FilmDb {
     private Double rating;
     private Integer age;
     private String budget;
+    private String cover;
     private Set<CategoryDb> filmCategories;
     private Set<StudioDb> filmStudios;
     private Set<LinkToNetworkDb> filmNetworks;
@@ -120,6 +121,16 @@ public class FilmDb {
 
     public void setBudget(String budget) {
         this.budget = budget;
+    }
+
+    @Basic
+    @Column(name = "cover", nullable = true, length = -1)
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     @Override

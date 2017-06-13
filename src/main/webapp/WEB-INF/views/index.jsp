@@ -1,8 +1,17 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <body>
-<h2>Hello World!</h2>
+<%boolean hasAccess = false; %>
+<security:authorize access="hasAuthority('admin')">
+    <% hasAccess = true; %>
+</security:authorize>
 <h2>
-    <a href="/kek">KEK TEST</a>
+    <% if (hasAccess) {%>
+        <a href="/admin/index">Admin Panel</a>
+    <% } else { %>
+        <a href="/index">LOL TEST</a>
+    <% } %>
 </h2>
 </body>
 </html>

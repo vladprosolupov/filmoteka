@@ -18,6 +18,9 @@
         </property>
     </bean>
 
+    <!-- Resources folder (with js and css) for the outer use -->
+    <mvc:resources mapping="/resources/**" location="/resources"/>
+
     <!-- This is needed for spring security -->
     <mvc:annotation-driven />
 
