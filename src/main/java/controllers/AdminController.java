@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.util.Objects;
 
 /**
  * Created by vladyslavprosolupov on 13.06.17.
@@ -45,11 +44,12 @@ public class AdminController {
 
     @RequestMapping(value = "/films/addOrUpdate")
     public String admin_films_addOrUpdate(@RequestParam(value = "id", required = false, defaultValue = "null") String id, Model model) {
-        if (!Objects.equals(id, "null")) {
+        FilmDb filmDb = new FilmDb();
+        if (!id.equals( "null")) {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            FilmDb filmDb = (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
-            model.addAttribute("film", filmDb);
+            filmDb = (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
         }
+        model.addAttribute("film", filmDb);
         return "admin/films/addOrUpdate";
     }
 

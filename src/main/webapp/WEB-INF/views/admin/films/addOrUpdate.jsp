@@ -9,8 +9,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
-    <c:if test="${film ne 'null'}">
-        <h2>kek</h2>
-    </c:if>
-    <h2>cheburek</h2>
+    <c:choose>
+        <c:when test="${film.id != 0}">
+            <h2>${film.title}</h2>
+        </c:when>
+        <c:otherwise>
+            <h2>new film</h2>
+        </c:otherwise>
+    </c:choose>
 </t:wrapper>
