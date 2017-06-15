@@ -1,4 +1,4 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
 
@@ -6,11 +6,12 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Screenshot", schema = "dbo", catalog = "filmotekaDb")
-public class ScreenshotDb {
+@Table(name = "Film_Actor", schema = "dbo", catalog = "filmotekaDb")
+public class FilmActorDb {
     private int id;
-    private String link;
+    private String role;
     private FilmDb filmByIdFilm;
+    private ActorDb actorByIdActor;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +25,13 @@ public class ScreenshotDb {
     }
 
     @Basic
-    @Column(name = "link", nullable = true, length = -1)
-    public String getLink() {
-        return link;
+    @Column(name = "role", nullable = true, length = 64)
+    public String getRole() {
+        return role;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -38,10 +39,10 @@ public class ScreenshotDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ScreenshotDb that = (ScreenshotDb) o;
+        FilmActorDb that = (FilmActorDb) o;
 
         if (id != that.id) return false;
-        if (link != null ? !link.equals(that.link) : that.link != null) return false;
+        if (role != null ? !role.equals(that.role) : that.role != null) return false;
 
         return true;
     }
@@ -49,7 +50,7 @@ public class ScreenshotDb {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (link != null ? link.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 
@@ -61,5 +62,15 @@ public class ScreenshotDb {
 
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_actor", referencedColumnName = "id", nullable = false)
+    public ActorDb getActorByIdActor() {
+        return actorByIdActor;
+    }
+
+    public void setActorByIdActor(ActorDb actorByIdActor) {
+        this.actorByIdActor = actorByIdActor;
     }
 }

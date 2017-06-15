@@ -1,13 +1,5 @@
-import dao.ClientDb;
-import dao.CountryDb;
-import hibernate.HibernateUtil;
-import org.hibernate.Session;
-import services.ClientService;
-import services.FilmService;
-import services.PasswordGenerator;
-
-import java.sql.Timestamp;
-import java.util.Date;
+import web.dao.ClientDb;
+import web.services.ClientService;
 
 /**
  * Created by vladyslavprosolupov on 11.06.17.

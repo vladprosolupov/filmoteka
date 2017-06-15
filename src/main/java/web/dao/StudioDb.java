@@ -1,17 +1,15 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
 
 /**
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Country", schema = "dbo", catalog = "filmotekaDb")
-public class CountryDb {
+@Table(name = "Studio", schema = "dbo", catalog = "filmotekaDb")
+public class StudioDb {
     private int id;
-    private String name;
+    private String studioName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +23,13 @@ public class CountryDb {
     }
 
     @Basic
-    @Column(name = "name", nullable = true, length = 32)
-    public String getName() {
-        return name;
+    @Column(name = "studio_name", nullable = true, length = 64)
+    public String getStudioName() {
+        return studioName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudioName(String studioName) {
+        this.studioName = studioName;
     }
 
     @Override
@@ -39,10 +37,10 @@ public class CountryDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CountryDb countryDb = (CountryDb) o;
+        StudioDb studioDb = (StudioDb) o;
 
-        if (id != countryDb.id) return false;
-        if (name != null ? !name.equals(countryDb.name) : countryDb.name != null) return false;
+        if (id != studioDb.id) return false;
+        if (studioName != null ? !studioName.equals(studioDb.studioName) : studioDb.studioName != null) return false;
 
         return true;
     }
@@ -50,8 +48,7 @@ public class CountryDb {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (studioName != null ? studioName.hashCode() : 0);
         return result;
     }
-
 }

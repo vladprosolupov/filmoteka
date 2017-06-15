@@ -1,6 +1,6 @@
-package services;
+package web.services;
 
-import dao.ClientDb;
+import web.dao.ClientDb;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 

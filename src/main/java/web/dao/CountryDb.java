@@ -1,14 +1,13 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Language", schema = "dbo", catalog = "filmotekaDb")
-public class LanguageDb {
+@Table(name = "Country", schema = "dbo", catalog = "filmotekaDb")
+public class CountryDb {
     private int id;
     private String name;
 
@@ -38,10 +37,10 @@ public class LanguageDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        LanguageDb that = (LanguageDb) o;
+        CountryDb countryDb = (CountryDb) o;
 
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (id != countryDb.id) return false;
+        if (name != null ? !name.equals(countryDb.name) : countryDb.name != null) return false;
 
         return true;
     }
@@ -52,4 +51,5 @@ public class LanguageDb {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
 }

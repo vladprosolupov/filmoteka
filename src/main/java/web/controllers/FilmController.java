@@ -1,10 +1,11 @@
-package controllers;
+package web.controllers;
 
-import dao.FilmDb;
+import web.dao.FilmDb;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.FilmService;
+import web.services.FilmService;
 
 import java.util.List;
 
@@ -16,11 +17,14 @@ import java.util.List;
 @RequestMapping(value = "/film")
 public class FilmController {
 
+    @Autowired
+    FilmService filmService;
+
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<FilmDb> getAllFilms() {
-        return FilmService.getAllFilms();
+        return filmService.getAllFilms();
     }
 
     @PreAuthorize("hasAuthority('admin')")

@@ -1,4 +1,4 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
 
@@ -6,12 +6,11 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Film_Actor", schema = "dbo", catalog = "filmotekaDb")
-public class FilmActorDb {
+@Table(name = "Trailer", schema = "dbo", catalog = "filmotekaDb")
+public class TrailerDb {
     private int id;
-    private String role;
+    private String link;
     private FilmDb filmByIdFilm;
-    private ActorDb actorByIdActor;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +24,13 @@ public class FilmActorDb {
     }
 
     @Basic
-    @Column(name = "role", nullable = true, length = 64)
-    public String getRole() {
-        return role;
+    @Column(name = "link", nullable = true, length = -1)
+    public String getLink() {
+        return link;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
@@ -39,10 +38,10 @@ public class FilmActorDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FilmActorDb that = (FilmActorDb) o;
+        TrailerDb trailerDb = (TrailerDb) o;
 
-        if (id != that.id) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
+        if (id != trailerDb.id) return false;
+        if (link != null ? !link.equals(trailerDb.link) : trailerDb.link != null) return false;
 
         return true;
     }
@@ -50,7 +49,7 @@ public class FilmActorDb {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (link != null ? link.hashCode() : 0);
         return result;
     }
 
@@ -62,15 +61,5 @@ public class FilmActorDb {
 
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_actor", referencedColumnName = "id", nullable = false)
-    public ActorDb getActorByIdActor() {
-        return actorByIdActor;
-    }
-
-    public void setActorByIdActor(ActorDb actorByIdActor) {
-        this.actorByIdActor = actorByIdActor;
     }
 }

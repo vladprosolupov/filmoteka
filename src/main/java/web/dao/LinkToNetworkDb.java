@@ -1,4 +1,4 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
 
@@ -6,11 +6,11 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Trailer", schema = "dbo", catalog = "filmotekaDb")
-public class TrailerDb {
+@Table(name = "Link_to_network", schema = "dbo", catalog = "filmotekaDb")
+public class LinkToNetworkDb {
     private int id;
     private String link;
-    private FilmDb filmByIdFilm;
+    private NetworkDb networkByIdNetwork;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,10 +38,10 @@ public class TrailerDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TrailerDb trailerDb = (TrailerDb) o;
+        LinkToNetworkDb that = (LinkToNetworkDb) o;
 
-        if (id != trailerDb.id) return false;
-        if (link != null ? !link.equals(trailerDb.link) : trailerDb.link != null) return false;
+        if (id != that.id) return false;
+        if (link != null ? !link.equals(that.link) : that.link != null) return false;
 
         return true;
     }
@@ -54,12 +54,12 @@ public class TrailerDb {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
-    public FilmDb getFilmByIdFilm() {
-        return filmByIdFilm;
+    @JoinColumn(name = "id_network", referencedColumnName = "id", nullable = false)
+    public NetworkDb getNetworkByIdNetwork() {
+        return networkByIdNetwork;
     }
 
-    public void setFilmByIdFilm(FilmDb filmByIdFilm) {
-        this.filmByIdFilm = filmByIdFilm;
+    public void setNetworkByIdNetwork(NetworkDb networkByIdNetwork) {
+        this.networkByIdNetwork = networkByIdNetwork;
     }
 }

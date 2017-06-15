@@ -1,4 +1,4 @@
-package services;
+package web.services;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

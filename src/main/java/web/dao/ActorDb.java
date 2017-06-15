@@ -1,18 +1,21 @@
-package dao;
+package web.dao;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Director", schema = "dbo", catalog = "filmotekaDb")
-public class DirectorDb {
+@Table(name = "Actor", schema = "dbo", catalog = "filmotekaDb")
+public class ActorDb {
     private int id;
     private String firstName;
     private String lastName;
+    private Timestamp birthdate;
     private CountryDb countryByIdCountry;
+    private Collection<FilmActorDb> filmActorsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,16 +48,27 @@ public class DirectorDb {
         this.lastName = lastName;
     }
 
+    @Basic
+    @Column(name = "birthdate", nullable = true)
+    public Timestamp getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Timestamp birthdate) {
+        this.birthdate = birthdate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DirectorDb that = (DirectorDb) o;
+        ActorDb actorDb = (ActorDb) o;
 
-        if (id != that.id) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (id != actorDb.id) return false;
+        if (firstName != null ? !firstName.equals(actorDb.firstName) : actorDb.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(actorDb.lastName) : actorDb.lastName != null) return false;
+        if (birthdate != null ? !birthdate.equals(actorDb.birthdate) : actorDb.birthdate != null) return false;
 
         return true;
     }
@@ -64,6 +78,7 @@ public class DirectorDb {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
         return result;
     }
 
@@ -75,5 +90,14 @@ public class DirectorDb {
 
     public void setCountryByIdCountry(CountryDb countryByIdCountry) {
         this.countryByIdCountry = countryByIdCountry;
+    }
+
+    @OneToMany(mappedBy = "actorByIdActor")
+    public Collection<FilmActorDb> getFilmActorsById() {
+        return filmActorsById;
+    }
+
+    public void setFilmActorsById(Collection<FilmActorDb> filmActorsById) {
+        this.filmActorsById = filmActorsById;
     }
 }

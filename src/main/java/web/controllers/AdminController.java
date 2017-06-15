@@ -1,6 +1,6 @@
-package controllers;
+package web.controllers;
 
-import dao.FilmDb;
+import web.dao.FilmDb;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.springframework.security.access.prepost.PreAuthorize;
