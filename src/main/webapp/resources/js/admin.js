@@ -21,3 +21,13 @@ $(function () {
         });
     }
 });
+
+function save() {
+    var elements = document.getElementsByClassName("formForFilm")[0].elements;
+    var obj ={};
+    for(var i = 0 ; i < elements.length ; i++){
+        var item = elements.item(i);
+        obj[item.name] = item.value;
+    }
+    console.log(obj);
+}

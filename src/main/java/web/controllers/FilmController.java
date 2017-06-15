@@ -30,8 +30,9 @@ public class FilmController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String saveOrUpdate(@RequestParam FilmDb filmToSave) {
-        filmService.saveOrUpdate(filmToSave);
+    String saveOrUpdate(@RequestParam String filmToSave) {
+        System.out.println(filmToSave);
+        //filmService.saveOrUpdate(filmToSave);
         return "OK";
     }
 }
