@@ -11,6 +11,8 @@ public class FilmJSON {
 
     private String title;
 
+    private String releaseDate;
+
     private String language;
 
     private int lenght;
@@ -53,6 +55,14 @@ public class FilmJSON {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getLanguage() {

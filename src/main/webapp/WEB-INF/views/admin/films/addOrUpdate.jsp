@@ -12,11 +12,11 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${film.id != 0}">
-            <form class="formForFilm" name="filmToSave" action="${pageContext.request.contextPath}/film/save" method="post">
+            <form class="formForFilm">
                 <span>Title </span> <input type="text" value="${film.title}" name="title"/><br/>
                 <span>Release Date </span> <input type="date" value="${film.releaseDate}" name="releaseDate"><br/>
                 <span>Language </span>
-                <select name="languageByIdLanguage">
+                <select name="language">
                     <c:forEach items="${languages}" var="language">
                        <option value="${language}" ${language.id == film.languageByIdLanguage.id ? 'selected="selected"' : ''}
                        >${language.name}</option>
@@ -29,7 +29,7 @@
                 <span>Budget </span> <input type="text" value="${film.budget}" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" value="${film.cover}" name="cover"/> <br/>
                 <span>Film Category </span>
-                <table>
+                <table id="filmCategories">
                     <thead>
                         <tr>
                             <th>Category name</th>
@@ -38,7 +38,7 @@
                     <tbody>
                     <c:forEach items="${film.filmCategories}" var="category">
                         <tr>
-                            <td>${category.name}</td>
+                            <td class="filmCategory">${category.name}</td>
                             <td>Delete</td>
                         </tr>
                     </c:forEach>
@@ -48,7 +48,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Actors in film </span>
-                <table>
+                <table id="filmActors">
                     <thead>
                     <tr>
                         <th>Actor name and surname</th>
@@ -69,7 +69,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film director</span>
-                <table>
+                <table id="filmDirectors">
                     <thead>
                     <tr>
                         <th>Director name and surname</th>
@@ -88,7 +88,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film studio</span>
-                <table>
+                <table id="filmStudious">
                     <thead>
                     <tr>
                         <th>Studio name</th>
@@ -107,7 +107,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film countries</span>
-                <table>
+                <table id="filmCountries">
                     <thead>
                     <tr>
                         <th>Country name</th>
@@ -126,7 +126,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film networks</span>
-                <table>
+                <table id="filmNetworks">
                     <thead>
                     <tr>
                         <th>Network logo</th>
@@ -148,8 +148,8 @@
                     </tr>
                     </tbody>
                 </table> <br/>
-                <input type="submit" value="Save film" />
-                <sec:csrfInput/>
+                <input type="button" value="Save film" onclick="save()" />
+
             </form>
 
         </c:when>
