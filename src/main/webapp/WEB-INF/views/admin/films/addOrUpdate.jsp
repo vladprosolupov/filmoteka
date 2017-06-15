@@ -38,7 +38,8 @@
                     <tbody>
                     <c:forEach items="${film.filmCategories}" var="category">
                         <tr>
-                            <td class="filmCategory">${category.name}</td>
+                            <td hidden class="filmCategory">${category.id}</td>
+                            <td>${category.name}</td>
                             <td>Delete</td>
                         </tr>
                     </c:forEach>
@@ -58,8 +59,9 @@
                     <tbody>
                     <c:forEach items="${film.filmActorsById}" var="actor">
                         <tr>
+                            <td hidden class="filmActor">${actor.actorByIdActor.id}</td>
                             <td>${actor.actorByIdActor.firstName} ${actor.actorByIdActor.lastName}</td>
-                            <td>${actor.role}</td>
+                            <td class="filmActorRole">${actor.role}</td>
                             <td>Delete</td>
                         </tr>
                     </c:forEach>
@@ -78,6 +80,7 @@
                     <tbody>
                     <c:forEach items="${film.filmDirectors}" var="director">
                         <tr>
+                            <td hidden class="filmDirector">${director.id}</td>
                             <td>${director.firstName} ${director.lastName}</td>
                             <td>Delete</td>
                         </tr>
@@ -97,6 +100,7 @@
                     <tbody>
                     <c:forEach items="${film.filmStudios}" var="studio">
                         <tr>
+                            <td hidden class="filmStudios">${studio.id}</td>
                             <td>${studio.studioName}</td>
                             <td>Delete</td>
                         </tr>
@@ -116,6 +120,7 @@
                     <tbody>
                     <c:forEach items="${film.filmCountries}" var="country">
                         <tr>
+                            <td hidden class="filmCountries">${country.id}</td>
                             <td>${country.name}</td>
                             <td>Delete</td>
                         </tr>
@@ -137,6 +142,7 @@
                     <tbody>
                     <c:forEach items="${film.filmNetworks}" var="network">
                         <tr>
+                            <td hidden class="filmNetworks">${network.id}</td>
                             <td>${network.networkByIdNetwork.networkLogo}</td>
                             <td>${network.networkByIdNetwork.networkName}</td>
                             <td>${network.link}</td>

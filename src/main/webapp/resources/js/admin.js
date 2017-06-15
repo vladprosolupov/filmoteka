@@ -29,26 +29,42 @@ function save() {
         var item = elements.item(i);
         obj[item.name] = item.value;
     }
-    // var table = document.getElementById('filmCategories'),
-    //     cells = table.getElementsByTagName('td');
+    obj['categories'] = [];
+    obj['actors'] = {};
+    obj['directors'] = [];
+    obj['studios'] = [];
+    obj['countries'] = [];
 
-    // for (var i=0,len=cells.length; i<len; i++){
-    //     // cells[i].onclick = function(){
-    //     //     console.log(this.innerHTML);
-    //     //     /* if you know it's going to be numeric:
-    //     //      console.log(parseInt(this.innerHTML),10);
-    //     //      */
-    //     // }
-    //     if(cells[i].innerHTML != 'Delete' || cells[i]) {
-    //         console.log(cells[i].innerHTML);
-    //     }
-    // }
-
-    var categories;
-    for (i = 0; i < $('.filmCategory').length; i++){
-        console.log($('.filmCategory').toArray()[i].innerHTML);
-        categories = $('.filmCategory').toArray()[i].innerHTML;
+    var categories = $('.filmCategory');
+    for (i = 0; i < categories.length; i++){
+        obj['categories'].push(categories.toArray()[i].innerHTML);
     }
+
+    var actors = $('.filmActor');
+    var actorsRole = $('.filmActorRole');
+    for (i = 0; i < actors.length; i++){
+        obj['actors'][actors.toArray()[i].innerHTML] = actorsRole.toArray()[i].innerHTML;
+    }
+
+    var directors = $('.filmDirector');
+    for(i = 0; i < directors.length; i++){
+        obj['directors'].push(directors.toArray()[i].innerHTML);
+    }
+
+    var studios = $('.filmStudios');
+    for(i = 0; i < directors.length; i++){
+        obj['studios'].push(studios.toArray()[i].innerHTML);
+    }
+
+    var countries = $('.filmCountries');
+    for(i = 0; i < countries.length; i++){
+        obj['countries'].push(studios.toArray()[i].innerHTML);
+    }
+
+    var networks = $('.filmNetworks');
+
+
+
 
     console.log(obj);
 }
