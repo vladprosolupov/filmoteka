@@ -10,7 +10,7 @@
     <% if (hasAccess) {%>
         <a href="/admin/index">Admin Panel</a>
     <% } else { %>
-        <a href="/index">LOL TEST</a>
+        <a href="/index">Profile</a>
     <% } %>
 </h2>
 </body>

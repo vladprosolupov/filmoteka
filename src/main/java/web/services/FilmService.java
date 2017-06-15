@@ -1,7 +1,6 @@
 package web.services;
 
 import web.dao.FilmDb;
-import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,13 @@ public class FilmService {
         return listOfFilms;
     }
 
-    public static void saveOrUpdate(FilmDb filmToSave){
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+    public FilmDb getFilmWithId(String id){
+        Session session = sessionFactory.getCurrentSession();
+        return (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
+    }
+
+    public void saveOrUpdate(FilmDb filmToSave){
+        Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(filmToSave);
-        session.getTransaction().commit();
-        session.close();
     }
 }

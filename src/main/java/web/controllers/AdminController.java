@@ -1,13 +1,13 @@
 package web.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import web.dao.FilmDb;
-import hibernate.HibernateUtil;
-import org.hibernate.Session;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import web.services.FilmService;
 
 /**
  * Created by vladyslavprosolupov on 13.06.17.
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @PreAuthorize("hasAuthority('admin')")
 @RequestMapping(value = "/admin")
 public class AdminController {
+
+    @Autowired
+    FilmService filmService;
 
     @RequestMapping(value = "/index")
     public String admin_index() {
@@ -46,8 +49,7 @@ public class AdminController {
     public String admin_films_addOrUpdate(@RequestParam(value = "id", required = false, defaultValue = "null") String id, Model model) {
         FilmDb filmDb = new FilmDb();
         if (!id.equals( "null")) {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            filmDb = (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
+            filmDb = filmService.getFilmWithId(id);
         }
         model.addAttribute("film", filmDb);
         return "admin/films/addOrUpdate";

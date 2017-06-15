@@ -2,46 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="477340ef-d402-473b-8cbe-55e49055a296" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_dbcp_8_5_15.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_15.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_9_RELEASE.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_20_0_GA.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/controllers/FilmController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/controllers/RootWebController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/ActorDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/AddressDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/AddressDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/AwardDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/AwardDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/CategoryDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/CategoryDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/CityDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/CityDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/ClientDataDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/ClientDataDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/ClientDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/CountryDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/CountryDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/DirectorDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/DirectorDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/FilmActorDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/FilmActorDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/FilmDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/LanguageDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/LanguageDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/LinkToNetworkDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/LinkToNetworkDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/NetworkDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/NetworkDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/ScreenshotDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/ScreenshotDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/StudioDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/StudioDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dao/TrailerDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/TrailerDb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/services/ClientService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/ClientService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/services/FilmService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/services/PasswordGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/srping-security.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/filmoteka_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/filmoteka_war_exploded.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/hibernate/HibernateUtil.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/58c23d74-087b-40c0-ae0f-fe117be21a8d.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filmoteka.iml" afterPath="$PROJECT_DIR$/filmoteka.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Test.java" afterPath="$PROJECT_DIR$/src/main/java/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/services/ClientService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/ClientService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,6 +34,34 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Filmoteka" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Filmoteka" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="filmotekaDb" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dbo" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -71,28 +69,8 @@
       <file leaf-file-name="addOrUpdate.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="195">
               <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-635">
-              <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="38" column="57" lean-forward="false" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -101,21 +79,31 @@
       <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+            <state relative-caret-position="45">
+              <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1023#1024#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="false" />
+                <element signature="e#745#746#0" expanded="false" />
+                <element signature="e#820#821#0" expanded="false" />
+                <element signature="e#857#858#0" expanded="false" />
+                <element signature="e#940#941#0" expanded="false" />
+                <element signature="e#981#982#0" expanded="false" />
+                <element signature="e#1175#1176#0" expanded="false" />
+                <element signature="e#1217#1218#0" expanded="false" />
+                <element signature="e#1711#1712#0" expanded="false" />
+                <element signature="e#1750#1751#0" expanded="false" />
+                <element signature="e#1827#1828#0" expanded="false" />
+                <element signature="e#1865#1866#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilmController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="32" column="58" lean-forward="true" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+            <state relative-caret-position="180">
+              <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -124,8 +112,18 @@
       <file leaf-file-name="FilmService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ClientService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="64" lean-forward="false" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -155,9 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/dao/ActorDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/AddressDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/AwardDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/CityDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ClientDataDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ClientDb.java" />
@@ -176,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/kekTEST.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/RootWebController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dao/FilmDb.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/58c23d74-087b-40c0-ae0f-fe117be21a8d/console.sql" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/actors.jsp" />
@@ -203,9 +197,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/srping-security.xml" />
         <option value="$PROJECT_DIR$/src/main/java/services/FilmService.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/FilmController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/ClientService.java" />
       </list>
     </option>
   </component>
@@ -335,22 +333,12 @@
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Filmoteka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filmoteka" />
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -372,7 +360,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -402,6 +408,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -416,7 +452,7 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.27468583" />
     <property name="JPA.DatabaseSchemaImportDialog" value="58c23d74-087b-40c0-ae0f-fe117be21a8d" />
@@ -974,7 +1010,7 @@
       <workItem from="1497387360992" duration="12567000" />
       <workItem from="1497477121406" duration="1604000" />
       <workItem from="1497521244825" duration="4924000" />
-      <workItem from="1497527792655" duration="998000" />
+      <workItem from="1497527792655" duration="1904000" />
     </task>
     <task id="LOCAL-00001" summary="initial configuration for Db connection.">
       <created>1497175413991</created>
@@ -1060,11 +1096,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497478656043</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changed outer hibernate instance connection to spring mounted hibernate.">
+      <created>1497528899732</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1497528899732</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52013000" />
+    <option name="totallyTimeSpent" value="52919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -1090,12 +1133,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27925342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27925342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2993539" sideWeight="0.4984375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17265625" sideWeight="0.46613547" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17265625" sideWeight="0.53386456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17265625" sideWeight="0.46446517" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17265625" sideWeight="0.5355348" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494788" sideWeight="0.5079681" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1152,7 +1195,8 @@
     <MESSAGE value="Bug fixes, updated admin panel a bit. More changes needed with Vue and async data handling." />
     <MESSAGE value="Minor fixes in the admin panel." />
     <MESSAGE value="Fixed bug with jsp descriptor when jsp annotations were not working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with jsp descriptor when jsp annotations were not working." />
+    <MESSAGE value="Changed outer hibernate instance connection to spring mounted hibernate." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed outer hibernate instance connection to spring mounted hibernate." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1256,13 +1300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/networks.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1302,13 +1339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1414,14 +1444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1434,14 +1456,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dsafsddf.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/AddressDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1459,22 +1473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1483,29 +1481,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="32" column="58" lean-forward="true" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        <state relative-caret-position="285">
+          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1518,10 +1497,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-635">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        <state relative-caret-position="195">
+          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding>
+            <element signature="e#709#710#0" expanded="false" />
+            <element signature="e#745#746#0" expanded="false" />
+            <element signature="e#820#821#0" expanded="false" />
+            <element signature="e#857#858#0" expanded="false" />
+            <element signature="e#940#941#0" expanded="false" />
+            <element signature="e#981#982#0" expanded="false" />
+            <element signature="e#1175#1176#0" expanded="false" />
+            <element signature="e#1217#1218#0" expanded="false" />
+            <element signature="e#1711#1712#0" expanded="false" />
+            <element signature="e#1750#1751#0" expanded="false" />
+            <element signature="e#1827#1828#0" expanded="false" />
+            <element signature="e#1865#1866#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="64" lean-forward="false" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
           <folding />
         </state>
       </provider>

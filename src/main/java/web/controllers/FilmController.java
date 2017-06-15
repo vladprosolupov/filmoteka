@@ -31,7 +31,7 @@ public class FilmController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String saveOrUpdate(@RequestParam FilmDb filmToSave) {
-        FilmService.saveOrUpdate(filmToSave);
+        filmService.saveOrUpdate(filmToSave);
         return "OK";
     }
 }
