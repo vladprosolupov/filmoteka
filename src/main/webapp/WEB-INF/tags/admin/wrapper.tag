@@ -6,6 +6,12 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/admin.js"/>"></script>
+
+    <!-- Including CSRF tokken to the header -->
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
 </head>
 <body>
 <div id="panel">

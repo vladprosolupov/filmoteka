@@ -29,17 +29,17 @@ public class FilmJSON {
 
     private String cover;
 
-    private List<String> categories;
-
-    private List<String> actors;
-
-    private List<String> directors;
-
-    private List<String> studios;
-
-    private List<String> countries;
-
-    private List<String> networks;
+//    private List<String> categories;
+//
+//    private List<String> actors;
+//
+//    private List<String> directors;
+//
+//    private List<String> studios;
+//
+//    private List<String> countries;
+//
+//    private List<String> networks;
 
     public int getId() {
         return id;
@@ -129,51 +129,51 @@ public class FilmJSON {
         this.cover = cover;
     }
 
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<String> actors) {
-        this.actors = actors;
-    }
-
-    public List<String> getDirectors() {
-        return directors;
-    }
-
-    public void setDirectors(List<String> directors) {
-        this.directors = directors;
-    }
-
-    public List<String> getStudios() {
-        return studios;
-    }
-
-    public void setStudios(List<String> studios) {
-        this.studios = studios;
-    }
-
-    public List<String> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(List<String> countries) {
-        this.countries = countries;
-    }
-
-    public List<String> getNetworks() {
-        return networks;
-    }
-
-    public void setNetworks(List<String> networks) {
-        this.networks = networks;
-    }
+//    public List<String> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(List<String> categories) {
+//        this.categories = categories;
+//    }
+//
+//    public List<String> getActors() {
+//        return actors;
+//    }
+//
+//    public void setActors(List<String> actors) {
+//        this.actors = actors;
+//    }
+//
+//    public List<String> getDirectors() {
+//        return directors;
+//    }
+//
+//    public void setDirectors(List<String> directors) {
+//        this.directors = directors;
+//    }
+//
+//    public List<String> getStudios() {
+//        return studios;
+//    }
+//
+//    public void setStudios(List<String> studios) {
+//        this.studios = studios;
+//    }
+//
+//    public List<String> getCountries() {
+//        return countries;
+//    }
+//
+//    public void setCountries(List<String> countries) {
+//        this.countries = countries;
+//    }
+//
+//    public List<String> getNetworks() {
+//        return networks;
+//    }
+//
+//    public void setNetworks(List<String> networks) {
+//        this.networks = networks;
+//    }
 }

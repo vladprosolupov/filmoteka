@@ -100,7 +100,7 @@
                     <tbody>
                     <c:forEach items="${film.filmStudios}" var="studio">
                         <tr>
-                            <td hidden class="filmStudios">${studio.id}</td>
+                            <td hidden class="filmStudio">${studio.id}</td>
                             <td>${studio.studioName}</td>
                             <td>Delete</td>
                         </tr>
@@ -154,7 +154,7 @@
                     </tr>
                     </tbody>
                 </table> <br/>
-                <input type="button" value="Save film" onclick="save()" />
+                <input type="button" name="ignore" value="Save film" onclick="save()" />
 
             </form>
 
