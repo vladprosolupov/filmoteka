@@ -30,11 +30,8 @@ $(function () {
                     });
 
                     $.ajax({
-                        url: '/film/delete',
+                        url: '/film/delete/' + id,
                         type: 'POST',
-                        data: {
-                            id: id
-                        },
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);

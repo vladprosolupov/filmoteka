@@ -72,7 +72,7 @@ public class FilmService {
 
     public void delete(String id){
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("delete from FilmDb f where f.id=" + id);
+        session.createQuery("delete from FilmDb f where f.id=" + id).executeUpdate();
     }
 
     public FilmDb convert(FilmJSON filmJSON){

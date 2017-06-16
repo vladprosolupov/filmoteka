@@ -37,8 +37,8 @@ public class FilmController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public @ResponseBody String delete(@RequestParam String id){
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    public @ResponseBody String delete(@PathVariable("id") String id){
         filmService.delete(id);
         return "OK";
     }
