@@ -70,6 +70,11 @@ public class FilmService {
         session.saveOrUpdate(filmToSave);
     }
 
+    public void delete(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from FilmDb f where f.id=" + id);
+    }
+
     public FilmDb convert(FilmJSON filmJSON){
         FilmDb filmDb = new FilmDb();
         filmDb.setId(filmJSON.getId());
