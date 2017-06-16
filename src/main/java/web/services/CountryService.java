@@ -3,11 +3,15 @@ package web.services;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.dao.CountryDb;
 
 /**
  * Created by Rostyk on 16.06.2017.
  */
+@Service("CountryService")
+@Transactional
 public class CountryService {
 
     @Autowired(required = true)
