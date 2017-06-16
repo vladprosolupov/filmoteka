@@ -136,7 +136,7 @@ public class FilmService {
         }
         filmDb.setTrailersById(setOfTrailers);
         Set<ScreenshotDb> setOfScreenShots = new HashSet<>();
-        for (String s : filmJSON.getScreenShots()) {
+        for (String s : filmJSON.getScreenshots()) {
             setOfScreenShots.add(screenshotService.getScreenshotWithId(s));
         }
         filmDb.setScreenshotsById(setOfScreenShots);

@@ -1,16 +1,5 @@
 package web.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import web.dao.*;
-import web.services.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -52,7 +41,7 @@ public class FilmJSON {
 
     private List<String> networks;
 
-    private List<String> screenShots;
+    private List<String> screenshots;
 
     private List<String> awards;
 
@@ -194,12 +183,12 @@ public class FilmJSON {
         this.networks = networks;
     }
 
-    public List<String> getScreenShots() {
-        return screenShots;
+    public List<String> getScreenshots() {
+        return screenshots;
     }
 
-    public void setScreenShots(List<String> screenShots) {
-        this.screenShots = screenShots;
+    public void setScreenshots(List<String> screenshots) {
+        this.screenshots = screenshots;
     }
 
     public List<String> getAwards() {

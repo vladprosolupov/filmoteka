@@ -66,7 +66,7 @@
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
                 </table>
@@ -121,7 +121,6 @@
                     <tbody>
                     <c:forEach items="${film.filmCountries}" var="country">
                         <tr data-country="${country.id}">
-                            <td hidden class="filmCountries">${country.id}</td>
                             <td>${country.name}</td>
                             <td>Delete</td>
                         </tr>
@@ -151,12 +150,74 @@
                         </tr>
                     </c:forEach>
                     <tr>
+                        <td colspan="4" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film awards</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Award name</th>
+                        <th>Year</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${film.awardsById}" var="award">
+                        <tr data-award="${award.id}">
+                            <td>${award.awardName}</td>
+                            <td>${award.awardYear}</td>
+                            <td>Delete</td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td colspan="3" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Screenshots</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${film.screenshotsById}" var="screenshot">
+                        <tr data-screenshot="${screenshot.id}">
+                            <td>${screenshot.link}</td>
+                            <td>Delete</td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
-                <input type="button" class="save" name="ignore" value="Save film" />
+                <span>Trailers</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${film.trailersById}" var="trailer">
+                        <tr data-trailer="${trailer.id}">
+                            <td>${trailer.link}</td>
+                            <td>Delete</td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <input type="button" class="save" name="ignore" value="Save film"/>
             </form>
         </c:when>
         <c:otherwise>
@@ -199,7 +260,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
                 </table>
@@ -257,12 +318,55 @@
                     </thead>
                     <tbody>
                     <tr>
+                        <td colspan="4" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film awards</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Award name</th>
+                        <th>Year</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Screenshots</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
-                <input type="button" class="save" name="ignore" value="Save film" />
+                <span>Trailers</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <input type="button" class="save" name="ignore" value="Save film"/>
             </form>
         </c:otherwise>
     </c:choose>

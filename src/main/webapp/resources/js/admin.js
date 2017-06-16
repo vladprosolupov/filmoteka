@@ -2,8 +2,6 @@
  * Created by vladyslavprosolupov on 13.06.17.
  */
 $(function () {
-    window.bus = new Vue();
-
     if (window.location.href.substr(28) == 'films') {
         var films = new Vue({
             el: '.films',
@@ -83,6 +81,9 @@ $(function () {
             filmToSave['studios'] = [];
             filmToSave['countries'] = [];
             filmToSave['networks'] = [];
+            filmToSave['awards'] = [];
+            filmToSave['screenshots'] = [];
+            filmToSave['trailers'] = [];
 
             var categories = $('tr[data-category]');
             for (i = 0; i < categories.length; i++) {
@@ -112,6 +113,21 @@ $(function () {
             var networks = $('tr[data-network]');
             for (i = 0; i < networks.length; i++) {
                 filmToSave['networks'].push($(networks[i]).attr("data-network"));
+            }
+
+            var awards = $('tr[data-award]');
+            for(i = 0; i < awards.length; i++) {
+                filmToSave['awards'].push($(awards[i]).attr("data-award"));
+            }
+
+            var screenshots = $('tr[data-screenshot]');
+            for(i = 0; i < screenshots.length; i++) {
+                filmToSave['screenshots'].push($(screenshots[i]).attr("data-screenshot"));
+            }
+
+            var trailers = $('tr[data-trailer]');
+            for(i = 0; i < trailers.length; i++) {
+                filmToSave['trailers'].push($(trailers[i]).attr("data-trailer"));
             }
 
             $.ajax({

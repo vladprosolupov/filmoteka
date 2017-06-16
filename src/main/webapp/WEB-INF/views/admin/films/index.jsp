@@ -35,7 +35,7 @@
             <td>{{film.age}}</td>
             <td>{{film.budget}}</td>
             <td>{{film.languageByIdLanguage.name}}</td>
-            <td><button <%--href="/admin/films/addOrUpdate?id={{film.id}}"--%> v-on:click="editFilm(film.id)">Edit</button></td>
+            <td><button v-on:click="editFilm(film.id)">Edit</button></td>
             <td><button v-on:click="deleteFilm(film.id)">Delete</button></td>
         </tr>
         </tbody>
