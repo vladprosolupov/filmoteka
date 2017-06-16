@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.StudioDb;
 
+import java.util.List;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -21,5 +23,21 @@ public class StudioService {
         Session session = sessionFactory.getCurrentSession();
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
         return studioDb;
+    }
+
+    public void saveOrUpdateStudio(StudioDb studioDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(studioDb);
+    }
+
+    public void deleteStudio(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
+    }
+
+    public List<StudioDb> getAll(){
+        Session session = sessionFactory.getCurrentSession();
+        List<StudioDb> result = session.createQuery("from StudioDb ").list();
+        return result;
     }
 }

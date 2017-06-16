@@ -30,4 +30,14 @@ public class CategoryService {
         CategoryDb categoryDb = (CategoryDb) session.createQuery("from CategoryDb c where c.id=" + id).list().get(0);
         return categoryDb;
     }
+
+    public void saveOrUpdate(CategoryDb categoryDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(categoryDb);
+    }
+
+    public void deleteCategory(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from CategoryDb c where c.id=" + id).executeUpdate();
+    }
 }

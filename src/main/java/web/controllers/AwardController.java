@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import web.dao.ActorDb;
-import web.services.ActorService;
+import web.dao.AwardDb;
+import web.services.AwardService;
 
 import java.util.List;
 
@@ -16,30 +16,30 @@ import java.util.List;
  * Created by Rostyk on 16.06.2017.
  */
 @Controller
-@RequestMapping(value = "/actor")
-public class ActorController {
+@RequestMapping("/award")
+public class AwardController {
 
     @Autowired
-    private ActorService actorService;
+    private AwardService awardService;
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public @ResponseBody String addActor(ActorDb actorDb){
-        actorService.saveOrUpdate(actorDb);
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody String addOrUpdate(AwardDb awardDb){
+        awardService.saveOrUpdateAward(awardDb);
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public @ResponseBody String deleteActor(@PathVariable("id") String id){
-        actorService.delete(id);
+    public @ResponseBody String delete(@PathVariable("id") String id){
+        awardService.deleteAward(id);
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.POST)
     public @ResponseBody
-    List<ActorDb> getAll(){
-        return actorService.getAll();
+    List<AwardDb> getAll(){
+        return awardService.getAll();
     }
 }
