@@ -29,6 +29,7 @@
                 <span>Rating </span> <input type="number" value="${film.rating}" name="rating"/> <br/>
                 <span>Budget </span> <input type="text" value="${film.budget}" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" value="${film.cover}" name="cover"/> <br/>
+                <span>Age </span> <input type="number" value="${film.age}" name="age"> <br/>
                 <span>Film Category </span>
                 <table>
                     <thead>
@@ -97,7 +98,7 @@
                         </tr>
                     </c:forEach>
                     <tr class="directorLoading" style="display: none">
-                        <td colspan="2" style="text-align: center">Loading</td>
+                        <td colspan="2" style="text-align: center">Loading...</td>
                     </tr>
                     <tr class="newDirector" style="display: none">
                         <td>
@@ -120,15 +121,26 @@
                         <th>Studio name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="studios">
                     <c:forEach items="${film.filmStudios}" var="studio">
                         <tr data-studio="${studio.id}">
                             <td>${studio.studioName}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="studioLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newStudio" style="display: none">
+                        <td>
+                            <select class="studioOptions">
+                                <option v-for="studio in studios" :value="studio.id">{{studio.studioName}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveStudio">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addStudio" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -140,15 +152,26 @@
                         <th>Country name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="countries">
                     <c:forEach items="${film.filmCountries}" var="country">
                         <tr data-country="${country.id}">
                             <td>${country.name}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="countryLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newCountry" style="display: none">
+                        <td>
+                            <select class="countryOptions">
+                                <option v-for="country in countries" :value="country.id">{{country.name}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveCountry">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addCountry" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -258,6 +281,7 @@
                 <span>Rating </span> <input type="number" name="rating"/> <br/>
                 <span>Budget </span> <input type="text" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" name="cover"/> <br/>
+                <span>Age </span> <input type="number" name="age"> <br/>
                 <span>Film Category </span>
                 <table>
                     <thead>

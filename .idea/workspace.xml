@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="477340ef-d402-473b-8cbe-55e49055a296" name="Default" comment="LinkToNetworkController fixed.">
+    <list default="true" id="477340ef-d402-473b-8cbe-55e49055a296" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
     </list>
@@ -58,6 +58,28 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Filmoteka" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="filmotekaDb" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dbo" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Studio" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -65,8 +87,8 @@
       <file leaf-file-name="addOrUpdate.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+            <state relative-caret-position="183">
+              <caret line="283" column="72" lean-forward="true" selection-start-line="283" selection-start-column="72" selection-end-line="283" selection-end-column="72" />
               <folding>
                 <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#!!top" expanded="true" />
@@ -74,6 +96,12 @@
                 <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#6;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#7;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#8;n#form#0;n#!!top" expanded="true" />
@@ -83,18 +111,8 @@
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#6;n#form#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#7;n#form#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#8;n#form#1;n#!!top" expanded="true" />
-                <marker date="1497647606000" expanded="true" signature="11120:11137" ph="..." />
+                <marker date="1497650858000" expanded="true" signature="12558:12575" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="45" lean-forward="false" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="49" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -102,8 +120,8 @@
       <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="118" column="17" lean-forward="true" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+            <state relative-caret-position="750">
+              <caret line="50" column="11" lean-forward="true" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -158,7 +176,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0abca3f1-4545-4e81-bbdd-3b3a5b725616/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/FilmActorDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/AwardDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/ScreenshotDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/TrailerDb.java" />
@@ -194,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/TrailerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
       </list>
@@ -358,7 +376,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -5806,11 +5824,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497644365910</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added support for adding categories and directors to film.">
+      <created>1497647811578</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1497647811578</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103538000" />
+    <option name="totallyTimeSpent" value="106669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="22" width="1280" height="1337" extended-state="0" />
@@ -5920,7 +5945,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added persistence for database." />
     <MESSAGE value="Added generated value for inserting into database" />
     <MESSAGE value="Added film service class and film controller class, 2 jackson dependencies into pom.xml" />
     <MESSAGE value="Spring security bug fixes. Login page is working properly right now." />
@@ -5945,7 +5969,8 @@
     <MESSAGE value="Minor fixes in all services" />
     <MESSAGE value="Minor updates in controllers." />
     <MESSAGE value="LinkToNetworkController fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="LinkToNetworkController fixed." />
+    <MESSAGE value="Added support for adding categories and directors to film." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support for adding categories and directors to film." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -5958,20 +5983,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0abca3f1-4545-4e81-bbdd-3b3a5b725616/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/CountryDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -6026,14 +6037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/model/FilmJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -6232,9 +6235,9 @@
         <state relative-caret-position="585">
           <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1235#1236#0" expanded="false" />
+            <element signature="e#1292#1293#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6251,20 +6254,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AwardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="39" column="63" lean-forward="true" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6274,9 +6269,9 @@
         <state relative-caret-position="540">
           <caret line="36" column="63" lean-forward="true" selection-start-line="36" selection-start-column="63" selection-end-line="36" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1212#1213#0" expanded="false" />
+            <element signature="e#1258#1259#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6302,9 +6297,9 @@
         <state relative-caret-position="600">
           <caret line="40" column="63" lean-forward="true" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1415#1416#0" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1415#1416#0" expanded="false" />
+            <element signature="e#1464#1465#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6324,7 +6319,7 @@
         <state relative-caret-position="600">
           <caret line="40" column="63" lean-forward="true" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6334,7 +6329,7 @@
         <state relative-caret-position="555">
           <caret line="37" column="63" lean-forward="true" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6344,17 +6339,7 @@
         <state relative-caret-position="600">
           <caret line="40" column="63" lean-forward="true" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6366,14 +6351,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="45" lean-forward="false" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -6390,23 +6367,76 @@
         <state relative-caret-position="600">
           <caret line="40" column="63" lean-forward="true" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/StudioDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/CountryDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="e#629#630#0" expanded="false" />
+            <element signature="e#661#662#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="45" lean-forward="false" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="118" column="17" lean-forward="true" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+        <state relative-caret-position="750">
+          <caret line="50" column="11" lean-forward="true" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/model/FilmJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        <state relative-caret-position="183">
+          <caret line="283" column="72" lean-forward="true" selection-start-line="283" selection-start-column="72" selection-end-line="283" selection-end-column="72" />
           <folding>
             <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#!!top" expanded="true" />
@@ -6414,6 +6444,12 @@
             <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#2;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#3;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#4;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#6;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#7;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#8;n#form#0;n#!!top" expanded="true" />
@@ -6423,7 +6459,7 @@
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#6;n#form#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#7;n#form#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#8;n#form#1;n#!!top" expanded="true" />
-            <marker date="1497647606000" expanded="true" signature="11120:11137" ph="..." />
+            <marker date="1497650858000" expanded="true" signature="12558:12575" ph="..." />
           </folding>
         </state>
       </provider>

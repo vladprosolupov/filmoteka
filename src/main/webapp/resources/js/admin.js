@@ -18,7 +18,7 @@ $(function () {
             },
             methods: {
                 editFilm: function (id) {
-                    window.location.href += '/addOrUpdate?id=' + id;
+                    window.location.href += '/addOrUpdate/' + id;
                 },
                 deleteFilm: function (id) {
                     var token = $("meta[name='_csrf']").attr("content");
@@ -47,7 +47,7 @@ $(function () {
         });
 
         $('.addFilm').click(function () {
-            window.location.href += '/addOrUpdate'
+            window.location.href += '/addOrUpdate/0'
         });
 
     } else if (window.location.href.substr(28, 17) == 'films/addOrUpdate') {
@@ -89,7 +89,7 @@ $(function () {
 
         $('.addDirector').click(function () {
             $('.directorLoading').css('display', 'block');
-            var categories = new Vue({
+            var directors = new Vue({
                 el: '.newDirector',
                 data: {
                     directors: []
@@ -115,6 +115,73 @@ $(function () {
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".directors tr[class='directorLoading']");
+                    }
+                }
+            });
+        });
+
+        $('.addStudio').click(function () {
+            $('.studioLoading').css('display', 'block');
+            var studios = new Vue({
+                el: '.newStudio',
+                data: {
+                    studios: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/studio/all', function (data) {
+                        $('.studioLoading').css('display', 'none');
+                        $('.newStudio').css('display', 'block');
+                        self.studios = data;
+                    });
+                },
+                methods: {
+                    saveStudio: function(){
+                        $('.newStudio').css('display','none');
+                        var selected = $('.studioOptions').find(":selected");
+                        var row = "<tr data-studio='"+ selected.val() +"'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".studios tr[class='studioLoading']");
+                    }
+                }
+            });
+        });
+
+
+        $('.addCountry').click(function () {
+            $('.countryLoading').css('display', 'block');
+            var countries = new Vue({
+                el: '.newCountry',
+                data: {
+                    countries: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/country/all', function (data) {
+                        $('.countryLoading').css('display', 'none');
+                        $('.newCountry').css('display', 'block');
+                        self.countries = data;
+                    });
+                },
+                methods: {
+                    saveCountry: function(){
+                        $('.newCountry').css('display','none');
+                        var selected = $('.countryOptions').find(":selected");
+                        var row = "<tr data-country='"+ selected.val() +"'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".countries tr[class='countryLoading']");
                     }
                 }
             });
