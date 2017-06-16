@@ -236,7 +236,6 @@ public class FilmDb {
         this.filmActorsById = filmActorsById;
     }
 
-
     @OneToMany(mappedBy = "filmByIdFilm")
     public Collection<ScreenshotDb> getScreenshotsById() {
         return screenshotsById;

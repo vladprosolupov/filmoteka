@@ -1,4 +1,5 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/admin" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: vladyslavprosolupov
@@ -9,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
     <div id="loading">Loading...</div>
-    <table id="films" style="display: none">
+    <table class="films" style="display: none">
         <thead>
         <tr>
             <th>Title</th>
@@ -34,12 +35,12 @@
             <td>{{film.age}}</td>
             <td>{{film.budget}}</td>
             <td>{{film.languageByIdLanguage.name}}</td>
-            <td><a href="/admin/films/addOrUpdate?id={{film.id}}">Edit</a></td>
-            <td><a>Delete</a></td>
+            <td><button <%--href="/admin/films/addOrUpdate?id={{film.id}}"--%> v-on:click="editFilm(film.id)">Edit</button></td>
+            <td><button v-on:click="deleteFilm(film.id)">Delete</button></td>
         </tr>
         </tbody>
     </table>
-    <div>
-        <a href="/admin/films/addOrUpdate">Add</a>
+    <div class="films" style="display: none">
+        <button class="addFilm">Add</button>
     </div>
 </t:wrapper>

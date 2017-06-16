@@ -6,7 +6,7 @@ $(function () {
 
     if (window.location.href.substr(28) == 'films') {
         var films = new Vue({
-            el: '#films',
+            el: '.films',
             data: {
                 films: []
             },
@@ -14,19 +14,54 @@ $(function () {
                 var self = this;
                 $.getJSON('/film/all', function (data) {
                     $('#loading').css('display', 'none');
-                    $('#films').css('display', 'block');
+                    $('.films').css('display', 'block');
                     self.films = data;
                 });
+            },
+            methods: {
+                editFilm: function (id) {
+                    window.location.href += '/addOrUpdate?id=' + id;
+                },
+                deleteFilm: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/film/delete',
+                        type: 'POST',
+                        data: {
+                            id: id
+                        },
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
             }
         });
-    } else if (window.location.href.substr(28, 17) == 'films/addOrUpdate') {
-        $('#loading').css('display','none');
-        $('.formForFilm').css('display','block');
 
-        $('.addCategory').click(function () {
-
+        $('.addFilm').click(function () {
+            window.location.href += '/addOrUpdate'
         });
 
+    } else if (window.location.href.substr(28, 17) == 'films/addOrUpdate') {
+        $('#loading').css('display', 'none');
+        $('.formForFilm').css('display', 'block');
+
+        $('.addCategory').click(function () {
+            console.log('todo');
+        });
 
 
         $('.save').click(function () {
