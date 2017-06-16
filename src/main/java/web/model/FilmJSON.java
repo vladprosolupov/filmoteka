@@ -2,6 +2,9 @@ package web.model;
 
 import web.dao.FilmDb;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -182,7 +185,24 @@ public class FilmJSON {
 
 
     public FilmDb convert(){
-        //TODO
-        return null;
+        FilmDb filmDb = new FilmDb();
+        filmDb.setAge(this.getAge());
+        filmDb.setBudget(this.getBudget());
+        filmDb.setCover(this.getCover());
+        filmDb.setDescription(this.getDescription());
+        filmDb.setTitle(this.getTitle());
+        filmDb.setLenght(this.getLenght());
+        filmDb.setRating(this.getRating());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Date parsed = new Date();
+        try {
+            parsed = format.parse(this.getReleaseDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        filmDb.setReleaseDate(new java.sql.Date(parsed.getTime()));
+        filmDb.setSlogan(this.getSlogan());
+//        filmDb.setFilmCategories();
+        return filmDb;
     }
 }
