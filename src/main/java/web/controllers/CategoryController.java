@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
 import web.services.CategoryService;
 
+import java.util.List;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -29,5 +31,12 @@ public class CategoryController {
     public @ResponseBody String deleteCategory(@PathVariable("id") String id){
         categoryService.deleteCategory(id);
         return "OK";
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    public @ResponseBody
+    List<CategoryDb> getAll(){
+        return categoryService.getAllCategories();
     }
 }

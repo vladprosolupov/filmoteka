@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import web.dao.CountryDb;
 import web.services.CountryService;
 
+import java.util.List;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -29,5 +31,12 @@ public class CountryController {
     public @ResponseBody String deleteCountry(@PathVariable("id") String id){
         countryService.deleteCountry(id);
         return "OK";
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    public @ResponseBody
+    List<CountryDb> getAll(){
+        return countryService.getAll();
     }
 }

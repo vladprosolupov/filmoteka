@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import web.dao.AwardDb;
-import web.services.AwardService;
+import web.dao.ScreenshotDb;
+import web.services.ScreenshotService;
 
 import java.util.List;
 
@@ -16,30 +16,31 @@ import java.util.List;
  * Created by Rostyk on 16.06.2017.
  */
 @Controller
-@RequestMapping("/award")
-public class AwardController {
+@RequestMapping("/screenshot")
+public class ScreenshotController {
 
     @Autowired
-    private AwardService awardService;
+    private ScreenshotService screenshotService;
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public @ResponseBody String addOrUpdate(AwardDb awardDb){
-        awardService.saveOrUpdateAward(awardDb);
+    public @ResponseBody
+    String addOrUpdate(ScreenshotDb screenshotDb){
+        screenshotService.saveOrUpdate(screenshotDb);
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody String delete(@PathVariable("id") String id){
-        awardService.deleteAward(id);
+        screenshotService.delete(id);
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.POST)
     public @ResponseBody
-    List<AwardDb> getAll(){
-        return awardService.getAll();
+    List<ScreenshotDb> getAll(){
+        return screenshotService.getAll();
     }
 }
