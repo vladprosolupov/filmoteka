@@ -18,7 +18,7 @@
                 <span>Language </span>
                 <select name="language">
                     <c:forEach items="${languages}" var="language">
-                       <option value="${language}" ${language.id == film.languageByIdLanguage.id ? 'selected="selected"' : ''}
+                       <option value="${language.id}" ${language.id == film.languageByIdLanguage.id ? 'selected="selected"' : ''}
                        >${language.name}</option>
                     </c:forEach>
                 </select> <br />

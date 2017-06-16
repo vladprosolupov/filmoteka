@@ -31,60 +31,55 @@ function save() {
     });
 
     var elements = document.getElementsByClassName("formForFilm")[0].elements;
-    var filmToSave ={};
-    for(var i = 0 ; i < elements.length ; i++){
+    var filmToSave = {};
+    for (var i = 0; i < elements.length; i++) {
         var item = elements.item(i);
-        // console.log(item.name);
-        if(item.name === null || item.name !== 'ignore') {
+        if (item.name !== 'ignore') {
             filmToSave[item.name] = item.value;
         }
     }
-   //  filmToSave['categories'] = [];
-   //  filmToSave['actors'] = [];
-   //  filmToSave['directors'] = [];
-   //  filmToSave['studios'] = [];
-   //  filmToSave['countries'] = [];
-   //  filmToSave['networks'] = [];
-   //
-   //  var categories = $('.filmCategory');
-   //  for (i = 0; i < categories.length; i++){
-   //      filmToSave['categories'].push(categories.toArray()[i].innerHTML);
-   //  }
-   //
-   //  var actors = $('.filmActor');
-   // // var actorsRole = $('.filmActorRole');
-   //  for (i = 0; i < actors.length; i++){
-   //     // filmToSave['actors'][actors.toArray()[i].innerHTML] = actorsRole.toArray()[i].innerHTML;
-   //      filmToSave['actors'].push('');
-   //  }
-   //
-   //  var directors = $('.filmDirector');
-   //  for(i = 0; i < directors.length; i++){
-   //      filmToSave['directors'].push(directors.toArray()[i].innerHTML);
-   //  }
-   //
-   //  var studios = $('.filmStudio');
-   //  for(i = 0; i < studios.length; i++){
-   //      filmToSave['studios'].push(studios.toArray()[i].innerHTML);
-   //  }
-   //
-   //  var countries = $('.filmCountries');
-   //  for(i = 0; i < countries.length; i++){
-   //      filmToSave['countries'].push(countries.toArray()[i].innerHTML);
-   //  }
-   //
-   //  var networks = $('.filmNetworks');
-   //  for(i = 0; i < networks.length; i++){
-   //      filmToSave['networks'].push(networks.toArray()[i].innerHTML);
-   //  }
+    filmToSave['categories'] = [];
+    filmToSave['actors'] = {};
+    filmToSave['directors'] = [];
+    filmToSave['studios'] = [];
+    filmToSave['countries'] = [];
+    filmToSave['networks'] = [];
+
+    var categories = $('.filmCategory');
+    for (i = 0; i < categories.length; i++) {
+        filmToSave['categories'].push(categories.toArray()[i].innerHTML);
+    }
+
+    var actors = $('.filmActor');
+    var actorsRole = $('.filmActorRole');
+    for (i = 0; i < actors.length; i++) {
+        filmToSave['actors'][actorsRole.toArray()[i].innerHTML] = actors.toArray()[i].innerHTML;
+    }
+
+    var directors = $('.filmDirector');
+    for (i = 0; i < directors.length; i++) {
+        filmToSave['directors'].push(directors.toArray()[i].innerHTML);
+    }
+
+    var studios = $('.filmStudio');
+    for (i = 0; i < studios.length; i++) {
+        filmToSave['studios'].push(studios.toArray()[i].innerHTML);
+    }
+
+    var countries = $('.filmCountries');
+    for (i = 0; i < countries.length; i++) {
+        filmToSave['countries'].push(countries.toArray()[i].innerHTML);
+    }
+
+    var networks = $('.filmNetworks');
+    for (i = 0; i < networks.length; i++) {
+        filmToSave['networks'].push(networks.toArray()[i].innerHTML);
+    }
 
     console.log('No json: ');
     console.log(filmToSave);
     console.log('With: ' + JSON.stringify(filmToSave));
 
-    var nigga = {
-        xyi : 'xyi'
-    };
 
     $.ajax({
         url: '/film/save',

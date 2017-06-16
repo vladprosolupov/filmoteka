@@ -32,8 +32,8 @@ public class FilmController {
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
      String saveOrUpdate(@RequestBody FilmJSON filmToSave) {
-        System.out.println(filmToSave.getLanguage());
-        //filmService.saveOrUpdate(filmToSave);
+        System.out.println(filmToSave.getActors());
+        //filmService.saveOrUpdate(filmToSave.convert());
         return "OK";
     }
 }
