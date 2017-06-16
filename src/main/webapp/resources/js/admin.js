@@ -1,11 +1,6 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
-
-function addRow(tableClass){
-    $('.' + tableClass);
-}
-
 $(function () {
     if (window.location.href.substr(28) == 'films') {
         var films = new Vue({
@@ -77,10 +72,55 @@ $(function () {
                 methods: {
                     saveCategory: function(){
                         $('.newCategory').css('display','none');
+                        var selected = $('.categoryOptions').find(":selected");
+                        var row = "<tr data-category='"+ selected.val() +"'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".categories tr[class='categoryLoading']");
                     }
                 }
             });
         });
+
+        $('.addDirector').click(function () {
+            $('.directorLoading').css('display', 'block');
+            var categories = new Vue({
+                el: '.newDirector',
+                data: {
+                    directors: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/director/all', function (data) {
+                        $('.directorLoading').css('display', 'none');
+                        $('.newDirector').css('display', 'block');
+                        self.directors = data;
+                    });
+                },
+                methods: {
+                    saveDirector: function(){
+                        $('.newDirector').css('display','none');
+                        var selected = $('.directorOptions').find(":selected");
+                        var row = "<tr data-director='"+ selected.val() +"'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".directors tr[class='directorLoading']");
+                    }
+                }
+            });
+        });
+
+
 
 
         $('.save').click(function () {
