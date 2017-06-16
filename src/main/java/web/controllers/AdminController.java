@@ -55,7 +55,7 @@ public class AdminController {
     @RequestMapping(value = "/films/addOrUpdate")
     public String admin_films_addOrUpdate(@RequestParam(value = "id", required = false, defaultValue = "null") String id, Model model) {
         FilmDb filmDb = new FilmDb();
-        if (!id.equals( "null")) {
+        if (!id.equals("null")) {
             filmDb = filmService.getFilmWithId(id);
         }
         List<LanguageDb> listOfLanguageDbs = languageService.getAllLanguages();

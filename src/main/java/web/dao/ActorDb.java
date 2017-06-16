@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -15,6 +17,7 @@ public class ActorDb {
     private String lastName;
     private Timestamp birthdate;
     private CountryDb countryByIdCountry;
+    @JsonIgnore
     private Collection<FilmActorDb> filmActorsById;
 
     @Id
