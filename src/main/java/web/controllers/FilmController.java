@@ -35,4 +35,11 @@ public class FilmController {
         filmService.saveOrUpdate(filmService.convert(filmToSave));
         return "OK";
     }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public @ResponseBody String delete(@RequestParam String id){
+        filmService.delete(id);
+        return "OK";
+    }
 }
