@@ -28,6 +28,13 @@ public class LinkToNetworkController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody String update(LinkToNetworkJSON linkToNetworkJSON){
+        int id = linkToNetworkService.update(linkToNetworkService.convert(linkToNetworkJSON));
+        return Integer.toString(id);
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody String delete(@PathVariable("id") String id){
         linkToNetworkService.delete(id);
