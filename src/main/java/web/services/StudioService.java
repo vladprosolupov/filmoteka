@@ -22,4 +22,14 @@ public class StudioService {
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
         return studioDb;
     }
+
+    public void saveOrUpdateStudio(StudioDb studioDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(studioDb);
+    }
+
+    public void deleteStudio(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
+    }
 }
