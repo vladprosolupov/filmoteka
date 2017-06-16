@@ -25,6 +25,7 @@
 
     <!-- This is needed for spring security -->
     <mvc:annotation-driven />
+    <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <import resource="spring-security.xml" />
