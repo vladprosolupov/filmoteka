@@ -22,4 +22,15 @@ public class AwardService {
         AwardDb awardDb = (AwardDb) session.createQuery("from AwardDb a where a.id=" + id).list().get(0);
         return awardDb;
     }
+
+    public void saveOrUpdateAward(AwardDb awardDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(awardDb);
+    }
+
+    public void deleteAward(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from AwardDb a where a.id=" + id).executeUpdate();
+    }
 }
+
