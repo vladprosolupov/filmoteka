@@ -1,5 +1,7 @@
 package web.dao;
 
+import web.model.FilmJSON;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -225,7 +227,6 @@ public class FilmDb {
     public void setLanguageByIdLanguage(LanguageDb languageByIdLanguage) {
         this.languageByIdLanguage = languageByIdLanguage;
     }
-
     @OneToMany(mappedBy = "filmByIdFilm")
     public Collection<FilmActorDb> getFilmActorsById() {
         return filmActorsById;
@@ -234,6 +235,7 @@ public class FilmDb {
     public void setFilmActorsById(Collection<FilmActorDb> filmActorsById) {
         this.filmActorsById = filmActorsById;
     }
+
 
     @OneToMany(mappedBy = "filmByIdFilm")
     public Collection<ScreenshotDb> getScreenshotsById() {
@@ -262,4 +264,5 @@ public class FilmDb {
     public void setFilmCountries(Set<CountryDb> filmCountries) {
         this.filmCountries = filmCountries;
     }
+
 }

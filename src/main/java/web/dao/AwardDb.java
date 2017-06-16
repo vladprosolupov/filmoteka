@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +13,7 @@ public class AwardDb {
     private int id;
     private String awardName;
     private Integer awardYear;
+    @JsonIgnore
     private FilmDb filmByIdFilm;
 
     @Id

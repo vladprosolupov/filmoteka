@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -10,6 +12,7 @@ import javax.persistence.*;
 public class TrailerDb {
     private int id;
     private String link;
+    @JsonIgnore
     private FilmDb filmByIdFilm;
 
     @Id
