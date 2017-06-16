@@ -13,12 +13,6 @@ import web.services.FilmService;
 @Repository
 public class FilmActorJSON {
 
-    @Autowired
-    private ActorService actorService;
-
-    @Autowired
-    private FilmService filmService;
-
     private int id;
 
     private int idFilm;
@@ -49,10 +43,4 @@ public class FilmActorJSON {
         this.idActor = idActor;
     }
 
-    public FilmActorDb convert(){
-        FilmActorDb filmActorDb = new FilmActorDb();
-        filmActorDb.setActorByIdActor(actorService.getActorWithId(this.getIdActor()));
-        filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(this.getIdFilm())));
-        return filmActorDb;
-    }
 }
