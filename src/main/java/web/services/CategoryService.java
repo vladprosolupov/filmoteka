@@ -24,4 +24,10 @@ public class CategoryService {
         List<CategoryDb> result = session.createQuery("from CategoryDb").list();
         return result;
     }
+
+    public CategoryDb getCategoryWithId(String id){
+        Session session = sessionFactory.getCurrentSession();
+        CategoryDb categoryDb = (CategoryDb) session.createQuery("from CategoryDb c where c.id=" + id).list().get(0);
+        return categoryDb;
+    }
 }
