@@ -10,7 +10,7 @@ import web.dao.StudioDb;
 /**
  * Created by Rostyk on 16.06.2017.
  */
-@Service("NetworkService")
+@Service("StudioService")
 @Transactional
 public class StudioService {
 

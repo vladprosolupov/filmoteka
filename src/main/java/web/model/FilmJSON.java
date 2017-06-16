@@ -56,7 +56,7 @@ public class FilmJSON {
 
     private List<String> categories;
 
-    private Map<String,String> actors;
+    private List<String> actors;
 
     private List<String> directors;
 
@@ -164,11 +164,11 @@ public class FilmJSON {
         this.categories = categories;
     }
 
-    public Map<String, String> getActors() {
+    public List<String> getActors() {
         return actors;
     }
 
-    public void setActors(Map<String, String> actors) {
+    public void setActors(List<String> actors) {
         this.actors = actors;
     }
 
@@ -250,11 +250,11 @@ public class FilmJSON {
         }
         filmDb.setFilmStudios(setOfStudios);
         Set<FilmActorDb> setOfFilmActors = new HashSet<>();
-        for (Map.Entry<String, String> entry : this.getActors().entrySet()) {
-            setOfFilmActors.add(filmActorService.getFilmActorWithId(
-                    entry.getValue(), entry.getKey(), this.getId()));
-
-        }
+//        for (Map.Entry<String, String> entry : this.getActors().entrySet()) {
+//            setOfFilmActors.add(filmActorService.getFilmActorWithId(
+//                    entry.getValue(), entry.getKey(), this.getId()));
+//
+//        }
         filmDb.setFilmActorsById(setOfFilmActors);
 
         return filmDb;

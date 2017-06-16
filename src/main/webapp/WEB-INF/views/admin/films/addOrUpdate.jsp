@@ -12,7 +12,7 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${film.id != 0}">
-            <form class="formForFilm">
+            <form class="formForFilm" data-film="${film.id}">
                 <span>Title </span> <input type="text" value="${film.title}" name="title"/><br/>
                 <span>Release Date </span> <input type="date" value="${film.releaseDate}" name="releaseDate"><br/>
                 <span>Language </span>
@@ -29,7 +29,7 @@
                 <span>Budget </span> <input type="text" value="${film.budget}" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" value="${film.cover}" name="cover"/> <br/>
                 <span>Film Category </span>
-                <table id="filmCategories">
+                <table>
                     <thead>
                         <tr>
                             <th>Category name</th>
@@ -37,8 +37,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmCategories}" var="category">
-                        <tr>
-                            <td hidden class="filmCategory">${category.id}</td>
+                        <tr data-category="${category.id}">
                             <td>${category.name}</td>
                             <td>Delete</td>
                         </tr>
@@ -49,7 +48,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Actors in film </span>
-                <table id="filmActors">
+                <table>
                     <thead>
                     <tr>
                         <th>Actor name and surname</th>
@@ -58,10 +57,9 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmActorsById}" var="actor">
-                        <tr>
-                            <td hidden class="filmActor">${actor.actorByIdActor.id}</td>
+                        <tr data-actor="${actor.id}">
                             <td>${actor.actorByIdActor.firstName} ${actor.actorByIdActor.lastName}</td>
-                            <td class="filmActorRole">${actor.role}</td>
+                            <td>${actor.role}</td>
                             <td>Delete</td>
                         </tr>
                     </c:forEach>
@@ -71,7 +69,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film director</span>
-                <table id="filmDirectors">
+                <table>
                     <thead>
                     <tr>
                         <th>Director name and surname</th>
@@ -79,8 +77,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmDirectors}" var="director">
-                        <tr>
-                            <td hidden class="filmDirector">${director.id}</td>
+                        <tr data-director="${director.id}">
                             <td>${director.firstName} ${director.lastName}</td>
                             <td>Delete</td>
                         </tr>
@@ -91,7 +88,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film studio</span>
-                <table id="filmStudious">
+                <table>
                     <thead>
                     <tr>
                         <th>Studio name</th>
@@ -99,8 +96,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmStudios}" var="studio">
-                        <tr>
-                            <td hidden class="filmStudio">${studio.id}</td>
+                        <tr data-studio="${studio.id}">
                             <td>${studio.studioName}</td>
                             <td>Delete</td>
                         </tr>
@@ -111,7 +107,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film countries</span>
-                <table id="filmCountries">
+                <table>
                     <thead>
                     <tr>
                         <th>Country name</th>
@@ -119,7 +115,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmCountries}" var="country">
-                        <tr>
+                        <tr data-country="${country.id}">
                             <td hidden class="filmCountries">${country.id}</td>
                             <td>${country.name}</td>
                             <td>Delete</td>
@@ -131,7 +127,7 @@
                     </tbody>
                 </table> <br/>
                 <span>Film networks</span>
-                <table id="filmNetworks">
+                <table>
                     <thead>
                     <tr>
                         <th>Network logo</th>
@@ -141,8 +137,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmNetworks}" var="network">
-                        <tr>
-                            <td hidden class="filmNetworks">${network.id}</td>
+                        <tr data-network="${network.id}">
                             <td>${network.networkByIdNetwork.networkLogo}</td>
                             <td>${network.networkByIdNetwork.networkName}</td>
                             <td>${network.link}</td>
@@ -155,7 +150,6 @@
                     </tbody>
                 </table> <br/>
                 <input type="button" name="ignore" value="Save film" onclick="save()" />
-
             </form>
 
         </c:when>

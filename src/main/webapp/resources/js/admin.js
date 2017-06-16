@@ -39,68 +39,55 @@ function save() {
         }
     }
     filmToSave['categories'] = [];
-    filmToSave['actors'] = {};
+    filmToSave['actors'] = [];
     filmToSave['directors'] = [];
     filmToSave['studios'] = [];
     filmToSave['countries'] = [];
     filmToSave['networks'] = [];
 
-    var categories = $('.filmCategory');
+    var categories = $('tr[data-category]');
     for (i = 0; i < categories.length; i++) {
-        filmToSave['categories'].push(categories.toArray()[i].innerHTML);
+        filmToSave['categories'].push($(categories[i]).attr("data-category"));
     }
 
-    var actors = $('.filmActor');
-    var actorsRole = $('.filmActorRole');
+    var actors = $('tr[data-actor]');
     for (i = 0; i < actors.length; i++) {
-        filmToSave['actors'][actorsRole.toArray()[i].innerHTML] = actors.toArray()[i].innerHTML;
+        filmToSave['actors'].push($(actors[i]).attr("data-actor"));
     }
 
-    var directors = $('.filmDirector');
+    var directors = $('tr[data-director]');
     for (i = 0; i < directors.length; i++) {
-        filmToSave['directors'].push(directors.toArray()[i].innerHTML);
+        filmToSave['directors'].push($(directors[i]).attr("data-director"));
     }
 
-    var studios = $('.filmStudio');
+    var studios = $('tr[data-studio]');
     for (i = 0; i < studios.length; i++) {
-        filmToSave['studios'].push(studios.toArray()[i].innerHTML);
+        filmToSave['studios'].push($(studios[i]).attr("data-studio"));
     }
 
-    var countries = $('.filmCountries');
+    var countries = $('tr[data-country]');
     for (i = 0; i < countries.length; i++) {
-        filmToSave['countries'].push(countries.toArray()[i].innerHTML);
+        filmToSave['countries'].push($(countries[i]).attr("data-country"));
     }
 
-    var networks = $('.filmNetworks');
+    var networks = $('tr[data-network]');
     for (i = 0; i < networks.length; i++) {
-        filmToSave['networks'].push(networks.toArray()[i].innerHTML);
+        filmToSave['networks'].push($(networks[i]).attr("data-network"));
     }
-
-    console.log('No json: ');
-    console.log(filmToSave);
-    console.log('With: ' + JSON.stringify(filmToSave));
-
 
     $.ajax({
         url: '/film/save',
         type: 'POST',
-        // dataType: 'JSON',
         data: JSON.stringify(filmToSave),
         contentType: 'application/json',
         success: function (data) {
-            console.log('Yes, success');
             console.log(data);
         },
-        error: function (xhr, textStatus, errorThrown) {
-            // console.log('Arr at beg ' + filmToSave);
-            // console.log(('After ' + JSON.stringify(filmToSave)));
+            error: function (xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
             console.log('Text status: ' + textStatus);
             console.log('XHR: ' + xhr);
             console.log('Error thrown: ' + errorThrown);
         }
     });
-
-
-    // console.log(filmToSave);
 }
