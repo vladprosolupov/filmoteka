@@ -20,20 +20,20 @@
             <th>Rating</th>
             <th>Age</th>
             <th>Budget</th>
-            <th>Cover</th>
+            <th>Language</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="film in films" :id="film.id">
             <td>{{film.title}}</td>
             <td>{{film.releaseDate}}</td>
-            <td>{{film.length}}</td>
+            <td>{{film.lenght}}</td>
             <td>{{film.description}}</td>
             <td>{{film.slogan}}</td>
             <td>{{film.rating}}</td>
             <td>{{film.age}}</td>
             <td>{{film.budget}}</td>
-            <td>{{film.cover}}</td>
+            <td>{{film.languageByIdLanguage.name}}</td>
             <td><a href="/admin/films/addOrUpdate?id={{film.id}}">Edit</a></td>
             <td><a>Delete</a></td>
         </tr>

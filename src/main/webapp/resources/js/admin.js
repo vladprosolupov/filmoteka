@@ -38,6 +38,7 @@ function save() {
             filmToSave[item.name] = item.value;
         }
     }
+    filmToSave['id'] = $('form[data-film]').attr("data-film");
     filmToSave['categories'] = [];
     filmToSave['actors'] = [];
     filmToSave['directors'] = [];
@@ -82,6 +83,7 @@ function save() {
         contentType: 'application/json',
         success: function (data) {
             console.log(data);
+            window.location.href="http://localhost:8080/admin/films";
         },
             error: function (xhr, textStatus, errorThrown) {
             console.log('Error in Operation');

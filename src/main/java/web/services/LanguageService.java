@@ -24,4 +24,10 @@ public class LanguageService {
         List<LanguageDb> result = session.createQuery("FROM LanguageDb").list();
         return result;
     }
+
+    public LanguageDb getLanguageWithId(String id){
+        Session session = sessionFactory.getCurrentSession();
+        LanguageDb languageDb = (LanguageDb) session.createQuery("from  LanguageDb l where l.id =" + id).list().get(0);
+        return languageDb;
+    }
 }

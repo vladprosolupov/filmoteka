@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.FilmActorDb;
 
-import java.io.Serializable;
 
 /**
  * Created by Rostyk on 16.06.2017.
@@ -19,12 +18,10 @@ public class FilmActorService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    public FilmActorDb getFilmActorWithId(String idActor, String role, int idFilm){
+    public FilmActorDb getFilmActorWithId(String id){
         Session session = sessionFactory.getCurrentSession();
         FilmActorDb filmActorDb =
-                (FilmActorDb) session.createQuery("from FilmActorDb fa where fa.actorByIdActor=" + idActor
-                        + " and fa.role=" + role
-                        + " and fa.filmByIdFilm=" + idFilm).list().get(0);
+                (FilmActorDb) session.createQuery("from FilmActorDb fa where fa.id=" + id).list().get(0);
         return filmActorDb;
     }
 
