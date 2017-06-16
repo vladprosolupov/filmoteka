@@ -34,7 +34,7 @@ public class CategoryController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<CategoryDb> getAll(){
         return categoryService.getAllCategories();

@@ -40,11 +40,11 @@
                     <c:forEach items="${film.filmCategories}" var="category">
                         <tr data-category="${category.id}">
                             <td>${category.name}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button class="addCategory" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -62,11 +62,11 @@
                         <tr data-actor="${actor.id}">
                             <td>${actor.actorByIdActor.firstName} ${actor.actorByIdActor.lastName}</td>
                             <td>${actor.role}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="3" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -82,11 +82,11 @@
                     <c:forEach items="${film.filmDirectors}" var="director">
                         <tr data-director="${director.id}">
                             <td>${director.firstName} ${director.lastName}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -102,11 +102,11 @@
                     <c:forEach items="${film.filmStudios}" var="studio">
                         <tr data-studio="${studio.id}">
                             <td>${studio.studioName}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -122,11 +122,11 @@
                     <c:forEach items="${film.filmCountries}" var="country">
                         <tr data-country="${country.id}">
                             <td>${country.name}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -146,11 +146,11 @@
                             <td>${network.networkByIdNetwork.networkLogo}</td>
                             <td>${network.networkByIdNetwork.networkName}</td>
                             <td>${network.link}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="4" style="text-align: center">Add</td>
+                        <td colspan="4" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -168,11 +168,11 @@
                         <tr data-award="${award.id}">
                             <td>${award.awardName}</td>
                             <td>${award.awardYear}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="3" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -188,11 +188,11 @@
                     <c:forEach items="${film.screenshotsById}" var="screenshot">
                         <tr data-screenshot="${screenshot.id}">
                             <td>${screenshot.link}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -208,16 +208,16 @@
                     <c:forEach items="${film.trailersById}" var="trailer">
                         <tr data-trailer="${trailer.id}">
                             <td>${trailer.link}</td>
-                            <td>Delete</td>
+                            <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
-                <input type="button" class="save" name="ignore" value="Save film"/>
+                <button type="button" class="save">Save film</button>
             </form>
         </c:when>
         <c:otherwise>
@@ -244,8 +244,19 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <tr class="categoryLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newCategory" style="display: none">
+                        <td>
+                            <select>
+                                <option v-for="category in categories">{{category.name}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveCategory">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center" class="addCategory">Add</td>
+                        <td colspan="2" style="text-align: center"><button class="addCategory" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -260,7 +271,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="3" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -274,7 +285,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -288,7 +299,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -302,7 +313,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -318,7 +329,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="4" style="text-align: center">Add</td>
+                        <td colspan="4" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -333,7 +344,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="3" style="text-align: center">Add</td>
+                        <td colspan="3" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -347,7 +358,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -361,12 +372,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td colspan="2" style="text-align: center">Add</td>
+                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
-                <input type="button" class="save" name="ignore" value="Save film"/>
+                <button type="button" class="save">Save film</button>
             </form>
         </c:otherwise>
     </c:choose>

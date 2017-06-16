@@ -38,7 +38,7 @@ public class TrailerController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<TrailerDb> getAll(){
         return trailerService.getAll();

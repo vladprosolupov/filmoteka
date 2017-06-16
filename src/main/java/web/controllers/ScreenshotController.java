@@ -38,7 +38,7 @@ public class ScreenshotController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<ScreenshotDb> getAll(){
         return screenshotService.getAll();

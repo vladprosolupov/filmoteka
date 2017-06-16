@@ -37,7 +37,7 @@ public class ActorController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<ActorDb> getAll(){
         return actorService.getAll();

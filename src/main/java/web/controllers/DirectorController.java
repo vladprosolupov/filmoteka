@@ -38,7 +38,7 @@ public class DirectorController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<DirectorDb> getAll(){
         return directorService.getAll();

@@ -55,7 +55,26 @@ $(function () {
         $('.formForFilm').css('display', 'block');
 
         $('.addCategory').click(function () {
-            console.log('todo');
+            $('.categoryLoading').css('display', 'block');
+            var categories = new Vue({
+                el: '.newCategory',
+                data: {
+                    categories: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/category/all', function (data) {
+                        $('.categoryLoading').css('display', 'none');
+                        $('.newCategory').css('display', 'block');
+                        self.categories = data;
+                    });
+                },
+                methods: {
+                    saveCategory: function(){
+                        $('.newCategory').css('display','none');
+                    }
+                }
+            });
         });
 
 
@@ -116,17 +135,17 @@ $(function () {
             }
 
             var awards = $('tr[data-award]');
-            for(i = 0; i < awards.length; i++) {
+            for (i = 0; i < awards.length; i++) {
                 filmToSave['awards'].push($(awards[i]).attr("data-award"));
             }
 
             var screenshots = $('tr[data-screenshot]');
-            for(i = 0; i < screenshots.length; i++) {
+            for (i = 0; i < screenshots.length; i++) {
                 filmToSave['screenshots'].push($(screenshots[i]).attr("data-screenshot"));
             }
 
             var trailers = $('tr[data-trailer]');
-            for(i = 0; i < trailers.length; i++) {
+            for (i = 0; i < trailers.length; i++) {
                 filmToSave['trailers'].push($(trailers[i]).attr("data-trailer"));
             }
 

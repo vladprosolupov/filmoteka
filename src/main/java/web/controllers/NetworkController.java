@@ -38,7 +38,7 @@ public class NetworkController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<NetworkDb> getAll(){
         return networkService.getAll();
