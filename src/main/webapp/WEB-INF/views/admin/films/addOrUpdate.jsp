@@ -10,20 +10,21 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
+    <div id="loading">Loading...</div>
     <c:choose>
         <c:when test="${film.id != 0}">
-            <form class="formForFilm" data-film="${film.id}">
+            <form class="formForFilm" data-film="${film.id}" style="display: none">
                 <span>Title </span> <input type="text" value="${film.title}" name="title"/><br/>
                 <span>Release Date </span> <input type="date" value="${film.releaseDate}" name="releaseDate"><br/>
                 <span>Language </span>
                 <select name="language">
                     <c:forEach items="${languages}" var="language">
-                       <option value="${language.id}" ${language.id == film.languageByIdLanguage.id ? 'selected="selected"' : ''}
-                       >${language.name}</option>
+                        <option value="${language.id}" ${language.id == film.languageByIdLanguage.id ? 'selected="selected"' : ''}
+                        >${language.name}</option>
                     </c:forEach>
-                </select> <br />
+                </select> <br/>
                 <span>Length </span> <input type="number" value="${film.lenght}" name="lenght"/> <br/>
-                <span>Description </span> <input type="text" value="${film.description}" name="description"/> <br />
+                <span>Description </span> <input type="text" value="${film.description}" name="description"/> <br/>
                 <span>Slogan </span> <input type="text" value="${film.slogan}" name="slogan"/> <br/>
                 <span>Rating </span> <input type="number" value="${film.rating}" name="rating"/> <br/>
                 <span>Budget </span> <input type="text" value="${film.budget}" name="budget"/> <br/>
@@ -31,9 +32,9 @@
                 <span>Film Category </span>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Category name</th>
-                        </tr>
+                    <tr>
+                        <th>Category name</th>
+                    </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${film.filmCategories}" var="category">
@@ -46,7 +47,8 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
+                </table>
+                <br/>
                 <span>Actors in film </span>
                 <table>
                     <thead>
@@ -67,7 +69,8 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
+                </table>
+                <br/>
                 <span>Film director</span>
                 <table>
                     <thead>
@@ -86,7 +89,8 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
+                </table>
+                <br/>
                 <span>Film studio</span>
                 <table>
                     <thead>
@@ -105,7 +109,8 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
+                </table>
+                <br/>
                 <span>Film countries</span>
                 <table>
                     <thead>
@@ -125,7 +130,8 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
+                </table>
+                <br/>
                 <span>Film networks</span>
                 <table>
                     <thead>
@@ -148,13 +154,116 @@
                         <td colspan="2" style="text-align: center">Add</td>
                     </tr>
                     </tbody>
-                </table> <br/>
-                <input type="button" name="ignore" value="Save film" onclick="save()" />
+                </table>
+                <br/>
+                <input type="button" class="save" name="ignore" value="Save film" />
             </form>
-
         </c:when>
         <c:otherwise>
-            <h2>new film</h2>
+            <form class="formForFilm" data-film="${film.id}" style="display: none">
+                <span>Title </span> <input type="text" name="title"/><br/>
+                <span>Release Date </span> <input type="date" name="releaseDate"><br/>
+                <span>Language </span>
+                <select name="language">
+                    <c:forEach items="${languages}" var="language">
+                        <option value="${language.id}">${language.name}</option>
+                    </c:forEach>
+                </select> <br/>
+                <span>Length </span> <input type="number" name="lenght"/> <br/>
+                <span>Description </span> <input type="text" name="description"/> <br/>
+                <span>Slogan </span> <input type="text" name="slogan"/> <br/>
+                <span>Rating </span> <input type="number" name="rating"/> <br/>
+                <span>Budget </span> <input type="text" name="budget"/> <br/>
+                <span>Cover </span> <input type="text" name="cover"/> <br/>
+                <span>Film Category </span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Category name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center" class="addCategory">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Actors in film </span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Actor name and surname</th>
+                        <th>Actor role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film director</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Director name and surname</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film studio</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Studio name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film countries</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Country name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <span>Film networks</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Network logo</th>
+                        <th>Network name</th>
+                        <th>Link to network</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center">Add</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <input type="button" class="save" name="ignore" value="Save film" />
+            </form>
         </c:otherwise>
     </c:choose>
 </t:wrapper>
