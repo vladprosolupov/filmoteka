@@ -17,4 +17,11 @@ public class NetworkService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
+    public NetworkDb getNetworkWithId(String id){
+        Session session = sessionFactory.getCurrentSession();
+        NetworkDb networkDb =
+                (NetworkDb) session.createQuery("from NetworkDb n where n.id=" + id).list().get(0);
+        return networkDb;
+    }
+
 }
