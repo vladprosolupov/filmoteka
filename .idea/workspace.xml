@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="477340ef-d402-473b-8cbe-55e49055a296" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ActorController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ActorController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AwardController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AwardController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CountryController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CountryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/NetworkController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/NetworkController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ScreenshotController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ScreenshotController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/StudioController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/StudioController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/TrailerController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/TrailerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -102,12 +92,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            <state relative-caret-position="75">
+              <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkToNetworkController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/java/web/services/ScreenshotService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/StudioService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/TrailerService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/ActorController.java" />
@@ -192,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/TrailerController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" />
       </list>
     </option>
   </component>
@@ -6036,11 +6038,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497638139623</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Minor updates in controllers.">
+      <created>1497644195920</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1497644195920</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99967000" />
+    <option name="totallyTimeSpent" value="100171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="22" width="1280" height="1337" extended-state="0" />
@@ -6150,7 +6159,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial configuration for Db connection." />
     <MESSAGE value="minor changes commit." />
     <MESSAGE value="added persistence for database." />
     <MESSAGE value="Added generated value for inserting into database" />
@@ -6175,7 +6183,8 @@
     <MESSAGE value="Created all needed methods for working with FilmActor" />
     <MESSAGE value="Created all needed methods for working with LinkToNetwork" />
     <MESSAGE value="Minor fixes in all services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes in all services" />
+    <MESSAGE value="Minor updates in controllers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor updates in controllers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -6607,16 +6616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/NetworkController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -6649,9 +6648,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        <state relative-caret-position="75">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

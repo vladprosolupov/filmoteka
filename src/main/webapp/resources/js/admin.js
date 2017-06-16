@@ -1,6 +1,11 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
+
+function addRow(tableClass){
+    $('.' + tableClass);
+}
+
 $(function () {
     if (window.location.href.substr(28) == 'films') {
         var films = new Vue({
