@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.FilmActorDb;
 
+import java.io.Serializable;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -24,5 +26,11 @@ public class FilmActorService {
                         + " and fa.role=" + role
                         + " and fa.filmByIdFilm=" + idFilm).list().get(0);
         return filmActorDb;
+    }
+
+    public int saveFilmActor(FilmActorDb filmActorDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.save(filmActorDb);
+        return filmActorDb.getId();
     }
 }
