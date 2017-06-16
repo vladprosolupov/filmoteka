@@ -45,6 +45,15 @@ public class FilmService {
     @Autowired
     private LanguageService languageService;
 
+    @Autowired
+    private AwardService awardService;
+
+    @Autowired
+    private TrailerService trailerService;
+
+    @Autowired
+    private ScreenshotService screenshotService;
+
     public List<FilmDb> getAllFilms(){
         Session session = sessionFactory.getCurrentSession();
         List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
@@ -111,6 +120,21 @@ public class FilmService {
             setOfFilmActors.add(filmActorService.getFilmActorWithId(s));
         }
         filmDb.setFilmActorsById(setOfFilmActors);
+        Set<AwardDb> setOfAwards = new HashSet<>();
+        for (String s : filmJSON.getAwards()) {
+            setOfAwards.add(awardService.getAwardWithId(s));
+        }
+        filmDb.setAwardsById(setOfAwards);
+        Set<TrailerDb> setOfTrailers = new HashSet<>();
+        for (String s : filmJSON.getTrailers()) {
+            setOfTrailers.add(trailerService.getTrailerWithId(s));
+        }
+        filmDb.setTrailersById(setOfTrailers);
+        Set<ScreenshotDb> setOfScreenShots = new HashSet<>();
+        for (String s : filmJSON.getScreenShots()) {
+            setOfScreenShots.add(screenshotService.getScreenshotWithId(s));
+        }
+        filmDb.setScreenshotsById(setOfScreenShots);
 
         return filmDb;
     }

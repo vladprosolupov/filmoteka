@@ -52,6 +52,12 @@ public class FilmJSON {
 
     private List<String> networks;
 
+    private List<String> screenShots;
+
+    private List<String> awards;
+
+    private List<String> trailers;
+
     public int getId() {
         return id;
     }
@@ -186,5 +192,29 @@ public class FilmJSON {
 
     public void setNetworks(List<String> networks) {
         this.networks = networks;
+    }
+
+    public List<String> getScreenShots() {
+        return screenShots;
+    }
+
+    public void setScreenShots(List<String> screenShots) {
+        this.screenShots = screenShots;
+    }
+
+    public List<String> getAwards() {
+        return awards;
+    }
+
+    public void setAwards(List<String> awards) {
+        this.awards = awards;
+    }
+
+    public List<String> getTrailers() {
+        return trailers;
+    }
+
+    public void setTrailers(List<String> trailers) {
+        this.trailers = trailers;
     }
 }
