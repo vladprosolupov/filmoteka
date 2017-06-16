@@ -1,10 +1,7 @@
 package web.dao;
 
-import web.model.FilmJSON;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -27,11 +24,11 @@ public class FilmDb {
     private Set<StudioDb> filmStudios;
     private Set<LinkToNetworkDb> filmNetworks;
     private Set<DirectorDb> filmDirectors;
-    private Collection<AwardDb> awardsById;
+    private Set<AwardDb> awardsById;
     private LanguageDb languageByIdLanguage;
-    private Collection<FilmActorDb> filmActorsById;
-    private Collection<ScreenshotDb> screenshotsById;
-    private Collection<TrailerDb> trailersById;
+    private Set<FilmActorDb> filmActorsById;
+    private Set<ScreenshotDb> screenshotsById;
+    private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
 
     @Id
@@ -210,11 +207,11 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<AwardDb> getAwardsById() {
+    public Set<AwardDb> getAwardsById() {
         return awardsById;
     }
 
-    public void setAwardsById(Collection<AwardDb> awardsById) {
+    public void setAwardsById(Set<AwardDb> awardsById) {
         this.awardsById = awardsById;
     }
 
@@ -228,29 +225,29 @@ public class FilmDb {
         this.languageByIdLanguage = languageByIdLanguage;
     }
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<FilmActorDb> getFilmActorsById() {
+    public Set<FilmActorDb> getFilmActorsById() {
         return filmActorsById;
     }
 
-    public void setFilmActorsById(Collection<FilmActorDb> filmActorsById) {
+    public void setFilmActorsById(Set<FilmActorDb> filmActorsById) {
         this.filmActorsById = filmActorsById;
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<ScreenshotDb> getScreenshotsById() {
+    public Set<ScreenshotDb> getScreenshotsById() {
         return screenshotsById;
     }
 
-    public void setScreenshotsById(Collection<ScreenshotDb> screenshotsById) {
+    public void setScreenshotsById(Set<ScreenshotDb> screenshotsById) {
         this.screenshotsById = screenshotsById;
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<TrailerDb> getTrailersById() {
+    public Set<TrailerDb> getTrailersById() {
         return trailersById;
     }
 
-    public void setTrailersById(Collection<TrailerDb> trailersById) {
+    public void setTrailersById(Set<TrailerDb> trailersById) {
         this.trailersById = trailersById;
     }
 

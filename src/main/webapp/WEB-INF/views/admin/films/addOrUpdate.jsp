@@ -36,13 +36,24 @@
                         <th>Category name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="categories">
                     <c:forEach items="${film.filmCategories}" var="category">
                         <tr data-category="${category.id}">
                             <td>${category.name}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="categoryLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newCategory" style="display: none">
+                        <td>
+                            <select class="categoryOptions">
+                                <option v-for="category in categories" :value="category.id">{{category.name}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveCategory">Save</button></td>
+                    </tr>
                     <tr>
                         <td colspan="2" style="text-align: center"><button class="addCategory" type="button">Add</button></td>
                     </tr>
@@ -78,15 +89,26 @@
                         <th>Director name and surname</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="directors">
                     <c:forEach items="${film.filmDirectors}" var="director">
                         <tr data-director="${director.id}">
                             <td>${director.firstName} ${director.lastName}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="directorLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading</td>
+                    </tr>
+                    <tr class="newDirector" style="display: none">
+                        <td>
+                            <select class="directorOptions">
+                                <option v-for="director in directors" :value="director.id">{{director.firstName}} {{director.lastName}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveDirector">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addDirector" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -243,19 +265,19 @@
                         <th>Category name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="categories">
                     <tr class="categoryLoading" style="display: none">
                         <td colspan="2" style="text-align: center">Loading...</td>
                     </tr>
                     <tr class="newCategory" style="display: none">
                         <td>
-                            <select>
-                                <option v-for="category in categories">{{category.name}}</option>
+                            <select class="categoryOptions">
+                                <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                             </select>
                         </td>
                         <td><button type="button" v-on:click="saveCategory">Save</button></td>
                     </tr>
-                    <tr>
+                    <tr class="addButton">
                         <td colspan="2" style="text-align: center"><button class="addCategory" type="button">Add</button></td>
                     </tr>
                     </tbody>
