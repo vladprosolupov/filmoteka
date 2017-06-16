@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.CountryDb;
 
+import java.util.List;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -31,5 +33,11 @@ public class CountryService {
     public void deleteCountry(String id){
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
+    }
+
+    public List<CountryDb> getAll(){
+        Session session = sessionFactory.getCurrentSession();
+        List<CountryDb> result = session.createQuery("from CountryDb ").list();
+        return result;
     }
 }
