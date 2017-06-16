@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="477340ef-d402-473b-8cbe-55e49055a296" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AwardController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CountryController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/services/AwardService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/AwardService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/services/CountryService.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/CountryService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,7 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/networks.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/admin/wrapper.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/index.jsp" />
@@ -109,7 +108,6 @@
         <option value="$PROJECT_DIR$/src/main/java/web/dao/AwardDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/ScreenshotDb.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/dao/TrailerDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/services/CountryService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/DirectorService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/LinkToNetworkService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/NetworkService.java" />
@@ -133,6 +131,8 @@
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/StudioController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/AwardService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/AwardController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/CountryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/CountryController.java" />
       </list>
     </option>
   </component>
@@ -263,10 +263,6 @@
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -291,6 +287,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1812,11 +1812,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497634946661</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Created all needed methods for working with Country">
+      <created>1497635259427</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1497635259427</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93311000" />
+    <option name="totallyTimeSpent" value="93671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1942,7 +1949,8 @@
     <MESSAGE value="Updating of film fixed and is working right now." />
     <MESSAGE value="Created all needed methods for working with Category" />
     <MESSAGE value="Created all needed methods for working with Studio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created all needed methods for working with Studio" />
+    <MESSAGE value="Created all needed methods for working with Country" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created all needed methods for working with Country" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1955,13 +1963,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dsafsddf.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/AddressDb.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2040,13 +2041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CountryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -2325,6 +2319,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CountryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/CountryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

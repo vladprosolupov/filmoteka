@@ -22,4 +22,14 @@ public class CountryService {
         CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.id=" + id).list().get(0);
         return countryDb;
     }
+
+    public void saveOrUpdateCountry(CountryDb countryDb){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(countryDb);
+    }
+
+    public void deleteCountry(String id){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
+    }
 }
