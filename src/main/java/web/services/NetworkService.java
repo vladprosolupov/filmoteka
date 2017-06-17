@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.NetworkDb;
+import web.model.NetworkJSON;
 
 import java.util.List;
 
@@ -40,6 +41,14 @@ public class NetworkService {
         Session session = sessionFactory.getCurrentSession();
         List<NetworkDb> result = session.createQuery("from NetworkDb").list();
         return result;
+    }
+
+    public NetworkDb convertToNetworkDb(NetworkJSON networkJSON){
+        NetworkDb networkDb = new NetworkDb();
+        networkDb.setNetworkLogo(networkJSON.getNetworkLogo());
+        networkDb.setId(networkJSON.getId());
+        networkDb.setNetworkName(networkJSON.getNetworkName());
+        return networkDb;
     }
 
 }

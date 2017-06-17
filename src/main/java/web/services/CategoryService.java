@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.CategoryDb;
+import web.model.CategoryJSON;
 
 import java.util.List;
 
@@ -39,5 +40,12 @@ public class CategoryService {
     public void deleteCategory(String id){
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from CategoryDb c where c.id=" + id).executeUpdate();
+    }
+
+    public CategoryDb convertToCategoryDb(CategoryJSON categoryJSON){
+        CategoryDb categoryDb = new CategoryDb();
+        categoryDb.setId(categoryJSON.getId());
+        categoryDb.setName(categoryJSON.getName());
+        return categoryDb;
     }
 }
