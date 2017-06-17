@@ -26,6 +26,7 @@ a.nav-item{
 }
 
 .table thead th{
+    text-align: center;
     background-color: rgba(0,196,167,0);
     color: rgba(0,196,167,1);
 }

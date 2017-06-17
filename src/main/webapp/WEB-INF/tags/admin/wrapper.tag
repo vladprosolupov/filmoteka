@@ -21,22 +21,27 @@
     <div class="hero-head">
         <div class="container">
             <nav class="nav">
-                <div class="container">
-                    <div class="nav-center nav-menu">
-
-<a class="nav-item" href="/admin/films">Films</a>
-<a class="nav-item" href="/admin/actors">Actors</a>
-<a class="nav-item" href="/admin/directors">Directors</a>
-<a class="nav-item" href="/admin/categories">Categories</a>
-<a class="nav-item" href="/admin/networks">Networks</a>
-<a class="nav-item" href="/admin/studios">Studios</a>
-                    </div>
+                <div class="nav-center nav-menu">
+                    <a class="nav-item" href="/admin/films">Films</a>
+                    <a class="nav-item" href="/admin/actors">Actors</a>
+                    <a class="nav-item" href="/admin/directors">Directors</a>
+                    <a class="nav-item" href="/admin/categories">Categories</a>
+                    <a class="nav-item" href="/admin/networks">Networks</a>
+                    <a class="nav-item" href="/admin/studios">Studios</a>
                 </div>
             </nav>
         </div>
     </div>
-    <jsp:doBody/>
-    </section>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <jsp:doBody/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
