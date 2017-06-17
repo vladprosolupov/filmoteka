@@ -6,11 +6,11 @@
 
     <title>Login Page</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
 <body onload='document.loginForm.username.focus();'>
 
 <div id="login-box">
-
 
 
     <c:if test="${not empty error}">
@@ -19,31 +19,30 @@
     <c:if test="${not empty msg}">
         <div class="msg">${msg}</div>
     </c:if>
-    <section class="hero is-fullheight is-dark is-bold">
+    <section class="hero background_for_login is-fullheight is-bold">
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-4 is-offset-4">
-    <form name='loginForm'
-          action="/j_spring_security_check" method='POST'>
-        <h1 class="title">Login</h1>
-        <div class="box">
+                        <form name='loginForm'
+                              action="/j_spring_security_check" method='POST'>
+                            <h1 class="title white-text">Login</h1>
+                            <div class="box">
 
-                <div class="label">User:</div>
-                <input class="input" type='text' name='username'>
+                                <div class="label">User:</div>
+                                <input class="input" type='text' name='username'>
 
-                <div class="label">Password:</div>
-                <input class="input" type='password' name='password'/>
-            <hr>
-                <input name="submit" class="button is-primary" type="submit" value="submit"/>
-        </div>
+                                <div class="label">Password:</div>
+                                <input class="input" type='password' name='password'/>
+                                <hr>
+                                <input name="submit" class="button is-primary" type="submit" value="Log In"/>
+                            </div>
 
-        <sec:csrfInput/>
-
-    </form>
-                    </div>
+                            <sec:csrfInput/>
+                        </form>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </div>
