@@ -10,7 +10,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
-    <div id="loading">Loading...</div>
+    <div id="loading">        <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div></div>
     <c:choose>
         <c:when test="${film.id != 0}">
             <form class="formForFilm" data-film="${film.id}" style="display: none">
