@@ -6,8 +6,9 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!-- Here spring mvc will look up for web.controllerslers -->
+    <!-- Here spring mvc will look up for web.controllers -->
     <context:component-scan base-package="web" />
+    <context:annotation-config/>
 
     <!-- Here spring mvc will look up for the view pages -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,6 +25,7 @@
 
     <!-- This is needed for spring security -->
     <mvc:annotation-driven />
+    <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <import resource="spring-security.xml" />

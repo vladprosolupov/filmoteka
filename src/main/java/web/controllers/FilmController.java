@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import web.model.FilmJSON;
 import web.services.FilmService;
 
 import java.util.List;
@@ -28,10 +29,17 @@ public class FilmController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    String saveOrUpdate(@RequestParam FilmDb filmToSave) {
-        filmService.saveOrUpdate(filmToSave);
+     String saveOrUpdate(@RequestBody FilmJSON filmToSave) {
+        filmService.saveOrUpdate(filmService.convert(filmToSave));
+        return "OK";
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    public @ResponseBody String delete(@PathVariable("id") String id){
+        filmService.delete(id);
         return "OK";
     }
 }

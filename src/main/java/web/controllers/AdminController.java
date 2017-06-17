@@ -1,13 +1,18 @@
 package web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import web.dao.FilmDb;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import web.dao.LanguageDb;
 import web.services.FilmService;
+import web.services.LanguageService;
+
+import java.util.List;
 
 /**
  * Created by vladyslavprosolupov on 13.06.17.
@@ -19,6 +24,9 @@ public class AdminController {
 
     @Autowired
     FilmService filmService;
+
+    @Autowired
+    LanguageService languageService;
 
     @RequestMapping(value = "/index")
     public String admin_index() {
@@ -45,12 +53,14 @@ public class AdminController {
         return "admin/films/index";
     }
 
-    @RequestMapping(value = "/films/addOrUpdate")
-    public String admin_films_addOrUpdate(@RequestParam(value = "id", required = false, defaultValue = "null") String id, Model model) {
+    @RequestMapping(value = "/films/addOrUpdate/{id}")
+    public String admin_films_addOrUpdate(@PathVariable("id") String id, Model model) {
         FilmDb filmDb = new FilmDb();
-        if (!id.equals( "null")) {
+        if (!id.equals("0")) {
             filmDb = filmService.getFilmWithId(id);
         }
+        List<LanguageDb> listOfLanguageDbs = languageService.getAllLanguages();
+        model.addAttribute("languages", listOfLanguageDbs);
         model.addAttribute("film", filmDb);
         return "admin/films/addOrUpdate";
     }
