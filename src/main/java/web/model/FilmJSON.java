@@ -31,7 +31,7 @@ public class FilmJSON {
 
     private List<String> categories;
 
-    private List<String> actors;
+    private Map<String, Integer> actors;
 
     private List<String> directors;
 
@@ -39,7 +39,7 @@ public class FilmJSON {
 
     private List<String> countries;
 
-    private List<String> networks;
+    private Map<String, Integer> networks;
 
     private List<String> screenshots;
 
@@ -143,11 +143,11 @@ public class FilmJSON {
         this.categories = categories;
     }
 
-    public List<String> getActors() {
+    public Map<String, Integer> getActors() {
         return actors;
     }
 
-    public void setActors(List<String> actors) {
+    public void setActors(Map<String, Integer> actors) {
         this.actors = actors;
     }
 
@@ -175,11 +175,11 @@ public class FilmJSON {
         this.countries = countries;
     }
 
-    public List<String> getNetworks() {
+    public Map<String, Integer> getNetworks() {
         return networks;
     }
 
-    public void setNetworks(List<String> networks) {
+    public void setNetworks(Map<String, Integer> networks) {
         this.networks = networks;
     }
 

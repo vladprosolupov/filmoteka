@@ -5,8 +5,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.dao.ActorDb;
 import web.dao.FilmActorDb;
 import web.model.FilmActorJSON;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -49,10 +54,21 @@ public class FilmActorService {
         session.createQuery("delete from FilmActorDb fa where fa.id=" + id).executeUpdate();
     }
 
-    public FilmActorDb convert(FilmActorJSON filmActorJSON){
-        FilmActorDb filmActorDb = new FilmActorDb();
-        filmActorDb.setActorByIdActor(actorService.getActorWithId(filmActorJSON.getIdActor()));
-        filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmActorJSON.getIdFilm())));
-        return filmActorDb;
+//    public FilmActorDb convert(FilmActorJSON filmActorJSON){
+//        FilmActorDb filmActorDb = new FilmActorDb();
+//        filmActorDb.setActorByIdActor(actorService.getActorWithId(filmActorJSON.getIdActor()));
+//        filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmActorJSON.getIdFilm())));
+//        return filmActorDb;
+//    }
+
+    public Set<FilmActorDb> createSetOfFilmActor(Map<String, Integer> actors){
+        Set<FilmActorDb> actorDbSet = new HashSet<>();
+        for(Map.Entry<String, Integer> m : actors.entrySet()){
+            FilmActorDb filmActorDb = new FilmActorDb();
+            filmActorDb.setRole(m.getKey());
+            filmActorDb.setActorByIdActor(actorService.getActorWithId(m.getValue()));
+            actorDbSet.add(filmActorDb);
+        }
+        return actorDbSet;
     }
 }
