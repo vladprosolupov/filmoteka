@@ -21,7 +21,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addOrUpdateCategory(@RequestBody CategoryJSON categoryJSON){
         categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
         return "OK";

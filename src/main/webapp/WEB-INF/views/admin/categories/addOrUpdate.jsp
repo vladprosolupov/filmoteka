@@ -11,14 +11,34 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${category.id != 0}">
-            <form>
-                <span>Name</span> <input type="text" value="${category.name}" name="name">
+            <form class="formForCategory" data-category="${category.id}">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" value="${category.name}" name="name"/>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save category</button>
+                </p>
+            </div>
         </c:when>
         <c:otherwise>
-            <form>
-                <span>Name</span> <input type="text"  name="name">
+            <form class="formForCategory" data-category="0">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text"  name="name"/>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save category</button>
+                </p>
+            </div>
         </c:otherwise>
     </c:choose>
 

@@ -433,7 +433,7 @@ $(function () {
                 }
             });
         });
-    } else if (location.href.substr(28) === 'actors'){
+    } else if (location.href.substr(28) === 'actors') {
         var actors = new Vue({
             el: '.actors',
             data: {
@@ -448,7 +448,7 @@ $(function () {
                 });
             },
             methods: {
-                editActor: function(id){
+                editActor: function (id) {
                     location.href += '/addOrUpdate/' + id;
                 },
                 deleteActor: function (id) {
@@ -480,7 +480,7 @@ $(function () {
         $('.addActor').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    }else if(location.href.substr(28,18) === 'actors/addOrUpdate'){
+    } else if (location.href.substr(28, 18) === 'actors/addOrUpdate') {
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -508,6 +508,90 @@ $(function () {
                 success: function (data) {
                     console.log(data);
                     location.href = "http://localhost:8080/admin/actors";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
+        });
+    } else if (location.href.substr(28) === 'categories') {
+        var categories = new Vue({
+            el: '.categories',
+            data: {
+                categories: []
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.getJSON('/category/all', function (data) {
+                    $('#loading').hide();
+                    $('.categories').show();
+                    self.categories = data;
+                });
+            },
+            methods: {
+                editCategory: function (id) {
+                    location.href += '/addOrUpdate/' + id;
+                },
+                deleteCategory: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/category/delete/' + id,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
+            }
+        });
+
+        $('.addCategory').click(function () {
+            location.href += '/addOrUpdate/0';
+        });
+    } else if (location.href.substr(28, 22) === 'categories/addOrUpdate') {
+
+        $('.save').click(function () {
+            $('.save').addClass("is-loading");
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var elements = document.getElementsByClassName("formForCategory")[0].elements;
+            var categoryToSave = {};
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.name !== 'ignore') {
+                    categoryToSave[item.name] = item.value;
+                }
+            }
+            categoryToSave['id'] = $('form[data-category]').attr("data-category");
+
+            $.ajax({
+                url: '/category/save',
+                type: 'POST',
+                data: JSON.stringify(categoryToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/categories";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
