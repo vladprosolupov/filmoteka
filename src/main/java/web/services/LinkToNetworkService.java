@@ -57,7 +57,7 @@ public class LinkToNetworkService {
 //                networkService.getNetworkWithId(Integer.toString(linkToNetworkJSON.getIdNetwork())));
 //        return linkToNetworkDb;
 //    }
-//
+
     public Set<LinkToNetworkDb> createSetOfLinkToNetwork(Map<String, Integer> links){
         Set<LinkToNetworkDb> linkToNetworkDbSet = new HashSet<>();
         for(Map.Entry<String, Integer> m : links.entrySet()){
