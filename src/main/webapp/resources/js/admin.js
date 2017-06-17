@@ -686,5 +686,90 @@ $(function () {
                 }
             });
         });
+    }else if(location.href.substr(28) === 'networks'){
+
+        var networks = new Vue({
+            el: '.networks',
+            data: {
+                networks: []
+            },
+            beforeCompile: function(){
+                var self = this;
+                $.getJSON('/network/all', function (data) {
+                    $('#loading').hide();
+                    $('.networks').show();
+                    self.networks = data;
+                });
+            },
+            methods: {
+                editNetwork: function (id) {
+                    location.href += '/addOrUpdate/' + id;
+                },
+                deleteNetwork: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/network/delete/' + id,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
+            }
+        });
+
+        $('.addNetwork').click(function () {
+            location.href += '/addOrUpdate/0';
+        });
+
+    }else if(location.href.substr(28,10) === 'networks/addOrUpdate'){
+        $('.save').click(function () {
+            $('.save').addClass("is-loading");
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var elements = document.getElementsByClassName("formForNetwork")[0].elements;
+            var networkToSave = {};
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.name !== 'ignore') {
+                    networkToSave[item.name] = item.value;
+                }
+            }
+            networkToSave['id'] = $('form[data-network]').attr("data-network");
+
+            $.ajax({
+                url: '/network/save',
+                type: 'POST',
+                data: JSON.stringify(networkToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/networks";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
+        });
     }
 });
