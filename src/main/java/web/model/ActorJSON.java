@@ -13,7 +13,7 @@ public class ActorJSON {
     private String lastName;
     private String birthdate;
     private String country;
-    private List<String> idFilmActor;
+    //private List<String> idFilmActor;
 
     public int getId() {
         return id;
@@ -55,11 +55,11 @@ public class ActorJSON {
         this.country = country;
     }
 
-    public List<String> getIdFilmActor() {
-        return idFilmActor;
-    }
-
-    public void setIdFilmActor(List<String> idFilmActor) {
-        this.idFilmActor = idFilmActor;
-    }
+//    public List<String> getIdFilmActor() {
+//        return idFilmActor;
+//    }
+//
+//    public void setIdFilmActor(List<String> idFilmActor) {
+//        this.idFilmActor = idFilmActor;
+//    }
 }

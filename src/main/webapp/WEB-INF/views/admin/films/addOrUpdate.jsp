@@ -691,11 +691,6 @@
                 <div class="field">
                     <label class="label">Film networks</label>
                     <div class="control">
-
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
                         <table class="table">
                             <thead>
                             <tr>
@@ -731,8 +726,6 @@
                         </table>
                     </div>
                 </div>
-
-
                 <div class="field">
                     <label class="label">Film awards</label>
                     <div class="control">

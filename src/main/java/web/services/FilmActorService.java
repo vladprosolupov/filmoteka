@@ -71,4 +71,13 @@ public class FilmActorService {
         }
         return actorDbSet;
     }
+
+    public void checkForFilmActors(int idFilm, Set<FilmActorDb> filmActorDbSet){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from FilmActorDb f where f.filmByIdFilm=" + idFilm).executeUpdate();
+        for (FilmActorDb filmActorDb : filmActorDbSet) {
+           filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
+            session.saveOrUpdate(filmActorDb);
+        }
+    }
 }
