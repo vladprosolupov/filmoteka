@@ -115,10 +115,11 @@ public class FilmService {
         }
         filmDb.setFilmDirectors(setOfDirectors);
 
-        Set<LinkToNetworkDb> setOfLinkToNetworks = new HashSet<>();
-        for (String s: filmJSON.getNetworks()) {
-            setOfLinkToNetworks.add(linkToNetworkService.getLinkWithId(s));
-        }
+        Set<LinkToNetworkDb> setOfLinkToNetworks =
+                linkToNetworkService.createSetOfLinkToNetwork(filmJSON.getNetworks());
+//        for (String s: filmJSON.getNetworks()) {
+//            setOfLinkToNetworks.add(linkToNetworkService.getLinkWithId(s));
+//        }
         filmDb.setFilmNetworks(setOfLinkToNetworks);
 
         Set<StudioDb> setOfStudios = new HashSet<>();
@@ -131,10 +132,7 @@ public class FilmService {
         * Change to another version
         *
          */
-        Set<FilmActorDb> setOfFilmActors = new HashSet<>();
-        for (String s: filmJSON.getActors()){
-            setOfFilmActors.add(filmActorService.getFilmActorWithId(s));
-        }
+        Set<FilmActorDb> setOfFilmActors = filmActorService.createSetOfFilmActor(filmJSON.getActors());
         filmDb.setFilmActorsById(setOfFilmActors);
 
         //ToDO change to map <String,String> as <awardYear, awardName>
