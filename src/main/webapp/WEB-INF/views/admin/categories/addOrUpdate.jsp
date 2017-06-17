@@ -12,7 +12,7 @@
     <c:choose>
         <c:when test="${category.id != 0}">
             <form>
-                <span>Name</span> <input type="text" value="#{category.name}" name="name">
+                <span>Name</span> <input type="text" value="${category.name}" name="name">
             </form>
         </c:when>
         <c:otherwise>
