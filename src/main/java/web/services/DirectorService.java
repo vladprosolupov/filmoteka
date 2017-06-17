@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.DirectorDb;
+import web.model.DirectorJSON;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class DirectorService {
 
     @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private CountryService countryService;
 
     public DirectorDb getDirectorWithId(String id){
         Session session = sessionFactory.getCurrentSession();
@@ -39,5 +43,15 @@ public class DirectorService {
         Session session = sessionFactory.getCurrentSession();
         List<DirectorDb> result = session.createQuery("from DirectorDb ").list();
         return result;
+    }
+
+    public DirectorDb convertToDirectorDb(DirectorJSON directorJSON){
+        DirectorDb directorDb = new DirectorDb();
+        directorDb.setFirstName(directorJSON.getFirstName());
+        directorDb.setId(directorJSON.getId());
+        directorDb.setLastName(directorJSON.getLastName());
+        directorDb.setCountryByIdCountry(
+                countryService.getCountryWithId(directorJSON.getCountry()));
+        return directorDb;
     }
 }
