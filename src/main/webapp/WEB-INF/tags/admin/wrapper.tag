@@ -8,6 +8,7 @@
     <script src="<c:url value="/resources/js/admin.js"/>"></script>
     <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/admin.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
@@ -16,14 +17,26 @@
 
 </head>
 <body>
-<div class="column" id="panel">
-    <div class="column"><a href="/admin/films">Films</a></div>
-    <div class="column"><a href="/admin/actors">Actors</a></div>
-    <div class="column"><a href="/admin/directors">Directors</a></div>
-    <div class="column"><a href="/admin/categories">Categories</a></div>
-    <div class="column"><a href="/admin/networks">Networks</a></div>
-    <div class="column"><a href="/admin/studios">Studios</a></div>
-</div>
-<jsp:doBody/>
+<section class="hero background_for_login is-fullheight is-bold white-text">
+    <div class="hero-head">
+        <div class="container">
+            <nav class="nav">
+                <div class="container">
+                    <div class="nav-center nav-menu">
+
+<a class="nav-item" href="/admin/films">Films</a>
+<a class="nav-item" href="/admin/actors">Actors</a>
+<a class="nav-item" href="/admin/directors">Directors</a>
+<a class="nav-item" href="/admin/categories">Categories</a>
+<a class="nav-item" href="/admin/networks">Networks</a>
+<a class="nav-item" href="/admin/studios">Studios</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <jsp:doBody/>
+    </section>
+
 </body>
 </html>
