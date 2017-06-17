@@ -21,7 +21,7 @@
             </form>
             <div class="field">
                 <p class="control">
-                    <button type="button" class="save button is-primary">Save network</button>
+                    <button type="button" class="save button is-primary">Save studio</button>
                 </p>
             </div>
         </c:when>
