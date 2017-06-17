@@ -3,11 +3,9 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import web.dao.ActorDb;
+import web.model.ActorJSON;
 import web.services.ActorService;
 
 import java.util.List;
@@ -24,8 +22,8 @@ public class ActorController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public @ResponseBody String addActor(ActorDb actorDb){
-        actorService.saveOrUpdate(actorDb);
+    public @ResponseBody String addActor(@RequestBody ActorJSON actorJSON){
+        actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
         return "OK";
     }
 

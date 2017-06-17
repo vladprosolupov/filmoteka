@@ -3,11 +3,9 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import web.dao.NetworkDb;
+import web.model.NetworkJSON;
 import web.services.NetworkService;
 
 import java.util.List;
@@ -25,8 +23,8 @@ public class NetworkController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(NetworkDb networkDb){
-        networkService.saveOrUpdate(networkDb);
+    String addOrUpdate(@RequestBody NetworkJSON networkJSON){
+        networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
         return "OK";
     }
 

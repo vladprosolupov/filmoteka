@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.StudioDb;
+import web.model.StudioJSON;
 
 import java.util.List;
 
@@ -39,5 +40,12 @@ public class StudioService {
         Session session = sessionFactory.getCurrentSession();
         List<StudioDb> result = session.createQuery("from StudioDb ").list();
         return result;
+    }
+
+    public StudioDb convertToStudioDb(StudioJSON studioJSON){
+        StudioDb studioDb = new StudioDb();
+        studioDb.setId(studioJSON.getId());
+        studioDb.setStudioName(studioJSON.getStudioName());
+        return studioDb;
     }
 }
