@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
+import web.model.CategoryJSON;
 import web.services.CategoryService;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class CategoryController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public @ResponseBody String addOrUpdateCategory(@RequestBody CategoryDb categoryDb){
-        categoryService.saveOrUpdate(categoryDb);
+    public @ResponseBody String addOrUpdateCategory(@RequestBody CategoryJSON categoryJSON){
+        categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
         return "OK";
     }
 
