@@ -19,7 +19,7 @@
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
-                        <input type="text" value="${studio.studioName}" name="name" />
+                        <input class="input" type="text" value="${studio.studioName}" name="studioName" />
                     </p>
                 </div>
             </form>
@@ -34,7 +34,7 @@
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
-                        <input class="input" type="text"  name="name"/>
+                        <input class="input" type="text"  name="studioName"/>
                     </p>
                 </div>
             </form>

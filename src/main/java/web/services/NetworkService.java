@@ -34,7 +34,7 @@ public class NetworkService {
 
     public void delete(String id){
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("from NetworkDb n where n.id=" + id).executeUpdate();
+        session.createQuery("delete from NetworkDb n where n.id=" + id).executeUpdate();
     }
 
     public List<NetworkDb> getAll(){

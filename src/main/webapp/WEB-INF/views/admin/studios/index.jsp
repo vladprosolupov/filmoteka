@@ -1,4 +1,4 @@
-<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
+
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/admin" %>
 <%--
   Created by IntelliJ IDEA.
@@ -21,9 +21,9 @@
         </thead>
         <tbody>
         <tr v-for="studio in studios" :id="studio.id">
-            <td>{{studio.name}}</td>
+            <td>{{studio.studioName}}</td>
             <td>
-                <button class="button is-primary" v-on:v-on:click="editStudio(studio.id)">Edit</button>
+                <button class="button is-primary" v-on:click="editStudio(studio.id)">Edit</button>
             </td>
             <td>
                 <button class="button is-danger" v-on:click="deleteStudio(studio.id)">Delete</button>
@@ -31,7 +31,7 @@
         </tr>
         </tbody>
     </table>
-    <div class="categories" style="display: none">
+    <div class="studios" style="display: none">
         <button class="addStudio button is-primary">Add</button>
     </div>
 </t:wrapper>

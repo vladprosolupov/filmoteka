@@ -793,10 +793,10 @@ $(function () {
                 });
             },
             methods: {
-                editNetwork: function (id) {
+                editStudio: function (id) {
                     location.href += '/addOrUpdate/' + id;
                 },
-                deleteNetwork: function (id) {
+                deleteStudio: function (id) {
                     var token = $("meta[name='_csrf']").attr("content");
                     var header = $("meta[name='_csrf_header']").attr("content");
                     $(document).ajaxSend(function (e, xhr, options) {
@@ -837,7 +837,7 @@ $(function () {
                 xhr.setRequestHeader(header, token);
             });
 
-            var elements = document.getElementsByClassName("formForNetwork")[0].elements;
+            var elements = document.getElementsByClassName("formForStudio")[0].elements;
             var studioToSave = {};
             for (var i = 0; i < elements.length; i++) {
                 var item = elements.item(i);
