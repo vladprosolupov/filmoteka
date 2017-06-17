@@ -11,14 +11,34 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${studio.id != 0}">
-            <form>
-                <span>Name</span> <input type="text" value="${studio.studioName}" name="name">
+            <form class="formForStudio" data-studio="${studio.id}">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input type="text" value="${studio.studioName}" name="name" />
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save network</button>
+                </p>
+            </div>
         </c:when>
         <c:otherwise>
-            <form>
-                <span>Name</span> <input type="text" name="name">
+            <form class="formForStudio" data-studio="0">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text"  name="name"/>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save studio</button>
+                </p>
+            </div>
         </c:otherwise>
     </c:choose>
 
