@@ -1,6 +1,5 @@
 package web.services;
 
-import javafx.util.Pair;
 import web.dao.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -95,27 +94,33 @@ public class FilmService {
             e.printStackTrace();
         }
         filmDb.setReleaseDate(new java.sql.Date(parsed.getTime()));
+
         filmDb.setSlogan(filmJSON.getSlogan());
+
         Set<CategoryDb> setOfCategories = new HashSet<>();
         for (String c: filmJSON.getCategories()) {
             setOfCategories.add(categoryService.getCategoryWithId(c));
         }
         filmDb.setFilmCategories(setOfCategories);
+
         Set<CountryDb> setOfCountries = new HashSet<>();
         for (String s: filmJSON.getCountries()) {
             setOfCountries.add(countryService.getCountryWithId(s));
         }
         filmDb.setFilmCountries(setOfCountries);
+
         Set<DirectorDb> setOfDirectors = new HashSet<>();
         for (String s: filmJSON.getDirectors()) {
             setOfDirectors.add(directorService.getDirectorWithId(s));
         }
         filmDb.setFilmDirectors(setOfDirectors);
+
         Set<LinkToNetworkDb> setOfLinkToNetworks = new HashSet<>();
         for (String s: filmJSON.getNetworks()) {
             setOfLinkToNetworks.add(linkToNetworkService.getLinkWithId(s));
         }
         filmDb.setFilmNetworks(setOfLinkToNetworks);
+
         Set<StudioDb> setOfStudios = new HashSet<>();
         for (String s: filmJSON.getStudios()) {
             setOfStudios.add(studioService.getStudioWithId(s));
@@ -131,22 +136,16 @@ public class FilmService {
             setOfFilmActors.add(filmActorService.getFilmActorWithId(s));
         }
         filmDb.setFilmActorsById(setOfFilmActors);
+
         //ToDO change to map <String,String> as <awardYear, awardName>
-        Set<AwardDb> setOfAwards = new HashSet<>();
-        for (String s : filmJSON.getAwards()) {
-            setOfAwards.add(awardService.getAwardWithId(s));
-        }
+        Set<AwardDb> setOfAwards = awardService.createSetOfAwards(filmJSON.getAwards());
         filmDb.setAwardsById(setOfAwards);
         //todo change from id to link
-        Set<TrailerDb> setOfTrailers = new HashSet<>();
-        for (String s : filmJSON.getTrailers()) {
-            setOfTrailers.add(trailerService.getTrailerWithId(s));
-        }
+
+        Set<TrailerDb> setOfTrailers = trailerService.createTrailerDbSet(filmJSON.getTrailers());
         filmDb.setTrailersById(setOfTrailers);
-        Set<ScreenshotDb> setOfScreenShots = new HashSet<>();
-        for (String s : filmJSON.getScreenshots()) {
-            setOfScreenShots.add(screenshotService.getScreenshotWithId(s));
-        }
+
+        Set<ScreenshotDb> setOfScreenShots = screenshotService.createScreenshotSet(filmJSON.getScreenshots());
         filmDb.setScreenshotsById(setOfScreenShots);
 
         return filmDb;

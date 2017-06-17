@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.ScreenshotDb;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Rostyk on 16.06.2017.
@@ -40,5 +42,15 @@ public class ScreenshotService {
         Session session = sessionFactory.getCurrentSession();
         List<ScreenshotDb> result = session.createQuery("from ScreenshotDb ").list();
         return result;
+    }
+
+    public Set<ScreenshotDb> createScreenshotSet(List<String> links){
+        Set<ScreenshotDb> screenshotDbSet = new HashSet<>();
+        for(String s : links){
+            ScreenshotDb screenshotDb = new ScreenshotDb();
+            screenshotDb.setLink(s);
+            screenshotDbSet.add(screenshotDb);
+        }
+        return screenshotDbSet;
     }
 }

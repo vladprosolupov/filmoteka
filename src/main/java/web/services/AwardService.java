@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.AwardDb;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Rostyk on 16.06.2017.
@@ -39,6 +42,17 @@ public class AwardService {
         Session session = sessionFactory.getCurrentSession();
         List<AwardDb> result = session.createQuery("from AwardDb ").list();
         return result;
+    }
+
+    public Set<AwardDb> createSetOfAwards(List<Map.Entry<Integer, String>> awards){
+        Set<AwardDb> awardDbSet = new HashSet<>();
+        for(Map.Entry<Integer, String> m : awards){
+            AwardDb awardDb = new AwardDb();
+            awardDb.setAwardName(m.getValue());
+            awardDb.setAwardYear(m.getKey());
+            awardDbSet.add(awardDb);
+        }
+        return awardDbSet;
     }
 }
 

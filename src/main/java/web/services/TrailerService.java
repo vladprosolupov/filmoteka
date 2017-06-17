@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.TrailerDb;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Rostyk on 16.06.2017.
@@ -41,5 +43,15 @@ public class TrailerService {
         Session session = sessionFactory.getCurrentSession();
         List<TrailerDb> result = session.createQuery("from TrailerDb ").list();
         return result;
+    }
+
+    public Set<TrailerDb> createTrailerDbSet(List<String> trailers){
+        Set<TrailerDb> trailerDbSet = new HashSet<>();
+        for (String s : trailers) {
+            TrailerDb trailerDb = new TrailerDb();
+            trailerDb.setLink(s);
+            trailerDbSet.add(trailerDb);
+        }
+        return trailerDbSet;
     }
 }
