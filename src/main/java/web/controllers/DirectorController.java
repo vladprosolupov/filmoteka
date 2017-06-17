@@ -21,7 +21,7 @@ public class DirectorController {
     private DirectorService directorService;
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addOrUpdate(@RequestBody DirectorJSON directorJSON){
         directorService.saveOrUpdate(directorService.convertToDirectorDb(directorJSON));

@@ -601,5 +601,90 @@ $(function () {
                 }
             });
         });
+    } else if (location.href.substr(28) === 'directors') {
+        var directors = new Vue({
+            el: '.directors',
+            data: {
+                directors: []
+            },
+            beforeCompile: function(){
+                var self = this;
+                $.getJSON('/director/all', function (data) {
+                   $('#loading').hide();
+                   $('.directors').show();
+                   self.directors = data;
+                });
+            },
+            methods: {
+                editDirector: function (id) {
+                    location.href += '/addOrUpdate/' + id;
+                },
+                deleteDirector: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/director/delete/' + id,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
+            }
+        });
+
+        $('.addDirector').click(function () {
+            location.href += '/addOrUpdate/0';
+        });
+
+    } else if (location.href.substr(28, 21) === 'directors/addOrUpdate') {
+
+        $('.save').click(function () {
+            $('.save').addClass("is-loading");
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var elements = document.getElementsByClassName("formForDirector")[0].elements;
+            var directorToSave = {};
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.name !== 'ignore') {
+                    directorToSave[item.name] = item.value;
+                }
+            }
+            directorToSave['id'] = $('form[data-director]').attr("data-director");
+
+            $.ajax({
+                url: '/director/save',
+                type: 'POST',
+                data: JSON.stringify(directorToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/directors";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
+        });
     }
 });

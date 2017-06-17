@@ -88,10 +88,12 @@ public class AdminController {
     @RequestMapping(value = "/directors/addOrUpdate/{id}")
     public String adminDirectorsAddOrUpdate(@PathVariable("id") String id, Model model) {
         DirectorDb directorDb = new DirectorDb();
+        List<CountryDb> counties = countryService.getAll();
         if (!id.equals("0")) {
             directorDb = directorService.getDirectorWithId(id);
         }
         model.addAttribute("director", directorDb);
+        model.addAttribute("countries", counties);
         return "admin/directors/addOrUpdate";
     }
 

@@ -12,16 +12,46 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${network.id != 0}">
-            <form>
-                <span>Name</span> <input type="text" value="${network.networkName}" name="name">
-                <span>Logo</span> <input type="text" value="${network.networkLogo}" name="logo">
+            <form class="formForNetwork" data-network="${network.id}">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input type="text" value="${network.networkName}" name="name" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Logo</label>
+                    <p class="control">
+                        <input type="text" value="${network.networkLogo}" name="logo">
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save network</button>
+                </p>
+            </div>
         </c:when>
         <c:otherwise>
-            <form>
-                <span>Name</span> <input type="text" name="name">
-                <span>Logo</span> <input type="text" name="logo">
+            <form class="formForNetwork" data-network="0">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" name="name"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Logo</label>
+                    <p class="control">
+                        <input class="input" type="text" name="logo"/>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save network</button>
+                </p>
+            </div>
         </c:otherwise>
     </c:choose>
 </t:wrapper>
