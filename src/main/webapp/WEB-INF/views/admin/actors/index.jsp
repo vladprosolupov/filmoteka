@@ -18,6 +18,8 @@
             <th>First name</th>
             <th>Last name</th>
             <th>Country</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
