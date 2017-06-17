@@ -43,7 +43,7 @@ public class FilmJSON {
 
     private List<String> screenshots;
 
-    private Map<String, String> awards;
+    private List<Map.Entry<Integer, String>> awards;
 
     private List<String> trailers;
 
@@ -191,11 +191,11 @@ public class FilmJSON {
         this.screenshots = screenshots;
     }
 
-    public Map<String, String> getAwards() {
+    public List<Map.Entry<Integer, String>> getAwards() {
         return awards;
     }
 
-    public void setAwards(Map<String, String> awards) {
+    public void setAwards(List<Map.Entry<Integer, String>> awards) {
         this.awards = awards;
     }
 
