@@ -2,7 +2,7 @@
  * Created by vladyslavprosolupov on 13.06.17.
  */
 $(function () {
-    if (window.location.href.substr(28) == 'films') {
+    if (location.href.substr(28) === 'films') {
         var films = new Vue({
             el: '.films',
             data: {
@@ -11,14 +11,14 @@ $(function () {
             beforeCompile: function () {
                 var self = this;
                 $.getJSON('/film/all', function (data) {
-                    $('#loading').css('display', 'none');
-                    $('.films').css('display', 'block');
+                    $('#loading').hide();
+                    $('.films').show();
                     self.films = data;
                 });
             },
             methods: {
                 editFilm: function (id) {
-                    window.location.href += '/addOrUpdate?id=' + id;
+                    location.href += '/addOrUpdate/' + id;
                 },
                 deleteFilm: function (id) {
                     var token = $("meta[name='_csrf']").attr("content");
@@ -47,15 +47,15 @@ $(function () {
         });
 
         $('.addFilm').click(function () {
-            window.location.href += '/addOrUpdate'
+            location.href += '/addOrUpdate/0'
         });
 
-    } else if (window.location.href.substr(28, 17) == 'films/addOrUpdate') {
-        $('#loading').css('display', 'none');
-        $('.formForFilm').css('display', 'block');
+    } else if (location.href.substr(28, 17) === 'films/addOrUpdate') {
+        $('#loading').hide();
+        $('.formForFilm').show();
 
         $('.addCategory').click(function () {
-            $('.categoryLoading').css('display', 'block');
+            $('.categoryLoading').show();
             var categories = new Vue({
                 el: '.newCategory',
                 data: {
@@ -64,16 +64,16 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/category/all', function (data) {
-                        $('.categoryLoading').css('display', 'none');
-                        $('.newCategory').css('display', 'block');
+                        $('.categoryLoading').hide();
+                        $('.newCategory').show();
                         self.categories = data;
                     });
                 },
                 methods: {
-                    saveCategory: function(){
-                        $('.newCategory').css('display','none');
+                    saveCategory: function () {
+                        $('.newCategory').hide();
                         var selected = $('.categoryOptions').find(":selected");
-                        var row = "<tr data-category='"+ selected.val() +"'>" +
+                        var row = "<tr data-category='" + selected.val() + "'>" +
                             "<td>" +
                             selected.text() +
                             "</td>" +
@@ -88,8 +88,8 @@ $(function () {
         });
 
         $('.addDirector').click(function () {
-            $('.directorLoading').css('display', 'block');
-            var categories = new Vue({
+            $('.directorLoading').show();
+            var directors = new Vue({
                 el: '.newDirector',
                 data: {
                     directors: []
@@ -97,16 +97,16 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/director/all', function (data) {
-                        $('.directorLoading').css('display', 'none');
-                        $('.newDirector').css('display', 'block');
+                        $('.directorLoading').hide();
+                        $('.newDirector').show();
                         self.directors = data;
                     });
                 },
                 methods: {
-                    saveDirector: function(){
-                        $('.newDirector').css('display','none');
+                    saveDirector: function () {
+                        $('.newDirector').hide();
                         var selected = $('.directorOptions').find(":selected");
-                        var row = "<tr data-director='"+ selected.val() +"'>" +
+                        var row = "<tr data-director='" + selected.val() + "'>" +
                             "<td>" +
                             selected.text() +
                             "</td>" +
@@ -115,6 +115,118 @@ $(function () {
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".directors tr[class='directorLoading']");
+                    }
+                }
+            });
+        });
+
+        $('.addStudio').click(function () {
+            $('.studioLoading').show();
+            var studios = new Vue({
+                el: '.newStudio',
+                data: {
+                    studios: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/studio/all', function (data) {
+                        $('.studioLoading').hide();
+                        $('.newStudio').show();
+                        self.studios = data;
+                    });
+                },
+                methods: {
+                    saveStudio: function () {
+                        $('.newStudio').hide();
+                        var selected = $('.studioOptions').find(":selected");
+                        var row = "<tr data-studio='" + selected.val() + "'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".studios tr[class='studioLoading']");
+                    }
+                }
+            });
+        });
+
+
+        $('.addCountry').click(function () {
+            $('.countryLoading').show();
+            var countries = new Vue({
+                el: '.newCountry',
+                data: {
+                    countries: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/country/all', function (data) {
+                        $('.countryLoading').hide();
+                        $('.newCountry').show();
+                        self.countries = data;
+                    });
+                },
+                methods: {
+                    saveCountry: function () {
+                        $('.newCountry').hide();
+                        var selected = $('.countryOptions').find(":selected");
+                        var row = "<tr data-country='" + selected.val() + "'>" +
+                            "<td>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".countries tr[class='countryLoading']");
+                    }
+                }
+            });
+        });
+
+
+        $('.addTrailer').click(function () {
+            $('.newTrailer').show();
+            var trailer = new Vue({
+                el: '.newTrailer',
+                methods: {
+                    saveTrailer: function () {
+                        $('.newTrailer').hide();
+                        var link = $('.trailerLink').val();
+                        var row = "<tr class='trailer'>" +
+                            "<td data-trailer>" +
+                            link +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".trailers tr[class='newTrailer']");
+                    }
+                }
+            });
+        });
+
+        $('.addScreenshot').click(function () {
+            $('.newScreenshot').show();
+            var trailer = new Vue({
+                el: '.newScreenshot',
+                methods: {
+                    saveScreenshot: function () {
+                        $('.newScreenshot').hide();
+                        var link = $('.screenshotLink').val();
+                        var row = "<tr class='screenshot'>" +
+                            "<td data-screenshot>" +
+                            link +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".screenshots tr[class='newScreenshot']");
                     }
                 }
             });
@@ -145,7 +257,7 @@ $(function () {
             filmToSave['studios'] = [];
             filmToSave['countries'] = [];
             filmToSave['networks'] = [];
-            filmToSave['awards'] = [];
+            filmToSave['awards'] = {};
             filmToSave['screenshots'] = [];
             filmToSave['trailers'] = [];
 
@@ -179,37 +291,38 @@ $(function () {
                 filmToSave['networks'].push($(networks[i]).attr("data-network"));
             }
 
-            var awards = $('tr[data-award]');
+            var awards = $('tr[class="award"]');
             for (i = 0; i < awards.length; i++) {
-                filmToSave['awards'].push($(awards[i]).attr("data-award"));
+                filmToSave['awards'][$(awards[i]).find('td[data-awardYear]').text()] = $(awards[i]).find('td[data-awardName]').text();
             }
 
-            var screenshots = $('tr[data-screenshot]');
+            var screenshots = $('tr[class="screenshot"]');
             for (i = 0; i < screenshots.length; i++) {
-                filmToSave['screenshots'].push($(screenshots[i]).attr("data-screenshot"));
+                filmToSave['screenshots'].push($(screenshots[i]).find('td[data-screenshot]').text());
             }
 
-            var trailers = $('tr[data-trailer]');
+            var trailers = $('tr[class="trailer"]');
             for (i = 0; i < trailers.length; i++) {
-                filmToSave['trailers'].push($(trailers[i]).attr("data-trailer"));
+                filmToSave['trailers'].push($(trailers[i]).find('td[data-trailer]').text());
             }
+            console.log(filmToSave);
 
-            $.ajax({
-                url: '/film/save',
-                type: 'POST',
-                data: JSON.stringify(filmToSave),
-                contentType: 'application/json',
-                success: function (data) {
-                    console.log(data);
-                    window.location.href = "http://localhost:8080/admin/films";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error in Operation');
-                    console.log('Text status: ' + textStatus);
-                    console.log('XHR: ' + xhr);
-                    console.log('Error thrown: ' + errorThrown);
-                }
-            });
+            // $.ajax({
+            //     url: '/film/save',
+            //     type: 'POST',
+            //     data: JSON.stringify(filmToSave),
+            //     contentType: 'application/json',
+            //     success: function (data) {
+            //         console.log(data);
+            //         location.href = "http://localhost:8080/admin/films";
+            //     },
+            //     error: function (xhr, textStatus, errorThrown) {
+            //         console.log('Error in Operation');
+            //         console.log('Text status: ' + textStatus);
+            //         console.log('XHR: ' + xhr);
+            //         console.log('Error thrown: ' + errorThrown);
+            //     }
+            // });
         });
     }
 });

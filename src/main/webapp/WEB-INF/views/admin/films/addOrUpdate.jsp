@@ -29,6 +29,7 @@
                 <span>Rating </span> <input type="number" value="${film.rating}" name="rating"/> <br/>
                 <span>Budget </span> <input type="text" value="${film.budget}" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" value="${film.cover}" name="cover"/> <br/>
+                <span>Age </span> <input type="number" value="${film.age}" name="age"> <br/>
                 <span>Film Category </span>
                 <table>
                     <thead>
@@ -97,7 +98,7 @@
                         </tr>
                     </c:forEach>
                     <tr class="directorLoading" style="display: none">
-                        <td colspan="2" style="text-align: center">Loading</td>
+                        <td colspan="2" style="text-align: center">Loading...</td>
                     </tr>
                     <tr class="newDirector" style="display: none">
                         <td>
@@ -120,15 +121,26 @@
                         <th>Studio name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="studios">
                     <c:forEach items="${film.filmStudios}" var="studio">
                         <tr data-studio="${studio.id}">
                             <td>${studio.studioName}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="studioLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newStudio" style="display: none">
+                        <td>
+                            <select class="studioOptions">
+                                <option v-for="studio in studios" :value="studio.id">{{studio.studioName}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveStudio">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addStudio" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -140,15 +152,26 @@
                         <th>Country name</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="countries">
                     <c:forEach items="${film.filmCountries}" var="country">
                         <tr data-country="${country.id}">
                             <td>${country.name}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="countryLoading" style="display: none">
+                        <td colspan="2" style="text-align: center">Loading...</td>
+                    </tr>
+                    <tr class="newCountry" style="display: none">
+                        <td>
+                            <select class="countryOptions">
+                                <option v-for="country in countries" :value="country.id">{{country.name}}</option>
+                            </select>
+                        </td>
+                        <td><button type="button" v-on:click="saveCountry">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addCountry" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -187,9 +210,9 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${film.awardsById}" var="award">
-                        <tr data-award="${award.id}">
-                            <td>${award.awardName}</td>
-                            <td>${award.awardYear}</td>
+                        <tr class="award">
+                            <td data-awardName>${award.awardName}</td>
+                            <td data-awardYear>${award.awardYear}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
@@ -206,15 +229,19 @@
                         <th>Link</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="screenshots">
                     <c:forEach items="${film.screenshotsById}" var="screenshot">
-                        <tr data-screenshot="${screenshot.id}">
-                            <td>${screenshot.link}</td>
+                        <tr class="screenshot">
+                            <td data-screenshot>${screenshot.link}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="newScreenshot" style="display: none">
+                        <td><input type="text" class="screenshotLink"/></td>
+                        <td><button type="button" v-on:click="saveScreenshot">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addScreenshot" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -226,15 +253,19 @@
                         <th>Link</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="trailers">
                     <c:forEach items="${film.trailersById}" var="trailer">
-                        <tr data-trailer="${trailer.id}">
-                            <td>${trailer.link}</td>
+                        <tr class="trailer">
+                            <td data-trailer>${trailer.link}</td>
                             <td><button type="button">Delete</button></td>
                         </tr>
                     </c:forEach>
+                    <tr class="newTrailer" style="display: none">
+                        <td><input type="text" class="trailerLink"/></td>
+                        <td><button type="button" v-on:click="saveTrailer">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addTrailer" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -258,6 +289,7 @@
                 <span>Rating </span> <input type="number" name="rating"/> <br/>
                 <span>Budget </span> <input type="text" name="budget"/> <br/>
                 <span>Cover </span> <input type="text" name="cover"/> <br/>
+                <span>Age </span> <input type="number" name="age"> <br/>
                 <span>Film Category </span>
                 <table>
                     <thead>
@@ -378,10 +410,15 @@
                         <th>Link</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                    <tbody class="screenshots">
+                    <tr class="newScreenshot" style="display: none">
+                        <td><input type="text" class="screenshotLink"/></td>
+                        <td><button type="button" v-on:click="saveScreenshot">Save</button></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center"><button class="addScreenshot" type="button">Add</button></td>
+                    </tr>
+                    </tbody>
                     </tbody>
                 </table>
                 <br/>
@@ -392,9 +429,13 @@
                         <th>Link</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="trailers">
+                    <tr class="newTrailer" style="display: none">
+                        <td><input type="text" class="trailerLink"/></td>
+                        <td><button type="button" v-on:click="saveTrailer">Save</button></td>
+                    </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><button type="button">Add</button></td>
+                        <td colspan="2" style="text-align: center"><button class="addTrailer" type="button">Add</button></td>
                     </tr>
                     </tbody>
                 </table>

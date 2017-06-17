@@ -1,6 +1,7 @@
 package web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import web.dao.FilmDb;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -52,10 +53,10 @@ public class AdminController {
         return "admin/films/index";
     }
 
-    @RequestMapping(value = "/films/addOrUpdate")
-    public String admin_films_addOrUpdate(@RequestParam(value = "id", required = false, defaultValue = "null") String id, Model model) {
+    @RequestMapping(value = "/films/addOrUpdate/{id}")
+    public String admin_films_addOrUpdate(@PathVariable("id") String id, Model model) {
         FilmDb filmDb = new FilmDb();
-        if (!id.equals("null")) {
+        if (!id.equals("0")) {
             filmDb = filmService.getFilmWithId(id);
         }
         List<LanguageDb> listOfLanguageDbs = languageService.getAllLanguages();
