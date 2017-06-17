@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,27 +17,81 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
+      <file leaf-file-name="addOrUpdate.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="345" column="64" lean-forward="true" selection-start-line="345" selection-start-column="64" selection-end-line="345" selection-end-column="64" />
-              <folding />
+            <state relative-caret-position="340">
+              <caret line="800" column="30" lean-forward="true" selection-start-line="800" selection-start-column="30" selection-end-line="800" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#15;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#15;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#1;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#18;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#18;n#form#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#19;n#form#1;n#!!top" expanded="true" />
+                <marker date="1497721818000" expanded="false" signature="40553:40571" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addOrUpdate.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
+      <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="282" column="53" lean-forward="true" selection-start-line="282" selection-start-column="53" selection-end-line="282" selection-end-column="53" />
+            <state relative-caret-position="465">
+              <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>button</find>
+      <find>deleteButton</find>
+      <find>select</find>
+      <find>&lt;input</find>
+      <find>/span&gt;</find>
+      <find>&lt;select</find>
+      <find>Loading</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&lt;input class=&quot;input&quot;</replace>
+      <replace>/label&gt;</replace>
+      <replace>&lt;table class=&quot;table&quot;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +107,7 @@
         <option value="$PROJECT_DIR$/src/main/java/web/services/LinkToNetworkService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/FilmActorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/LinkToNetworkController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
       </list>
     </option>
@@ -115,6 +172,92 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filmoteka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -125,6 +268,118 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/admin/wrapper.tag</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/styles/bulma.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/styles/bulma.css.map</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -328,7 +583,7 @@
       <updated>1497710392406</updated>
       <workItem from="1497710393753" duration="36000" />
       <workItem from="1497710431791" duration="6000" />
-      <workItem from="1497710466944" duration="1229000" />
+      <workItem from="1497710466944" duration="11321000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fixes.">
       <created>1497711642544</created>
@@ -337,14 +592,29 @@
       <option name="project" value="LOCAL" />
       <updated>1497711642544</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="workspace.xml fix">
+      <created>1497711718731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1497711718731</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fully working film addOrUpdate page">
+      <created>1497712814932</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1497712814932</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1271000" />
+    <option name="totallyTimeSpent" value="11363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1279" y="22" width="1280" height="1338" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -366,12 +636,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -392,7 +662,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Minor fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes." />
+    <MESSAGE value="workspace.xml fix" />
+    <MESSAGE value="Fully working film addOrUpdate page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully working film addOrUpdate page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -437,16 +709,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="282" column="53" lean-forward="true" selection-start-line="282" selection-start-column="53" selection-end-line="282" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="340">
+          <caret line="800" column="30" lean-forward="true" selection-start-line="800" selection-start-column="30" selection-end-line="800" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#15;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#15;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#1;n#div#0;n#div#16;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#10;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#11;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#12;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#13;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#14;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#16;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#17;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#18;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#18;n#form#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#19;n#form#1;n#!!top" expanded="true" />
+            <marker date="1497721818000" expanded="false" signature="40553:40571" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="345" column="64" lean-forward="true" selection-start-line="345" selection-start-column="64" selection-end-line="345" selection-end-column="64" />
+        <state relative-caret-position="465">
+          <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
           <folding />
         </state>
       </provider>

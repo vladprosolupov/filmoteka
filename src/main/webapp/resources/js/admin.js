@@ -55,7 +55,7 @@ $(function () {
         $('.formForFilm').show();
 
         $('.addCategory').click(function () {
-            $('.categoryLoading').show();
+            $('.addCategory').addClass("is-loading");
             var categories = new Vue({
                 el: '.newCategory',
                 data: {
@@ -64,7 +64,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/category/all', function (data) {
-                        $('.categoryLoading').hide();
+                        $('.addCategory').removeClass("is-loading");
                         $('.newCategory').show();
                         self.categories = data;
                     });
@@ -78,17 +78,17 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".categories tr[class='categoryLoading']");
+                        $(row).insertBefore(".categories tr[class='newCategory']");
                     }
                 }
             });
         });
 
         $('.addDirector').click(function () {
-            $('.directorLoading').show();
+            $('.addDirector').addClass("is-loading");
             var directors = new Vue({
                 el: '.newDirector',
                 data: {
@@ -97,7 +97,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/director/all', function (data) {
-                        $('.directorLoading').hide();
+                        $('.addDirector').removeClass("is-loading");
                         $('.newDirector').show();
                         self.directors = data;
                     });
@@ -111,17 +111,17 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".directors tr[class='directorLoading']");
+                        $(row).insertBefore(".directors tr[class='newDirector']");
                     }
                 }
             });
         });
 
         $('.addStudio').click(function () {
-            $('.studioLoading').show();
+            $('.addStudio').addClass("is-loading");
             var studios = new Vue({
                 el: '.newStudio',
                 data: {
@@ -130,7 +130,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/studio/all', function (data) {
-                        $('.studioLoading').hide();
+                        $('.addStudio').removeClass("is-loading");
                         $('.newStudio').show();
                         self.studios = data;
                     });
@@ -144,10 +144,10 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".studios tr[class='studioLoading']");
+                        $(row).insertBefore(".studios tr[class='newStudio']");
                     }
                 }
             });
@@ -155,7 +155,7 @@ $(function () {
 
 
         $('.addCountry').click(function () {
-            $('.countryLoading').show();
+            $('.addCountry').addClass("is-loading");
             var countries = new Vue({
                 el: '.newCountry',
                 data: {
@@ -164,7 +164,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/country/all', function (data) {
-                        $('.countryLoading').hide();
+                        $('.addCountry').removeClass("is-loading");
                         $('.newCountry').show();
                         self.countries = data;
                     });
@@ -178,10 +178,10 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".countries tr[class='countryLoading']");
+                        $(row).insertBefore(".countries tr[class='newCountry']");
                     }
                 }
             });
@@ -201,7 +201,7 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".trailers tr[class='newTrailer']");
@@ -223,7 +223,7 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".screenshots tr[class='newScreenshot']");
@@ -233,7 +233,7 @@ $(function () {
         });
 
         $('.addActor').click(function () {
-            $('.actorLoading').show();
+            $('.addActor').addClass("is-loading");
             var actors = new Vue({
                 el: '.newActor',
                 data: {
@@ -242,7 +242,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/actor/all', function (data) {
-                        $('.actorLoading').hide();
+                        $('.addActor').removeClass("is-loading");
                         $('.newActor').show();
                         self.actors = data;
                     });
@@ -260,10 +260,10 @@ $(function () {
                             role +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".actors tr[class='actorLoading']");
+                        $(row).insertBefore(".actors tr[class='newActor']");
                     }
                 }
             });
@@ -288,7 +288,7 @@ $(function () {
                             awardYear +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".awards tr[class='newAward']");
@@ -299,7 +299,7 @@ $(function () {
 
 
         $('.addNetwork').click(function () {
-            $('.networkLoading').show();
+            $('.addNetwork').addClass("is-loading");
             var networks = new Vue({
                 el: '.newNetwork',
                 data: {
@@ -308,7 +308,7 @@ $(function () {
                 beforeCompile: function () {
                     var self = this;
                     $.getJSON('/network/all', function (data) {
-                        $('.networkLoading').hide();
+                        $('.addNetwork').removeClass("is-loading");
                         $('.newNetwork').show();
                         self.networks = data;
                     });
@@ -326,22 +326,23 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button' class='deleteButton'>Delete</button>" +
+                            "<button type='button' class='deleteButton button is-danger'>Delete</button>" +
                             "</td>" +
                             "</tr>";
-                        $(row).insertBefore(".networks tr[class='networkLoading']");
+                        $(row).insertBefore(".networks tr[class='newNetwork']");
                     }
                 }
             });
 
         });
 
-        $('.formForFilm').on('click', '.deleteButton',function () {
+        $('.formForFilm').on('click', '.deleteButton', function () {
             $(this).closest('tr').remove();
         });
 
 
         $('.save').click(function () {
+            $('.save').addClass("is-loading");
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
             $(document).ajaxSend(function (e, xhr, options) {
