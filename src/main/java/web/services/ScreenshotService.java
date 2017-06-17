@@ -21,6 +21,9 @@ public class ScreenshotService {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private FilmService filmService;
+
     public ScreenshotDb getScreenshotWithId(String id){
         Session session = sessionFactory.getCurrentSession();
         ScreenshotDb screenshotDb =
@@ -52,5 +55,14 @@ public class ScreenshotService {
             screenshotDbSet.add(screenshotDb);
         }
         return screenshotDbSet;
+    }
+
+    public void checkForSceens(int idFilm, Set<ScreenshotDb> screenshotDbSet){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from ScreenshotDb s where s.filmByIdFilm=" + idFilm).executeUpdate();
+        for(ScreenshotDb screenshotDb : screenshotDbSet){
+            screenshotDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
+            session.saveOrUpdate(screenshotDb);
+        }
     }
 }

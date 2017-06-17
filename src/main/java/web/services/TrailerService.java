@@ -22,6 +22,9 @@ public class TrailerService {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private FilmService filmService;
+
     public TrailerDb getTrailerWithId(String id){
         Session session = sessionFactory.getCurrentSession();
         TrailerDb trailerDb =
@@ -53,5 +56,14 @@ public class TrailerService {
             trailerDbSet.add(trailerDb);
         }
         return trailerDbSet;
+    }
+
+    public void checkForTrailers(int idFilm, Set<TrailerDb> trailerDbSet){
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("delete from TrailerDb t where t.filmByIdFilm=" + idFilm).executeUpdate();
+        for (TrailerDb trailerDb : trailerDbSet){
+            trailerDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
+            session.saveOrUpdate(trailerDb);
+        }
     }
 }
