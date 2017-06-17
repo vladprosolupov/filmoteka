@@ -293,7 +293,7 @@ $(function () {
 
             var awards = $('tr[class="award"]');
             for (i = 0; i < awards.length; i++) {
-                filmToSave['awards'][$(awards[i]).find('td[data-awardYear]').text()] = $(awards[i]).find('td[data-awardName]').text();
+                filmToSave['awards'][$(awards[i]).find('td[data-awardName]').text()] = $(awards[i]).find('td[data-awardYear]').text();
             }
 
             var screenshots = $('tr[class="screenshot"]');
@@ -307,22 +307,22 @@ $(function () {
             }
             console.log(filmToSave);
 
-            // $.ajax({
-            //     url: '/film/save',
-            //     type: 'POST',
-            //     data: JSON.stringify(filmToSave),
-            //     contentType: 'application/json',
-            //     success: function (data) {
-            //         console.log(data);
-            //         location.href = "http://localhost:8080/admin/films";
-            //     },
-            //     error: function (xhr, textStatus, errorThrown) {
-            //         console.log('Error in Operation');
-            //         console.log('Text status: ' + textStatus);
-            //         console.log('XHR: ' + xhr);
-            //         console.log('Error thrown: ' + errorThrown);
-            //     }
-            // });
+            $.ajax({
+                url: '/film/save',
+                type: 'POST',
+                data: JSON.stringify(filmToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/films";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
         });
     }
 });

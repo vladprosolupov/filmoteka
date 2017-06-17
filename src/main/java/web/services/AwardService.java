@@ -44,12 +44,12 @@ public class AwardService {
         return result;
     }
 
-    public Set<AwardDb> createSetOfAwards(List<Map.Entry<Integer, String>> awards){
+    public Set<AwardDb> createSetOfAwards(Map<String, Integer> awards){
         Set<AwardDb> awardDbSet = new HashSet<>();
-        for(Map.Entry<Integer, String> m : awards){
+        for(Map.Entry<String, Integer> m : awards.entrySet()){
             AwardDb awardDb = new AwardDb();
-            awardDb.setAwardName(m.getValue());
-            awardDb.setAwardYear(m.getKey());
+            awardDb.setAwardName(m.getKey());
+            awardDb.setAwardYear(m.getValue());
             awardDbSet.add(awardDb);
         }
         return awardDbSet;
