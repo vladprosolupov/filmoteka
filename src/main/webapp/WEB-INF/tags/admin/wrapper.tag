@@ -6,6 +6,7 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/admin.js"/>"></script>
+    <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/admin.css"/>">
 
     <!-- Including CSRF token to the header -->
