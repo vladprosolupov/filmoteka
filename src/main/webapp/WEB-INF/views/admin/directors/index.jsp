@@ -1,3 +1,4 @@
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/admin" %>
 <%--
   Created by IntelliJ IDEA.
   User: vladyslavprosolupov
@@ -6,11 +7,31 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<t:wrapper>
+    <div id="loading">Loading...</div>
+    <table class="directors table" style="display: none">
+        <thead>
+            <tr>
+                <th>Firs name</th>
+                <th>Last name</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="director in directors" :id="director.id">
+                <td>{{director.firstName}}</td>
+                <td>{{director.lastName}}</td>
+                <td>{{director.countryByIdCountry.name}}</td>
+                <td>
+                    <button class="button is-primary" v-on:click="editDirector(director.id)">Edit</button>
+                </td>
+                <td>
+                    <button class="button is-danger" v-on:click="deleteDirector(director.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="directors" style="display: none">
+        <button class="addDirector button is-primary">Add</button>
+    </div>
+</t:wrapper>

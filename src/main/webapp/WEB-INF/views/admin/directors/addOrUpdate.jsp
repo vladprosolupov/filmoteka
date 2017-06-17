@@ -11,19 +11,70 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${director.id != 0}">
-            <form>
-                <span>Name</span> <input type="text" value="${director.firstName}" name="name">
-                <span>Surname</span> <input type="text" value="${director.lastName}" name="surname">
-                <span>Country</span> <input type="text" value="
-                    ${director.countryByIdCountry.name}" name="country"/>
+            <form class="formForDirector" data-director="${director.id}">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" value="${director.firstName}" name="firstName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Surname</label>
+                    <p class="control">
+                        <input class="input" type="text" value="${director.lastName}" name="lastName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Country</label>
+                    <p class="control">
+                        <span class="select">
+                             <select name="country">
+                                 <c:forEach items="${countries}" var="country">
+                                     <option value="${country.id}" ${country.id == director.countryByIdCountry.id ? 'selected="selected"' : ''}>${country.name}</option>
+                                 </c:forEach>
+                             </select>
+                         </span>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save director</button>
+                </p>
+            </div>
         </c:when>
         <c:otherwise>
-            <form>
-                <span>Name</span> <input type="text" name="name">
-                <span>Surname</span> <input type="text" name="surname">
-                <span>Country</span> <input type="text" name="country"/>
+            <form class="formForDirector" data-director="0">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" name="firstName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Surname</label>
+                    <p class="control">
+                        <input class="input" type="text" name="lastName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Country</label>
+                    <p class="control">
+                         <span class="select">
+                             <select name="country">
+                                 <c:forEach items="${countries}" var="country">
+                                     <option value="${country.id}">${country.name}</option>
+                                 </c:forEach>
+                             </select>
+                         </span>
+                    </p>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save director</button>
+                </p>
+            </div>
         </c:otherwise>
     </c:choose>
 

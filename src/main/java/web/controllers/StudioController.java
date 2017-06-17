@@ -22,7 +22,7 @@ public class StudioController {
     private StudioService studioService;
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addOrUpdateStudio(@RequestBody StudioJSON studioJSON){
         studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
         return "OK";

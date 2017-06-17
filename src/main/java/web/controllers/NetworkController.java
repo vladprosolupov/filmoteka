@@ -21,7 +21,7 @@ public class NetworkController {
     private NetworkService networkService;
 
     @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addOrUpdate(@RequestBody NetworkJSON networkJSON){
         networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
