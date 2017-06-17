@@ -232,7 +232,109 @@ $(function () {
             });
         });
 
+        $('.addActor').click(function () {
+            $('.actorLoading').show();
+            var actors = new Vue({
+                el: '.newActor',
+                data: {
+                    actors: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/actor/all', function (data) {
+                        $('.actorLoading').hide();
+                        $('.newActor').show();
+                        self.actors = data;
+                    });
+                },
+                methods: {
+                    saveActor: function () {
+                        $('.newActor').hide();
+                        var selected = $('.actorOptions').find(":selected");
+                        var role = $('.actorRole').val();
+                        var row = "<tr class='actor'>" +
+                            "<td data-actor='" + selected.val() + "'>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td data-actorRole>" +
+                            role +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".actors tr[class='actorLoading']");
+                    }
+                }
+            });
 
+        });
+
+
+        $('.addAward').click(function () {
+            $('.newAward').show();
+            var award = new Vue({
+                el: '.newAward',
+                methods: {
+                    saveAward: function () {
+                        $('.newAward').hide();
+                        var awardName = $('.awardName').val();
+                        var awardYear = $('.awardYear').val();
+                        var row = "<tr class='award'>" +
+                            "<td data-awardName>" +
+                            awardName +
+                            "</td>" +
+                            "<td data-awardYear>" +
+                            awardYear +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".awards tr[class='newAward']");
+                    }
+                }
+            });
+        });
+
+
+        $('.addNetwork').click(function () {
+            $('.networkLoading').show();
+            var networks = new Vue({
+                el: '.newNetwork',
+                data: {
+                    networks: []
+                },
+                beforeCompile: function () {
+                    var self = this;
+                    $.getJSON('/network/all', function (data) {
+                        $('.networkLoading').hide();
+                        $('.newNetwork').show();
+                        self.networks = data;
+                    });
+                },
+                methods: {
+                    saveNetwork: function () {
+                        $('.newNetwork').hide();
+                        var selected = $('.networkOptions').find(":selected");
+                        var link = $('.linkToNetwork').val();
+                        var row = "<tr class='network'>" +
+                            "<td data-network='" + selected.val() + "'>" +
+                            selected.text() +
+                            "</td>" +
+                            "<td data-networkLink>" +
+                            link +
+                            "</td>" +
+                            "<td>" +
+                            "<button type='button'>Delete</button>" +
+                            "</td>" +
+                            "</tr>";
+                        $(row).insertBefore(".networks tr[class='networkLoading']");
+                    }
+                }
+            });
+
+        });
 
 
         $('.save').click(function () {
@@ -252,11 +354,11 @@ $(function () {
             }
             filmToSave['id'] = $('form[data-film]').attr("data-film");
             filmToSave['categories'] = [];
-            filmToSave['actors'] = [];
+            filmToSave['actors'] = {};
             filmToSave['directors'] = [];
             filmToSave['studios'] = [];
             filmToSave['countries'] = [];
-            filmToSave['networks'] = [];
+            filmToSave['networks'] = {};
             filmToSave['awards'] = {};
             filmToSave['screenshots'] = [];
             filmToSave['trailers'] = [];
@@ -266,9 +368,9 @@ $(function () {
                 filmToSave['categories'].push($(categories[i]).attr("data-category"));
             }
 
-            var actors = $('tr[data-actor]');
+            var actors = $('tr[class="actor"]');
             for (i = 0; i < actors.length; i++) {
-                filmToSave['actors'].push($(actors[i]).attr("data-actor"));
+                filmToSave['actors'][$(actors[i]).find('td[data-actorRole]').text()] = $(actors[i]).find('td[data-actor]').attr("data-actor");
             }
 
             var directors = $('tr[data-director]');
@@ -286,10 +388,12 @@ $(function () {
                 filmToSave['countries'].push($(countries[i]).attr("data-country"));
             }
 
-            var networks = $('tr[data-network]');
+
+            var networks = $('tr[class="network"]');
             for (i = 0; i < networks.length; i++) {
-                filmToSave['networks'].push($(networks[i]).attr("data-network"));
+                filmToSave['networks'][$(networks[i]).find('td[data-network]').attr("data-network")] = $(networks[i]).find('td[data-networkLink]').text();
             }
+
 
             var awards = $('tr[class="award"]');
             for (i = 0; i < awards.length; i++) {
@@ -307,22 +411,22 @@ $(function () {
             }
             console.log(filmToSave);
 
-            $.ajax({
-                url: '/film/save',
-                type: 'POST',
-                data: JSON.stringify(filmToSave),
-                contentType: 'application/json',
-                success: function (data) {
-                    console.log(data);
-                    location.href = "http://localhost:8080/admin/films";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error in Operation');
-                    console.log('Text status: ' + textStatus);
-                    console.log('XHR: ' + xhr);
-                    console.log('Error thrown: ' + errorThrown);
-                }
-            });
+            // $.ajax({
+            //     url: '/film/save',
+            //     type: 'POST',
+            //     data: JSON.stringify(filmToSave),
+            //     contentType: 'application/json',
+            //     success: function (data) {
+            //         console.log(data);
+            //         location.href = "http://localhost:8080/admin/films";
+            //     },
+            //     error: function (xhr, textStatus, errorThrown) {
+            //         console.log('Error in Operation');
+            //         console.log('Text status: ' + textStatus);
+            //         console.log('XHR: ' + xhr);
+            //         console.log('Error thrown: ' + errorThrown);
+            //     }
+            // });
         });
     }
 });
