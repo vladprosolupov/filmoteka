@@ -20,13 +20,13 @@
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
-                        <input type="text" value="${network.networkName}" name="name" />
+                        <input type="text" value="${network.networkName}" name="networkName" />
                     </p>
                 </div>
                 <div class="field">
                     <label class="label">Logo</label>
                     <p class="control">
-                        <input type="text" value="${network.networkLogo}" name="logo">
+                        <input type="text" value="${network.networkLogo}" name="networkLogo">
                     </p>
                 </div>
             </form>
@@ -41,13 +41,13 @@
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
-                        <input class="input" type="text" name="name"/>
+                        <input class="input" type="text" name="networkName"/>
                     </p>
                 </div>
                 <div class="field">
                     <label class="label">Logo</label>
                     <p class="control">
-                        <input class="input" type="text" name="logo"/>
+                        <input class="input" type="text" name="networkLogo"/>
                     </p>
                 </div>
             </form>
