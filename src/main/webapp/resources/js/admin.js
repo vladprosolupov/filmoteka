@@ -288,7 +288,7 @@ $(function () {
                             awardYear +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".awards tr[class='newAward']");
@@ -326,7 +326,7 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".networks tr[class='networkLoading']");
@@ -334,6 +334,11 @@ $(function () {
                 }
             });
 
+        });
+
+        $('.deleteButton').on('click', function (e) {
+            console.log($(this));
+            //$(this).closest('tr').remove();
         });
 
 
@@ -391,7 +396,7 @@ $(function () {
 
             var networks = $('tr[class="network"]');
             for (i = 0; i < networks.length; i++) {
-                filmToSave['networks'][$(networks[i]).find('td[data-network]').attr("data-network")] = $(networks[i]).find('td[data-networkLink]').text();
+                filmToSave['networks'][$(networks[i]).find('td[data-networkLink]').text()] = $(networks[i]).find('td[data-network]').attr("data-network");
             }
 
 

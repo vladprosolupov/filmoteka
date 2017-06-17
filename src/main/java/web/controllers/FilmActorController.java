@@ -18,21 +18,21 @@ public class FilmActorController {
     @Autowired
     private FilmActorService filmActorService;
 
-    @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody String save(@RequestBody FilmActorJSON filmActorJSON){
-        FilmActorDb filmActorDb = filmActorService.convert(filmActorJSON);
-        int id = filmActorService.saveFilmActor(filmActorDb);
-        return Integer.toString(id);
-    }
-
-    @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public @ResponseBody String update(@RequestBody FilmActorJSON filmActorJSON){
-        FilmActorDb filmActorDb = filmActorService.convert(filmActorJSON);
-        int id = filmActorService.updateFilmActor(filmActorDb);
-        return Integer.toString(id);
-    }
+//    @PreAuthorize("hasAuthority('admin')")
+//    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+//    public @ResponseBody String save(@RequestBody FilmActorJSON filmActorJSON){
+//        FilmActorDb filmActorDb = filmActorService.convert(filmActorJSON);
+//        int id = filmActorService.saveFilmActor(filmActorDb);
+//        return Integer.toString(id);
+//    }
+//
+//    @PreAuthorize("hasAuthority('admin')")
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+//    public @ResponseBody String update(@RequestBody FilmActorJSON filmActorJSON){
+//        FilmActorDb filmActorDb = filmActorService.convert(filmActorJSON);
+//        int id = filmActorService.updateFilmActor(filmActorDb);
+//        return Integer.toString(id);
+//    }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)

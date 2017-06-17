@@ -20,19 +20,19 @@ public class LinkToNetworkController {
     @Autowired
     private LinkToNetworkService linkToNetworkService;
 
-    @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public @ResponseBody String save(LinkToNetworkJSON linkToNetworkJSON){
-        int id = linkToNetworkService.save(linkToNetworkService.convert(linkToNetworkJSON));
-        return Integer.toString(id);
-    }
-
-    @PreAuthorize("hasAuthority('admin')")
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public @ResponseBody String update(LinkToNetworkJSON linkToNetworkJSON){
-        int id = linkToNetworkService.update(linkToNetworkService.convert(linkToNetworkJSON));
-        return Integer.toString(id);
-    }
+//    @PreAuthorize("hasAuthority('admin')")
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//    public @ResponseBody String save(LinkToNetworkJSON linkToNetworkJSON){
+//        int id = linkToNetworkService.save(linkToNetworkService.convert(linkToNetworkJSON));
+//        return Integer.toString(id);
+//    }
+//
+//    @PreAuthorize("hasAuthority('admin')")
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+//    public @ResponseBody String update(LinkToNetworkJSON linkToNetworkJSON){
+//        int id = linkToNetworkService.update(linkToNetworkService.convert(linkToNetworkJSON));
+//        return Integer.toString(id);
+//    }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
