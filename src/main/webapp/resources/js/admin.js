@@ -78,7 +78,7 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".categories tr[class='categoryLoading']");
@@ -111,7 +111,7 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".directors tr[class='directorLoading']");
@@ -144,7 +144,7 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".studios tr[class='studioLoading']");
@@ -178,7 +178,7 @@ $(function () {
                             selected.text() +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".countries tr[class='countryLoading']");
@@ -201,7 +201,7 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".trailers tr[class='newTrailer']");
@@ -223,7 +223,7 @@ $(function () {
                             link +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".screenshots tr[class='newScreenshot']");
@@ -260,7 +260,7 @@ $(function () {
                             role +
                             "</td>" +
                             "<td>" +
-                            "<button type='button'>Delete</button>" +
+                            "<button type='button' class='deleteButton'>Delete</button>" +
                             "</td>" +
                             "</tr>";
                         $(row).insertBefore(".actors tr[class='actorLoading']");
@@ -336,9 +336,8 @@ $(function () {
 
         });
 
-        $('.deleteButton').on('click', function (e) {
-            console.log($(this));
-            //$(this).closest('tr').remove();
+        $('.formForFilm').on('click', '.deleteButton',function () {
+            $(this).closest('tr').remove();
         });
 
 
@@ -414,24 +413,24 @@ $(function () {
             for (i = 0; i < trailers.length; i++) {
                 filmToSave['trailers'].push($(trailers[i]).find('td[data-trailer]').text());
             }
-            console.log(filmToSave);
+            //console.log(filmToSave);
 
-            // $.ajax({
-            //     url: '/film/save',
-            //     type: 'POST',
-            //     data: JSON.stringify(filmToSave),
-            //     contentType: 'application/json',
-            //     success: function (data) {
-            //         console.log(data);
-            //         location.href = "http://localhost:8080/admin/films";
-            //     },
-            //     error: function (xhr, textStatus, errorThrown) {
-            //         console.log('Error in Operation');
-            //         console.log('Text status: ' + textStatus);
-            //         console.log('XHR: ' + xhr);
-            //         console.log('Error thrown: ' + errorThrown);
-            //     }
-            // });
+            $.ajax({
+                url: '/film/save',
+                type: 'POST',
+                data: JSON.stringify(filmToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/films";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
         });
     }
 });

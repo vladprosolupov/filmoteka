@@ -42,7 +42,7 @@
                         <tr data-category="${category.id}">
                             <td>${category.name}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -81,7 +81,7 @@
                             <td>${actor.actorByIdActor.firstName} ${actor.actorByIdActor.lastName}</td>
                             <td>${actor.role}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -123,7 +123,7 @@
                         <tr data-director="${director.id}">
                             <td>${director.firstName} ${director.lastName}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -162,7 +162,7 @@
                         <tr data-studio="${studio.id}">
                             <td>${studio.studioName}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -199,7 +199,7 @@
                         <tr data-country="${country.id}">
                             <td>${country.name}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -238,7 +238,7 @@
                             <td>${network.networkByIdNetwork.networkName}</td>
                             <td>${network.link}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -280,7 +280,7 @@
                             <td data-awardName>${award.awardName}</td>
                             <td data-awardYear>${award.awardYear}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -311,7 +311,7 @@
                         <tr class="screenshot">
                             <td data-screenshot>${screenshot.link}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -341,7 +341,7 @@
                         <tr class="trailer">
                             <td data-trailer>${trailer.link}</td>
                             <td>
-                                <button type="button">Delete</button>
+                                <button type="button" class="deleteButton">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
