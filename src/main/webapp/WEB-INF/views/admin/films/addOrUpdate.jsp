@@ -270,8 +270,8 @@
                     </tbody>
                 </table>
                 <br/>
-                <button type="button" class="save">Save film</button>
             </form>
+            <button type="button" class="save">Save film</button>
         </c:when>
         <c:otherwise>
             <form class="formForFilm" data-film="${film.id}" style="display: none">
@@ -440,8 +440,8 @@
                     </tbody>
                 </table>
                 <br/>
-                <button type="button" class="save">Save film</button>
             </form>
+            <button type="button" class="save">Save film</button>
         </c:otherwise>
     </c:choose>
 </t:wrapper>
