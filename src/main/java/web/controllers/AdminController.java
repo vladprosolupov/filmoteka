@@ -26,6 +26,9 @@ public class AdminController {
     LanguageService languageService;
 
     @Autowired
+    CountryService countryService;
+
+    @Autowired
     CategoryService categoryService;
 
     @Autowired
@@ -51,12 +54,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/actors/addOrUpdate/{id}")
-    public String adminActorsAddOrUpdate(@PathVariable("id") String id, Model model){
+    public String adminActorsAddOrUpdate(@PathVariable("id") String id, Model model) {
         ActorDb actorDb = new ActorDb();
-        if(!id.equals("0")){
+        List<CountryDb> counties = countryService.getAll();
+        if (!id.equals("0")) {
             actorDb = actorService.getActorWithId(Integer.parseInt(id));
         }
         model.addAttribute("actor", actorDb);
+        model.addAttribute("countries", counties);
         return "admin/actors/addOrUpdate";
     }
 
@@ -66,9 +71,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/categories/addOrUpdate/{id}")
-    public String adminCategoriesAddOrUpdate(@PathVariable("id") String id, Model model){
+    public String adminCategoriesAddOrUpdate(@PathVariable("id") String id, Model model) {
         CategoryDb categoryDb = new CategoryDb();
-        if(!id.equals("0")){
+        if (!id.equals("0")) {
             categoryDb = categoryService.getCategoryWithId(id);
         }
         model.addAttribute("category", categoryDb);
@@ -81,9 +86,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/directors/addOrUpdate/{id}")
-    public String adminDirectorsAddOrUpdate(@PathVariable("id") String id, Model model){
+    public String adminDirectorsAddOrUpdate(@PathVariable("id") String id, Model model) {
         DirectorDb directorDb = new DirectorDb();
-        if(!id.equals("0")){
+        if (!id.equals("0")) {
             directorDb = directorService.getDirectorWithId(id);
         }
         model.addAttribute("director", directorDb);
@@ -113,10 +118,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/networks/addOrUpdate/{id}")
-    public String adminNetworksAddOrUpdate(@PathVariable("id") String id, Model model){
+    public String adminNetworksAddOrUpdate(@PathVariable("id") String id, Model model) {
         NetworkDb networkDb = new NetworkDb();
-        if(!id.equals("0")){
-           networkDb = networkService.getNetworkWithId(id);
+        if (!id.equals("0")) {
+            networkDb = networkService.getNetworkWithId(id);
         }
         model.addAttribute("network", networkDb);
         return "admin/networks/addOrUpdate";
@@ -128,10 +133,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/studios/addOrUpdate/{id}")
-    public String adminStudiosAddOrUpdate(@PathVariable("id") String id, Model model){
+    public String adminStudiosAddOrUpdate(@PathVariable("id") String id, Model model) {
         StudioDb studioDb = new StudioDb();
-        if(!id.equals("0")){
-           studioDb = studioService.getStudioWithId(id);
+        if (!id.equals("0")) {
+            studioDb = studioService.getStudioWithId(id);
         }
         model.addAttribute("studio", studioDb);
         return "admin/studios/addOrUpdate";

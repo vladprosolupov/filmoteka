@@ -11,20 +11,87 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${actor.id != 0}">
-            <form>
-                <span>Name</span> <input type="text" value="${actor.firstName}" name="name">
-                <span>Surname</span> <input type="text" value="${actor.lastName}" name="surname">
-                <span>Birthday</span> <input type="text" value="${actor.birthdate}" name="birthdate">
-                <span>Country</span> <input type="text" value="${actor.countryByIdCountry.name}" name="country">
+            <form class="formForActor" data-actor="${actor.id}">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" value="${actor.firstName}" name="firstName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Surname</label>
+                    <p class="control">
+                        <input class="input" type="text" value="${actor.lastName}" name="lastName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Birthday</label>
+                    <p class="control">
+                        <input class="input" type="date" value="${actor.birthdate}" name="birthdate"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Country</label>
+                    <div class="control">
+                        <p class="control">
+                            <span class="select">
+                                <select name="country">
+                                    <c:forEach items="${countries}" var="country">
+                                        <option value="${country.id}" ${country.id == actor.countryByIdCountry.id ? 'selected="selected"' : ''}
+                                        >${country.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </span>
+                        </p>
+                    </div>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save actor</button>
+                </p>
+            </div>
         </c:when>
         <c:otherwise>
-            <form>
-                <span>Name</span> <input type="text" name="name">
-                <span>Surname</span> <input type="text" name="surname">
-                <span>Birthday</span> <input type="text" name="birthdate">
-                <span>Country</span> <input type="text" name="country">
+            <form class="formForActor" data-actor="0">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p class="control">
+                        <input class="input" type="text" name="firstName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Surname</label>
+                    <p class="control">
+                        <input class="input" type="text" name="lastName"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Birthday</label>
+                    <p class="control">
+                        <input class="input" type="date" name="birthdate"/>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Country</label>
+                    <div class="control">
+                        <p class="control">
+                            <span class="select">
+                                <select name="country">
+                                    <c:forEach items="${countries}" var="country">
+                                        <option value="${country.id}">${country.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </span>
+                        </p>
+                    </div>
+                </div>
             </form>
+            <div class="field">
+                <p class="control">
+                    <button type="button" class="save button is-primary">Save actor</button>
+                </p>
+            </div>
         </c:otherwise>
     </c:choose>
 

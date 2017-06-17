@@ -433,5 +433,89 @@ $(function () {
                 }
             });
         });
+    } else if (location.href.substr(28) === 'actors'){
+        var actors = new Vue({
+            el: '.actors',
+            data: {
+                actors: []
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.getJSON('/actor/all', function (data) {
+                    $('#loading').hide();
+                    $('.actors').show();
+                    self.actors = data;
+                });
+            },
+            methods: {
+                editActor: function(id){
+                    location.href += '/addOrUpdate/' + id;
+                },
+                deleteActor: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/actor/delete/' + id,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
+            }
+        });
+
+        $('.addActor').click(function () {
+            location.href += '/addOrUpdate/0';
+        });
+    }else if(location.href.substr(28,18) === 'actors/addOrUpdate'){
+
+        $('.save').click(function () {
+            $('.save').addClass("is-loading");
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var elements = document.getElementsByClassName("formForActor")[0].elements;
+            var actorToSave = {};
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.name !== 'ignore') {
+                    actorToSave[item.name] = item.value;
+                }
+            }
+            actorToSave['id'] = $('form[data-actor]').attr("data-actor");
+
+            $.ajax({
+                url: '/actor/save',
+                type: 'POST',
+                data: JSON.stringify(actorToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/actors";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
+        });
     }
 });
