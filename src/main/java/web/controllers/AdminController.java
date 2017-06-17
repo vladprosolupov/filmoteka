@@ -7,7 +7,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import web.dao.LanguageDb;
 import web.services.FilmService;
 import web.services.LanguageService;
@@ -35,17 +34,17 @@ public class AdminController {
 
     @RequestMapping(value = "/actors")
     public String admin_actors() {
-        return "admin/actors";
+        return "admin/actors/index";
     }
 
     @RequestMapping(value = "/categories")
     public String admin_categories() {
-        return "admin/categories";
+        return "admin/categories/index";
     }
 
     @RequestMapping(value = "/directors")
     public String admin_directors() {
-        return "admin/directors";
+        return "admin/directors/index";
     }
 
     @RequestMapping(value = "/films")
@@ -67,12 +66,12 @@ public class AdminController {
 
     @RequestMapping(value = "/networks")
     public String admin_networks() {
-        return "admin/networks";
+        return "admin/networks/index";
     }
 
     @RequestMapping(value = "/studios")
     public String admin_studios() {
-        return "admin/studios";
+        return "admin/studios/index";
     }
 
 }
