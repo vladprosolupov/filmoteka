@@ -128,17 +128,13 @@ public class FilmService {
         }
         filmDb.setFilmStudios(setOfStudios);
 
-        /*
-        * Change to another version
-        *
-         */
         Set<FilmActorDb> setOfFilmActors = filmActorService.createSetOfFilmActor(filmJSON.getActors());
         filmDb.setFilmActorsById(setOfFilmActors);
 
-        //ToDO change to map <String,String> as <awardYear, awardName>
+
         Set<AwardDb> setOfAwards = awardService.createSetOfAwards(filmJSON.getAwards());
         filmDb.setAwardsById(setOfAwards);
-        //todo change from id to link
+
 
         Set<TrailerDb> setOfTrailers = trailerService.createTrailerDbSet(filmJSON.getTrailers());
         filmDb.setTrailersById(setOfTrailers);
