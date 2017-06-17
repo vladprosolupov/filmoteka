@@ -15,6 +15,7 @@ a.nav-item{
 
 .table {
     background-color: rgba(0,0,0,0);
+
 }
 
 .table tbody{
@@ -28,10 +29,28 @@ a.nav-item{
 .table thead th{
     text-align: center;
     background-color: rgba(0,0,0,0.6);
-    color: rgba(0,196,167,1);
+    /*color: rgba(0,196,167,1);*/
+    color: rgb(255, 255, 255);
 }
 
+.table th:first-child{
+    border-top-left-radius: 15px;
+}
+.table th:last-child{
+    border-top-right-radius: 15px;
+}
 
+.table tr:last-child td:last-child{
+    border-bottom-right-radius: 15px;
+}
+
+.table tr:last-child td:first-child{
+    border-bottom-left-radius: 15px;
+}
+
+.hero-head{
+    box-shadow: 0 1px 0 rgb(255, 255, 255);
+}
 
 .spinner {
     width: 40px;
