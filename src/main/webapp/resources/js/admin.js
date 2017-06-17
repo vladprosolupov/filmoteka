@@ -414,7 +414,7 @@ $(function () {
             for (i = 0; i < trailers.length; i++) {
                 filmToSave['trailers'].push($(trailers[i]).find('td[data-trailer]').text());
             }
-            //console.log(filmToSave);
+            console.log(filmToSave);
 
             $.ajax({
                 url: '/film/save',

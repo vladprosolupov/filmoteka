@@ -153,7 +153,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <input class="input" type="text" class="actorRole" required>
+                                    <input type="text" class="actorRole input">
                                 </td>
                                 <td>
                                     <button type="button" v-on:click="saveActor" class="button is-primary">Save</button>
@@ -324,7 +324,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <input class="input" type="text" class="linkToNetwork"/>
+                                    <input type="text" class="linkToNetwork input"/>
                                 </td>
                                 <td>
                                     <button type="button" v-on:click="saveNetwork" class="button is-primary">Save
@@ -361,8 +361,8 @@
                                 </tr>
                             </c:forEach>
                             <tr class="newAward" style="display: none">
-                                <td><input class="input" type="text" class="awardName"/></td>
-                                <td><input class="input" type="number" class="awardYear"/></td>
+                                <td><input type="text" class="awardName input"/></td>
+                                <td><input type="number" class="awardYear input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveAward" class="button is-primary">Save</button>
                                 </td>
@@ -392,7 +392,7 @@
                                 </tr>
                             </c:forEach>
                             <tr class="newScreenshot" style="display: none">
-                                <td><input class="input" type="text" class="screenshotLink"/></td>
+                                <td><input type="text" class="screenshotLink input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveScreenshot" class="button is-primary">Save
                                     </button>
@@ -426,7 +426,7 @@
                                 </tr>
                             </c:forEach>
                             <tr class="newTrailer" style="display: none">
-                                <td><input class="input" type="text" class="trailerLink"/></td>
+                                <td><input type="text" class="trailerLink input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveTrailer" class="button is-primary">Save
                                     </button>
@@ -484,7 +484,7 @@
                 <div class="field">
                     <label class="label">Description </label>
                     <p class="control">
-                        <input class="input" type="text" name="description"/>
+                        <textarea class="textarea" name="description"></textarea>
                     </p>
                 </div>
                 <div class="field">
@@ -572,7 +572,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <input class="input" type="text" class="actorRole" required>
+                                    <input type="text" class="actorRole input" required>
                                 </td>
                                 <td>
                                     <button type="button" v-on:click="saveActor" class="button is-primary">Save</button>
@@ -715,7 +715,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <input class="input" type="text" class="linkToNetwork"/>
+                                    <input type="text" class="linkToNetwork input"/>
                                 </td>
                                 <td>
                                     <button type="button" v-on:click="saveNetwork" class="button is-primary">Save
@@ -745,8 +745,8 @@
                             </thead>
                             <tbody class="awards">
                             <tr class="newAward" style="display: none">
-                                <td><input class="input" type="text" class="awardName"/></td>
-                                <td><input class="input" type="number" class="awardYear"/></td>
+                                <td><input type="text" class="awardName input"/></td>
+                                <td><input type="number" class="awardYear input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveAward" class="button is-primary">Save</button>
                                 </td>
@@ -771,7 +771,7 @@
                             </thead>
                             <tbody class="screenshots">
                             <tr class="newScreenshot" style="display: none">
-                                <td><input class="input" type="text" class="screenshotLink"/></td>
+                                <td><input type="text" class="screenshotLink input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveScreenshot" class="button is-primary">Save
                                     </button>
@@ -797,7 +797,7 @@
                             </thead>
                             <tbody class="trailers">
                             <tr class="newTrailer" style="display: none">
-                                <td><input class="input" type="text" class="trailerLink"/></td>
+                                <td><input type="text" class="trailerLink input"/></td>
                                 <td>
                                     <button type="button" v-on:click="saveTrailer" class="button is-primary">Save
                                     </button>
