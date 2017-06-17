@@ -11,7 +11,12 @@
 <t:wrapper>
 
 
-    <div id="loading" class="is-centered">Loading...</div>
+    <div id="loading" class="is-centered">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
 
 
     <table class="films table" style="display: none">
