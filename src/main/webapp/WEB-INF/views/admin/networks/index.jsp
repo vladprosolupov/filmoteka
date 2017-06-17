@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
     <div id="loading">Loading...</div>
-    <table class="networks table">
+    <table class="networks table" style="display: none">
         <thead>
             <tr>
                 <th>Name</th>
@@ -29,7 +29,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="directors" style="display: none">
+    <div class="networks" style="display: none">
         <button class="addNetwork button is-primary">Add</button>
     </div>
 </t:wrapper>
