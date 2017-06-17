@@ -1,5 +1,6 @@
 package web.services;
 
+import javafx.util.Pair;
 import web.dao.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -120,16 +121,23 @@ public class FilmService {
             setOfStudios.add(studioService.getStudioWithId(s));
         }
         filmDb.setFilmStudios(setOfStudios);
+
+        /*
+        * Change to another version
+        *
+         */
         Set<FilmActorDb> setOfFilmActors = new HashSet<>();
         for (String s: filmJSON.getActors()){
             setOfFilmActors.add(filmActorService.getFilmActorWithId(s));
         }
         filmDb.setFilmActorsById(setOfFilmActors);
+        //ToDO change to map <String,String> as <awardYear, awardName>
         Set<AwardDb> setOfAwards = new HashSet<>();
         for (String s : filmJSON.getAwards()) {
             setOfAwards.add(awardService.getAwardWithId(s));
         }
         filmDb.setAwardsById(setOfAwards);
+        //todo change from id to link
         Set<TrailerDb> setOfTrailers = new HashSet<>();
         for (String s : filmJSON.getTrailers()) {
             setOfTrailers.add(trailerService.getTrailerWithId(s));
