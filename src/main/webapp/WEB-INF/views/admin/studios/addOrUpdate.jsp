@@ -11,7 +11,7 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${studio.id != 0}">
-            <form class="formForStudio" data-studio="${studio.id}">
+            <form class="formForStudio" data-studio="${studio.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -26,7 +26,7 @@
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForStudio" data-studio="0">
+            <form class="formForStudio" data-studio="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">

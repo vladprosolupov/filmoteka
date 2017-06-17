@@ -481,6 +481,8 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
     } else if (location.href.substr(28, 18) === 'actors/addOrUpdate') {
+        $('#loading').hide();
+        $('.formForActor').show();
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -565,6 +567,8 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
     } else if (location.href.substr(28, 22) === 'categories/addOrUpdate') {
+        $('#loading').hide();
+        $('.formForCategory').show();
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -650,7 +654,8 @@ $(function () {
         });
 
     } else if (location.href.substr(28, 21) === 'directors/addOrUpdate') {
-
+        $('#loading').hide();
+        $('.formForDirector').show();
         $('.save').click(function () {
             $('.save').addClass("is-loading");
             var token = $("meta[name='_csrf']").attr("content");
@@ -735,7 +740,9 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    }else if(location.href.substr(28,10) === 'networks/addOrUpdate'){
+    }else if(location.href.substr(28,20) === 'networks/addOrUpdate'){
+        $('#loading').hide();
+        $('.formForNetwork').show();
         $('.save').click(function () {
             $('.save').addClass("is-loading");
             var token = $("meta[name='_csrf']").attr("content");
@@ -762,6 +769,92 @@ $(function () {
                 success: function (data) {
                     console.log(data);
                     location.href = "http://localhost:8080/admin/networks";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    console.log('Text status: ' + textStatus);
+                    console.log('XHR: ' + xhr);
+                    console.log('Error thrown: ' + errorThrown);
+                }
+            });
+        });
+    } else if(location.href.substr(28) === 'studios'){
+        var studios = new Vue({
+            el: '.studios',
+            data: {
+                studios: []
+            },
+            beforeCompile: function(){
+                var self = this;
+                $.getJSON('/studio/all', function (data) {
+                    $('#loading').hide();
+                    $('.studios').show();
+                    self.studios = data;
+                });
+            },
+            methods: {
+                editNetwork: function (id) {
+                    location.href += '/addOrUpdate/' + id;
+                },
+                deleteNetwork: function (id) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    $.ajax({
+                        url: '/studio/delete/' + id,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            location.reload();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                        }
+                    });
+                }
+            }
+        });
+
+        $('.addStudio').click(function () {
+            location.href += '/addOrUpdate/0';
+        });
+    } else if(location.href.substr(28,19) === 'studios/addOrUpdate'){
+        $('#loading').hide();
+        $('.formForStudio').show();
+
+        $('.save').click(function () {
+            $('.save').addClass("is-loading");
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var elements = document.getElementsByClassName("formForNetwork")[0].elements;
+            var studioToSave = {};
+            for (var i = 0; i < elements.length; i++) {
+                var item = elements.item(i);
+                if (item.name !== 'ignore') {
+                    studioToSave[item.name] = item.value;
+                }
+            }
+            studioToSave['id'] = $('form[data-studio]').attr("data-studio");
+
+            $.ajax({
+                url: '/studio/save',
+                type: 'POST',
+                data: JSON.stringify(studioToSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    location.href = "http://localhost:8080/admin/studios";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');

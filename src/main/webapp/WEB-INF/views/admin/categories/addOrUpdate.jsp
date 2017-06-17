@@ -11,7 +11,7 @@
 <t:wrapper>
     <c:choose>
         <c:when test="${category.id != 0}">
-            <form class="formForCategory" data-category="${category.id}">
+            <form class="formForCategory" data-category="${category.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -26,7 +26,7 @@
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForCategory" data-category="0">
+            <form class="formForCategory" data-category="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
