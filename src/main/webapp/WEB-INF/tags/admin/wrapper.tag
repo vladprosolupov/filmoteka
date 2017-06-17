@@ -16,13 +16,13 @@
 
 </head>
 <body>
-<div id="panel">
-    <div><a href="/admin/films">Films</a></div>
-    <div><a href="/admin/actors">Actors</a></div>
-    <div><a href="/admin/directors">Directors</a></div>
-    <div><a href="/admin/categories">Categories</a></div>
-    <div><a href="/admin/networks">Networks</a></div>
-    <div><a href="/admin/studios">Studios</a></div>
+<div class="column" id="panel">
+    <div class="column"><a href="/admin/films">Films</a></div>
+    <div class="column"><a href="/admin/actors">Actors</a></div>
+    <div class="column"><a href="/admin/directors">Directors</a></div>
+    <div class="column"><a href="/admin/categories">Categories</a></div>
+    <div class="column"><a href="/admin/networks">Networks</a></div>
+    <div class="column"><a href="/admin/studios">Studios</a></div>
 </div>
 <jsp:doBody/>
 </body>
