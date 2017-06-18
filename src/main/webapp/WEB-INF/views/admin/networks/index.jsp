@@ -23,7 +23,7 @@
         <tbody>
             <tr v-for="network in networks" :id="network.id">
                 <td>{{network.networkName}}</td>
-                <td>{{network.networkLogo}}</td>
+                <td> <figure class="image is-48x48"><img :src="network.networkLogo"/></figure><%--{{network.networkLogo}}--%></td>
                 <td>
                     <button class="button is-primary" v-on:click="editNetwork(network.id)">Edit</button>
                 </td>

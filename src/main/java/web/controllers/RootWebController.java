@@ -13,8 +13,6 @@ public class RootWebController {
 
     @RequestMapping(value = "/")
     public String index() {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(userDetails);
         return "index";
     }
 

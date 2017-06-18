@@ -48,7 +48,7 @@
                                         </figure>
                                     </div>
                                     <div class="media-content">
-                                        <div class="content">
+                                        <div class="content is-vcentered" style="text-align: center">
                                                <h1 class="is-centered">Success!</h1>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                         </figure>
                                     </div>
                                     <div class="media-content">
-                                        <div class="content">
+                                        <div class="content" style="text-align: center">
                                             <h1 class="is-centered">Error during processing. Please try later!</h1>
                                         </div>
                                     </div>
