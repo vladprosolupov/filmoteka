@@ -93,3 +93,12 @@ a.nav-item{
           -webkit-transform: scale(1.0);
       }
 }
+
+
+.success {
+    display: none;
+}
+
+.fail {
+    display: none;
+}

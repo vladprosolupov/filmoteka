@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RootWebController {
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/")
     public String index() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(userDetails);

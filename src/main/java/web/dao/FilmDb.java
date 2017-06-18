@@ -186,7 +186,7 @@ public class FilmDb {
         this.filmStudios = filmStudios;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Film_network", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_link_to_network", referencedColumnName = "id", nullable = false))
     public Set<LinkToNetworkDb> getFilmNetworks() {
         return filmNetworks;

@@ -22,6 +22,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="nav-center nav-menu">
+                    <a class="nav-item" href="/admin/">Home</a>
                     <a class="nav-item" href="/admin/films">Films</a>
                     <a class="nav-item" href="/admin/actors">Actors</a>
                     <a class="nav-item" href="/admin/directors">Directors</a>
@@ -36,6 +37,44 @@
         <div class="container has-text-centered">
             <div class="columns is-vcentered">
                 <div class="column is-6 is-offset-3">
+                    <div class="success modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-64x64">
+                                            <img src="/resources/images/success.png" alt="success"/>
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <div class="content">
+                                               <h1 class="is-centered">Success!</h1>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fail modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-64x64">
+                                            <img src="/resources/images/fail.png" alt="fail"/>
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <h1 class="is-centered">Error during processing. Please try later!</h1>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
                     <jsp:doBody/>
                 </div>
             </div>

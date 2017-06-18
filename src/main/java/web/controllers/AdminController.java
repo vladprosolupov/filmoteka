@@ -43,7 +43,7 @@ public class AdminController {
     @Autowired
     ActorService actorService;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/")
     public String admin_index() {
         return "admin/index";
     }

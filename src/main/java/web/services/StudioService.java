@@ -38,7 +38,7 @@ public class StudioService {
 
     public List<StudioDb> getAll(){
         Session session = sessionFactory.getCurrentSession();
-        List<StudioDb> result = session.createQuery("from StudioDb ").list();
+        List<StudioDb> result = session.createQuery("from StudioDb s order by s.studioName").list();
         return result;
     }
 

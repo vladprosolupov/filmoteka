@@ -18,7 +18,7 @@
                 login-processing-url="/j_spring_security_check"
                 login-page="/login"
                 authentication-failure-url="/403"
-                default-target-url="/index"
+                default-target-url="/"
                 username-parameter="username"
                 password-parameter="password"/>
 
