@@ -93,6 +93,7 @@
                             <thead>
                             <tr>
                                 <th>Category name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="categories">
@@ -135,6 +136,7 @@
                             <tr>
                                 <th>Actor name and surname</th>
                                 <th>Actor role</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="actors">
@@ -180,6 +182,7 @@
                             <thead>
                             <tr>
                                 <th>Director name and surname</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="directors">
@@ -223,6 +226,7 @@
                             <thead>
                             <tr>
                                 <th>Studio name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="studios">
@@ -264,6 +268,7 @@
                             <thead>
                             <tr>
                                 <th>Country name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="countries">
@@ -306,6 +311,7 @@
                             <tr>
                                 <th>Network name</th>
                                 <th>Link to network</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="networks">
@@ -353,6 +359,7 @@
                             <tr>
                                 <th>Award name</th>
                                 <th>Year</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="awards">
@@ -388,6 +395,7 @@
                             <thead>
                             <tr>
                                 <th>Link</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="screenshots">
@@ -422,6 +430,7 @@
                             <thead>
                             <tr>
                                 <th>Link</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="trailers">
@@ -532,6 +541,7 @@
                             <thead>
                             <tr>
                                 <th>Category name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="categories">
@@ -566,6 +576,7 @@
                             <tr>
                                 <th>Actor name and surname</th>
                                 <th>Actor role</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="actors">
@@ -602,6 +613,7 @@
                             <thead>
                             <tr>
                                 <th>Director name and surname</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="directors">
@@ -637,6 +649,7 @@
                             <thead>
                             <tr>
                                 <th>Studio name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="studios">
@@ -670,6 +683,7 @@
                             <thead>
                             <tr>
                                 <th>Country name</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="countries">
@@ -704,6 +718,7 @@
                             <tr>
                                 <th>Network name</th>
                                 <th>Link to network</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="networks">
@@ -742,6 +757,7 @@
                             <tr>
                                 <th>Award name</th>
                                 <th>Year</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="awards">
@@ -768,6 +784,7 @@
                             <thead>
                             <tr>
                                 <th>Link</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="screenshots">
@@ -794,6 +811,7 @@
                             <thead>
                             <tr>
                                 <th>Link</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody class="trailers">

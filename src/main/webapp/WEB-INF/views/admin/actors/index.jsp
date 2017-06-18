@@ -20,8 +20,7 @@
             <th>First name</th>
             <th>Last name</th>
             <th>Country</th>
-            <th></th>
-            <th></th>
+            <th colspan="2"></th>
         </tr>
         </thead>
         <tbody>

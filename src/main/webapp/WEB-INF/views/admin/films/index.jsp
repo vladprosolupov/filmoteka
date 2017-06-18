@@ -26,8 +26,7 @@
             <th>Release date</th>
             <th>Rating</th>
             <th>Language</th>
-            <th></th>
-            <th></th>
+            <th colspan="2"></th>
         </tr>
         </thead>
         <tbody>
