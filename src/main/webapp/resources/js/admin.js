@@ -1,6 +1,27 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
+function succ(link){
+    $('html').addClass("is-clipped");
+    $('.success').addClass("is-active");
+
+    setTimeout(function(){
+        $('.success').removeClass("is-active");
+        $('html').removeClass("is-clipped");
+        window.location.replace(link);
+    }, 2000);
+}
+function fail(link) {
+    $('html').addClass("is-clipped");
+    $('.fail').addClass("is-active");
+
+    setTimeout(function(){
+        $('.fail').removeClass("is-active");
+        $('html').removeClass("is-clipped");
+        window.location.replace(link);
+    }, 2000);
+}
+
 $(function () {
     if (location.href.substr(28) === 'films') {
         var films = new Vue({
@@ -33,13 +54,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/films");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/films");
                         }
                     });
                 }
@@ -423,13 +445,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/films";
+                    succ("http://localhost:8080/admin/films");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/films");
                 }
             });
         });
@@ -464,13 +487,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/actors");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/actors");
                         }
                     });
                 }
@@ -509,13 +533,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/actors";
+                    succ("http://localhost:8080/admin/actors");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/actors");
                 }
             });
         });
@@ -550,13 +575,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/categories");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/categories");
                         }
                     });
                 }
@@ -595,13 +621,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/categories";
+                    succ("http://localhost:8080/admin/categories");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/categories");
                 }
             });
         });
@@ -636,13 +663,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/directors");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/directors");
                         }
                     });
                 }
@@ -681,13 +709,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/directors";
+                    succ("http://localhost:8080/admin/directors");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/directors");
                 }
             });
         });
@@ -723,13 +752,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/networks");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/networks");
                         }
                     });
                 }
@@ -768,13 +798,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/networks";
+                    succ("http://localhost:8080/admin/networks");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/networks");
                 }
             });
         });
@@ -809,13 +840,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            location.reload();
+                            succ("http://localhost:8080/admin/studios");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
+                            fail("http://localhost:8080/admin/studios");
                         }
                     });
                 }
@@ -854,13 +886,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    location.href = "http://localhost:8080/admin/studios";
+                    succ("http://localhost:8080/admin/studios");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
+                    fail("http://localhost:8080/admin/studios");
                 }
             });
         });

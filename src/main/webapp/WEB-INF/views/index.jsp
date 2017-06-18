@@ -17,7 +17,7 @@
         <div class="container has-text-centered">
             <h1 class="title">
                 <% if (hasAccess) {%>
-                <a href="/admin/index" class="white-text">Admin Panel</a>
+                <a href="/admin/" class="white-text">Admin Panel</a>
                 <% } else { %>
                 <a href="/index">Profile</a>
                 <% } %>
