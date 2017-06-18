@@ -22,23 +22,30 @@ a.nav-item{
     background-color: rgba(0,0,0,0.2);
     color: white;
 }
+
 .table tr:hover{
     background-color: rgba(0,0,0,0.5);
 }
 
 .table thead th{
     text-align: center;
-    background-color: rgba(0,0,0,0.6);
-    /*color: rgba(0,196,167,1);*/
-    color: rgb(255, 255, 255);
+    background-color: rgba(0,0,0,0.0);
+    color: rgba(0,196,167,1);
+    /*color: rgb(255, 255, 255);*/
 }
 
-.table th:first-child{
+.label{
+    color:white;
+}
+
+/*.table tr:first-child td:first-child{
     border-top-left-radius: 15px;
 }
-.table th:last-child{
+.table tr:first-child td:last-child{
     border-top-right-radius: 15px;
 }
+
+
 
 .table tr:last-child td:last-child{
     border-bottom-right-radius: 15px;
@@ -46,6 +53,10 @@ a.nav-item{
 
 .table tr:last-child td:first-child{
     border-bottom-left-radius: 15px;
+}*/
+
+.table th {
+    border: 1px solid rgba(0,0,0,0);
 }
 
 .hero-head{
