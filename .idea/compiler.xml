@@ -9,7 +9,7 @@
         <module name="filmoteka" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="filmoteka" target="1.8" />
     </bytecodeTargetLevel>
   </component>
