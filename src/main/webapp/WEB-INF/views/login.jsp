@@ -5,20 +5,11 @@
 <head>
 
     <title>Login Page</title>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
 <body onload='document.loginForm.username.focus();'>
 
 <div id="login-box">
-
-
-    <c:if test="${not empty error}">
-        <div class="error">${error}</div>
-    </c:if>
-    <c:if test="${not empty msg}">
-        <div class="msg">${msg}</div>
-    </c:if>
     <section class="hero background_for_login is-fullheight is-bold">
         <div class="hero-body">
             <div class="container">
@@ -28,13 +19,29 @@
                               action="/j_spring_security_check" method='POST'>
                             <h1 class="title white-text">Login</h1>
                             <div class="box">
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type='text' name='username' placeholder="Username">
+                                        <span class="icon is-small is-left">
+                                          <i class="fa fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type='password' name='password' placeholder="Password"/>
+                                        <span class="icon is-small is-left">
+                                          <i class="fa fa-lock"></i>
+                                        </span>
+                                    </p>
+                                </div>
 
-                                <div class="label">User:</div>
-                                <input class="input" type='text' name='username'>
+                                <c:if test="${param.success == false}">
+                                    <div class="msg has-text-centered has-text-danger">Your login or password is incorrect!</div>
+                                </c:if>
 
-                                <div class="label">Password:</div>
-                                <input class="input" type='password' name='password'/>
                                 <hr>
+
                                 <input name="submit" class="button is-primary" type="submit" value="Log In"/>
                             </div>
 

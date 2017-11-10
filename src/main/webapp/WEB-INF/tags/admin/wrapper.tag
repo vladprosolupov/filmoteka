@@ -6,7 +6,6 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/admin.js"/>"></script>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 
@@ -20,19 +19,19 @@
 <section class="hero background_for_login is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
-            <nav class="nav">
+            <nav class="breadcrumb is-centered">
 
                 <c:url var="logoutUrl" value="/do_logout"/>
-                <form class="nav-center nav-menu" id="logout_id" action="${logoutUrl}"
+                <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post">
 
-                    <a class="nav-item" href="/admin/">Home</a>
-                    <a class="nav-item" href="/admin/films">Films</a>
-                    <a class="nav-item" href="/admin/actors">Actors</a>
-                    <a class="nav-item" href="/admin/directors">Directors</a>
-                    <a class="nav-item" href="/admin/categories">Categories</a>
-                    <a class="nav-item" href="/admin/networks">Networks</a>
-                    <a class="nav-item" href="/admin/studios">Studios</a>
+                    <a class="navbar-item" href="/admin/">Home</a>
+                    <a class="navbar-item" href="/admin/films">Films</a>
+                    <a class="navbar-item" href="/admin/actors">Actors</a>
+                    <a class="navbar-item" href="/admin/directors">Directors</a>
+                    <a class="navbar-item" href="/admin/categories">Categories</a>
+                    <a class="navbar-item" href="/admin/networks">Networks</a>
+                    <a class="navbar-item" href="/admin/studios">Studios</a>
 
                     <%--
                         This form is used for log out
@@ -45,7 +44,7 @@
                     <input type="hidden"
                            name="${_csrf.parameterName}"
                            value="${_csrf.token}"/>
-                    <a class="nav-item" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
+                    <a class="navbar-item" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
                         out</a>
 
                 </form>
