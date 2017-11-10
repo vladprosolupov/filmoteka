@@ -21,7 +21,11 @@
     <div class="hero-head">
         <div class="container">
             <nav class="nav">
-                <div class="nav-center nav-menu">
+
+                <c:url var="logoutUrl" value="/do_logout"/>
+                <form class="nav-center nav-menu" id="logout_id" action="${logoutUrl}"
+                      method="post">
+
                     <a class="nav-item" href="/admin/">Home</a>
                     <a class="nav-item" href="/admin/films">Films</a>
                     <a class="nav-item" href="/admin/actors">Actors</a>
@@ -29,7 +33,23 @@
                     <a class="nav-item" href="/admin/categories">Categories</a>
                     <a class="nav-item" href="/admin/networks">Networks</a>
                     <a class="nav-item" href="/admin/studios">Studios</a>
-                </div>
+
+                    <%--
+                        This form is used for log out
+                        Because Spring Security by default is using csrf token,
+                        So to send request to the server to log out
+                        We have submit it using post method and adding additional parameters
+                    --%>
+
+
+                    <input type="hidden"
+                           name="${_csrf.parameterName}"
+                           value="${_csrf.token}"/>
+                    <a class="nav-item" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
+                        out</a>
+
+                </form>
+
             </nav>
         </div>
     </div>

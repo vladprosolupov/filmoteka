@@ -1,9 +1,12 @@
 package web.controllers;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Rostyk on 12.06.2017.
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RootWebController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/index")
     public String index() {
         return "index";
     }
