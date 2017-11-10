@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.ClientDb;
 import org.hibernate.Session;
+import web.model.ClientJSON;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class ClientService {
 
     @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    @Autowired(required = true)
+    private AddressService addressService;
 
     public void saveOrUpdate(ClientDb clientDb){
         Session session = sessionFactory.getCurrentSession();
@@ -39,5 +43,21 @@ public class ClientService {
     public void delete(String id){
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
+    }
+
+    public ClientDb convertToClientDb(ClientJSON clientJSON) {
+        ClientDb clientDb = new ClientDb();
+
+        clientDb.setFirstName(clientJSON.getFirstName());
+        clientDb.setLastName(clientJSON.getLastName());
+        clientDb.setEmail(clientJSON.getEmail());
+        clientDb.setEnabled(clientJSON.getEnabled());
+        clientDb.setLogin(clientJSON.getLogin());
+        clientDb.setPassword(clientJSON.getPassword());
+        clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
+        clientDb.setRole(clientJSON.getRole().name());
+        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
+
+        return clientDb;
     }
 }
