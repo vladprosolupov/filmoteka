@@ -1,0 +1,113 @@
+.background_for_login{
+    background-image: linear-gradient(120deg, #4d674c 0%, #7a765d 50%, #8e5f59 100%);
+}
+
+.white-text{
+    color: white;
+}
+
+a.nav-item{
+    color: white;
+}
+.hero.nav{
+    box-shadow: white;
+}
+
+.table {
+    background-color: rgba(0,0,0,0);
+
+}
+
+.table tbody{
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+}
+
+.table tr:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.table thead th{
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    color: rgba(0,196,167,1);
+    /*color: rgb(255, 255, 255);*/
+}
+
+.label{
+    color:white;
+}
+
+.table th:first-child{
+    border-top-left-radius: 15px;
+}
+.table th:last-child{
+    border-top-right-radius: 15px;
+}
+
+.table tr:last-child td:last-child{
+    border-bottom-right-radius: 15px;
+}
+
+.table tr:last-child td:first-child{
+    border-bottom-left-radius: 15px;
+}
+
+.table th {
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.hero-head{
+    box-shadow: 0 1px 0 rgb(255, 255, 255);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+
+    position: relative;
+    margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+}
+
+
+.success {
+    display: none;
+}
+
+.fail {
+    display: none;
+}
