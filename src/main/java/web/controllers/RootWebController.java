@@ -29,4 +29,8 @@ public class RootWebController {
         return "403";
     }
 
+    @RequestMapping(value = "/register")
+    public String showRegisterForm() {
+        return "register";
+    }
 }

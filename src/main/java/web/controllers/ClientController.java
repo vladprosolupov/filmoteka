@@ -15,6 +15,8 @@ public class ClientController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addClient(@RequestBody ClientJSON clientJSON) {
+        System.out.println("saveClient");
+
         clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
         return "OK";
     }

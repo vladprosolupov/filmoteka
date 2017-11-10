@@ -4,7 +4,7 @@ $(function () {
         var clients = new Vue({
             el: '.newClient',
             data: {
-                actors: []
+                clients: []
             },
             beforeCompile: function () {
                 var self = this;

@@ -1,3 +1,5 @@
+
+
 <%--
   Created by IntelliJ IDEA.
   User: GermanV
@@ -8,6 +10,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
+
     <title>Title</title>
 </head>
 <body>
@@ -66,7 +71,8 @@
         </div>
     </div>
 </section>
-<script async type="text/javascript" src="../js/bulma.js"></script>
+<%--<script async type="text/javascript" src="../js/vue.js"></script>--%>
+<script src="<c:url value="/resources/js/vue.js"/>"></script>
 
 </body>
 </html>
