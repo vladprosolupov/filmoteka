@@ -1,3 +1,6 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("bulma.css");
+
 .background_for_login{
     background-image: linear-gradient(120deg, #4d674c 0%, #7a765d 50%, #8e5f59 100%);
 }
@@ -6,16 +9,32 @@
     color: white;
 }
 
-a.nav-item{
+a.navbar-item{
     color: white;
 }
+.navbar {
+    width: 100%;
+    justify-content: center;
+}
+
+a.navbar-item:hover {
+    color: rgba(0,0,0,0.5);
+    background: none;
+    cursor: pointer;
+}
+
+.navbar-item:hover {
+    cursor: pointer;
+}
+
 .hero.nav{
     box-shadow: white;
 }
 
 .table {
     background-color: rgba(0,0,0,0);
-
+    margin: 0px auto;
+    margin-bottom: 1.5rem;
 }
 
 .table tbody{
