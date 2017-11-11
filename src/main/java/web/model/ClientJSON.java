@@ -4,24 +4,24 @@ import web.enums.ClientRole;
 
 public class ClientJSON {
 
-    private int id;
+//    private int id;
     private String firstName;
     private String lastName;
     private String email;
-    private int idAddress;
+//    private int idAddress;
     private String login;
     private String password;
-    private int enabled;
+//    private int enabled;
     private String phoneNumber;
-    private ClientRole role;
+//    private ClientRole role;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -47,13 +47,13 @@ public class ClientJSON {
         this.email = email;
     }
 
-    public int getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
-    }
+//    public int getIdAddress() {
+//        return idAddress;
+//    }
+//
+//    public void setIdAddress(int idAddress) {
+//        this.idAddress = idAddress;
+//    }
 
     public String getLogin() {
         return login;
@@ -71,13 +71,13 @@ public class ClientJSON {
         this.password = password;
     }
 
-    public int getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    }
+//    public int getEnabled() {
+//        return enabled;
+//    }
+//
+//    public void setEnabled(int enabled) {
+//        this.enabled = enabled;
+//    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -87,11 +87,11 @@ public class ClientJSON {
         this.phoneNumber = phoneNumber;
     }
 
-    public ClientRole getRole() {
-        return role;
-    }
-
-    public void setRole(ClientRole role) {
-        this.role = role;
-    }
+//    public ClientRole getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(ClientRole role) {
+//        this.role = role;
+//    }
 }

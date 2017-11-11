@@ -3,8 +3,7 @@
 <%@page session="true" %>
 <html>
 <head>
-
-    <title>Login Page</title>
+    <title>Login</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
 <body onload='document.loginForm.username.focus();'>
@@ -39,6 +38,15 @@
                                 <c:if test="${param.success == false}">
                                     <div class="msg has-text-centered has-text-danger">Your login or password is incorrect!</div>
                                 </c:if>
+                                <div class="columns">
+                                    <div class="column has-text-centered has-text-info is-half">
+                                        <a href="#" style="text-decoration: none">Forgot password?</a>
+                                    </div>
+
+                                    <div class="column has-text-centered has-text-info is-half">
+                                        <a href="/register" style="text-decoration: none">Sign up!</a>
+                                    </div>
+                                </div>
 
                                 <hr>
 

@@ -17,7 +17,7 @@ public class ClientController {
     public @ResponseBody String addClient(@RequestBody ClientJSON clientJSON) {
         System.out.println("saveClient");
 
-        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+        //clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
         return "OK";
     }
 

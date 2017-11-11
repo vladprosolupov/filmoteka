@@ -51,12 +51,12 @@ public class ClientService {
         clientDb.setFirstName(clientJSON.getFirstName());
         clientDb.setLastName(clientJSON.getLastName());
         clientDb.setEmail(clientJSON.getEmail());
-        clientDb.setEnabled(clientJSON.getEnabled());
+//        clientDb.setEnabled(clientJSON.getEnabled());
         clientDb.setLogin(clientJSON.getLogin());
         clientDb.setPassword(clientJSON.getPassword());
         clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-        clientDb.setRole(clientJSON.getRole().name());
-        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
+//        clientDb.setRole(clientJSON.getRole().name());
+//        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
 
         return clientDb;
     }
