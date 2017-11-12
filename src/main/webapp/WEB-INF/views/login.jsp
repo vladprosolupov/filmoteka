@@ -1,14 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 <%@page session="true" %>
 <html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
-<body onload='document.loginForm.username.focus();'>
+<t:header >
 
-<div id="login-box">
+<div id="login-box" onload='document.loginForm.username.focus();'>
     <section class="hero background_for_client is-fullheight is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -62,5 +63,5 @@
     </section>
 </div>
 
-</body>
+</t:header>
 </html>

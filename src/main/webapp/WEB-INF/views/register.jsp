@@ -3,6 +3,7 @@
 <head>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/user.js"/>"></script>
@@ -15,7 +16,7 @@
 
     <title>Sign up</title>
 </head>
-<body>
+<t:header>
 
 <section class="hero background_for_client is-success is-fullheight">
     <div class="hero-body">
@@ -134,5 +135,5 @@
     </div>
 </section>
 
-</body>
+</t:header>
 </html>
