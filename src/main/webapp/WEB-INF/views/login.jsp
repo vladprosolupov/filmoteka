@@ -4,9 +4,10 @@
 <html>
 <head>
     <title>Login</title>
+    <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
-<body onload='document.loginForm.username.focus();'>
+<t:header>
 
 <div id="login-box">
     <section class="hero background_for_client is-fullheight is-bold">
@@ -62,5 +63,5 @@
     </section>
 </div>
 
-</body>
+</t:header>
 </html>

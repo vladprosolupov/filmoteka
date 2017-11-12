@@ -4,14 +4,14 @@ import web.enums.ClientRole;
 
 public class ClientJSON {
 
-//    private int id;
+    //    private int id;
     private String firstName;
     private String lastName;
     private String email;
-//    private int idAddress;
+    //    private int idAddress;
     private String login;
     private String password;
-//    private int enabled;
+    //    private int enabled;
     private String phoneNumber;
 //    private ClientRole role;
 
@@ -94,4 +94,17 @@ public class ClientJSON {
 //    public void setRole(ClientRole role) {
 //        this.role = role;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "ClientJSON{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

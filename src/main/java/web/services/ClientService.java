@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.ClientDb;
 import org.hibernate.Session;
+import web.enums.ClientRole;
 import web.model.ClientJSON;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -53,9 +55,10 @@ public class ClientService {
         clientDb.setEmail(clientJSON.getEmail());
 //        clientDb.setEnabled(clientJSON.getEnabled());
         clientDb.setLogin(clientJSON.getLogin());
-        clientDb.setPassword(clientJSON.getPassword());
+        clientDb.setPassword(PasswordGenerator.hashPassword(clientJSON.getPassword()));
         clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-//        clientDb.setRole(clientJSON.getRole().name());
+        clientDb.setRole(ClientRole.user.name());
+        clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
 //        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
 
         return clientDb;
