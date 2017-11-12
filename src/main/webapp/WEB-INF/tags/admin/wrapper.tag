@@ -25,7 +25,7 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post">
 
-                    <a class="navbar-item" href="/index">Home</a>
+                    <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/admin/films">Films</a>
                     <a class="navbar-item" href="/admin/actors">Actors</a>
                     <a class="navbar-item" href="/admin/directors">Directors</a>

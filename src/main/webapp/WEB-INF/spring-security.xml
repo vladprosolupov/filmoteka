@@ -18,13 +18,13 @@
                 login-processing-url="/j_spring_security_check"
                 login-page="/login"
                 authentication-failure-url="/login?success=false"
-                default-target-url="/index"
+                default-target-url="/"
                 username-parameter="username"
                 password-parameter="password"/>
 
         <security:logout
                 logout-url="/do_logout"
-                logout-success-url="/index"/>
+                logout-success-url="/"/>
 
     </security:http>
 

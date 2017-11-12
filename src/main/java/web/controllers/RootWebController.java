@@ -16,7 +16,7 @@ import web.dao.ClientDb;
 @Controller
 public class RootWebController {
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/")
     public String index() {
         return "index";
     }
