@@ -33,6 +33,9 @@
                                     <i class="fa fa-address-card"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display: none">
+                                First name cannot be shorter than 2 symbols and contain numeric!
+                            </p>
                         </div>
 
                         <div class="field">
@@ -43,6 +46,9 @@
                                     <i class="fa fa-address-card-o"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display: none">
+                                Last name cannot be shorter than 2 symbols and contain numeric!
+                            </p>
                         </div>
 
                         <div class="field">
@@ -53,6 +59,9 @@
                                     <i class="fa fa-envelope"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display: none">
+                                Please enter valid email!
+                            </p>
                         </div>
 
                         <div class="field">
@@ -63,6 +72,12 @@
                                   <i class="fa fa-user"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display:none">
+                                Username cannot be shorter than 2 symbols!
+                            </p>
+                            <p class="help is-danger" style="display: none">
+                                This Username is already taken, please pick another one!
+                            </p>
                         </div>
 
                         <div class="field">
@@ -73,16 +88,28 @@
                                     <i class="fa fa-lock"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display:none">
+                                Password cannot be shorter than 8 symbols!
+                            </p>
                         </div>
 
                         <div class="field">
-                            <div class="control has-icons-left has-icon-right">
+                            <div class="control has-icons-left has-icons-right">
                                 <input class="input is-medium" type="password" name="ignore"
                                        placeholder="Confirm password">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-check"></i>
                                 </span>
+                                <span class="icon is-small is-right" style="display: none">
+                                    <i class="fa fa-warning"></i>
+                                </span>
                             </div>
+                            <p class="help is-danger" style="display:none">
+                                Password cannot be shorter than 8 symbols!
+                            </p>
+                            <p class="help is-danger" style="display: none">
+                                Passwords are not same!
+                            </p>
                         </div>
 
                         <div class="field">
@@ -93,6 +120,9 @@
                                     <i class="fa fa-phone"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger" style="display: none">
+                                Phone number cannot be shorter than 6 symbols!
+                            </p>
                         </div>
                         <button type="button" class="save button is-primary is-large">Register</button>
 
