@@ -15,7 +15,7 @@
             <div class="container">
                 <nav class="is-centered">
                         <% if (hasAccess == 2) {%>
-                        <form class="navbar-menu" id="logout_id" action="${logoutUrl}"
+                        <form class="navbar" id="logout_id" action="${logoutUrl}"
                               method="post">
 
                             <a class="navbar-item" href="/">Home</a>
@@ -23,18 +23,20 @@
                             <a class="navbar-item" href="/">You Should Watch</a>
                             <a class="navbar-item" href="/">About</a>
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">Admin Panel</a>
+                                <a class="navbar-link" href="/admin/">Admin Panel</a>
                                 <div class="navbar-dropdown is-boxed">
-                                    <input type="hidden"
-                                           name="${_csrf.parameterName}"
-                                           value="${_csrf.token}"/>
                                     <a class="navbar-item droppeddown" href="/admin/films">Films</a>
                                     <a class="navbar-item droppeddown" href="/admin/actors">Actors</a>
                                     <a class="navbar-item droppeddown" href="/admin/directors">Directors</a>
                                     <a class="navbar-item droppeddown" href="/admin/categories">Categories</a>
                                     <a class="navbar-item droppeddown" href="/admin/networks">Networks</a>
                                     <a class="navbar-item droppeddown" href="/admin/studios">Studios</a>
+
                                     <hr class="navbar-divider"/>
+
+                                    <input type="hidden"
+                                           name="${_csrf.parameterName}"
+                                           value="${_csrf.token}"/>
                                     <a class="navbar-item droppeddown" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
                                         out</a>
                                 </div>
@@ -60,7 +62,21 @@
                             <a class="navbar-item" href="/">New</a>
                             <a class="navbar-item" href="/">You Should Watch</a>
                             <a class="navbar-item" href="/">About</a>
-                            <a class="navbar-item" href="/">Profile</a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link" href="/">Profile</a>
+                                <div class="navbar-dropdown is-boxed">
+                                    <a class="navbar-item droppeddown" href="/">Films you've liked</a>
+                                    <a class="navbar-item droppeddown" href="/">Bookmarks</a>
+
+                                    <hr class="navbar-divider"/>
+
+                                    <input type="hidden"
+                                           name="${_csrf.parameterName}"
+                                           value="${_csrf.token}"/>
+                                    <a class="navbar-item droppeddown" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
+                                        out</a>
+                                </div>
+                            </div>
 
                         </form>
                         <% } %>
