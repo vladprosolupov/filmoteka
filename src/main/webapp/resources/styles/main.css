@@ -20,6 +20,13 @@ a.navbar-item{
     width: 100%;
     justify-content: center;
 }
+.navbar-link {
+    color: white;
+}
+
+a.navbar-item.droppeddown{
+    color: black;
+}
 
 a.navbar-item:hover {
     color: rgba(0,0,0,0.5);

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<section class="hero background_for_login is-success is-fullheight">
+<section class="hero background_for_client is-success is-fullheight">
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
