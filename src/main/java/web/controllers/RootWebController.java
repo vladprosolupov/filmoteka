@@ -1,9 +1,10 @@
 package web.controllers;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import web.model.ClientJSON;
+import web.services.PasswordGenerator;
 
 /**
  * Created by Rostyk on 12.06.2017.
@@ -25,5 +26,6 @@ public class RootWebController {
     public String error() {
         return "403";
     }
+
 
 }

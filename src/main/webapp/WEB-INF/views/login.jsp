@@ -1,51 +1,67 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 <%@page session="true" %>
 <html>
 <head>
-
-    <title>Login Page</title>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/bulma.css"/>">
+    <title>Login</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
-<body onload='document.loginForm.username.focus();'>
+<t:header >
 
-<div id="login-box">
-
-
-    <c:if test="${not empty error}">
-        <div class="error">${error}</div>
-    </c:if>
-    <c:if test="${not empty msg}">
-        <div class="msg">${msg}</div>
-    </c:if>
-    <section class="hero background_for_login is-fullheight is-bold">
+<div id="login-box" onload='document.loginForm.username.focus();'>
+    <section class="hero background_for_client is-fullheight is-bold">
         <div class="hero-body">
-            <div class="container">
-                <div class="columns is-vcentered">
-                    <div class="column is-4 is-offset-4">
-                        <form name='loginForm'
-                              action="/j_spring_security_check" method='POST'>
-                            <h1 class="title white-text">Login</h1>
-                            <div class="box">
-
-                                <div class="label">User:</div>
-                                <input class="input" type='text' name='username'>
-
-                                <div class="label">Password:</div>
-                                <input class="input" type='password' name='password'/>
-                                <hr>
-                                <input name="submit" class="button is-primary" type="submit" value="Log In"/>
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-white">Login</h3>
+                    <form name='loginForm'
+                          action="/j_spring_security_check" method='POST'>
+                        <div class="box">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" type='text' name='username' placeholder="Username">
+                                    <span class="icon is-small is-left">
+                                          <i class="fa fa-user"></i>
+                                        </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" type='password' name='password' placeholder="Password"/>
+                                    <span class="icon is-small is-left">
+                                          <i class="fa fa-lock"></i>
+                                        </span>
+                                </p>
                             </div>
 
-                            <sec:csrfInput/>
-                        </form>
-                    </div>
+                            <c:if test="${param.success == false}">
+                                <div class="msg has-text-centered has-text-danger">Your login or password is
+                                    incorrect!
+                                </div>
+                            </c:if>
+                            <div class="columns">
+                                <div class="column has-text-centered has-text-info is-half">
+                                    <a href="#" style="text-decoration: none">Forgot password?</a>
+                                </div>
+
+                                <div class="column has-text-centered has-text-info is-half">
+                                    <a href="/register" style="text-decoration: none">Sign up!</a>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <input name="submit" class="button is-primary" type="submit" value="Log In"/>
+                        </div>
+
+                        <sec:csrfInput/>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-</body>
+</t:header>
 </html>
