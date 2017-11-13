@@ -1,5 +1,6 @@
 package web.services;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class AddressService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    public AddressDb getAddressById(int idAddress) {
+    public AddressDb getAddressById(int idAddress) throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         AddressDb addressDb = (AddressDb) session.createQuery("from AddressDb where id = " + idAddress);
         return addressDb;

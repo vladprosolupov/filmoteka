@@ -7,7 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 public class PasswordGenerator {
 
-    public static String hashPassword(String password){
+    public static String hashPassword(String password) {
+        if (password == null || password.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
