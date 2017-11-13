@@ -25,12 +25,12 @@
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link" href="/admin/">Admin Panel</a>
                                 <div class="navbar-dropdown is-boxed">
-                                    <a class="navbar-item droppeddown" href="/admin/films">Films</a>
-                                    <a class="navbar-item droppeddown" href="/admin/actors">Actors</a>
-                                    <a class="navbar-item droppeddown" href="/admin/directors">Directors</a>
-                                    <a class="navbar-item droppeddown" href="/admin/categories">Categories</a>
-                                    <a class="navbar-item droppeddown" href="/admin/networks">Networks</a>
-                                    <a class="navbar-item droppeddown" href="/admin/studios">Studios</a>
+                                    <a class="navbar-item" href="/admin/films">Films</a>
+                                    <a class="navbar-item" href="/admin/actors">Actors</a>
+                                    <a class="navbar-item" href="/admin/directors">Directors</a>
+                                    <a class="navbar-item" href="/admin/categories">Categories</a>
+                                    <a class="navbar-item" href="/admin/networks">Networks</a>
+                                    <a class="navbar-item" href="/admin/studios">Studios</a>
 
                                     <hr class="navbar-divider"/>
 
@@ -65,8 +65,8 @@
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link" href="/">Profile</a>
                                 <div class="navbar-dropdown is-boxed">
-                                    <a class="navbar-item droppeddown" href="/">Films you've liked</a>
-                                    <a class="navbar-item droppeddown" href="/">Bookmarks</a>
+                                    <a class="navbar-item" href="/">Films you've liked</a>
+                                    <a class="navbar-item" href="/">Bookmarks</a>
 
                                     <hr class="navbar-divider"/>
 

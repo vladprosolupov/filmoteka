@@ -15,7 +15,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
-<section class="hero background_for_login is-fullheight is-bold white-text">
+<section class="hero background_for_admin is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
             <nav class="breadcrumb is-centered">

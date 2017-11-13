@@ -1,7 +1,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("bulma.css");
 
-.background_for_login{
+.background_for_admin{
     background-image: linear-gradient(120deg, #4d674c 0%, #7a765d 50%, #8e5f59 100%);
 }
 
@@ -24,8 +24,19 @@ a.navbar-item{
     color: white;
 }
 
-a.navbar-item.droppeddown{
-    color: black;
+a.navbar-link:hover {
+    background-color: transparent !important;
+    color: rgba(0,0,0,0.5);
+}
+
+a.navbar-link::after {
+    border: 1px solid rgba(0,0,0,0.5);
+    border-top-width: 0px;
+    border-right-width: 0px;
+}
+
+a.navbar-link {
+    background-color: transparent !important;
 }
 
 a.navbar-item:hover {
@@ -68,6 +79,14 @@ a.navbar-item:hover {
     color:white;
 }
 
+a.navbar-link:hover {
+    background-color: transparent;
+}
+
+div.navbar-dropdown.is-boxed {
+    background-color: rgba(0,0,0,0.2);
+}
+
 .table th:first-child{
     border-top-left-radius: 15px;
 }
@@ -87,9 +106,9 @@ a.navbar-item:hover {
     border: 1px solid rgba(0,0,0,0);
 }
 
-.hero-head{
-    box-shadow: 0 1px 0 rgb(255, 255, 255);
-}
+/*.hero-head{*/
+    /*box-shadow: 0 1px 0 rgb(255, 255, 255);*/
+/*}*/
 
 .spinner {
     width: 40px;
