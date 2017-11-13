@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.FilmJSON;
+import web.model.FilmJSONIndex;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,6 +58,12 @@ public class FilmService {
     public List<FilmDb> getAllFilms(){
         Session session = sessionFactory.getCurrentSession();
         List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
+        return listOfFilms;
+    }
+
+    public List<FilmJSONIndex> getAllFilmsForIndex(){
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONIndex> listOfFilms = session.createQuery("").list();
         return listOfFilms;
     }
 
@@ -144,4 +151,5 @@ public class FilmService {
 
         return filmDb;
     }
+
 }

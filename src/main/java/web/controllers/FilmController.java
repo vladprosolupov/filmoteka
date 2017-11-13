@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.model.FilmJSON;
+import web.model.FilmJSONIndex;
 import web.services.*;
 
 import java.util.List;
@@ -39,6 +40,12 @@ public class FilmController {
     public @ResponseBody
     List<FilmDb> getAllFilms() {
         return filmService.getAllFilms();
+    }
+
+    @RequestMapping(value = "/allForIndex", method = RequestMethod.GET)
+    public @ResponseBody
+    List<FilmJSONIndex> getAllFilmsForIndex(){
+        return filmService.getAllFilmsForIndex();
     }
 
     @PreAuthorize("hasAuthority('admin')")
