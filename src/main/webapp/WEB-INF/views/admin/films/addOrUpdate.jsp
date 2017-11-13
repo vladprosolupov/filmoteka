@@ -316,9 +316,9 @@
                             </thead>
                             <tbody class="networks">
                             <c:forEach items="${film.filmNetworks}" var="network">
-                                <tr data-network="${network.id}">
-                                    <td>${network.networkByIdNetwork.networkName}</td>
-                                    <td>${network.link}</td>
+                                <tr class="network">
+                                    <td data-network="${network.networkByIdNetwork.id}">${network.networkByIdNetwork.networkName}</td>
+                                    <td data-networkLink>${network.link}</td>
                                     <td>
                                         <button type="button" class="deleteButton button is-danger">Delete</button>
                                     </td>
