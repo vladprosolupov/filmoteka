@@ -84,6 +84,8 @@
                 </nav>
             </div>
         </div>
-        <jsp:doBody/>
+        <div class="hero-body body">
+            <jsp:doBody/>
+        </div>
     </section>
 </body>

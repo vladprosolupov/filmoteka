@@ -13,12 +13,26 @@
     color: white;
 }
 
+body {
+    background-color: grey;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: auto;
+    display: block;
+    overflow: hidden;
+}
+
 a.navbar-item{
     color: white;
 }
 .navbar {
     width: 100%;
     justify-content: center;
+    margin-bottom: 0px;
 }
 .navbar-link {
     color: white;
@@ -84,7 +98,7 @@ a.navbar-link:hover {
 }
 
 div.navbar-dropdown.is-boxed {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(72,72,72,0.98);
 }
 
 .table th:first-child{
@@ -106,9 +120,10 @@ div.navbar-dropdown.is-boxed {
     border: 1px solid rgba(0,0,0,0);
 }
 
-/*.hero-head{*/
-    /*box-shadow: 0 1px 0 rgb(255, 255, 255);*/
-/*}*/
+.hero-body.body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
 
 .spinner {
     width: 40px;
