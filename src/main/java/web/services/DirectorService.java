@@ -26,17 +26,26 @@ public class DirectorService {
     private CountryService countryService;
 
     public DirectorDb getDirectorWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         DirectorDb directorDb = (DirectorDb) session.createQuery("from DirectorDb d where d.id=" + id).list().get(0);
         return directorDb;
     }
 
     public void saveOrUpdate(DirectorDb directorDb) throws HibernateException {
+        if (directorDb == null) {
+            throw new IllegalArgumentException("DirectorDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(directorDb);
     }
 
     public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from DirectorDb d where d.id=" + id).executeUpdate();
     }
@@ -48,6 +57,9 @@ public class DirectorService {
     }
 
     public DirectorDb convertToDirectorDb(DirectorJSON directorJSON) throws ParsingJsonToDaoException {
+        if (directorJSON == null) {
+            throw new IllegalArgumentException("DirectorJSON should not be null");
+        }
         DirectorDb directorDb = new DirectorDb();
         directorDb.setFirstName(directorJSON.getFirstName());
         directorDb.setId(directorJSON.getId());

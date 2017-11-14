@@ -63,21 +63,33 @@ public class FilmService {
     }
 
     public FilmDb getFilmWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         return (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
     }
 
     public void saveOrUpdate(FilmDb filmToSave) throws HibernateException {
+        if (filmToSave == null) {
+            throw new IllegalArgumentException("FilmToSave should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(filmToSave);
     }
 
     public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from FilmDb f where f.id=" + id).executeUpdate();
     }
 
     public FilmDb convert(FilmJSON filmJSON) throws ParsingJsonToDaoException, ParseException {
+        if (filmJSON == null) {
+            throw new IllegalArgumentException("FilmJSON shouuld not be null");
+        }
         FilmDb filmDb = new FilmDb();
         filmDb.setId(filmJSON.getId());
         filmDb.setAge(filmJSON.getAge());
@@ -114,9 +126,6 @@ public class FilmService {
 
         Set<LinkToNetworkDb> setOfLinkToNetworks =
                 linkToNetworkService.createSetOfLinkToNetwork(filmJSON.getNetworks());
-//        for (String s: filmJSON.getNetworks()) {
-//            setOfLinkToNetworks.add(linkToNetworkService.getLinkWithId(s));
-//        }
         filmDb.setFilmNetworks(setOfLinkToNetworks);
 
         Set<StudioDb> setOfStudios = new HashSet<>();

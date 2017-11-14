@@ -30,17 +30,26 @@ public class ActorService {
     private CountryService countryService;
 
     public ActorDb getActorWithId(int id) throws HibernateException, IndexOutOfBoundsException {
+        if (id < 0) {
+            throw new IllegalArgumentException("Id should not be smaller than 0");
+        }
         Session session = sessionFactory.getCurrentSession();
         ActorDb actorDb = (ActorDb) session.createQuery("from ActorDb a where a.id=" + id).list().get(0);
         return actorDb;
     }
 
     public void saveOrUpdate(ActorDb actorDb) throws HibernateException {
+        if (actorDb == null) {
+            throw new IllegalArgumentException("ActorDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(actorDb);
     }
 
     public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from ActorDb a where a.id=" + id).executeUpdate();
     }
@@ -53,6 +62,9 @@ public class ActorService {
     }
 
     public ActorDb convertToActorDb(ActorJSON actorJSON) throws ParsingJsonToDaoException, ParseException {
+        if (actorJSON == null) {
+            throw new IllegalArgumentException("ActorJSON should not be null");
+        }
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date parsed = format.parse(actorJSON.getBirthdate());

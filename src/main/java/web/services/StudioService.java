@@ -23,17 +23,26 @@ public class StudioService {
     private SessionFactory sessionFactory;
 
     public StudioDb getStudioWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
         return studioDb;
     }
 
     public void saveOrUpdateStudio(StudioDb studioDb) throws HibernateException {
+        if (studioDb == null) {
+            throw new IllegalArgumentException("StudioDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(studioDb);
     }
 
     public void deleteStudio(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
     }
@@ -45,6 +54,9 @@ public class StudioService {
     }
 
     public StudioDb convertToStudioDb(StudioJSON studioJSON) throws ParsingJsonToDaoException {
+        if (studioJSON == null) {
+            throw new IllegalArgumentException("StudioJSON should not be null");
+        }
         StudioDb studioDb = new StudioDb();
         studioDb.setId(studioJSON.getId());
         studioDb.setStudioName(studioJSON.getStudioName());

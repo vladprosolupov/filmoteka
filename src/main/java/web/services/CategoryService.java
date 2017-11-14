@@ -29,22 +29,34 @@ public class CategoryService {
     }
 
     public CategoryDb getCategoryWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         CategoryDb categoryDb = (CategoryDb) session.createQuery("from CategoryDb c where c.id=" + id).list().get(0);
         return categoryDb;
     }
 
     public void saveOrUpdate(CategoryDb categoryDb) throws HibernateException {
+        if (categoryDb == null) {
+            throw new IllegalArgumentException("CategoryDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(categoryDb);
     }
 
     public void deleteCategory(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from CategoryDb c where c.id=" + id).executeUpdate();
     }
 
     public CategoryDb convertToCategoryDb(CategoryJSON categoryJSON) throws ParsingJsonToDaoException {
+        if (categoryJSON == null) {
+            throw new IllegalArgumentException("CategoryJSON should not be null");
+        }
         CategoryDb categoryDb = new CategoryDb();
         categoryDb.setId(categoryJSON.getId());
         categoryDb.setName(categoryJSON.getName());

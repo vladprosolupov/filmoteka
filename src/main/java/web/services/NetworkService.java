@@ -23,6 +23,9 @@ public class NetworkService {
     private SessionFactory sessionFactory;
 
     public NetworkDb getNetworkWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         NetworkDb networkDb =
                 (NetworkDb) session.createQuery("from NetworkDb n where n.id=" + id).list().get(0);
@@ -30,11 +33,17 @@ public class NetworkService {
     }
 
     public void saveOrUpdate(NetworkDb networkDb) throws HibernateException {
+        if (networkDb == null) {
+            throw new IllegalArgumentException("NetworkDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(networkDb);
     }
 
     public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from NetworkDb n where n.id=" + id).executeUpdate();
     }
@@ -46,6 +55,9 @@ public class NetworkService {
     }
 
     public NetworkDb convertToNetworkDb(NetworkJSON networkJSON) throws ParsingJsonToDaoException {
+        if (networkJSON == null) {
+            throw new IllegalArgumentException("NetworkJSON should not be null");
+        }
         NetworkDb networkDb = new NetworkDb();
         networkDb.setNetworkLogo(networkJSON.getNetworkLogo());
         networkDb.setId(networkJSON.getId());

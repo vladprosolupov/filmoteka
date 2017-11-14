@@ -25,12 +25,18 @@ public class AwardService {
     private FilmService filmService;
 
     public AwardDb getAwardWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if(id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         AwardDb awardDb = (AwardDb) session.createQuery("from AwardDb a where a.id=" + id).list().get(0);
         return awardDb;
     }
 
     public List<AwardDb> getAwardsWithFilmId(int id) throws HibernateException {
+        if(id < 0) {
+            throw new IllegalArgumentException("Id should not be smaller than 0");
+        }
         List<AwardDb> awardDbList = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         awardDbList = session.createQuery("from AwardDb a where a.filmByIdFilm=" + id).list();
@@ -38,11 +44,17 @@ public class AwardService {
     }
 
     public void saveOrUpdateAward(AwardDb awardDb) throws HibernateException {
+        if(awardDb == null) {
+            throw new IllegalArgumentException("AwardDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(awardDb);
     }
 
     public void deleteAward(String id) throws HibernateException {
+        if(id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from AwardDb a where a.id=" + id).executeUpdate();
     }
@@ -54,6 +66,9 @@ public class AwardService {
     }
 
     public Set<AwardDb> createSetOfAwards(Map<String, Integer> awards) throws ParsingJsonToDaoException {
+        if(awards == null) {
+            throw new IllegalArgumentException("Awards should not be null");
+        }
         Set<AwardDb> awardDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : awards.entrySet()) {
             AwardDb awardDb = new AwardDb();
@@ -65,6 +80,12 @@ public class AwardService {
     }
 
     public void checkForAwards(int filmId, Set<AwardDb> awardDbSet) throws HibernateException {
+        if(filmId < 0) {
+            throw new IllegalArgumentException("FilmId should not be null");
+        }
+        if(awardDbSet == null) {
+            throw new IllegalArgumentException("AwardDbSer should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from AwardDb a where a.filmByIdFilm=" + filmId).executeUpdate();
         for (AwardDb a : awardDbSet) {

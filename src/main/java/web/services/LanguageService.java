@@ -27,6 +27,9 @@ public class LanguageService {
     }
 
     public LanguageDb getLanguageWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if(id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         LanguageDb languageDb = (LanguageDb) session.createQuery("from  LanguageDb l where l.id =" + id).list().get(0);
         return languageDb;

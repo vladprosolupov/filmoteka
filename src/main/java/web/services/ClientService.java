@@ -28,11 +28,17 @@ public class ClientService {
     private AddressService addressService;
 
     public void saveOrUpdate(ClientDb clientDb) throws HibernateException {
+        if (clientDb == null) {
+            throw new IllegalArgumentException("ClientDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(clientDb);
     }
 
     public ClientDb getClientByLogin(String login) throws HibernateException, IndexOutOfBoundsException {
+        if (login == null || login.isEmpty()) {
+            throw new IllegalArgumentException("Login should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login + "'").list().get(0);
         return client;
@@ -45,11 +51,18 @@ public class ClientService {
     }
 
     public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
     }
 
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
+        if (clientJSON == null) {
+            throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
         ClientDb clientDb = new ClientDb();
 
         clientDb.setFirstName(clientJSON.getFirstName());

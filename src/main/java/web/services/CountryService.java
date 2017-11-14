@@ -21,17 +21,26 @@ public class CountryService {
     SessionFactory sessionFactory;
 
     public CountryDb getCountryWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.id=" + id).list().get(0);
         return countryDb;
     }
 
     public void saveOrUpdateCountry(CountryDb countryDb) throws HibernateException {
+        if (countryDb == null) {
+            throw new IllegalArgumentException("CountryDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(countryDb);
     }
 
     public void deleteCountry(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
     }

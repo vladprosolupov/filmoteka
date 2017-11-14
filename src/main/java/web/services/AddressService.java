@@ -16,6 +16,9 @@ public class AddressService {
     private SessionFactory sessionFactory;
 
     public AddressDb getAddressById(int idAddress) throws HibernateException {
+        if (idAddress < 0) {
+            throw new IllegalArgumentException("IdAddress should not be smaller than 0");
+        }
         Session session = sessionFactory.getCurrentSession();
         AddressDb addressDb = (AddressDb) session.createQuery("from AddressDb where id = " + idAddress);
         return addressDb;
