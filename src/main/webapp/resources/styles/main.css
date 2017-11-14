@@ -13,6 +13,64 @@
     color: white;
 }
 
+.films{
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16%;
+    grid-gap: 5%;
+}
+
+section.info-tiles{
+    margin-top: 5%;
+}
+
+div.film{
+    cursor: pointer;
+}
+
+figure.effect-ruby p {
+    position: absolute;
+    display: table;
+    right: 2%;
+    top: 50%;
+    height: 100%;
+    text-align: center;
+    margin: 1em 0 0;
+    padding: 3em;
+    border: 1px solid #fff;
+    opacity: 0;
+    color: white;
+    background-color: rgba(0,0,0,0.4);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,20px,0) scale(1.1);
+    transform: translate3d(0,20px,0) scale(1.1);
+}
+figure.effect-ruby span{
+    display: table-cell;
+    vertical-align: middle;
+}
+div.film:hover div.card-content{
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+div.film:hover img{
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+div.film:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0) scale(1);
+    transform: translate3d(0,0,0) scale(1);
+}
+
 #login-box {
     display: flex;
     align-items: center;
