@@ -22,6 +22,13 @@ public class RootWebController {
         return "login";
     }
 
+    @RequestMapping(value = "/register")
+    public ModelAndView register() {
+        ModelAndView model = new ModelAndView("register");
+        model.addObject("client", new ClientJSON());
+        return model;
+    }
+
     @RequestMapping(value = "/403")
     public String error() {
         return "403";

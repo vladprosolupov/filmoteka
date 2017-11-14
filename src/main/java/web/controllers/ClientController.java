@@ -19,13 +19,6 @@ public class ClientController {
     @Autowired(required = true)
     private ClientService clientService;
 
-    @RequestMapping(value = "/register")
-    public ModelAndView showRegisterForm() {
-        ModelAndView model = new ModelAndView("register");
-        model.addObject("client", new ClientJSON());
-        return model;
-    }
-
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addClient(@ModelAttribute("client") ClientJSON clientJSON) {
