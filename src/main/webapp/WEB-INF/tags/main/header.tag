@@ -84,7 +84,7 @@
                 </nav>
             </div>
         </div>
-        <div class="hero-body body">
+        <div class="hero-body body background_for_client">
             <jsp:doBody/>
         </div>
     </section>

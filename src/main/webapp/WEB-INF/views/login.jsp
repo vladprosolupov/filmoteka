@@ -10,7 +10,7 @@
 <t:header >
 
 <div id="login-box" onload='document.loginForm.username.focus();'>
-    <section class="hero background_for_client is-fullheight is-bold">
+    <section class="hero is-fullheight is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">

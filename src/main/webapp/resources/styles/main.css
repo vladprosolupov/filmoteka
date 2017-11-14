@@ -13,17 +13,20 @@
     color: white;
 }
 
-body {
-    background-color: grey;
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    height: auto;
-    display: block;
-    overflow: hidden;
+#login-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#register-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.hero-body.body.background_for_client{
+    align-items: stretch !important;
 }
 
 a.navbar-item{
@@ -124,6 +127,7 @@ div.navbar-dropdown.is-boxed {
 .hero-body.body {
     padding-top: 0px;
     padding-bottom: 0px;
+    justify-content: center;
 }
 
 .spinner {
