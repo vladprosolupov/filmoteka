@@ -1,11 +1,13 @@
 package web.services;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.StudioDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.StudioJSON;
 
 import java.util.List;
@@ -20,29 +22,41 @@ public class StudioService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    public StudioDb getStudioWithId(String id){
+    public StudioDb getStudioWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
         return studioDb;
     }
 
-    public void saveOrUpdateStudio(StudioDb studioDb){
+    public void saveOrUpdateStudio(StudioDb studioDb) throws HibernateException {
+        if (studioDb == null) {
+            throw new IllegalArgumentException("StudioDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(studioDb);
     }
 
-    public void deleteStudio(String id){
+    public void deleteStudio(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
     }
 
-    public List<StudioDb> getAll(){
+    public List<StudioDb> getAll() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         List<StudioDb> result = session.createQuery("from StudioDb s order by s.studioName").list();
         return result;
     }
 
-    public StudioDb convertToStudioDb(StudioJSON studioJSON){
+    public StudioDb convertToStudioDb(StudioJSON studioJSON) throws ParsingJsonToDaoException {
+        if (studioJSON == null) {
+            throw new IllegalArgumentException("StudioJSON should not be null");
+        }
         StudioDb studioDb = new StudioDb();
         studioDb.setId(studioJSON.getId());
         studioDb.setStudioName(studioJSON.getStudioName());

@@ -224,6 +224,7 @@ public class FilmDb {
     public void setLanguageByIdLanguage(LanguageDb languageByIdLanguage) {
         this.languageByIdLanguage = languageByIdLanguage;
     }
+
     @OneToMany(mappedBy = "filmByIdFilm")
     public Set<FilmActorDb> getFilmActorsById() {
         return filmActorsById;
@@ -261,4 +262,29 @@ public class FilmDb {
         this.filmCountries = filmCountries;
     }
 
+    @Override
+    public String toString() {
+        return "FilmDb{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", lenght=" + lenght +
+                ", description='" + description + '\'' +
+                ", slogan='" + slogan + '\'' +
+                ", rating=" + rating +
+                ", age=" + age +
+                ", budget='" + budget + '\'' +
+                ", cover='" + cover + '\'' +
+                ", filmCategories=" + filmCategories +
+                ", filmStudios=" + filmStudios +
+                ", filmNetworks=" + filmNetworks +
+                ", filmDirectors=" + filmDirectors +
+                ", awardsById=" + awardsById +
+                ", languageByIdLanguage=" + languageByIdLanguage +
+                ", filmActorsById=" + filmActorsById +
+                ", screenshotsById=" + screenshotsById +
+                ", trailersById=" + trailersById +
+                ", filmCountries=" + filmCountries +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package web.services;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.dao.ClientDb;
 import org.hibernate.Session;
 import web.enums.ClientRole;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
 
 import java.sql.Timestamp;
@@ -25,29 +27,42 @@ public class ClientService {
     @Autowired(required = true)
     private AddressService addressService;
 
-    public void saveOrUpdate(ClientDb clientDb){
+    public void saveOrUpdate(ClientDb clientDb) throws HibernateException {
+        if (clientDb == null) {
+            throw new IllegalArgumentException("ClientDb should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(clientDb);
     }
 
-    public ClientDb getClientByLogin(String login){
+    public ClientDb getClientByLogin(String login) throws HibernateException, IndexOutOfBoundsException {
+        if (login == null || login.isEmpty()) {
+            throw new IllegalArgumentException("Login should not be null");
+        }
         Session session = sessionFactory.getCurrentSession();
-        ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login+"'").list().get(0);
+        ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login + "'").list().get(0);
         return client;
     }
 
-    public List<ClientDb> getAll(){
+    public List<ClientDb> getAll() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         List<ClientDb> result = session.createQuery("from ClientDb").list();
         return result;
     }
 
-    public void delete(String id){
+    public void delete(String id) throws HibernateException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
     }
 
-    public ClientDb convertToClientDb(ClientJSON clientJSON) {
+    public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
+        if (clientJSON == null) {
+            throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
         ClientDb clientDb = new ClientDb();
 
         clientDb.setFirstName(clientJSON.getFirstName());

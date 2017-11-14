@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.DirectorDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.DirectorJSON;
 import web.services.DirectorService;
 
@@ -24,7 +25,11 @@ public class DirectorController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addOrUpdate(@RequestBody DirectorJSON directorJSON){
-        directorService.saveOrUpdate(directorService.convertToDirectorDb(directorJSON));
+        try {
+            directorService.saveOrUpdate(directorService.convertToDirectorDb(directorJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        }
         return "OK";
     }
 

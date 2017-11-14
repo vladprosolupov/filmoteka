@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
 import web.model.FilmJSONIndex;
 import web.services.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -52,7 +54,14 @@ public class FilmController {
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
      String saveOrUpdate(@RequestBody FilmJSON filmToSave) {
-        FilmDb filmDb = filmService.convert(filmToSave);
+        FilmDb filmDb = null;
+        try {
+            filmDb = filmService.convert(filmToSave);
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         filmService.saveOrUpdate(filmDb);
         awardService.checkForAwards(filmDb.getId(), filmDb.getAwardsById());
         filmActorService.checkForFilmActors(filmDb.getId(), filmDb.getFilmActorsById());

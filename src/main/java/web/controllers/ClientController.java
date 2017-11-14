@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
 import web.services.ClientService;
 
@@ -22,7 +23,11 @@ public class ClientController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addClient(@ModelAttribute("client") ClientJSON clientJSON) {
-        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+        try {
+            clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        }
 
         return "OK";
     }
