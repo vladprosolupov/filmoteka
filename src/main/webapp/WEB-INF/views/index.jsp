@@ -6,9 +6,18 @@
 <head>
     <title>Filmoteka</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
+    <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
+    <script src="<c:url value="/resources/js/vue.js"/>"></script>
+    <script src="<c:url value="/resources/js/main.js"/>"></script>
 </head>
 <t:header>
-    <div class="container">
+    <div id="loading" class="is-centered">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    <div class="container" style="display: none">
         <div class="columns">
             <div class="column is-2">
                 <aside class="menu ">
@@ -60,8 +69,11 @@
                     </div>
                 </section>
                 <section class="info-tiles">
-
-
+                    <div class="films">
+                        <div v-for="film in films">
+                            <div v-for="value in film">{{value}}</div>
+                        </div>
+                    </div>
                 </section>
                 <div class="columns">
                 </div>

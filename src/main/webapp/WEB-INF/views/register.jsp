@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
-    <script src="<c:url value="/resources/js/user.js"/>"></script>
+    <script src="<c:url value="/resources/js/registration.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
 
     <!-- Including CSRF token to the header -->
@@ -27,7 +27,7 @@
                         <h3 class="title has-text-white">Registration</h3>
                         <p class="subtitle has-text-white">Please register to proceed.</p>
                         <div class="box">
-                            <form:form action="save" method="post" class="clientForm" modelAttribute="client">
+                            <form:form action="/client/save" method="post" class="clientForm" modelAttribute="client">
                                 <div class="field">
                                     <div class="control has-icons-left">
                                         <form:input class="input is-medium" type="text" name="firstName"
