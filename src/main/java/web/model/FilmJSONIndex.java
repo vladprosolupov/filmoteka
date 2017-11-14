@@ -1,14 +1,13 @@
 package web.model;
 
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 public class FilmJSONIndex {
 
-    private String releaseDate;
-    private List<String> categories;
-    private List<String> screenshots;
+    private Date releaseDate;
     private String title;
+    private String cover;
 
     public String getTitle() {
         return title;
@@ -18,30 +17,24 @@ public class FilmJSONIndex {
         this.title = title;
     }
 
-    public List<String> getScreenshots() {
-
-        return screenshots;
-    }
-
-    public void setScreenshots(List<String> screenshots) {
-        this.screenshots = screenshots;
-    }
-
-    public List<String> getCategories() {
-
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
-    public String getReleaseDate() {
-
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmJSONIndex{" +
+                "releaseDate=" + releaseDate +
+                ", title='" + title + '\'' +
+                ", cover='" + cover + '\'' +
+                '}';
     }
 }

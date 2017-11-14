@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.CategoryJSON;
 import web.services.CategoryService;
 
@@ -23,7 +24,11 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addOrUpdateCategory(@RequestBody CategoryJSON categoryJSON){
-        categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
+        try {
+            categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        }
         return "OK";
     }
 

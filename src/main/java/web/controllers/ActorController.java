@@ -5,9 +5,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ActorDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.ActorJSON;
 import web.services.ActorService;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -23,7 +25,13 @@ public class ActorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addActor(@RequestBody ActorJSON actorJSON){
-        actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
+        try {
+            actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return "OK";
     }
 

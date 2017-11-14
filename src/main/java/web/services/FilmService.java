@@ -9,13 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
+import web.model.FilmJSONIndex;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Rostyk on 12.06.2017.
@@ -84,6 +82,12 @@ public class FilmService {
         }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from FilmDb f where f.id=" + id).executeUpdate();
+    }
+
+    public List<FilmJSONIndex> getAllFilmsForIndex() throws HibernateException {
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover from FilmDb F").list();
+        return list;
     }
 
     public FilmDb convert(FilmJSON filmJSON) throws ParsingJsonToDaoException, ParseException {

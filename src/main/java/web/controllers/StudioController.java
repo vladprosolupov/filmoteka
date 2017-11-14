@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.StudioDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.StudioJSON;
 import web.services.StudioService;
 
@@ -24,7 +25,11 @@ public class StudioController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody String addOrUpdateStudio(@RequestBody StudioJSON studioJSON){
-        studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
+        try {
+            studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        }
         return "OK";
     }
 

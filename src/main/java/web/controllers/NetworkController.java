@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.NetworkDb;
+import web.exceptions.ParsingJsonToDaoException;
 import web.model.NetworkJSON;
 import web.services.NetworkService;
 
@@ -24,7 +25,11 @@ public class NetworkController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addOrUpdate(@RequestBody NetworkJSON networkJSON){
-        networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
+        try {
+            networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
+        } catch (ParsingJsonToDaoException e) {
+            e.printStackTrace();
+        }
         return "OK";
     }
 
