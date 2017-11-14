@@ -13,10 +13,11 @@
     color: white;
 }
 
-.films{
+section.info-tiles .films{
     display: grid;
     grid-template-columns: 16% 16% 16% 16% 16%;
-    grid-gap: 5%;
+    grid-column-gap: 5%;
+    grid-row-gap: 5vh;
 }
 
 section.info-tiles{
@@ -25,14 +26,15 @@ section.info-tiles{
 
 div.film{
     cursor: pointer;
+    position: relative;
 }
 
 figure.effect-ruby p {
     position: absolute;
     display: table;
-    right: 2%;
-    top: 50%;
-    height: 100%;
+    top: 0;
+    height: 300px;
+    width: 100%;
     text-align: center;
     margin: 1em 0 0;
     padding: 3em;
