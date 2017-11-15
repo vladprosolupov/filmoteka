@@ -41,7 +41,7 @@
                                 </div>
                             </c:if>
                             <div class="columns">
-                                <div class="column has-text-centered has-text-info is-half">
+                                <div class="column has-text-centered has-text-info is-half ">
                                     <a href="#" style="text-decoration: none">Forgot password?</a>
                                 </div>
 
@@ -51,8 +51,7 @@
                             </div>
 
                             <hr>
-
-                            <input name="submit" class="button is-primary" type="submit" value="Log In"/>
+                            <input name="submit" class="button is-primary is-medium" type="submit" value="Log In"/>
                         </div>
 
                         <sec:csrfInput/>

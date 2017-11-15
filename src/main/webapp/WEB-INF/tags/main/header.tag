@@ -87,7 +87,10 @@
         <div class="hero-body body background_for_client">
             <jsp:doBody/>
         </div>
+
     </section>
+
+
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
@@ -99,4 +102,5 @@
             </div>
         </div>
     </footer>
+
 </body>

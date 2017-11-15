@@ -285,11 +285,11 @@ div.navbar-dropdown.is-boxed {
 }
 
 a {
-    color: rgba(255, 255, 255, 1);
+    /*color: rgba(255, 255, 255, 1);*/
+    color: #4e4e4e;
     cursor: pointer;
     text-decoration: none;
 }
-
 
 .pagination.is-centered{
     margin-top: 10% ;
@@ -306,7 +306,6 @@ a {
     background-color: rgba(42, 124, 255, 0);
     padding: 1.5rem 1.5rem 1.5rem;
 }
-
 
 .hero-head{
     margin-bottom: 5%;
