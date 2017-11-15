@@ -88,4 +88,15 @@
             <jsp:doBody/>
         </div>
     </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Filmoteka</strong> by German Varanytsya, Vladyslav Prosolupov, Rostyslav Tryndiak.
+                    The website content
+                    is licensed.
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>

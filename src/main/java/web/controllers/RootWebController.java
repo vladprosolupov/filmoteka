@@ -23,6 +23,13 @@ public class RootWebController {
         return "index";
     }
 
+    @RequestMapping(value = "/film")
+    public String film() {
+        log.info("film()");
+
+        return "film";
+    }
+
     @RequestMapping("/index")
     public RedirectView localRedirect() {
         RedirectView redirectView = new RedirectView();
