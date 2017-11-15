@@ -885,7 +885,7 @@
       <workItem from="1510577457250" duration="236000" />
       <workItem from="1510673451555" duration="1586000" />
       <workItem from="1510700729608" duration="1799000" />
-      <workItem from="1510755481964" duration="3409000" />
+      <workItem from="1510755481964" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fixes.">
       <created>1497711642544</created>
@@ -1020,11 +1020,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510759223400</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Index page Fixes&#10;footer added&#10;navigation buttons added">
+      <created>1510759229802</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1510759229802</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60055000" />
+    <option name="totallyTimeSpent" value="60060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
