@@ -6,11 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="Minor fixes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp" />
+    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/styles/main.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/styles/main.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -888,7 +885,7 @@
       <workItem from="1510577457250" duration="236000" />
       <workItem from="1510673451555" duration="1586000" />
       <workItem from="1510700729608" duration="1799000" />
-      <workItem from="1510755481964" duration="3374000" />
+      <workItem from="1510755481964" duration="3409000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fixes.">
       <created>1497711642544</created>
@@ -1016,11 +1013,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510518312371</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Index page Fixes&#10;footer added&#10;navigation buttons added">
+      <created>1510759223400</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1510759223400</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60020000" />
+    <option name="totallyTimeSpent" value="60055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -1101,7 +1105,8 @@
     <MESSAGE value="Json registration for user" />
     <MESSAGE value="main.css fixes" />
     <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="Index page Fixes&#10;footer added&#10;navigation buttons added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Index page Fixes&#10;footer added&#10;navigation buttons added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
