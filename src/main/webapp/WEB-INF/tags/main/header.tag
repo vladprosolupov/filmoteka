@@ -2,7 +2,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@tag description="Main header tag" pageEncoding="UTF-8" %>
 <%int hasAccess = 0; %>
-<security:authorize access="hasAnyAuthority('user')">
+<security:authorize access="hasAuthority('user')">
     <% hasAccess = 1; %>
 </security:authorize>
 <security:authorize access="hasAuthority('admin')">
@@ -14,7 +14,7 @@
         <div class="hero-head">
             <div class="container">
                 <nav class="is-centered">
-                        <% if (hasAccess == 2) {%>
+                        <% if (hasAccess == 2) { %>
                         <form class="navbar" id="logout_id" action="${logoutUrl}"
                               method="post">
 

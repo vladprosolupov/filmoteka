@@ -2,6 +2,7 @@ package web.dao;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -30,6 +31,7 @@ public class FilmDb {
     private Set<ScreenshotDb> screenshotsById;
     private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
+    private Collection<CommentRatingDb> commentRatingsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -260,6 +262,15 @@ public class FilmDb {
 
     public void setFilmCountries(Set<CountryDb> filmCountries) {
         this.filmCountries = filmCountries;
+    }
+
+    @OneToMany(mappedBy = "filmByIdFilm")
+    public Collection<CommentRatingDb> getCommentRatingsById() {
+        return commentRatingsById;
+    }
+
+    public void setCommentRatingsById(Collection<CommentRatingDb> commentRatingsById) {
+        this.commentRatingsById = commentRatingsById;
     }
 
     @Override
