@@ -90,15 +90,12 @@ div.hero-body.body.background_for_client{
 }
 
 a.navbar-item{
-    color: white;
+    color: #4e4e4e;
 }
 .navbar {
     width: 100%;
     justify-content: center;
     margin-bottom: 0px;
-}
-.navbar-link {
-    color: white;
 }
 
 a.navbar-link:hover {
@@ -117,8 +114,8 @@ a.navbar-link {
 }
 
 a.navbar-item:hover {
-    color: rgba(0,0,0,0.5);
-    background: none;
+    color: rgba(255, 255, 255, 1);
+    background: #4e4e4e;
     cursor: pointer;
 }
 
@@ -161,7 +158,8 @@ a.navbar-link:hover {
 }
 
 div.navbar-dropdown.is-boxed {
-    background-color: rgba(72,72,72,0.98);
+    /*background-color: rgba(72,72,72,0.98);*/
+    background-color: white);
     margin-top: -6%;
 }
 
@@ -258,8 +256,8 @@ div.navbar-dropdown.is-boxed {
 
 
 .navbar-dropdown a.navbar-item:hover {
-    background-color: whitesmoke;
-    color: #0a0a0a;
+    background-color: rgb(78, 78, 78);
+    color: white;
 }
 
 .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
@@ -268,10 +266,10 @@ div.navbar-dropdown.is-boxed {
 }
 
 .navbar-dropdown.is-boxed {
-    border-radius: 5px;
+   /* border-radius: 5px;*/
+    border-radius: 0px;
     border-top: none;
-    -webkit-box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.2), 0 0 0 1px rgba(10, 10, 10, 0);
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -292,10 +290,8 @@ a {
     text-decoration: none;
 }
 
-.pagination-link.is-current {
-    background-color: #4a4a4a;
-    border-color: #4a4a4a;
-    color: #fff;
+.navbar-item, .navbar-link{
+
 }
 
 .pagination.is-centered{
@@ -306,4 +302,10 @@ a {
 .footer {
     background-color: rgba(42, 124, 255, 0);
     padding: 1.5rem 1.5rem 1.5rem;
+}
+
+
+.hero-head{
+    margin-bottom: 5%;
+    background-color: white;
 }
