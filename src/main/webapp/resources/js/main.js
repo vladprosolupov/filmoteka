@@ -48,6 +48,9 @@ $(function () {
                 }
             }
         });
+    }else if(window.location.pathname.includes("/film/")){
+        hideLoading();
+
     }else {
         hideLoading();
     }

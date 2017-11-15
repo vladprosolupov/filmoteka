@@ -9,6 +9,58 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 
+<%int hasAccess = 0; %>
+<security:authorize access="hasAnyAuthority('user')">
+    <% hasAccess = 1; %>
+</security:authorize>
+<security:authorize access="hasAuthority('admin')">
+    <% hasAccess = 2; %>
+</security:authorize>
+
+<c:set var="comment">
+    <% if (hasAccess != 0) { %>
+    <article class="media">
+        <figure class="media-left">
+            <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="field">
+                <p class="control">
+                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+            </div>
+            <nav class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <a class="button is-dark">Submit</a>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input type="checkbox"> Press enter to submit
+                        </label>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </article>
+    <%} else {%>
+    <article class="media">
+        <div class="media-content">
+            <div class="field">
+                <p class="control">
+                    <span>Please login to write a comment</span>
+                    <a href="/login">Login</a>
+                </p>
+            </div>
+        </div>
+    </article>
+    <% } %>
+</c:set>
+
 <html>
 <head>
     <title>Filmoteka</title>
@@ -75,7 +127,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna
+                                        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam
+                                        finibus odio quis feugiat facilisis.
                                     </p>
                                 </div>
                             </div>
@@ -84,34 +138,7 @@
                     </div>
                 </section>
 
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="field">
-                            <p class="control">
-                                <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                            </p>
-                        </div>
-                        <nav class="level">
-                            <div class="level-left">
-                                <div class="level-item">
-                                    <a class="button is-dark">Submit</a>
-                                </div>
-                            </div>
-                            <div class="level-right">
-                                <div class="level-item">
-                                    <label class="checkbox">
-                                        <input type="checkbox"> Press enter to submit
-                                    </label>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </article>
+                ${comment}
 
             </div>
         </div>
