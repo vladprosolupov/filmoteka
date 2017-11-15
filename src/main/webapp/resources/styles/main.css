@@ -29,7 +29,7 @@ div.film{
     position: relative;
 }
 
-figure.effect-ruby p {
+figure.effect-ruby a {
     position: absolute;
     display: table;
     top: 0;
@@ -67,7 +67,7 @@ div.film:hover img{
     filter: blur(5px);
 }
 
-div.film:hover p {
+div.film:hover a {
     opacity: 1;
     -webkit-transform: translate3d(0,0,0) scale(1);
     transform: translate3d(0,0,0) scale(1);

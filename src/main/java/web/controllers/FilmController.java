@@ -1,5 +1,6 @@
 package web.controllers;
 
+import org.springframework.ui.Model;
 import web.dao.AwardDb;
 import web.dao.FilmDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,16 @@ public class FilmController {
     public @ResponseBody String delete(@PathVariable("id") String id){
         filmService.delete(id);
         return "OK";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String getFilm(@PathVariable("id") String id, Model model){
+        model.addAttribute("title", "kek");
+        try{
+            FilmDb film = filmService.getFilmWithId(id);
+        }catch (IndexOutOfBoundsException ex){
+            return "404";
+        }
+        return "film";
     }
 }
