@@ -88,4 +88,18 @@ public class FilmController {
         }
         return "film";
     }
+
+
+    @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    FilmDb getFilmInfo(@PathVariable("id") String id) {
+        FilmDb film = new FilmDb();
+        try{
+            film = filmService.getFilmWithId(id);
+        }catch (IndexOutOfBoundsException ex){
+            return null;
+        }
+        return film;
+
+    }
 }
