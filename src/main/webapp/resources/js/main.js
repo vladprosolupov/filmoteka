@@ -49,7 +49,21 @@ $(function () {
             }
         });
     }else if(window.location.pathname.includes("/film/")){
-        hideLoading();
+        var url = '/film/info/'+ window.location.href.slice(-1);
+        var film = new Vue({
+            el: '.info',
+            data:{
+                film: []
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.getJSON(url, function (data) {
+                    hideLoading();
+                    console.log(data);
+                    self.film = data;
+                });
+            }
+        });
 
     }else {
         hideLoading();

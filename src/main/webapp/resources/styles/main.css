@@ -314,9 +314,23 @@ a {
 
 .image.is-percentage {
     height: 400px;
-    width: 300px;
+    width: 350px;
 }
 
-.media{
-    margin:5%;
+/*.media{*/
+    /*margin:5%;*/
+/*}*/
+
+.hero-body {
+    padding: 0rem 1.5rem;
+}
+
+.subtitle{
+    color:white;
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    color: white;
+    font-weight: 400;
+    line-height: 1.125;
 }

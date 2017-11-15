@@ -113,7 +113,7 @@
                     </ul>
                 </aside>
             </div>
-            <div class="column is-9">
+            <div class="column is-9 info">
                 <section class="hero">
                     <div class="hero-body">
 
@@ -121,23 +121,36 @@
                         <article class="media">
                             <figure class="media-left">
                                 <p class="image is-percentage">
-                                    <img src="https://st.kp.yandex.net/images/film_big/838952.jpg">
+                                    <img v-bind:src='film.cover'>
                                 </p>
                             </figure>
                             <div class="media-content">
                                 <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna
-                                        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam
-                                        finibus odio quis feugiat facilisis.
-                                    </p>
+                                    <h3><b>{{film.title}}</b></h3>
+                                    <hr>
+                                    <p><h6>Rating: {{film.rating}}</h6></p>
+                                    <p><h6>Lenght: {{film.lenght}}</h6></p>
+                                    <p><h6>Date: {{film.releaseDate}}</h6></p>
+                                    <p><h6>Country: {{film.filmCountries}}</h6></p>
+                                    <p><h6>Genre: {{film.filmCategories}}</h6></p>
+                                    <p><h6>Budget: {{film.budget}}</h6></p>
+                                    <p><h6>Awards: {{film.awardsById}}</h6></p>
+                                    <p><h6>Actors: {{film.filmActorsById}}</h6></p>
+                                    <p><h6>Directors: {{film.filmDirectors}}</h6></p>
+                                    <p><h6>Studios: {{film.filmStudios}}</h6></p>
+                                    <p><h6>Language: {{film.languageByIdLanguage}}</h6></p>
                                 </div>
                             </div>
                         </article>
-
                     </div>
                 </section>
-
+                <div class="info">
+                    <br>
+                    <br>
+                    <h3 class="subtitle">Description:</h3>
+                    <p><h5>{{film.description}}</h5></p>
+                </div>
+                <hr>
                 ${comment}
 
             </div>
