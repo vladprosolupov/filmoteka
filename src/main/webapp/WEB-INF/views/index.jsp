@@ -55,18 +55,20 @@
                 </aside>
             </div>
             <div class="column is-9">
-                <section class="hero is-white">
-                    <div class="hero-body">
-                        <div class="container">
-                            <h1 class="title">
-                                You're Welcome
-                            </h1>
+                <%--<section class="hero">--%>
+                    <%--<div class="hero-body">--%>
+
+
+                        <%--<div class="container">--%>
+                            <%--<h1 class="title">--%>
+                                <%--You're Welcome--%>
+                            <%--</h1>--%>
                             <%--<h2 class="subtitle">--%>
                                 <%--I hope you are having a great day!--%>
                             <%--</h2>--%>
-                        </div>
-                    </div>
-                </section>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</section>--%>
 
                 <%--<div class="card">--%>
                     <%--<div class="card-image">--%>
@@ -88,6 +90,8 @@
                         <%--</div>--%>
                     <%--</div>--%>
                 <%--</div>--%>
+
+
 
                 <section class="info-tiles">
                     <div class="films">

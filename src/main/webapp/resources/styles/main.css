@@ -296,6 +296,12 @@ a {
     margin-bottom: 5%;
 }
 
+.pagination-link.is-current{
+    background-color: #4e4e4e;
+    border-color: #4e4e4e;
+    color: #fff;
+}
+
 .footer {
     background-color: rgba(42, 124, 255, 0);
     padding: 1.5rem 1.5rem 1.5rem;
@@ -305,4 +311,13 @@ a {
 .hero-head{
     margin-bottom: 5%;
     background-color: white;
+}
+
+.image.is-percentage {
+    height: 400px;
+    width: 300px;
+}
+
+.media{
+    margin:5%;
 }
