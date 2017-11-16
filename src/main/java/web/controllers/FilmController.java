@@ -47,14 +47,14 @@ public class FilmController {
 
     @RequestMapping(value = "/allForIndex", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getAllFilmsForIndex(){
+    List<FilmJSONIndex> getAllFilmsForIndex() {
         return filmService.getAllFilmsForIndex();
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-     String saveOrUpdate(@RequestBody FilmJSON filmToSave) {
+    String saveOrUpdate(@RequestBody FilmJSON filmToSave) {
         FilmDb filmDb = null;
         try {
             filmDb = filmService.convert(filmToSave);
@@ -73,19 +73,21 @@ public class FilmController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public @ResponseBody String delete(@PathVariable("id") String id){
+    public @ResponseBody
+    String delete(@PathVariable("id") String id) {
         filmService.delete(id);
         return "OK";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getFilm(@PathVariable("id") String id, Model model){
-        model.addAttribute("title", "kek");
-        try{
-            FilmDb film = filmService.getFilmWithId(id);
-        }catch (IndexOutOfBoundsException ex){
+    public String getFilm(@PathVariable("id") String id, Model model) {
+        FilmDb film = new FilmDb();
+        try {
+            film = filmService.getFilmWithId(id);
+        } catch (IndexOutOfBoundsException ex) {
             return "404";
         }
+        model.addAttribute("title", film.getTitle());
         return "film";
     }
 
@@ -94,9 +96,9 @@ public class FilmController {
     public @ResponseBody
     FilmDb getFilmInfo(@PathVariable("id") String id) {
         FilmDb film = new FilmDb();
-        try{
+        try {
             film = filmService.getFilmWithId(id);
-        }catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException ex) {
             return null;
         }
         return film;

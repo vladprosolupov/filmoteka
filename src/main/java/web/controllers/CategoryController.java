@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.CategoryJSON;
+import web.model.FilmJSONIndex;
 import web.services.CategoryService;
+import web.services.FilmCategoryService;
 
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    FilmCategoryService filmCategoryService;
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -39,6 +44,10 @@ public class CategoryController {
         return "OK";
     }
 
+    @RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
+    public @ResponseBody List<FilmJSONIndex> getFilmsForCategory(@PathVariable("id") String id){
+        return filmCategoryService.getAllFilmsForCategory(id);
+    }
 //    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
