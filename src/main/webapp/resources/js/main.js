@@ -32,6 +32,49 @@ var removeGetParametersFromPage = function (pageURL){
 
 
 $(function () {
+    $(document).click(function() {
+        $('.centered').removeClass("is-active");
+    });
+
+    $(".VueSearch").click(function(event) {
+        event.stopPropagation();
+    });
+    var search = new Vue({
+        el: '.VueSearch',
+        data: {
+            searchResult : [],
+            link : "/film/",
+            searchInput: ''
+        },
+        watch: {
+            searchInput: function (input) {
+                if(input) {
+                    var self = this;
+                    $.getJSON('/search/film/' + input, function (data) {
+                        self.searchResult = data;
+                        console.log(data);
+                        $('.centered').addClass("is-active");
+                    });
+                }else {
+                    $('.centered').removeClass("is-active");
+                }
+            }
+        },
+        methods: {
+            doSearch : function (input) {
+                //window.location.replace('http://localhost:8080/?s=' + input);
+                //todo search
+                alert("not working yet");
+            },
+            showDropdown: function () {
+                var self = this;
+                if(self.searchInput){
+                    $('.centered').addClass("is-active");
+                }
+            }
+        }
+    });
+
     if (window.location.pathname === "" || window.location.pathname === "/" || window.location.pathname === "/index" || window.location.pathname === null) {
         var category = getUrlParameter("c");
         removeGetParametersFromPage("/");

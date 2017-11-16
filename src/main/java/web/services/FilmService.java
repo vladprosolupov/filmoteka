@@ -96,7 +96,7 @@ public class FilmService {
 
     public List<FilmJSONSearch> getFilmsWithTitle(String title){
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%'").list();
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('"+ title +"', F.titleSearch)").list();
         return list;
     }
 

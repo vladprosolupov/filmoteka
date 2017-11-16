@@ -295,6 +295,10 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
+.centered{
+    align-items: center !important;
+    justify-content: center !important;
+}
 
 .pagination.is-centered{
     margin-top: 10% ;
