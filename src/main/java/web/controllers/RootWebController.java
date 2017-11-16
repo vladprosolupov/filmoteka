@@ -2,12 +2,19 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.client.support.HttpRequestWrapper;
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import web.model.ClientJSON;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Rostyk on 12.06.2017.
@@ -32,9 +39,14 @@ public class RootWebController {
     }
 
     @RequestMapping(value = "/login")
-    public String login() {
+    public String login(HttpServletRequest request) {
         log.info("login()");
 
+        String referrer = request.getHeader("Referer");
+        System.out.println("regerrer - " + referrer);
+        if(referrer!=null){
+            request.getSession().setAttribute("url_prior_login", referrer);
+        }
         return "login";
     }
 
