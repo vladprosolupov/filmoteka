@@ -58,6 +58,15 @@ public class ClientService {
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
     }
 
+    public ClientDb getClientById(String id) throws HibernateException, IndexOutOfBoundsException {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
+        Session session = sessionFactory.getCurrentSession();
+        ClientDb clientDb = (ClientDb) session.createQuery("from ClientDb c where c.id=" + id).list().get(0);
+        return clientDb;
+    }
+
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
         if (clientJSON == null) {
             throw new IllegalArgumentException("ClientJSON should not be null");
