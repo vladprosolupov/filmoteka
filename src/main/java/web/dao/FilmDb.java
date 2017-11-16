@@ -32,6 +32,7 @@ public class FilmDb {
     private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
     private Collection<CommentRatingDb> commentRatingsById;
+    private String titleSearch;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -132,6 +133,16 @@ public class FilmDb {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    @Basic
+    @Column(name = "title_search", nullable = true, length = -1)
+    public String getTitleSearch() {
+        return titleSearch;
+    }
+
+    public void setTitleSearch(String titleSearch) {
+        this.titleSearch = titleSearch;
     }
 
     @Override
