@@ -1,5 +1,8 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import web.dao.*;
@@ -9,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import web.services.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,22 +47,42 @@ public class AdminController {
     @Autowired
     ActorService actorService;
 
+    private static final Logger log = LogManager.getLogger(AdminController.class);
+
     @RequestMapping(value = "/")
     public String admin_index() {
+        log.info("admin_index()");
+
         return "admin/index";
     }
 
     @RequestMapping(value = "/actors")
     public String admin_actors() {
+        log.info("admin_actors()");
+
         return "admin/actors/index";
     }
 
     @RequestMapping(value = "/actors/addOrUpdate/{id}")
     public String adminActorsAddOrUpdate(@PathVariable("id") String id, Model model) {
+        log.info("adminActorsAddOrUpdate(id=" + id + ", model=" + model + ")");
+
         ActorDb actorDb = new ActorDb();
-        List<CountryDb> counties = countryService.getAll();
+        List<CountryDb> counties = new ArrayList<>();
+        try {
+            counties = countryService.getAll();
+        } catch (HibernateException e) {
+            log.error(e,e);
+        }
+
         if (!id.equals("0")) {
-            actorDb = actorService.getActorWithId(Integer.parseInt(id));
+            try {
+                actorDb = actorService.getActorWithId(Integer.parseInt(id));
+            } catch (HibernateException e) {
+                log.error(e,e);
+            } catch (IndexOutOfBoundsException e) {
+                log.error(e,e);
+            }
         }
         model.addAttribute("actor", actorDb);
         model.addAttribute("countries", counties);
@@ -67,14 +91,24 @@ public class AdminController {
 
     @RequestMapping(value = "/categories")
     public String admin_categories() {
+        log.info("admin_categories");
+
         return "admin/categories/index";
     }
 
     @RequestMapping(value = "/categories/addOrUpdate/{id}")
     public String adminCategoriesAddOrUpdate(@PathVariable("id") String id, Model model) {
+        log.info("adminCategoriesAddOrUpdate(id=" + id + ", model=" + model + ")");
+
         CategoryDb categoryDb = new CategoryDb();
         if (!id.equals("0")) {
-            categoryDb = categoryService.getCategoryWithId(id);
+            try {
+                categoryDb = categoryService.getCategoryWithId(id);
+            }catch (HibernateException e) {
+                log.error(e,e);
+            } catch (IndexOutOfBoundsException e) {
+                log.error(e,e);
+            }
         }
         model.addAttribute("category", categoryDb);
         return "admin/categories/addOrUpdate";
