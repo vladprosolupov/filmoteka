@@ -92,7 +92,7 @@ public class FilmService {
 
     public FilmDb convert(FilmJSON filmJSON) throws ParsingJsonToDaoException, ParseException {
         if (filmJSON == null) {
-            throw new IllegalArgumentException("FilmJSON shouuld not be null");
+            throw new IllegalArgumentException("FilmJSON should not be null");
         }
         FilmDb filmDb = new FilmDb();
         filmDb.setId(filmJSON.getId());
