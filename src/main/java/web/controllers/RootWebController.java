@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.support.HttpRequestWrapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,7 +45,6 @@ public class RootWebController {
         log.info("login()");
 
         String referrer = request.getHeader("Referer");
-        System.out.println("regerrer - " + referrer);
         if(referrer!=null){
             request.getSession().setAttribute("url_prior_login", referrer);
         }

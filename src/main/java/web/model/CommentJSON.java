@@ -9,6 +9,7 @@ public class CommentJSON {
     private double rating;
     private int referencedComment;
     private String commentDate;
+    private String clientLogin;
 
     public int getId() {
         return id;
@@ -64,6 +65,14 @@ public class CommentJSON {
 
     public void setCommentDate(String commentDate) {
         this.commentDate = commentDate;
+    }
+
+    public String getClientLogin() {
+        return clientLogin;
+    }
+
+    public void setClientLogin(String clientLogin) {
+        this.clientLogin = clientLogin;
     }
 
     @Override

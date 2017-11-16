@@ -39,6 +39,7 @@ public class ActorController {
         } catch (ParsingJsonToDaoException e) {
             log.error(e, e);
 
+
         } catch (ParseException e) {
             log.error(e, e);
         }
