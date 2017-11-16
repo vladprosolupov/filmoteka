@@ -246,6 +246,11 @@ div.navbar-dropdown.is-boxed {
     padding: 0.5em 0.75em;
 }
 
+.menu-list a.is-current {
+    color: rgba(255, 255, 255, 1);
+    background: #4e4e4e;
+}
+
 .menu-label {
     color: #000000;
     font-size: 0.75em;

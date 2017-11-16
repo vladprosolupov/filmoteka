@@ -76,7 +76,7 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
-    <div class="container" style="display: none">
+    <div class="container vue" style="display: none">
         <div class="columns">
             <div class="column is-2">
                 <aside class="menu ">
@@ -84,7 +84,7 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a>{{category.name}}</a></li>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)">{{category.name}}</a></li>
                     </ul>
                     <p class="menu-label">
                         Administration

@@ -3,17 +3,38 @@
  */
 function hideLoading() {
     $('#loading').hide();
-    $('.container').show();
+    $('.vue').show();
 }
 
 function showLoading() {
     $('#loading').show();
-    $('.container').hide();
+    $('.vue').hide();
 }
 
-$(function () {
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+var removeGetParametersFromPage = function (pageURL){
+    window.history.pushState({}, document.title, pageURL);
+};
+
+
+$(function () {
     if (window.location.pathname === "" || window.location.pathname === "/" || window.location.pathname === "/index" || window.location.pathname === null) {
+        var category = getUrlParameter("c");
+        removeGetParametersFromPage("/");
         var vue = new Vue({
             el: '.vue',
             data: {
@@ -28,8 +49,18 @@ $(function () {
                     }),
                     $.getJSON('/category/all', function (categories) {
                         self.categories = categories;
+                        if(category != undefined || category != null){
+                            $.getJSON('/category/' + category + '/films', function (data) {
+                                $('a[data-category]').removeClass('is-current');
+                                $('a[data-category = ' + category + ']').addClass('is-current');
+                                self.films = data;
+                                hideLoading();
+                            });
+                        }
                     })).done(function () {
-                    hideLoading();
+                    if(category == undefined || category == null){
+                        hideLoading();
+                    }
                 });
             },
             methods: {
@@ -41,6 +72,8 @@ $(function () {
                     var self = this;
                     showLoading();
                     $.getJSON('/category/' + id + '/films', function (data) {
+                        $('a[data-category]').removeClass('is-current');
+                        $('a[data-category = ' + id + ']').addClass('is-current');
                         self.films = data;
                         hideLoading();
                     });
@@ -48,41 +81,22 @@ $(function () {
             }
         });
     } else if (window.location.pathname.includes("/film/")) {
-        var categories = new Vue({
-            el: '.categories',
+        var url = '/film/info/' + window.location.href.slice(-1);
+        var film = new Vue({
+            el: '.vue',
             data: {
+                film: [],
                 categories: []
             },
             beforeCompile: function () {
                 var self = this;
-                $.getJSON('/category/all', function (data) {
+                $.when($.getJSON(url, function (data) {
+                        self.film = data;
+                    }),
+                    $.getJSON('/category/all', function (categories) {
+                        self.categories = categories;
+                    })).done(function () {
                     hideLoading();
-                    self.categories = data;
-                });
-            },
-            methods: {
-                openCategory: function (id) {
-                    showLoading();
-                    $.getJSON('/category/' + id + '/films', function (data) {
-                        hideLoading(); //todo films loading after clicking on the category inside of the film
-                    });
-                }
-            }
-        });
-
-
-        var url = '/film/info/' + window.location.href.slice(-1);
-        var film = new Vue({
-            el: '.info',
-            data: {
-                film: []
-            },
-            beforeCompile: function () {
-                var self = this;
-                $.getJSON(url, function (data) {
-                    hideLoading();
-                    console.log(data);
-                    self.film = data;
                 });
             },
             methods: {
@@ -103,10 +117,12 @@ $(function () {
                             result += parseInt((val / 60).toString().split('.')[0]) + " hours " + minutes + " minutes";
                     }
                     return result;
+                },
+                openCategory: function(id){
+                    window.location.replace('http://localhost:8080/?c=' + id);
                 }
             }
         });
-
     } else {
         hideLoading();
     }

@@ -25,7 +25,7 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)">{{category.name}}</a>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)" v-bind:data-category="category.id">{{category.name}}</a>
                         </li>
                     </ul>
                     <p class="menu-label">
