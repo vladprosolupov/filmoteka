@@ -17,7 +17,7 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
-    <div class="container" style="display: none">
+    <div class="container vue" style="display: none">
         <div class="columns">
             <div class="column is-2">
                 <aside class="menu ">
@@ -25,7 +25,8 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a>{{category.name}}</a></li>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)">{{category.name}}</a>
+                        </li>
                     </ul>
                     <p class="menu-label">
                         Administration
@@ -55,42 +56,41 @@
                 </aside>
             </div>
             <div class="column is-9">
-                <%--<section class="hero">--%>
+                    <%--<section class="hero">--%>
                     <%--<div class="hero-body">--%>
 
 
-                        <%--<div class="container">--%>
-                            <%--<h1 class="title">--%>
-                                <%--You're Welcome--%>
-                            <%--</h1>--%>
-                            <%--<h2 class="subtitle">--%>
-                                <%--I hope you are having a great day!--%>
-                            <%--</h2>--%>
-                        <%--</div>--%>
+                    <%--<div class="container">--%>
+                    <%--<h1 class="title">--%>
+                    <%--You're Welcome--%>
+                    <%--</h1>--%>
+                    <%--<h2 class="subtitle">--%>
+                    <%--I hope you are having a great day!--%>
+                    <%--</h2>--%>
                     <%--</div>--%>
-                <%--</section>--%>
+                    <%--</div>--%>
+                    <%--</section>--%>
 
-                <%--<div class="card">--%>
+                    <%--<div class="card">--%>
                     <%--<div class="card-image">--%>
-                        <%--<figure class="image is-4by3">--%>
-                            <%--<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">--%>
-                        <%--</figure>--%>
+                    <%--<figure class="image is-4by3">--%>
+                    <%--<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">--%>
+                    <%--</figure>--%>
                     <%--</div>--%>
                     <%--<div class="card-content">--%>
-                        <%--<div class="media">--%>
-                            <%--<div class="media-left">--%>
-                                <%--<figure class="image is-48x48">--%>
-                                    <%--<img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">--%>
-                                <%--</figure>--%>
-                            <%--</div>--%>
-                            <%--<div class="media-content">--%>
-                                <%--<p class="title is-4">John Smith</p>--%>
-                                <%--<p class="subtitle is-6">@johnsmith</p>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+                    <%--<div class="media">--%>
+                    <%--<div class="media-left">--%>
+                    <%--<figure class="image is-48x48">--%>
+                    <%--<img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">--%>
+                    <%--</figure>--%>
                     <%--</div>--%>
-                <%--</div>--%>
-
+                    <%--<div class="media-content">--%>
+                    <%--<p class="title is-4">John Smith</p>--%>
+                    <%--<p class="subtitle is-6">@johnsmith</p>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
 
 
                 <section class="info-tiles">
@@ -99,7 +99,8 @@
                             <div class="card-image">
                                 <figure class="image is-3by4 effect-ruby">
                                     <img v-bind:src="film[2]" alt="Cover">
-                                    <a v-bind:href="link+film[3]"><span>More <i class="fa fa-info-circle" aria-hidden="true"></i></span></a>
+                                    <a v-bind:href="link+film[3]"><span>More <i class="fa fa-info-circle"
+                                                                                aria-hidden="true"></i></span></a>
                                 </figure>
                             </div>
                             <div class="card-content">
@@ -119,13 +120,16 @@
                     <a class="pagination-previous">Previous</a>
                     <a class="pagination-next">Next page</a>
                     <ul class="pagination-list">
-                        <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                        <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page">1</a>
+                        </li>
+                        <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                        <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
                         <li><span class="pagination-ellipsis">&hellip;</span></li>
-                        <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                        <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                            <%--<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>--%>
+                            <%--<li><a class="pagination-link" aria-label="Goto page 46">46</a></li>--%>
                         <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-                        <li><span class="pagination-ellipsis">&hellip;</span></li>
-                        <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                            <%--<li><span class="pagination-ellipsis">&hellip;</span></li>--%>
+                            <%--<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>--%>
                     </ul>
                 </nav>
             </div>
