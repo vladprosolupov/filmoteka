@@ -42,6 +42,22 @@
                                 </div>
                             </div>
 
+                            <div class="navbar-end">
+                                <div class="navbar-item field has-addons">
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="text" placeholder="Search...">
+                                        <span class="icon is-small is-left">
+                                        <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-dark">
+                                            Search
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </form>
                         <% } else if(hasAccess == 0) { %>
@@ -52,6 +68,22 @@
                             <a class="navbar-item" href="/">You Should Watch</a>
                             <a class="navbar-item" href="/">About</a>
                             <a class="navbar-item" href="/login">Log in</a>
+
+                            <div class="navbar-end">
+                                <div class="navbar-item field has-addons">
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="text" placeholder="Search...">
+                                        <span class="icon is-small is-left">
+                                        <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-dark">
+                                            Search
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <% } else { %>
@@ -68,6 +100,7 @@
                                     <a class="navbar-item" href="/">Films you've liked</a>
                                     <a class="navbar-item" href="/">Bookmarks</a>
 
+
                                     <hr class="navbar-divider"/>
 
                                     <input type="hidden"
@@ -77,6 +110,23 @@
                                         out</a>
                                 </div>
                             </div>
+                            <div class="navbar-end">
+                            <div class="navbar-item field has-addons">
+                                <div class="control has-icons-left">
+                                    <input class="input" type="text" placeholder="Search...">
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-search"></i>
+                                        </span>
+                                </div>
+                                <div class="control">
+                                    <a class="button is-dark">
+                                        Search
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
+
+
 
                         </form>
                         <% } %>

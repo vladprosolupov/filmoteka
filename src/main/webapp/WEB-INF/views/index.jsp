@@ -107,6 +107,7 @@
                                 <div class="media">
                                     <div class="media-content">
                                         <p class="title is-6">{{film[0]}}</p>
+                                        <hr>
                                         <p class="subtitle is-6 is-pulled-right">{{getYear(film[1])}}</p>
                                     </div>
                                 </div>
