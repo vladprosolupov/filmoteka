@@ -86,7 +86,8 @@ $(function () {
             el: '.vue',
             data: {
                 film: [],
-                categories: []
+                categories: [],
+                check: ''
             },
             beforeCompile: function () {
                 var self = this;
@@ -98,6 +99,11 @@ $(function () {
                     })).done(function () {
                     hideLoading();
                 });
+            },
+            watch: {
+              check: function (property) {
+                  this.check = property;
+              }
             },
             methods: {
                 calculateTime: function (val) {
@@ -120,9 +126,15 @@ $(function () {
                 },
                 openCategory: function(id){
                     window.location.replace('http://localhost:8080/?c=' + id);
+                },
+                submitCommentOrMoveLine: function () {
+                    if(this.check){
+                        alert("submit");
+                    }
                 }
             }
         });
+
     } else {
         hideLoading();
     }

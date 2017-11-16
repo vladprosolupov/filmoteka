@@ -28,7 +28,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                    <textarea v-on:keyup.13="submitCommentOrMoveLine" class="textarea" placeholder="Add a comment..."></textarea>
                 </p>
             </div>
             <nav class="level">
@@ -40,7 +40,7 @@
                 <div class="level-right">
                     <div class="level-item">
                         <label class="checkbox">
-                            <input type="checkbox"> Press enter to submit
+                            <input v-model="check" type="checkbox"> Press enter to submit
                         </label>
                     </div>
                 </div>
