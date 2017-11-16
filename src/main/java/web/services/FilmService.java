@@ -86,7 +86,7 @@ public class FilmService {
 
     public List<FilmJSONIndex> getAllFilmsForIndex() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover from FilmDb F").list();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F").list();
         return list;
     }
 

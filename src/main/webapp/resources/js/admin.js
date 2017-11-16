@@ -23,7 +23,7 @@ function fail(link) {
 }
 
 $(function () {
-    if (location.href.substr(28) === 'films') {
+    if (window.location.pathname === "/admin/films") {
         var films = new Vue({
             el: '.films',
             data: {
@@ -72,7 +72,7 @@ $(function () {
             location.href += '/addOrUpdate/0'
         });
 
-    } else if (location.href.substr(28, 17) === 'films/addOrUpdate') {
+    } else if (window.location.pathname.includes("/admin/films/addOrUpdate")) {
         $('#loading').hide();
         $('.formForFilm').show();
 
@@ -456,7 +456,7 @@ $(function () {
                 }
             });
         });
-    } else if (location.href.substr(28) === 'actors') {
+    } else if (window.location.pathname === "/admin/actors") {
         var actors = new Vue({
             el: '.actors',
             data: {
@@ -504,7 +504,7 @@ $(function () {
         $('.addActor').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if (location.href.substr(28, 18) === 'actors/addOrUpdate') {
+    } else if (window.location.pathname.includes("/admin/actors/addOrUpdate")) {
         $('#loading').hide();
         $('.formForActor').show();
 
@@ -544,7 +544,7 @@ $(function () {
                 }
             });
         });
-    } else if (location.href.substr(28) === 'categories') {
+    } else if (window.location.pathname === "/admin/categories") {
         var categories = new Vue({
             el: '.categories',
             data: {
@@ -592,7 +592,7 @@ $(function () {
         $('.addCategory').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if (location.href.substr(28, 22) === 'categories/addOrUpdate') {
+    } else if (window.location.pathname.includes("/admin/categories/addOrUpdate")) {
         $('#loading').hide();
         $('.formForCategory').show();
 
@@ -632,7 +632,7 @@ $(function () {
                 }
             });
         });
-    } else if (location.href.substr(28) === 'directors') {
+    } else if (window.location.pathname === "/admin/directors") {
         var directors = new Vue({
             el: '.directors',
             data: {
@@ -681,7 +681,7 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    } else if (location.href.substr(28, 21) === 'directors/addOrUpdate') {
+    } else if (window.location.pathname.includes("/admin/directors/addOrUpdate")) {
         $('#loading').hide();
         $('.formForDirector').show();
         $('.save').click(function () {
@@ -720,7 +720,7 @@ $(function () {
                 }
             });
         });
-    }else if(location.href.substr(28) === 'networks'){
+    }else if(window.location.pathname === "/admin/networks"){
 
         var networks = new Vue({
             el: '.networks',
@@ -770,7 +770,7 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    }else if(location.href.substr(28,20) === 'networks/addOrUpdate'){
+    }else if(window.location.pathname.includes("/admin/networks/addOrUpdate")){
         $('#loading').hide();
         $('.formForNetwork').show();
         $('.save').click(function () {
@@ -809,7 +809,7 @@ $(function () {
                 }
             });
         });
-    } else if(location.href.substr(28) === 'studios'){
+    } else if(window.location.pathname === "/admin/studios"){
         var studios = new Vue({
             el: '.studios',
             data: {
@@ -857,7 +857,7 @@ $(function () {
         $('.addStudio').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if(location.href.substr(28,19) === 'studios/addOrUpdate'){
+    } else if(window.location.pathname.includes("/admin/studios/addOrUpdate")){
         $('#loading').hide();
         $('.formForStudio').show();
 
