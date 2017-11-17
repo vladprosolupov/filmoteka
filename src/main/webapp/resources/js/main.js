@@ -3,9 +3,10 @@
  */
 
 window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
+    if($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
+        if ([38, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
     }
 }, false);
 
@@ -38,6 +39,15 @@ var removeGetParametersFromPage = function (pageURL) {
     window.history.pushState({}, document.title, pageURL);
 };
 
+var normilizeSearch = function (title) {
+    var titleSearch = title;
+    titleSearch = titleSearch.toLowerCase(); //Making it lowercase
+    titleSearch = titleSearch.normalize('NFKD');                       //
+    var pattern = new RegExp("[\\p{InCombiningDiacriticalMarks}\\p{IsLm}\\p{IsSk}]+"); //Replacing accented letters with latin analogs
+    titleSearch = titleSearch.replace(/\s/g,''); // Removing whitespaces
+    return titleSearch;
+};
+
 
 $(function () {
     $(document).click(function () {
@@ -58,6 +68,8 @@ $(function () {
             searchInput: function (input) {
                 if (input) {
                     var self = this;
+                    console.log(input);
+                    console.log(normilizeSearch(input));
                     $.getJSON('/search/film/quick/' + input, function (data) {
                         self.searchResult = data;
                         console.log(data);
