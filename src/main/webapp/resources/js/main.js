@@ -110,7 +110,8 @@ $(function () {
             data: {
                 films: [],
                 categories: [],
-                link: "/film/"
+                link: "/film/",
+                notFound: false
             },
             beforeCompile: function () {
                 var self = this;
@@ -123,12 +124,16 @@ $(function () {
                             $.getJSON('/category/' + category + '/films', function (data) {
                                 $('a[data-category]').removeClass('is-current');
                                 $('a[data-category = ' + category + ']').addClass('is-current');
+                                self.notFound = false;
                                 self.films = data;
                                 hideLoading();
                             });
                         } else if (searchInput) {
                             $.getJSON('/search/film/' + searchInput, function (data) {
                                 self.films = data;
+                                if(self.films.length === 0){
+                                    self.notFound = true;
+                                }
                                 hideLoading();
                             });
                         }
@@ -149,6 +154,7 @@ $(function () {
                     $.getJSON('/category/' + id + '/films', function (data) {
                         $('a[data-category]').removeClass('is-current');
                         $('a[data-category = ' + id + ']').addClass('is-current');
+                        self.notFound = false;
                         self.films = data;
                         hideLoading();
                     });
