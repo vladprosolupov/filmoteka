@@ -94,9 +94,15 @@ public class FilmService {
         return list;
     }
 
-    public List<FilmJSONSearch> getFilmsWithTitle(String title){
+    public List<FilmJSONSearch> getFilmsWithTitleForQuick(String title) {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('"+ title +"', F.titleSearch)").list();
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        return list;
+    }
+
+    public List<FilmJSONIndex> getFilmsWithTitle(String title) {
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
         return list;
     }
 

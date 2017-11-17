@@ -47,19 +47,19 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input v-model="searchInput" v-on:focusin="showDropdown" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers" class="input" type="text" placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
                                 </div>
                                 <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch(kek)">
+                                    <a class="button is-dark" v-on:click="doSearch">
                                         Search
                                     </a>
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
                                 <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
                             </div>
                         </div>
@@ -78,19 +78,19 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input v-model="searchInput" v-on:focusin="showDropdown" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" class="input" type="text" placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
                                 </div>
                                 <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch(kek)">
+                                    <a class="button is-dark" v-on:click="doSearch">
                                         Search
                                     </a>
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
                                 <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
                             </div>
                         </div>
@@ -126,19 +126,19 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input v-model="searchInput" v-on:focusin="showDropdown" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers" class="input" type="text" placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
                                 </div>
                                 <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch(kek)">
+                                    <a class="button is-dark" v-on:click="doSearch">
                                         Search
                                     </a>
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
                                 <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
                             </div>
                         </div>

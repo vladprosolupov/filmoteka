@@ -91,7 +91,7 @@
                     <%--</div>--%>
                     <%--</div>--%>
                     <%--</div>--%>
-
+                    <%--TODO add a div which is showing that no films were found with such title--%>
 
                 <section class="info-tiles">
                     <div class="films">

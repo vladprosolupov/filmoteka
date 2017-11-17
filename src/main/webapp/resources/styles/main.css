@@ -258,7 +258,10 @@ div.navbar-dropdown.is-boxed {
     text-transform: uppercase;
 }
 
-
+.navbar-dropdown a.navbar-item:focus {
+    background-color: rgb(78, 78, 78);
+    color: white;
+}
 
 .navbar-dropdown a.navbar-item:hover {
     background-color: rgb(78, 78, 78);
@@ -298,6 +301,10 @@ a {
 .centered{
     align-items: center !important;
     justify-content: center !important;
+}
+
+:focus{
+    outline:0;
 }
 
 .pagination.is-centered{

@@ -1,6 +1,14 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
+
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 function hideLoading() {
     $('#loading').hide();
     $('.vue').show();
@@ -26,58 +34,77 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var removeGetParametersFromPage = function (pageURL){
+var removeGetParametersFromPage = function (pageURL) {
     window.history.pushState({}, document.title, pageURL);
 };
 
 
 $(function () {
-    $(document).click(function() {
+    $(document).click(function () {
         $('.centered').removeClass("is-active");
     });
 
-    $(".VueSearch").click(function(event) {
+    $(".VueSearch").click(function (event) {
         event.stopPropagation();
     });
     var search = new Vue({
         el: '.VueSearch',
         data: {
-            searchResult : [],
-            link : "/film/",
+            searchResult: [],
+            link: "/film/",
             searchInput: ''
         },
         watch: {
             searchInput: function (input) {
-                if(input) {
+                if (input) {
                     var self = this;
-                    $.getJSON('/search/film/' + input, function (data) {
+                    $.getJSON('/search/film/quick/' + input, function (data) {
                         self.searchResult = data;
                         console.log(data);
                         $('.centered').addClass("is-active");
                     });
-                }else {
+                } else {
                     $('.centered').removeClass("is-active");
                 }
             }
         },
         methods: {
-            doSearch : function (input) {
-                //window.location.replace('http://localhost:8080/?s=' + input);
-                //todo search
-                alert("not working yet");
+            doSearch: function () {
+                var self = this;
+                window.location.replace('http://localhost:8080/?s=' + self.searchInput);
             },
             showDropdown: function () {
                 var self = this;
-                if(self.searchInput){
+                if (self.searchInput) {
                     $('.centered').addClass("is-active");
                 }
+            },
+            moveFocusToDropdown: function () {
+                $($('.searchDropdown')[0]).focus();
+            },
+            moveFocusDown: function () {
+                var currentIndex = $('.searchDropdown').index(document.activeElement);
+                $($('.searchDropdown')[currentIndex+1]).focus();
+            },
+            moveFocusUp: function () {
+                var currentIndex = $('.searchDropdown').index(document.activeElement);
+                $($('.searchDropdown')[currentIndex-1]).focus();
+            },
+            removeFocusFromOthers: function () {
+                var currentIndex = $('.searchDropdown').index(document.activeElement);
+                $($('.searchDropdown')[currentIndex]).blur();
             }
         }
     });
-
     if (window.location.pathname === "" || window.location.pathname === "/" || window.location.pathname === "/index" || window.location.pathname === null) {
         var category = getUrlParameter("c");
+        var searchInput = getUrlParameter("s");
         removeGetParametersFromPage("/");
+
+        if(searchInput){
+            $('#searchInput').val(searchInput);
+        }
+
         var vue = new Vue({
             el: '.vue',
             data: {
@@ -92,16 +119,21 @@ $(function () {
                     }),
                     $.getJSON('/category/all', function (categories) {
                         self.categories = categories;
-                        if(category != undefined || category != null){
+                        if (category) {
                             $.getJSON('/category/' + category + '/films', function (data) {
                                 $('a[data-category]').removeClass('is-current');
                                 $('a[data-category = ' + category + ']').addClass('is-current');
                                 self.films = data;
                                 hideLoading();
                             });
+                        } else if (searchInput) {
+                            $.getJSON('/search/film/' + searchInput, function (data) {
+                                self.films = data;
+                                hideLoading();
+                            });
                         }
                     })).done(function () {
-                    if(category == undefined || category == null){
+                    if (!category && !searchInput) {
                         hideLoading();
                     }
                 });
@@ -144,9 +176,9 @@ $(function () {
                 });
             },
             watch: {
-              check: function (property) {
-                  this.check = property;
-              }
+                check: function (property) {
+                    this.check = property;
+                }
             },
             methods: {
                 calculateTime: function (val) {
@@ -167,11 +199,11 @@ $(function () {
                     }
                     return result;
                 },
-                openCategory: function(id){
+                openCategory: function (id) {
                     window.location.replace('http://localhost:8080/?c=' + id);
                 },
                 submitCommentOrMoveLine: function () {
-                    if(this.check){
+                    if (this.check) {
                         alert("submit");
                     }
                 }
