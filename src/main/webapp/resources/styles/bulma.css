@@ -6581,7 +6581,7 @@ a.dropdown-item.is-active {
 
 .navbar.is-dark {
   background-color: #363636;
-  color: whitesmoke;
+color: whitesmoke;
 }
 
 .navbar.is-dark .navbar-brand > .navbar-item,

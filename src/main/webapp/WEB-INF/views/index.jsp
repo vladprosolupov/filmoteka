@@ -56,6 +56,11 @@
                 </aside>
             </div>
             <div class="column is-9">
+                <article class="message is-danger" v-if="notFound">
+                    <div class="message-body">
+                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other keyword or choose one film from our library!
+                    </div>
+                </article>
                     <%--<section class="hero">--%>
                     <%--<div class="hero-body">--%>
 
@@ -91,13 +96,13 @@
                     <%--</div>--%>
                     <%--</div>--%>
                     <%--</div>--%>
-
+                    <%--TODO add a div which is showing that no films were found with such title--%>
 
                 <section class="info-tiles">
                     <div class="films">
-                        <div v-for="film in films" class="card film">
-                            <div class="card-image">
-                                <figure class="image is-3by4 effect-ruby">
+                        <div v-for="film in films" class="card effect-ruby grow film">
+                            <div class="card-image ">
+                                <figure class="image is-3by4">
                                     <img v-bind:src="film[2]" alt="Cover">
                                     <a v-bind:href="link+film[3]"><span>More <i class="fa fa-info-circle"
                                                                                 aria-hidden="true"></i></span></a>
@@ -107,6 +112,7 @@
                                 <div class="media">
                                     <div class="media-content">
                                         <p class="title is-6">{{film[0]}}</p>
+                                        <hr>
                                         <p class="subtitle is-6 is-pulled-right">{{getYear(film[1])}}</p>
                                     </div>
                                 </div>

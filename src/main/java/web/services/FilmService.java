@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
 import web.model.FilmJSONIndex;
+import web.model.FilmJSONSearch;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,9 @@ import java.util.*;
 public class FilmService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private SearchService searchService;
 
     @Autowired
     private CategoryService categoryService;
@@ -90,6 +94,19 @@ public class FilmService {
         return list;
     }
 
+    public List<FilmJSONSearch> getFilmsWithTitleForQuick(String title) {
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        return list;
+    }
+
+    public List<FilmJSONIndex> getFilmsWithTitle(String title) {
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        return list;
+    }
+
+
     public FilmDb convert(FilmJSON filmJSON) throws ParsingJsonToDaoException, ParseException {
         if (filmJSON == null) {
             throw new IllegalArgumentException("FilmJSON should not be null");
@@ -109,6 +126,8 @@ public class FilmService {
         filmDb.setReleaseDate(new java.sql.Date(parsed.getTime()));
 
         filmDb.setSlogan(filmJSON.getSlogan());
+
+        filmDb.setTitleSearch(searchService.titleToTitleSearch(filmJSON.getTitle()));
 
         Set<CategoryDb> setOfCategories = new HashSet<>();
         for (String c : filmJSON.getCategories()) {
