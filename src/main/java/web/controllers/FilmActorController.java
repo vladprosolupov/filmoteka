@@ -1,5 +1,7 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ public class FilmActorController {
 
     @Autowired
     private FilmActorService filmActorService;
+
+    private static final Logger log = LogManager.getLogger(FilmActorController.class);
 
 //    @PreAuthorize("hasAuthority('admin')")
 //    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
@@ -37,7 +41,11 @@ public class FilmActorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody String delete(@PathVariable("id") String id){
+        log.info("delete(id=" + id + ")");
+
         filmActorService.deleteFilmActor(id);
+
+        log.info("delete() returns : OK");
         return "OK";
     }
 }
