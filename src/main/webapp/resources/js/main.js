@@ -4,7 +4,7 @@
 
 window.addEventListener("keydown", function(e) {
     if($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
-        if ([38, 40].indexOf(e.keyCode) > -1) {
+        if ([38, 40, 13].indexOf(e.keyCode) > -1) {
             e.preventDefault();
         }
     }
