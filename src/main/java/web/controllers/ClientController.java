@@ -84,4 +84,21 @@ public class ClientController {
         return "profile";
     }
 
+    @RequestMapping(value = "/info" , method =  RequestMethod.GET)
+    public ClientDb getInfo(){
+        log.info("getInfo()");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        return clientDb;
+
+    }
+
 }
