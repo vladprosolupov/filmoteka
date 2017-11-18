@@ -220,10 +220,13 @@ $(function () {
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
                 },
-                submitCommentOrMoveLine: function () {
+                submitCommentOrMoveLine: function (e) {
                     if (this.check) {
                         alert("submit");
                     }
+                },
+                submitComment: function () {
+                    alert("submit");
                 }
             }
         });

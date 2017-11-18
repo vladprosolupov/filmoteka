@@ -34,7 +34,7 @@
             <nav class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        <a class="button is-dark">Submit</a>
+                        <a class="button is-dark" v-on:click="submitComment">Submit</a>
                     </div>
                 </div>
                 <div class="level-right">
