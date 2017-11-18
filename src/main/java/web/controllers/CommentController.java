@@ -1,7 +1,8 @@
 package web.controllers;
 
 
-import org.hibernate.HibernateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,55 +24,57 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    private static final Logger log = LogManager.getLogger(CommentController.class);
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateCategory(@RequestBody CommentJSON commentJSON) {
-        try {
-            commentService.saveOrUpdate(commentService.convertToCommentRatingDB(commentJSON));
-        } catch (ParsingJsonToDaoException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+    String addOrUpdateComment(@RequestBody CommentJSON commentJSON) throws ParseException, ParsingJsonToDaoException {
+        log.info("addOrUpdateComment(commentJSON=" + commentJSON + ")");
+
+        commentService.saveOrUpdate(commentService.convertToCommentRatingDB(commentJSON));
+
+        log.info("addOrUpdateComment() returns : OK");
         return "OK";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody
-    String deleteCategory(@PathVariable("id") String id) {
+    String deleteComment(@PathVariable("id") String id) {
+        log.info("deleteComment(id=" + id + ")");
+
         commentService.deleteComment(id);
+
+        log.info("deleteComment() returns : OK");
         return "OK";
     }
 
     @RequestMapping(value = "/getFilmComments/{id}", method = RequestMethod.POST)
     public List<CommentJSON> getAllCommentsForFilm(@PathVariable("id") String id) {
+        log.info("getAllCommentsForFilm(id=" + id + ")");
+
         List<CommentJSON> result = new ArrayList<>();
-        try {
-            List<CommentRatingDb> commentRatingDbList = commentService.getAllCommentsForFilm(id);
-            for(CommentRatingDb comment : commentRatingDbList) {
-                CommentJSON json = new CommentJSON();
+        List<CommentRatingDb> commentRatingDbList = commentService.getAllCommentsForFilm(id);
+        for (CommentRatingDb comment : commentRatingDbList) {
+            log.info("for loop");
 
-                json.setId(comment.getId());
+            CommentJSON json = new CommentJSON();
 
-                Date date = new Date();
-                date.setTime(comment.getCommentDate().getTime());
+            json.setId(comment.getId());
 
-                json.setCommentDate(new SimpleDateFormat("yyyyMMdd").format(date));
-                json.setCommentText(comment.getCommentText());
-                json.setRating(comment.getRating());
-                json.setIdFilm(comment.getFilmByIdFilm().getId());
-                json.setIdClient(comment.getClientByIdClient().getId());
-                json.setClientLogin(comment.getClientByIdClient().getLogin());
+            Date date = new Date();
+            date.setTime(comment.getCommentDate().getTime());
 
-                result.add(json);
-            }
-        } catch (IllegalArgumentException e) {
-            return null;
-        } catch (HibernateException e) {
-            return null;
+            json.setCommentDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
+            json.setCommentText(comment.getCommentText());
+            json.setRating(comment.getRating());
+            json.setIdFilm(comment.getFilmByIdFilm().getId());
+            json.setIdClient(comment.getClientByIdClient().getId());
+            json.setClientLogin(comment.getClientByIdClient().getLogin());
+
+            result.add(json);
         }
+
+        log.info("getAllCommentsForFilm() returns : result.size()=" + result.size());
         return result;
     }
 }

@@ -31,18 +31,12 @@ public class ActorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addActor(@RequestBody ActorJSON actorJSON) {
+    String addActor(@RequestBody ActorJSON actorJSON) throws ParseException, ParsingJsonToDaoException {
         log.info("addActor(actorJSON=" + actorJSON + ")");
 
-        try {
-            actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
-        } catch (ParsingJsonToDaoException e) {
-            log.error(e, e);
+        actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
 
-
-        } catch (ParseException e) {
-            log.error(e, e);
-        }
+        log.info("addActor() returns : OK");
         return "OK";
     }
 
@@ -52,26 +46,21 @@ public class ActorController {
     String deleteActor(@PathVariable("id") String id) {
         log.info("deleteActor(id=" + id + ")");
 
-        try {
-            actorService.delete(id);
-        } catch (HibernateException e) {
-            log.error(e, e);
-        }
+        actorService.delete(id);
+
+        log.info("deleteActor() returns : OK");
         return "OK";
     }
 
-    @PreAuthorize("hasAuthority('admin')")
+//    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<ActorDb> getAll() {
         log.info("getAll()");
 
-        List<ActorDb> all = new ArrayList<>();
-        try {
-            all = actorService.getAll();
-        } catch (HibernateException e) {
-            log.error(e, e);
-        }
+        List<ActorDb> all = actorService.getAll();
+
+        log.info("getAll() returns list.size() : " + all.size());
         return all;
     }
 }

@@ -1,5 +1,7 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,15 +26,16 @@ public class ClientController {
     @Autowired(required = true)
     private ClientService clientService;
 
+    private static final Logger log = LogManager.getLogger(ClientController.class);
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addClient(@ModelAttribute("client") ClientJSON clientJSON) {
-        try {
-            clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
-        } catch (ParsingJsonToDaoException e) {
-            e.printStackTrace();
-        }
+    String addClient(@ModelAttribute("client") ClientJSON clientJSON) throws ParsingJsonToDaoException {
+        log.info("addClient(clientJSON=" + clientJSON + ")");
 
+        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+
+        log.info("addClient() returns : OK");
         return "OK";
     }
 
@@ -40,15 +43,22 @@ public class ClientController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody
     String deleteClient(@PathVariable("id") String id) {
+        log.info("deleteClient(id=" + id + ")");
+
         clientService.delete(id);
+
+        log.info("deleteClient() returns : OK");
         return "OK";
     }
 
     @RequestMapping(value = "/getCurrentUser", method = RequestMethod.POST)
     public ClientJSON getInfoAboutCurrentUser() {
+        log.info("getInfoAboutCurrentUser()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
             throw new IllegalArgumentException("User is not logged in");
         }
 
@@ -62,6 +72,7 @@ public class ClientController {
         clientJSON.setLogin(clientDb.getLogin());
         clientJSON.setPhoneNumber(clientDb.getPhoneNumber());
 
+        log.info("getInfoAboutCurrentUser() returns : clientJSON=" + clientJSON);
         return clientJSON;
     }
 
