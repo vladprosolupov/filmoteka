@@ -1,5 +1,7 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,29 +24,42 @@ public class StudioController {
     @Autowired
     private StudioService studioService;
 
+    private static final Logger log = LogManager.getLogger(StudioController.class);
+
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public @ResponseBody String addOrUpdateStudio(@RequestBody StudioJSON studioJSON){
-        try {
-            studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
-        } catch (ParsingJsonToDaoException e) {
-            e.printStackTrace();
-        }
+    public @ResponseBody
+    String addOrUpdateStudio(@RequestBody StudioJSON studioJSON) throws ParsingJsonToDaoException {
+        log.info("addOrUpdate(studioJSON=" + studioJSON + ")");
+
+        studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
+
+        log.info("addOrUpdate() returns : OK");
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public @ResponseBody String deleteStudio(@PathVariable("id") String id){
+    public @ResponseBody
+    String deleteStudio(@PathVariable("id") String id) {
+        log.info("delete(id=" + id + ")");
+
         studioService.deleteStudio(id);
+
+        log.info("delete() returns : OK");
         return "OK";
     }
 
-    @PreAuthorize("hasAuthority('admin')")
+    //    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
-    List<StudioDb> getAll(){
-        return studioService.getAll();
+    List<StudioDb> getAll() {
+        log.info("getAll()");
+
+        List<StudioDb> studioDbs = studioService.getAll();
+
+        log.info("getAll() returns : studioDbs.size()=" + studioDbs.size());
+        return studioDbs;
     }
 
 
