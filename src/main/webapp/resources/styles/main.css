@@ -17,6 +17,7 @@
 
 .info.desc{
     padding-left: 3%;
+    margin-top: 3%;
 }
 
 section.info-tiles .films {
@@ -324,6 +325,9 @@ a {
 .pagination.is-centered {
     margin-top: 10%;
     margin-bottom: 5%;
+    position: absolute;
+    bottom: -60;
+    width: 60%;
 }
 
 .pagination-link {
@@ -353,8 +357,11 @@ a {
 }
 
 .hero-head {
-    margin-bottom: 5%;
+    /*margin-bottom: 5%;*/
     background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 
 .image.is-percentage {
@@ -384,7 +391,7 @@ hr {
 }
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-    color: white;
+    color: black;
     font-weight: 400;
     line-height: 1.125;
 }
@@ -484,6 +491,40 @@ hr {
 }
 
 h6.rating i {
+    color: #e09952;
     margin-right: 0.3%;
     margin-left: 0.3%;
+}
+
+.columns {
+    margin-top: 0;
+}
+
+.container.vue {
+    margin-bottom: 1.5rem;
+    margin-top: 5%;
+}
+
+.like:hover {
+    color: #1ca64c;
+}
+
+.dislike:hover {
+    color: #cd0930;
+}
+
+.counter:hover {
+    cursor: default;
+}
+
+aside.menu {
+    position: fixed;
+    width: 13%;
+}
+.column.is-2 {
+    margin-top: 5%;
+}
+
+#loading {
+    position: fixed;
 }

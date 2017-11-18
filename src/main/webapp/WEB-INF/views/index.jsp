@@ -20,7 +20,7 @@
     <div class="container vue" style="display: none">
         <div class="columns">
             <div class="column is-2">
-                <aside class="menu ">
+                <aside class="menu">
                     <p class="menu-label">
                         Categories
                     </p>
