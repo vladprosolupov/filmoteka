@@ -1,10 +1,11 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
+var domain = "http://localhost:8080";
 
-window.addEventListener("keydown", function(e) {
-    if($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
-        if ([38, 40, 13].indexOf(e.keyCode) > -1) {
+window.addEventListener("keydown", function (e) {
+    if ($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
+        if ([38, 40].indexOf(e.keyCode) > -1) {
             e.preventDefault();
         }
     }
@@ -39,12 +40,12 @@ var removeGetParametersFromPage = function (pageURL) {
     window.history.pushState({}, document.title, pageURL);
 };
 
-var normilizeSearch = function (title) {
+var normalizeSearch = function (title) {
     var titleSearch = title;
     titleSearch = titleSearch.toLowerCase(); //Making it lowercase
     titleSearch = titleSearch.normalize('NFKD');                       //
     var pattern = new RegExp("[\\p{InCombiningDiacriticalMarks}\\p{IsLm}\\p{IsSk}]+"); //Replacing accented letters with latin analogs
-    titleSearch = titleSearch.replace(/\s/g,''); // Removing whitespaces
+    titleSearch = titleSearch.replace(/\s/g, ''); // Removing whitespaces
     return titleSearch;
 };
 
@@ -69,7 +70,6 @@ $(function () {
                 if (input) {
                     var self = this;
                     console.log(input);
-                    console.log(normilizeSearch(input));
                     $.getJSON('/search/film/quick/' + input, function (data) {
                         self.searchResult = data;
                         console.log(data);
@@ -83,7 +83,7 @@ $(function () {
         methods: {
             doSearch: function () {
                 var self = this;
-                window.location.replace('http://localhost:8080/?s=' + self.searchInput);
+                window.location.replace(domain + '/?s=' + self.searchInput);
             },
             showDropdown: function () {
                 var self = this;
@@ -96,11 +96,11 @@ $(function () {
             },
             moveFocusDown: function () {
                 var currentIndex = $('.searchDropdown').index(document.activeElement);
-                $($('.searchDropdown')[currentIndex+1]).focus();
+                $($('.searchDropdown')[currentIndex + 1]).focus();
             },
             moveFocusUp: function () {
                 var currentIndex = $('.searchDropdown').index(document.activeElement);
-                $($('.searchDropdown')[currentIndex-1]).focus();
+                $($('.searchDropdown')[currentIndex - 1]).focus();
             },
             removeFocusFromOthers: function () {
                 var currentIndex = $('.searchDropdown').index(document.activeElement);
@@ -113,7 +113,7 @@ $(function () {
         var searchInput = getUrlParameter("s");
         removeGetParametersFromPage("/");
 
-        if(searchInput){
+        if (searchInput) {
             $('#searchInput').val(searchInput);
         }
 
@@ -143,7 +143,7 @@ $(function () {
                         } else if (searchInput) {
                             $.getJSON('/search/film/' + searchInput, function (data) {
                                 self.films = data;
-                                if(self.films.length === 0){
+                                if (self.films.length === 0) {
                                     self.notFound = true;
                                 }
                                 hideLoading();
@@ -218,7 +218,7 @@ $(function () {
                     return result;
                 },
                 openCategory: function (id) {
-                    window.location.replace('http://localhost:8080/?c=' + id);
+                    window.location.replace(domain + '/?c=' + id);
                 },
                 submitCommentOrMoveLine: function () {
                     if (this.check) {
@@ -228,23 +228,31 @@ $(function () {
             }
         });
 
-    } else if(window.location.pathname.includes("/profile")) {
+    } else if (window.location.pathname.includes("/profile")) {
         var profile = new Vue({
-            el : '.vue',
-            data : {info : []},
-            beforeCompile : function(){
-                $.getJSON("/client/info", function (data) {
-                    var self = this;
-                    self.info = data;
-                    console.log(self.info);
-                    hideLoading();
+            el: '.vue',
+            data: {
+                info: []
+            },
+            beforeCompile: function () {
+                var self = this;
 
-                })
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+                $(document).ajaxSend(function (e, xhr, options) {
+                    xhr.setRequestHeader(header, token);
+                });
+
+                $.getJSON("/client/getCurrentUser", function (data) {
+                    self.info = data;
+                    hideLoading();
+                }).fail(function () {
+                    window.location.replace(domain + "/login");
+                });
             }
         });
 
     }
-
 
 
 });

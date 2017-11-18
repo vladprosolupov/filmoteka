@@ -45,7 +45,7 @@ public class RootWebController {
         log.info("login()");
 
         String referrer = request.getHeader("Referer");
-        if(referrer!=null){
+        if (referrer != null) {
             request.getSession().setAttribute("url_prior_login", referrer);
         }
         return "login";
@@ -63,6 +63,13 @@ public class RootWebController {
         log.info("error()");
 
         return "403";
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String profile() {
+        log.info("profile()");
+        log.info("profile() returns : profile");
+        return "profile";
     }
 
 

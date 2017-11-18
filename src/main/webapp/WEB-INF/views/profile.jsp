@@ -25,6 +25,12 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/main.js"/>"></script>
+
+    <!-- Including CSRF token to the header -->
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
 </head>
 <t:header>
     <div id="loading" class="is-centered">
@@ -38,16 +44,16 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        Profile
+                        Profile {{info.firstName}} {{info.lastName}}
                     </h1>
                     <br>
-                    <h2 class="subtitle">
-                        <p>Name:</p>
-                        <p>Surname:</p>
-                        <p>E-mail:</p>
-                        <p>Login:</p>
-                        <p>Phone number:</p>
-                    </h2>
+                    <div class="subtitle">
+                        <p>Name: {{info.firstName}}</p>
+                        <p>Surname: {{info.lastName}}</p>
+                        <p>E-mail: {{info.email}}</p>
+                        <p>Login: {{info.login}}</p>
+                        <p>Phone number: {{info.phoneNumber}}</p>
+                    </div>
                     <button class="button is-primary is-medium">Edit</button>
                 </div>
             </div>

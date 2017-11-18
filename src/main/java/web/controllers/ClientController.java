@@ -7,12 +7,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 import web.dao.ClientDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
@@ -52,14 +47,14 @@ public class ClientController {
         return "OK";
     }
 
-    @RequestMapping(value = "/getCurrentUser", method = RequestMethod.POST)
-    public ClientJSON getInfoAboutCurrentUser() {
+    @RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
+    public @ResponseBody
+    ClientJSON getInfoAboutCurrentUser() {
         log.info("getInfoAboutCurrentUser()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             log.error("If statement, user is not logged in, throwing exception");
-
             throw new IllegalArgumentException("User is not logged in");
         }
 
@@ -76,29 +71,4 @@ public class ClientController {
         log.info("getInfoAboutCurrentUser() returns : clientJSON=" + clientJSON);
         return clientJSON;
     }
-
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String profile(){
-        log.info("profile()");
-        log.info("profile() returns : profile");
-        return "profile";
-    }
-
-    @RequestMapping(value = "/info" , method =  RequestMethod.GET)
-    public ClientDb getInfo(){
-        log.info("getInfo()");
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if ((authentication instanceof AnonymousAuthenticationToken)) {
-            log.error("If statement, user is not logged in, throwing exception");
-
-            throw new IllegalArgumentException("User is not logged in");
-        }
-
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
-
-        return clientDb;
-
-    }
-
 }
