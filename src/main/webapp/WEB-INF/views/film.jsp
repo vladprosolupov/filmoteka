@@ -86,31 +86,31 @@
                     <ul class="menu-list categories">
                         <li v-for="category in categories"><a v-on:click="openCategory(category.id)">{{category.name}}</a></li>
                     </ul>
-                    <p class="menu-label">
-                        Administration
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Team Settings</a></li>
-                        <li>
-                            <a>Manage Your Team</a>
-                            <ul>
-                                <li><a>Members</a></li>
-                                <li><a>Plugins</a></li>
-                                <li><a>Add a member</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Invitations</a></li>
-                        <li><a>Cloud Storage Environment Settings</a></li>
-                        <li><a>Authentication</a></li>
-                    </ul>
-                    <p class="menu-label">
-                        Transactions
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
-                    </ul>
+                    <%--<p class="menu-label">--%>
+                        <%--Administration--%>
+                    <%--</p>--%>
+                    <%--<ul class="menu-list">--%>
+                        <%--<li><a>Team Settings</a></li>--%>
+                        <%--<li>--%>
+                            <%--<a>Manage Your Team</a>--%>
+                            <%--<ul>--%>
+                                <%--<li><a>Members</a></li>--%>
+                                <%--<li><a>Plugins</a></li>--%>
+                                <%--<li><a>Add a member</a></li>--%>
+                            <%--</ul>--%>
+                        <%--</li>--%>
+                        <%--<li><a>Invitations</a></li>--%>
+                        <%--<li><a>Cloud Storage Environment Settings</a></li>--%>
+                        <%--<li><a>Authentication</a></li>--%>
+                    <%--</ul>--%>
+                    <%--<p class="menu-label">--%>
+                        <%--Transactions--%>
+                    <%--</p>--%>
+                    <%--<ul class="menu-list">--%>
+                        <%--<li><a>Payments</a></li>--%>
+                        <%--<li><a>Transfers</a></li>--%>
+                        <%--<li><a>Balance</a></li>--%>
+                    <%--</ul>--%>
                 </aside>
             </div>
             <div class="column is-9 info">
@@ -144,14 +144,49 @@
                         </article>
                     </div>
                 </section>
-                <div class="info">
-                    <br>
-                    <br>
-                    <h3 class="subtitle">Description:</h3>
-                    <p><h5>{{film.description}}</h5></p>
+                <div class="info desc">
+                    <h2 class="subtitle">Description:</h2>
+                    <h5>{{film.description}}</h5>
                 </div>
+                <br>
                 <hr>
+
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                                </a>
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                                </a>
+                                <a class="level-item">
+                                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="media-right">
+                        <button class="delete"></button>
+                    </div>
+                </article>
+
                 ${comment}
+
+                <br>
 
             </div>
         </div>

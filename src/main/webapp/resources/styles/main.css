@@ -7,11 +7,16 @@
 
 .background_for_client {
     /*background: linear-gradient(90deg, #759373 0%, #6e9d84 50%, #60939f 100%);*/
-    background: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+    background: linear-gradient(to right ,#dc2424, #4a569d);
+
 }
 
 .white-text {
     color: white;
+}
+
+.info.desc{
+    padding-left: 3%;
 }
 
 section.info-tiles .films {
@@ -260,8 +265,8 @@ div.navbar-dropdown.is-boxed {
 }
 
 .menu-label {
-    color: #000000;
-    font-size: 0.75em;
+    color: rgba(0, 0, 0, 1);
+    font-size: 0.90em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
