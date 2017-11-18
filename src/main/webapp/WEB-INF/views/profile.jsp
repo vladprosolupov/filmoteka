@@ -40,11 +40,17 @@
                             <div class="hero-body">
                                 <div class="container">
                                     <h1 class="title">
-                                        Primary bold title
+                                        Profile
                                     </h1>
+                                    <br>
                                     <h2 class="subtitle">
-                                        Primary bold subtitle
+                                        <p>Name:</p>
+                                        <p>Surname:</p>
+                                        <p>E-mail:</p>
+                                        <p>Login:</p>
+                                        <p>Phone number:</p>
                                     </h2>
+                                    <button class="button is-primary is-medium">Edit</button>
                                 </div>
                             </div>
                         </section>
