@@ -18,10 +18,9 @@
 </security:authorize>
 
 
-
 <html>
 <head>
-    <title>${title}</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
@@ -35,29 +34,24 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-
-                        <section class="hero is-medium is-dark is-bold has-text-centered">
-                            <div class="hero-body">
-                                <div class="container">
-                                    <h1 class="title">
-                                        Profile
-                                    </h1>
-                                    <br>
-                                    <h2 class="subtitle">
-                                        <p>Name:</p>
-                                        <p>Surname:</p>
-                                        <p>E-mail:</p>
-                                        <p>Login:</p>
-                                        <p>Phone number:</p>
-                                    </h2>
-                                    <button class="button is-primary is-medium">Edit</button>
-                                </div>
-                            </div>
-                        </section>
-
-                    </div>
-                </section>
-
+        <section class="hero is-medium is-dark is-bold has-text-centered">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Profile
+                    </h1>
+                    <br>
+                    <h2 class="subtitle">
+                        <p>Name:</p>
+                        <p>Surname:</p>
+                        <p>E-mail:</p>
+                        <p>Login:</p>
+                        <p>Phone number:</p>
+                    </h2>
+                    <button class="button is-primary is-medium">Edit</button>
+                </div>
+            </div>
+        </section>
     </div>
 </t:header>
 </html>
