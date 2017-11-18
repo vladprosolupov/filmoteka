@@ -228,7 +228,23 @@ $(function () {
             }
         });
 
-    } else {
-        hideLoading();
+    } else if(window.location.pathname.includes("/profile")) {
+        var profile = new Vue({
+            el : '.vue',
+            data : {info : []},
+            beforeCompile : function(){
+                $.getJSON("/client/info", function (data) {
+                    var self = this;
+                    self.info = data;
+                    console.log(self.info);
+                    hideLoading();
+
+                })
+            }
+        });
+
     }
+
+
+
 });
