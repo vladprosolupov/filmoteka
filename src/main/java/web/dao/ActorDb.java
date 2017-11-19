@@ -113,7 +113,6 @@ public class ActorDb {
                 ", lastName='" + lastName + '\'' +
                 ", birthdate=" + birthdate +
                 ", countryByIdCountry=" + countryByIdCountry +
-                ", filmActorsById=" + filmActorsById +
                 '}';
     }
 }

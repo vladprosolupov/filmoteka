@@ -2,7 +2,6 @@
 <html>
 <head>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -10,7 +9,6 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/registration.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
 
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
@@ -133,10 +131,7 @@
                                        value="${_csrf.token}"/>
                                 <form:button id="submitButton" type="submit"
                                              class="save button is-primary is-large">Register</form:button>
-
-                                <%--<sec:csrfInput/>--%>
                             </form:form>
-
                         </div>
                     </div>
                 </div>

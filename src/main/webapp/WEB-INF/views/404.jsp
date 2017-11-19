@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
 <t:header>
-    <div class="title is-0 is-danger">Sorry, the page is not found</div>
+    <article id="errorBox" class="message is-danger">
+        <div class="message-body">
+            Sorry, the page is <strong>not found</strong>!
+        </div>
+    </article>
 </t:header>
 </html>

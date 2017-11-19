@@ -297,16 +297,7 @@ public class FilmDb {
                 ", age=" + age +
                 ", budget='" + budget + '\'' +
                 ", cover='" + cover + '\'' +
-                ", filmCategories=" + filmCategories +
-                ", filmStudios=" + filmStudios +
-                ", filmNetworks=" + filmNetworks +
-                ", filmDirectors=" + filmDirectors +
-                ", awardsById=" + awardsById +
-                ", languageByIdLanguage=" + languageByIdLanguage +
-                ", filmActorsById=" + filmActorsById +
-                ", screenshotsById=" + screenshotsById +
-                ", trailersById=" + trailersById +
-                ", filmCountries=" + filmCountries +
+                ", titleSearch='" + titleSearch + '\'' +
                 '}';
     }
 }

@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.support.HttpRequestWrapper;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
@@ -17,6 +18,7 @@ import web.model.ClientJSON;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -60,8 +62,16 @@ public class RootWebController {
             log.info("end of if");
         }
 
-        log.info("login() returns : login");
-        return "login";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.info("login() returns : login");
+            return "login";
+        }else {
+            log.info("client already logged in: login() returns index");
+            return "redirect:/index";
+        }
+
+
     }
 
     @RequestMapping(value = "/register")
@@ -71,16 +81,56 @@ public class RootWebController {
         ModelAndView model = new ModelAndView("register");
         model.addObject("client", new ClientJSON());
 
-        log.info("register returns : register");
-        return model;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.info("register returns : register");
+            return model;
+        }else {
+            log.info("client already registered: register() returns index");
+            return new ModelAndView("redirect:/index");
+        }
     }
 
     @RequestMapping(value = "/403")
-    public String error() {
-        log.info("error()");
+    public String error403(HttpServletRequest request) {
+        log.info("error403()");
 
-        log.info("error() returns : 403");
+        String referrer = request.getHeader("Referer");
+
+        if(referrer != null){
+            log.info("error403(): redirecting to 403");
+            return "redirect:/403";
+        }
+        log.info("error403() returns : 403");
         return "403";
+    }
+
+    @RequestMapping(value = "/404")
+    public String error404(HttpServletRequest request) {
+        log.info("error404()");
+
+        String referrer = request.getHeader("Referer");
+
+        if(referrer != null){
+            log.info("error404(): redirecting to 404");
+            return "redirect:/404";
+        }
+        log.info("error404() returns : 404");
+        return "404";
+    }
+
+    @RequestMapping(value = "/500")
+    public String error500(HttpServletRequest request) {
+        log.info("error500()");
+
+        String referrer = request.getHeader("Referer");
+
+        if(referrer != null){
+            log.info("error500(): redirecting to 500");
+            return "redirect:/500";
+        }
+        log.info("error500() returns : 500");
+        return "500";
     }
 
     @RequestMapping(value = "/best", method = RequestMethod.GET)

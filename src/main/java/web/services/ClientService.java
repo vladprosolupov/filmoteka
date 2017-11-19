@@ -36,12 +36,12 @@ public class ClientService {
         log.info("saveOrUpdate(clientDb=" + clientDb + ")");
 
         if (clientDb == null) {
-            log.error("Error : cientDb is null");
+            log.error("Error : clientDb is null");
 
             throw new IllegalArgumentException("ClientDb should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
-//        session.saveOrUpdate(clientDb);
+        session.saveOrUpdate(clientDb);
 
         log.info("succ. saved or updated client");
     }

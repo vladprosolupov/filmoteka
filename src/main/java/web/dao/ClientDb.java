@@ -195,7 +195,6 @@ public class ClientDb {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
                 ", addressByIdAddress=" + addressByIdAddress +
-                ", clientDataById=" + clientDataById +
                 '}';
     }
 }
