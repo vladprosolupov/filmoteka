@@ -34,4 +34,13 @@ public class LinkToNetworkJSON {
     public void setIdNetwork(int idNetwork) {
         this.idNetwork = idNetwork;
     }
+
+    @Override
+    public String toString() {
+        return "LinkToNetworkJSON{" +
+                "id=" + id +
+                ", link='" + link + '\'' +
+                ", idNetwork=" + idNetwork +
+                '}';
+    }
 }

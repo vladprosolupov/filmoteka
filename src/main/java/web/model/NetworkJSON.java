@@ -32,4 +32,13 @@ public class NetworkJSON {
     public void setNetworkLogo(String networkLogo) {
         this.networkLogo = networkLogo;
     }
+
+    @Override
+    public String toString() {
+        return "NetworkJSON{" +
+                "id=" + id +
+                ", networkName='" + networkName + '\'' +
+                ", networkLogo='" + networkLogo + '\'' +
+                '}';
+    }
 }

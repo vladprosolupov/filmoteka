@@ -206,4 +206,30 @@ public class FilmJSON {
     public void setTrailers(List<String> trailers) {
         this.trailers = trailers;
     }
+
+    @Override
+    public String toString() {
+        return "FilmJSON{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", language='" + language + '\'' +
+                ", lenght=" + lenght +
+                ", description='" + description + '\'' +
+                ", slogan='" + slogan + '\'' +
+                ", rating=" + rating +
+                ", age=" + age +
+                ", budget='" + budget + '\'' +
+                ", cover='" + cover + '\'' +
+                ", categories=" + categories +
+                ", actors=" + actors +
+                ", directors=" + directors +
+                ", studios=" + studios +
+                ", countries=" + countries +
+                ", networks=" + networks +
+                ", screenshots=" + screenshots +
+                ", awards=" + awards +
+                ", trailers=" + trailers +
+                '}';
+    }
 }

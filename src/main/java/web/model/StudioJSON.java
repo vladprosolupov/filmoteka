@@ -23,4 +23,12 @@ public class StudioJSON {
     public void setStudioName(String studioName) {
         this.studioName = studioName;
     }
+
+    @Override
+    public String toString() {
+        return "StudioJSON{" +
+                "id=" + id +
+                ", studioName='" + studioName + '\'' +
+                '}';
+    }
 }

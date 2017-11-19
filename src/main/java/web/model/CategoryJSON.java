@@ -23,4 +23,12 @@ public class CategoryJSON {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryJSON{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

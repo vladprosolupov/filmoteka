@@ -62,4 +62,16 @@ public class ActorJSON {
 //    public void setIdFilmActor(List<String> idFilmActor) {
 //        this.idFilmActor = idFilmActor;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "ActorJSON{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate='" + birthdate + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

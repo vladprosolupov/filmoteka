@@ -43,4 +43,12 @@ public class FilmActorJSON {
         this.idActor = idActor;
     }
 
+    @Override
+    public String toString() {
+        return "FilmActorJSON{" +
+                "id=" + id +
+                ", idFilm=" + idFilm +
+                ", idActor=" + idActor +
+                '}';
+    }
 }
