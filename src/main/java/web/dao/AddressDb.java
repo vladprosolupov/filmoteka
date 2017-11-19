@@ -112,4 +112,17 @@ public class AddressDb {
     public void setClientsById(Collection<ClientDb> clientsById) {
         this.clientsById = clientsById;
     }
+
+    @Override
+    public String toString() {
+        return "AddressDb{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", district='" + district + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", cityByIdCity=" + cityByIdCity +
+                ", clientsById=" + clientsById +
+                '}';
+    }
 }

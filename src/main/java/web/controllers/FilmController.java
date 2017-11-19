@@ -73,7 +73,7 @@ public class FilmController {
         log.info("getFilmsForBestPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);
-        List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForBestPage(pageNum);
+        List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForNewPage(pageNum);
 
         log.info("getFilmsForBestPage(page: " + page + " ) returns : filmsForBestPage.size()=" + filmsForBestPage.size());
         return filmsForBestPage;

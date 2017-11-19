@@ -20,7 +20,7 @@ public class GlobalExceptionController {
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
-        errorJSON.setMessage(e.getCause().getLocalizedMessage());
+        errorJSON.setMessage(e.getMessage());
         errorJSON.setStatusCode("500 Server Error");
 
         log.error("indexOutOfBoundExceptionOccur () returns : errorJSON=" + errorJSON);

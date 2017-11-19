@@ -78,4 +78,14 @@ public class AwardDb {
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
     }
+
+    @Override
+    public String toString() {
+        return "AwardDb{" +
+                "id=" + id +
+                ", awardName='" + awardName + '\'' +
+                ", awardYear=" + awardYear +
+                ", filmByIdFilm=" + filmByIdFilm +
+                '}';
+    }
 }

@@ -62,4 +62,13 @@ public class LinkToNetworkDb {
     public void setNetworkByIdNetwork(NetworkDb networkByIdNetwork) {
         this.networkByIdNetwork = networkByIdNetwork;
     }
+
+    @Override
+    public String toString() {
+        return "LinkToNetworkDb{" +
+                "id=" + id +
+                ", link='" + link + '\'' +
+                ", networkByIdNetwork=" + networkByIdNetwork +
+                '}';
+    }
 }

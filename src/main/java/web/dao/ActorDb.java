@@ -104,4 +104,16 @@ public class ActorDb {
     public void setFilmActorsById(Collection<FilmActorDb> filmActorsById) {
         this.filmActorsById = filmActorsById;
     }
+
+    @Override
+    public String toString() {
+        return "ActorDb{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate=" + birthdate +
+                ", countryByIdCountry=" + countryByIdCountry +
+                ", filmActorsById=" + filmActorsById +
+                '}';
+    }
 }

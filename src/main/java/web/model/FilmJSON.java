@@ -1,5 +1,9 @@
 package web.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 /**
@@ -9,20 +13,29 @@ public class FilmJSON {
 
     private int id;
 
+    @NotNull
+    @Size(min = 2, max = 100)
     private String title;
 
+    @NotNull
     private String releaseDate;
 
     private String language;
 
+    @Min(10)
+    @Max(500)
     private int lenght;
 
+    @NotNull
+    @Size(min = 10, max = 200)
     private String description;
 
     private String slogan;
 
     private double rating;
 
+    @Min(0)
+    @Max(200)
     private int age;
 
     private String budget;
@@ -205,5 +218,31 @@ public class FilmJSON {
 
     public void setTrailers(List<String> trailers) {
         this.trailers = trailers;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmJSON{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", language='" + language + '\'' +
+                ", lenght=" + lenght +
+                ", description='" + description + '\'' +
+                ", slogan='" + slogan + '\'' +
+                ", rating=" + rating +
+                ", age=" + age +
+                ", budget='" + budget + '\'' +
+                ", cover='" + cover + '\'' +
+                ", categories=" + categories +
+                ", actors=" + actors +
+                ", directors=" + directors +
+                ", studios=" + studios +
+                ", countries=" + countries +
+                ", networks=" + networks +
+                ", screenshots=" + screenshots +
+                ", awards=" + awards +
+                ", trailers=" + trailers +
+                '}';
     }
 }

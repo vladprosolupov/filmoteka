@@ -180,4 +180,22 @@ public class ClientDb {
     public void setClientDataById(Collection<ClientDataDb> clientDataById) {
         this.clientDataById = clientDataById;
     }
+
+    @Override
+    public String toString() {
+        return "ClientDb{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", creationDate=" + creationDate +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
+                ", addressByIdAddress=" + addressByIdAddress +
+                ", clientDataById=" + clientDataById +
+                '}';
+    }
 }

@@ -183,7 +183,9 @@ $(function () {
             }
         });
     } else if (window.location.pathname.includes("/film/")) {
-        var url = '/film/info/' + window.location.href.slice(-1);
+        var lastslashindex = window.location.pathname.lastIndexOf('/');
+        var result= window.location.pathname.substring(lastslashindex  + 1);
+        var url = '/film/info/' + result;
         var film = new Vue({
             el: '.vue',
             data: {

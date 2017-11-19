@@ -75,4 +75,14 @@ public class DirectorDb {
     public void setCountryByIdCountry(CountryDb countryByIdCountry) {
         this.countryByIdCountry = countryByIdCountry;
     }
+
+    @Override
+    public String toString() {
+        return "DirectorDb{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", countryByIdCountry=" + countryByIdCountry +
+                '}';
+    }
 }

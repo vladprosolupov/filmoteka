@@ -114,4 +114,17 @@ public class CommentRatingDb {
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
     }
+
+    @Override
+    public String toString() {
+        return "CommentRatingDb{" +
+                "id=" + id +
+                ", commentText='" + commentText + '\'' +
+                ", rating=" + rating +
+                ", referencedComment=" + referencedComment +
+                ", commentDate=" + commentDate +
+                ", clientByIdClient=" + clientByIdClient +
+                ", filmByIdFilm=" + filmByIdFilm +
+                '}';
+    }
 }

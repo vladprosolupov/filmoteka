@@ -59,4 +59,13 @@ public class ClientDataDb {
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
     }
+
+    @Override
+    public String toString() {
+        return "ClientDataDb{" +
+                "id=" + id +
+                ", clientByIdClient=" + clientByIdClient +
+                ", filmByIdFilm=" + filmByIdFilm +
+                '}';
+    }
 }
