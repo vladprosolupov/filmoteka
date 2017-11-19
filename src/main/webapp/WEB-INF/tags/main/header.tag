@@ -19,7 +19,7 @@
                       method="post" onsubmit="return false">
 
                     <a class="navbar-item" href="/">Home</a>
-                    <a class="navbar-item" href="/">New</a>
+                    <a class="navbar-item" href="/new">New</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
@@ -80,7 +80,7 @@
                 <div class="navbar">
 
                     <a class="navbar-item" href="/">Home</a>
-                    <a class="navbar-item" href="/">New</a>
+                    <a class="navbar-item" href="/new">New</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <a class="navbar-item" href="/login">Log in</a>
@@ -120,7 +120,7 @@
                       method="post" onsubmit="return false">
 
                     <a class="navbar-item" href="/">Home</a>
-                    <a class="navbar-item" href="/">New</a>
+                    <a class="navbar-item" href="/new">New</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
