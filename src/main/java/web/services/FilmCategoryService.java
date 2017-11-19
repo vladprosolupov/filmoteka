@@ -23,7 +23,7 @@ public class FilmCategoryService {
 
     public List<FilmJSONIndex> getAllFilmsForCategory(String id){
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("select f.title, f.releaseDate, f.cover, f.id from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list();
+        return session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list();
     }
 
 }

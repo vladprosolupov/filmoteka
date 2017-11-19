@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
-    <div id="loading">        <div class="spinner">
+    <div id="loading" style="position: inherit">        <div class="spinner">
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>
     </div></div>

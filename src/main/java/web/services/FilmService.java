@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
+import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
 import web.model.FilmJSONSearch;
 
@@ -58,9 +59,9 @@ public class FilmService {
     @Autowired
     private ScreenshotService screenshotService;
 
-    public List<FilmDb> getAllFilms() throws HibernateException {
+    public List<FilmJSONAdmin> getAllFilms() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
+        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
         return listOfFilms;
     }
 
@@ -95,24 +96,25 @@ public class FilmService {
         if (page != 1) {
             start = page * limit;
         }
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F").setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }
 
-    public List<FilmJSONIndex> getFilmsForNewPage(int page) throws HibernateException {
+    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
         int start = 0;
         if (page != 1) {
             start = page * limit;
         }
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F order by id desc").setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.rating desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }
 
     public List<FilmJSONSearch> getFilmsWithTitleForQuick(String title) {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        int limit = 10;
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(10).list();
         return list;
     }
 

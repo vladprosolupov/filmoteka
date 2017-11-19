@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New</title>
+    <title>Best Rated</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
@@ -58,7 +58,9 @@
                                     <div class="media-content">
                                         <p class="title is-6">{{film[0]}}</p>
                                         <hr>
-                                        <p class="subtitle is-6 is-pulled-right">{{getYear(film[1])}}</p>
+                                        <p class="subtitle is-6 is-pulled-right"><i class="fa fa-star" style="color: #e09952;"
+                                                                                   aria-hidden="true"></i> {{film[4]}}</p>
+                                        <p class="subtitle is-6 is-pulled-left">{{getYear(film[1])}}</p>
                                     </div>
                                 </div>
                             </div>

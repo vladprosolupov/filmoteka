@@ -11,7 +11,7 @@
 <t:wrapper>
 
 
-    <div id="loading" class="is-centered">
+    <div id="loading" class="is-centered" style="position: inherit">
         <div class="spinner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -25,16 +25,16 @@
             <th>Title</th>
             <th>Release date</th>
             <th>Rating</th>
-            <th>Language</th>
+            <th>Length</th>
             <th colspan="2"></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="film in films" :id="film.id">
-            <td>{{film.title}}</td>
-            <td>{{film.releaseDate}}</td>
-            <td>{{film.rating}}</td>
-            <td>{{film.languageByIdLanguage.name}}</td>
+            <td>{{film[0]}}</td>
+            <td>{{film[1]}}</td>
+            <td>{{film[2]}}</td>
+            <td>{{film[3]}}</td>
             <td>
                 <button class="button is-primary" v-on:click="editFilm(film.id)">Edit</button>
             </td>

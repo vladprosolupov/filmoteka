@@ -83,11 +83,11 @@ public class RootWebController {
         return "403";
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String pageNew(){
-        log.info("pageNew()");
-        log.info("pageNew() returns : new");
-        return "new";
+    @RequestMapping(value = "/best", method = RequestMethod.GET)
+    public String best(){
+        log.info("best()");
+        log.info("best() returns : best");
+        return "best";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

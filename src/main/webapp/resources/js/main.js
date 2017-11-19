@@ -217,6 +217,21 @@ $(function () {
                     }
                     return result;
                 },
+                formatReleaseDate: function (val) {
+                    var date = new Date(Date.parse(val));
+                    var monthNames = [
+                        "January", "February", "March",
+                        "April", "May", "June", "July",
+                        "August", "September", "October",
+                        "November", "December"
+                    ];
+
+                    var day = date.getDate();
+                    var monthIndex = date.getMonth();
+                    var year = date.getFullYear();
+
+                    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+                },
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
                 },
@@ -255,7 +270,7 @@ $(function () {
             }
         });
 
-    } else if(window.location.pathname === "/new"){
+    } else if(window.location.pathname === "/best"){
         var pageNew = new Vue({
             el: '.vue',
             data: {
@@ -265,7 +280,7 @@ $(function () {
             },
             beforeCompile: function () {
                 var self = this;
-                $.when($.getJSON('/film/filmsForNewPage/1', function (films) {
+                $.when($.getJSON('/film/filmsForBestPage/1', function (films) {
                         self.films = films;
                     }),
                     $.getJSON('/category/forNav', function (categories) {

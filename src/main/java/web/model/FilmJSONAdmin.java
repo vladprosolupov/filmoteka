@@ -1,14 +1,12 @@
 package web.model;
 
 import java.sql.Date;
-import java.util.Set;
 
-public class FilmJSONIndex {
-
-    private Date releaseDate;
+public class FilmJSONAdmin {
     private String title;
-    private String cover;
+    private Date releaseDate;
     private Double rating;
+    private Integer lenght;
 
     public String getTitle() {
         return title;
@@ -26,14 +24,6 @@ public class FilmJSONIndex {
         this.releaseDate = releaseDate;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
-    public String getCover() {
-        return cover;
-    }
-
     public Double getRating() {
         return rating;
     }
@@ -42,14 +32,21 @@ public class FilmJSONIndex {
         this.rating = rating;
     }
 
-    @Override
-    public String toString() {
-        return "FilmJSONIndex{" +
-                "releaseDate=" + releaseDate +
-                ", title='" + title + '\'' +
-                ", cover='" + cover + '\'' +
-                ", rating=" + rating +
-                '}';
+    public Integer getLenght() {
+        return lenght;
     }
 
+    public void setLenght(Integer lenght) {
+        this.lenght = lenght;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmJSONAdmin{" +
+                "title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", rating=" + rating +
+                ", lenght=" + lenght +
+                '}';
+    }
 }

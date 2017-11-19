@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
+import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
 import web.services.*;
 
@@ -45,10 +46,10 @@ public class FilmController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmDb> getAllFilms() {
+    List<FilmJSONAdmin> getAllFilms() {
         log.info("getAllFilms()");
 
-        List<FilmDb> allFilms = filmService.getAllFilms();
+        List<FilmJSONAdmin> allFilms = filmService.getAllFilms();
 
         log.info("getAllFilms() returns : allFilms.size()=" + allFilms.size());
         return allFilms;
@@ -66,16 +67,16 @@ public class FilmController {
         return filmsForIndexPage;
     }
 
-    @RequestMapping(value = "/filmsForNewPage/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "/filmsForBestPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
     List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException{
-        log.info("getFilmsForNewPage(page: " + page +" )");
+        log.info("getFilmsForBestPage(page: " + page +" )");
 
         int pageNum = Integer.parseInt(page);
-        List<FilmJSONIndex> filmsForNewPage = filmService.getFilmsForNewPage(pageNum);
+        List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForBestPage(pageNum);
 
-        log.info("getFilmsForNewPage(page: " + page +" ) returns : filmsForNewPage.size()=" + filmsForNewPage.size());
-        return filmsForNewPage;
+        log.info("getFilmsForBestPage(page: " + page +" ) returns : filmsForBestPage.size()=" + filmsForBestPage.size());
+        return filmsForBestPage;
     }
 
     @PreAuthorize("hasAuthority('admin')")
