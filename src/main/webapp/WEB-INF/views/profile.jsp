@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <section class="hero is-medium is-dark is-bold has-text-centered">
+        <section class="hero is-medium is-bold has-text-centered" style="background-color: white">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
@@ -54,7 +54,7 @@
                         <p>Login: {{info.login}}</p>
                         <p>Phone number: {{info.phoneNumber}}</p>
                     </div>
-                    <button class="button is-primary is-medium">Edit</button>
+                    <button class="button is-info is-medium">Edit</button>
                 </div>
             </div>
         </section>
