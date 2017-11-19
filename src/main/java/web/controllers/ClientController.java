@@ -26,6 +26,8 @@ public class ClientController {
 
     private static final Logger log = LogManager.getLogger(ClientController.class);
 
+    //TODO add real-time validation of the client login
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {

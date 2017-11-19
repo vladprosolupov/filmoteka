@@ -39,6 +39,21 @@ $(function () {
             $(this).addClass("is-danger");
         }
     });
+
+    $('input[name="email"]').change(function () {
+        if(this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+            if(this.classList.contains("is-danger")) {
+                if($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
+                $(this).removeClass("is-danger");
+            }
+            $(this).addClass("is-success");
+        }else {
+            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+            $('.help')[2].style.display = "block";
+            $(this).addClass("is-danger");
+        }
+    });
+
     $('input[name="login"]').keyup(function () {
         if(this.value.length >= 2 && this.value.length <= 64){
             if(this.classList.contains("is-danger")) {

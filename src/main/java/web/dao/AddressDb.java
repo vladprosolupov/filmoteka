@@ -113,16 +113,5 @@ public class AddressDb {
         this.clientsById = clientsById;
     }
 
-    @Override
-    public String toString() {
-        return "AddressDb{" +
-                "id=" + id +
-                ", address='" + address + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", district='" + district + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", cityByIdCity=" + cityByIdCity +
-                ", clientsById=" + clientsById +
-                '}';
-    }
+
 }

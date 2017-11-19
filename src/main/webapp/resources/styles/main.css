@@ -28,7 +28,7 @@ section.info-tiles .films {
 }
 
 section.info-tiles {
-    margin-bottom: 5%;
+    margin-bottom: 7%;
 }
 
 div.film {
@@ -526,6 +526,12 @@ aside.menu {
 
 #loading {
     position: fixed;
+}
+
+#errorBox {
+    margin-top: 10%;
+    display: flex;
+    height: 60px;
 }
 
 @media all and (min-width: 1024px) and (max-width: 1215px){

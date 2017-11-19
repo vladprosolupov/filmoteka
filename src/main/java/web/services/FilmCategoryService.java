@@ -30,7 +30,7 @@ public class FilmCategoryService {
         log.info("getAllFilmsForCategory(id=" + id + ")");
 
         Session session = sessionFactory.getCurrentSession();
-        List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list();
+        List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list();
 
         log.info("getAllFilmsForCategory() returns : list.size()" + list.size());
         return list;

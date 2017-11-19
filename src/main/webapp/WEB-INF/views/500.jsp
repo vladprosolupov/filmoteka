@@ -10,13 +10,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Forbidden</title>
+    <title>Server error</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
 </head>
 <t:header>
     <article id="errorBox" class="message is-danger">
         <div class="message-body">
-            Sorry, you don't have a <strong>permission</strong> to visit that page!
+            Sorry, an <strong>error</strong> occurred processing this request!
         </div>
     </article>
 </t:header>
