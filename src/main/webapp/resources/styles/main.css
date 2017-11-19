@@ -44,12 +44,12 @@ div.card.effect-ruby a {
     /*height: 300px;*/
     width: 100%;
     text-align: center;
-    margin: 1em 0 0;
-    padding: 100% 0 100% 0;
+    /*margin: 1em 0 0;*/
+    padding: 150% 0 150% 0;
     /*border: 1px solid #fff;*/
     opacity: 0;
     color: white;
-    background-color: rgba(78, 78, 78, 0.75);
+    background-color: rgba(78, 78, 78, 0);
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
     -webkit-transform: translate3d(0, 20px, 0) scale(1.1);
