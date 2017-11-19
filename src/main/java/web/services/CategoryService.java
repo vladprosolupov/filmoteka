@@ -1,5 +1,7 @@
 package web.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,16 +24,26 @@ public class CategoryService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
+    private static final Logger log = LogManager.getLogger(AwardService.class);
+
     public List<CategoryDb> getAllCategories() throws HibernateException {
+        log.info("getAllCategories()");
+
         Session session = sessionFactory.getCurrentSession();
         List<CategoryDb> result = session.createQuery("from CategoryDb").list();
+
+        log.info("getAllCategories() returns : result.size()=" + result.size());
         return result;
     }
 
     public List<CategoryJSON> getForNav(){
+        log.info("getForNav()");
+
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
         List<CategoryJSON> result = session.createQuery("select C.id, C.name from CategoryDb C").setMaxResults(limit).list();
+
+        log.info("getForNav() returns : result.size()" + result.size());
         return result;
     }
 

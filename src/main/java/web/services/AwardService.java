@@ -1,5 +1,7 @@
 package web.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,49 +26,83 @@ public class AwardService {
     @Autowired
     private FilmService filmService;
 
+    private static final Logger log = LogManager.getLogger(AwardService.class);
+
     public AwardDb getAwardWithId(String id) throws HibernateException, IndexOutOfBoundsException {
-        if(id == null || id.isEmpty()) {
+        log.info("getAwardWithId(id=" + id + ")");
+
+        if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
         AwardDb awardDb = (AwardDb) session.createQuery("from AwardDb a where a.id=" + id).list().get(0);
+
+        log.info("getAwardWithId() returns : awardDb=" + awardDb);
         return awardDb;
     }
 
     public List<AwardDb> getAwardsWithFilmId(int id) throws HibernateException {
-        if(id < 0) {
+        log.info("getAwardsWithFilmId(id=" + id + ")");
+
+        if (id < 0) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be smaller than 0");
         }
         List<AwardDb> awardDbList = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         awardDbList = session.createQuery("from AwardDb a where a.filmByIdFilm=" + id).list();
+
+        log.info("getAwardsWithFilmId() returns : awardDbList.size()=" + awardDbList.size());
         return awardDbList;
     }
 
     public void saveOrUpdateAward(AwardDb awardDb) throws HibernateException {
-        if(awardDb == null) {
+        log.info("saveOrUpdateAward(awardDb=" + awardDb + ")");
+
+        if (awardDb == null) {
+            log.error("Error : awardDb is null");
+
             throw new IllegalArgumentException("AwardDb should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(awardDb);
+
+        log.info("succ saved or updated award");
     }
 
     public void deleteAward(String id) throws HibernateException {
-        if(id == null || id.isEmpty()) {
+        log.info("deleteAward(id=" + id + ")");
+
+        if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from AwardDb a where a.id=" + id).executeUpdate();
+
+        log.info("succ. deleted award");
     }
 
     public List<AwardDb> getAll() throws HibernateException {
+        log.info("getAll()");
+
         Session session = sessionFactory.getCurrentSession();
         List<AwardDb> result = session.createQuery("from AwardDb ").list();
+
+        log.info("getAll() returns : result.size()=" + result.size());
         return result;
     }
 
     public Set<AwardDb> createSetOfAwards(Map<String, Integer> awards) throws ParsingJsonToDaoException {
-        if(awards == null) {
+        log.info("createSetOfAwards(awards=" + awards + ")");
+
+        if (awards == null) {
+            log.error("Error : awards is null");
+
             throw new IllegalArgumentException("Awards should not be null");
         }
         Set<AwardDb> awardDbSet = new HashSet<>();
@@ -76,14 +112,22 @@ public class AwardService {
             awardDb.setAwardYear(m.getValue());
             awardDbSet.add(awardDb);
         }
+
+        log.info("createSetOfAwards() returns : awardDbSet.size()=" + awardDbSet.size());
         return awardDbSet;
     }
 
     public void checkForAwards(int filmId, Set<AwardDb> awardDbSet) throws HibernateException {
-        if(filmId < 0) {
+        log.info("checkForAwards(filmId=" + filmId + ", awardDbSet=" + awardDbSet + ")");
+
+        if (filmId < 0) {
+            log.error("Error : filmId is incorrect");
+
             throw new IllegalArgumentException("FilmId should not be null");
         }
-        if(awardDbSet == null) {
+        if (awardDbSet == null) {
+            log.error("Error : awardDbSet is null");
+
             throw new IllegalArgumentException("AwardDbSer should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
@@ -92,6 +136,8 @@ public class AwardService {
             a.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmId)));
             session.saveOrUpdate(a);
         }
+
+        log.info("succ. get results");
     }
 }
 

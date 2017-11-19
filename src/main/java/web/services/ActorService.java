@@ -1,5 +1,7 @@
 package web.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,40 +31,68 @@ public class ActorService {
     @Autowired
     private CountryService countryService;
 
+    private static final Logger log = LogManager.getLogger(ActorService.class);
+
     public ActorDb getActorWithId(int id) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getActorWithId(id=" + id + ")");
+
         if (id < 0) {
+            log.error("Error : Id is not correct");
+
             throw new IllegalArgumentException("Id should not be smaller than 0");
         }
         Session session = sessionFactory.getCurrentSession();
         ActorDb actorDb = (ActorDb) session.createQuery("from ActorDb a where a.id=" + id).list().get(0);
+
+        log.info("getActorWithId() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
         return actorDb;
     }
 
     public void saveOrUpdate(ActorDb actorDb) throws HibernateException {
+        log.info("saveOrUpdate(actorDb=" + actorDb + ")");
+
         if (actorDb == null) {
+            log.error("Error : actorDb is null");
+
             throw new IllegalArgumentException("ActorDb should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(actorDb);
+
+        log.info("succ. saved or updated actor");
     }
 
     public void delete(String id) throws HibernateException {
+        log.info("delete(id=" + id + ")");
+
         if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from ActorDb a where a.id=" + id).executeUpdate();
+
+        log.info("succ. deleted actor");
     }
 
     public List<ActorDb> getAll() throws HibernateException {
+        log.info("getAll()");
+
         List<ActorDb> result = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         result = session.createQuery("from ActorDb ").list();
+
+        log.info("getAll() returns : result.size()=" + result.size());
         return result;
     }
 
     public ActorDb convertToActorDb(ActorJSON actorJSON) throws ParsingJsonToDaoException, ParseException {
+        log.info("convertToActorDb(actorJSON=" + actorJSON);
+
         if (actorJSON == null) {
+            log.error("Error : actorJSON is null");
+
             throw new IllegalArgumentException("ActorJSON should not be null");
         }
 
@@ -77,6 +107,7 @@ public class ActorService {
         actorDb.setCountryByIdCountry(
                 countryService.getCountryWithId(actorJSON.getCountry()));
 
+        log.info("convertToActorDb() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
         return actorDb;
     }
 }
