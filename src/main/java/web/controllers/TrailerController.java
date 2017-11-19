@@ -1,5 +1,7 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,25 +24,41 @@ public class TrailerController {
     @Autowired
     private TrailerService trailerService;
 
+    private static final Logger log = LogManager.getLogger(TrailerController.class);
+
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(TrailerDb trailerDb){
+    String addOrUpdate(TrailerDb trailerDb) {
+        log.info("addOrUpdate(trailerDb=" + trailerDb + ")");
+
         trailerService.saveOrUpdate(trailerDb);
+
+        log.info("addORUpdate() returns : OK");
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public @ResponseBody String delete(@PathVariable("id") String id){
+    public @ResponseBody
+    String delete(@PathVariable("id") String id) {
+        log.info("delete(id=" + id + ")");
+
         trailerService.delete(id);
+
+        log.info("delete() returns : OK");
         return "OK";
     }
 
-    @PreAuthorize("hasAuthority('admin')")
+    //    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
-    List<TrailerDb> getAll(){
-        return trailerService.getAll();
+    List<TrailerDb> getAll() {
+        log.info("getAll()");
+
+        List<TrailerDb> all = trailerService.getAll();
+
+        log.info("getAll() returns : all.size()=" + all.size());
+        return all;
     }
 }

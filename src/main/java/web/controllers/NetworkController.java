@@ -1,5 +1,7 @@
 package web.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,29 +23,41 @@ public class NetworkController {
     @Autowired
     private NetworkService networkService;
 
+    private static final Logger log = LogManager.getLogger(NetworkController.class);
+
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(@RequestBody NetworkJSON networkJSON){
-        try {
-            networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
-        } catch (ParsingJsonToDaoException e) {
-            e.printStackTrace();
-        }
+    String addOrUpdate(@RequestBody NetworkJSON networkJSON) throws ParsingJsonToDaoException {
+        log.info("addOrUpdate(networkJSON=" + networkJSON + ")");
+
+        networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
+
+        log.info("addOrUpdate() returns : OK");
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public @ResponseBody String delete(@PathVariable("id") String id){
+    public @ResponseBody
+    String delete(@PathVariable("id") String id) {
+        log.info("delete(id=" + id + ")");
+
         networkService.delete(id);
+
+        log.info("delete() returns : OK");
         return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
-    List<NetworkDb> getAll(){
-        return networkService.getAll();
+    List<NetworkDb> getAll() {
+        log.info("getAll()");
+
+        List<NetworkDb> networkDbs = networkService.getAll();
+
+        log.info("getAll() returns : networkDbs.size()=" + networkDbs.size());
+        return networkDbs;
     }
 }
