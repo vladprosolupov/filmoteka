@@ -73,4 +73,14 @@ public class CityDb {
     public void setCountryByIdCountry(CountryDb countryByIdCountry) {
         this.countryByIdCountry = countryByIdCountry;
     }
+
+    @Override
+    public String toString() {
+        return "CityDb{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addressesById=" + addressesById +
+                ", countryByIdCountry=" + countryByIdCountry +
+                '}';
+    }
 }

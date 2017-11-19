@@ -52,4 +52,11 @@ public class CountryDb {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "CountryDb{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

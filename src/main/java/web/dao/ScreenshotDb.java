@@ -65,4 +65,13 @@ public class ScreenshotDb {
     public void setFilmByIdFilm(FilmDb filmByIdFilm) {
         this.filmByIdFilm = filmByIdFilm;
     }
+
+    @Override
+    public String toString() {
+        return "ScreenshotDb{" +
+                "id=" + id +
+                ", link='" + link + '\'' +
+                ", filmByIdFilm=" + filmByIdFilm +
+                '}';
+    }
 }

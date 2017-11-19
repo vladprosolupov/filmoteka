@@ -51,4 +51,12 @@ public class StudioDb {
         result = 31 * result + (studioName != null ? studioName.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "StudioDb{" +
+                "id=" + id +
+                ", studioName='" + studioName + '\'' +
+                '}';
+    }
 }

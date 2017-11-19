@@ -66,4 +66,13 @@ public class NetworkDb {
         result = 31 * result + (networkLogo != null ? networkLogo.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "NetworkDb{" +
+                "id=" + id +
+                ", networkName='" + networkName + '\'' +
+                ", networkLogo='" + networkLogo + '\'' +
+                '}';
+    }
 }

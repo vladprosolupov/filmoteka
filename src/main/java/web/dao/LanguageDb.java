@@ -51,4 +51,12 @@ public class LanguageDb {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "LanguageDb{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
