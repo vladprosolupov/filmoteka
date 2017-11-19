@@ -92,21 +92,21 @@ public class FilmService {
     public List<FilmJSONIndex> getFilmsForIndexPage(int page) throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
-        int start = 0;
-        if (page != 1) {
-            start = page * limit;
-        }
+        int start = (page - 1) * limit;
         List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
+    }
+
+    public long getNumberOfFilms() throws HibernateException {
+        Session session = sessionFactory.getCurrentSession();
+        long result = (long)session.createQuery("select count(F.id) from FilmDb F").list().get(0);
+        return result;
     }
 
     public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
-        int start = 0;
-        if (page != 1) {
-            start = page * limit;
-        }
+        int start = (page - 1) * limit;
         List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.rating desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }

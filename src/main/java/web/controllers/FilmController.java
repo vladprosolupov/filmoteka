@@ -57,26 +57,32 @@ public class FilmController {
 
     @RequestMapping(value = "/filmsForIndexPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getFilmsForIndexPage(@PathVariable("page") String page) throws NumberFormatException{
-        log.info("getFilmsForIndexPage(page: " + page +" )");
+    List<FilmJSONIndex> getFilmsForIndexPage(@PathVariable("page") String page) throws NumberFormatException {
+        log.info("getFilmsForIndexPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);
         List<FilmJSONIndex> filmsForIndexPage = filmService.getFilmsForIndexPage(pageNum);
 
-        log.info("getFilmsForIndexPage(page: " + page +" ) returns : filmsForIndexPage.size()=" + filmsForIndexPage.size());
+        log.info("getFilmsForIndexPage(page: " + page + " ) returns : filmsForIndexPage.size()=" + filmsForIndexPage.size());
         return filmsForIndexPage;
     }
 
     @RequestMapping(value = "/filmsForBestPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException{
-        log.info("getFilmsForBestPage(page: " + page +" )");
+    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException {
+        log.info("getFilmsForBestPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);
         List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForBestPage(pageNum);
 
-        log.info("getFilmsForBestPage(page: " + page +" ) returns : filmsForBestPage.size()=" + filmsForBestPage.size());
+        log.info("getFilmsForBestPage(page: " + page + " ) returns : filmsForBestPage.size()=" + filmsForBestPage.size());
         return filmsForBestPage;
+    }
+
+    @RequestMapping(value = "/numberOfFilms", method = RequestMethod.GET)
+    public @ResponseBody
+    long getNumberOfFilms() {
+        return filmService.getNumberOfFilms();
     }
 
     @PreAuthorize("hasAuthority('admin')")
