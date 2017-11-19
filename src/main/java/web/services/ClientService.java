@@ -40,7 +40,7 @@ public class ClientService {
             throw new IllegalArgumentException("ClientDb should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(clientDb);
+//        session.saveOrUpdate(clientDb);
 
         log.info("succ. saved or updated client");
     }

@@ -1,11 +1,15 @@
 package web.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.Set;
 
 public class FilmJSONIndex {
 
     private Date releaseDate;
+    @NotNull
+    @Size(min = 1, max = 40)
     private String title;
     private String cover;
 

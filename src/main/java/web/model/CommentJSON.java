@@ -1,14 +1,23 @@
 package web.model;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CommentJSON {
 
     private int id;
+    @NotNull
     private int idFilm;
+    @NotNull
     private int idClient;
+    @NotNull
+    @Size(min = 1, max = 200)
     private String commentText;
     private double rating;
     private int referencedComment;
     private String commentDate;
+    @NotNull
     private String clientLogin;
 
     public int getId() {

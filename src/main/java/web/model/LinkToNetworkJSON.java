@@ -1,5 +1,8 @@
 package web.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by Rostyk on 16.06.2017.
  */
@@ -7,6 +10,8 @@ public class LinkToNetworkJSON {
 
     private int id;
 
+    @NotNull
+    @Size(min = 1)
     private String link;
 
     private int idNetwork;
