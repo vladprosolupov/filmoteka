@@ -64,15 +64,14 @@ public class FilmService {
 
     private static final Logger log = LogManager.getLogger(FilmService.class);
 
-    public List<FilmDb> getAllFilms() throws HibernateException {
+
+    public List<FilmJSONAdmin> getAllFilms() {
         log.info("getAllFilms()");
 
-    public List<FilmJSONAdmin> getAllFilms() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
+        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
 
         log.info("getAllFilms() returns : listOfFilms.size()=" + listOfFilms.size());
-        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
         return listOfFilms;
     }
 
@@ -135,7 +134,6 @@ public class FilmService {
         return result;
     }
 
-    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
     public List<FilmJSONIndex> getFilmsForNewPage(int page) throws HibernateException {
         log.info("getFilmsForNewPage(page=" + page + ")");
 
@@ -152,7 +150,6 @@ public class FilmService {
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
         List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(10).list();
-        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
 
         log.info("getFilmsWithTitleForQuick() returns : list.size()=" + list.size());
         return list;
