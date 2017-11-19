@@ -88,9 +88,25 @@ public class FilmService {
         session.createQuery("delete from FilmDb f where f.id=" + id).executeUpdate();
     }
 
-    public List<FilmJSONIndex> getAllFilmsForIndex() throws HibernateException {
+    public List<FilmJSONIndex> getFilmsForIndexPage(int page) throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F").list();
+        int limit = 10;
+        int start = 0;
+        if (page != 1) {
+            start = page * limit;
+        }
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F").setFirstResult(start).setMaxResults(limit).list();
+        return list;
+    }
+
+    public List<FilmJSONIndex> getFilmsForNewPage(int page) throws HibernateException {
+        Session session = sessionFactory.getCurrentSession();
+        int limit = 10;
+        int start = 0;
+        if (page != 1) {
+            start = page * limit;
+        }
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F order by id desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }
 

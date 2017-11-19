@@ -1,10 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: vladyslavprosolupov
+  Date: 19.11.2017
+  Time: 15:01
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Filmoteka</title>
+    <title>New</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
@@ -80,5 +87,4 @@
         </div>
     </div>
 </t:header>
-
 </html>

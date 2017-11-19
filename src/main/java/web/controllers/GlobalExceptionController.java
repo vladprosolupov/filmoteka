@@ -31,6 +31,17 @@ public class GlobalExceptionController {
         return errorJSON;
     }
 
+    @ExceptionHandler(NumberFormatException.class)
+    public ErrorJSON NumberFormatExceptionOccur(NumberFormatException e){
+        ErrorJSON errorJSON = new ErrorJSON();
+
+        errorJSON.setName("error");
+        errorJSON.setMessage(e.getCause().getLocalizedMessage());
+        errorJSON.setStatusCode("500 Server error");
+
+        return errorJSON;
+    }
+
     @ExceptionHandler(ParsingJsonToDaoException.class)
     public ErrorJSON parsingJSONExceptionOccur(ParsingJsonToDaoException e) {
         ErrorJSON errorJSON = new ErrorJSON();

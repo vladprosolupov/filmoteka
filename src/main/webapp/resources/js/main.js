@@ -127,7 +127,7 @@ $(function () {
             },
             beforeCompile: function () {
                 var self = this;
-                $.when($.getJSON('/film/allForIndex', function (films) {
+                $.when($.getJSON('/film/filmsForIndexPage/1', function (films) {
                         self.films = films;
                     }),
                     $.getJSON('/category/forNav', function (categories) {
@@ -255,6 +255,35 @@ $(function () {
             }
         });
 
+    } else if(window.location.pathname === "/new"){
+        var pageNew = new Vue({
+            el: '.vue',
+            data: {
+                films: [],
+                categories: [],
+                link: "/film/"
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.when($.getJSON('/film/filmsForNewPage/1', function (films) {
+                        self.films = films;
+                    }),
+                    $.getJSON('/category/forNav', function (categories) {
+                        self.categories = categories;
+                    })).done(function () {
+                    hideLoading();
+                });
+            },
+            methods: {
+                getYear: function (val) {
+                    var date = new Date(Date.parse(val));
+                    return date.getFullYear();
+                },
+                openCategory: function (id) {
+                    window.location.replace(domain + '/?c=' + id);
+                }
+            }
+        });
     }
 
 

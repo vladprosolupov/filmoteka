@@ -54,15 +54,28 @@ public class FilmController {
         return allFilms;
     }
 
-    @RequestMapping(value = "/allForIndex", method = RequestMethod.GET)
+    @RequestMapping(value = "/filmsForIndexPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getAllFilmsForIndex() {
-        log.info("getAllFilmsForIndex()");
+    List<FilmJSONIndex> getFilmsForIndexPage(@PathVariable("page") String page) throws NumberFormatException{
+        log.info("getFilmsForIndexPage(page: " + page +" )");
 
-        List<FilmJSONIndex> allFilmsForIndex = filmService.getAllFilmsForIndex();
+        int pageNum = Integer.parseInt(page);
+        List<FilmJSONIndex> filmsForIndexPage = filmService.getFilmsForIndexPage(pageNum);
 
-        log.info("getAllFilmsForIndex() returns : allFilmsForIndex.size()=" + allFilmsForIndex.size());
-        return allFilmsForIndex;
+        log.info("getFilmsForIndexPage(page: " + page +" ) returns : filmsForIndexPage.size()=" + filmsForIndexPage.size());
+        return filmsForIndexPage;
+    }
+
+    @RequestMapping(value = "/filmsForNewPage/{page}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException{
+        log.info("getFilmsForNewPage(page: " + page +" )");
+
+        int pageNum = Integer.parseInt(page);
+        List<FilmJSONIndex> filmsForNewPage = filmService.getFilmsForNewPage(pageNum);
+
+        log.info("getFilmsForNewPage(page: " + page +" ) returns : filmsForNewPage.size()=" + filmsForNewPage.size());
+        return filmsForNewPage;
     }
 
     @PreAuthorize("hasAuthority('admin')")
