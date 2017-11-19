@@ -1,5 +1,7 @@
 package web.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,34 +22,58 @@ public class CountryService {
     @Autowired(required = true)
     SessionFactory sessionFactory;
 
+    private static final Logger log = LogManager.getLogger(CountryService.class);
+
     public CountryDb getCountryWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getCountryWithId(id=" + id + ")");
+
         if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
         CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.id=" + id).list().get(0);
+
+        log.info("getCountryWithId() returns : countryDb=" + countryDb);
         return countryDb;
     }
 
     public void saveOrUpdateCountry(CountryDb countryDb) throws HibernateException {
+        log.info("saveOrUpdateCountry(countryDb=" + countryDb + ")");
+
         if (countryDb == null) {
+            log.error("Error : coutry is null");
+
             throw new IllegalArgumentException("CountryDb should not be null");
         }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(countryDb);
+
+        log.info("succ. saved or updated country");
     }
 
     public void deleteCountry(String id) throws HibernateException {
+        log.info("deleteCountry(id=" + id + ")");
+
         if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
+
+        log.info("succ. deleted country");
     }
 
     public List<CountryDb> getAll() throws HibernateException {
+        log.info("getAll()");
+
         Session session = sessionFactory.getCurrentSession();
         List<CountryDb> result = session.createQuery("from CountryDb ").list();
+
+        log.info("getAll() returns : result.size()=" + result.size());
         return result;
     }
 }
