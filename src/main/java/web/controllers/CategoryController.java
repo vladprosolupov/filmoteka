@@ -65,6 +65,7 @@ public class CategoryController {
         return allFilmsForCategory;
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<CategoryDb> getAll() {
@@ -75,4 +76,15 @@ public class CategoryController {
         log.info("getAll() returns : allCategories.size()=" + allCategories.size());
         return allCategories;
     }
+
+    @RequestMapping(value = "/forNav", method = RequestMethod.GET)
+    public @ResponseBody
+    List<CategoryJSON> getForNav(){
+        log.info("getForNav()");
+
+        List<CategoryJSON> allForNav = categoryService.getForNav();
+        log.info("getForNav() returns : allCategories.size()=" + allForNav.size());
+        return allForNav;
+    }
+
 }

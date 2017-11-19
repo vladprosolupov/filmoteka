@@ -75,10 +75,7 @@ public class CommentService {
         commentRatingDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(commentJSON.getIdFilm())));
         commentRatingDb.setClientByIdClient(clientService.getClientByLogin(authentication.getName()));
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsed = format.parse(commentJSON.getCommentDate());
-
-        commentRatingDb.setCommentDate(new java.sql.Timestamp(parsed.getTime()));
+        commentRatingDb.setCommentDate(new java.sql.Timestamp(new Date().getTime()));
         commentRatingDb.setReferencedComment(commentJSON.getReferencedComment());
         commentRatingDb.setCommentText(commentJSON.getCommentText());
 

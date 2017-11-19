@@ -53,6 +53,7 @@ public class RootWebController {
         if (referrer != null) {
             log.info("referrer is not null");
 
+        if (referrer != null) {
             request.getSession().setAttribute("url_prior_login", referrer);
 
             log.info("end of if");
@@ -79,6 +80,13 @@ public class RootWebController {
 
         log.info("error() returns : 403");
         return "403";
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String profile() {
+        log.info("profile()");
+        log.info("profile() returns : profile");
+        return "profile";
     }
 
 

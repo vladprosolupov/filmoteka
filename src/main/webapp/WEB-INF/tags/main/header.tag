@@ -14,9 +14,9 @@
     <div class="hero-head">
         <div class="container">
             <nav class="is-centered">
-                    <% if (hasAccess == 2) { %>
+                <% if (hasAccess == 2) { %>
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
-                      method="post">
+                      method="post" onsubmit="return false">
 
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/">New</a>
@@ -34,6 +34,10 @@
 
                             <hr class="navbar-divider"/>
 
+                            <a class="navbar-item" href="/profile">Profile</a>
+
+                            <hr class="navbar-divider"/>
+
                             <input type="hidden"
                                    name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
@@ -47,7 +51,10 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                           v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers"
+                                           class="input" type="text" placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
@@ -59,13 +66,17 @@
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                   v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
+                                   v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                    found
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                    <% } else if(hasAccess == 0) { %>
+                <% } else if (hasAccess == 0) { %>
                 <div class="navbar">
 
                     <a class="navbar-item" href="/">Home</a>
@@ -78,7 +89,10 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                           v-on:keyup.down="moveFocusToDropdown" class="input" type="text"
+                                           placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
@@ -90,23 +104,27 @@
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                   v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
+                                   v-for="result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                    found
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                    <% } else { %>
+                <% } else { %>
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
-                      method="post">
+                      method="post" onsubmit="return false">
 
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/">New</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="/">Profile</a>
+                        <a class="navbar-link" href="/profile">Profile</a>
                         <div class="navbar-dropdown is-boxed">
                             <a class="navbar-item" href="/">Films you've liked</a>
                             <a class="navbar-item" href="/">Bookmarks</a>
@@ -126,7 +144,10 @@
                         <div class="navbar-item has-dropdown centered">
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput" v-on:focusin="showDropdown" v-on:keyup.13="doSearch" v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers" class="input" type="text" placeholder="Search...">
+                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                           v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers"
+                                           class="input" type="text" placeholder="Search...">
                                     <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
@@ -138,24 +159,26 @@
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown" v-on:keyup.up="moveFocusUp" v-for= "result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not found</div>
+                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                   v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
+                                   v-bind:href="link+result[0]">{{result[1]}}</a>
+                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                    found
+                                </div>
                             </div>
                         </div>
                     </div>
 
 
                 </form>
-                    <% } %>
+                <% } %>
             </nav>
         </div>
     </div>
     <div class="hero-body body background_for_client">
         <jsp:doBody/>
     </div>
-
 </section>
-
 
 <footer class="footer">
     <div class="container">

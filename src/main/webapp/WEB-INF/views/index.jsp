@@ -20,39 +20,39 @@
     <div class="container vue" style="display: none">
         <div class="columns">
             <div class="column is-2">
-                <aside class="menu ">
+                <aside class="menu">
                     <p class="menu-label">
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)" v-bind:data-category="category.id">{{category.name}}</a>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])" v-bind:data-category="category[0]">{{category[1]}}</a>
                         </li>
                     </ul>
-                    <p class="menu-label">
-                        Administration
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Team Settings</a></li>
-                        <li>
-                            <a>Manage Your Team</a>
-                            <ul>
-                                <li><a>Members</a></li>
-                                <li><a>Plugins</a></li>
-                                <li><a>Add a member</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Invitations</a></li>
-                        <li><a>Cloud Storage Environment Settings</a></li>
-                        <li><a>Authentication</a></li>
-                    </ul>
-                    <p class="menu-label">
-                        Transactions
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
-                    </ul>
+                    <%--<p class="menu-label">--%>
+                        <%--Administration--%>
+                    <%--</p>--%>
+                    <%--<ul class="menu-list">--%>
+                        <%--<li><a>Team Settings</a></li>--%>
+                        <%--<li>--%>
+                            <%--<a>Manage Your Team</a>--%>
+                            <%--<ul>--%>
+                                <%--<li><a>Members</a></li>--%>
+                                <%--<li><a>Plugins</a></li>--%>
+                                <%--<li><a>Add a member</a></li>--%>
+                            <%--</ul>--%>
+                        <%--</li>--%>
+                        <%--<li><a>Invitations</a></li>--%>
+                        <%--<li><a>Cloud Storage Environment Settings</a></li>--%>
+                        <%--<li><a>Authentication</a></li>--%>
+                    <%--</ul>--%>
+                    <%--<p class="menu-label">--%>
+                        <%--Transactions--%>
+                    <%--</p>--%>
+                    <%--<ul class="menu-list">--%>
+                        <%--<li><a>Payments</a></li>--%>
+                        <%--<li><a>Transfers</a></li>--%>
+                        <%--<li><a>Balance</a></li>--%>
+                    <%--</ul>--%>
                 </aside>
             </div>
             <div class="column is-9">
@@ -96,8 +96,6 @@
                     <%--</div>--%>
                     <%--</div>--%>
                     <%--</div>--%>
-                    <%--TODO add a div which is showing that no films were found with such title--%>
-
                 <section class="info-tiles">
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">
