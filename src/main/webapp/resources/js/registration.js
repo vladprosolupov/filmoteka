@@ -1,3 +1,4 @@
+var domain = "http://localhost:8080";
 $(function () {
     $('input[name="firstName"]').keyup(function () {
         if(this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64){
@@ -115,5 +116,16 @@ $(function () {
     $('input[name="phoneNumber"]').keypress(function () {
         if (event.keyCode < 43 || event.keyCode > 57 || event.keyCode === 44 || event.keyCode === 45 || event.keyCode === 46 || event.keyCode === 47 || (event.keyCode === 43 && this.value.length !== 0))
             return false;
+    });
+    $('#submitButton').click(function () {
+        $.ajax({
+            url: $('.clientForm').attr('action'),
+            type: 'POST',
+            data : $('.ClientForm').serialize(),
+            success: function(){
+                window.location.replace(domain + '/login');
+            }
+        });
+        return false;
     });
 });
