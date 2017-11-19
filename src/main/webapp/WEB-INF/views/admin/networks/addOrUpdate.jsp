@@ -16,7 +16,7 @@
     </div></div>
     <c:choose>
         <c:when test="${network.id != 0}">
-            <form class="formForNetwork" data-network="${network.id}" style="display: none">
+            <form class="formForNetwork formStyling" data-network="${network.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -30,14 +30,14 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save network</button>
                 </p>
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForNetwork" data-network="0" style="display: none">
+            <form class="formForNetwork formStyling" data-network="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -51,7 +51,7 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save network</button>
                 </p>

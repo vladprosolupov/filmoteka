@@ -41,7 +41,8 @@
                     <input type="hidden"
                            name="${_csrf.parameterName}"
                            value="${_csrf.token}"/>
-                    <a class="navbar-item" href="javascript:{}" onclick="document.getElementById('logout_id').submit();">Log
+                    <a class="navbar-item" href="javascript:{}"
+                       onclick="document.getElementById('logout_id').submit();">Log
                         out</a>
 
                 </form>
@@ -65,7 +66,7 @@
                                     </div>
                                     <div class="media-content">
                                         <div class="content is-vcentered" style="text-align: center">
-                                               <h1 class="is-centered">Success!</h1>
+                                            <h1 class="is-centered">Success!</h1>
                                         </div>
                                     </div>
                                 </article>
@@ -97,6 +98,18 @@
         </div>
     </div>
 </section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Filmoteka</strong> by German Varanytsya, Vladyslav Prosolupov, Rostyslav Tryndiak.
+                The website content
+                is licensed.
+            </p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

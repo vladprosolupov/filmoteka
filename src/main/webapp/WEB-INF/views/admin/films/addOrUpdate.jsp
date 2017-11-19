@@ -18,7 +18,7 @@
     </div>
     <c:choose>
         <c:when test="${film.id != 0}">
-            <form class="formForFilm" data-film="${film.id}" style="display: none">
+            <form class="formForFilm formStyling" data-film="${film.id}" style="display: none">
                 <div class="field">
                     <label class="label">Title </label>
                     <p class="control">
@@ -459,14 +459,14 @@
                     </div>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save film</button>
                 </p>
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForFilm" data-film="${film.id}" style="display: none">
+            <form class="formForFilm formStyling" data-film="${film.id}" style="display: none">
                 <div class="field">
                     <label class="label">Title </label>
                     <p class="control">
@@ -832,7 +832,7 @@
                     </div>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save film</button>
                 </p>

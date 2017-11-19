@@ -66,9 +66,9 @@
                     <a class="pagination-previous">Previous</a>
                     <a class="pagination-next">Next page</a>
                     <ul class="pagination-list">
-                        <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page">1</a>
+                        <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page" v-on:click="goToPage(1)">1</a>
                         </li>
-                        <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                        <li><a class="pagination-link" aria-label="Goto page 2" v-on:click="goToPage(2)">2</a></li>
                         <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
                         <li><span class="pagination-ellipsis">&hellip;</span></li>
                             <%--<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>--%>

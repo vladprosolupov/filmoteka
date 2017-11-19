@@ -15,7 +15,7 @@
     </div></div>
     <c:choose>
         <c:when test="${director.id != 0}">
-            <form class="formForDirector" data-director="${director.id}" style="display: none">
+            <form class="formForDirector formStyling" data-director="${director.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -41,14 +41,14 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save director</button>
                 </p>
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForDirector" data-director="0" style="display: none">
+            <form class="formForDirector formStyling" data-director="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -74,7 +74,7 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save director</button>
                 </p>

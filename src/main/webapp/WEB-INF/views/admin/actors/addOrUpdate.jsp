@@ -15,7 +15,7 @@
     </div></div>
     <c:choose>
         <c:when test="${actor.id != 0}">
-            <form class="formForActor" data-actor="${actor.id}" style="display: none">
+            <form class="formForActor formStyling" data-actor="${actor.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -50,14 +50,14 @@
                     </div>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save actor</button>
                 </p>
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForActor" data-actor="0" style="display: none">
+            <form class="formForActor formStyling" data-actor="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save actor</button>
                 </p>
