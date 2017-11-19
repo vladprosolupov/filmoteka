@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
 <%@tag description="Main header tag" pageEncoding="UTF-8" %>
 <%int hasAccess = 0; %>
 <security:authorize access="hasAuthority('user')">
@@ -90,7 +91,7 @@
                             <div class="field has-addons" style="margin: 0">
                                 <div class="control has-icons-left">
                                     <input id="searchInput" autocomplete="off" v-model="searchInput"
-                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                           v-on:v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
                                            v-on:keyup.down="moveFocusToDropdown" class="input" type="text"
                                            placeholder="Search...">
                                     <span class="icon is-small is-left">
