@@ -6,12 +6,14 @@ import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ActorDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ActorJSON;
 import web.services.ActorService;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,14 @@ public class ActorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addActor(@RequestBody ActorJSON actorJSON) throws ParseException, ParsingJsonToDaoException {
+    String addActor(@RequestBody @Valid ActorJSON actorJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
         log.info("addActor(actorJSON=" + actorJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Actroe does not pass validation");
+
+            return "Error";
+        }
 
         actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
 

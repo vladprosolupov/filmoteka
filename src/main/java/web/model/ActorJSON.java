@@ -15,11 +15,11 @@ public class ActorJSON {
     private int id;
     @NotNull
     @Size(min = 2, max = 64, message = "First name should at least have 2 symbols and it should be not bigger than 64")
-    @Pattern(regexp = "[a-zA-Z+]", message = "First name should only include letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name should only include letters")
     private String firstName;
     @NotNull
     @Size(min = 2, max = 64, message = "Last name should at least have 2 symbols and it should be not bigger than 64")
-    @Pattern(regexp = "[a-zA-Z+]", message = "Last name should only include letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Last name should only include letters")
     private String lastName;
     @NotNull
     @Past

@@ -6,12 +6,14 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.StudioDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.StudioJSON;
 import web.services.StudioService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -29,8 +31,14 @@ public class StudioController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateStudio(@RequestBody StudioJSON studioJSON) throws ParsingJsonToDaoException {
+    String addOrUpdateStudio(@RequestBody @Valid StudioJSON studioJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addOrUpdate(studioJSON=" + studioJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Studio does not pass validation");
+
+            return "Error";
+        }
 
         studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
 

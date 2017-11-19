@@ -7,13 +7,15 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ClientDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
 import web.services.ClientService;
 
-import java.util.Map;
+import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping(value = "/client")
@@ -26,8 +28,14 @@ public class ClientController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addClient(@ModelAttribute("client") ClientJSON clientJSON) throws ParsingJsonToDaoException {
+    String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addClient(clientJSON=" + clientJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Customer does not pass validation");
+
+            return "Error";
+        }
 
         clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
 

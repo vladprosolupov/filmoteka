@@ -12,7 +12,7 @@ public class CategoryJSON {
     private int id;
     @NotNull
     @Size(min = 10, max = 128, message = "Name of category should be between 10 and 128")
-    @Pattern(regexp = "[a-zA-Z]+", message = "Name of category should be only with letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name of category should be only with letters")
     private String name;
 
     public int getId() {

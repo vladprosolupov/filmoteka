@@ -2,10 +2,8 @@ package web.model;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import web.enums.ClientRole;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -15,13 +13,13 @@ public class ClientJSON {
     //    private int id;
     @NotNull
     @Size(min = 2, max = 64, message = "First name should at least have 2 symbols and it should be not bigger than 64")
-    @Pattern(regexp = "[a-zA-Z+]", message = "First name should only include letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name should only include letters")
     private String firstName;
     @NotNull
     @Size(min = 2, max = 64, message = "Last name should at least have 2 symbols and it should be not bigger than 64")
-    @Pattern(regexp = "[a-zA-Z+]", message = "Last name should only include letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Last name should only include letters")
     private String lastName;
-    @Email
+
     @NotNull
     private String email;
     //    private int idAddress;
@@ -29,11 +27,11 @@ public class ClientJSON {
     @Size(min = 2, max = 64)
     private String login;
     @NotNull
-    @Size(min = 5, max = 60)
+    @Size(min = 5, max = 80)
     private String password;
     //    private int enabled;
     @NotNull
-    @Length(min = 7, max = 20)
+    @Size(min = 7, max = 20)
     private String phoneNumber;
 //    private ClientRole role;
 

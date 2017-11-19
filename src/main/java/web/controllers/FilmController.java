@@ -3,6 +3,7 @@ package web.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import web.dao.AwardDb;
 import web.dao.FilmDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
 import web.services.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 
@@ -82,14 +84,25 @@ public class FilmController {
     @RequestMapping(value = "/numberOfFilms", method = RequestMethod.GET)
     public @ResponseBody
     long getNumberOfFilms() {
-        return filmService.getNumberOfFilms();
+        log.info("getNumberOfFilms()");
+
+        long numberOfFilms = filmService.getNumberOfFilms();
+
+        log.info("getNumberOfFilms() returns : numberOfFilms=" + numberOfFilms);
+        return numberOfFilms;
     }
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    String saveOrUpdate(@RequestBody FilmJSON filmToSave) throws ParseException, ParsingJsonToDaoException {
+    String saveOrUpdate(@RequestBody @Valid FilmJSON filmToSave, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
         log.info("saveOrUpdate(filmsToSave=" + filmToSave + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Film does not pass validation");
+
+            return "Error";
+        }
 
         FilmDb filmDb = filmService.convert(filmToSave);
 

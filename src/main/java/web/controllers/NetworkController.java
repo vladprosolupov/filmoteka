@@ -5,12 +5,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.NetworkDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.NetworkJSON;
 import web.services.NetworkService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -28,8 +30,14 @@ public class NetworkController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(@RequestBody NetworkJSON networkJSON) throws ParsingJsonToDaoException {
+    String addOrUpdate(@RequestBody @Valid NetworkJSON networkJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addOrUpdate(networkJSON=" + networkJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Network does not pass validation");
+
+            return "Error";
+        }
 
         networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
 

@@ -5,12 +5,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.CommentRatingDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.CommentJSON;
 import web.services.CommentService;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,8 +30,14 @@ public class CommentController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateComment(@RequestBody CommentJSON commentJSON) throws ParseException, ParsingJsonToDaoException {
+    String addOrUpdateComment(@RequestBody @Valid CommentJSON commentJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
         log.info("addOrUpdateComment(commentJSON=" + commentJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Comment does not pass validation");
+
+            return "Error";
+        }
 
         commentService.saveOrUpdate(commentService.convertToCommentRatingDB(commentJSON));
 

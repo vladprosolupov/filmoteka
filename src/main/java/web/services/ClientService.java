@@ -13,6 +13,7 @@ import web.enums.ClientRole;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.List;
 

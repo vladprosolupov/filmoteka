@@ -5,12 +5,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.DirectorDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.DirectorJSON;
 import web.services.DirectorService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -28,8 +30,14 @@ public class DirectorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(@RequestBody DirectorJSON directorJSON) throws ParsingJsonToDaoException {
+    String addOrUpdate(@RequestBody @Valid DirectorJSON directorJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addOrUpdate(directorJSON=" + directorJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Director does not pass validation");
+
+            return "Error";
+        }
 
 
         directorService.saveOrUpdate(directorService.convertToDirectorDb(directorJSON));

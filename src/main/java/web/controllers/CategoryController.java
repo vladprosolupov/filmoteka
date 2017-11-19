@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
 import web.exceptions.ParsingJsonToDaoException;
@@ -13,6 +14,7 @@ import web.model.FilmJSONIndex;
 import web.services.CategoryService;
 import web.services.FilmCategoryService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -33,8 +35,14 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateCategory(@RequestBody CategoryJSON categoryJSON) throws ParsingJsonToDaoException {
+    String addOrUpdateCategory(@RequestBody @Valid CategoryJSON categoryJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addOrUpdateCategory(categoryJSON=" + categoryJSON + ")");
+
+        if(bindingResult.hasErrors()) {
+            log.error("Category does not pass validation");
+
+            return "Error";
+        }
 
         categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
 
