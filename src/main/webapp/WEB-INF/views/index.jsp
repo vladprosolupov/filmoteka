@@ -51,7 +51,9 @@
                                     <div class="media-content">
                                         <p class="title is-6">{{film[0]}}</p>
                                         <hr>
-                                        <p class="subtitle is-6 is-pulled-right">{{getYear(film[1])}}</p>
+                                        <p class="subtitle is-6 is-pulled-right"><i class="fa fa-star" style="color: #e09952;"
+                                                                                    aria-hidden="true"></i> {{film[4]}}</p>
+                                        <p class="subtitle is-6 is-pulled-left">{{getYear(film[1])}}</p>
                                     </div>
                                 </div>
                             </div>

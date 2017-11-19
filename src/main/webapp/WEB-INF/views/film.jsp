@@ -130,7 +130,7 @@
                                 <div class="content">
                                     <h3><b>{{film.title}}</b></h3>
                                     <hr>
-                                    <p><h6 class="rating">Rating: <i v-if="film.rating == 0" class="fa fa-star-o"
+                                    <h6 class="rating" style="display: inline-flex">Rating: <i v-if="film.rating == 0" class="fa fa-star-o"
                                                                      aria-hidden="true"></i> <i
                                         v-if="film.rating > 0 && film.rating < 1" class="fa fa-star-half-o"
                                         aria-hidden="true"></i> <i v-if="film.rating >= 1" class="fa fa-star"
@@ -180,29 +180,29 @@
                                         v-if="film.rating > 9 && film.rating < 10" class="fa fa-star-half-o"
                                         aria-hidden="true"></i> <i v-if="film.rating == 10" class="fa fa-star"
                                                                    aria-hidden="true"></i> <span
-                                        style="margin-left: 1%">{{film.rating}}</span></h6></p>
-                                    <p><h6>Length: {{calculateTime(film.lenght)}}</h6></p>
-                                    <p><h6>Date: {{film.releaseDate}}</h6></p>
-                                    <p><h6>Countries: <span v-for="country in film.filmCountries">{{country.name}}<span
+                                        style="margin-left: 1%">{{film.rating}}</span></h6>
+                                    <h6>Length: {{calculateTime(film.lenght)}}</h6>
+                                    <h6>Release date: {{formatReleaseDate(film.releaseDate)}}</h6>
+                                    <h6>Countries: <span v-for="country in film.filmCountries">{{country.name}}<span
                                         v-if="country != film.filmCountries[film.filmCountries.length - 1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Genre: <span v-for="category in film.filmCategories">{{category.name}}<span
+                                </h6>
+                                    <h6>Genre: <span v-for="category in film.filmCategories">{{category.name}}<span
                                         v-if="category != film.filmCategories[film.filmCategories.length - 1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Budget: {{film.budget}}</h6></p>
-                                    <p><h6>Awards: <span v-for="award in film.awardsById">{{award.awardName}}({{award.awardYear}})<span
+                                </h6>
+                                    <h6>Budget: {{film.budget}}</h6>
+                                    <h6>Awards: <span v-for="award in film.awardsById">{{award.awardName}}({{award.awardYear}})<span
                                         v-if="award != film.awardsById[film.awardsById.length - 1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Actors: <span v-for="filmActor in film.filmActorsById">{{filmActor.actorByIdActor.firstName}} {{filmActor.actorByIdActor.lastName}}<span
+                                </h6>
+                                    <h6>Actors: <span v-for="filmActor in film.filmActorsById">{{filmActor.actorByIdActor.firstName}} {{filmActor.actorByIdActor.lastName}}<span
                                         v-if="filmActor != film.filmActorsById[film.filmActorsById.length -1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Directors: <span v-for="director in film.filmDirectors">{{director.firstName}} {{director.lastName}}<span
+                                </h6>
+                                    <h6>Directors: <span v-for="director in film.filmDirectors">{{director.firstName}} {{director.lastName}}<span
                                         v-if="director != film.filmDirectors[film.filmDirectors.length -1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Studios: <span v-for="studio in film.filmStudios">{{studio.studioName}}<span
+                                </h6>
+                                    <h6>Studios: <span v-for="studio in film.filmStudios">{{studio.studioName}}<span
                                         v-if="studio != film.filmStudios[film.filmStudios.length -1]">, </span></span>
-                                </h6></p>
-                                    <p><h6>Language: {{film.languageByIdLanguage.name}}</h6></p>
+                                </h6>
+                                    <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
                                 </div>
                             </div>
                         </article>

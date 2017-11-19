@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.FilmJSON;
+import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
 import web.model.FilmJSONSearch;
 
@@ -66,10 +67,12 @@ public class FilmService {
     public List<FilmDb> getAllFilms() throws HibernateException {
         log.info("getAllFilms()");
 
+    public List<FilmJSONAdmin> getAllFilms() throws HibernateException {
         Session session = sessionFactory.getCurrentSession();
         List<FilmDb> listOfFilms = session.createQuery("FROM FilmDb").list();
 
         log.info("getAllFilms() returns : listOfFilms.size()=" + listOfFilms.size());
+        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
         return listOfFilms;
     }
 
@@ -121,28 +124,25 @@ public class FilmService {
 
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
-        int start = 0;
-        if (page != 1) {
-            start = page * limit;
-        }
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F").setFirstResult(start).setMaxResults(limit).list();
-
-        log.info("getFilmsForIndex() returns : list.size()=" + list.size());
+        int start = (page - 1) * limit;
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }
 
+    public long getNumberOfFilms() throws HibernateException {
+        Session session = sessionFactory.getCurrentSession();
+        long result = (long)session.createQuery("select count(F.id) from FilmDb F").list().get(0);
+        return result;
+    }
+
+    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
     public List<FilmJSONIndex> getFilmsForNewPage(int page) throws HibernateException {
         log.info("getFilmsForNewPage(page=" + page + ")");
 
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
-        int start = 0;
-        if (page != 1) {
-            start = page * limit;
-        }
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F order by id desc").setFirstResult(start).setMaxResults(limit).list();
-
-        log.info("getFilmsForNewPage() returns : list.size()=" + list.size());
+        int start = (page - 1) * limit;
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.rating desc").setFirstResult(start).setMaxResults(limit).list();
         return list;
     }
 
@@ -150,6 +150,8 @@ public class FilmService {
         log.info("getFilmsWithTitleForQuick(title=" + title + ")");
 
         Session session = sessionFactory.getCurrentSession();
+        int limit = 10;
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(10).list();
         List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
 
         log.info("getFilmsWithTitleForQuick() returns : list.size()=" + list.size());
