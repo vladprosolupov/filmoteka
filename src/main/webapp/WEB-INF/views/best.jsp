@@ -32,7 +32,8 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])" v-bind:data-category="category[0]">{{category[1]}}</a>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])"
+                                                              v-bind:data-category="category[0]">{{category[1]}}</a>
                         </li>
                     </ul>
                 </aside>
@@ -40,7 +41,8 @@
             <div class="column is-9">
                 <article class="message is-danger" v-if="notFound">
                     <div class="message-body">
-                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other keyword or choose one film from our library!
+                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other
+                        keyword or choose one film from our library!
                     </div>
                 </article>
                 <section class="info-tiles">
@@ -58,8 +60,10 @@
                                     <div class="media-content">
                                         <p class="title is-6">{{film[0]}}</p>
                                         <hr>
-                                        <p class="subtitle is-6 is-pulled-right"><i class="fa fa-star" style="color: #e09952;"
-                                                                                   aria-hidden="true"></i> {{film[4]}}</p>
+                                        <p class="subtitle is-6 is-pulled-right"><i class="fa fa-star"
+                                                                                    style="color: #e09952;"
+                                                                                    aria-hidden="true"></i> {{film[4]}}
+                                        </p>
                                         <p class="subtitle is-6 is-pulled-left">{{getYear(film[1])}}</p>
                                     </div>
                                 </div>
@@ -67,18 +71,14 @@
                         </div>
                     </div>
                 </section>
-                <div class="columns">
-                </div>
                 <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous">Previous</a>
-                    <a class="pagination-next">Next page</a>
-                    <ul class="pagination-list">    
-                        <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page" v-on:click="goToPage(1)">1</a>
+                    <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
+                    <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                    <ul class="pagination-list">
+                        <li v-for="n in pagesNumber"><a class="pagination-link" v-bind:data-pageNum="n+1" aria-label="Goto page {{n+1}}"
+                                                        aria-current="page" v-on:click="goToPage(n+1)">{{n+1}}</a>
                         </li>
-                        <li><a class="pagination-link" aria-label="Goto page 2" v-on:click="goToPage(2)">2</a></li>
-                        <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
-                        <li><span class="pagination-ellipsis">&hellip;</span></li>
-                        <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                            <%--<li><span class="pagination-ellipsis">&hellip;</span></li>--%>
                     </ul>
                 </nav>
             </div>

@@ -159,7 +159,7 @@ public class FilmService {
         log.info("getFilmsWithTitle(title=" + title + ")");
 
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
 
         log.info("getFilmsWithTitle() returns : list.size()=" + list.size());
         return list;
