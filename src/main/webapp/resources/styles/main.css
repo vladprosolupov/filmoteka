@@ -257,7 +257,7 @@ div.navbar-dropdown.is-boxed {
     border-radius: 2px;
     color: #ffffff;
     display: block;
-    padding: 0.5em 0.75em;
+    /*padding: 0.5em 0.75em 0.5em 0.75em;*/
 }
 
 .menu-list a.is-current {
@@ -326,7 +326,7 @@ a {
     margin-top: 10%;
     margin-bottom: 5%;
     position: absolute;
-    bottom: -60;
+    bottom: -60px;
     width: 60%;
 }
 
@@ -519,7 +519,6 @@ h6.rating i {
 
 aside.menu {
     position: fixed;
-    width: 13%;
 }
 .column.is-2 {
     margin-top: 5%;
@@ -527,4 +526,22 @@ aside.menu {
 
 #loading {
     position: fixed;
+}
+
+@media all and (min-width: 1024px) and (max-width: 1215px){
+    aside.menu {
+        width: 150px;
+    }
+}
+
+@media all and (min-width: 1216px) and (max-width: 1407px){
+    aside.menu {
+        width: 182px;
+    }
+}
+
+@media all and (min-width: 1408px){
+    aside.menu {
+        width: 214px;
+    }
 }

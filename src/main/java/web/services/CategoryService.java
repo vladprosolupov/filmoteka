@@ -28,6 +28,13 @@ public class CategoryService {
         return result;
     }
 
+    public List<CategoryJSON> getForNav(){
+        Session session = sessionFactory.getCurrentSession();
+        int limit = 10;
+        List<CategoryJSON> result = session.createQuery("select C.id, C.name from CategoryDb C").setMaxResults(limit).list();
+        return result;
+    }
+
     public CategoryDb getCategoryWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         if (id == null || id.isEmpty()) {
             throw new IllegalArgumentException("Id should not be null or empty");

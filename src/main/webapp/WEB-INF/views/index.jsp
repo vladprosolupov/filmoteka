@@ -25,7 +25,7 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a v-on:click="openCategory(category.id)" v-bind:data-category="category.id">{{category.name}}</a>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])" v-bind:data-category="category[0]">{{category[1]}}</a>
                         </li>
                     </ul>
                     <%--<p class="menu-label">--%>
@@ -96,8 +96,6 @@
                     <%--</div>--%>
                     <%--</div>--%>
                     <%--</div>--%>
-                    <%--TODO add a div which is showing that no films were found with such title--%>
-
                 <section class="info-tiles">
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">

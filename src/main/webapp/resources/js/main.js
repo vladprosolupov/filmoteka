@@ -130,7 +130,7 @@ $(function () {
                 $.when($.getJSON('/film/allForIndex', function (films) {
                         self.films = films;
                     }),
-                    $.getJSON('/category/all', function (categories) {
+                    $.getJSON('/category/forNav', function (categories) {
                         self.categories = categories;
                         if (category) {
                             $.getJSON('/category/' + category + '/films', function (data) {
@@ -187,7 +187,7 @@ $(function () {
                 $.when($.getJSON(url, function (data) {
                         self.film = data;
                     }),
-                    $.getJSON('/category/all', function (categories) {
+                    $.getJSON('/category/forNav', function (categories) {
                         self.categories = categories;
                     })).done(function () {
                     hideLoading();

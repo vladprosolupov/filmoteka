@@ -85,8 +85,8 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a
-                                v-on:click="openCategory(category.id)">{{category.name}}</a></li>
+                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])">{{category[1]}}</a>
+                        </li>
                     </ul>
                         <%--<p class="menu-label">--%>
                         <%--Administration--%>
