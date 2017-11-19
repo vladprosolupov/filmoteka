@@ -6,10 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="Design change.&#10;css fixes.&#10;comments added.">
+    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/styles/main.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/styles/main.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,7 +103,7 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="316">
               <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
               <folding />
             </state>
@@ -1157,7 +1155,7 @@
       <workItem from="1511042445449" duration="304000" />
       <workItem from="1511094998976" duration="126000" />
       <workItem from="1511113856480" duration="1000" />
-      <workItem from="1511128844449" duration="2184000" />
+      <workItem from="1511128844449" duration="2411000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fixes.">
       <created>1497711642544</created>
@@ -1397,11 +1395,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511129665382</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="index.jsp fixes&#10;redesign link cover film">
+      <created>1511131102954</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1511131102955</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93879000" />
+    <option name="totallyTimeSpent" value="94106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -1426,7 +1431,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46133333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27333334" sideWeight="0.49140626" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27333334" sideWeight="0.49140626" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38557994" sideWeight="0.43119267" order="2" side_tool="true" content_ui="tabs" />
@@ -1490,7 +1495,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Admin panel for categories working." />
     <MESSAGE value="Admin panel for directors working." />
     <MESSAGE value="Admin panel for networks working." />
     <MESSAGE value="Admin panel for studios working." />
@@ -1515,7 +1519,8 @@
     <MESSAGE value="Profile fixes js" />
     <MESSAGE value="Design change.&#10;css fixes.&#10;comments added." />
     <MESSAGE value="Profile.jsp fixes&#10;Profile redesign" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile.jsp fixes&#10;Profile redesign" />
+    <MESSAGE value="index.jsp fixes&#10;redesign link cover film" />
+    <option name="LAST_COMMIT_MESSAGE" value="index.jsp fixes&#10;redesign link cover film" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1644,7 +1649,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
+        <state relative-caret-position="316">
           <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
           <folding />
         </state>
