@@ -15,7 +15,7 @@
     </div></div>
     <c:choose>
         <c:when test="${studio.id != 0}">
-            <form class="formForStudio" data-studio="${studio.id}" style="display: none">
+            <form class="formForStudio formStyling" data-studio="${studio.id}" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -23,14 +23,14 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save studio</button>
                 </p>
             </div>
         </c:when>
         <c:otherwise>
-            <form class="formForStudio" data-studio="0" style="display: none">
+            <form class="formForStudio formStyling" data-studio="0" style="display: none">
                 <div class="field">
                     <label class="label">Name</label>
                     <p class="control">
@@ -38,7 +38,7 @@
                     </p>
                 </div>
             </form>
-            <div class="field">
+            <div class="field saveButton">
                 <p class="control">
                     <button type="button" class="save button is-primary">Save studio</button>
                 </p>

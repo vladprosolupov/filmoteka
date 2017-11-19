@@ -60,22 +60,14 @@
                         </div>
                     </div>
                 </section>
-                <div class="columns">
-                </div>
                 <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous">Previous</a>
-                    <a class="pagination-next">Next page</a>
+                    <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
+                    <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
                     <ul class="pagination-list">
-                        <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page">1</a>
+                        <li v-for="n in pagesNumber"><a class="pagination-link" v-bind:data-pageNum="n+1" aria-label="Goto page {{n+1}}"
+                                                        aria-current="page" v-on:click="goToPage(n+1)">{{n+1}}</a>
                         </li>
-                        <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
-                        <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
-                        <li><span class="pagination-ellipsis">&hellip;</span></li>
-                            <%--<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>--%>
-                            <%--<li><a class="pagination-link" aria-label="Goto page 46">46</a></li>--%>
-                        <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
                             <%--<li><span class="pagination-ellipsis">&hellip;</span></li>--%>
-                            <%--<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>--%>
                     </ul>
                 </nav>
             </div>

@@ -58,6 +58,7 @@ $(function () {
     $(".VueSearch").click(function (event) {
         event.stopPropagation();
     });
+
     var search = new Vue({
         el: '.VueSearch',
         data: {
@@ -123,7 +124,9 @@ $(function () {
                 films: [],
                 categories: [],
                 link: "/film/",
-                notFound: false
+                notFound: false,
+                pagesNumber: 0,
+                currentPage: 1
             },
             beforeCompile: function () {
                 var self = this;
@@ -149,8 +152,15 @@ $(function () {
                                 hideLoading();
                             });
                         }
+                    }),
+                    $.getJSON('/film/numberOfFilms', function (filmsNumber) {
+                        if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                        else
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10);
                     })).done(function () {
                     if (!category && !searchInput) {
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
                         hideLoading();
                     }
                 });
@@ -170,12 +180,45 @@ $(function () {
                         self.films = data;
                         hideLoading();
                     });
+                },
+                goToPage: function (pageNum) {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForIndexPage/' + pageNum, function (data) {
+                        self.currentPage = parseInt(pageNum);
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
+                },
+                goToPrevious: function () {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForIndexPage/' + (parseInt(self.currentPage) - 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) - 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
+                },
+                goToNext: function () {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForIndexPage/' + (parseInt(self.currentPage) + 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) + 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
                 }
             }
         });
     } else if (window.location.pathname.includes("/film/")) {
         var lastslashindex = window.location.pathname.lastIndexOf('/');
-        var result= window.location.pathname.substring(lastslashindex  + 1);
+        var result = window.location.pathname.substring(lastslashindex + 1);
         var url = '/film/info/' + result;
         var film = new Vue({
             el: '.vue',
@@ -272,13 +315,15 @@ $(function () {
             }
         });
 
-    } else if(window.location.pathname === "/best"){
+    } else if (window.location.pathname === "/best") {
         var pageNew = new Vue({
             el: '.vue',
             data: {
                 films: [],
                 categories: [],
-                link: "/film/"
+                link: "/film/",
+                pagesNumber: 0,
+                currentPage: 1
             },
             beforeCompile: function () {
                 var self = this;
@@ -287,7 +332,14 @@ $(function () {
                     }),
                     $.getJSON('/category/forNav', function (categories) {
                         self.categories = categories;
+                    }),
+                    $.getJSON('/film/numberOfFilms', function (filmsNumber) {
+                        if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                        else
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10);
                     })).done(function () {
+                    $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
                     hideLoading();
                 });
             },
@@ -298,6 +350,39 @@ $(function () {
                 },
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
+                },
+                goToPage: function (pageNum) {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForBestPage/' + pageNum, function (data) {
+                        self.currentPage = parseInt(pageNum);
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
+                },
+                goToPrevious: function () {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) - 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
+                },
+                goToNext: function () {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) + 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        self.films = data;
+                        hideLoading();
+                    });
                 }
             }
         });
