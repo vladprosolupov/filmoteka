@@ -9,6 +9,10 @@
     <% hasAccess = 2; %>
 </security:authorize>
 <c:url var="logoutUrl" value="/do_logout"/>
+<head>
+    <link rel="shortcut icon"
+          href="<c:url value="/resources/images/favicon.ico"/>" />
+</head>
 <body>
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">

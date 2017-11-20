@@ -75,7 +75,7 @@ public class RootWebController {
     }
 
     @RequestMapping(value = "/register")
-    public ModelAndView register() {
+    public ModelAndView register(HttpServletRequest request) {
         log.info("register()");
 
         ModelAndView model = new ModelAndView("register");
