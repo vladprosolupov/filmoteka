@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.support.HttpRequestWrapper;
@@ -14,18 +15,30 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import web.dao.ClientDb;
+import web.dao.VerificationTokenDb;
 import web.model.ClientJSON;
+import web.services.ClientService;
+import web.services.VerificationTokenService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Rostyk on 12.06.2017.
  */
 @Controller
 public class RootWebController {
+
+    @Autowired
+    private VerificationTokenService tokenService;
+
+    @Autowired
+    private ClientService clientService;
 
     private static final Logger log = LogManager.getLogger(RootWebController.class);
 
@@ -66,7 +79,7 @@ public class RootWebController {
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             log.info("login() returns : login");
             return "login";
-        }else {
+        } else {
             log.info("client already logged in: login() returns index");
             return "redirect:/index";
         }
@@ -85,56 +98,38 @@ public class RootWebController {
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             log.info("register returns : register");
             return model;
-        }else {
+        } else {
             log.info("client already registered: register() returns index");
             return new ModelAndView("redirect:/index");
         }
     }
 
     @RequestMapping(value = "/403")
-    public String error403(HttpServletRequest request) {
+    public String error403() {
         log.info("error403()");
 
-        String referrer = request.getHeader("Referer");
-
-        if(referrer != null){
-            log.info("error403(): redirecting to 403");
-            return "redirect:/403";
-        }
         log.info("error403() returns : 403");
         return "403";
     }
 
     @RequestMapping(value = "/404")
-    public String error404(HttpServletRequest request) {
+    public String error404() {
         log.info("error404()");
 
-        String referrer = request.getHeader("Referer");
-
-        if(referrer != null){
-            log.info("error404(): redirecting to 404");
-            return "redirect:/404";
-        }
         log.info("error404() returns : 404");
         return "404";
     }
 
     @RequestMapping(value = "/500")
-    public String error500(HttpServletRequest request) {
+    public String error500() {
         log.info("error500()");
 
-        String referrer = request.getHeader("Referer");
-
-        if(referrer != null){
-            log.info("error500(): redirecting to 500");
-            return "redirect:/500";
-        }
         log.info("error500() returns : 500");
         return "500";
     }
 
     @RequestMapping(value = "/best", method = RequestMethod.GET)
-    public String best(){
+    public String best() {
         log.info("best()");
         log.info("best() returns : best");
         return "best";
@@ -145,6 +140,39 @@ public class RootWebController {
         log.info("profile()");
         log.info("profile() returns : profile");
         return "profile";
+    }
+
+    @RequestMapping(value = "/registrationConfirm/{token}", method = RequestMethod.GET)
+    public String registrationConfirm(@PathVariable("token") String token) {
+        log.info("registrationConfirm(token=" + token + ")");
+
+        List<VerificationTokenDb> tokenDbs = tokenService.getVerificationToken(token);
+
+        for (VerificationTokenDb verificationTokenDb : tokenDbs) {
+            if (verificationTokenDb == null) {
+                log.error("Error : There is no such token");
+
+                throw new IllegalArgumentException("There is no such token");
+            }
+
+            ClientDb clientDb = verificationTokenDb.getClientByIdClient();
+            Calendar cal = Calendar.getInstance();
+            if ((verificationTokenDb.getExpirenceDate().getTime() - cal.getTime().getTime()) <= 0) {
+                log.error("Error : Verification token has expired");
+
+                throw new IllegalArgumentException("Verification token has expired");
+            }
+
+            if(clientDb.getEnabled() == 0) {
+                log.info("User is unblocked now");
+
+                clientDb.setEnabled(1);
+                clientService.saveOrUpdate(clientDb);
+            }
+
+        }
+
+        return "redirect:/index";
     }
 
 

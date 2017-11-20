@@ -51,7 +51,7 @@ public class VerificationTokenService {
         }
 
         Session session = sessionFactory.getCurrentSession();
-        List<VerificationTokenDb> result= (List<VerificationTokenDb>) session.createQuery("from VerificationTokenDb v where v.token=" + verificationToken).list().get(0);
+        List<VerificationTokenDb> result= (List<VerificationTokenDb>) session.createQuery("from VerificationTokenDb v where v.token='" + verificationToken + "'").list();
 
         log.info("getVerificationToken() returns : result.size()=" + result.size());
         return result;

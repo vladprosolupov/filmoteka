@@ -54,7 +54,9 @@ public class ClientController {
 
         String applicationURL = request.getContextPath();
         log.info("appURL - " + applicationURL);
-//        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(applicationURL, request.getLocale(), clientDb));
+        log.info("locale - " + request.getLocale());
+
+        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(applicationURL, clientDb, request.getLocale()));
 
         log.info("addClient() returns : OK");
         return "OK";
