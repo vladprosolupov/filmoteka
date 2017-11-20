@@ -22,6 +22,7 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
+
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
