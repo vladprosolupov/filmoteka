@@ -51,7 +51,7 @@
                             </div>
 
                             <hr>
-                            <input name="submit" class="button is-primary is-medium" type="submit" value="Log In"/>
+                            <input name="submit" class="button is-info is-medium" type="submit" value="Log In"/>
                         </div>
 
                         <sec:csrfInput/>
