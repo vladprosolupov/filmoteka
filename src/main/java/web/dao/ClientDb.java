@@ -20,7 +20,6 @@ public class ClientDb {
     private int enabled;
     private String phoneNumber;
     private String role;
-    private AddressDb addressByIdAddress;
     private Collection<ClientDataDb> clientDataById;
 
     @Id
@@ -162,16 +161,6 @@ public class ClientDb {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_address", referencedColumnName = "id", nullable = false)
-    public AddressDb getAddressByIdAddress() {
-        return addressByIdAddress;
-    }
-
-    public void setAddressByIdAddress(AddressDb addressByIdAddress) {
-        this.addressByIdAddress = addressByIdAddress;
-    }
-
     @OneToMany(mappedBy = "clientByIdClient")
     public Collection<ClientDataDb> getClientDataById() {
         return clientDataById;
@@ -194,7 +183,6 @@ public class ClientDb {
                 ", enabled=" + enabled +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
-                ", addressByIdAddress=" + addressByIdAddress +
                 '}';
     }
 }
