@@ -27,9 +27,6 @@ public class ClientService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired(required = true)
-    private AddressService addressService;
-
     private static final Logger log = LogManager.getLogger(ClientService.class);
 
     public ClientDb saveOrUpdate(ClientDb clientDb) throws HibernateException {
