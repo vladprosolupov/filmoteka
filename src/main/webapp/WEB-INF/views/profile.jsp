@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <section class="hero is-medium is-bold has-text-centered" style="background-color: white">
+        <section class="hero is-medium is-bold has-text-centered" style="background-color: rgb(250,250,250)">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
