@@ -40,21 +40,46 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <section class="hero is-medium is-bold has-text-centered" style="background-color: rgb(250,250,250)">
+        <section class="hero is-small is-bold has-text-centered" style="background-color: rgb(250,250,250)">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        Profile {{info.firstName}} {{info.lastName}}
+                        Profile
+                        <br>
+                        {{info.firstName}} {{info.lastName}}
                     </h1>
                     <br>
-                    <div class="subtitle">
-                        <p>Name: {{info.firstName}}</p>
-                        <p>Surname: {{info.lastName}}</p>
-                        <p>E-mail: {{info.email}}</p>
-                        <p>Login: {{info.login}}</p>
-                        <p>Phone number: {{info.phoneNumber}}</p>
-                    </div>
-                    <button class="button is-info is-medium">Edit</button>
+                    <%--<div class="subtitle">--%>
+                        <%--<p>Name: {{info.firstName}}</p>--%>
+                        <%--<p>Surname: {{info.lastName}}</p>--%>
+                        <%--<p>E-mail: {{info.email}}</p>--%>
+                        <%--<p>Login: {{info.login}}</p>--%>
+                        <%--<p>Phone number: {{info.phoneNumber}}</p>--%>
+                    <%--</div>--%>
+
+                    <form class="subtitle">
+
+                        First name:<br>
+                        <input class="input is-3" type="text" name="firstname" value={{info.firstName}}>
+                        <br><br>
+                        Last name:<br>
+                        <input class="input" type="text" name="lastname" value={{info.lastName}}>
+                        <br><br>
+                        E-mail:<br>
+                        <input class="input" type="email" name="lastname" value={{info.email}}>
+                        <br><br>
+                        Username:<br>
+                        <input class="input" type="text" name="login" value={{info.login}}>
+                        <br><br>
+                        Password:<br>
+                        <input class="input"  type="password" name="password" value={{info.password}}>
+                        <br><br>
+                        Phone number:<br>
+                        <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
+                        <br><br>
+                    </form>
+
+                    <button class="button is-info is-medium">Save Changes</button>
                 </div>
             </div>
         </section>
