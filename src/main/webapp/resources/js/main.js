@@ -123,47 +123,78 @@ $(function () {
             data: {
                 films: [],
                 categories: [],
-                link: "/film/",
+                link: '/film/',
                 notFound: false,
                 pagesNumber: 0,
-                currentPage: 1
+                currentPage: 1,
+                pageLink: '/film/filmsForIndexPage/'
             },
             beforeCompile: function () {
                 var self = this;
-                $.when($.getJSON('/film/filmsForIndexPage/1', function (films) {
-                        self.films = films;
-                    }),
-                    $.getJSON('/category/forNav', function (categories) {
-                        self.categories = categories;
-                        if (category) {
-                            $.getJSON('/category/' + category + '/films', function (data) {
-                                $('a[data-category]').removeClass('is-current');
-                                $('a[data-category = ' + category + ']').addClass('is-current');
-                                self.notFound = false;
-                                self.films = data;
-                                hideLoading();
+                if (category) {
+                    self.notFound = false;
+                    $.when($.getJSON('/category/forNav', function (categories) {
+                            self.categories = categories;
+                        }),
+                        $.getJSON('/category/' + category + '/films/1', function (data) {
+                            $('a[data-category]').removeClass('is-current');
+                            $('a[data-category = ' + category + ']').addClass('is-current');
+                            self.films = data;
+                            self.currentPage = 1;
+
+                            $.getJSON('category/' + category + ' /count', function (filmsNumber) {
+                                if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                    self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                                else
+                                    self.pagesNumber = parseInt(filmsNumber / 10, 10);
                             });
-                        } else if (searchInput) {
-                            $.getJSON('/search/film/' + searchInput, function (data) {
-                                self.films = data;
-                                if (self.films.length === 0) {
-                                    self.notFound = true;
-                                }
-                                hideLoading();
-                            });
-                        }
-                    }),
-                    $.getJSON('/film/numberOfFilms', function (filmsNumber) {
-                        if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
-                            self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
-                        else
-                            self.pagesNumber = parseInt(filmsNumber / 10, 10);
-                    })).done(function () {
-                    if (!category && !searchInput) {
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                            self.pageLink = '/category/' + category + '/films/';
+                        })).done(function () {
+                        // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         hideLoading();
-                    }
-                });
+                    });
+                } else if (searchInput) {
+                    $.when($.getJSON('/category/forNav', function (categories) {
+                            self.categories = categories;
+                        }),
+                        $.getJSON('/search/film/' + searchInput + '/1', function (data) {
+                            self.films = data;
+                            if (self.films.length === 0) {
+                                self.pagesNumber = 0;
+                                self.notFound = true;
+                            } else {
+                                self.currentPage = 1;
+                                $.getJSON('search/film/count/' + searchInput, function (filmsNumber) {
+                                    if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                        self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                                    else
+                                        self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                                });
+                                self.pageLink = '/search/film/' + searchInput + '/';
+                            }
+                        })).done(function () {
+                        // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        hideLoading();
+                    });
+                } else {
+                    self.notFound = false;
+                    $.when($.getJSON('/film/filmsForIndexPage/1', function (films) {
+                            self.films = films;
+                        }),
+                        $.getJSON('/category/forNav', function (categories) {
+                            self.categories = categories;
+                        }),
+                        $.getJSON('/film/numberOfFilms', function (filmsNumber) {
+                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                            else
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                        })).done(function () {
+                        // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        hideLoading();
+                    });
+                }
+                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
             },
             methods: {
                 getYear: function (val) {
@@ -173,21 +204,29 @@ $(function () {
                 openCategory: function (id) {
                     var self = this;
                     showLoading();
-                    $.getJSON('/category/' + id + '/films', function (data) {
+                    $.getJSON('/category/' + id + '/films/1', function (data) {
                         $('a[data-category]').removeClass('is-current');
                         $('a[data-category = ' + id + ']').addClass('is-current');
                         self.notFound = false;
                         self.films = data;
-                        hideLoading();
+                        $.when($.getJSON('category/' + id + ' /count', function (filmsNumber) {
+                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                            else
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                        })).done(function () {
+                            hideLoading();
+                        });
+                        self.pageLink = '/category/' + id + '/films/'
                     });
                 },
                 goToPage: function (pageNum) {
                     var self = this;
                     showLoading();
-                    $.getJSON('/film/filmsForIndexPage/' + pageNum, function (data) {
+                    $.getJSON(self.pageLink + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });
@@ -195,10 +234,10 @@ $(function () {
                 goToPrevious: function () {
                     var self = this;
                     showLoading();
-                    $.getJSON('/film/filmsForIndexPage/' + (parseInt(self.currentPage) - 1), function (data) {
+                    $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
                         self.currentPage = parseInt(self.currentPage) - 1;
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });
@@ -206,10 +245,10 @@ $(function () {
                 goToNext: function () {
                     var self = this;
                     showLoading();
-                    $.getJSON('/film/filmsForIndexPage/' + (parseInt(self.currentPage) + 1), function (data) {
+                    $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
                         self.currentPage = parseInt(self.currentPage) + 1;
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });
@@ -339,7 +378,7 @@ $(function () {
                         else
                             self.pagesNumber = parseInt(filmsNumber / 10, 10);
                     })).done(function () {
-                    $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                     hideLoading();
                 });
             },
@@ -357,7 +396,7 @@ $(function () {
                     $.getJSON('/film/filmsForBestPage/' + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });
@@ -368,7 +407,7 @@ $(function () {
                     $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
                         self.currentPage = parseInt(self.currentPage) - 1;
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });
@@ -379,7 +418,7 @@ $(function () {
                     $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
                         self.currentPage = parseInt(self.currentPage) + 1;
                         $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum='+ self.currentPage +']').addClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         hideLoading();
                     });

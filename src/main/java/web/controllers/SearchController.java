@@ -38,12 +38,23 @@ public class SearchController {
         return filmsWithTitleForQuick;
     }
 
-    @RequestMapping(value = "/film/{title}", method = RequestMethod.GET)
+    @RequestMapping(value = "/film/count/{title}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> search(@PathVariable("title") String title) {
-        log.info("search(title=" + title + ")");
+    long numberOfFilmsWithTitle(@PathVariable("title") String title) {
+        log.info("numberOfFilmsWithTitle(title=" + title + ")");
 
-        List<FilmJSONIndex> filmsWithTitle = filmService.getFilmsWithTitle(searchService.titleToTitleSearch(title));
+        long result = filmService.getNumberOfFilmsWithTitle(searchService.titleToTitleSearch(title));
+
+        log.info("numberOfFilmsWithTitle() returns : result=" + result);
+        return result;
+    }
+
+    @RequestMapping(value = "/film/{title}/{page}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<FilmJSONIndex> search(@PathVariable("title") String title, @PathVariable("page") String page) {
+        log.info("search(title=" + title + ", page=" + page + ")");
+
+        List<FilmJSONIndex> filmsWithTitle = filmService.getFilmsWithTitle(searchService.titleToTitleSearch(title), page);
 
         log.info("search() returns : filmsWithTitle.size()=" + filmsWithTitle.size());
         return filmsWithTitle;

@@ -149,17 +149,29 @@ public class FilmService {
 
         Session session = sessionFactory.getCurrentSession();
         int limit = 10;
-        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(10).list();
+        List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(limit).list();
 
         log.info("getFilmsWithTitleForQuick() returns : list.size()=" + list.size());
         return list;
     }
 
-    public List<FilmJSONIndex> getFilmsWithTitle(String title) throws HibernateException {
-        log.info("getFilmsWithTitle(title=" + title + ")");
+    public long getNumberOfFilmsWithTitle(String title) throws HibernateException {
+        log.info("getNumberOfFilmsWithTitle(title=" + title + ")");
 
         Session session = sessionFactory.getCurrentSession();
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").list();
+        long result = (long)session.createQuery("select count (f.id) from FilmDb f where f.titleSearch like '%" + title + "%'").list().get(0);
+
+        log.info("getNumberOfFilmsWithTitle() returns: result=" + result);
+        return result;
+    }
+
+    public List<FilmJSONIndex> getFilmsWithTitle(String title, String page) throws HibernateException, NumberFormatException {
+        log.info("getFilmsWithTitle(title=" + title + ")");
+
+        int limit = 10;
+        int start = (Integer.parseInt(page) - 1) * limit;
+        Session session = sessionFactory.getCurrentSession();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setFirstResult(start).setMaxResults(limit).list();
 
         log.info("getFilmsWithTitle() returns : list.size()=" + list.size());
         return list;
