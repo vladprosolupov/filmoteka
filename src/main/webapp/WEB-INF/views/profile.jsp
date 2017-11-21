@@ -40,9 +40,10 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <section class="hero is-small is-bold has-text-centered" style="background-color: rgb(250,250,250)">
-            <div class="hero-body">
-                <div class="container">
+        <section class="hero is-white is-small is-bold has-text-centered" ">
+            <div class="hero-body columns">
+                    <div class="column"></div>
+                <div class="container column">
                     <h1 class="title">
                         Profile
                         <br>
@@ -80,6 +81,8 @@
                     </form>
 
                     <button class="button is-info is-medium">Save Changes</button>
+                </div>
+                    <div class="column"></div>
                 </div>
             </div>
         </section>
