@@ -34,19 +34,30 @@ public class ClientController {
 
     //TODO add real-time validation of the client login
 
+    @RequestMapping(value = "/loginCheck/{login}", method = RequestMethod.GET)
+    public @ResponseBody
+    boolean loginCheck(@PathVariable("login") String login) {
+        log.info("loginCheck(login=" + login + ")");
+
+        boolean result = clientService.loginCheck(login);
+
+        log.info("loginCheck() returns: " + result);
+        return result;
+    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult, HttpServletRequest request) throws ParsingJsonToDaoException {
         log.info("addClient(clientJSON=" + clientJSON + ")");
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             log.error("Customer does not pass validation");
 
             return "Error";
         }
 
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
-        if(clientDb == null) {
+        if (clientDb == null) {
             log.error("Customer does not registered");
 
             return "Error";
