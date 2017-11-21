@@ -52,27 +52,18 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         tokenService.saveToken(tokenDb);
 
         String recipientAddress = client.getEmail();
-        log.info("get customer email : " + recipientAddress);
         String subject = "Registration Confirmation";
-        log.info("created subject : " + subject);
         String confirmationUrl
                 = event.getApplicationUrl() + "/registrationConfirm/" + token;
-        log.info("created confirmationUrl : " + confirmationUrl);
 
         try {
             String message = messages.getMessage("message.regSucc", null, Locale.US);
-            log.info("created message : " + message);
 
             SimpleMailMessage email = new SimpleMailMessage();
-            log.info("created email : ");
             email.setTo(recipientAddress);
-            log.info("set recipient address : " + email.getTo()[0]);
             email.setSubject(subject);
-            log.info("set subject : " + email.getSubject());
             email.setText(message + "/nLink for confirmation your account: " + "http://localhost:8080" + confirmationUrl);
-            log.info("set text : " + email.getText());
             mailSender.send(email);
-            log.info("sent email");
         } catch (Exception e) {
             log.error(e);
         }
