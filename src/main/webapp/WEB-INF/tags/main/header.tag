@@ -24,7 +24,7 @@
                       method="post" onsubmit="return false">
 
 
-                    <a class="navbar-item" href="/">${logo}</a>
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -85,7 +85,7 @@
                 <% } else if (hasAccess == 0) { %>
                 <div class="navbar">
 
-                    <a class="navbar-item" href="/">${logo}</a>
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -125,7 +125,7 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item" href="/">${logo}</a>
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -190,7 +190,7 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                <strong>Filmoteka</strong> by German Varanytsya, Vladyslav Prosolupov, Rostyslav Tryndiak.
+                <strong>Filmoteka</strong> by Vladyslav Prosolupov, Rostyslav Tryndyak, German Varanytsya.
                 The website content
                 is licensed.
             </p>

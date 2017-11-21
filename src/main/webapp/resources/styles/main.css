@@ -534,6 +534,10 @@ aside.menu {
     height: 60px;
 }
 
+a.navbar-item.home:hover > img{
+    filter: invert(98%);
+}
+
 @media all and (min-width: 1024px) and (max-width: 1215px){
     aside.menu {
         width: 150px;
