@@ -600,6 +600,11 @@ a.navbar-item.home:hover > img {
 }
 
 
+@media all and (min-width: 769px) and (max-width: 1024px) {
+    .box {
+        width: 295px;
+    }
+}
 
 @media all and (min-width: 1024px) and (max-width: 1215px) {
     aside.menu {
