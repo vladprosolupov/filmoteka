@@ -99,6 +99,17 @@ public class ClientService {
         return clientDb;
     }
 
+    public boolean loginCheck(String login) throws HibernateException {
+        log.info("loginCheck(login=" + login + ")");
+
+        Session session = sessionFactory.getCurrentSession();
+        long count = (long)session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
+        boolean result = (count == (long) 0);
+
+        log.info("loginCheck() returns: " + result);
+        return result;
+    }
+
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
         log.info("convertToClientDb(clientJSON=" + clientJSON + ")");
 

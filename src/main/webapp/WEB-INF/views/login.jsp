@@ -81,4 +81,7 @@
     </div>
 
 </t:header>
+<script type="application/javascript">
+    window.history.pushState({}, document.title, "/login");
+</script>
 </html>
