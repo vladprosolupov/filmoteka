@@ -168,6 +168,7 @@ public class RootWebController {
 
                 clientDb.setEnabled(1);
                 clientService.saveOrUpdate(clientDb);
+                return "redirect:/login?confirmed=true";
             }
 
         }

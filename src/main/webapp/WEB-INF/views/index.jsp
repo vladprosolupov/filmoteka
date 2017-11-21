@@ -36,6 +36,12 @@
                         Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other keyword or choose one film from our library!
                     </div>
                 </article>
+
+                <article class="message is-danger" v-if="notFound">
+                    <div class="message-body">
+                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other keyword or choose one film from our library!
+                    </div>
+                </article>
                 <section class="info-tiles">
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">
