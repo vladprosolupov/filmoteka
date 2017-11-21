@@ -12,7 +12,7 @@
 <c:set var="logo"><img src="<c:url value="/resources/images/logo(Biger-Size).png"/>"/></c:set>
 <head>
     <link rel="shortcut icon"
-          href="<c:url value="/resources/images/favicon.ico"/>" />
+          href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>" />
 </head>
 <body>
 <section class="hero background_for_client is-fullheight is-bold white-text">
