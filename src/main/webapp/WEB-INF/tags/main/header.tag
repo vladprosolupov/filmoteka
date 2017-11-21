@@ -9,6 +9,11 @@
     <% hasAccess = 2; %>
 </security:authorize>
 <c:url var="logoutUrl" value="/do_logout"/>
+<c:set var="logo"><img src="<c:url value="/resources/images/logo(Biger-Size).png"/>"/></c:set>
+<head>
+    <link rel="shortcut icon"
+          href="<c:url value="/resources/images/favicon.ico"/>" />
+</head>
 <body>
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">
@@ -18,7 +23,8 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item" href="/">Home</a>
+
+                    <a class="navbar-item" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -79,7 +85,7 @@
                 <% } else if (hasAccess == 0) { %>
                 <div class="navbar">
 
-                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -119,7 +125,7 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>

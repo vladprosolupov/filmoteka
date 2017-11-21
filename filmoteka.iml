@@ -21,6 +21,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="a.xml" value="0abca3f1-4545-4e81-bbdd-3b3a5b725616" />
           <unit-entry name="hibernate.cfg.xml" value="58c23d74-087b-40c0-ae0f-fe117be21a8d" />
           <unit-entry name="sessionFactory" value="0abca3f1-4545-4e81-bbdd-3b3a5b725616" />
         </datasource-map>
@@ -86,5 +87,8 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.9.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
   </component>
 </module>

@@ -29,7 +29,7 @@ public class ClientService {
 
     private static final Logger log = LogManager.getLogger(ClientService.class);
 
-    public void saveOrUpdate(ClientDb clientDb) throws HibernateException {
+    public ClientDb saveOrUpdate(ClientDb clientDb) throws HibernateException {
         log.info("saveOrUpdate(clientDb=" + clientDb + ")");
 
         if (clientDb == null) {
@@ -37,10 +37,12 @@ public class ClientService {
 
             throw new IllegalArgumentException("ClientDb should not be null");
         }
+
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(clientDb);
 
-        log.info("succ. saved or updated client");
+        log.info("succ. saved or updated client, clientDb=" + clientDb);
+        return clientDb;
     }
 
     public ClientDb getClientByLogin(String login) throws HibernateException, IndexOutOfBoundsException {
