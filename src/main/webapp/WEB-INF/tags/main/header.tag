@@ -71,7 +71,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
                                    v-bind:href="link+result[0]">{{result[1]}}</a>
@@ -90,6 +90,8 @@
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <a class="navbar-item" href="/login">Log in</a>
+                    <div class="is-divider-vertical" data-content="OR"></div>
+                    <a class="navbar-item" href="/register">Sign up</a>
 
                     <div class="navbar-end VueSearch">
                         <div class="navbar-item has-dropdown centered">
@@ -109,7 +111,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
                                    v-for="result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
@@ -164,7 +166,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
                                    v-bind:href="link+result[0]">{{result[1]}}</a>
