@@ -2,6 +2,7 @@ package web.services;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,27 @@ public class FilmCategoryService {
 
     private static final Logger log = LogManager.getLogger(FilmCategoryService.class);
 
-    public List<FilmJSONIndex> getAllFilmsForCategory(String id){
-        log.info("getAllFilmsForCategory(id=" + id + ")");
+    public List<FilmJSONIndex> getFilmsForCategory(String id, String page) throws HibernateException, NumberFormatException {
+        log.info("getFilmsForCategory(id=" + id + ", page=" + page + ")");
+
+        int limit = 10;
+        int start = (Integer.parseInt(page) - 1) * limit;
 
         Session session = sessionFactory.getCurrentSession();
-        List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list();
+        List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).setFirstResult(start).setMaxResults(limit).list();
 
-        log.info("getAllFilmsForCategory() returns : list.size()" + list.size());
+        log.info("getFilmsForCategory() returns : list.size()" + list.size());
         return list;
+    }
+
+    public long getNumberOfFilmsForCategory(String id) throws HibernateException {
+        log.info("getnumberOfFilmsForCategory(id=" + id + ")");
+
+        Session session = sessionFactory.getCurrentSession();
+        long result = (long) session.createQuery("select count(f.id) from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list().get(0);
+
+        log.info("getNumberOfFilmsForCategory() returns : result=" + result);
+        return result;
     }
 
 }

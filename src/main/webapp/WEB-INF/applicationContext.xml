@@ -29,6 +29,7 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <import resource="spring-security.xml" />
+    <import resource="spring-mail.xml" />
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">

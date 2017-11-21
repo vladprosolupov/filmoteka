@@ -27,12 +27,9 @@ public class ClientService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired(required = true)
-    private AddressService addressService;
-
     private static final Logger log = LogManager.getLogger(ClientService.class);
 
-    public void saveOrUpdate(ClientDb clientDb) throws HibernateException {
+    public ClientDb saveOrUpdate(ClientDb clientDb) throws HibernateException {
         log.info("saveOrUpdate(clientDb=" + clientDb + ")");
 
         if (clientDb == null) {
@@ -40,10 +37,12 @@ public class ClientService {
 
             throw new IllegalArgumentException("ClientDb should not be null");
         }
+
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(clientDb);
 
-        log.info("succ. saved or updated client");
+        log.info("succ. saved or updated client, clientDb=" + clientDb);
+        return clientDb;
     }
 
     public ClientDb getClientByLogin(String login) throws HibernateException, IndexOutOfBoundsException {
@@ -98,6 +97,17 @@ public class ClientService {
 
         log.info("getClientById() returns : clientDb=" + clientDb);
         return clientDb;
+    }
+
+    public boolean loginCheck(String login) throws HibernateException {
+        log.info("loginCheck(login=" + login + ")");
+
+        Session session = sessionFactory.getCurrentSession();
+        long count = (long)session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
+        boolean result = (count == (long) 0);
+
+        log.info("loginCheck() returns: " + result);
+        return result;
     }
 
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {

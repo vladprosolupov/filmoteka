@@ -9,6 +9,11 @@
     <% hasAccess = 2; %>
 </security:authorize>
 <c:url var="logoutUrl" value="/do_logout"/>
+<c:set var="logo"><img src="<c:url value="/resources/images/logo(Biger-Size).png"/>"/></c:set>
+<head>
+    <link rel="shortcut icon"
+          href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>" />
+</head>
 <body>
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">
@@ -18,7 +23,8 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item" href="/">Home</a>
+
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -65,7 +71,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
                                    v-bind:href="link+result[0]">{{result[1]}}</a>
@@ -79,11 +85,13 @@
                 <% } else if (hasAccess == 0) { %>
                 <div class="navbar">
 
-                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
                     <a class="navbar-item" href="/login">Log in</a>
+                    <div class="is-divider-vertical" data-content="OR"></div>
+                    <a class="navbar-item" href="/register">Sign up</a>
 
                     <div class="navbar-end VueSearch">
                         <div class="navbar-item has-dropdown centered">
@@ -103,7 +111,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
                                    v-for="result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
@@ -119,7 +127,7 @@
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item" href="/">Home</a>
+                    <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
@@ -158,7 +166,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu" style="margin: 0 !important;">
+                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
                                 <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                                    v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
                                    v-bind:href="link+result[0]">{{result[1]}}</a>
@@ -184,7 +192,7 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                <strong>Filmoteka</strong> by German Varanytsya, Vladyslav Prosolupov, Rostyslav Tryndiak.
+                <strong>Filmoteka</strong> by Vladyslav Prosolupov, Rostyslav Tryndyak, German Varanytsya.
                 The website content
                 is licensed.
             </p>

@@ -38,7 +38,7 @@ public class CategoryController {
     String addOrUpdateCategory(@RequestBody @Valid CategoryJSON categoryJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
         log.info("addOrUpdateCategory(categoryJSON=" + categoryJSON + ")");
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             log.error("Category does not pass validation");
 
             return "Error";
@@ -62,15 +62,26 @@ public class CategoryController {
         return "OK";
     }
 
-    @RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/films/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getFilmsForCategory(@PathVariable("id") String id) {
-        log.info("getFilmsForCategory(id" + id + ")");
+    List<FilmJSONIndex> getFilmsForCategory(@PathVariable("id") String id, @PathVariable("page") String page) {
+        log.info("getFilmsForCategory(id" + id + ", page " + page + ")");
 
-        List<FilmJSONIndex> allFilmsForCategory = filmCategoryService.getAllFilmsForCategory(id);
+        List<FilmJSONIndex> filmsForCategory = filmCategoryService.getFilmsForCategory(id, page);
 
-        log.info("getFilmsCategory() returns allFilmsForCategory.size() : " + allFilmsForCategory.size());
-        return allFilmsForCategory;
+        log.info("getFilmsForCategory() returns filmsForCategory.size() : " + filmsForCategory.size());
+        return filmsForCategory;
+    }
+
+    @RequestMapping(value = "/{id}/count", method = RequestMethod.GET)
+    public @ResponseBody
+    long getNumberOfFilmsForCategory(@PathVariable("id") String id) {
+        log.info("getNumberOfFilmsForCategory(id" + id + ")");
+
+        long result = filmCategoryService.getNumberOfFilmsForCategory(id);
+
+        log.info("getNumberOfFilmsForCategory() returns : result=" + result);
+        return result;
     }
 
     @PreAuthorize("hasAuthority('admin')")
@@ -87,7 +98,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/forNav", method = RequestMethod.GET)
     public @ResponseBody
-    List<CategoryJSON> getForNav(){
+    List<CategoryJSON> getForNav() {
         log.info("getForNav()");
 
         List<CategoryJSON> allForNav = categoryService.getForNav();
