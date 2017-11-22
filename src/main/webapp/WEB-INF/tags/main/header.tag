@@ -27,7 +27,7 @@
                     <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/">About</a>
+                    <a class="navbar-item" href="/about">About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="/admin/">Admin Panel</a>
                         <div class="navbar-dropdown is-boxed">
@@ -88,7 +88,7 @@
                     <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/">About</a>
+                    <a class="navbar-item" href="/about">About</a>
                     <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
                     <a class="navbar-item" href="/login">Log in</a>
                     <div class="is-divider-vertical"></div>
@@ -131,7 +131,7 @@
                     <a class="navbar-item home" href="/">${logo}</a>
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/">About</a>
+                    <a class="navbar-item" href="/about">About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="/profile">Profile</a>
                         <div class="navbar-dropdown is-boxed">
