@@ -36,8 +36,10 @@ public class NetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         NetworkDb networkDb =
                 (NetworkDb) session.createQuery("from NetworkDb n where n.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getNetworkWithId() returns : networkDb=" + networkDb);
@@ -54,7 +56,9 @@ public class NetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(networkDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated network");
@@ -70,7 +74,9 @@ public class NetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from NetworkDb n where n.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted network");
@@ -80,7 +86,9 @@ public class NetworkService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<NetworkDb> result = session.createQuery("from NetworkDb").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());

@@ -41,8 +41,10 @@ public class TrailerService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         TrailerDb trailerDb =
                 (TrailerDb) session.createQuery("from TrailerDb t where t.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getTrailerWithId() returns : trailerDb=" + trailerDb);
@@ -59,7 +61,9 @@ public class TrailerService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(trailerDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated trailer");
@@ -75,7 +79,9 @@ public class TrailerService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from TrailerDb t where t.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted trailer");
@@ -85,7 +91,9 @@ public class TrailerService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<TrailerDb> result = session.createQuery("from TrailerDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
@@ -129,6 +137,7 @@ public class TrailerService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from TrailerDb t where t.filmByIdFilm=" + idFilm).executeUpdate();
 
         for (TrailerDb trailerDb : trailerDbSet) {
@@ -137,6 +146,7 @@ public class TrailerService {
             trailerDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(trailerDb);
         }
+        session.getTransaction().commit();
         session.close();
 
         log.info("checked");

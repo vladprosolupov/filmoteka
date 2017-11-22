@@ -35,7 +35,9 @@ public class StudioService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getStudioWithId() returns : studioDb=" + studioDb);
@@ -51,7 +53,9 @@ public class StudioService {
             throw new IllegalArgumentException("StudioDb should not be null");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(studioDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated studio");
@@ -66,7 +70,9 @@ public class StudioService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted studio");
@@ -76,7 +82,9 @@ public class StudioService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<StudioDb> result = session.createQuery("from StudioDb s order by s.studioName").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()" + result.size());

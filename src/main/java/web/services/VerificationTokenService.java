@@ -36,7 +36,9 @@ public class VerificationTokenService {
 
         tokenDb.setExpirenceDate(computeExpireDate());
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(tokenDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved token");
@@ -52,7 +54,9 @@ public class VerificationTokenService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<VerificationTokenDb> result = (List<VerificationTokenDb>) session.createQuery("from VerificationTokenDb v where v.token='" + verificationToken + "'").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getVerificationToken() returns : result.size()=" + result.size());

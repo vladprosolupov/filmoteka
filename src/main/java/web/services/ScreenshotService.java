@@ -40,8 +40,10 @@ public class ScreenshotService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         ScreenshotDb screenshotDb =
                 (ScreenshotDb) session.createQuery("from ScreenshotDb s where s.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getScreenshotWithId() returns : screenshotDb=" + screenshotDb);
@@ -58,7 +60,9 @@ public class ScreenshotService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(screenshotDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated screen");
@@ -74,7 +78,9 @@ public class ScreenshotService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from ScreenshotDb s where s.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted screen");
@@ -84,7 +90,9 @@ public class ScreenshotService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<ScreenshotDb> result = session.createQuery("from ScreenshotDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()" + result.size());
@@ -128,6 +136,7 @@ public class ScreenshotService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from ScreenshotDb s where s.filmByIdFilm=" + idFilm).executeUpdate();
 
         for (ScreenshotDb screenshotDb : screenshotDbSet) {
@@ -136,6 +145,7 @@ public class ScreenshotService {
             screenshotDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(screenshotDb);
         }
+        session.getTransaction().commit();
         session.close();
     }
 }
