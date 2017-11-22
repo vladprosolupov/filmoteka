@@ -121,8 +121,9 @@ public class CommentService {
         }
 
         Session session = sessionFactory.openSession();
-        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id).list();
+        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
         session.close();
+
 
         log.info("getAllCommentsForFilm() returns : allComents.size()=" + allComments.size());
         return allComments;
