@@ -39,9 +39,11 @@ public class LinkToNetworkService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         LinkToNetworkDb linkToNetworkDb =
                 (LinkToNetworkDb) session.createQuery("from LinkToNetworkDb l where l.id=" + id).list().get(0);
+        session.close();
 
         log.info("getLinkWithId() returns : linkToNetworkDb=" + linkToNetworkDb);
         return linkToNetworkDb;
@@ -55,8 +57,10 @@ public class LinkToNetworkService {
 
             throw new IllegalArgumentException("LinkToNetworkDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.save(linkToNetworkDb);
+        session.close();
 
         log.info("save() returns : linkToNetworkDb.getId()=" + linkToNetworkDb.getId());
         return linkToNetworkDb.getId();
@@ -70,8 +74,10 @@ public class LinkToNetworkService {
 
             throw new IllegalArgumentException("LinkToNetworkDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.update(linkToNetworkDb);
+        session.close();
 
         log.info("update() returns : linkToNetworkDb.getId()=" + linkToNetworkDb.getId());
         return linkToNetworkDb.getId();
@@ -85,8 +91,10 @@ public class LinkToNetworkService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from LinkToNetworkDb l where l.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted link");
     }
@@ -99,6 +107,7 @@ public class LinkToNetworkService {
 
             throw new IllegalArgumentException("Links should not be null");
         }
+
         Set<LinkToNetworkDb> linkToNetworkDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : links.entrySet()) {
             log.info("for loop");

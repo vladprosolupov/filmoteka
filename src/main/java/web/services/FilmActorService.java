@@ -44,9 +44,10 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         FilmActorDb filmActorDb =
                 (FilmActorDb) session.createQuery("from FilmActorDb fa where fa.id=" + id).list().get(0);
+        session.close();
 
         log.info("getFilmActorWithId() returns : filActorDb=" + filmActorDb);
         return filmActorDb;
@@ -60,8 +61,10 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("FilmActorDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.save(filmActorDb);
+        session.close();
 
         log.info("saveFilmActor() returns : filmActorDb.getId()=" + filmActorDb.getId());
         return filmActorDb.getId();
@@ -75,8 +78,10 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("FilmActorDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.update(filmActorDb);
+        session.close();
 
         log.info("updateFilmActor() returns : filmActorDb.getId=" + filmActorDb.getId());
         return filmActorDb.getId();
@@ -90,8 +95,10 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from FilmActorDb fa where fa.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted film actor");
     }
@@ -104,6 +111,7 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("Actors should not be null");
         }
+
         Set<FilmActorDb> actorDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : actors.entrySet()) {
             log.info("for loop");
@@ -131,7 +139,8 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("FilmActorDbSet should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from FilmActorDb f where f.filmByIdFilm=" + idFilm).executeUpdate();
         for (FilmActorDb filmActorDb : filmActorDbSet) {
             log.info("for loop");
@@ -139,6 +148,7 @@ public class FilmActorService {
             filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(filmActorDb);
         }
+        session.close();
 
         log.info("checked");
     }

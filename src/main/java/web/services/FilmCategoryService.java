@@ -33,8 +33,9 @@ public class FilmCategoryService {
         int limit = 10;
         int start = (Integer.parseInt(page) - 1) * limit;
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).setFirstResult(start).setMaxResults(limit).list();
+        session.close();
 
         log.info("getFilmsForCategory() returns : list.size()" + list.size());
         return list;
@@ -43,8 +44,9 @@ public class FilmCategoryService {
     public long getNumberOfFilmsForCategory(String id) throws HibernateException {
         log.info("getnumberOfFilmsForCategory(id=" + id + ")");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         long result = (long) session.createQuery("select count(f.id) from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list().get(0);
+        session.close();
 
         log.info("getNumberOfFilmsForCategory() returns : result=" + result);
         return result;

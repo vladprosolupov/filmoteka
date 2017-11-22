@@ -27,8 +27,9 @@ public class LanguageService {
     public List<LanguageDb> getAllLanguages() throws HibernateException {
         log.info("getAllLanguages()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<LanguageDb> result = session.createQuery("FROM LanguageDb").list();
+        session.close();
 
         log.info("getAllLanguages() returns : result.size()=" + result.size());
         return result;
@@ -42,8 +43,10 @@ public class LanguageService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         LanguageDb languageDb = (LanguageDb) session.createQuery("from  LanguageDb l where l.id =" + id).list().get(0);
+        session.close();
 
         log.info("getLanguageWithId() returns : languageDb=" + languageDb);
         return languageDb;
