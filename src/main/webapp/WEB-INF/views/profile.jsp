@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <section class="hero is-white is-small is-bold has-text-centered" ">
+        <section class="hero is-white is-small is-bold has-text-centered">
             <div class="hero-body columns">
                     <div class="column"></div>
                 <div class="container column">

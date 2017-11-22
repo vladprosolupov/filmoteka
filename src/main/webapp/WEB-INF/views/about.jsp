@@ -33,7 +33,28 @@
 
 </head>
 <t:header>
+    <section class="hero is-white is-small is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Filmoteka
 
+                </h1>
+                <br>
+                <h2 class="subtitle">
+                    <p>This is our diploma project</p>
+                    <br>
+                    <p>This is a cite where user can find popular films,films which he like,find films which he should like</p>
+                    <br>
+                    <p>Our group:</p>
+                    <br>
+                    <p>Vlasyslav Prosolupov</p>
+                    <p>Rostyslav Tryndiak</p>
+                    <p>German Varanytsya</p>
+                </h2>
+            </div>
+        </div>
+    </section>
 </t:header>
 </html>
 
