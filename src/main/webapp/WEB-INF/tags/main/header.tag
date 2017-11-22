@@ -89,8 +89,9 @@
                     <a class="navbar-item" href="/best">Best Rated</a>
                     <a class="navbar-item" href="/">You Should Watch</a>
                     <a class="navbar-item" href="/">About</a>
+                    <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
                     <a class="navbar-item" href="/login">Log in</a>
-                    <div class="is-divider-vertical" data-content="OR"></div>
+                    <div class="is-divider-vertical"></div>
                     <a class="navbar-item" href="/register">Sign up</a>
 
                     <div class="navbar-end VueSearch">
