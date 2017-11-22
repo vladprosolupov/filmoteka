@@ -38,8 +38,9 @@ public class ClientService {
             throw new IllegalArgumentException("ClientDb should not be null");
         }
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(clientDb);
+        session.close();
 
         log.info("succ. saved or updated client, clientDb=" + clientDb);
         return clientDb;
@@ -53,8 +54,10 @@ public class ClientService {
 
             throw new IllegalArgumentException("Login should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login + "'").list().get(0);
+        session.close();
 
         log.info("getClientByLogin() returns : client=" + client);
         return client;
@@ -63,8 +66,9 @@ public class ClientService {
     public List<ClientDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<ClientDb> result = session.createQuery("from ClientDb").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;
@@ -78,8 +82,10 @@ public class ClientService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted client");
     }
@@ -92,8 +98,10 @@ public class ClientService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         ClientDb clientDb = (ClientDb) session.createQuery("from ClientDb c where c.id=" + id).list().get(0);
+        session.close();
 
         log.info("getClientById() returns : clientDb=" + clientDb);
         return clientDb;
@@ -102,9 +110,10 @@ public class ClientService {
     public boolean loginCheck(String login) throws HibernateException {
         log.info("loginCheck(login=" + login + ")");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         long count = (long)session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
         boolean result = (count == (long) 0);
+        session.close();
 
         log.info("loginCheck() returns: " + result);
         return result;
