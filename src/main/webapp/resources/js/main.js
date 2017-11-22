@@ -11,6 +11,10 @@ window.addEventListener("keydown", function (e) {
     }
 }, false);
 
+function removeWhiteSpaceAndNewLine(input) {
+    var result = input.replace(/(\r\n|\n|\r|\s)/gm, "");
+}
+
 function hideLoading() {
     $('#loading').hide();
     $('.vue').show();
@@ -323,30 +327,79 @@ $(function () {
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
                 },
-                submitCommentOrMoveLine: function (e) {
+                submitCommentOrMoveLine: function () {
                     if (this.check) {
-                        alert("submit");
+                        $('#newComment').prop('disabled', true);
+                        var self = this;
+                        var comment = {};
+                        comment['idFilm'] = id;
+                        comment['commentText'] = $('#newComment').val();
+
+                        var token = $("meta[name='_csrf']").attr("content");
+                        var header = $("meta[name='_csrf_header']").attr("content");
+                        $(document).ajaxSend(function (e, xhr, options) {
+                            xhr.setRequestHeader(header, token);
+                        });
+                        $('#submitButton').addClass("is-loading");
+                        $.ajax({
+                            url: domain + '/comment/save',
+                            type: 'POST',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify(comment),
+                            success: function () {
+                                $('#newComment').val("");
+                                $.when($.getJSON('/comment/getFilmComments/' + id, function (comments) {
+                                    self.comments = comments;
+                                })).done(function () {
+                                    $('#newComment').prop('disabled', false);
+                                    $('#submitButton').removeClass("is-loading");
+                                });
+                            }
+                        });
                     }
                 },
                 submitComment: function () {
+                    $('#newComment').prop('disabled', true);
+                    var self = this;
                     var comment = {};
-                    comment['id'] = 0;
                     comment['idFilm'] = id;
-                    comment['idClient'] = null;
                     comment['commentText'] = $('#newComment').val();
-                    comment['rating'] = 0;
-                    comment['referencedComment'] = 0;
-                    comment['commentDate'] = '';
-                    comment['clientLogin'] = '';
-                    comment['clientFirstName'] = '';
-                    comment['clientLastName'] = '';
 
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    $('#submitButton').addClass("is-loading");
                     $.ajax({
                         url: domain + '/comment/save',
                         type: 'POST',
+                        contentType: 'application/json;charset=utf-8',
                         data: JSON.stringify(comment),
                         success: function () {
-                            alert("success");
+                            $('#newComment').val("");
+                            $.when($.getJSON('/comment/getFilmComments/' + id, function (comments) {
+                                self.comments = comments;
+                            })).done(function () {
+                                $('#newComment').prop('disabled', false);
+                                $('#submitButton').removeClass("is-loading");
+                            });
+                        }
+                    });
+                },
+                deleteComment: function () {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    $.ajax({
+                        url: domain + '/comment/delete/' + "3",
+                        type: 'POST',
+                        success: function () {
+                            $.getJSON('/comment/getFilmComments/' + id, function (comments) {
+                                self.comments = comments;
+                            });
                         }
                     });
                 },
@@ -370,10 +423,10 @@ $(function () {
                         }
                     } else {
                         if (diffMinutes < 60) {
-                            if (diffMinutes <= 1) {
-                                result += (Math.floor(timeDiff / 1000)) + "sec";
-                            }else {
+                            if ((Math.floor(timeDiff / 1000)) >= 60) {
                                 result += diffMinutes + "min";
+                            } else {
+                                result += (Math.floor(timeDiff / 1000)) + "sec";
                             }
                         } else {
                             result += Math.floor(diffMinutes / 60) + "h";

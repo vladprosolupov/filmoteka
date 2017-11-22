@@ -13,6 +13,10 @@
 <head>
     <link rel="shortcut icon"
           href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>" />
+    <!-- Including CSRF token to the header -->
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 <section class="hero background_for_client is-fullheight is-bold white-text">

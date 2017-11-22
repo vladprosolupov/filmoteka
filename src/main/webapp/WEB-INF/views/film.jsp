@@ -35,7 +35,7 @@
             <nav class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        <a class="button is-dark" v-on:click="submitComment">Submit</a>
+                        <a class="button is-dark" id="submitButton" v-on:click="submitComment">Submit</a>
                     </div>
                 </div>
                 <div class="level-right">
@@ -88,31 +88,6 @@
                         <li v-for="category in categories"><a v-on:click="openCategory(category[0])">{{category[1]}}</a>
                         </li>
                     </ul>
-                        <%--<p class="menu-label">--%>
-                        <%--Administration--%>
-                        <%--</p>--%>
-                        <%--<ul class="menu-list">--%>
-                        <%--<li><a>Team Settings</a></li>--%>
-                        <%--<li>--%>
-                        <%--<a>Manage Your Team</a>--%>
-                        <%--<ul>--%>
-                        <%--<li><a>Members</a></li>--%>
-                        <%--<li><a>Plugins</a></li>--%>
-                        <%--<li><a>Add a member</a></li>--%>
-                        <%--</ul>--%>
-                        <%--</li>--%>
-                        <%--<li><a>Invitations</a></li>--%>
-                        <%--<li><a>Cloud Storage Environment Settings</a></li>--%>
-                        <%--<li><a>Authentication</a></li>--%>
-                        <%--</ul>--%>
-                        <%--<p class="menu-label">--%>
-                        <%--Transactions--%>
-                        <%--</p>--%>
-                        <%--<ul class="menu-list">--%>
-                        <%--<li><a>Payments</a></li>--%>
-                        <%--<li><a>Transfers</a></li>--%>
-                        <%--<li><a>Balance</a></li>--%>
-                        <%--</ul>--%>
                 </aside>
             </div>
             <div class="column is-9 info" style="background-color: rgb(250,250,250); color: black;">
@@ -247,8 +222,8 @@
                             </div>
                         </nav>
                     </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
+                    <div class="media-right" v-if="">
+                        <button class="delete" v-on:click="deleteComment"></button>
                     </div>
                     <br>
                 </article>

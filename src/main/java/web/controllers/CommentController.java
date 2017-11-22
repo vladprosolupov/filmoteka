@@ -13,6 +13,8 @@ import web.model.CommentJSON;
 import web.services.CommentService;
 
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,8 +32,12 @@ public class CommentController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateComment(@RequestBody @Valid CommentJSON commentJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
+    String addOrUpdateComment(@RequestBody @Valid CommentJSON commentJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException, UnsupportedEncodingException {
         log.info("addOrUpdateComment(commentJSON=" + commentJSON + ")");
+
+        String text = URLDecoder.decode(commentJSON.getCommentText(), "UTF-8");
+
+        log.info("text = " + text);
 
         if(bindingResult.hasErrors()) {
             log.error("Comment does not pass validation");

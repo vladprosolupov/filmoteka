@@ -117,7 +117,7 @@ public class CommentService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
-        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id).list();
+        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
 
         log.info("getAllCommentsForFilm() returns : allComents.size()=" + allComments.size());
         return allComments;
