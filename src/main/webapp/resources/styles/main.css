@@ -506,14 +506,6 @@ h6.rating i {
     margin-top: 5%;
 }
 
-.like:hover {
-    color: #1ca64c;
-}
-
-.dislike:hover {
-    color: #cd0930;
-}
-
 .counter:hover {
     cursor: default;
 }
@@ -597,6 +589,10 @@ a.navbar-item.home:hover > img {
 .navbar-item.has-dropdown.centered {
     width: -moz-available;
     width: -webkit-fill-available;
+}
+
+.is-deleting {
+    filter: blur(3px);
 }
 
 

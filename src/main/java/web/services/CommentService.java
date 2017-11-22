@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import web.dao.CommentRatingDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.CommentJSON;
@@ -75,11 +76,10 @@ public class CommentService {
         CommentRatingDb commentToDelete = (CommentRatingDb) session.createQuery("from CommentRatingDb c where c.id=" + id).list().get(0);
         if (commentToDelete.getClientByIdClient().getLogin().equals(authentication.getName())) {
             log.info("if statement");
-
             session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();
 
             log.info("succ. deleted comment");
-        } else if(authentication.getName().equals("admin")) {
+        } else if (authentication.getName().equals("admin")) {
             log.info("else if statement, admin is deleting comment");
 
             session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();

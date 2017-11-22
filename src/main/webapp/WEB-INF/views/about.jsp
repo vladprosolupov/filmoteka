@@ -20,7 +20,7 @@
 
 <html>
 <head>
-    <title>Profile</title>
+    <title>About</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
@@ -46,15 +46,15 @@
                 <h2 class="subtitle">
                     <p>This is our diploma project</p>
                     <br>
-                    <p>This is a cite where user can find popular films,films which he like,find films which he should like</p>
+                    <p>This is a site where user can find popular films,films which he like,find films which he should like</p>
                     <br>
 
-                    <b><p></p>Filmoteka</b> - biggest european web-site for watching information about films.Every maonth we have more then 100 million users which wants to be navigated in cinema industry and add to bookmarks films which they want to see in their future. Our service gives you possibility to be modern person, to know about new films and to know about films which will be in our hearts forever! You can open that site via every device because it is optimized! <b>Filmoteka</b> is a really friendly web-site which wants you to feel comfortable and find films which you will like, out artificial intelligence will help you with that!</p>
+                    <b><p></p>Filmoteka</b> - biggest european web-site for watching information about films.Every month we have more then 100 million users which wants to be navigated in cinema industry and add to bookmarks films which they want to see in their future. Our service gives you possibility to be modern person, to know about new films and to know about films which will be in our hearts forever! You can open that site via every device because it is optimized! <b>Filmoteka</b> is a really friendly web-site which wants you to feel comfortable and find films which you will like, out artificial intelligence will help you with that!</p>
                     <br>
                     <br>
                     <p>Our group:</p>
                     <br>
-                    <p>Vlasyslav Prosolupov</p>
+                    <p>Vladyslav Prosolupov</p>
                     <p>Rostyslav Tryndyak</p>
                     <p>German Varanytsya</p>
                 </h2>

@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ErrorJSON;
 
@@ -15,7 +16,7 @@ public class GlobalExceptionController {
     private static final Logger log = LogManager.getLogger(GlobalExceptionController.class);
 
     @ExceptionHandler(IndexOutOfBoundsException.class)
-    public ErrorJSON indexOutOfBoundExceptionOccur (IndexOutOfBoundsException e){
+    public @ResponseBody ErrorJSON indexOutOfBoundExceptionOccur (IndexOutOfBoundsException e){
         log.error("indexOutOfBoundExceptionOccur (e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -28,7 +29,7 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(HibernateException.class)
-    public ErrorJSON hibernateExceptionOccur(HibernateException e) {
+    public @ResponseBody ErrorJSON hibernateExceptionOccur(HibernateException e) {
         log.error("hibernateExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -41,7 +42,7 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(NumberFormatException.class)
-    public ErrorJSON numberFormatExceptionOccur(NumberFormatException e){
+    public @ResponseBody ErrorJSON numberFormatExceptionOccur(NumberFormatException e){
         log.info("numberFormatExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -54,7 +55,7 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(ParsingJsonToDaoException.class)
-    public ErrorJSON parsingJSONExceptionOccur(ParsingJsonToDaoException e) {
+    public @ResponseBody ErrorJSON parsingJSONExceptionOccur(ParsingJsonToDaoException e) {
         log.error("parsingJSONExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -67,15 +68,15 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorJSON illigalArgumentExceptionOccur(IllegalArgumentException e) {
-        log.error("illigalArgumentExceptionOccur(e=" + e + ")");
+    public @ResponseBody ErrorJSON illegalArgumentExceptionOccur(IllegalArgumentException e) {
+        log.error("illegalArgumentExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
         errorJSON.setMessage(e.getMessage());
         errorJSON.setStatusCode("500 Database error");
 
-        log.error("illigalArgumentExceptionOccur() returns : errorJSON=" + errorJSON);
+        log.error("illegalArgumentExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 }

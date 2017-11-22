@@ -28,7 +28,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <textarea id="newComment" v-on:keyup.13="submitCommentOrMoveLine" class="textarea"
+                    <textarea id="newComment" v-on:keydown.13="submitCommentOrMoveLine($event)" class="textarea"
                               placeholder="Add a comment..."></textarea>
                 </p>
             </div>
@@ -208,22 +208,22 @@
                                 {{comment.commentText}}
                             </p>
                         </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    {{comment.rating}}
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
+                        <%--<nav class="level is-mobile">--%>
+                            <%--<div class="level-left">--%>
+                                <%--<a class="level-item" v-on:click="commentDown(comment)">--%>
+                                    <%--<span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>--%>
+                                <%--</a>--%>
+                                <%--<a class="level-item counter">--%>
+                                    <%--{{comment.rating}}--%>
+                                <%--</a>--%>
+                                <%--<a class="level-item" v-on:click="commentUp(comment)">--%>
+                                    <%--<span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</nav>--%>
                     </div>
-                    <div class="media-right" v-if="">
-                        <button class="delete" v-on:click="deleteComment"></button>
+                    <div class="media-right" v-if="currUser.login == comment.clientLogin || currUser.login == 'admin'">
+                        <button class="delete" v-on:click="deleteComment(comment.id, $event)"></button>
                     </div>
                     <br>
                 </article>

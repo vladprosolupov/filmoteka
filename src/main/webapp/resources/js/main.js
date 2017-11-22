@@ -13,6 +13,7 @@ window.addEventListener("keydown", function (e) {
 
 function removeWhiteSpaceAndNewLine(input) {
     var result = input.replace(/(\r\n|\n|\r|\s)/gm, "");
+    return result;
 }
 
 function hideLoading() {
@@ -269,7 +270,8 @@ $(function () {
                 film: [],
                 categories: [],
                 check: '',
-                comments: []
+                comments: [],
+                currUser: []
             },
             beforeCompile: function () {
                 var self = this;
@@ -281,6 +283,9 @@ $(function () {
                     }),
                     $.getJSON('/comment/getFilmComments/' + id, function (comments) {
                         self.comments = comments;
+                    }),
+                    $.getJSON("/client/getCurrentUser", function (user) {
+                        self.currUser = user;
                     })).done(function () {
                     hideLoading();
                 });
@@ -327,8 +332,42 @@ $(function () {
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
                 },
-                submitCommentOrMoveLine: function () {
+                submitCommentOrMoveLine: function (event) {
                     if (this.check) {
+                        event.preventDefault();
+                        if (removeWhiteSpaceAndNewLine($('#newComment').val())) {
+                            $('#newComment').prop('disabled', true);
+                            var self = this;
+                            var comment = {};
+                            comment['idFilm'] = id;
+                            comment['commentText'] = $('#newComment').val();
+
+                            var token = $("meta[name='_csrf']").attr("content");
+                            var header = $("meta[name='_csrf_header']").attr("content");
+                            $(document).ajaxSend(function (e, xhr, options) {
+                                xhr.setRequestHeader(header, token);
+                            });
+                            $('#submitButton').addClass("is-loading");
+                            $.ajax({
+                                url: domain + '/comment/save',
+                                type: 'POST',
+                                contentType: 'application/json;charset=utf-8',
+                                data: JSON.stringify(comment),
+                                success: function () {
+                                    $('#newComment').val("");
+                                    $.when($.getJSON('/comment/getFilmComments/' + id, function (comments) {
+                                        self.comments = comments;
+                                    })).done(function () {
+                                        $('#newComment').prop('disabled', false);
+                                        $('#submitButton').removeClass("is-loading");
+                                    });
+                                }
+                            });
+                        }
+                    }
+                },
+                submitComment: function () {
+                    if (removeWhiteSpaceAndNewLine($('#newComment').val())) {
                         $('#newComment').prop('disabled', true);
                         var self = this;
                         var comment = {};
@@ -358,43 +397,16 @@ $(function () {
                         });
                     }
                 },
-                submitComment: function () {
-                    $('#newComment').prop('disabled', true);
+                deleteComment: function (idComment, event) {
+                    $(event.currentTarget.parentElement.parentElement).addClass("is-deleting");
                     var self = this;
-                    var comment = {};
-                    comment['idFilm'] = id;
-                    comment['commentText'] = $('#newComment').val();
-
-                    var token = $("meta[name='_csrf']").attr("content");
-                    var header = $("meta[name='_csrf_header']").attr("content");
-                    $(document).ajaxSend(function (e, xhr, options) {
-                        xhr.setRequestHeader(header, token);
-                    });
-                    $('#submitButton').addClass("is-loading");
-                    $.ajax({
-                        url: domain + '/comment/save',
-                        type: 'POST',
-                        contentType: 'application/json;charset=utf-8',
-                        data: JSON.stringify(comment),
-                        success: function () {
-                            $('#newComment').val("");
-                            $.when($.getJSON('/comment/getFilmComments/' + id, function (comments) {
-                                self.comments = comments;
-                            })).done(function () {
-                                $('#newComment').prop('disabled', false);
-                                $('#submitButton').removeClass("is-loading");
-                            });
-                        }
-                    });
-                },
-                deleteComment: function () {
                     var token = $("meta[name='_csrf']").attr("content");
                     var header = $("meta[name='_csrf_header']").attr("content");
                     $(document).ajaxSend(function (e, xhr, options) {
                         xhr.setRequestHeader(header, token);
                     });
                     $.ajax({
-                        url: domain + '/comment/delete/' + "3",
+                        url: domain + '/comment/delete/' + idComment,
                         type: 'POST',
                         success: function () {
                             $.getJSON('/comment/getFilmComments/' + id, function (comments) {
@@ -403,6 +415,33 @@ $(function () {
                         }
                     });
                 },
+                // commentUp: function (comment) {
+                //     var self = this;
+                //     comment.rating += 1;
+                //     //event.currentTarget.parentElement
+                //     // var token = $("meta[name='_csrf']").attr("content");
+                //     // var header = $("meta[name='_csrf_header']").attr("content");
+                //     // $(document).ajaxSend(function (e, xhr, options) {
+                //     //     xhr.setRequestHeader(header, token);
+                //     // });
+                //     // $.ajax({
+                //     //     url: domain + '/comment/up/' + comment.id,
+                //     //     type: 'POST'
+                //     // });
+                // },
+                // commentDown: function(comment) {
+                //     comment.rating -= 1;
+                //     var self = this;
+                //     // var token = $("meta[name='_csrf']").attr("content");
+                //     // var header = $("meta[name='_csrf_header']").attr("content");
+                //     // $(document).ajaxSend(function (e, xhr, options) {
+                //     //     xhr.setRequestHeader(header, token);
+                //     // });
+                //     // $.ajax({
+                //     //     url: domain + '/comment/down/' + comment.id,
+                //     //     type: 'POST'
+                //     // });
+                // },
                 getPostTime: function (date) {
                     var result = "";
                     var commentDate = new Date(Date.parse(date));
