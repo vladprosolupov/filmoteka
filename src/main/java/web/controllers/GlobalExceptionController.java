@@ -41,13 +41,15 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(NumberFormatException.class)
-    public ErrorJSON NumberFormatExceptionOccur(NumberFormatException e){
+    public ErrorJSON numberFormatExceptionOccur(NumberFormatException e){
+        log.info("numberFormatExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
         errorJSON.setMessage(e.getCause().getLocalizedMessage());
         errorJSON.setStatusCode("500 Server error");
 
+        log.error("numberFormatExceptionOccur() return : errorJSON=" + errorJSON);
         return errorJSON;
     }
 
@@ -61,6 +63,19 @@ public class GlobalExceptionController {
         errorJSON.setStatusCode("500 Database error");
 
         log.error("parsingJSONExceptionOccur() returns : errorJSON=" + errorJSON);
+        return errorJSON;
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ErrorJSON illigalArgumentExceptionOccur(IllegalArgumentException e) {
+        log.error("illigalArgumentExceptionOccur(e=" + e + ")");
+        ErrorJSON errorJSON = new ErrorJSON();
+
+        errorJSON.setName("error");
+        errorJSON.setMessage(e.getMessage());
+        errorJSON.setStatusCode("500 Database error");
+
+        log.error("illigalArgumentExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 }
