@@ -39,7 +39,9 @@ public class ClientService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(clientDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated client, clientDb=" + clientDb);
@@ -56,7 +58,9 @@ public class ClientService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login + "'").list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getClientByLogin() returns : client=" + client);
@@ -67,7 +71,9 @@ public class ClientService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<ClientDb> result = session.createQuery("from ClientDb").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
@@ -84,7 +90,9 @@ public class ClientService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from ClientDb c where c.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted client");
@@ -100,7 +108,9 @@ public class ClientService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         ClientDb clientDb = (ClientDb) session.createQuery("from ClientDb c where c.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getClientById() returns : clientDb=" + clientDb);
@@ -111,7 +121,9 @@ public class ClientService {
         log.info("loginCheck(login=" + login + ")");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         long count = (long)session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
+        session.getTransaction().commit();
         boolean result = (count == (long) 0);
         session.close();
 

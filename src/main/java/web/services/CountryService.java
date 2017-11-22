@@ -34,7 +34,9 @@ public class CountryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getCountryWithId() returns : countryDb=" + countryDb);
@@ -51,7 +53,9 @@ public class CountryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(countryDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated country");
@@ -67,7 +71,9 @@ public class CountryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted country");
@@ -77,7 +83,9 @@ public class CountryService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<CountryDb> result = session.createQuery("from CountryDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());

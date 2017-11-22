@@ -45,7 +45,9 @@ public class CommentService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(commentRatingDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated comment");
@@ -68,6 +70,7 @@ public class CommentService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
         CommentRatingDb commentToDelete = (CommentRatingDb) session.createQuery("from CommentRatingDb c where c.id=" + id).list().get(0);
         if (commentToDelete.getClientByIdClient().getLogin().equals(authentication.getName())) {
@@ -77,6 +80,7 @@ public class CommentService {
 
             log.info("succ. deleted comment");
         }
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -121,7 +125,9 @@ public class CommentService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
+        session.getTransaction().commit();
         session.close();
 
 
