@@ -46,6 +46,9 @@
                     <br>
                     <p>This is a cite where user can find popular films,films which he like,find films which he should like</p>
                     <br>
+
+                    <b><p></p>Filmoteka</b> - biggest european web-site for watching information about films.Every maonth we have more then 100 million users which wants to be navigated in cinema industry and add to bookmarks films which they want to see in their future. Our service gives you possibility to be modern person, to know about new films and to know about films which will be in our hearts forever! You can open that site via every device because it is optimized! <b>Filmoteka</b> is a really friendly web-site which wants you to feel comfortable and find films which you will like, out artificial intelligence will help you with that!</p>
+                    <br>
                     <p>Our group:</p>
                     <br>
                     <p>Vlasyslav Prosolupov</p>
