@@ -55,7 +55,7 @@
                     <p>Our group:</p>
                     <br>
                     <p>Vlasyslav Prosolupov</p>
-                    <p>Rostyslav Tryndiak</p>
+                    <p>Rostyslav Tryndyak</p>
                     <p>German Varanytsya</p>
                 </h2>
                 </div>
