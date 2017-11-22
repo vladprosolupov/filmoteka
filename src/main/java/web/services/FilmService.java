@@ -69,7 +69,9 @@ public class FilmService {
         log.info("getAllFilms()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAllFilms() returns : listOfFilms.size()=" + listOfFilms.size());
@@ -85,7 +87,9 @@ public class FilmService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         String title = (String) session.createQuery("select f.title from FilmDb f where f.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getTitleOfFilmWithId() returns : title=" + title);
@@ -101,7 +105,9 @@ public class FilmService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         FilmDb o = (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmWithId() returns : o=" + o);
@@ -117,7 +123,9 @@ public class FilmService {
             throw new IllegalArgumentException("FilmToSave should not be null");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(filmToSave);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated film");
@@ -132,7 +140,9 @@ public class FilmService {
             throw new IllegalArgumentException("Id should not be null");
         }
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from FilmDb f where f.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted film");
@@ -144,7 +154,9 @@ public class FilmService {
         Session session = sessionFactory.openSession();
         int limit = 10;
         int start = (page - 1) * limit;
+        session.beginTransaction();
         List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc").setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmsForIndex() returns : list.size()=" + list.size());
@@ -155,7 +167,9 @@ public class FilmService {
         log.info("getNumberOfFilms()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         long result = (long)session.createQuery("select count(F.id) from FilmDb F").list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getNumberOfFilms() returns : result=" + result);
@@ -168,7 +182,9 @@ public class FilmService {
         Session session = sessionFactory.openSession();
         int limit = 10;
         int start = (page - 1) * limit;
+        session.beginTransaction();
         List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.rating desc").setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmsForNewPage() returns : list.size()=" + list.size());
@@ -180,7 +196,9 @@ public class FilmService {
 
         Session session = sessionFactory.openSession();
         int limit = 10;
+        session.beginTransaction();
         List<FilmJSONSearch> list = session.createQuery("select F.id, F.title from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmsWithTitleForQuick() returns : list.size()=" + list.size());
@@ -191,7 +209,9 @@ public class FilmService {
         log.info("getNumberOfFilmsWithTitle(title=" + title + ")");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         long result = (long)session.createQuery("select count (f.id) from FilmDb f where f.titleSearch like '%" + title + "%'").list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getNumberOfFilmsWithTitle() returns: result=" + result);
@@ -204,7 +224,9 @@ public class FilmService {
         int limit = 10;
         int start = (Integer.parseInt(page) - 1) * limit;
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F where F.titleSearch like '%" + title + "%' order by charindex('" + title + "', F.titleSearch)").setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmsWithTitle() returns : list.size()=" + list.size());

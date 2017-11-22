@@ -28,7 +28,9 @@ public class LanguageService {
         log.info("getAllLanguages()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<LanguageDb> result = session.createQuery("FROM LanguageDb").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAllLanguages() returns : result.size()=" + result.size());
@@ -45,7 +47,9 @@ public class LanguageService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         LanguageDb languageDb = (LanguageDb) session.createQuery("from  LanguageDb l where l.id =" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getLanguageWithId() returns : languageDb=" + languageDb);

@@ -41,8 +41,10 @@ public class LinkToNetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         LinkToNetworkDb linkToNetworkDb =
                 (LinkToNetworkDb) session.createQuery("from LinkToNetworkDb l where l.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getLinkWithId() returns : linkToNetworkDb=" + linkToNetworkDb);
@@ -59,7 +61,9 @@ public class LinkToNetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(linkToNetworkDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("save() returns : linkToNetworkDb.getId()=" + linkToNetworkDb.getId());
@@ -76,7 +80,9 @@ public class LinkToNetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.update(linkToNetworkDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("update() returns : linkToNetworkDb.getId()=" + linkToNetworkDb.getId());
@@ -93,7 +99,9 @@ public class LinkToNetworkService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from LinkToNetworkDb l where l.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted link");
