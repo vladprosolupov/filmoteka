@@ -38,7 +38,9 @@ public class AwardService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         AwardDb awardDb = (AwardDb) session.createQuery("from AwardDb a where a.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAwardWithId() returns : awardDb=" + awardDb);
@@ -55,7 +57,9 @@ public class AwardService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<AwardDb> awardDbList = session.createQuery("from AwardDb a where a.filmByIdFilm=" + id).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAwardsWithFilmId() returns : awardDbList.size()=" + awardDbList.size());
@@ -72,7 +76,9 @@ public class AwardService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(awardDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ saved or updated award");
@@ -88,7 +94,9 @@ public class AwardService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from AwardDb a where a.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted award");
@@ -98,7 +106,9 @@ public class AwardService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<AwardDb> result = session.createQuery("from AwardDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
@@ -141,11 +151,15 @@ public class AwardService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from AwardDb a where a.filmByIdFilm=" + filmId).executeUpdate();
+
         for (AwardDb a : awardDbSet) {
             a.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmId)));
             session.saveOrUpdate(a);
         }
+
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. get results");

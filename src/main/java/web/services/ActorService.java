@@ -43,7 +43,9 @@ public class ActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         ActorDb actorDb = (ActorDb) session.createQuery("from ActorDb a where a.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getActorWithId() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
@@ -60,7 +62,9 @@ public class ActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(actorDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated actor");
@@ -76,7 +80,9 @@ public class ActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from ActorDb a where a.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted actor");
@@ -86,7 +92,9 @@ public class ActorService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<ActorDb> result = session.createQuery("from ActorDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());

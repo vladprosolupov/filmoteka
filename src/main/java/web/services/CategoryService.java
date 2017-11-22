@@ -30,7 +30,9 @@ public class CategoryService {
         log.info("getAllCategories()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<CategoryDb> result = session.createQuery("from CategoryDb").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAllCategories() returns : result.size()=" + result.size());
@@ -42,7 +44,9 @@ public class CategoryService {
 
         Session session = sessionFactory.openSession();
         int limit = 10;
+        session.beginTransaction();
         List<CategoryJSON> result = session.createQuery("select C.id, C.name from CategoryDb C").setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getForNav() returns : result.size()" + result.size());
@@ -59,7 +63,9 @@ public class CategoryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         CategoryDb categoryDb = (CategoryDb) session.createQuery("from CategoryDb c where c.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getCategoryWithId() returns : categoryDb=" + categoryDb);
@@ -76,7 +82,9 @@ public class CategoryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(categoryDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated category");
@@ -92,7 +100,9 @@ public class CategoryService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from CategoryDb c where c.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted category");
