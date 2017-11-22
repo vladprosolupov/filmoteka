@@ -18,7 +18,7 @@ import java.util.List;
 @Transactional
 public class VerificationTokenService {
 
-    private final int EXPIRIANCE_TIME = 60*24;
+    private final int EXPIRIANCE_TIME = 60 * 24;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -28,15 +28,16 @@ public class VerificationTokenService {
     public void saveToken(VerificationTokenDb tokenDb) throws HibernateException {
         log.info("saveToken(tokenDb=" + tokenDb + ")");
 
-        if(tokenDb == null) {
+        if (tokenDb == null) {
             log.error("Error : tokenDb is null");
 
             throw new IllegalArgumentException("TokenDb should not be null");
         }
 
         tokenDb.setExpirenceDate(computeExpireDate());
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         session.save(tokenDb);
+        session.close();
 
         log.info("succ. saved token");
     }
@@ -44,25 +45,26 @@ public class VerificationTokenService {
     public List<VerificationTokenDb> getVerificationToken(String verificationToken) throws HibernateException, IndexOutOfBoundsException {
         log.info("getVerificationToken(verificationToken=" + verificationToken + ")");
 
-        if(verificationToken == null || verificationToken.isEmpty()) {
+        if (verificationToken == null || verificationToken.isEmpty()) {
             log.error("Error : verificationToken is null or empty");
 
             throw new IllegalArgumentException("Verification token should not be null or empty");
         }
 
-        Session session = sessionFactory.getCurrentSession();
-        List<VerificationTokenDb> result= (List<VerificationTokenDb>) session.createQuery("from VerificationTokenDb v where v.token='" + verificationToken + "'").list();
+        Session session = sessionFactory.openSession();
+        List<VerificationTokenDb> result = (List<VerificationTokenDb>) session.createQuery("from VerificationTokenDb v where v.token='" + verificationToken + "'").list();
+        session.close();
 
         log.info("getVerificationToken() returns : result.size()=" + result.size());
         return result;
     }
 
-    private Timestamp computeExpireDate(){
+    private Timestamp computeExpireDate() {
         log.info("computeExpireDate()");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Timestamp(calendar.getTime().getTime()));
-        calendar.add(Calendar.MINUTE,EXPIRIANCE_TIME);
+        calendar.add(Calendar.MINUTE, EXPIRIANCE_TIME);
         Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
 
         log.info("computeExpireDate() returns : timestamp=" + timestamp);

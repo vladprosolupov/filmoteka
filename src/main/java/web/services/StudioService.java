@@ -34,8 +34,9 @@ public class StudioService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         StudioDb studioDb = (StudioDb) session.createQuery("from StudioDb s where s.id=" + id).list().get(0);
+        session.close();
 
         log.info("getStudioWithId() returns : studioDb=" + studioDb);
         return studioDb;
@@ -49,8 +50,9 @@ public class StudioService {
 
             throw new IllegalArgumentException("StudioDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(studioDb);
+        session.close();
 
         log.info("succ. saved or updated studio");
     }
@@ -63,8 +65,9 @@ public class StudioService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from StudioDb s where s.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted studio");
     }
@@ -72,8 +75,9 @@ public class StudioService {
     public List<StudioDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<StudioDb> result = session.createQuery("from StudioDb s order by s.studioName").list();
+        session.close();
 
         log.info("getAll() returns : result.size()" + result.size());
         return result;
@@ -87,6 +91,7 @@ public class StudioService {
 
             throw new IllegalArgumentException("StudioJSON should not be null");
         }
+
         StudioDb studioDb = new StudioDb();
         studioDb.setId(studioJSON.getId());
         studioDb.setStudioName(studioJSON.getStudioName());

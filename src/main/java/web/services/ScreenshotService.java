@@ -38,9 +38,11 @@ public class ScreenshotService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         ScreenshotDb screenshotDb =
                 (ScreenshotDb) session.createQuery("from ScreenshotDb s where s.id=" + id).list().get(0);
+        session.close();
 
         log.info("getScreenshotWithId() returns : screenshotDb=" + screenshotDb);
         return screenshotDb;
@@ -54,8 +56,10 @@ public class ScreenshotService {
 
             throw new IllegalArgumentException("ScreenshotDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(screenshotDb);
+        session.close();
 
         log.info("succ. saved or updated screen");
     }
@@ -68,8 +72,10 @@ public class ScreenshotService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from ScreenshotDb s where s.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted screen");
     }
@@ -77,8 +83,9 @@ public class ScreenshotService {
     public List<ScreenshotDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<ScreenshotDb> result = session.createQuery("from ScreenshotDb ").list();
+        session.close();
 
         log.info("getAll() returns : result.size()" + result.size());
         return result;
@@ -92,6 +99,7 @@ public class ScreenshotService {
 
             throw new IllegalArgumentException("Links should not be null");
         }
+
         Set<ScreenshotDb> screenshotDbSet = new HashSet<>();
         for (String s : links) {
             log.info("for loop");
@@ -118,13 +126,16 @@ public class ScreenshotService {
 
             throw new IllegalArgumentException("ScreenshotDbSet should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from ScreenshotDb s where s.filmByIdFilm=" + idFilm).executeUpdate();
+
         for (ScreenshotDb screenshotDb : screenshotDbSet) {
             log.info("for loop");
 
             screenshotDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(screenshotDb);
         }
+        session.close();
     }
 }
