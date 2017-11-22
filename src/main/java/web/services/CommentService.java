@@ -79,6 +79,12 @@ public class CommentService {
             session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();
 
             log.info("succ. deleted comment");
+        } else if(authentication.getName().equals("admin")) {
+            log.info("else if statement, admin is deleting comment");
+
+            session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();
+
+            log.info("admin succ. deleted comment");
         }
         session.getTransaction().commit();
         session.close();
