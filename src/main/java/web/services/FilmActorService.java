@@ -44,9 +44,12 @@ public class FilmActorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
+
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         FilmActorDb filmActorDb =
                 (FilmActorDb) session.createQuery("from FilmActorDb fa where fa.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmActorWithId() returns : filActorDb=" + filmActorDb);
@@ -63,7 +66,9 @@ public class FilmActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(filmActorDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("saveFilmActor() returns : filmActorDb.getId()=" + filmActorDb.getId());
@@ -80,7 +85,9 @@ public class FilmActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.update(filmActorDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("updateFilmActor() returns : filmActorDb.getId=" + filmActorDb.getId());
@@ -97,7 +104,9 @@ public class FilmActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from FilmActorDb fa where fa.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted film actor");
@@ -141,6 +150,7 @@ public class FilmActorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from FilmActorDb f where f.filmByIdFilm=" + idFilm).executeUpdate();
         for (FilmActorDb filmActorDb : filmActorDbSet) {
             log.info("for loop");
@@ -148,6 +158,7 @@ public class FilmActorService {
             filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(filmActorDb);
         }
+        session.getTransaction().commit();
         session.close();
 
         log.info("checked");

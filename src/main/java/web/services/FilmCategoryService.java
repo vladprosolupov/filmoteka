@@ -34,7 +34,9 @@ public class FilmCategoryService {
         int start = (Integer.parseInt(page) - 1) * limit;
 
         Session session = sessionFactory.openSession();
-        List list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).setFirstResult(start).setMaxResults(limit).list();
+        session.beginTransaction();
+        List<FilmJSONIndex> list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getFilmsForCategory() returns : list.size()" + list.size());
@@ -45,7 +47,9 @@ public class FilmCategoryService {
         log.info("getnumberOfFilmsForCategory(id=" + id + ")");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         long result = (long) session.createQuery("select count(f.id) from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getNumberOfFilmsForCategory() returns : result=" + result);

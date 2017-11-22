@@ -39,7 +39,9 @@ public class DirectorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         DirectorDb directorDb = (DirectorDb) session.createQuery("from DirectorDb d where d.id=" + id).list().get(0);
+        session.getTransaction().commit();
         session.close();
 
         log.info("getDirectorWithId() returns : directorDb=" + directorDb);
@@ -54,8 +56,11 @@ public class DirectorService {
 
             throw new IllegalArgumentException("DirectorDb should not be null");
         }
+
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.saveOrUpdate(directorDb);
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved or updated director");
@@ -71,7 +76,9 @@ public class DirectorService {
         }
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.createQuery("delete from DirectorDb d where d.id=" + id).executeUpdate();
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. deleted director");
@@ -81,7 +88,9 @@ public class DirectorService {
         log.info("getAll()");
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         List<DirectorDb> result = session.createQuery("from DirectorDb ").list();
+        session.getTransaction().commit();
         session.close();
 
         log.info("getAll() returns : resut.size()=" + result.size());
@@ -96,6 +105,7 @@ public class DirectorService {
 
             throw new IllegalArgumentException("DirectorJSON should not be null");
         }
+
         DirectorDb directorDb = new DirectorDb();
         directorDb.setFirstName(directorJSON.getFirstName());
         directorDb.setId(directorJSON.getId());
