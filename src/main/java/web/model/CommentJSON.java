@@ -9,7 +9,7 @@ public class CommentJSON {
     private int id;
     @NotNull
     private int idFilm;
-    @NotNull
+    //@NotNull
     private int idClient;
     @NotNull
     @Size(min = 1, max = 200)
@@ -17,8 +17,10 @@ public class CommentJSON {
     private double rating;
     private int referencedComment;
     private String commentDate;
-    @NotNull
+    //@NotNull
     private String clientLogin;
+    private String clientFirstName;
+    private String clientLastName;
 
     public int getId() {
         return id;
@@ -84,6 +86,22 @@ public class CommentJSON {
         this.clientLogin = clientLogin;
     }
 
+    public String getClientFirstName() {
+        return clientFirstName;
+    }
+
+    public void setClientFirstName(String clientFirstName) {
+        this.clientFirstName = clientFirstName;
+    }
+
+    public String getClientLastName() {
+        return clientLastName;
+    }
+
+    public void setClientLastName(String clientLastName) {
+        this.clientLastName = clientLastName;
+    }
+
     @Override
     public String toString() {
         return "CommentJSON{" +
@@ -94,6 +112,9 @@ public class CommentJSON {
                 ", rating=" + rating +
                 ", referencedComment=" + referencedComment +
                 ", commentDate='" + commentDate + '\'' +
+                ", clientLogin='" + clientLogin + '\'' +
+                ", clientFirstName='" + clientFirstName + '\'' +
+                ", clientLastName='" + clientLastName + '\'' +
                 '}';
     }
 }

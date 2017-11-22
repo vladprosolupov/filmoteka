@@ -10,7 +10,7 @@ jQuery.fn.shake = function(intShakes, intDistance, intDuration) {
     return this;
 };
 
-var domain = "http://localhost:8080";
+var domain = window.location.origin;
 var flags = [false, false, false, false, false, false, false];
 $(function () {
     $('input[name="firstName"]').keyup(function () {

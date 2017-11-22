@@ -1,6 +1,8 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
+
+var domain = window.location.origin;
 function succ(link){
     $('html').addClass("is-clipped");
     $('.success').addClass("is-active");
@@ -54,14 +56,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/films");
+                            succ(domain + "/admin/films");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/films");
+                            fail(domain + "/admin/films");
                         }
                     });
                 }
@@ -445,14 +447,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/films");
+                    succ(domain + "/admin/films");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/films");
+                    fail(domain + "/admin/films");
                 }
             });
         });
@@ -487,14 +489,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/actors");
+                            succ(domain + "/admin/actors");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/actors");
+                            fail(domain + "/admin/actors");
                         }
                     });
                 }
@@ -533,14 +535,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/actors");
+                    succ(domain + "/admin/actors");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/actors");
+                    fail(domain + "/admin/actors");
                 }
             });
         });
@@ -575,14 +577,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/categories");
+                            succ(domain + "/admin/categories");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/categories");
+                            fail(domain + "/admin/categories");
                         }
                     });
                 }
@@ -621,14 +623,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/categories");
+                    succ(domain + "/admin/categories");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/categories");
+                    fail(domain + "/admin/categories");
                 }
             });
         });
@@ -663,14 +665,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/directors");
+                            succ(domain + "/admin/directors");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/directors");
+                            fail(domain + "/admin/directors");
                         }
                     });
                 }
@@ -709,14 +711,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/directors");
+                    succ(domain + "/admin/directors");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/directors");
+                    fail(domain + "/admin/directors");
                 }
             });
         });
@@ -752,14 +754,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/networks");
+                            succ(domain + "/admin/networks");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/networks");
+                            fail(domain + "/admin/networks");
                         }
                     });
                 }
@@ -798,14 +800,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/networks");
+                    succ(domain + "/admin/networks");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/networks");
+                    fail(domain + "/admin/networks");
                 }
             });
         });
@@ -840,14 +842,14 @@ $(function () {
                         contentType: 'application/json',
                         success: function (data) {
                             console.log(data);
-                            succ("http://localhost:8080/admin/studios");
+                            succ(domain + "/admin/studios");
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             console.log('Error in Operation');
                             console.log('Text status: ' + textStatus);
                             console.log('XHR: ' + xhr);
                             console.log('Error thrown: ' + errorThrown);
-                            fail("http://localhost:8080/admin/studios");
+                            fail(domain + "/admin/studios");
                         }
                     });
                 }
@@ -886,14 +888,14 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ("http://localhost:8080/admin/studios");
+                    succ(domain + "/studios");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');
                     console.log('Text status: ' + textStatus);
                     console.log('XHR: ' + xhr);
                     console.log('Error thrown: ' + errorThrown);
-                    fail("http://localhost:8080/admin/studios");
+                    fail(domain + "/admin/studios");
                 }
             });
         });

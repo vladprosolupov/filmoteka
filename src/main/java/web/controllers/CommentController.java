@@ -56,8 +56,8 @@ public class CommentController {
         return "OK";
     }
 
-    @RequestMapping(value = "/getFilmComments/{id}", method = RequestMethod.POST)
-    public List<CommentJSON> getAllCommentsForFilm(@PathVariable("id") String id) {
+    @RequestMapping(value = "/getFilmComments/{id}", method = RequestMethod.GET)
+    public @ResponseBody List<CommentJSON> getAllCommentsForFilm(@PathVariable("id") String id) {
         log.info("getAllCommentsForFilm(id=" + id + ")");
 
         List<CommentJSON> result = new ArrayList<>();
@@ -72,12 +72,14 @@ public class CommentController {
             Date date = new Date();
             date.setTime(comment.getCommentDate().getTime());
 
-            json.setCommentDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
+            json.setCommentDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(date));
             json.setCommentText(comment.getCommentText());
             json.setRating(comment.getRating());
             json.setIdFilm(comment.getFilmByIdFilm().getId());
             json.setIdClient(comment.getClientByIdClient().getId());
             json.setClientLogin(comment.getClientByIdClient().getLogin());
+            json.setClientFirstName(comment.getClientByIdClient().getFirstName());
+            json.setClientLastName(comment.getClientByIdClient().getLastName());
 
             result.add(json);
         }

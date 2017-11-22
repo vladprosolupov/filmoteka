@@ -75,6 +75,21 @@ public class FilmService {
         return listOfFilms;
     }
 
+    public String getTitleOfFilmWithId(String id) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getTitleOfFilmWithId(id=" + id + ")");
+
+        if (id == null || id.isEmpty()) {
+            log.error("Error : id is incorrect");
+
+            throw new IllegalArgumentException("Id should not be null or empty");
+        }
+        Session session = sessionFactory.getCurrentSession();
+        String title = (String) session.createQuery("select f.title from FilmDb f where f.id=" + id).list().get(0);
+
+        log.info("getTitleOfFilmWithId() returns : title=" + title);
+        return title;
+    }
+
     public FilmDb getFilmWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getFilmWithId(id=" + id + ")");
 

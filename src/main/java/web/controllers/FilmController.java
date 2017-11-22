@@ -132,11 +132,10 @@ public class FilmController {
     public String getFilm(@PathVariable("id") String id, Model model) {
         log.info("getFilm(id=" + id + ", model=" + model + ")");
 
-        FilmDb film = filmService.getFilmWithId(id);
-        model.addAttribute("title", film.getTitle());
 
-        log.info("getFilm() returns : film" +
-                ", film.getTitle()=" + film.getTitle());
+        model.addAttribute("title", filmService.getTitleOfFilmWithId(id));
+
+        log.info("getFilm() returns : film");
         return "film";
     }
 

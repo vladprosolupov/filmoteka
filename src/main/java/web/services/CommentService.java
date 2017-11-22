@@ -96,7 +96,7 @@ public class CommentService {
         CommentRatingDb commentRatingDb = new CommentRatingDb();
 
         commentRatingDb.setId(commentJSON.getId());
-        commentRatingDb.setRating(commentJSON.getRating());
+        commentRatingDb.setRating(0.0);
         commentRatingDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(commentJSON.getIdFilm())));
         commentRatingDb.setClientByIdClient(clientService.getClientByLogin(authentication.getName()));
 
@@ -117,7 +117,7 @@ public class CommentService {
             throw new IllegalArgumentException("Id should not be null or empty");
         }
         Session session = sessionFactory.getCurrentSession();
-        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb where filmByIdFilm=" + id).list();
+        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id).list();
 
         log.info("getAllCommentsForFilm() returns : allComents.size()=" + allComments.size());
         return allComments;

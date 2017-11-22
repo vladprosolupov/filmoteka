@@ -28,7 +28,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <textarea v-on:keyup.13="submitCommentOrMoveLine" class="textarea"
+                    <textarea id="newComment" v-on:keyup.13="submitCommentOrMoveLine" class="textarea"
                               placeholder="Add a comment..."></textarea>
                 </p>
             </div>
@@ -217,7 +217,7 @@
 
                     ${comment}
 
-                <article class="media">
+                <article class="media" v-for="comment in comments">
                     <figure class="media-left">
                         <p class="image is-64x64">
                             <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -226,13 +226,11 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
+                                <strong>{{comment.clientFirstName}} {{comment.clientLastName}}</strong>
+                                <small>@{{comment.clientLogin}}</small>
+                                <small>{{getPostTime(comment.commentDate)}}</small>
                                 <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
+                                {{comment.commentText}}
                             </p>
                         </div>
                         <nav class="level is-mobile">
@@ -241,7 +239,7 @@
                                     <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
                                 </a>
                                 <a class="level-item counter">
-                                    150
+                                    {{comment.rating}}
                                 </a>
                                 <a class="level-item">
                                     <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
@@ -254,266 +252,6 @@
                     </div>
                     <br>
                 </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>John Smith</strong>
-                                <small>@johnsmith</small>
-                                <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small dislike"><i class="fa fa-thumbs-o-down"></i></span>
-                                </a>
-                                <a class="level-item counter">
-                                    150
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small like"><i class="fa fa-thumbs-o-up"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="media-right">
-                        <button class="delete"></button>
-                    </div>
-                    <br>
-                </article>
-
             </div>
         </div>
     </div>

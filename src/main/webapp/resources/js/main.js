@@ -1,7 +1,7 @@
 /**
  * Created by vladyslavprosolupov on 13.06.17.
  */
-var domain = "http://localhost:8080";
+var domain = window.location.origin;
 
 window.addEventListener("keydown", function (e) {
     if ($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
@@ -257,14 +257,15 @@ $(function () {
         });
     } else if (window.location.pathname.includes("/film/")) {
         var lastslashindex = window.location.pathname.lastIndexOf('/');
-        var result = window.location.pathname.substring(lastslashindex + 1);
-        var url = '/film/info/' + result;
+        var id = window.location.pathname.substring(lastslashindex + 1);
+        var url = '/film/info/' + id;
         var film = new Vue({
             el: '.vue',
             data: {
                 film: [],
                 categories: [],
-                check: ''
+                check: '',
+                comments: []
             },
             beforeCompile: function () {
                 var self = this;
@@ -273,6 +274,9 @@ $(function () {
                     }),
                     $.getJSON('/category/forNav', function (categories) {
                         self.categories = categories;
+                    }),
+                    $.getJSON('/comment/getFilmComments/' + id, function (comments) {
+                        self.comments = comments;
                     })).done(function () {
                     hideLoading();
                 });
@@ -325,7 +329,57 @@ $(function () {
                     }
                 },
                 submitComment: function () {
-                    alert("submit");
+                    var comment = {};
+                    comment['id'] = 0;
+                    comment['idFilm'] = id;
+                    comment['idClient'] = null;
+                    comment['commentText'] = $('#newComment').val();
+                    comment['rating'] = 0;
+                    comment['referencedComment'] = 0;
+                    comment['commentDate'] = '';
+                    comment['clientLogin'] = '';
+                    comment['clientFirstName'] = '';
+                    comment['clientLastName'] = '';
+
+                    $.ajax({
+                        url: domain + '/comment/save',
+                        type: 'POST',
+                        data: JSON.stringify(comment),
+                        success: function () {
+                            alert("success");
+                        }
+                    });
+                },
+                getPostTime: function (date) {
+                    var result = "";
+                    var commentDate = new Date(Date.parse(date));
+                    var now = new Date();
+                    var timeDiff = Math.abs(now.getTime() - commentDate.getTime());
+                    var diffMinutes = Math.floor(timeDiff / 1000 / 60);
+                    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                    if (diffDays > 1) {
+                        if (diffDays < 30) {
+                            result += (diffDays - 1) + "d";
+                        } else {
+                            if (diffDays < 365) {
+                                result += (Math.floor(diffDays / 30)) + "month";
+                            } else {
+                                result += (Math.floor(diffDays / 365)) + "year";
+                            }
+                        }
+                    } else {
+                        if (diffMinutes < 60) {
+                            if (diffMinutes <= 1) {
+                                result += (Math.floor(timeDiff / 1000)) + "sec";
+                            }else {
+                                result += diffMinutes + "min";
+                            }
+                        } else {
+                            result += Math.floor(diffMinutes / 60) + "h";
+                        }
+                    }
+                    return result;
                 }
             }
         });
