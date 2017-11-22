@@ -36,8 +36,10 @@ public class AwardService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         AwardDb awardDb = (AwardDb) session.createQuery("from AwardDb a where a.id=" + id).list().get(0);
+        session.close();
 
         log.info("getAwardWithId() returns : awardDb=" + awardDb);
         return awardDb;
@@ -51,9 +53,10 @@ public class AwardService {
 
             throw new IllegalArgumentException("Id should not be smaller than 0");
         }
-        List<AwardDb> awardDbList = new ArrayList<>();
-        Session session = sessionFactory.getCurrentSession();
-        awardDbList = session.createQuery("from AwardDb a where a.filmByIdFilm=" + id).list();
+
+        Session session = sessionFactory.openSession();
+        List<AwardDb> awardDbList = session.createQuery("from AwardDb a where a.filmByIdFilm=" + id).list();
+        session.close();
 
         log.info("getAwardsWithFilmId() returns : awardDbList.size()=" + awardDbList.size());
         return awardDbList;
@@ -67,8 +70,10 @@ public class AwardService {
 
             throw new IllegalArgumentException("AwardDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(awardDb);
+        session.close();
 
         log.info("succ saved or updated award");
     }
@@ -81,8 +86,10 @@ public class AwardService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from AwardDb a where a.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted award");
     }
@@ -90,8 +97,9 @@ public class AwardService {
     public List<AwardDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<AwardDb> result = session.createQuery("from AwardDb ").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;
@@ -105,6 +113,7 @@ public class AwardService {
 
             throw new IllegalArgumentException("Awards should not be null");
         }
+
         Set<AwardDb> awardDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : awards.entrySet()) {
             AwardDb awardDb = new AwardDb();
@@ -130,12 +139,14 @@ public class AwardService {
 
             throw new IllegalArgumentException("AwardDbSer should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from AwardDb a where a.filmByIdFilm=" + filmId).executeUpdate();
         for (AwardDb a : awardDbSet) {
             a.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmId)));
             session.saveOrUpdate(a);
         }
+        session.close();
 
         log.info("succ. get results");
     }

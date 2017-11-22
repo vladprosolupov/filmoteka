@@ -37,8 +37,10 @@ public class DirectorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         DirectorDb directorDb = (DirectorDb) session.createQuery("from DirectorDb d where d.id=" + id).list().get(0);
+        session.close();
 
         log.info("getDirectorWithId() returns : directorDb=" + directorDb);
         return directorDb;
@@ -52,8 +54,9 @@ public class DirectorService {
 
             throw new IllegalArgumentException("DirectorDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(directorDb);
+        session.close();
 
         log.info("succ. saved or updated director");
     }
@@ -66,8 +69,10 @@ public class DirectorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from DirectorDb d where d.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted director");
     }
@@ -75,8 +80,9 @@ public class DirectorService {
     public List<DirectorDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<DirectorDb> result = session.createQuery("from DirectorDb ").list();
+        session.close();
 
         log.info("getAll() returns : resut.size()=" + result.size());
         return result;

@@ -43,8 +43,10 @@ public class CommentService {
 
             throw new IllegalArgumentException("CommentRatingDB should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(commentRatingDb);
+        session.close();
 
         log.info("succ. saved or updated comment");
     }
@@ -65,7 +67,7 @@ public class CommentService {
             throw new IllegalArgumentException("User is not logged in");
         }
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
 
         CommentRatingDb commentToDelete = (CommentRatingDb) session.createQuery("from CommentRatingDb c where c.id=" + id).list().get(0);
         if (commentToDelete.getClientByIdClient().getLogin().equals(authentication.getName())) {
@@ -75,6 +77,7 @@ public class CommentService {
 
             log.info("succ. deleted comment");
         }
+        session.close();
     }
 
     public CommentRatingDb convertToCommentRatingDB(CommentJSON commentJSON) throws ParsingJsonToDaoException, ParseException {
@@ -116,8 +119,11 @@ public class CommentService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
+        session.close();
+
 
         log.info("getAllCommentsForFilm() returns : allComents.size()=" + allComments.size());
         return allComments;

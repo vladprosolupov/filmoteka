@@ -142,6 +142,13 @@ public class RootWebController {
         return "profile";
     }
 
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about() {
+        log.info("about()");
+        log.info("about() returns : about");
+        return "about";
+    }
+
     @RequestMapping(value = "/registrationConfirm/{token}", method = RequestMethod.GET)
     public String registrationConfirm(@PathVariable("token") String token) {
         log.info("registrationConfirm(token=" + token + ")");

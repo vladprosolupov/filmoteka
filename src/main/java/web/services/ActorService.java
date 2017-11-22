@@ -41,8 +41,10 @@ public class ActorService {
 
             throw new IllegalArgumentException("Id should not be smaller than 0");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         ActorDb actorDb = (ActorDb) session.createQuery("from ActorDb a where a.id=" + id).list().get(0);
+        session.close();
 
         log.info("getActorWithId() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
         return actorDb;
@@ -56,8 +58,10 @@ public class ActorService {
 
             throw new IllegalArgumentException("ActorDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(actorDb);
+        session.close();
 
         log.info("succ. saved or updated actor");
     }
@@ -70,8 +74,10 @@ public class ActorService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from ActorDb a where a.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted actor");
     }
@@ -79,9 +85,9 @@ public class ActorService {
     public List<ActorDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        List<ActorDb> result = new ArrayList<>();
-        Session session = sessionFactory.getCurrentSession();
-        result = session.createQuery("from ActorDb ").list();
+        Session session = sessionFactory.openSession();
+        List<ActorDb> result = session.createQuery("from ActorDb ").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;

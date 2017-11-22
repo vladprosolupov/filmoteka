@@ -32,8 +32,10 @@ public class CountryService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.id=" + id).list().get(0);
+        session.close();
 
         log.info("getCountryWithId() returns : countryDb=" + countryDb);
         return countryDb;
@@ -47,8 +49,10 @@ public class CountryService {
 
             throw new IllegalArgumentException("CountryDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(countryDb);
+        session.close();
 
         log.info("succ. saved or updated country");
     }
@@ -61,8 +65,10 @@ public class CountryService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from CountryDb c where c.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted country");
     }
@@ -70,8 +76,9 @@ public class CountryService {
     public List<CountryDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<CountryDb> result = session.createQuery("from CountryDb ").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;

@@ -29,8 +29,9 @@ public class CategoryService {
     public List<CategoryDb> getAllCategories() throws HibernateException {
         log.info("getAllCategories()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<CategoryDb> result = session.createQuery("from CategoryDb").list();
+        session.close();
 
         log.info("getAllCategories() returns : result.size()=" + result.size());
         return result;
@@ -39,9 +40,10 @@ public class CategoryService {
     public List<CategoryJSON> getForNav() {
         log.info("getForNav()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         int limit = 10;
         List<CategoryJSON> result = session.createQuery("select C.id, C.name from CategoryDb C").setMaxResults(limit).list();
+        session.close();
 
         log.info("getForNav() returns : result.size()" + result.size());
         return result;
@@ -55,8 +57,10 @@ public class CategoryService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         CategoryDb categoryDb = (CategoryDb) session.createQuery("from CategoryDb c where c.id=" + id).list().get(0);
+        session.close();
 
         log.info("getCategoryWithId() returns : categoryDb=" + categoryDb);
         return categoryDb;
@@ -70,8 +74,10 @@ public class CategoryService {
 
             throw new IllegalArgumentException("CategoryDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(categoryDb);
+        session.close();
 
         log.info("succ. saved or updated category");
     }
@@ -84,8 +90,10 @@ public class CategoryService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from CategoryDb c where c.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted category");
     }
@@ -98,6 +106,7 @@ public class CategoryService {
 
             throw new IllegalArgumentException("CategoryJSON should not be null");
         }
+
         CategoryDb categoryDb = new CategoryDb();
         categoryDb.setId(categoryJSON.getId());
         categoryDb.setName(categoryJSON.getName());

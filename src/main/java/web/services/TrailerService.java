@@ -39,9 +39,11 @@ public class TrailerService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         TrailerDb trailerDb =
                 (TrailerDb) session.createQuery("from TrailerDb t where t.id=" + id).list().get(0);
+        session.close();
 
         log.info("getTrailerWithId() returns : trailerDb=" + trailerDb);
         return trailerDb;
@@ -55,8 +57,10 @@ public class TrailerService {
 
             throw new IllegalArgumentException("TrailerDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(trailerDb);
+        session.close();
 
         log.info("succ. saved or updated trailer");
     }
@@ -69,8 +73,10 @@ public class TrailerService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from TrailerDb t where t.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted trailer");
     }
@@ -78,8 +84,9 @@ public class TrailerService {
     public List<TrailerDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<TrailerDb> result = session.createQuery("from TrailerDb ").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;
@@ -93,6 +100,7 @@ public class TrailerService {
 
             throw new IllegalArgumentException("Trailers should not be null");
         }
+
         Set<TrailerDb> trailerDbSet = new HashSet<>();
         for (String s : trailers) {
             log.info("for loop");
@@ -119,14 +127,17 @@ public class TrailerService {
 
             throw new IllegalArgumentException("TrailerDbSer should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from TrailerDb t where t.filmByIdFilm=" + idFilm).executeUpdate();
+
         for (TrailerDb trailerDb : trailerDbSet) {
             log.info("for loop");
 
             trailerDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(trailerDb);
         }
+        session.close();
 
         log.info("checked");
     }

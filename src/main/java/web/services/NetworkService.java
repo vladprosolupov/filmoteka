@@ -34,9 +34,11 @@ public class NetworkService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         NetworkDb networkDb =
                 (NetworkDb) session.createQuery("from NetworkDb n where n.id=" + id).list().get(0);
+        session.close();
 
         log.info("getNetworkWithId() returns : networkDb=" + networkDb);
         return networkDb;
@@ -50,8 +52,10 @@ public class NetworkService {
 
             throw new IllegalArgumentException("NetworkDb should not be null");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.saveOrUpdate(networkDb);
+        session.close();
 
         log.info("succ. saved or updated network");
     }
@@ -64,8 +68,10 @@ public class NetworkService {
 
             throw new IllegalArgumentException("Id should not be null or empty");
         }
-        Session session = sessionFactory.getCurrentSession();
+
+        Session session = sessionFactory.openSession();
         session.createQuery("delete from NetworkDb n where n.id=" + id).executeUpdate();
+        session.close();
 
         log.info("succ. deleted network");
     }
@@ -73,8 +79,9 @@ public class NetworkService {
     public List<NetworkDb> getAll() throws HibernateException {
         log.info("getAll()");
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<NetworkDb> result = session.createQuery("from NetworkDb").list();
+        session.close();
 
         log.info("getAll() returns : result.size()=" + result.size());
         return result;
@@ -88,6 +95,7 @@ public class NetworkService {
 
             throw new IllegalArgumentException("NetworkJSON should not be null");
         }
+
         NetworkDb networkDb = new NetworkDb();
         networkDb.setNetworkLogo(networkJSON.getNetworkLogo());
         networkDb.setId(networkJSON.getId());
