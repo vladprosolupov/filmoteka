@@ -10,11 +10,14 @@ import java.io.Serializable;
 
 @Embeddable
 public class FilmLike implements Serializable {
-    private FilmDb filmByIdFilm;
-    private ClientDb clientByIdClient;
-
     @ManyToOne
     @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
+    private FilmDb filmByIdFilm;
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    private ClientDb clientByIdClient;
+
+
     public FilmDb getFilmByIdFilm() {
         return filmByIdFilm;
     }
@@ -23,8 +26,6 @@ public class FilmLike implements Serializable {
         this.filmByIdFilm = filmByIdFilm;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     public ClientDb getClientByIdClient() {
         return clientByIdClient;
     }
