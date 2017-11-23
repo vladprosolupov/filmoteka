@@ -17,4 +17,11 @@ public class FilmLikeDb {
     public void setFilmLike(FilmLike filmLike) {
         this.filmLike = filmLike;
     }
+
+    @Override
+    public String toString() {
+        return "FilmLikeDb{" +
+                "filmLike=" + filmLike +
+                '}';
+    }
 }

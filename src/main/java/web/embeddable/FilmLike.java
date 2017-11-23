@@ -33,4 +33,12 @@ public class FilmLike implements Serializable {
     public void setClientByIdClient(ClientDb clientByIdClient) {
         this.clientByIdClient = clientByIdClient;
     }
+
+    @Override
+    public String toString() {
+        return "FilmLike{" +
+                "filmByIdFilm=" + filmByIdFilm +
+                ", clientByIdClient=" + clientByIdClient +
+                '}';
+    }
 }

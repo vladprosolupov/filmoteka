@@ -34,4 +34,12 @@ public class Bookmark implements Serializable{
     public void setClientByIdClient(ClientDb clientByIdClient) {
         this.clientByIdClient = clientByIdClient;
     }
+
+    @Override
+    public String toString() {
+        return "Bookmark{" +
+                "filmByIdFilm=" + filmByIdFilm +
+                ", clientByIdClient=" + clientByIdClient +
+                '}';
+    }
 }

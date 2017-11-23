@@ -133,6 +133,7 @@ public class ClientController {
         return "OK";
     }
 
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
     public @ResponseBody
     ClientJSON getInfoAboutCurrentUser() {
