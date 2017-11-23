@@ -30,16 +30,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="film in films" :id="film.id">
+        <tr v-for="film in films" :id="film[4]">
             <td>{{film[0]}}</td>
             <td>{{film[1]}}</td>
             <td>{{film[2]}}</td>
             <td>{{film[3]}}</td>
             <td>
-                <button class="button is-primary" v-on:click="editFilm(film.id)">Edit</button>
+                <button class="button is-primary" v-on:click="editFilm(film[4])">Edit</button>
             </td>
             <td>
-                <button class="button is-danger" v-on:click="deleteFilm(film.id)">Delete</button>
+                <button class="button is-danger" v-on:click="deleteFilm(film[4])">Delete</button>
             </td>
         </tr>
         </tbody>

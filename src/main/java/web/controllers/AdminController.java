@@ -154,6 +154,13 @@ public class AdminController {
 
             filmDb = filmService.getFilmWithId(id);
         }
+
+        if(id.equals("undefined")) {
+            log.error("id film is undefined");
+
+            throw new IllegalArgumentException("Film id is undefined");
+        }
+
         List<LanguageDb> listOfLanguageDbs = languageService.getAllLanguages();
         model.addAttribute("languages", listOfLanguageDbs);
         model.addAttribute("film", filmDb);

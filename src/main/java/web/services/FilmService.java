@@ -70,7 +70,7 @@ public class FilmService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght from FilmDb f").list();
+        List<FilmJSONAdmin> listOfFilms = session.createQuery("select f.title, f.releaseDate, f.rating, f.lenght, f.id from FilmDb f").list();
         session.getTransaction().commit();
         session.close();
 
