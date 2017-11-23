@@ -62,7 +62,6 @@ public class FilmDislikesService {
             throw new IllegalArgumentException("clientId is null or empty or undefined");
         }
 
-
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -83,7 +82,7 @@ public class FilmDislikesService {
         log.info("succ. deleted like for film");
     }
 
-    public int getDislikesForFilm(String id) {
+    public long getDislikesForFilm(String id) {
         log.info("getDislikesForFilm(id=" + id + ")");
 
         if(id == null || id.equals("undefined")) {
@@ -98,7 +97,7 @@ public class FilmDislikesService {
         session.getTransaction().commit();
         session.close();
         log.info("getDislikesForFilm() returns : result=" + result);
-        return toIntExact(result);
+        return result;
     }
 
     public FilmDislike convertToFilmDislikeFromFilmLikesJSON(FilmLikesJSON filmLikesJSON, ClientDb clientDb) {

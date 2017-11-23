@@ -85,7 +85,7 @@ public class FilmLikesService {
         log.info("succ. deleted like for film");
     }
 
-    public int getLikesForFilm(String id) {
+    public long getLikesForFilm(String id) {
         log.info("getLikesForFilm(id=" + id + ")");
 
         if(id == null || id.equals("undefined")) {
@@ -100,7 +100,7 @@ public class FilmLikesService {
         session.getTransaction().commit();
         session.close();
         log.info("getLikesForFilm() returns : result=" + result);
-        return toIntExact(result);
+        return result;
     }
 
     public FilmLike convertToFilmLikeFromFilmLikesJSON(FilmLikesJSON filmLikesJSON, ClientDb clientDb) {

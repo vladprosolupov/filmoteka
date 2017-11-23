@@ -2,23 +2,23 @@ package web.model;
 
 public class FilmLikesJSON {
 
-    private int likes;
-    private int dislikes;
+    private long likes;
+    private long dislikes;
     private int filmId;
 
-    public int getLikes() {
+    public long getLikes() {
         return likes;
     }
 
-    public void setLikes(int likes) {
+    public void setLikes(long likes) {
         this.likes = likes;
     }
 
-    public int getDislikes() {
+    public long getDislikes() {
         return dislikes;
     }
 
-    public void setDislikes(int dislikes) {
+    public void setDislikes(long dislikes) {
         this.dislikes = dislikes;
     }
 
