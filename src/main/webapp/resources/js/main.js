@@ -323,7 +323,7 @@ $(function () {
                               self.disliked = disliked;
                            });
                        }
-                    });
+                    }),
                     $.ajax({
                         url: domain + '/likes/getLikesAndDislikes',
                         type: 'POST',
