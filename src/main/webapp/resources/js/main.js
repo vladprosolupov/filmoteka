@@ -415,33 +415,43 @@ $(function () {
                         }
                     });
                 },
-                // commentUp: function (comment) {
-                //     var self = this;
-                //     comment.rating += 1;
-                //     //event.currentTarget.parentElement
-                //     // var token = $("meta[name='_csrf']").attr("content");
-                //     // var header = $("meta[name='_csrf_header']").attr("content");
-                //     // $(document).ajaxSend(function (e, xhr, options) {
-                //     //     xhr.setRequestHeader(header, token);
-                //     // });
-                //     // $.ajax({
-                //     //     url: domain + '/comment/up/' + comment.id,
-                //     //     type: 'POST'
-                //     // });
-                // },
-                // commentDown: function(comment) {
-                //     comment.rating -= 1;
-                //     var self = this;
-                //     // var token = $("meta[name='_csrf']").attr("content");
-                //     // var header = $("meta[name='_csrf_header']").attr("content");
-                //     // $(document).ajaxSend(function (e, xhr, options) {
-                //     //     xhr.setRequestHeader(header, token);
-                //     // });
-                //     // $.ajax({
-                //     //     url: domain + '/comment/down/' + comment.id,
-                //     //     type: 'POST'
-                //     // });
-                // },
+                hideBookmarksInfo: function (event) {
+                    $(event.currentTarget.parentElement.parentElement).slideUp();
+                },
+                addRemoveBookMark: function (event) {
+                    var $bookmarkInfo = $('#bookmarkInfo');
+                    var $bookmark = $('#bookmark');
+                    if (event.currentTarget.classList.contains("is-bookmarked")) {
+                        $bookmark.removeClass("is-bookmarked");
+                        if ($bookmarkInfo.is(":visible")) {
+                            $bookmarkInfo.slideUp();
+                        }
+                        return;
+                    } else {
+                        $bookmark.addClass("is-bookmarked");
+                        if ($bookmarkInfo.is(":visible")) {
+                            return;
+                        }
+                        $bookmarkInfo.slideDown();
+                    }
+                },
+                like: function () {
+                    var self = this;
+                    if(self.currUser.login != null){
+
+                    }else {
+                        $('#likeInfoMessage').slideDown();
+                    }
+                },
+                dislike: function () {
+                    var self = this;
+                    if(self.currUser.login != null){
+
+                    }else {
+                        $('#likeInfoMessage').slideDown();
+                    }
+
+                },
                 getPostTime: function (date) {
                     var result = "";
                     var commentDate = new Date(Date.parse(date));
@@ -574,4 +584,16 @@ $(function () {
     }
 
 
+});
+
+
+$("#div1").mouseenter(function () {
+    var $div2 = $("#div2");
+    if ($div2.is(":visible")) {
+        return;
+    }
+    $div2.show();
+    setTimeout(function () {
+        $div2.hide();
+    }, 10000);
 });

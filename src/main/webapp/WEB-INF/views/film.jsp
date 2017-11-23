@@ -17,6 +17,17 @@
     <% hasAccess = 2; %>
 </security:authorize>
 
+<c:set var="bookmark">
+    <% if (hasAccess != 0) { %>
+    <div class="is-pulled-right">
+        <a id="bookmark" class="is-size-3" v-on:click="addRemoveBookMark($event)">
+            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </a>
+    </div>
+    <% } %>
+</c:set>
+
 <c:set var="comment">
     <% if (hasAccess != 0) { %>
     <article class="media">
@@ -92,13 +103,29 @@
             </div>
             <div class="column is-9 info" style="background-color: rgb(250,250,250); color: black;">
                 <section class="hero">
+                    <article id="bookmarkInfo" class="message is-info" style="display: none">
+                        <div class="message-header">
+                            <p>Bookmarks</p>
+                            <button class="delete" aria-label="delete" v-on:click="hideBookmarksInfo($event)"></button>
+                        </div>
+                        <div class="message-body">
+                            You have successfully added that film to <strong>your bookmarks</strong>, now you can find it in your <strong>profile</strong>, or <strong>navigation bar dropdown menu</strong>.
+                        </div>
+                    </article>
                     <div class="hero-body">
-
-
-                        <article class="media">
+                        <article id="filmInfo" class="media">
                             <figure class="media-left">
                                 <p class="image is-percentage">
                                     <img v-bind:src='film.cover'>
+                                </p>
+                                <p style="display: flex; margin-top: 5px;" class="centered">
+                                    <a class="button is-success is-outlined" style="width: 70px; margin: 5px;" v-on:click="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>500</a>
+                                    <a class="button is-danger is-outlined" style="width: 70px; margin: 5px;" v-on:click="dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>20</a>
+                                    <div id="likeInfoMessage" class="message is-info" style="display: none;" v-if="currUser.login == null">
+                                        <div class="message-body">
+                                            Please <strong><a href="/login">Log in</a></strong> to like or dislike a film.
+                                        </div>
+                                    </div>
                                 </p>
                             </figure>
                             <div class="media-content">
@@ -180,6 +207,9 @@
                                     <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
                                 </div>
                             </div>
+
+                            ${bookmark}
+
                         </article>
                     </div>
                 </section>
@@ -190,7 +220,7 @@
                 <br>
                 <hr>
 
-                    ${comment}
+                ${comment}
 
                 <article class="media" v-for="comment in comments">
                     <figure class="media-left">
