@@ -29,13 +29,18 @@
 
 
                     <a class="navbar-item home" href="/">${logo}</a>
-                    <a class="navbar-item" href="/best">Best Rated</a>
-                    <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/about">About</a>
+
+                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                           aria-hidden="true"></i>Best Rated</a>
+                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px" aria-hidden="true"></i>You Should Watch</a>
+
+                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px" aria-hidden="true"></i>About</a>
+
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="/admin/">Admin Panel</a>
+                        <a class="navbar-link" href="/admin/"><i class="fa fa-university" style="margin-right: 5px" aria-hidden="true"></i>Admin Panel</a>
+
                         <div class="navbar-dropdown is-boxed">
-                            <a class="navbar-item" style="color: #0f81cc" href="/profile">Profile</a>
+                            <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i class="fa fa-user-circle-o" style="margin-right:5px;" aria-hidden="true"></i>Profile</a>
                             <hr class="navbar-divider"/>
                             <a class="navbar-item" href="/admin/films">Films</a>
                             <a class="navbar-item" href="/admin/actors">Actors</a>
@@ -49,8 +54,8 @@
                                    name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
                             <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
-                               onclick="document.getElementById('logout_id').submit();">Log
-                                out</a>
+                               onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out" style="margin-right: 5px" aria-hidden="true"></i>
+                                Log out</a>
                         </div>
                     </div>
 
@@ -87,13 +92,20 @@
                 <div class="navbar">
 
                     <a class="navbar-item home" href="/">${logo}</a>
-                    <a class="navbar-item" href="/best">Best Rated</a>
-                    <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/about">About</a>
+
+                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                           aria-hidden="true"></i>Best Rated</a>
+                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px" aria-hidden="true"></i>You Should Watch</a>
+
+                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px" aria-hidden="true"></i>About</a>
+
                     <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
-                    <a class="navbar-item" href="/login">Log in</a>
+
+                    <a class="navbar-item" href="/login"><i class="fa fa-sign-in" style="margin-right: 5px" aria-hidden="true"></i>Log in</a>
+
                     <div class="is-divider-vertical"></div>
-                    <a class="navbar-item" href="/register">Sign up</a>
+
+                    <a class="navbar-item" href="/register"><i class="fa fa-check-square-o" style="margin-right: 5px" aria-hidden="true"></i>Sign up</a>
 
                     <div class="navbar-end VueSearch">
                         <div class="navbar-item has-dropdown centered">
@@ -130,14 +142,22 @@
                       method="post" onsubmit="return false">
 
                     <a class="navbar-item home" href="/">${logo}</a>
+
                     <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                         aria-hidden="true"></i> Best Rated</a>
+
                     <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px" aria-hidden="true"></i>You Should Watch</a>
+
                     <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px" aria-hidden="true"></i>About</a>
+
                     <div class="navbar-item has-dropdown is-hoverable">
+
                         <a class="navbar-link" href="/profile"><i class="fa fa-user-circle-o" style="margin-right:5px;" aria-hidden="true"></i>Profile</a>
+
                         <div class="navbar-dropdown is-boxed">
+
                             <a class="navbar-item" href="/"><i class="fa fa-heart" style="margin-right: 5px;" aria-hidden="true"></i>Films you've liked</a>
+
                             <a class="navbar-item" href="/"><i class="fa fa-bookmark" style="margin-right: 5px;" aria-hidden="true"></i> Bookmarks</a>
 
 
@@ -146,7 +166,7 @@
                             <input type="hidden"
                                    name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
-                            <a class="navbar-item droppeddown" href="javascript:{}"
+                            <a style="color: #ff5257" class="navbar-item droppeddown" href="javascript:{}"
                                onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out" style="margin-right: 5px" aria-hidden="true"></i>Log
                                 out</a>
                         </div>
