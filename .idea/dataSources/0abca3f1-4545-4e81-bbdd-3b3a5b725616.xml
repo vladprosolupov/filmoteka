@@ -14,7 +14,7 @@
     </database>
     <schema id="4" parent="2" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2017-11-20.21:01:49.827</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-11-23.11:01:39.023</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -72,17 +72,17 @@
     <table id="20" parent="4" name="Client">
       <ObjectId>370100359</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.727</CreatedTimestamp>
-      <ModifiedTimestamp>2017-11-20.20:03:14.557</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-23.11:01:35.830</ModifiedTimestamp>
     </table>
     <table id="21" parent="4" name="Client_data">
       <ObjectId>434100587</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.750</CreatedTimestamp>
       <ModifiedTimestamp>2017-06-15.11:47:59.790</ModifiedTimestamp>
     </table>
-    <table id="22" parent="4" name="Comment_rating">
+    <table id="22" parent="4" name="Comment">
       <ObjectId>110623437</ObjectId>
       <CreatedTimestamp>2017-11-15.20:40:50.757</CreatedTimestamp>
-      <ModifiedTimestamp>2017-11-15.21:02:03.947</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-23.11:01:35.890</ModifiedTimestamp>
     </table>
     <table id="23" parent="4" name="Country">
       <ObjectId>18099105</ObjectId>
@@ -97,7 +97,7 @@
     <table id="25" parent="4" name="Film">
       <ObjectId>130099504</ObjectId>
       <CreatedTimestamp>2017-04-18.19:48:13.660</CreatedTimestamp>
-      <ModifiedTimestamp>2017-11-16.17:52:23.913</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-23.11:01:35.890</ModifiedTimestamp>
     </table>
     <table id="26" parent="4" name="Film_Actor">
       <ObjectId>626101271</ObjectId>
@@ -162,7 +162,7 @@
     <table id="38" parent="4" name="VerificationToken">
       <ObjectId>430624577</ObjectId>
       <CreatedTimestamp>2017-11-20.19:56:08.287</CreatedTimestamp>
-      <ModifiedTimestamp>2017-11-20.20:19:02.033</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-20.21:04:01.520</ModifiedTimestamp>
     </table>
     <column id="39" parent="17" name="id">
       <Position>1</Position>
@@ -483,27 +483,19 @@
       <Position>4</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="87" parent="22" name="rating">
-      <Position>5</Position>
-      <DataType>float|0</DataType>
-    </column>
-    <column id="88" parent="22" name="referenced_comment">
-      <Position>6</Position>
-      <DataType>int|0</DataType>
-    </column>
-    <column id="89" parent="22" name="comment_date">
+    <column id="87" parent="22" name="comment_date">
       <Position>7</Position>
       <DataType>datetime|0</DataType>
       <DefaultExpression>getdate()</DefaultExpression>
     </column>
-    <index id="90" parent="22" name="PK__Comment___3213E83F19E2871D">
+    <index id="88" parent="22" name="PK__Comment___3213E83F19E2871D">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="91" parent="22" name="PK__Comment___3213E83F19E2871D">
+    <key id="89" parent="22" name="PK__Comment___3213E83F19E2871D">
       <ObjectId>126623494</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-11-15.20:40:51.010</CreatedTimestamp>
@@ -512,7 +504,7 @@
       <UnderlyingIndexName>PK__Comment___3213E83F19E2871D</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="92" parent="22" name="Comment_rating_Film_id_fk">
+    <foreign-key id="90" parent="22" name="Comment_rating_Film_id_fk">
       <ObjectId>158623608</ObjectId>
       <CreatedTimestamp>2017-11-15.20:40:51.010</CreatedTimestamp>
       <ModifiedTimestamp>2017-11-15.20:40:51.010</ModifiedTimestamp>
@@ -523,7 +515,7 @@
       <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="93" parent="22" name="FKb0vxhcmbadvna1begda7dhjxy">
+    <foreign-key id="91" parent="22" name="FKb0vxhcmbadvna1begda7dhjxy">
       <ObjectId>206623779</ObjectId>
       <CreatedTimestamp>2017-11-15.21:02:03.947</CreatedTimestamp>
       <ModifiedTimestamp>2017-11-15.21:02:03.947</ModifiedTimestamp>
@@ -534,10 +526,32 @@
       <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="94" parent="22" name="Comment_rating_Client_id_fk">
+    <foreign-key id="92" parent="22" name="FKb32569aoiuxoo0ayi7qgfn9yp">
+      <ObjectId>766625774</ObjectId>
+      <CreatedTimestamp>2017-11-23.11:01:35.890</CreatedTimestamp>
+      <ModifiedTimestamp>2017-11-23.11:01:35.890</ModifiedTimestamp>
+      <ColNames>id_film</ColNames>
+      <RefTableId>130099504</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Film</RefTableName>
+      <RefKeyName>PK__Film__3213E83FCA3035CE</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="93" parent="22" name="Comment_rating_Client_id_fk">
       <ObjectId>174623665</ObjectId>
       <CreatedTimestamp>2017-11-15.20:40:51.013</CreatedTimestamp>
       <ModifiedTimestamp>2017-11-15.20:40:51.013</ModifiedTimestamp>
+      <ColNames>id_client</ColNames>
+      <RefTableId>370100359</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Client</RefTableName>
+      <RefKeyName>PK__Client__3213E83FF4ED1DB0</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="94" parent="22" name="FKirwop0dv37l0cbjmcbvf1q945">
+      <ObjectId>750625717</ObjectId>
+      <CreatedTimestamp>2017-11-23.11:01:35.790</CreatedTimestamp>
+      <ModifiedTimestamp>2017-11-23.11:01:35.790</ModifiedTimestamp>
       <ColNames>id_client</ColNames>
       <RefTableId>370100359</RefTableId>
       <RefSchemaName>dbo</RefSchemaName>
@@ -1492,7 +1506,18 @@
       <UnderlyingIndexName>PK__Verifact__3213E83F3CCA9DE8</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="221" parent="38" name="VerifactionToken_Client_id_fk">
+    <foreign-key id="221" parent="38" name="FKhyl25il88yd6rum1iyk1nkno">
+      <ObjectId>526624919</ObjectId>
+      <CreatedTimestamp>2017-11-20.21:04:01.520</CreatedTimestamp>
+      <ModifiedTimestamp>2017-11-20.21:04:01.520</ModifiedTimestamp>
+      <ColNames>id_client</ColNames>
+      <RefTableId>370100359</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Client</RefTableName>
+      <RefKeyName>PK__Client__3213E83FF4ED1DB0</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="222" parent="38" name="VerifactionToken_Client_id_fk">
       <ObjectId>462624691</ObjectId>
       <CreatedTimestamp>2017-11-20.19:56:08.303</CreatedTimestamp>
       <ModifiedTimestamp>2017-11-20.19:56:08.303</ModifiedTimestamp>

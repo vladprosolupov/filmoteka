@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Comment_rating", schema = "dbo", catalog = "filmotekaDb")
-public class CommentRatingDb {
+@Table(name = "Comment", schema = "dbo", catalog = "filmotekaDb")
+public class CommentDb {
     private int id;
     private String commentText;
     private Timestamp commentDate;
@@ -51,7 +51,7 @@ public class CommentRatingDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CommentRatingDb that = (CommentRatingDb) o;
+        CommentDb that = (CommentDb) o;
 
         if (id != that.id) return false;
         if (commentText != null ? !commentText.equals(that.commentText) : that.commentText != null) return false;
@@ -90,7 +90,7 @@ public class CommentRatingDb {
 
     @Override
     public String toString() {
-        return "CommentRatingDb{" +
+        return "CommentDb{" +
                 "id=" + id +
                 ", commentText='" + commentText + '\'' +
                 ", commentDate=" + commentDate +

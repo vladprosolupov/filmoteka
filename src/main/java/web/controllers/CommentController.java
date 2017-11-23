@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import web.dao.CommentRatingDb;
+import web.dao.CommentDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.CommentJSON;
 import web.services.CommentService;
@@ -67,8 +67,8 @@ public class CommentController {
         log.info("getAllCommentsForFilm(id=" + id + ")");
 
         List<CommentJSON> result = new ArrayList<>();
-        List<CommentRatingDb> commentRatingDbList = commentService.getAllCommentsForFilm(id);
-        for (CommentRatingDb comment : commentRatingDbList) {
+        List<CommentDb> commentDbList = commentService.getAllCommentsForFilm(id);
+        for (CommentDb comment : commentDbList) {
             log.info("for loop");
 
             CommentJSON json = new CommentJSON();
@@ -80,7 +80,6 @@ public class CommentController {
 
             json.setCommentDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(date));
             json.setCommentText(comment.getCommentText());
-            json.setRating(comment.getRating());
             json.setIdFilm(comment.getFilmByIdFilm().getId());
             json.setIdClient(comment.getClientByIdClient().getId());
             json.setClientLogin(comment.getClientByIdClient().getLogin());

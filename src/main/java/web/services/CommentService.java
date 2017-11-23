@@ -11,13 +11,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import web.dao.CommentRatingDb;
+import web.dao.CommentDb;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.CommentJSON;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -36,18 +34,18 @@ public class CommentService {
 
     private static final Logger log = LogManager.getLogger(CommentService.class);
 
-    public void saveOrUpdate(CommentRatingDb commentRatingDb) throws HibernateException {
-        log.info("saveOrUpdate(commentRatingDb=" + commentRatingDb + ")");
+    public void saveOrUpdate(CommentDb commentDb) throws HibernateException {
+        log.info("saveOrUpdate(commentDb=" + commentDb + ")");
 
-        if (commentRatingDb == null) {
-            log.error("Error : commentRatingDb is null");
+        if (commentDb == null) {
+            log.error("Error : commentDb is null");
 
             throw new IllegalArgumentException("CommentRatingDB should not be null");
         }
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(commentRatingDb);
+        session.saveOrUpdate(commentDb);
         session.getTransaction().commit();
         session.close();
 
@@ -73,16 +71,16 @@ public class CommentService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        CommentRatingDb commentToDelete = (CommentRatingDb) session.createQuery("from CommentRatingDb c where c.id=" + id).list().get(0);
+        CommentDb commentToDelete = (CommentDb) session.createQuery("from CommentDb c where c.id=" + id).list().get(0);
         if (commentToDelete.getClientByIdClient().getLogin().equals(authentication.getName())) {
             log.info("if statement");
-            session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();
+            session.createQuery("delete from CommentDb c where c.id=" + id).executeUpdate();
 
             log.info("succ. deleted comment");
         } else if (authentication.getName().equals("admin")) {
             log.info("else if statement, admin is deleting comment");
 
-            session.createQuery("delete from CommentRatingDb c where c.id=" + id).executeUpdate();
+            session.createQuery("delete from CommentDb c where c.id=" + id).executeUpdate();
 
             log.info("admin succ. deleted comment");
         }
@@ -90,7 +88,7 @@ public class CommentService {
         session.close();
     }
 
-    public CommentRatingDb convertToCommentRatingDB(CommentJSON commentJSON) throws ParsingJsonToDaoException, ParseException {
+    public CommentDb convertToCommentRatingDB(CommentJSON commentJSON) throws ParsingJsonToDaoException, ParseException {
         log.info("convertToCommentRatingDB(commentJSON=" + commentJSON + ")");
 
         if (commentJSON == null) {
@@ -106,22 +104,20 @@ public class CommentService {
             throw new IllegalArgumentException("User is not logged in");
         }
 
-        CommentRatingDb commentRatingDb = new CommentRatingDb();
+        CommentDb commentDb = new CommentDb();
 
-        commentRatingDb.setId(commentJSON.getId());
-        commentRatingDb.setRating(0.0);
-        commentRatingDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(commentJSON.getIdFilm())));
-        commentRatingDb.setClientByIdClient(clientService.getClientByLogin(authentication.getName()));
+        commentDb.setId(commentJSON.getId());
+        commentDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(commentJSON.getIdFilm())));
+        commentDb.setClientByIdClient(clientService.getClientByLogin(authentication.getName()));
 
-        commentRatingDb.setCommentDate(new java.sql.Timestamp(new Date().getTime()));
-        commentRatingDb.setReferencedComment(commentJSON.getReferencedComment());
-        commentRatingDb.setCommentText(commentJSON.getCommentText());
+        commentDb.setCommentDate(new java.sql.Timestamp(new Date().getTime()));
+        commentDb.setCommentText(commentJSON.getCommentText());
 
-        log.info("convertToCommentRatingDB() returns : commentRatingDb=" + commentRatingDb);
-        return commentRatingDb;
+        log.info("convertToCommentRatingDB() returns : commentDb=" + commentDb);
+        return commentDb;
     }
 
-    public List<CommentRatingDb> getAllCommentsForFilm(String id) throws HibernateException {
+    public List<CommentDb> getAllCommentsForFilm(String id) throws HibernateException {
         log.info("getAllCommentsForFilm(id=" + id + ")");
 
         if (id == null || id.isEmpty()) {
@@ -132,7 +128,7 @@ public class CommentService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<CommentRatingDb> allComments = session.createQuery("from CommentRatingDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
+        List<CommentDb> allComments = session.createQuery("from CommentDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
         session.getTransaction().commit();
         session.close();
 

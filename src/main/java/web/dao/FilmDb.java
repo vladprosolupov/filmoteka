@@ -31,7 +31,7 @@ public class FilmDb {
     private Set<ScreenshotDb> screenshotsById;
     private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
-    private Collection<CommentRatingDb> commentRatingsById;
+    private Collection<CommentDb> commentRatingsById;
     private String titleSearch;
 
     @Id
@@ -276,11 +276,11 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<CommentRatingDb> getCommentRatingsById() {
+    public Collection<CommentDb> getCommentRatingsById() {
         return commentRatingsById;
     }
 
-    public void setCommentRatingsById(Collection<CommentRatingDb> commentRatingsById) {
+    public void setCommentRatingsById(Collection<CommentDb> commentRatingsById) {
         this.commentRatingsById = commentRatingsById;
     }
 
