@@ -591,34 +591,39 @@ a.navbar-item.home:hover > img {
     width: -webkit-fill-available;
 }
 
-#filmInfo .message-body{
+#filmInfo {
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+#filmInfo .message-body {
     text-align: center;
 }
 
-#bookmark .fa-bookmark{
+#bookmark .fa-bookmark {
     display: none;
     color: #e09952;
 }
 
-#bookmark.is-bookmarked .fa-bookmark{
+#bookmark.is-bookmarked .fa-bookmark {
     display: inline-block;
 }
-#bookmark.is-bookmarked .fa-bookmark-o{
+
+#bookmark.is-bookmarked .fa-bookmark-o {
     display: none;
 }
 
-#bookmark:hover .fa-bookmark{
+#bookmark:hover .fa-bookmark {
     display: inline-block;
 }
-#bookmark:hover .fa-bookmark-o{
+
+#bookmark:hover .fa-bookmark-o {
     display: none;
 }
-
 
 .is-deleting {
     filter: blur(3px);
 }
-
 
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
