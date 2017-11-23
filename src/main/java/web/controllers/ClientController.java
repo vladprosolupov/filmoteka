@@ -96,6 +96,31 @@ public class ClientController {
         return "OK";
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public @ResponseBody String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
+        log.info("editClient(clientJSON=" + clientJSON + ")");
+
+        if(clientJSON == null) {
+            log.error("clientJSON is null");
+
+            throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        clientJSON.setId(clientDb.getId());
+        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+
+        log.info("editClient() returns : OK");
+        return "OK";
+    }
+
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody
@@ -116,6 +141,7 @@ public class ClientController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             log.error("If statement, user is not logged in, throwing exception");
+
             throw new IllegalArgumentException("User is not logged in");
         }
 

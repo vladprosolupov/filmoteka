@@ -161,16 +161,25 @@ public class ClientService {
 
         ClientDb clientDb = new ClientDb();
 
-        clientDb.setFirstName(clientJSON.getFirstName());
-        clientDb.setLastName(clientJSON.getLastName());
-        clientDb.setEmail(clientJSON.getEmail());
-//        clientDb.setEnabled(clientJSON.getEnabled());
-        clientDb.setLogin(clientJSON.getLogin());
-        clientDb.setPassword(PasswordGenerator.hashPassword(clientJSON.getPassword()));
-        clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-        clientDb.setRole(ClientRole.user.name());
-        clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
-//        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
+        if(clientJSON.getId() == 0) {
+            log.info("creating new client");
+
+            clientDb.setFirstName(clientJSON.getFirstName());
+            clientDb.setLastName(clientJSON.getLastName());
+            clientDb.setEmail(clientJSON.getEmail());
+            clientDb.setLogin(clientJSON.getLogin());
+            clientDb.setPassword(PasswordGenerator.hashPassword(clientJSON.getPassword()));
+            clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
+            clientDb.setRole(ClientRole.user.name());
+            clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
+        } else {
+            log.info("editing existing client");
+
+            clientDb.setFirstName(clientJSON.getFirstName());
+            clientDb.setLastName(clientJSON.getLastName());
+            clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
+            clientDb.setLogin(clientJSON.getLogin());
+        }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
         return clientDb;
