@@ -151,5 +151,18 @@ public class BookmarkService {
         return list;
     }
 
+    public long getNumbersOfBookmarkByUser(ClientDb clientDb) {
+        log.info("getNumbersOfBookmarkByUser(clientDb=" + clientDb + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long result = (long) session.createQuery("select count(b.bookmark.filmByIdFilm.id) from BookmarkDb b where b.bookmark.clientByIdClient.id=" + clientDb.getId()).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getNumbersOfBookmarkByUser() returns : result=" + result);
+        return result;
+    }
+
 
 }

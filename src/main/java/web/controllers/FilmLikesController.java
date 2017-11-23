@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ClientDb;
+import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
 import web.services.ClientService;
@@ -39,7 +40,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/addLike", method = RequestMethod.POST)
-    public @ResponseBody String addLikeForFilm(@RequestBody FilmLikesJSON filmLikesJSON) {
+    public @ResponseBody String addLikeForFilm(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
         log.info("addLikeForFilm(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
@@ -60,7 +61,7 @@ public class FilmLikesController {
         if(clientDb == null) {
             log.error("There is no such client");
 
-            throw new IllegalArgumentException("There is no such client");
+            throw new NoSuchClientException("There is no such client");
         }
 
         likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
@@ -71,7 +72,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/addDislike", method = RequestMethod.POST)
-    public @ResponseBody String addDislikeForFilm(@RequestBody FilmLikesJSON filmLikesJSON) {
+    public @ResponseBody String addDislikeForFilm(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
         log.info("addDislikeForFilm(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
@@ -92,7 +93,7 @@ public class FilmLikesController {
         if(clientDb == null) {
             log.error("There is no such client");
 
-            throw new IllegalArgumentException("There is no such client");
+            throw new NoSuchClientException("There is no such client");
         }
 
         dislikesService.addLike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
@@ -103,7 +104,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/deleteLike", method = RequestMethod.POST)
-    public @ResponseBody String deleteLike(@RequestBody FilmLikesJSON filmLikesJSON) {
+    public @ResponseBody String deleteLike(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
         log.info("deleteLike(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
@@ -124,7 +125,7 @@ public class FilmLikesController {
         if(clientDb == null) {
             log.error("There is no such client");
 
-            throw new IllegalArgumentException("There is no such client");
+            throw new NoSuchClientException("There is no such client");
         }
 
         likesService.deleteLike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientDb.getId()));
@@ -134,7 +135,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/deleteDislike", method = RequestMethod.POST)
-    public @ResponseBody String deleteDislike(@RequestBody FilmLikesJSON filmLikesJSON) {
+    public @ResponseBody String deleteDislike(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
         log.info("deleteDislike(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
@@ -155,7 +156,7 @@ public class FilmLikesController {
         if(clientDb == null) {
             log.error("There is no such client");
 
-            throw new IllegalArgumentException("There is no such client");
+            throw new NoSuchClientException("There is no such client");
         }
 
         dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientDb.getId()));
@@ -176,7 +177,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/getLiked/{page}", method = RequestMethod.GET)
-    public List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) {
+    public List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) throws NoSuchClientException {
         log.info("getLikedFilms(page=" + page + ")");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -185,7 +186,7 @@ public class FilmLikesController {
         if(clientDb == null) {
             log.error("There is no such client");
 
-            throw new IllegalArgumentException("There is no such client");
+            throw new NoSuchClientException("There is no such client");
         }
 
         List<FilmJSONIndex> likedFilmsByUser = likesService.getLikedFilmsByUser(clientDb, page);
@@ -194,6 +195,73 @@ public class FilmLikesController {
         return likedFilmsByUser;
     }
 
+    @RequestMapping(value = "/checkLikeFilm/{id}", method = RequestMethod.GET)
+    public @ResponseBody boolean checkLikeFilm(@PathVariable("id") String id) throws NoSuchClientException {
+        log.info("checkLikeFilm(id=" + id + ")");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        if (clientDb == null) {
+            log.error("There is no such client");
+
+            throw new NoSuchClientException("There is no such client");
+        }
+
+        boolean result = likesService.checkLikeFilm(id, clientDb);
+
+        log.info("checkLikeFilm() returns : result=" + result);
+        return result;
+    }
+
+    @RequestMapping(value = "/checkDislikeFilm/{id}", method = RequestMethod.GET)
+    public @ResponseBody boolean checkDislikeFilm(@PathVariable("id") String id) throws NoSuchClientException {
+        log.info("checkDislikeFilm(id=" + id + ")");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        if (clientDb == null) {
+            log.error("There is no such client");
+
+            throw new NoSuchClientException("There is no such client");
+        }
+
+        boolean result = dislikesService.checkDislikeFilm(id, clientDb);
+
+        log.info("checkDislikeFilm() returns : result=" + result);
+        return result;
+    }
+
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
+    @RequestMapping(value = "/numberOfLiked", method = RequestMethod.GET)
+    public @ResponseBody long getNumberOfLikedFilms() throws NoSuchClientException {
+        log.info("getNumberOfLikedFilms()");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        if (clientDb == null) {
+            log.error("There is no such client");
+
+            throw new NoSuchClientException("There is no such client");
+        }
+
+        long result = likesService.getNumbersOfLikeByUser(clientDb);
+
+        log.info("getNumberOfLikedFilms() returns : result=" + result);
+        return result;
+    }
 
 
 

@@ -96,7 +96,7 @@ public class FilmLikesService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        long result = (long)session.createQuery("select count(fl.filmLike.clientByIdClient) from FilmLikeDb fl where fl.filmLike.filmByIdFilm.id=" + id).list().get(0);
+        long result = (long)session.createQuery("select count(fl.filmLike.filmByIdFilm.id) from FilmLikeDb fl where fl.filmLike.filmByIdFilm.id=" + id).list().get(0);
         session.getTransaction().commit();
         session.close();
         log.info("getLikesForFilm() returns : result=" + result);
@@ -158,6 +158,36 @@ public class FilmLikesService {
 
         log.info("getLikedFilmsByUser() returns : list.size()=" + list.size());
         return list;
+    }
+
+    public boolean checkLikeFilm(String id, ClientDb clientDb) {
+        log.info("checkLikeFilm(idFilm=" + id + ")");
+
+        FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List list = session.createQuery("from FilmLikeDb fl where fl.filmLike.clientByIdClient.id = " + clientDb.getId() + " and fl.filmLike.filmByIdFilm.id = " + filmDb.getId()).list();
+        session.getTransaction().commit();
+        session.close();
+
+        boolean result = !list.isEmpty();
+
+        log.info("checkLikeFilm() returns :" + result);
+        return result;
+    }
+
+    public long getNumbersOfLikeByUser(ClientDb clientDb) {
+        log.info("getNumbersOfLikeByUser(clientDb=" + clientDb + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long result = (long) session.createQuery("select count(fl.filmLike.filmByIdFilm.id) from FilmLikeDb fl where fl.filmLike.clientByIdClient.id=" + clientDb.getId()).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getNumbersOfLikeByUser() returns : result=" + result);
+        return result;
     }
 
 }

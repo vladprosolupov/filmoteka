@@ -3,12 +3,18 @@ package web.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import web.dao.ClientDb;
+import web.exceptions.NoSuchClientException;
 import web.model.BookmarkJSON;
 import web.model.FilmJSONIndex;
 import web.services.BookmarkService;
+import web.services.ClientService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,6 +27,9 @@ public class BookmarkController {
 
     @Autowired
     private BookmarkService bookmarkService;
+
+    @Autowired
+    private ClientService clientService;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
@@ -73,6 +82,26 @@ public class BookmarkController {
 
         log.info("getBookmarkedFilms() returns : list.size()=" + list.size() + ")");
         return list;
+    }
+
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
+    @RequestMapping(value = "/numberOfBookmarks", method = RequestMethod.GET)
+    public @ResponseBody long getNumberOfBookmarkedFilms() throws NoSuchClientException {
+        log.info("getNumberOfBookmarkedFilms()");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        if (clientDb == null) {
+            log.error("There is no such client");
+
+            throw new NoSuchClientException("There is no such client");
+        }
+
+        long result = bookmarkService.getNumbersOfBookmarkByUser(clientDb);
+
+        log.info("getNumberOfBookmarkedFilms() returns : result=" + result);
+        return result;
     }
 
 }

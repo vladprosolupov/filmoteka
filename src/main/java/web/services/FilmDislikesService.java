@@ -6,6 +6,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.ClientDb;
@@ -15,7 +18,6 @@ import web.embeddable.FilmDislike;
 import web.model.FilmLikesJSON;
 
 import java.util.List;
-import static java.lang.Math.toIntExact;
 
 @Service("FilmDislikesService")
 @Transactional
@@ -26,6 +28,9 @@ public class FilmDislikesService {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private ClientService clientService;
 
     private static final Logger log = LogManager.getLogger(FilmDislikesService.class);
 
@@ -134,5 +139,22 @@ public class FilmDislikesService {
 
         log.info("convertToFilmLikeDbFromFilmLike() returns : filmDislikeDb=" + filmDislikeDb);
         return filmDislikeDb;
+    }
+
+    public boolean checkDislikeFilm(String id, ClientDb clientDb) {
+        log.info("checkDislikeFilm(idFilm=" + id + ")");
+
+        FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List list = session.createQuery("from FilmDislikeDb fd where fd.id.clientByIdClient.id = " + clientDb.getId() + " and fd.id.filmByIdFilm.id = " + filmDb.getId()).list();
+        session.getTransaction().commit();
+        session.close();
+
+        boolean result = !list.isEmpty();
+        log.info("checkDislikeFilm() returns :" + result);
+
+        return result;
     }
 }
