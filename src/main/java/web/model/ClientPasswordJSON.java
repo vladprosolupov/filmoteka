@@ -3,7 +3,7 @@ package web.model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class ClientPassword {
+public class ClientPasswordJSON {
 
     @NotNull
     @Size(min = 8, max = 20)

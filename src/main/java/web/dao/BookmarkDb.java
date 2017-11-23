@@ -17,4 +17,11 @@ public class BookmarkDb {
     public void setBookmark(Bookmark bookmark) {
         this.bookmark = bookmark;
     }
+
+    @Override
+    public String toString() {
+        return "BookmarkDb{" +
+                "bookmark=" + bookmark +
+                '}';
+    }
 }

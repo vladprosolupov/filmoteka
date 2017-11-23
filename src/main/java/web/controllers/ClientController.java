@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,17 +23,15 @@ import web.events.OnRegistrationCompleteEvent;
 import web.exceptions.NoSuchClientException;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
-import web.model.ClientPassword;
+import web.model.ClientLoginJSON;
+import web.model.ClientPasswordJSON;
 import web.services.ClientService;
 import web.services.PasswordGenerator;
 import web.services.PasswordResetTokenService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.*;
 
 
 @Controller
@@ -96,6 +95,32 @@ public class ClientController {
         return "OK";
     }
 
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public @ResponseBody String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
+        log.info("editClient(clientJSON=" + clientJSON + ")");
+
+        if(clientJSON == null) {
+            log.error("clientJSON is null");
+
+            throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        clientJSON.setId(clientDb.getId());
+        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+
+        log.info("editClient() returns : OK");
+        return "OK";
+    }
+
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public @ResponseBody
@@ -108,6 +133,7 @@ public class ClientController {
         return "OK";
     }
 
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
     public @ResponseBody
     ClientJSON getInfoAboutCurrentUser() {
@@ -116,6 +142,7 @@ public class ClientController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             log.error("If statement, user is not logged in, throwing exception");
+
             throw new IllegalArgumentException("User is not logged in");
         }
 
@@ -192,7 +219,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/savePassword", method = RequestMethod.POST)
-    public String savePassword(@RequestBody @Valid ClientPassword clientPassword) {
+    public String savePassword(@RequestBody @Valid ClientPasswordJSON clientPassword) {
         log.info("savePassword(clientPassword=" + clientPassword + ")");
 
         String name = SecurityContextHolder.getContext()
@@ -204,6 +231,64 @@ public class ClientController {
 
         log.info("succ. changed user password");
         return "/";
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "all", method = RequestMethod.GET)
+    public List<ClientJSON> getAllClients() {
+        log.info("getAllClients()");
+
+        List<ClientDb> allClients = clientService.getAll();
+        List<ClientJSON> allClientsJSON = new ArrayList<>();
+
+        for(ClientDb clientDb : allClients) {
+            log.info("for loop");
+
+            ClientJSON clientJSON = new ClientJSON();
+
+            clientJSON.setFirstName(clientDb.getFirstName());
+            clientJSON.setLastName(clientDb.getLastName());
+            clientJSON.setPhoneNumber(clientDb.getPhoneNumber());
+            clientJSON.setLogin(clientDb.getEmail());
+            clientJSON.setEmail(clientDb.getEmail());
+
+            allClientsJSON.add(clientJSON);
+        }
+
+        log.info("getAllClients() returns : allClientsJSON.size()=" + allClientsJSON.size());
+        return allClientsJSON;
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/blockClient", method = RequestMethod.POST)
+    public @ResponseBody String blockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
+        log.info("blockClient(clientLogin=" + clientLogin + ")");
+
+        if(clientLogin == null) {
+            log.error("clientLogin is null");
+
+            throw new IllegalArgumentException("ClientLoginJSON should not be empty");
+        }
+
+        clientService.blockClient(clientLogin.getLogin());
+
+        return "OK";
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/unblockClient", method = RequestMethod.POST)
+    public @ResponseBody String unblockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
+        log.info("unblockClient(clientLogin=" + clientLogin + ")");
+
+        if(clientLogin == null) {
+            log.error("clientLogin is null");
+
+            throw new IllegalArgumentException("ClientLoginJSON should not be empty");
+        }
+
+        clientService.unblockClient(clientLogin.getLogin());
+
+        return "OK";
     }
 
     // Simple methods.

@@ -150,6 +150,38 @@ public class ClientService {
         return result;
     }
 
+    public void blockClient(String login) throws HibernateException, IndexOutOfBoundsException {
+        log.info("blockClient(login=" + login + ")");
+
+        if(login == null || login.isEmpty()) {
+            log.error("Login is null");
+
+            throw new IllegalArgumentException("Login should not be null or empty");
+        }
+
+        ClientDb clientDb = getClientByLogin(login);
+        clientDb.setEnabled(0);
+        saveOrUpdate(clientDb);
+
+        log.info("succ. blocked client");
+    }
+
+    public void unblockClient(String login) throws HibernateException, IndexOutOfBoundsException {
+        log.info("blockClient(login=" + login + ")");
+
+        if(login == null || login.isEmpty()) {
+            log.error("Login is null");
+
+            throw new IllegalArgumentException("Login should not be null or empty");
+        }
+
+        ClientDb clientDb = getClientByLogin(login);
+        clientDb.setEnabled(1);
+        saveOrUpdate(clientDb);
+
+        log.info("succ. blocked client");
+    }
+
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
         log.info("convertToClientDb(clientJSON=" + clientJSON + ")");
 
@@ -161,16 +193,25 @@ public class ClientService {
 
         ClientDb clientDb = new ClientDb();
 
-        clientDb.setFirstName(clientJSON.getFirstName());
-        clientDb.setLastName(clientJSON.getLastName());
-        clientDb.setEmail(clientJSON.getEmail());
-//        clientDb.setEnabled(clientJSON.getEnabled());
-        clientDb.setLogin(clientJSON.getLogin());
-        clientDb.setPassword(PasswordGenerator.hashPassword(clientJSON.getPassword()));
-        clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-        clientDb.setRole(ClientRole.user.name());
-        clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
-//        clientDb.setAddressByIdAddress(addressService.getAddressById(clientJSON.getIdAddress()));
+        if(clientJSON.getId() == 0) {
+            log.info("creating new client");
+
+            clientDb.setFirstName(clientJSON.getFirstName());
+            clientDb.setLastName(clientJSON.getLastName());
+            clientDb.setEmail(clientJSON.getEmail());
+            clientDb.setLogin(clientJSON.getLogin());
+            clientDb.setPassword(PasswordGenerator.hashPassword(clientJSON.getPassword()));
+            clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
+            clientDb.setRole(ClientRole.user.name());
+            clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
+        } else {
+            log.info("editing existing client");
+
+            clientDb.setFirstName(clientJSON.getFirstName());
+            clientDb.setLastName(clientJSON.getLastName());
+            clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
+            clientDb.setLogin(clientJSON.getLogin());
+        }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
         return clientDb;
