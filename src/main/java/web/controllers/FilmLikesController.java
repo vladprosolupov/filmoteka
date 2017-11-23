@@ -8,16 +8,16 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import web.dao.ClientDb;
+import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
 import web.services.ClientService;
 import web.services.FilmDislikesService;
 import web.services.FilmLikesService;
 import web.services.FilmService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/likes")
@@ -172,6 +172,26 @@ public class FilmLikesController {
 
         log.info("getLikesAndDislikesForFilm() returns : filmLikesJSON=" + filmLikesJSON);
         return filmLikesJSON;
+    }
+
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
+    @RequestMapping(value = "/getLikedFilms/{page}", method = RequestMethod.GET)
+    public List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) {
+        log.info("getLikedFilms(page=" + page + ")");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        if(clientDb == null) {
+            log.error("There is no such client");
+
+            throw new IllegalArgumentException("There is no such client");
+        }
+
+        List<FilmJSONIndex> likedFilmsByUser = likesService.getLikedFilmsByUser(clientDb, page);
+
+        log.info("getLikedFilms() returns : likedFilmsByUser.size()=" + likedFilmsByUser.size());
+        return likedFilmsByUser;
     }
 
 

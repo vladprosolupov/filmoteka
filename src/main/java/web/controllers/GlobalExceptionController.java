@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import web.exceptions.NoSuchClientException;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ErrorJSON;
 
@@ -77,6 +78,19 @@ public class GlobalExceptionController {
         errorJSON.setStatusCode("500 Database error");
 
         log.error("illegalArgumentExceptionOccur() returns : errorJSON=" + errorJSON);
+        return errorJSON;
+    }
+
+    @ExceptionHandler(NoSuchClientException.class)
+    public @ResponseBody ErrorJSON noSuchClientExceptionOccur(IllegalArgumentException e) {
+        log.error("noSuchClientExceptionOccur(e=" + e + ")");
+        ErrorJSON errorJSON = new ErrorJSON();
+
+        errorJSON.setName("error");
+        errorJSON.setMessage(e.getMessage());
+        errorJSON.setStatusCode("500 Database error");
+
+        log.error("noSuchClientExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 }

@@ -12,6 +12,7 @@ import web.dao.ClientDb;
 import web.dao.FilmDb;
 import web.dao.FilmLikeDb;
 import web.embeddable.FilmLike;
+import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
 
 import java.util.List;
@@ -136,4 +137,26 @@ public class FilmLikesService {
         log.info("convertToFilmLikeDbFromFilmLike() returns : filmLikeDb=" + filmLikeDb);
         return filmLikeDb;
     }
+
+    public List<FilmJSONIndex> getLikedFilmsByUser(ClientDb clientDb, String p) throws HibernateException {
+        log.info("getLikedFilmsByUser(clientDb=" + clientDb + ", p=" + p + ")");
+
+        int page = Integer.parseInt(p);
+        int limit = 10;
+        int start = (page - 1) * limit;
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<FilmJSONIndex> list =
+                session.createQuery("select fl.filmLike.filmByIdFilm.title, fl.filmLike.filmByIdFilm.releaseDate, " +
+                        "fl.filmLike.filmByIdFilm.cover, fl.filmLike.filmByIdFilm.id, fl.filmLike.filmByIdFilm.rating " +
+                        "from FilmLikeDb fl where fl.filmLike.clientByIdClient=" + clientDb.getId())
+                        .setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getLikedFilmsByUser() returns : list.size()=" + list.size());
+        return list;
+    }
+
 }
