@@ -271,7 +271,8 @@ $(function () {
                 categories: [],
                 check: '',
                 comments: [],
-                currUser: []
+                currUser: [],
+                bookmarked: false
             },
             beforeCompile: function () {
                 var self = this;
@@ -284,8 +285,11 @@ $(function () {
                     $.getJSON('/comment/getFilmComments/' + id, function (comments) {
                         self.comments = comments;
                     }),
-                    $.getJSON("/client/getCurrentUser", function (user) {
+                    $.getJSON('/client/getCurrentUser', function (user) {
                         self.currUser = user;
+                    }),
+                    $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
+                        self.bookmarked = flag;
                     })).done(function () {
                     hideLoading();
                 });
@@ -419,19 +423,53 @@ $(function () {
                     $(event.currentTarget.parentElement.parentElement).slideUp();
                 },
                 addRemoveBookMark: function (event) {
+                    var self = this;
                     var $bookmarkInfo = $('#bookmarkInfo');
                     var $bookmark = $('#bookmark');
                     if (event.currentTarget.classList.contains("is-bookmarked")) {
+                        self.bookmarked = false;
                         $bookmark.removeClass("is-bookmarked");
                         if ($bookmarkInfo.is(":visible")) {
                             $bookmarkInfo.slideUp();
                         }
-                        return;
+
+                        var token = $("meta[name='_csrf']").attr("content");
+                        var header = $("meta[name='_csrf_header']").attr("content");
+                        $(document).ajaxSend(function (e, xhr, options) {
+                            xhr.setRequestHeader(header, token);
+                        });
+
+                        var bookmark = {};
+                        bookmark['idFilm'] = id;
+
+                        $.ajax({
+                            url: domain + '/bookmark/delete',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(bookmark)
+                        });
                     } else {
+                        self.bookmarked = true;
                         $bookmark.addClass("is-bookmarked");
                         if ($bookmarkInfo.is(":visible")) {
                             return;
                         }
+
+                        var token = $("meta[name='_csrf']").attr("content");
+                        var header = $("meta[name='_csrf_header']").attr("content");
+                        $(document).ajaxSend(function (e, xhr, options) {
+                            xhr.setRequestHeader(header, token);
+                        });
+
+                        var bookmark = {};
+                        bookmark['idFilm'] = id;
+
+                        $.ajax({
+                            url: domain + '/bookmark/save',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(bookmark)
+                        });
                         $bookmarkInfo.slideDown();
                     }
                 },
