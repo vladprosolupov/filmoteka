@@ -315,14 +315,21 @@ $(function () {
                         self.bookmarked = flag;
                     }),
                     $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
-                        self.liked = liked;
-                       if(liked){
-                           self.disliked = false;
-                       } else {
-                           $.getJSON('/likes/checkDislikeFilm' + id, function (disliked) {
-                              self.disliked = disliked;
-                           });
-                       }
+                        if(liked.name !== 'error') {
+                            self.liked = liked;
+
+                            if(liked){
+                                self.disliked = false;
+                            } else {
+                                $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
+                                    self.disliked = disliked;
+                                });
+                            }
+                        } else {
+                            self.liked = false;
+                            self.disliked = false;
+                        }
+
                     }),
                     $.ajax({
                         url: domain + '/likes/getLikesAndDislikes',
@@ -702,7 +709,7 @@ $(function () {
                         $('#profile').removeClass("is-active");
                         $('#liked').addClass("is-active");
                         self.currentTab = "like";
-                        $.when($.getJSON(domain + '/likes/Liked/' + self.currentPage, function (films) {
+                        $.when($.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
                                 self.likedFilms = films;
                             }),
                             $.getJSON(domain + '/likes/numberOfLiked', function (filmsNumber) {
@@ -751,7 +758,7 @@ $(function () {
                     $('a[class*="is-active"]').removeClass("is-active");
                     $('#liked').addClass("is-active");
                     $.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
-                        self.bookmarkedFilms = films;
+                        self.likedFilms = films;
                         hideLoadingProfile();
                     });
                 },

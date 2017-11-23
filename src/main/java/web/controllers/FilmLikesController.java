@@ -177,7 +177,7 @@ public class FilmLikesController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/getLiked/{page}", method = RequestMethod.GET)
-    public List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) throws NoSuchClientException {
+    public @ResponseBody List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) throws NoSuchClientException {
         log.info("getLikedFilms(page=" + page + ")");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
