@@ -15,6 +15,7 @@ import web.embeddable.FilmDislike;
 import web.model.FilmLikesJSON;
 
 import java.util.List;
+import static java.lang.Math.toIntExact;
 
 @Service("FilmDislikesService")
 @Transactional
@@ -93,11 +94,11 @@ public class FilmDislikesService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List list = session.createQuery("count(fd.filmDislike.filmByIdFilm) from FilmDislikeDb fd where fd.filmDislike.filmByIdFilm=" + id).list();
+        long result = (long)session.createQuery("select count(fd.filmDislike.clientByIdClient) from FilmDislikeDb fd where fd.filmDislike.filmByIdFilm.id=" + id).list().get(0);
         session.getTransaction().commit();
         session.close();
-
-        return list.size();
+        log.info("getDislikesForFilm() returns : result=" + result);
+        return toIntExact(result);
     }
 
     public FilmDislike convertToFilmDislikeFromFilmLikesJSON(FilmLikesJSON filmLikesJSON, ClientDb clientDb) {
