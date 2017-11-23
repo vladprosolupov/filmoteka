@@ -20,7 +20,11 @@
 <c:set var="bookmark">
     <% if (hasAccess != 0) { %>
     <div class="is-pulled-right">
-        <a id="bookmark" class="is-size-3" v-on:click="addRemoveBookMark($event)">
+        <a id="bookmark" v-if="!bookmarked" class="is-size-3" v-on:click="addRemoveBookMark($event)">
+            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </a>
+        <a id="bookmark" v-if="bookmarked" class="is-size-3 is-bookmarked" v-on:click="addRemoveBookMark($event)">
             <i class="fa fa-bookmark-o" aria-hidden="true"></i>
             <i class="fa fa-bookmark" aria-hidden="true"></i>
         </a>
@@ -96,7 +100,8 @@
                         Categories
                     </p>
                     <ul class="menu-list categories">
-                        <li v-for="category in categories"><a v-on:click="openCategory(category[0])">{{category[1]}}</a>
+                        <li v-for="category in categories">
+                            <a v-on:click="openCategory(category[0])">{{category[1]}}</a>
                         </li>
                     </ul>
                 </aside>

@@ -17,6 +17,8 @@ import web.dao.FilmDb;
 import web.embeddable.Bookmark;
 import web.model.BookmarkJSON;
 
+import java.util.List;
+
 @Service("BookmarkService")
 @Transactional
 public class BookmarkService {
@@ -65,6 +67,30 @@ public class BookmarkService {
         session.close();
 
         log.info("succ. deleted bookmark");
+    }
+
+    public boolean checkBookmarkFilm(String id){
+        log.info("checkBookmarkFilm(idFilm=" + id + ")");
+        FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List list = session.createQuery("from BookmarkDb b where b.id.clientByIdClient.id = " + clientDb.getId() + " and b.id.filmByIdFilm.id = " + filmDb.getId()).list();
+        session.getTransaction().commit();
+        session.close();
+
+        boolean result = !list.isEmpty();
+        log.info("checkBookmarkFilm() returns :" + result);
+
+        return result;
     }
 
     public Bookmark convertToBookmarkFromBookmarkJSON(BookmarkJSON bookmarkJSON) {

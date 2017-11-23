@@ -37,7 +37,7 @@ public class ActorController {
         log.info("addActor(actorJSON=" + actorJSON + ")");
 
         if(bindingResult.hasErrors()) {
-            log.error("Actroe does not pass validation");
+            log.error("Actor does not pass validation");
 
             return "Error";
         }
