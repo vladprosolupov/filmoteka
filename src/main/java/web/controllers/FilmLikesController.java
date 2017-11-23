@@ -175,7 +175,7 @@ public class FilmLikesController {
     }
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
-    @RequestMapping(value = "/getLikedFilms/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getLiked/{page}", method = RequestMethod.GET)
     public List<FilmJSONIndex> getLikedFilms(@PathVariable("page") String page) {
         log.info("getLikedFilms(page=" + page + ")");
 
