@@ -282,10 +282,23 @@ $(function () {
                 check: '',
                 comments: [],
                 currUser: [],
-                bookmarked: false
+                bookmarked: false,
+                liked: false,
+                disliked: false,
+                likes: 0,
+                dislikes: 0
             },
             beforeCompile: function () {
                 var self = this;
+
+                var filmLikesJSON = {};
+                filmLikesJSON['filmId'] = id;
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+                $(document).ajaxSend(function (e, xhr, options) {
+                    xhr.setRequestHeader(header, token);
+                });
+
                 $.when($.getJSON(url, function (data) {
                         self.film = data;
                     }),
@@ -300,6 +313,26 @@ $(function () {
                     }),
                     $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
                         self.bookmarked = flag;
+                    }),
+                    $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
+                        self.liked = liked;
+                       if(liked){
+                           self.disliked = false;
+                       } else {
+                           $.getJSON('/likes/checkDislikeFilm' + id, function (disliked) {
+                              self.disliked = disliked;
+                           });
+                       }
+                    });
+                    $.ajax({
+                        url: domain + '/likes/getLikesAndDislikes',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(filmLikesJSON),
+                        success: function (response) {
+                            self.likes = response.likes;
+                            self.dislikes = response.dislikes;
+                        }
                     })).done(function () {
                     hideLoading();
                 });
@@ -485,16 +518,107 @@ $(function () {
                 },
                 like: function () {
                     var self = this;
-                    if (self.currUser.login != null) {
 
+                    var filmLikesJSON = {};
+                    filmLikesJSON['filmId'] = id;
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+
+                    if (self.currUser.login != null) {
+                        if (self.disliked) {
+                            self.disliked = false;
+                            self.liked = true;
+                            self.likes += 1;
+                            self.dislikes -= 1;
+                            $.ajax({
+                                url: domain + '/likes/addLike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON),
+                                success: function (response) {
+                                    $.ajax({
+                                        url: domain + '/likes/removeDislike',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify(filmLikesJSON)
+                                    });
+                                }
+                            });
+                        } else if (!self.liked) {
+                            $.ajax({
+                                url: domain + '/likes/addLike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON)
+                            });
+                            self.liked = true;
+                            self.likes += 1;
+                        }else if(self.liked){
+                            self.liked = false;
+                            self.likes -= 1;
+                            $.ajax({
+                                url: domain + '/likes/removeLike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON)
+                            });
+                        }
                     } else {
                         $('#likeInfoMessage').slideDown();
                     }
                 },
                 dislike: function () {
                     var self = this;
-                    if (self.currUser.login != null) {
 
+                    var filmLikesJSON = {};
+                    filmLikesJSON['filmId'] = id;
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    if (self.currUser.login != null) {
+                        if (self.liked) {
+                            $.ajax({
+                                url: domain + '/likes/removeLike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON),
+                                success: function (response) {
+                                    $.ajax({
+                                        url: domain + '/likes/addDislike',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify(filmLikesJSON)
+                                    });
+                                }
+                            });
+                            self.liked = false;
+                            self.disliked = true;
+                            self.dislikes += 1;
+                            self.likes -= 1;
+                        } else if (!self.disliked) {
+                            $.ajax({
+                                url: domain + '/likes/addDislike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON)
+                            });
+                            self.disliked = true;
+                            self.dislikes += 1;
+                        } else if(self.disliked){
+                            $.ajax({
+                                url: domain + '/likes/addDislike',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(filmLikesJSON)
+                            });
+                            self.disliked = false;
+                            self.dislikes -= 1;
+                        }
                     } else {
                         $('#likeInfoMessage').slideDown();
                     }
@@ -545,7 +669,9 @@ $(function () {
                 currentTab: "profile",
                 bookmarkedFilms: [],
                 likedFilms: [],
-                currentPage: 1
+                currentPage: 1,
+                link: domain + '/film/',
+                pagesNumber: 1
             },
             beforeCompile: function () {
                 var self = this;
@@ -561,15 +687,32 @@ $(function () {
                         $('#profile').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
                         self.currentTab = "book";
-                        $.getJSON(domain+'/bookmark/getBookmarks/' + self.currentPage, function (films) {
+                        $.when($.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
                             self.bookmarkedFilms = films;
+                        }),
+                        $.getJSON(domain + '/bookmark/numberOfBookmarks', function (filmsNumber) {
+                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                            else
+                                self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                        })).done(function () {
                             hideLoadingProfile();
                         });
                     } else if (section === "like") {
                         $('#profile').removeClass("is-active");
                         $('#liked').addClass("is-active");
                         self.currentTab = "like";
-                        hideLoadingProfile();
+                        $.when($.getJSON(domain + '/likes/Liked/' + self.currentPage, function (films) {
+                                self.likedFilms = films;
+                            }),
+                            $.getJSON(domain + '/likes/numberOfLiked', function (filmsNumber) {
+                                if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                    self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                                else
+                                    self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                            })).done(function () {
+                            hideLoadingProfile();
+                        });
                     } else {
                         $.getJSON("/client/getCurrentUser", function (data) {
                             self.info = data;
@@ -607,7 +750,10 @@ $(function () {
                     showLoadingProfile();
                     $('a[class*="is-active"]').removeClass("is-active");
                     $('#liked').addClass("is-active");
-                    hideLoadingProfile();
+                    $.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
+                        self.bookmarkedFilms = films;
+                        hideLoadingProfile();
+                    });
                 },
                 goToBookmarks: function () {
                     var self = this;
@@ -615,10 +761,14 @@ $(function () {
                     showLoadingProfile();
                     $('a[class*="is-active"]').removeClass("is-active");
                     $('#bookmarks').addClass("is-active");
-                    $.getJSON(domain+'/bookmark/getBookmarks/' + self.currentPage, function (films) {
+                    $.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
                         self.bookmarkedFilms = films;
                         hideLoadingProfile();
                     });
+                },
+                getYear: function (val) {
+                    var date = new Date(Date.parse(val));
+                    return date.getFullYear();
                 }
             }
         });

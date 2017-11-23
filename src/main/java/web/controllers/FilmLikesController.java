@@ -102,7 +102,7 @@ public class FilmLikesController {
     }
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
-    @RequestMapping(value = "/deleteLike", method = RequestMethod.POST)
+    @RequestMapping(value = "/removeLike", method = RequestMethod.POST)
     public @ResponseBody String deleteLike(@RequestBody FilmLikesJSON filmLikesJSON) {
         log.info("deleteLike(filmLikesJSON=" + filmLikesJSON + ")");
 
@@ -133,7 +133,7 @@ public class FilmLikesController {
     }
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
-    @RequestMapping(value = "/deleteDislike", method = RequestMethod.POST)
+    @RequestMapping(value = "/removeDislike", method = RequestMethod.POST)
     public @ResponseBody String deleteDislike(@RequestBody FilmLikesJSON filmLikesJSON) {
         log.info("deleteDislike(filmLikesJSON=" + filmLikesJSON + ")");
 

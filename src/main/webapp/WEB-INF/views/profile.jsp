@@ -108,19 +108,9 @@
                                 You haven't liked any <strong>films</strong> yet.
                             </div>
                         </article>
-                    </div>
-                </div>
-                <div class="container column" v-if="currentTab == 'book'"
-                     style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">
-                    <div style="position: absolute; display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
-                        <article class="message is-info" style="margin-top: 20px;" v-if="bookmarkedFilms.length == 0">
-                            <div class="message-body">
-                                You don't have any <strong>films</strong> in bookmarks yet.
-                            </div>
-                        </article>
 
-                        <div v-for="film in bookmarkedFilms" class="card effect-ruby grow film">
-                            <div class="card-image ">
+                        <div v-for="film in likedFilms" class="card effect-ruby grow film">
+                            <div class="card-image">
                                 <figure class="image is-3by4">
                                     <img v-bind:src="film[2]" alt="Cover">
                                     <a v-bind:href="link+film[3]"></a>
@@ -139,6 +129,116 @@
                                 </div>
                             </div>
                         </div>
+
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
+                            <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
+                            <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                            <ul class="pagination-list">
+                                <li>
+                                    <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
+                                       aria-current="page" v-on:click="goToPage(1)">1</a>
+                                </li>
+                                <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
+
+                                <li v-if="currentPage - 2 > 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-2" aria-label="Goto page {{currentPage-2}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
+                                </li>
+                                <li v-if="currentPage - 1 > 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-1" aria-label="Goto page {{currentPage-1}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
+                                </li>
+                                <li v-if="currentPage != pagesNumber && currentPage != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage" aria-label="Goto page {{currentPage}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
+                                </li>
+                                <li v-if="currentPage + 1 < pagesNumber">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+1" aria-label="Goto page {{currentPage+1}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
+                                </li>
+                                <li v-if="currentPage + 2 < pagesNumber">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+2" aria-label="Goto page {{currentPage+2}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
+                                </li>
+
+                                <li v-if="currentPage <= (pagesNumber-5)"><span class="pagination-ellipsis">&hellip;</span></li>
+                                <li v-if="pagesNumber != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumber" aria-label="Goto page {{pagesNumber}}"
+                                       aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+                <div class="container column" v-if="currentTab == 'book'"
+                     style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">
+                    <div style="position: absolute; display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
+                        <article class="message is-info" style="margin-top: 20px;" v-if="bookmarkedFilms.length == 0">
+                            <div class="message-body">
+                                You don't have any <strong>films</strong> in bookmarks yet.
+                            </div>
+                        </article>
+
+                        <div v-for="film in bookmarkedFilms" class="card effect-ruby grow film">
+                            <div class="card-image">
+                                <figure class="image is-3by4">
+                                    <img v-bind:src="film[2]" alt="Cover">
+                                    <a v-bind:href="link+film[3]"></a>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+
+                                        <p class="title is-6">{{film[0]}}</p>
+                                        <hr>
+                                        <p class="subtitle is-6 is-pulled-right"><i class="fa fa-star" style="color: #e09952;"
+                                                                                    aria-hidden="true"></i> {{film[4]}}</p>
+                                        <p class="subtitle is-6 is-pulled-left">{{getYear(film[1])}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
+                            <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
+                            <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                            <ul class="pagination-list">
+                                <li>
+                                    <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
+                                       aria-current="page" v-on:click="goToPage(1)">1</a>
+                                </li>
+                                <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
+
+                                <li v-if="currentPage - 2 > 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-2" aria-label="Goto page {{currentPage-2}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
+                                </li>
+                                <li v-if="currentPage - 1 > 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-1" aria-label="Goto page {{currentPage-1}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
+                                </li>
+                                <li v-if="currentPage != pagesNumber && currentPage != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage" aria-label="Goto page {{currentPage}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
+                                </li>
+                                <li v-if="currentPage + 1 < pagesNumber">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+1" aria-label="Goto page {{currentPage+1}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
+                                </li>
+                                <li v-if="currentPage + 2 < pagesNumber">
+                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+2" aria-label="Goto page {{currentPage+2}}"
+                                       aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
+                                </li>
+
+                                <li v-if="currentPage <= (pagesNumber-5)"><span class="pagination-ellipsis">&hellip;</span></li>
+                                <li v-if="pagesNumber != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumber" aria-label="Goto page {{pagesNumber}}"
+                                       aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
+                                </li>
+                            </ul>
+                        </nav>
 
                     </div>
                 </div>
