@@ -130,14 +130,15 @@
                       method="post" onsubmit="return false">
 
                     <a class="navbar-item home" href="/">${logo}</a>
-                    <a class="navbar-item" href="/best">Best Rated</a>
-                    <a class="navbar-item" href="/">You Should Watch</a>
-                    <a class="navbar-item" href="/about">About</a>
+                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                        aria-hidden="true"></i> Best Rated</a>
+                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px" aria-hidden="true"></i>You Should Watch</a>
+                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px" aria-hidden="true"></i>About</a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="/profile">Profile</a>
+                        <a class="navbar-link" href="/profile"><i class="fa fa-user-circle-o" style="margin-right:5px;" aria-hidden="true"></i>Profile</a>
                         <div class="navbar-dropdown is-boxed">
-                            <a class="navbar-item" href="/">Films you've liked</a>
-                            <a class="navbar-item" href="/">Bookmarks</a>
+                            <a class="navbar-item" href="/"><i class="fa fa-heart" style="margin-right: 5px;" aria-hidden="true"></i>Films you've liked</a>
+                            <a class="navbar-item" href="/"><i class="fa fa-bookmark" style="margin-right: 5px;" aria-hidden="true"></i> Bookmarks</a>
 
 
                             <hr class="navbar-divider"/>
@@ -146,7 +147,7 @@
                                    name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
                             <a class="navbar-item droppeddown" href="javascript:{}"
-                               onclick="document.getElementById('logout_id').submit();">Log
+                               onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out" style="margin-right: 5px" aria-hidden="true"></i>Log
                                 out</a>
                         </div>
                     </div>
