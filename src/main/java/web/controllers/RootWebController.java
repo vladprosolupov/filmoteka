@@ -3,15 +3,10 @@ package web.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.client.support.HttpRequestWrapper;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -21,12 +16,9 @@ import web.model.ClientJSON;
 import web.services.ClientService;
 import web.services.VerificationTokenService;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Rostyk on 12.06.2017.
@@ -164,7 +156,7 @@ public class RootWebController {
 
             ClientDb clientDb = verificationTokenDb.getClientByIdClient();
             Calendar cal = Calendar.getInstance();
-            if ((verificationTokenDb.getExpirenceDate().getTime() - cal.getTime().getTime()) <= 0) {
+            if ((verificationTokenDb.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
                 log.error("Error : Verification token has expired");
 
                 throw new IllegalArgumentException("Verification token has expired");

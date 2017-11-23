@@ -34,7 +34,7 @@ public class VerificationTokenService {
             throw new IllegalArgumentException("TokenDb should not be null");
         }
 
-        tokenDb.setExpirenceDate(computeExpireDate());
+        tokenDb.setExpiryDate(computeExpiryDate());
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(tokenDb);
@@ -63,15 +63,15 @@ public class VerificationTokenService {
         return result;
     }
 
-    private Timestamp computeExpireDate() {
-        log.info("computeExpireDate()");
+    private Timestamp computeExpiryDate() {
+        log.info("computeExpiryDate()");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Timestamp(calendar.getTime().getTime()));
         calendar.add(Calendar.MINUTE, EXPIRIANCE_TIME);
         Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
 
-        log.info("computeExpireDate() returns : timestamp=" + timestamp);
+        log.info("computeExpiryDate() returns : timestamp=" + timestamp);
         return timestamp;
     }
 }

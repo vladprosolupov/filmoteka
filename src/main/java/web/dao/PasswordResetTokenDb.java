@@ -4,17 +4,15 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "VerificationToken", schema = "dbo", catalog = "filmotekaDb")
-public class VerificationTokenDb {
-
+@Table(name = "PasswordResetToken", schema = "dbo", catalog = "filmotekaDb")
+public class PasswordResetTokenDb {
     private long id;
     private String token;
     private Timestamp expiryDate;
     private ClientDb clientByIdClient;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -34,7 +32,7 @@ public class VerificationTokenDb {
     }
 
     @Basic
-    @Column(name = "expiry_date")
+    @Column(name = "expiryDate", nullable = false)
     public Timestamp getExpiryDate() {
         return expiryDate;
     }
@@ -48,12 +46,11 @@ public class VerificationTokenDb {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VerificationTokenDb that = (VerificationTokenDb) o;
+        PasswordResetTokenDb that = (PasswordResetTokenDb) o;
 
         if (id != that.id) return false;
         if (token != null ? !token.equals(that.token) : that.token != null) return false;
-        if (expiryDate != null ? !expiryDate.equals(that.expiryDate) : that.expiryDate != null)
-            return false;
+        if (expiryDate != null ? !expiryDate.equals(that.expiryDate) : that.expiryDate != null) return false;
 
         return true;
     }
@@ -66,7 +63,7 @@ public class VerificationTokenDb {
         return result;
     }
 
-    @OneToOne(targetEntity = ClientDb.class, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     public ClientDb getClientByIdClient() {
         return clientByIdClient;
