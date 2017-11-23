@@ -150,6 +150,38 @@ public class ClientService {
         return result;
     }
 
+    public void blockClient(String login) throws HibernateException, IndexOutOfBoundsException {
+        log.info("blockClient(login=" + login + ")");
+
+        if(login == null || login.isEmpty()) {
+            log.error("Login is null");
+
+            throw new IllegalArgumentException("Login should not be null or empty");
+        }
+
+        ClientDb clientDb = getClientByLogin(login);
+        clientDb.setEnabled(0);
+        saveOrUpdate(clientDb);
+
+        log.info("succ. blocked client");
+    }
+
+    public void unblockClient(String login) throws HibernateException, IndexOutOfBoundsException {
+        log.info("blockClient(login=" + login + ")");
+
+        if(login == null || login.isEmpty()) {
+            log.error("Login is null");
+
+            throw new IllegalArgumentException("Login should not be null or empty");
+        }
+
+        ClientDb clientDb = getClientByLogin(login);
+        clientDb.setEnabled(1);
+        saveOrUpdate(clientDb);
+
+        log.info("succ. blocked client");
+    }
+
     public ClientDb convertToClientDb(ClientJSON clientJSON) throws ParsingJsonToDaoException, IllegalArgumentException {
         log.info("convertToClientDb(clientJSON=" + clientJSON + ")");
 
