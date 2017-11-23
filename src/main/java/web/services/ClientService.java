@@ -67,6 +67,25 @@ public class ClientService {
         return client;
     }
 
+    public ClientDb getClientByEmail(String email) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getClientByEmail(email=" + email + ")");
+
+        if(email == null || email.isEmpty()) {
+            log.error("Email is null or empty");
+
+            throw new IllegalArgumentException("Email should not be null or empty");
+        }
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        ClientDb clientDb = (ClientDb) session.createQuery("from ClientDb c where c.email='" + email + "'").list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getClientByEmail() returns : clientDb=" + clientDb);
+        return clientDb;
+    }
+
     public List<ClientDb> getAll() throws HibernateException {
         log.info("getAll()");
 
