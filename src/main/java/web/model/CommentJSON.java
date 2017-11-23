@@ -11,8 +11,6 @@ public class CommentJSON {
     private int idClient;
     @NotNull
     private String commentText;
-    private double rating;
-    private int referencedComment;
     private String commentDate;
     private String clientLogin;
     private String clientFirstName;
@@ -48,22 +46,6 @@ public class CommentJSON {
 
     public void setCommentText(String commentText) {
         this.commentText = commentText;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
-    public int getReferencedComment() {
-        return referencedComment;
-    }
-
-    public void setReferencedComment(int referencedComment) {
-        this.referencedComment = referencedComment;
     }
 
     public String getCommentDate() {
@@ -105,8 +87,6 @@ public class CommentJSON {
                 ", idFilm=" + idFilm +
                 ", idClient=" + idClient +
                 ", commentText='" + commentText + '\'' +
-                ", rating=" + rating +
-                ", referencedComment=" + referencedComment +
                 ", commentDate='" + commentDate + '\'' +
                 ", clientLogin='" + clientLogin + '\'' +
                 ", clientFirstName='" + clientFirstName + '\'' +
