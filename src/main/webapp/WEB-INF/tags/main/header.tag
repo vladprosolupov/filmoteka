@@ -35,6 +35,8 @@
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="/admin/">Admin Panel</a>
                         <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" style="color: #0f81cc" href="/profile">Profile</a>
+                            <hr class="navbar-divider"/>
                             <a class="navbar-item" href="/admin/films">Films</a>
                             <a class="navbar-item" href="/admin/actors">Actors</a>
                             <a class="navbar-item" href="/admin/directors">Directors</a>
@@ -43,15 +45,10 @@
                             <a class="navbar-item" href="/admin/studios">Studios</a>
 
                             <hr class="navbar-divider"/>
-
-                            <a class="navbar-item" href="/profile">Profile</a>
-
-                            <hr class="navbar-divider"/>
-
                             <input type="hidden"
                                    name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
-                            <a class="navbar-item droppeddown" href="javascript:{}"
+                            <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
                                onclick="document.getElementById('logout_id').submit();">Log
                                 out</a>
                         </div>
