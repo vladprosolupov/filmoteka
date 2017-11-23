@@ -103,8 +103,8 @@ public class FilmLikesController {
     }
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
-    @RequestMapping(value = "/deleteLike", method = RequestMethod.POST)
-    public @ResponseBody String deleteLike(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
+    @RequestMapping(value = "/removeLike", method = RequestMethod.POST)
+    public @ResponseBody String deleteLike(@RequestBody FilmLikesJSON filmLikesJSON) {
         log.info("deleteLike(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
@@ -134,8 +134,8 @@ public class FilmLikesController {
     }
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
-    @RequestMapping(value = "/deleteDislike", method = RequestMethod.POST)
-    public @ResponseBody String deleteDislike(@RequestBody FilmLikesJSON filmLikesJSON) throws NoSuchClientException {
+    @RequestMapping(value = "/removeDislike", method = RequestMethod.POST)
+    public @ResponseBody String deleteDislike(@RequestBody FilmLikesJSON filmLikesJSON) {
         log.info("deleteDislike(filmLikesJSON=" + filmLikesJSON + ")");
 
         if(filmLikesJSON == null) {
