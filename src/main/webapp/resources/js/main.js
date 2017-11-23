@@ -26,6 +26,16 @@ function showLoading() {
     $('.vue').hide();
 }
 
+function showLoadingProfile() {
+    $('#loading').show();
+    $('div[class*="container column"]').hide();
+}
+
+function hideLoadingProfile() {
+    $('#loading').hide();
+    $('div[class*="container column"]').show();
+}
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -475,17 +485,17 @@ $(function () {
                 },
                 like: function () {
                     var self = this;
-                    if(self.currUser.login != null){
+                    if (self.currUser.login != null) {
 
-                    }else {
+                    } else {
                         $('#likeInfoMessage').slideDown();
                     }
                 },
                 dislike: function () {
                     var self = this;
-                    if(self.currUser.login != null){
+                    if (self.currUser.login != null) {
 
-                    }else {
+                    } else {
                         $('#likeInfoMessage').slideDown();
                     }
 
@@ -525,10 +535,17 @@ $(function () {
         });
 
     } else if (window.location.pathname.includes("/profile")) {
+        var section = getUrlParameter("s");
+        removeGetParametersFromPage("/profile");
+
         var profile = new Vue({
             el: '.vue',
             data: {
-                info: []
+                info: [],
+                currentTab: "profile",
+                bookmarkedFilms: [],
+                likedFilms: [],
+                currentPage: 1
             },
             beforeCompile: function () {
                 var self = this;
@@ -539,12 +556,70 @@ $(function () {
                     xhr.setRequestHeader(header, token);
                 });
 
-                $.getJSON("/client/getCurrentUser", function (data) {
-                    self.info = data;
-                    hideLoading();
-                }).fail(function () {
-                    window.location.replace(domain + "/login");
-                });
+                if (section) {
+                    if (section === "book") {
+                        $('#profile').removeClass("is-active");
+                        $('#bookmarks').addClass("is-active");
+                        self.currentTab = "book";
+                        $.getJSON(domain+'/bookmark/getBookmarks/' + self.currentPage, function (films) {
+                            self.bookmarkedFilms = films;
+                            hideLoadingProfile();
+                        });
+                    } else if (section === "like") {
+                        $('#profile').removeClass("is-active");
+                        $('#liked').addClass("is-active");
+                        self.currentTab = "like";
+                        hideLoadingProfile();
+                    } else {
+                        $.getJSON("/client/getCurrentUser", function (data) {
+                            self.info = data;
+                            hideLoadingProfile();
+                        }).fail(function () {
+                            window.location.replace(domain + "/login");
+                        });
+                    }
+                } else {
+                    $.getJSON("/client/getCurrentUser", function (data) {
+                        self.info = data;
+                        hideLoadingProfile();
+                    }).fail(function () {
+                        window.location.replace(domain + "/login");
+                    });
+                }
+            },
+            methods: {
+                goToProfile: function () {
+                    var self = this;
+                    self.currentTab = "profile";
+                    showLoadingProfile();
+                    $('a[class*="is-active"]').removeClass("is-active");
+                    $('#profile').addClass("is-active");
+                    $.getJSON("/client/getCurrentUser", function (data) {
+                        self.info = data;
+                        hideLoadingProfile();
+                    }).fail(function () {
+                        window.location.replace(domain + "/login");
+                    });
+                },
+                goToLiked: function () {
+                    var self = this;
+                    self.currentTab = "like";
+                    showLoadingProfile();
+                    $('a[class*="is-active"]').removeClass("is-active");
+                    $('#liked').addClass("is-active");
+                    hideLoadingProfile();
+                },
+                goToBookmarks: function () {
+                    var self = this;
+                    self.currentTab = "book";
+                    showLoadingProfile();
+                    $('a[class*="is-active"]').removeClass("is-active");
+                    $('#bookmarks').addClass("is-active");
+                    $.getJSON(domain+'/bookmark/getBookmarks/' + self.currentPage, function (films) {
+                        self.bookmarkedFilms = films;
+                        hideLoadingProfile();
+                    });
+                }
             }
         });
 
@@ -622,16 +697,4 @@ $(function () {
     }
 
 
-});
-
-
-$("#div1").mouseenter(function () {
-    var $div2 = $("#div2");
-    if ($div2.is(":visible")) {
-        return;
-    }
-    $div2.show();
-    setTimeout(function () {
-        $div2.hide();
-    }, 10000);
 });

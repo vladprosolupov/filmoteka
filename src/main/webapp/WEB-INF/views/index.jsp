@@ -48,9 +48,7 @@
                             <div class="card-image ">
                                 <figure class="image is-3by4">
                                     <img v-bind:src="film[2]" alt="Cover">
-                                    <a v-bind:href="link+film[3]">
-                                        <%--<span>More <i class="fa fa-info-circle"  aria-hidden="true"></i></span>--%>
-                                    </a>
+                                    <a v-bind:href="link+film[3]"></a>
                                 </figure>
                             </div>
                             <div class="card-content">

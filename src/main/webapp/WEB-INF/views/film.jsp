@@ -124,8 +124,8 @@
                                     <img v-bind:src='film.cover'>
                                 </p>
                                 <p style="display: flex; margin-top: 5px;" class="centered">
-                                    <a class="button is-success is-outlined" style="width: 70px; margin: 5px;" v-on:click="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>500</a>
-                                    <a class="button is-danger is-outlined" style="width: 70px; margin: 5px;" v-on:click="dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>20</a>
+                                    <a class="button is-success is-outlined" style="width: 70px; margin: 5px;" v-on:click="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{likes}}</a>
+                                    <a class="button is-danger is-outlined" style="width: 70px; margin: 5px;" v-on:click="dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{{dislikes}}</a>
                                     <div id="likeInfoMessage" class="message is-info" style="display: none;" v-if="currUser.login == null">
                                         <div class="message-body">
                                             Please <strong><a href="/login">Log in</a></strong> to like or dislike a film.

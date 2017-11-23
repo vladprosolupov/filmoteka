@@ -16,6 +16,7 @@ import web.dao.ClientDb;
 import web.dao.FilmDb;
 import web.embeddable.Bookmark;
 import web.model.BookmarkJSON;
+import web.model.FilmJSONIndex;
 
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class BookmarkService {
         log.info("succ. deleted bookmark");
     }
 
-    public boolean checkBookmarkFilm(String id){
+    public boolean checkBookmarkFilm(String id) {
         log.info("checkBookmarkFilm(idFilm=" + id + ")");
         FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
 
@@ -110,18 +111,44 @@ public class BookmarkService {
         bookmark.setClientByIdClient(clientDb);
         bookmark.setFilmByIdFilm(filmDb);
 
-        log.info("convertToBookmarkFromBookmarkJSON returns :" + bookmark + ")");
+        log.info("convertToBookmarkFromBookmarkJSON() returns :" + bookmark + ")");
         return bookmark;
     }
 
 
     public BookmarkDb convertToBookmarkDbFromBookmark(Bookmark bookmark) {
 
-        log.info("convertToBookmarkDbFromBookmark(bookmark=" + bookmark+ ")");
+        log.info("convertToBookmarkDbFromBookmark(bookmark=" + bookmark + ")");
         BookmarkDb result = new BookmarkDb();
         result.setBookmark(bookmark);
         log.info("convertToBookmarkDbFromBookmark returns :" + result + ")");
         return result;
+    }
+
+
+    public List<FilmJSONIndex> getBookmarkedFilms(String p) throws NumberFormatException {
+        log.info("getBookmarkedFilms(page=" + p + ")");
+
+        int page = Integer.parseInt(p);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        Session session = sessionFactory.openSession();
+        int limit = 10;
+        int start = (page - 1) * limit;
+        session.beginTransaction();
+        List<FilmJSONIndex> list = session.createQuery("select b.bookmark.filmByIdFilm.title, b.bookmark.filmByIdFilm.releaseDate, b.bookmark.filmByIdFilm.cover, b.bookmark.filmByIdFilm.id, b.bookmark.filmByIdFilm.rating from BookmarkDb b where b.bookmark.clientByIdClient.id = " + clientDb.getId()).setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getBookmarkedFilms(() returns : list.size()=" + list.size() + ")");
+        return list;
     }
 
 

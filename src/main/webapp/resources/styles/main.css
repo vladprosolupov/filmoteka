@@ -625,6 +625,41 @@ a.navbar-item.home:hover > img {
     filter: blur(3px);
 }
 
+a.panel-block:hover .fa-heart {
+    color: #ff5257;
+}
+
+a.panel-block:hover .fa-bookmark {
+    color: #e09952;
+}
+
+a.panel-block.is-active .fa-heart {
+    color: #ff5257;
+}
+
+a.panel-block.is-active#liked {
+    border-left-color: #ff5257;
+}
+
+a.panel-block.is-active .fa-bookmark {
+    color: #e09952;
+}
+
+a.panel-block.is-active#bookmarks {
+    border-left-color: #e09952;
+}
+
+a.panel-block:hover .fa-user-circle-o {
+    color: #3273dc;
+}
+
+.is-fullsized {
+    width: -moz-available;
+    width: -webkit-fill-available;
+    height: -moz-available;
+    height: -webkit-fill-available;
+}
+
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;
