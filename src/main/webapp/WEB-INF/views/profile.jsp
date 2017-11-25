@@ -35,32 +35,32 @@
 <t:header>
     <div class="container vue" style="padding-top: 52px;">
         <section class="hero is-white is-small is-bold has-text-centered">
-            <div class="hero-body columns is-paddingless">
-                <div class="column is-3" style="height: 80%; padding-left: 1.75em;">
-                    <nav class="panel" style="margin-top: 20%;">
-                        <p class="panel-heading">
-                            Menu
-                        </p>
-                        <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
-                        <span class="panel-icon">
-                          <i class="fa fa-user-circle-o"></i>
-                        </span>
-                            Profile
-                        </a>
-                        <a id="liked" class="panel-block" v-on:click="goToLiked">
-                            <span class="panel-icon">
-                              <i class="fa fa-heart"></i>
-                            </span>
-                            Films you've liked
-                        </a>
-                        <a id="bookmarks" class="panel-block" v-on:click="goToBookmarks">
-                            <span class="panel-icon">
-                              <i class="fa fa-bookmark"></i>
-                            </span>
-                            Bookmarks
-                        </a>
-                    </nav>
+            <div class="navbar is-light">
+                <div class="navbar-item">
+                    <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
+          <i class="fa fa-user-circle-o"></i>
+                        Profile
+                    </a>
                 </div>
+
+                <div class="navbar-item">
+                    <a id="liked" class="panel-block" v-on:click="goToLiked">
+              <i class="fa fa-heart"></i>
+                        Films you've liked
+                    </a>
+                </div>
+
+                <div class="navbar-item">
+                    <a id="bookmarks" class="panel-block" v-on:click="goToBookmarks">
+            <span class="panel-icon">
+              <i class="fa fa-bookmark"></i>
+            </span>
+                        Bookmarks
+                    </a>
+                </div>
+            </div>
+            <div class="hero-body columns is-paddingless">
+
                 <div id="loading" class="column is-6" style="position: relative;">
                     <div class="spinner">
                         <div class="double-bounce1" style="background-color: #4e4e4e;"></div>
@@ -110,6 +110,7 @@
                         </article>
 
                         <section class="info-tiles">
+                            <div class="filmsProf">
                         <div v-for="film in likedFilms" class="card effect-ruby grow film">
                             <div class="card-image">
                                 <figure class="image is-3by4">
@@ -130,7 +131,8 @@
                                 </div>
                             </div>
                         </div>
-                        </section>
+                            </div>
+                            </section>
 
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
                             <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
@@ -182,6 +184,9 @@
                             </div>
                         </article>
 
+
+                    <section class="info-tiles">
+                        <div class="filmsProf">
                         <div v-for="film in bookmarkedFilms" class="card effect-ruby grow film">
                             <div class="card-image">
                                 <figure class="image is-3by4">
@@ -202,6 +207,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    </section>
 
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
                             <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>

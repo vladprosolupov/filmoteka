@@ -28,6 +28,13 @@ section.info-tiles .films {
     grid-row-gap: 5vh;
 }
 
+section.info-tiles .filmsProf {
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16%;
+    grid-column-gap: 5%;
+    grid-row-gap: 5vh;
+}
+
 section.info-tiles {
     margin-bottom: 7%;
 }
