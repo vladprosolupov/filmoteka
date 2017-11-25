@@ -33,20 +33,21 @@
 
 </head>
 <t:header>
+
     <div class="container vue" >
 
         <div class="hero-head2">
             <div class="navbar">
                 <div class="navbar-item">
                     <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
-          <i class="fa fa-user-circle-o"></i>
+                        <i class="fa fa-user-circle-o"></i>
                         Profile
                     </a>
                 </div>
 
                 <div class="navbar-item">
                     <a id="liked" class="panel-block" v-on:click="goToLiked">
-              <i class="fa fa-heart"></i>
+                        <i class="fa fa-heart"></i>
                         Films you've liked
                     </a>
                 </div>
@@ -60,9 +61,10 @@
                     </a>
                 </div>
             </div>
-            </div>
+        </div>
+
         <section class="hero is-white is-small is-bold has-text-centered">
-            <div class="hero-body is-paddingless " style="padding-top: 52px;">
+            <div class="hero-body is-paddingless" style="margin-top: 100px" >
 
                 <div id="loading" style="position: relative;">
                     <div class="spinner">
@@ -73,8 +75,8 @@
                 <div class="container column" v-if="currentTab == 'profile'"
                      style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
                     <%--<div style="position: absolute; top: 50%;transform: translate(0, -50%);">--%>
-                        <br>
-                        <br>
+
+
                         <h1 class="title">
                             Profile
                             <br>
@@ -100,9 +102,11 @@
                             Phone number:<br>
                             <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
                             <br><br>
+                            <button class="button is-info is-medium">Save Changes</button>
+
                         </form>
 
-                        <button class="button is-info is-medium">Save Changes</button>
+
                     <%--</div>--%>
                 </div>
                 <div class="container column" v-if="currentTab == 'like'"
