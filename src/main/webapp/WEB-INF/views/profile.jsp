@@ -33,9 +33,10 @@
 
 </head>
 <t:header>
-    <div class="container vue" style="padding-top: 52px;">
-        <section class="hero is-white is-small is-bold has-text-centered">
-            <div class="navbar is-light">
+    <div class="container vue" >
+
+        <div class="hero-head2">
+            <div class="navbar">
                 <div class="navbar-item">
                     <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
           <i class="fa fa-user-circle-o"></i>
@@ -59,9 +60,11 @@
                     </a>
                 </div>
             </div>
-            <div class="hero-body columns is-paddingless">
+            </div>
+        <section class="hero is-white is-small is-bold has-text-centered">
+            <div class="hero-body is-paddingless " style="padding-top: 52px;">
 
-                <div id="loading" class="column is-6" style="position: relative;">
+                <div id="loading" style="position: relative;">
                     <div class="spinner">
                         <div class="double-bounce1" style="background-color: #4e4e4e;"></div>
                         <div class="double-bounce2" style="background-color: #4e4e4e;"></div>
@@ -70,6 +73,8 @@
                 <div class="container column" v-if="currentTab == 'profile'"
                      style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
                     <%--<div style="position: absolute; top: 50%;transform: translate(0, -50%);">--%>
+                        <br>
+                        <br>
                         <h1 class="title">
                             Profile
                             <br>

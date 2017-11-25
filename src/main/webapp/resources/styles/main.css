@@ -30,10 +30,15 @@ section.info-tiles .films {
 
 section.info-tiles .filmsProf {
     display: grid;
-    grid-template-columns: 16% 16% 16% 16% 16%;
-    grid-column-gap: 5%;
-    grid-row-gap: 5vh;
+    grid-template-columns:13% 13% 13% 13% 13% 13%;
+    grid-column-gap: 4%;
+    grid-row-gap: 4vh;
 }
+
+section.info-tiles .filmsProf.card {
+font-size: small;
+}
+
 
 section.info-tiles {
     margin-bottom: 7%;
@@ -370,6 +375,13 @@ a {
     position: fixed;
     width: 100%;
     z-index: 999;
+}
+
+.hero-head2 {
+    /*margin-bottom: 5%;*/
+    background-color: white;
+    position: absolute;
+    width: 100%;
 }
 
 .image.is-percentage {
