@@ -35,8 +35,8 @@
 <t:header>
     <div class="container vue" style="padding-top: 52px;">
         <section class="hero is-white is-small is-bold has-text-centered">
-            <div class="hero-body columns is-paddingless is-fullsized">
-                <div class="column is-two-fifths" style="height: 80%; padding-left: 1.75em;">
+            <div class="hero-body columns is-paddingless">
+                <div class="column is-3" style="height: 80%; padding-left: 1.75em;">
                     <nav class="panel" style="margin-top: 20%;">
                         <p class="panel-heading">
                             Menu
@@ -61,7 +61,7 @@
                         </a>
                     </nav>
                 </div>
-                <div id="loading" class="is-centered column" style="position: relative;">
+                <div id="loading" class="column is-6" style="position: relative;">
                     <div class="spinner">
                         <div class="double-bounce1" style="background-color: #4e4e4e;"></div>
                         <div class="double-bounce2" style="background-color: #4e4e4e;"></div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="container column" v-if="currentTab == 'profile'"
                      style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
-                    <div style="position: absolute; top: 50%;transform: translate(0, -50%);">
+                    <%--<div style="position: absolute; top: 50%;transform: translate(0, -50%);">--%>
                         <h1 class="title">
                             Profile
                             <br>
@@ -98,7 +98,7 @@
                         </form>
 
                         <button class="button is-info is-medium">Save Changes</button>
-                    </div>
+                    <%--</div>--%>
                 </div>
                 <div class="container column" v-if="currentTab == 'like'"
                      style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">
@@ -109,6 +109,7 @@
                             </div>
                         </article>
 
+                        <section class="info-tiles">
                         <div v-for="film in likedFilms" class="card effect-ruby grow film">
                             <div class="card-image">
                                 <figure class="image is-3by4">
@@ -129,6 +130,7 @@
                                 </div>
                             </div>
                         </div>
+                        </section>
 
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
                             <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
