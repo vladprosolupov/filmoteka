@@ -79,7 +79,7 @@
 
 <html>
 <head>
-    <title>${title}</title>
+    <title>Filmoteka</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>

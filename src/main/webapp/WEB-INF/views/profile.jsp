@@ -143,12 +143,12 @@
                             </div>
                             </section>
 
-                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumberLiked != 0">
                             <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
-                            <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                            <a class="pagination-next" v-if="currentPage != pagesNumberLiked" v-on:click="goToNext">Next page</a>
                             <ul class="pagination-list">
                                 <li>
-                                    <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
+                                    <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page 1"
                                        aria-current="page" v-on:click="goToPage(1)">1</a>
                                 </li>
                                 <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
@@ -161,23 +161,23 @@
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage-1" aria-label="Goto page {{currentPage-1}}"
                                        aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
                                 </li>
-                                <li v-if="currentPage != pagesNumber && currentPage != 1">
+                                <li v-if="currentPage != pagesNumberLiked && currentPage != 1">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage" aria-label="Goto page {{currentPage}}"
                                        aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
                                 </li>
-                                <li v-if="currentPage + 1 < pagesNumber">
+                                <li v-if="currentPage + 1 < pagesNumberLiked">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage+1" aria-label="Goto page {{currentPage+1}}"
                                        aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
                                 </li>
-                                <li v-if="currentPage + 2 < pagesNumber">
+                                <li v-if="currentPage + 2 < pagesNumberLiked">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage+2" aria-label="Goto page {{currentPage+2}}"
                                        aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
                                 </li>
 
-                                <li v-if="currentPage <= (pagesNumber-5)"><span class="pagination-ellipsis">&hellip;</span></li>
-                                <li v-if="pagesNumber != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumber" aria-label="Goto page {{pagesNumber}}"
-                                       aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
+                                <li v-if="currentPage <= (pagesNumberLiked-5)"><span class="pagination-ellipsis">&hellip;</span></li>
+                                <li v-if="pagesNumberLiked != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumberLiked" aria-label="Goto page {{pagesNumberLiked}}"
+                                       aria-current="page" v-on:click="goToPage(pagesNumberLiked)">{{pagesNumberLiked}}</a>
                                 </li>
                             </ul>
                         </nav>
@@ -219,9 +219,9 @@
                     </div>
                     </section>
 
-                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumberBookmarked != 0">
                             <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
-                            <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                            <a class="pagination-next" v-if="currentPage != pagesNumberBookmarked" v-on:click="goToNext">Next page</a>
                             <ul class="pagination-list">
                                 <li>
                                     <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
@@ -237,23 +237,23 @@
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage-1" aria-label="Goto page {{currentPage-1}}"
                                        aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
                                 </li>
-                                <li v-if="currentPage != pagesNumber && currentPage != 1">
+                                <li v-if="currentPage != pagesNumberBookmarked && currentPage != 1">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage" aria-label="Goto page {{currentPage}}"
                                        aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
                                 </li>
-                                <li v-if="currentPage + 1 < pagesNumber">
+                                <li v-if="currentPage + 1 < pagesNumberBookmarked">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage+1" aria-label="Goto page {{currentPage+1}}"
                                        aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
                                 </li>
-                                <li v-if="currentPage + 2 < pagesNumber">
+                                <li v-if="currentPage + 2 < pagesNumberBookmarked">
                                     <a class="pagination-link" v-bind:data-pageNum="currentPage+2" aria-label="Goto page {{currentPage+2}}"
                                        aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
                                 </li>
 
-                                <li v-if="currentPage <= (pagesNumber-5)"><span class="pagination-ellipsis">&hellip;</span></li>
-                                <li v-if="pagesNumber != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumber" aria-label="Goto page {{pagesNumber}}"
-                                       aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
+                                <li v-if="currentPage <= (pagesNumberBookmarked-5)"><span class="pagination-ellipsis">&hellip;</span></li>
+                                <li v-if="pagesNumberBookmarked != 1">
+                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumberBookmarked" aria-label="Goto page {{pagesNumberBookmarked}}"
+                                       aria-current="page" v-on:click="goToPage(pagesNumberBookmarked)">{{pagesNumberBookmarked}}</a>
                                 </li>
                             </ul>
                         </nav>

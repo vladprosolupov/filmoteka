@@ -301,6 +301,7 @@ $(function () {
 
                 $.when($.getJSON(url, function (data) {
                         self.film = data;
+                        document.title = self.film.title;
                     }),
                     $.getJSON('/category/forNav', function (categories) {
                         self.categories = categories;
@@ -678,7 +679,8 @@ $(function () {
                 likedFilms: [],
                 currentPage: 1,
                 link: domain + '/film/',
-                pagesNumber: 1
+                pagesNumberLiked: 1,
+                pagesNumberBookmarked: 1
             },
             beforeCompile: function () {
                 var self = this;
@@ -694,14 +696,15 @@ $(function () {
                         $('#profile').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
                         self.currentTab = "book";
+                        self.currentPage = 1;
                         $.when($.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
                             self.bookmarkedFilms = films;
                         }),
                         $.getJSON(domain + '/bookmark/numberOfBookmarks', function (filmsNumber) {
                             if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
-                                self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                                self.pagesNumberBookmarked = parseInt(filmsNumber / 10, 10) + 1;
                             else
-                                self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                                self.pagesNumberBookmarked = parseInt(filmsNumber / 10, 10);
                         })).done(function () {
                             hideLoadingProfile();
                         });
@@ -709,14 +712,15 @@ $(function () {
                         $('#profile').removeClass("is-active");
                         $('#liked').addClass("is-active");
                         self.currentTab = "like";
+                        self.currentPage = 1;
                         $.when($.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
                                 self.likedFilms = films;
                             }),
                             $.getJSON(domain + '/likes/numberOfLiked', function (filmsNumber) {
                                 if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
-                                    self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                                    self.pagesNumberLiked = parseInt(filmsNumber / 10, 10) + 1;
                                 else
-                                    self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                                    self.pagesNumberLiked = parseInt(filmsNumber / 10, 10);
                             })).done(function () {
                             hideLoadingProfile();
                         });
@@ -754,22 +758,38 @@ $(function () {
                 goToLiked: function () {
                     var self = this;
                     self.currentTab = "like";
+                    self.currentPage = 1;
                     showLoadingProfile();
                     $('a[class*="is-active"]').removeClass("is-active");
                     $('#liked').addClass("is-active");
-                    $.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
-                        self.likedFilms = films;
+                    $.when($.getJSON(domain + '/likes/getLiked/' + self.currentPage, function (films) {
+                            self.likedFilms = films;
+                        }),
+                        $.getJSON(domain + '/likes/numberOfLiked', function (filmsNumber) {
+                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                self.pagesNumberLiked = parseInt(filmsNumber / 10, 10) + 1;
+                            else
+                                self.pagesNumberLiked = parseInt(filmsNumber / 10, 10);
+                        })).done(function () {
                         hideLoadingProfile();
                     });
                 },
                 goToBookmarks: function () {
                     var self = this;
                     self.currentTab = "book";
+                    self.currentPage = 1;
                     showLoadingProfile();
                     $('a[class*="is-active"]').removeClass("is-active");
                     $('#bookmarks').addClass("is-active");
-                    $.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
-                        self.bookmarkedFilms = films;
+                    $.when($.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
+                            self.bookmarkedFilms = films;
+                        }),
+                        $.getJSON(domain + '/bookmark/numberOfBookmarks', function (filmsNumber) {
+                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                                self.pagesNumberBookmarked = parseInt(filmsNumber / 10, 10) + 1;
+                            else
+                                self.pagesNumberBookmarked = parseInt(filmsNumber / 10, 10);
+                        })).done(function () {
                         hideLoadingProfile();
                     });
                 },
@@ -780,50 +800,70 @@ $(function () {
                 goToPage: function (pageNum) {
                     var self = this;
                     showLoadingProfile();
+                    self.currentPage = parseInt(pageNum);
                     if(self.currentTab === "book"){
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#bookmarks').addClass("is-active");
+                        $.getJSON(domain + '/bookmark/getBookmarks/' + pageNum, function (films) {
+                            self.bookmarkedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }else {
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#liked').addClass("is-active");
+                        $.getJSON(domain + '/likes/getLiked/' + pageNum, function (films) {
+                            self.likedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }
-                    $.getJSON(self.pageLink + pageNum, function (data) {
-                        self.currentPage = parseInt(pageNum);
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoadingProfile();
-                    });
                 },
                 goToPrevious: function () {
                     var self = this;
                     showLoadingProfile();
                     if(self.currentTab === "book"){
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#bookmarks').addClass("is-active");
+                        $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) - 1), function (films) {
+                            self.currentPage = parseInt(self.currentPage) - 1;
+                            self.bookmarkedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }else {
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#liked').addClass("is-active");
+                        $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) - 1), function (films) {
+                            self.currentPage = parseInt(self.currentPage) - 1;
+                            self.likedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }
-                    $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) - 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoadingProfile();
-                    });
                 },
                 goToNext: function () {
                     var self = this;
                     showLoadingProfile();
                     if(self.currentTab === "book"){
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#bookmarks').addClass("is-active");
+                        $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) + 1), function (films) {
+                            self.currentPage = parseInt(self.currentPage) + 1;
+                            self.bookmarkedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }else {
-
+                        showLoadingProfile();
+                        $('a[class*="is-active"]').removeClass("is-active");
+                        $('#liked').addClass("is-active");
+                        $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) + 1), function (films) {
+                            self.currentPage = parseInt(self.currentPage) + 1;
+                            self.likedFilms = films;
+                            hideLoadingProfile();
+                        });
                     }
-                    $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) + 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoadingProfile();
-                    });
                 }
             }
         });
