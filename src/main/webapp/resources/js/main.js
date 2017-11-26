@@ -776,6 +776,54 @@ $(function () {
                 getYear: function (val) {
                     var date = new Date(Date.parse(val));
                     return date.getFullYear();
+                },
+                goToPage: function (pageNum) {
+                    var self = this;
+                    showLoadingProfile();
+                    if(self.currentTab === "book"){
+
+                    }else {
+
+                    }
+                    $.getJSON(self.pageLink + pageNum, function (data) {
+                        self.currentPage = parseInt(pageNum);
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        self.films = data;
+                        hideLoadingProfile();
+                    });
+                },
+                goToPrevious: function () {
+                    var self = this;
+                    showLoadingProfile();
+                    if(self.currentTab === "book"){
+
+                    }else {
+
+                    }
+                    $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) - 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        self.films = data;
+                        hideLoadingProfile();
+                    });
+                },
+                goToNext: function () {
+                    var self = this;
+                    showLoadingProfile();
+                    if(self.currentTab === "book"){
+
+                    }else {
+
+                    }
+                    $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
+                        self.currentPage = parseInt(self.currentPage) + 1;
+                        $('a[data-pagenum]').removeClass("is-current");
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        self.films = data;
+                        hideLoadingProfile();
+                    });
                 }
             }
         });

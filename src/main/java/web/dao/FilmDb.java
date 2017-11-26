@@ -1,5 +1,8 @@
 package web.dao;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -181,6 +184,7 @@ public class FilmDb {
 
     @ManyToMany
     @JoinTable(name = "Film_Category", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false))
+    @Fetch(FetchMode.JOIN)
     public Set<CategoryDb> getFilmCategories() {
         return filmCategories;
     }
@@ -191,6 +195,7 @@ public class FilmDb {
 
     @ManyToMany
     @JoinTable(name = "Film_studio", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_studio", referencedColumnName = "id", nullable = false))
+    @Fetch(FetchMode.JOIN)
     public Set<StudioDb> getFilmStudios() {
         return filmStudios;
     }
@@ -201,6 +206,7 @@ public class FilmDb {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Film_network", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_link_to_network", referencedColumnName = "id", nullable = false))
+    @Fetch(FetchMode.JOIN)
     public Set<LinkToNetworkDb> getFilmNetworks() {
         return filmNetworks;
     }
@@ -211,6 +217,7 @@ public class FilmDb {
 
     @ManyToMany
     @JoinTable(name = "Film_director", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_director", referencedColumnName = "id", nullable = false))
+    @Fetch(FetchMode.JOIN)
     public Set<DirectorDb> getFilmDirectors() {
         return filmDirectors;
     }
@@ -230,6 +237,7 @@ public class FilmDb {
 
     @ManyToOne
     @JoinColumn(name = "id_language", referencedColumnName = "id", nullable = false)
+    @Fetch(FetchMode.JOIN)
     public LanguageDb getLanguageByIdLanguage() {
         return languageByIdLanguage;
     }
@@ -267,6 +275,7 @@ public class FilmDb {
 
     @ManyToMany
     @JoinTable(name = "Film_country", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false))
+    @Fetch(FetchMode.JOIN)
     public Set<CountryDb> getFilmCountries() {
         return filmCountries;
     }

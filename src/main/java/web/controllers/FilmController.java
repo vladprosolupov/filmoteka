@@ -129,11 +129,8 @@ public class FilmController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getFilm(@PathVariable("id") String id, Model model) {
-        log.info("getFilm(id=" + id + ", model=" + model + ")");
-
-
-        model.addAttribute("title", filmService.getTitleOfFilmWithId(id));
+    public String getFilm(@PathVariable("id") String id) {
+        log.info("getFilm(id=" + id);
 
         log.info("getFilm() returns : film");
         return "film";
