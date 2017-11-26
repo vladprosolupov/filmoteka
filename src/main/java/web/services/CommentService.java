@@ -128,7 +128,7 @@ public class CommentService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<CommentDb> allComments = session.createQuery("from CommentDb c where c.filmByIdFilm=" + id + " order by c.commentDate desc").list();
+        List<CommentDb> allComments = session.createQuery("from CommentDb c where c.filmByIdFilm.id=" + id + " order by c.commentDate desc").list();
         session.getTransaction().commit();
         session.close();
 

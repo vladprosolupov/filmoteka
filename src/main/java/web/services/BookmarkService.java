@@ -72,7 +72,6 @@ public class BookmarkService {
 
     public boolean checkBookmarkFilm(String id) {
         log.info("checkBookmarkFilm(idFilm=" + id + ")");
-        FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
@@ -80,11 +79,11 @@ public class BookmarkService {
 
             throw new IllegalArgumentException("User is not logged in");
         }
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List list = session.createQuery("from BookmarkDb b where b.id.clientByIdClient.id = " + clientDb.getId() + " and b.id.filmByIdFilm.id = " + filmDb.getId()).list();
+        List list = session.createQuery("select b.id from BookmarkDb b where b.id.clientByIdClient.id = " + clientId + " and b.id.filmByIdFilm.id = " + id).list();
         session.getTransaction().commit();
         session.close();
 
@@ -137,13 +136,13 @@ public class BookmarkService {
 
             throw new IllegalArgumentException("User is not logged in");
         }
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         Session session = sessionFactory.openSession();
-        int limit = 10;
+        int limit = 6;
         int start = (page - 1) * limit;
         session.beginTransaction();
-        List<FilmJSONIndex> list = session.createQuery("select b.bookmark.filmByIdFilm.title, b.bookmark.filmByIdFilm.releaseDate, b.bookmark.filmByIdFilm.cover, b.bookmark.filmByIdFilm.id, b.bookmark.filmByIdFilm.rating from BookmarkDb b where b.bookmark.clientByIdClient.id = " + clientDb.getId()).setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select b.bookmark.filmByIdFilm.title, b.bookmark.filmByIdFilm.releaseDate, b.bookmark.filmByIdFilm.cover, b.bookmark.filmByIdFilm.id, b.bookmark.filmByIdFilm.rating from BookmarkDb b where b.bookmark.clientByIdClient.id = " + clientId).setFirstResult(start).setMaxResults(limit).list();
         session.getTransaction().commit();
         session.close();
 
@@ -161,6 +160,19 @@ public class BookmarkService {
         session.close();
 
         log.info("getNumbersOfBookmarkByUser() returns : result=" + result);
+        return result;
+    }
+
+    public long getNumbersOfBookmarkByUserId(int clientId) {
+        log.info("getNumbersOfBookmarkByUserId(clientId=" + clientId + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long result = (long) session.createQuery("select count(b.bookmark.filmByIdFilm.id) from BookmarkDb b where b.bookmark.clientByIdClient.id=" + clientId).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getNumbersOfBookmarkByUserId() returns : result=" + result);
         return result;
     }
 

@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -14,12 +16,17 @@ public class ClientDb {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonIgnore
     private Timestamp creationDate;
     private String login;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     private int enabled;
     private String phoneNumber;
+    @JsonIgnore
     private String role;
+    @JsonIgnore
     private Collection<ClientDataDb> clientDataById;
 
     @Id

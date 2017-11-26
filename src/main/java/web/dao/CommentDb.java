@@ -68,7 +68,7 @@ public class CommentDb {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_client", referencedColumnName = "id")
     public ClientDb getClientByIdClient() {
         return clientByIdClient;
@@ -78,7 +78,7 @@ public class CommentDb {
         this.clientByIdClient = clientByIdClient;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_film", referencedColumnName = "id")
     public FilmDb getFilmByIdFilm() {
         return filmByIdFilm;

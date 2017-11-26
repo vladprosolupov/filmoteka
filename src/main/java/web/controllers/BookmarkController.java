@@ -90,15 +90,9 @@ public class BookmarkController {
         log.info("getNumberOfBookmarkedFilms()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if (clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        long result = bookmarkService.getNumbersOfBookmarkByUser(clientDb);
+        long result = bookmarkService.getNumbersOfBookmarkByUserId(clientId);
 
         log.info("getNumberOfBookmarkedFilms() returns : result=" + result);
         return result;

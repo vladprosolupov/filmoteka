@@ -31,7 +31,7 @@ public class FilmLikesService {
     private static final Logger log = LogManager.getLogger(FilmLikesService.class);
 
     public void addLike(FilmLikeDb filmLikeDb) throws HibernateException {
-        log.info("addLike(filmLikeDb=" + filmLikeDb + ")");
+        log.info("addDislike(filmLikeDb=" + filmLikeDb + ")");
 
         if(filmLikeDb == null) {
             log.error("filmLikeDb is null");
@@ -160,20 +160,56 @@ public class FilmLikesService {
         return list;
     }
 
-    public boolean checkLikeFilm(String id, ClientDb clientDb) {
-        log.info("checkLikeFilm(idFilm=" + id + ")");
+    public List<FilmJSONIndex> getLikedFilmsByUserId(int clientId, String p) throws HibernateException {
+        log.info("getLikedFilmsByUserId(clientId=" + clientId + ", p=" + p + ")");
 
-        FilmDb filmDb = filmService.getFilmWithId(String.valueOf(id));
+        int page = Integer.parseInt(p);
+        int limit = 6;
+        int start = (page - 1) * limit;
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List list = session.createQuery("from FilmLikeDb fl where fl.filmLike.clientByIdClient.id = " + clientDb.getId() + " and fl.filmLike.filmByIdFilm.id = " + filmDb.getId()).list();
+        List<FilmJSONIndex> list =
+                session.createQuery("select fl.filmLike.filmByIdFilm.title, fl.filmLike.filmByIdFilm.releaseDate, " +
+                        "fl.filmLike.filmByIdFilm.cover, fl.filmLike.filmByIdFilm.id, fl.filmLike.filmByIdFilm.rating " +
+                        "from FilmLikeDb fl where fl.filmLike.clientByIdClient=" + clientId)
+                        .setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getLikedFilmsByUserId() returns : list.size()=" + list.size());
+        return list;
+    }
+
+    public boolean checkLikeFilm(String id, ClientDb clientDb) {
+        log.info("checkLikeFilm(idFilm=" + id + ")");
+
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List list = session.createQuery("select fl.id from FilmLikeDb fl where fl.filmLike.clientByIdClient.id = " + clientDb.getId() + " and fl.filmLike.filmByIdFilm.id = " + id).list();
         session.getTransaction().commit();
         session.close();
 
         boolean result = !list.isEmpty();
 
         log.info("checkLikeFilm() returns :" + result);
+        return result;
+    }
+
+    public boolean checkLikeFilmByUserId(String id, int clientId) {
+        log.info("checkLikeFilmByUserId(idFilm=" + id + ")");
+
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List list = session.createQuery("select fl.id from FilmLikeDb fl where fl.filmLike.clientByIdClient.id = " + clientId + " and fl.filmLike.filmByIdFilm.id = " + id).list();
+        session.getTransaction().commit();
+        session.close();
+
+        boolean result = !list.isEmpty();
+
+        log.info("checkLikeFilmByUserId() returns :" + result);
         return result;
     }
 
@@ -187,6 +223,19 @@ public class FilmLikesService {
         session.close();
 
         log.info("getNumbersOfLikeByUser() returns : result=" + result);
+        return result;
+    }
+
+    public long getNumbersOfLikeByUserId(int clientId) {
+        log.info("getNumbersOfLikeByUserId(clientDb=" + clientId + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long result = (long) session.createQuery("select count(fl.filmLike.filmByIdFilm.id) from FilmLikeDb fl where fl.filmLike.clientByIdClient.id=" + clientId).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getNumbersOfLikeByUserId() returns : result=" + result);
         return result;
     }
 

@@ -2,7 +2,9 @@ package web.services;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
 import web.dao.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -106,7 +108,9 @@ public class FilmService {
         }
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        FilmDb o = (FilmDb) session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
+        Criteria criteria = session.createCriteria(FilmDb.class);
+        criteria.add(Restrictions.eq("id", Integer.parseInt(id)));
+        FilmDb o = (FilmDb) criteria.list().get(0);//session.createQuery("from FilmDb f where f.id=" + id).list().get(0);
         session.getTransaction().commit();
         session.close();
 

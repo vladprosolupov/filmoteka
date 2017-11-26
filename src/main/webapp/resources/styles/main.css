@@ -657,7 +657,8 @@ a.panel-block.is-active .fa-heart {
 }
 
 a.panel-block.is-active#liked {
-    border-left-color: #ff5257;
+    border-bottom-color: #ff5257;
+    border-left-color: #dbdbdb;
 }
 
 a.panel-block.is-active .fa-bookmark {
@@ -665,11 +666,25 @@ a.panel-block.is-active .fa-bookmark {
 }
 
 a.panel-block.is-active#bookmarks {
-    border-left-color: #e09952;
+    border-bottom-color: #e09952;
+    border-left-color: #dbdbdb;
+}
+
+a.panel-block.is-active#profile {
+    border-bottom-color: #3273dc;
+    border-left-color: #dbdbdb;
+}
+
+a.panel-block.is-active#profile .fa-user-circle-o{
+    color: #3273dc;
 }
 
 a.panel-block:hover .fa-user-circle-o {
     color: #3273dc;
+}
+
+.pagination-link.is-current {
+    color: #fff !important;
 }
 
 .is-fullsized {

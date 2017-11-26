@@ -4,16 +4,17 @@ import web.dao.ClientDb;
 import web.dao.FilmDb;
 
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
 public class Bookmark implements Serializable{
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false)
     private FilmDb filmByIdFilm;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     private ClientDb clientByIdClient;
 

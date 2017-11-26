@@ -66,7 +66,7 @@
         <section class="hero is-white is-small is-bold has-text-centered">
             <div class="hero-body is-paddingless" style="margin-top: 100px" >
 
-                <div id="loading" style="position: relative;">
+                <div id="loading" style="position: relative; left: 50%">
                     <div class="spinner">
                         <div class="double-bounce1" style="background-color: #4e4e4e;"></div>
                         <div class="double-bounce2" style="background-color: #4e4e4e;"></div>

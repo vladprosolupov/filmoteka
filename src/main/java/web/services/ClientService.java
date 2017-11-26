@@ -67,6 +67,25 @@ public class ClientService {
         return client;
     }
 
+    public int getClientIdByLogin(String login) throws HibernateException {
+        log.info("getClientIdByLogin(login=" + login + ")");
+
+        if (login == null || login.isEmpty()) {
+            log.error("Error : login is incorrect");
+
+            throw new IllegalArgumentException("Login should not be null");
+        }
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        int clientId = (int) session.createQuery("select c.id FROM ClientDb c where c.login='" + login + "'").list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getClientIdByLogin() returns : client=" + clientId);
+        return clientId;
+
+    }
+
     public ClientDb getClientByEmail(String email) throws HibernateException, IndexOutOfBoundsException {
         log.info("getClientByEmail(email=" + email + ")");
 

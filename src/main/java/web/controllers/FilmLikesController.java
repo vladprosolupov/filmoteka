@@ -96,7 +96,7 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        dislikesService.addLike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
         log.info("succ. added dislike for film");
         return "OK";
@@ -120,15 +120,9 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if(clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        likesService.deleteLike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientDb.getId()));
+        likesService.deleteLike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
 
         return "OK";
     }
@@ -151,15 +145,9 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if(clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientDb.getId()));
+        dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
 
         return "OK";
     }
@@ -181,15 +169,9 @@ public class FilmLikesController {
         log.info("getLikedFilms(page=" + page + ")");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if(clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        List<FilmJSONIndex> likedFilmsByUser = likesService.getLikedFilmsByUser(clientDb, page);
+        List<FilmJSONIndex> likedFilmsByUser = likesService.getLikedFilmsByUserId(clientId, page);
 
         log.info("getLikedFilms() returns : likedFilmsByUser.size()=" + likedFilmsByUser.size());
         return likedFilmsByUser;
@@ -205,15 +187,9 @@ public class FilmLikesController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if (clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        boolean result = likesService.checkLikeFilm(id, clientDb);
+        boolean result = likesService.checkLikeFilmByUserId(id, clientId);
 
         log.info("checkLikeFilm() returns : result=" + result);
         return result;
@@ -229,15 +205,9 @@ public class FilmLikesController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if (clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        boolean result = dislikesService.checkDislikeFilm(id, clientDb);
+        boolean result = dislikesService.checkDislikeFilmWithClientId(id, clientId);
 
         log.info("checkDislikeFilm() returns : result=" + result);
         return result;
@@ -249,15 +219,9 @@ public class FilmLikesController {
         log.info("getNumberOfLikedFilms()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+        int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        if (clientDb == null) {
-            log.error("There is no such client");
-
-            throw new NoSuchClientException("There is no such client");
-        }
-
-        long result = likesService.getNumbersOfLikeByUser(clientDb);
+        long result = likesService.getNumbersOfLikeByUserId(clientId);
 
         log.info("getNumberOfLikedFilms() returns : result=" + result);
         return result;

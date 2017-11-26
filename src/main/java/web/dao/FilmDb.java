@@ -1,5 +1,6 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -34,7 +35,10 @@ public class FilmDb {
     private Set<ScreenshotDb> screenshotsById;
     private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
-    private Collection<CommentDb> commentRatingsById;
+    //TODO Check the right query
+    @JsonIgnore
+    private Collection<CommentDb> commentsById;
+    @JsonIgnore
     private String titleSearch;
 
     @Id
@@ -227,6 +231,7 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
+    @Fetch(FetchMode.JOIN)
     public Set<AwardDb> getAwardsById() {
         return awardsById;
     }
@@ -247,6 +252,7 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
+    @Fetch(FetchMode.JOIN)
     public Set<FilmActorDb> getFilmActorsById() {
         return filmActorsById;
     }
@@ -256,6 +262,7 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
+    @Fetch(FetchMode.JOIN)
     public Set<ScreenshotDb> getScreenshotsById() {
         return screenshotsById;
     }
@@ -265,6 +272,7 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
+    @Fetch(FetchMode.JOIN)
     public Set<TrailerDb> getTrailersById() {
         return trailersById;
     }
@@ -285,12 +293,13 @@ public class FilmDb {
     }
 
     @OneToMany(mappedBy = "filmByIdFilm")
-    public Collection<CommentDb> getCommentRatingsById() {
-        return commentRatingsById;
+    @Fetch(FetchMode.JOIN)
+    public Collection<CommentDb> getCommentsById() {
+        return commentsById;
     }
 
-    public void setCommentRatingsById(Collection<CommentDb> commentRatingsById) {
-        this.commentRatingsById = commentRatingsById;
+    public void setCommentsById(Collection<CommentDb> commentRatingsById) {
+        this.commentsById = commentRatingsById;
     }
 
     @Override
