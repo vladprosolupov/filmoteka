@@ -185,6 +185,7 @@ public class RootWebController {
 
                 clientDb.setEnabled(1);
                 clientService.saveOrUpdate(clientDb);
+                tokenService.removeVerificationToken(verificationTokenDb);
                 return "redirect:/login?confirmed=true";
             }
 

@@ -63,6 +63,16 @@ public class VerificationTokenService {
         return result;
     }
 
+    public void removeVerificationToken(VerificationTokenDb verificationTokenDb) throws HibernateException{
+        log.info("removeVerificationToken(verificationTokenDb=" + verificationTokenDb + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(verificationTokenDb);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     private Timestamp computeExpiryDate() {
         log.info("computeExpiryDate()");
 
