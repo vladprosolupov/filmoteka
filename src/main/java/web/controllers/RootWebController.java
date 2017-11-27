@@ -59,7 +59,7 @@ public class RootWebController {
     public String login(HttpServletRequest request) {
         log.info("login(request=" + request + ")");
 
-        String referrer = request.getHeader("Referer");
+        String referrer = request.getHeader("Referrer");
 
         if (referrer != null) {
             log.info("referrer is not null");
@@ -83,7 +83,7 @@ public class RootWebController {
     }
 
     @RequestMapping(value = "/register")
-    public ModelAndView register(HttpServletRequest request) {
+    public ModelAndView register() {
         log.info("register()");
 
         ModelAndView model = new ModelAndView("register");
