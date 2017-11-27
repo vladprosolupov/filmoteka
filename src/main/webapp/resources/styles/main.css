@@ -51,7 +51,7 @@ div.film {
 
 div.card.effect-ruby a {
     position: absolute;
-    display: table;
+    /*display: table;*/
     top: 0;
     font-size: 24px;
     /*height: 300px;*/
@@ -522,7 +522,7 @@ h6.rating i {
 
 .container.vue {
     margin-bottom: 1.5rem;
-    margin-top: 5%;
+    margin-top: 8vh;
 }
 
 .counter:hover {
@@ -534,7 +534,7 @@ aside.menu {
 }
 
 .column.is-2 {
-    margin-top: 5%;
+    margin-top: 6vh;
 }
 
 #loading {

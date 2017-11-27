@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -97,10 +98,11 @@ public class ClientController {
 
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public @ResponseBody String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
+    public @ResponseBody
+    String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
         log.info("editClient(clientJSON=" + clientJSON + ")");
 
-        if(clientJSON == null) {
+        if (clientJSON == null) {
             log.error("clientJSON is null");
 
             throw new IllegalArgumentException("ClientJSON should not be null");
@@ -160,10 +162,11 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
-    public void clientForgotPassword(@RequestBody String clientEmail) throws NoSuchClientException {
+    public @ResponseBody
+    String clientForgotPassword(@RequestBody String clientEmail) throws NoSuchClientException {
         log.info("clientForgotPassword(clientEmail=" + clientEmail + ")");
 
-        if(clientEmail == null || clientEmail.isEmpty()) {
+        if (clientEmail == null || clientEmail.isEmpty()) {
             log.error("clientEmail is null or empty");
 
             throw new IllegalArgumentException("ClientEmail should not be null or empty");
@@ -171,7 +174,7 @@ public class ClientController {
 
         ClientDb clientDb = clientService.getClientByEmail(clientEmail);
 
-        if(clientDb == null) {
+        if (clientDb == null) {
             log.error("There is no such client with given email");
 
             throw new NoSuchClientException("There is no such client with given email");
@@ -187,6 +190,8 @@ public class ClientController {
 
         sendResetPasswordEmail(clientEmail, token, clientDb.getFirstName(), clientDb.getLastName());
 
+        return "OK";
+
     }
 
     @RequestMapping(value = "/resetPassword/{token}", method = RequestMethod.GET)
@@ -195,7 +200,7 @@ public class ClientController {
 
         PasswordResetTokenDb passwordResetTokenDb = passwordResetTokenService.getPasswordResetToken(token);
 
-        if(passwordResetTokenDb == null) {
+        if (passwordResetTokenDb == null) {
             log.error("No such token");
 
             throw new IllegalArgumentException("There is no such token");
@@ -214,22 +219,36 @@ public class ClientController {
                 new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        return "resetPassword";
+        return "updatePass";
     }
 
     @RequestMapping(value = "/savePassword", method = RequestMethod.POST)
     public String savePassword(@RequestBody @Valid ClientPasswordJSON clientPassword) {
         log.info("savePassword(clientPassword=" + clientPassword + ")");
 
-        String name = SecurityContextHolder.getContext()
-                .getAuthentication().getName();
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        ClientDb clientDb = clientService.getClientByLogin(name);
-        clientDb.setPassword(PasswordGenerator.hashPassword(clientPassword.getPassword()));
-        clientService.saveOrUpdate(clientDb);
+//        ClientDb clientDb = clientService.getClientByLogin(name);
+//        clientDb.setPassword(PasswordGenerator.hashPassword(clientPassword.getPassword()));
+//        clientService.saveOrUpdate(clientDb);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (GrantedAuthority g : authorities) {
+            log.info("Authorities - " + g.getAuthority());
+//            authorities.remove(g);
+        }
+//        for (GrantedAuthority g : authorities) {
+//            log.info("Authorities  KEKEKEKEKE- " + g.getAuthority());
+//        }
+        Authentication auth = new AnonymousAuthenticationToken("ANONYMOUS_USER", null,
+                Arrays.asList(
+                        new SimpleGrantedAuthority("ANONYMOUS_USER")));
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
 
         log.info("succ. changed user password");
-        return "/";
+        return "OK";
     }
 
     @PreAuthorize("hasAuthority('admin')")
@@ -240,7 +259,7 @@ public class ClientController {
         List<ClientDb> allClients = clientService.getAll();
         List<ClientJSON> allClientsJSON = new ArrayList<>();
 
-        for(ClientDb clientDb : allClients) {
+        for (ClientDb clientDb : allClients) {
             log.info("for loop");
 
             ClientJSON clientJSON = new ClientJSON();
@@ -260,10 +279,11 @@ public class ClientController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/blockClient", method = RequestMethod.POST)
-    public @ResponseBody String blockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
+    public @ResponseBody
+    String blockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
         log.info("blockClient(clientLogin=" + clientLogin + ")");
 
-        if(clientLogin == null) {
+        if (clientLogin == null) {
             log.error("clientLogin is null");
 
             throw new IllegalArgumentException("ClientLoginJSON should not be empty");
@@ -276,10 +296,11 @@ public class ClientController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/unblockClient", method = RequestMethod.POST)
-    public @ResponseBody String unblockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
+    public @ResponseBody
+    String unblockClient(@RequestBody @Valid ClientLoginJSON clientLogin) {
         log.info("unblockClient(clientLogin=" + clientLogin + ")");
 
-        if(clientLogin == null) {
+        if (clientLogin == null) {
             log.error("clientLogin is null");
 
             throw new IllegalArgumentException("ClientLoginJSON should not be empty");
@@ -294,27 +315,32 @@ public class ClientController {
 
     /**
      * This method sends email to the user.
+     *
      * @param clientEmail
      * @param token
      * @param firstName
      * @param lastName
      */
     private void sendResetPasswordEmail(String clientEmail, String token, String firstName, String lastName) {
-        log.info("sendResetPasswordEmail(clientEmail=" + clientEmail +", token=" + token + ", firstName="
+        log.info("sendResetPasswordEmail(clientEmail=" + clientEmail + ", token=" + token + ", firstName="
                 + firstName + ", lastName=" + lastName + ")");
 
-        String greet = messages.getMessage("message.greet", null, Locale.US);
-        String head = messages.getMessage("message.resetPasswordHead", null, Locale.US);
-        String foot = messages.getMessage("message.regFoot", null, Locale.US);
-        String link = messages.getMessage("message.link", null, Locale.US);
+        try {
+            String greet = messages.getMessage("message.greet", null, Locale.US);
+            String head = messages.getMessage("message.resetPasswordHead", null, Locale.US);
+            String foot = messages.getMessage("message.regFoot", null, Locale.US);
+            String link = messages.getMessage("message.link", null, Locale.US);
 
-        String confirmationUrl = "/client/resetPassword/" + token;
+            String confirmationUrl = "/client/resetPassword/" + token;
 
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(clientEmail);
-        email.setSubject("Password Reset");
-        email.setText(greet + " " + firstName + " " + lastName + head + link + confirmationUrl + foot);
-        mailSender.send(email);
+            SimpleMailMessage email = new SimpleMailMessage();
+            email.setTo(clientEmail);
+            email.setSubject("Password Reset");
+            email.setText(greet + " " + firstName + " " + lastName + head + link + confirmationUrl + foot);
+            mailSender.send(email);
+        } catch (Exception e) {
+            log.error("EXCEPTION - " + e);
+        }
 
         log.info("mail was sent to user");
     }

@@ -31,6 +31,23 @@
                         </article>
                     </c:if>
 
+                    <c:if test="${param.reset == false}">
+                        <article class="message is-info" v-if="notFound">
+                            <div class="message-body">
+                                We have sent you a <strong>confirmation</strong> of password reset to your email!
+                            </div>
+                        </article>
+                    </c:if>
+
+                    <c:if test="${param.reset == true}">
+                        <article class="message is-success" v-if="notFound">
+                            <div class="message-body">
+                                You have successfully <strong>reset</strong> your password! Now you can
+                                <strong>Login</strong> using it!
+                            </div>
+                        </article>
+                    </c:if>
+
                     <div class="column is-4 is-offset-4">
                         <h3 class="title has-text-white">Login</h3>
                         <form name='loginForm'
@@ -60,7 +77,7 @@
                                 </c:if>
                                 <div class="columns">
                                     <div class="column has-text-centered has-text-info is-half ">
-                                        <a href="#" style="text-decoration: none">Forgot password?</a>
+                                        <a href="/forgotPassword" style="text-decoration: none">Forgot password?</a>
                                     </div>
 
                                     <div class="column has-text-centered has-text-info is-half">

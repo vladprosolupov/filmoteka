@@ -270,7 +270,7 @@ $(function () {
                 }
             }
         });
-    } else if (window.location.pathname.includes("/film/")) {
+    } else if (window.location.pathname.indexOf("/film/") > -1) {
         var lastslashindex = window.location.pathname.lastIndexOf('/');
         var id = window.location.pathname.substring(lastslashindex + 1);
         var url = '/film/info/' + id;
@@ -668,7 +668,7 @@ $(function () {
             }
         });
 
-    } else if (window.location.pathname.includes("/profile")) {
+    } else if (window.location.pathname.indexOf("/profile") > -1) {
         var section = getUrlParameter("s");
         removeGetParametersFromPage("/profile");
 

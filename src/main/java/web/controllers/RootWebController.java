@@ -3,6 +3,7 @@ package web.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -96,6 +97,20 @@ public class RootWebController {
         }
     }
 
+    @RequestMapping(value = "/forgotPassword")
+    public String forgot() {
+        log.info("forgot()");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.info("forgot() returns : forgotPass");
+            return "forgotPass";
+        } else {
+            log.info("client already logged in: forgot() returns index");
+            return "redirect:/index";
+        }
+    }
+
     @RequestMapping(value = "/403")
     public String error403() {
         log.info("error403()");
@@ -127,6 +142,7 @@ public class RootWebController {
         return "best";
     }
 
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile() {
         log.info("profile()");

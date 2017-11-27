@@ -74,7 +74,7 @@ $(function () {
             location.href += '/addOrUpdate/0'
         });
 
-    } else if (window.location.pathname.includes("/admin/films/addOrUpdate")) {
+    } else if (window.location.pathname.indexOf("/admin/films/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForFilm').show();
 
@@ -506,7 +506,7 @@ $(function () {
         $('.addActor').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if (window.location.pathname.includes("/admin/actors/addOrUpdate")) {
+    } else if (window.location.pathname.indexOf("/admin/actors/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForActor').show();
 
@@ -594,7 +594,7 @@ $(function () {
         $('.addCategory').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if (window.location.pathname.includes("/admin/categories/addOrUpdate")) {
+    } else if (window.location.pathname.indexOf("/admin/categories/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForCategory').show();
 
@@ -683,7 +683,7 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    } else if (window.location.pathname.includes("/admin/directors/addOrUpdate")) {
+    } else if (window.location.pathname.indexOf("/admin/directors/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForDirector').show();
         $('.save').click(function () {
@@ -772,7 +772,7 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    }else if(window.location.pathname.includes("/admin/networks/addOrUpdate")){
+    }else if(window.location.pathname.indexOf("/admin/networks/addOrUpdate") > -1){
         $('#loading').hide();
         $('.formForNetwork').show();
         $('.save').click(function () {
@@ -859,7 +859,7 @@ $(function () {
         $('.addStudio').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if(window.location.pathname.includes("/admin/studios/addOrUpdate")){
+    } else if(window.location.pathname.indexOf("/admin/studios/addOrUpdate") > -1){
         $('#loading').hide();
         $('.formForStudio').show();
 
