@@ -176,10 +176,9 @@ public class ClientController {
 
         if (clientDb == null) {
             log.error("There is no such client with given email");
-
             throw new NoSuchClientException("There is no such client with given email");
-        }
 
+        }
         String token = UUID.randomUUID().toString();
 
         PasswordResetTokenDb passwordResetTokenDb = new PasswordResetTokenDb();
@@ -203,7 +202,8 @@ public class ClientController {
         if (passwordResetTokenDb == null) {
             log.error("No such token");
 
-            throw new IllegalArgumentException("There is no such token");
+            log.info("no such token found: resetPassword() returns index");
+            return "redirect:/index?token=false";
         }
 
         Calendar cal = Calendar.getInstance();
@@ -212,42 +212,47 @@ public class ClientController {
 
             throw new IllegalArgumentException("Verification token has expired");
         }
-
-        ClientDb clientDb = passwordResetTokenDb.getClientByIdClient();
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                clientDb, null, Arrays.asList(
-                new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
-        return "updatePass";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof UsernamePasswordAuthenticationToken) {
+            log.info("resetPassword() Authority CHANGE_PASSWORD_PRIVILEGE is already set");
+            log.info("resetPassword() returns : updatePass");
+            return "updatePass";
+        } else if (authentication instanceof AnonymousAuthenticationToken) {
+            ClientDb clientDb = passwordResetTokenDb.getClientByIdClient();
+            log.info("resetPassword() sets Authority to CHANGE_PASSWORD_PRIVILEGE");
+            Authentication auth = new UsernamePasswordAuthenticationToken(
+                    clientDb.getLogin(), null, Arrays.asList(
+                    new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            log.info("resetPassword() returns : updatePass");
+            return "updatePass";
+        } else {
+            log.info("client already logged in: resetPassword() returns index");
+            return "redirect:/index";
+        }
     }
 
-    @RequestMapping(value = "/savePassword", method = RequestMethod.POST)
-    public String savePassword(@RequestBody @Valid ClientPasswordJSON clientPassword) {
-        log.info("savePassword(clientPassword=" + clientPassword + ")");
-
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-
-//        ClientDb clientDb = clientService.getClientByLogin(name);
-//        clientDb.setPassword(PasswordGenerator.hashPassword(clientPassword.getPassword()));
-//        clientService.saveOrUpdate(clientDb);
+    @PreAuthorize("hasAuthority('CHANGE_PASSWORD_PRIVILEGE')")
+    @RequestMapping(value = "/savePassword/{token}", method = RequestMethod.POST)
+    public @ResponseBody
+    String savePassword(@RequestBody @Valid ClientPasswordJSON clientPassword, @PathVariable("token") String token) {
+        log.info("savePassword(clientPassword=" + clientPassword + ", token=" + token + ")");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (GrantedAuthority g : authorities) {
-            log.info("Authorities - " + g.getAuthority());
-//            authorities.remove(g);
-        }
-//        for (GrantedAuthority g : authorities) {
-//            log.info("Authorities  KEKEKEKEKE- " + g.getAuthority());
-//        }
-        Authentication auth = new AnonymousAuthenticationToken("ANONYMOUS_USER", null,
-                Arrays.asList(
-                        new SimpleGrantedAuthority("ANONYMOUS_USER")));
+        String name = authentication.getName();
+
+        ClientDb clientDb = clientService.getClientByLogin(name);
+        clientDb.setPassword(PasswordGenerator.hashPassword(clientPassword.getPassword()));
+        clientService.saveOrUpdate(clientDb);
+
+        Authentication auth = new AnonymousAuthenticationToken("ANONYMOUS_USER", clientDb.getLogin(), Arrays.asList(new SimpleGrantedAuthority("ANONYMOUS_USER")));
         SecurityContextHolder.getContext().setAuthentication(auth);
 
+        PasswordResetTokenDb passwordResetTokenDb = passwordResetTokenService.getPasswordResetToken(token);
+        passwordResetTokenService.removePasswordResetToken(passwordResetTokenDb);
 
         log.info("succ. changed user password");
+
         return "OK";
     }
 

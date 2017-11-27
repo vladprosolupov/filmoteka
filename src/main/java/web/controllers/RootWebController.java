@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -62,14 +63,15 @@ public class RootWebController {
 
         if (referrer != null) {
             log.info("referrer is not null");
-
-            request.getSession().setAttribute("url_prior_login", referrer);
-
+            log.info("referrer= " + referrer);
+            if(!referrer.contains("/login") && !referrer.contains("/client/resetPassword")) {
+                request.getSession().setAttribute("url_prior_login", referrer);
+            }
             log.info("end of if");
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if ((authentication instanceof AnonymousAuthenticationToken)) {
+        if (authentication instanceof AnonymousAuthenticationToken || authentication instanceof UsernamePasswordAuthenticationToken) {
             log.info("login() returns : login");
             return "login";
         } else {
@@ -178,7 +180,7 @@ public class RootWebController {
                 throw new IllegalArgumentException("Verification token has expired");
             }
 
-            if(clientDb.getEnabled() == 0) {
+            if (clientDb.getEnabled() == 0) {
                 log.info("User is unblocked now");
 
                 clientDb.setEnabled(1);

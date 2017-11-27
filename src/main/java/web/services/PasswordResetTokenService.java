@@ -49,6 +49,16 @@ public class PasswordResetTokenService {
         return passwordResetTokenDb;
     }
 
+    public void removePasswordResetToken(PasswordResetTokenDb passwordResetTokenDb) throws HibernateException{
+        log.info("romovePasswordResetToken(passwordResetTokenDb=" + passwordResetTokenDb + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(passwordResetTokenDb);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     private Timestamp computeExpiryDate() {
         log.info("computeExpiryDate()");
 

@@ -68,6 +68,8 @@
 </t:header>
 <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <script>
+    var lastslashindex = window.location.pathname.lastIndexOf('/');
+    var URLtoken = window.location.pathname.substring(lastslashindex + 1);
     var domain = window.location.origin;
     var flags = [false,false];
     $(function () {
@@ -177,7 +179,7 @@
             if(!flags.includes(false)) {
                 $(this).addClass("is-loading");
                 $.ajax({
-                    url: $('form[name="updatePasswordForm"]').attr('action'),
+                    url: $('form[name="updatePasswordForm"]').attr('action') + "/" + URLtoken,
                     type: 'POST',
                     contentType: 'application/json; utf-8',
                     data: JSON.stringify(clientPassword),

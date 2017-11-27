@@ -26,6 +26,11 @@
                 <div class="container has-text-centered">
                     <div class="column is-4 is-offset-4">
                         <h3 class="title has-text-white">Forgot password</h3>
+                        <article class="message is-danger" style="display: none;">
+                            <div class="message-body">
+                                Sorry, but user with such <strong>email</strong> is not found.
+                            </div>
+                        </article>
                         <form name='forgotPasswordForm'
                               action="/client/forgotPassword" method='POST' onsubmit="return false">
                             <div class="box">
@@ -100,6 +105,10 @@
         });
 
         $('button[class*="button"]').click(function () {
+            var self = this;
+            if($('.message')[0].style.display !== "none"){
+                $('.message').slideUp();
+            }
             if(flag){
                 var email = $('input[name="clientEmail"]').val();
                 var token = $("meta[name='_csrf']").attr("content");
@@ -108,14 +117,23 @@
                     xhr.setRequestHeader(header, token);
                 });
 
-                $(this).addClass("is-loading");
+                $(self).addClass("is-loading");
                 $.ajax({
                     url: $('form[name="forgotPasswordForm"]').attr('action'),
                     type: 'POST',
                     contentType: 'application/json; utf-8',
                     data: email,
-                    success: function () {
-                        window.location.replace(domain + '/login?reset=false');
+                    success: function (data) {
+                        if(data.name != "error")
+                            window.location.replace(domain + '/login?reset=false');
+                        else {
+                            $('.message').slideDown();
+                            $(self).removeClass("is-loading");
+                            $('input[name="clientEmail"]').addClass("is-danger");
+                        }
+                    },
+                    fail: function () {
+                        $('.message').slideDown();
                     }
                 });
             }

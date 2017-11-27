@@ -2,6 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 
+<c:set var="token">
+    <c:if test="${param.token == false}">
+        <article class="message is-danger">
+            <div class="message-body">
+                Sorry, but the link you clicked is no more <strong>active</strong>.
+            </div>
+        </article>
+    </c:if>
+</c:set>
+
 <html>
 <head>
     <title>Filmoteka</title>
@@ -37,11 +47,8 @@
                     </div>
                 </article>
 
-                <article class="message is-danger" v-if="notFound">
-                    <div class="message-body">
-                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other keyword or choose one film from our library!
-                    </div>
-                </article>
+                ${token}
+
                 <section class="info-tiles">
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">
