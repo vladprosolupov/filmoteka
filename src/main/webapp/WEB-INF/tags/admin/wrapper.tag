@@ -41,7 +41,7 @@
                     <input type="hidden"
                            name="${_csrf.parameterName}"
                            value="${_csrf.token}"/>
-                    <a class="navbar-item" href="javascript:{}"
+                    <a class="navbar-item is-pulled-right" href="javascript:{}"
                        onclick="document.getElementById('logout_id').submit();">Log
                         out</a>
 

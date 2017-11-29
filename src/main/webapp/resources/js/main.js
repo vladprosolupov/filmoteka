@@ -371,6 +371,9 @@ $(function () {
                     }
                     return result;
                 },
+                goToEdit: function(val){
+                    window.location.replace(domain + "/admin/films/addOrUpdate/" + id);
+                },
                 formatReleaseDate: function (val) {
                     var date = new Date(Date.parse(val));
                     var monthNames = [

@@ -18,6 +18,9 @@
         </div>
     </div>
 
+    <div class="films" style="display: none">
+        <button class="addFilm button is-primary ">Add</button>
+    </div>
 
     <table class="films table" style="display: none">
         <thead>
@@ -44,9 +47,5 @@
         </tr>
         </tbody>
     </table>
-
-    <div class="films" style="display: none">
-        <button class="addFilm button is-primary ">Add</button>
-    </div>
 
 </t:wrapper>

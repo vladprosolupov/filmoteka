@@ -32,6 +32,16 @@
     <% } %>
 </c:set>
 
+<c:set var="edit">
+    <% if(hasAccess == 2) {%>
+    <div class="is-pulled-right">
+        <button id="edit" class="button is-info" v-on:click="goToEdit(film.id)">
+            Edit
+        </button>
+    </div>
+    <% } %>
+</c:set>
+
 <c:set var="comment">
     <% if (hasAccess != 0) { %>
     <article class="media">
@@ -214,7 +224,7 @@
                                     <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
                                 </div>
                             </div>
-
+                            ${edit}
                             ${bookmark}
 
                         </article>

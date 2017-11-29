@@ -694,6 +694,10 @@ a.panel-block:hover .fa-user-circle-o {
     height: -webkit-fill-available;
 }
 
+#edit {
+    margin-right: 1rem;
+}
+
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;

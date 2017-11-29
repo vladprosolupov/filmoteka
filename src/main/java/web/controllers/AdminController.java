@@ -1,5 +1,6 @@
 package web.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -46,6 +47,9 @@ public class AdminController {
 
     @Autowired
     ActorService actorService;
+
+    @Autowired
+    ClientService clientService;
 
     private static final Logger log = LogManager.getLogger(AdminController.class);
 
@@ -216,6 +220,27 @@ public class AdminController {
         log.info("adminStudiosAddOrUpdate() returns : admin/studios/addOrUpdate" +
                 ", studioDb.getStudioName()=" + studioDb.getStudioName());
         return "admin/studios/addOrUpdate";
+    }
+
+    @RequestMapping(value = "/users")
+    public String adminUsers(){
+        log.info("adminUsers()");
+
+        log.info("adminUsers() returns : admin/users/index");
+        return "admin/users/index";
+    }
+
+    @RequestMapping(value = "/users/more/{id}")
+    public String adminUsersMore(@PathVariable( value = "id") String id, Model model){
+        log.info("adminUsersMore(id=" + id + ", Model=" + model);
+        ClientDb clientDb = new ClientDb();
+        if (!id.equals("0")) {
+            log.info("if statement, id is not 0");
+
+            clientDb = clientService.getClientById(id);
+        }
+        log.info("adminUsersMore() returns : admin/users/more, clientDb.getLogin() = " + clientDb.getLogin());
+        return "admin/users/more";
     }
 
 }

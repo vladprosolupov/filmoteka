@@ -14,6 +14,11 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
+
+    <div class="actors" style="display: none">
+        <button class="addActor button is-primary">Add</button>
+    </div>
+
     <table class="actors table" style="display: none">
         <thead>
         <tr>
@@ -37,7 +42,4 @@
         </tr>
         </tbody>
     </table>
-    <div class="actors" style="display: none">
-        <button class="addActor button is-primary">Add</button>
-    </div>
 </t:wrapper>
