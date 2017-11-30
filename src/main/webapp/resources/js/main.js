@@ -66,8 +66,15 @@ var normalizeSearch = function (title) {
 
 
 $(function () {
-    $(document).click(function () {
+    $(document).click(function (event) {
         $('.centered').removeClass("is-active");
+        if ($(event.target.closest("#userDropDown")).length <= 0) {
+            try {
+                if ($('#userDropDown')[0].classList.contains("is-active"))
+                    $('#userDropDown').removeClass("is-active");
+            } catch (e) {
+            }
+        }
     });
 
     $(".VueSearch").click(function (event) {
@@ -311,15 +318,15 @@ $(function () {
                     }),
                     $.getJSON('/client/getCurrentUser', function (user) {
                         self.currUser = user;
-                        if(self.currUser.login != null){
+                        if (self.currUser.login != null) {
                             $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
                                 self.bookmarked = flag;
                             });
                             $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
-                                if(liked.name !== 'error') {
+                                if (liked.name !== 'error') {
                                     self.liked = liked;
 
-                                    if(liked){
+                                    if (liked) {
                                         self.disliked = false;
                                     } else {
                                         $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
@@ -371,8 +378,42 @@ $(function () {
                     }
                     return result;
                 },
-                goToEdit: function(val){
+                goToEdit: function (val) {
                     window.location.replace(domain + "/admin/films/addOrUpdate/" + id);
+                },
+                blockUser: function (login) {
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    var clientLoginJSON = {};
+                    clientLoginJSON['login'] = login;
+                    $.ajax({
+                        url: '/client/blockClient',
+                        type: 'POST',
+                        data: JSON.stringify(clientLoginJSON),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            alert("user successfully blocked");
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                            fail(domain + "/admin/users");
+                        }
+                    });
+                },
+                dropDownUserMenu: function () {
+                    if ($('#userDropDown')[0].classList.contains("is-active"))
+                        $('#userDropDown').removeClass("is-active");
+                    else
+                        $('#userDropDown').addClass("is-active");
+                },
+                moreInfo: function (id) {
+                    window.location.replace(domain + "/admin/users/more/" + id);
                 },
                 formatReleaseDate: function (val) {
                     var date = new Date(Date.parse(val));
@@ -457,8 +498,8 @@ $(function () {
                         });
                     }
                 },
-                deleteComment: function (idComment, event) {
-                    $(event.currentTarget.parentElement.parentElement).addClass("is-deleting");
+                deleteComment: function (idComment) {
+                    $("article[data-comment-id=" + idComment + "]").addClass("is-deleting");
                     var self = this;
                     var token = $("meta[name='_csrf']").attr("content");
                     var header = $("meta[name='_csrf_header']").attr("content");
@@ -569,7 +610,7 @@ $(function () {
                             });
                             self.liked = true;
                             self.likes += 1;
-                        }else if(self.liked){
+                        } else if (self.liked) {
                             self.liked = false;
                             self.likes -= 1;
                             $.ajax({
@@ -622,7 +663,7 @@ $(function () {
                             });
                             self.disliked = true;
                             self.dislikes += 1;
-                        } else if(self.disliked){
+                        } else if (self.disliked) {
                             $.ajax({
                                 url: domain + '/likes/addDislike',
                                 type: 'POST',
@@ -703,14 +744,14 @@ $(function () {
                         self.currentTab = "book";
                         self.currentPage = 1;
                         $.when($.getJSON(domain + '/bookmark/getBookmarks/' + self.currentPage, function (films) {
-                            self.bookmarkedFilms = films;
-                        }),
-                        $.getJSON(domain + '/bookmark/numberOfBookmarks', function (filmsNumber) {
-                            if (filmsNumber / 6 !== parseInt(filmsNumber / 6, 10))
-                                self.pagesNumberBookmarked = parseInt(filmsNumber / 6, 10) + 1;
-                            else
-                                self.pagesNumberBookmarked = parseInt(filmsNumber / 6, 10);
-                        })).done(function () {
+                                self.bookmarkedFilms = films;
+                            }),
+                            $.getJSON(domain + '/bookmark/numberOfBookmarks', function (filmsNumber) {
+                                if (filmsNumber / 6 !== parseInt(filmsNumber / 6, 10))
+                                    self.pagesNumberBookmarked = parseInt(filmsNumber / 6, 10) + 1;
+                                else
+                                    self.pagesNumberBookmarked = parseInt(filmsNumber / 6, 10);
+                            })).done(function () {
                             hideLoadingProfile();
                         });
                     } else if (section === "like") {
@@ -806,7 +847,7 @@ $(function () {
                     var self = this;
                     showLoadingProfile();
                     self.currentPage = parseInt(pageNum);
-                    if(self.currentTab === "book"){
+                    if (self.currentTab === "book") {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
@@ -816,7 +857,7 @@ $(function () {
                             self.bookmarkedFilms = films;
                             hideLoadingProfile();
                         });
-                    }else {
+                    } else {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#liked').addClass("is-active");
@@ -831,7 +872,7 @@ $(function () {
                 goToPrevious: function () {
                     var self = this;
                     showLoadingProfile();
-                    if(self.currentTab === "book"){
+                    if (self.currentTab === "book") {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
@@ -842,7 +883,7 @@ $(function () {
                             self.bookmarkedFilms = films;
                             hideLoadingProfile();
                         });
-                    }else {
+                    } else {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#liked').addClass("is-active");
@@ -858,7 +899,7 @@ $(function () {
                 goToNext: function () {
                     var self = this;
                     showLoadingProfile();
-                    if(self.currentTab === "book"){
+                    if (self.currentTab === "book") {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
@@ -869,7 +910,7 @@ $(function () {
                             self.bookmarkedFilms = films;
                             hideLoadingProfile();
                         });
-                    }else {
+                    } else {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#liked').addClass("is-active");

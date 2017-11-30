@@ -34,9 +34,44 @@
 
 <c:set var="commentLogin">
     <% if (hasAccess == 2) {%>
-
+    <div id="userDropDown" class="dropdown" style="margin: 0 10px 10px 0" v-on:click="dropDownUserMenu">
+        <div class="dropdown-trigger">
+            <button id="userDropDownButton" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>
+                    <strong>{{comment.clientFirstName}} {{comment.clientLastName}}</strong>
+                    <small>@{{comment.clientLogin}}</small>
+                </span>
+                <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                <a class="dropdown-item" v-on:click="deleteComment(comment.id)">
+                    Remove comment
+                </a>
+                <a class="dropdown-item" v-on:click="moreInfo(comment.idClient)">
+                    More about user
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item" style="color: #ff5257" v-on:click="blockUser(comment.clientLogin)">
+                    Block user
+                </a>
+            </div>
+        </div>
+    </div>
+    <small>{{getPostTime(comment.commentDate)}}</small>
+    <br>
+    {{comment.commentText}}
     <% } else {%>
-
+    <p>
+        <strong>{{comment.clientFirstName}} {{comment.clientLastName}}</strong>
+        <small>@{{comment.clientLogin}}</small>
+        <small>{{getPostTime(comment.commentDate)}}</small>
+        <br>
+        {{comment.commentText}}
+    </p>
     <% }%>
 </c:set>
 
@@ -266,7 +301,7 @@
 
                     ${comment}
 
-                <article class="media" v-for="comment in comments">
+                <article class="media" v-for="comment in comments" v-bind:data-comment-id="comment.id">
                     <figure class="media-left">
                         <p class="image is-64x64">
                             <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -274,17 +309,13 @@
                     </figure>
                     <div class="media-content">
                         <div class="content">
-                            <p>
-                                <strong>{{comment.clientFirstName}} {{comment.clientLastName}}</strong>
-                                <small>@{{comment.clientLogin}}</small>
-                                <small>{{getPostTime(comment.commentDate)}}</small>
-                                <br>
-                                {{comment.commentText}}
-                            </p>
+
+                                ${commentLogin}
+
                         </div>
                     </div>
                     <div class="media-right" v-if="currUser.login == comment.clientLogin || currUser.login == 'admin'">
-                        <button class="delete" v-on:click="deleteComment(comment.id, $event)"></button>
+                        <button class="delete" v-on:click="deleteComment(comment.id)"></button>
                     </div>
                     <br>
                 </article>
