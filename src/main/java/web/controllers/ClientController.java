@@ -258,13 +258,14 @@ public class ClientController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "all", method = RequestMethod.GET)
-    public List<ClientJSON> getAllClients() {
+    public @ResponseBody
+    List<ClientJSON> getAllClients() {
         log.info("getAllClients()");
 
-        List<ClientDb> allClients = clientService.getAll();
-        List<ClientJSON> allClientsJSON = new ArrayList<>();
+        //List<ClientDb> allClients = clientService.getAll();
+        List<ClientJSON> allClientsJSON = clientService.getAllForAdmin();
 
-        for (ClientDb clientDb : allClients) {
+        /*for (ClientDb clientDb : allClients) {
             log.info("for loop");
 
             ClientJSON clientJSON = new ClientJSON();
@@ -276,7 +277,7 @@ public class ClientController {
             clientJSON.setEmail(clientDb.getEmail());
 
             allClientsJSON.add(clientJSON);
-        }
+        }*/
 
         log.info("getAllClients() returns : allClientsJSON.size()=" + allClientsJSON.size());
         return allClientsJSON;

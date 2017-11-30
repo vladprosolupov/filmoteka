@@ -3,21 +3,23 @@
  */
 
 var domain = window.location.origin;
-function succ(link){
+
+function succ(link) {
     $('html').addClass("is-clipped");
     $('.success').addClass("is-active");
 
-    setTimeout(function(){
+    setTimeout(function () {
         $('.success').removeClass("is-active");
         $('html').removeClass("is-clipped");
         window.location.replace(link);
     }, 2000);
 }
+
 function fail(link) {
     $('html').addClass("is-clipped");
     $('.fail').addClass("is-active");
 
-    setTimeout(function(){
+    setTimeout(function () {
         $('.fail').removeClass("is-active");
         $('html').removeClass("is-clipped");
         window.location.replace(link);
@@ -640,12 +642,12 @@ $(function () {
             data: {
                 directors: []
             },
-            beforeCompile: function(){
+            beforeCompile: function () {
                 var self = this;
                 $.getJSON('/director/all', function (data) {
-                   $('#loading').hide();
-                   $('.directors').show();
-                   self.directors = data;
+                    $('#loading').hide();
+                    $('.directors').show();
+                    self.directors = data;
                 });
             },
             methods: {
@@ -722,14 +724,14 @@ $(function () {
                 }
             });
         });
-    }else if(window.location.pathname === "/admin/networks"){
+    } else if (window.location.pathname === "/admin/networks") {
 
         var networks = new Vue({
             el: '.networks',
             data: {
                 networks: []
             },
-            beforeCompile: function(){
+            beforeCompile: function () {
                 var self = this;
                 $.getJSON('/network/all', function (data) {
                     $('#loading').hide();
@@ -772,7 +774,7 @@ $(function () {
             location.href += '/addOrUpdate/0';
         });
 
-    }else if(window.location.pathname.indexOf("/admin/networks/addOrUpdate") > -1){
+    } else if (window.location.pathname.indexOf("/admin/networks/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForNetwork').show();
         $('.save').click(function () {
@@ -811,13 +813,13 @@ $(function () {
                 }
             });
         });
-    } else if(window.location.pathname === "/admin/studios"){
+    } else if (window.location.pathname === "/admin/studios") {
         var studios = new Vue({
             el: '.studios',
             data: {
                 studios: []
             },
-            beforeCompile: function(){
+            beforeCompile: function () {
                 var self = this;
                 $.getJSON('/studio/all', function (data) {
                     $('#loading').hide();
@@ -859,7 +861,7 @@ $(function () {
         $('.addStudio').click(function () {
             location.href += '/addOrUpdate/0';
         });
-    } else if(window.location.pathname.indexOf("/admin/studios/addOrUpdate") > -1){
+    } else if (window.location.pathname.indexOf("/admin/studios/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForStudio').show();
 
@@ -899,5 +901,33 @@ $(function () {
                 }
             });
         });
+    } else if (window.location.pathname.indexOf("/admin/users") > -1) {
+        var users = new Vue({
+            el: ".users",
+            data: {
+                users: []
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.getJSON('/client/all', function (data) {
+                    self.users = data;
+                    $('#loading').hide();
+                    $('.users').show();
+                });
+            },
+            methods: {
+                blockUser : function (id) {
+                    alert(id);
+                },
+                unblockUser : function (id) {
+                    alert(id);
+                },
+                more : function (id) {
+                    window.location.replace(domain + "/admin/users/more/" + id);
+                }
+            }
+        });
+    } else if (window.loction.pathname.indexOf("/admin/users/more") > -1) {
+
     }
 });
