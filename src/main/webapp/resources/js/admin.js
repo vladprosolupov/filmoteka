@@ -26,6 +26,10 @@ function fail(link) {
     }, 2000);
 }
 
+function goBack(link) {
+    window.location.replace(domain + "/admin/" + link);
+}
+
 $(function () {
     if (window.location.pathname === "/admin/films") {
         var films = new Vue({
@@ -37,7 +41,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/film/all', function (data) {
                     $('#loading').hide();
-                    $('.films').show();
+                    $('.show').show();
                     self.films = data;
                 });
             },
@@ -79,6 +83,7 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/films/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForFilm').show();
+        $('.back').show();
 
         $('.addCategory').click(function () {
             $('.addCategory').addClass("is-loading");
@@ -470,7 +475,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/actor/all', function (data) {
                     $('#loading').hide();
-                    $('.actors').show();
+                    $('.show').show();
                     self.actors = data;
                 });
             },
@@ -511,6 +516,7 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/actors/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForActor').show();
+        $('.back').show();
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -558,7 +564,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/category/all', function (data) {
                     $('#loading').hide();
-                    $('.categories').show();
+                    $('.show').show();
                     self.categories = data;
                 });
             },
@@ -599,6 +605,7 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/categories/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForCategory').show();
+        $('.back').show();
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -646,7 +653,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/director/all', function (data) {
                     $('#loading').hide();
-                    $('.directors').show();
+                    $('.show').show();
                     self.directors = data;
                 });
             },
@@ -688,6 +695,8 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/directors/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForDirector').show();
+        $('.back').show();
+
         $('.save').click(function () {
             $('.save').addClass("is-loading");
             var token = $("meta[name='_csrf']").attr("content");
@@ -735,7 +744,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/network/all', function (data) {
                     $('#loading').hide();
-                    $('.networks').show();
+                    $('.show').show();
                     self.networks = data;
                 });
             },
@@ -777,6 +786,8 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/networks/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForNetwork').show();
+        $('.back').show();
+
         $('.save').click(function () {
             $('.save').addClass("is-loading");
             var token = $("meta[name='_csrf']").attr("content");
@@ -823,7 +834,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/studio/all', function (data) {
                     $('#loading').hide();
-                    $('.studios').show();
+                    $('.show').show();
                     self.studios = data;
                 });
             },
@@ -864,6 +875,7 @@ $(function () {
     } else if (window.location.pathname.indexOf("/admin/studios/addOrUpdate") > -1) {
         $('#loading').hide();
         $('.formForStudio').show();
+        $('.back').show();
 
         $('.save').click(function () {
             $('.save').addClass("is-loading");
@@ -901,7 +913,7 @@ $(function () {
                 }
             });
         });
-    } else if (window.location.pathname.indexOf("/admin/users") > -1) {
+    } else if (window.location.pathname === "/admin/users") {
         var users = new Vue({
             el: ".users",
             data: {
@@ -916,18 +928,67 @@ $(function () {
                 });
             },
             methods: {
-                blockUser : function (id) {
-                    alert(id);
+                blockUser : function (login, e) {
+                    $(e.currentTarget).addClass("is-loading");
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    var clientLoginJSON = {};
+                    clientLoginJSON['login'] = login;
+                    $.ajax({
+                        url: '/client/blockClient',
+                        type: 'POST',
+                        data: JSON.stringify(clientLoginJSON),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            succ(domain + "/admin/users");
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                            fail(domain + "/admin/users");
+                        }
+                    });
                 },
-                unblockUser : function (id) {
-                    alert(id);
+                unblockUser : function (login, e) {
+                    $(e.currentTarget).addClass("is-loading");
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+                    $(document).ajaxSend(function (e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                    var clientLoginJSON = {};
+                    clientLoginJSON['login'] = login;
+                    $.ajax({
+                        url: '/client/unblockClient',
+                        type: 'POST',
+                        data: JSON.stringify(clientLoginJSON),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data);
+                            succ(domain + "/admin/users");
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
+                            console.log('Text status: ' + textStatus);
+                            console.log('XHR: ' + xhr);
+                            console.log('Error thrown: ' + errorThrown);
+                            fail(domain + "/admin/users");
+                        }
+                    });
                 },
                 more : function (id) {
                     window.location.replace(domain + "/admin/users/more/" + id);
                 }
             }
         });
-    } else if (window.loction.pathname.indexOf("/admin/users/more") > -1) {
-
+    } else if (window.location.pathname.indexOf("/admin/users/more") > -1) {
+        $('#loading').hide();
+        $('.user').show();
     }
 });

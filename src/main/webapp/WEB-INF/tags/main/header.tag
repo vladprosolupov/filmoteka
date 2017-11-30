@@ -52,6 +52,7 @@
                             <a class="navbar-item" href="/admin/categories">Categories</a>
                             <a class="navbar-item" href="/admin/networks">Networks</a>
                             <a class="navbar-item" href="/admin/studios">Studios</a>
+                            <a class="navbar-item" href="/admin/users">Users</a>
 
                             <hr class="navbar-divider"/>
                             <input type="hidden"

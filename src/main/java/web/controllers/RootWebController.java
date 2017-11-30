@@ -71,6 +71,7 @@ public class RootWebController {
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info(authentication);
         if (authentication instanceof AnonymousAuthenticationToken || authentication instanceof UsernamePasswordAuthenticationToken) {
             log.info("login() returns : login");
             return "login";
@@ -78,8 +79,6 @@ public class RootWebController {
             log.info("client already logged in: login() returns index");
             return "redirect:/index";
         }
-
-
     }
 
     @RequestMapping(value = "/register")

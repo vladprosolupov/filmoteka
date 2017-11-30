@@ -239,6 +239,8 @@ public class ClientService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List<ClientJSON> allUsers = session.createQuery("select c.id, c.enabled, c.login, c.email, c.firstName, c.lastName from ClientDb c").list();
+        session.getTransaction().commit();
+        session.close();
 
         log.info("getAllForAdmin() returns : allUsers.size()=" + allUsers.size());
         return allUsers;

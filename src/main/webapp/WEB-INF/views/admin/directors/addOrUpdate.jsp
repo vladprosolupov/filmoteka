@@ -9,10 +9,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <t:wrapper>
-    <div id="loading">        <div class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-    </div></div>
+    <div id="loading">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    <div class="back" style="display: none;">
+        <button class="button is-dark is-pulled-left has-icons-left" onclick="goBack('directors')">
+            <i class="fa fa-chevron-left" style="margin-right: 5px;" aria-hidden="true"></i>
+            Back
+        </button>
+    </div>
     <c:choose>
         <c:when test="${director.id != 0}">
             <form class="formForDirector formStyling" data-director="${director.id}" style="display: none">

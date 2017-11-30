@@ -9,6 +9,8 @@
     <script src="<c:url value="/resources/js/admin.js"/>"></script>
     <link rel="stylesheet" href="<c:url value="/resources/styles/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
+    <link rel="shortcut icon"
+          href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>"/>
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -29,6 +31,7 @@
                     <a class="navbar-item" href="/admin/categories">Categories</a>
                     <a class="navbar-item" href="/admin/networks">Networks</a>
                     <a class="navbar-item" href="/admin/studios">Studios</a>
+                    <a class="navbar-item" href="/admin/users">Users</a>
 
                     <%--
                         This form is used for log out

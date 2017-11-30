@@ -16,6 +16,12 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
+    <div class="back" style="display: none; margin-top: 8vh;">
+        <button class="button is-dark is-pulled-left has-icons-left" onclick="goBack('films')">
+            <i class="fa fa-chevron-left" style="margin-right: 5px;" aria-hidden="true"></i>
+            Back
+        </button>
+    </div>
     <c:choose>
         <c:when test="${film.id != 0}">
             <form class="formForFilm formStyling" data-film="${film.id}" style="display: none">

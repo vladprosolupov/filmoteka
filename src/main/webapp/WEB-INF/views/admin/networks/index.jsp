@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="networks" style="display: none">
+    <div class="show" style="display: none">
         <button class="addNetwork button is-primary">Add</button>
     </div>
 
-    <table class="networks table" style="display: none">
+    <table class="networks table show" style="display: none">
         <thead>
         <tr>
             <th>Name</th>

@@ -46,7 +46,7 @@ public class FilmDislikesService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(filmDislikeDb);
-        session.getTransaction().commit();;
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved like for film");
