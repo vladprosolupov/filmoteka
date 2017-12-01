@@ -96,7 +96,7 @@ public class ClientController {
             log.info("avatar set");
         }
 
-        String pathToAvatar = "/resources/images/avatars/icon" + randNumber + ".png";
+        String pathToAvatar = "icon" + randNumber;
         clientJSON.setAvatar(pathToAvatar);
 
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
@@ -245,7 +245,7 @@ public class ClientController {
             log.info("resetPassword() Authority CHANGE_PASSWORD_PRIVILEGE is already set");
             log.info("resetPassword() returns : updatePass");
             return "updatePass";
-        } else if (authentication instanceof AnonymousAuthenticationToken) {
+        } else {
             ClientDb clientDb = passwordResetTokenDb.getClientByIdClient();
             log.info("resetPassword() sets Authority to CHANGE_PASSWORD_PRIVILEGE");
             Authentication auth = new UsernamePasswordAuthenticationToken(
@@ -254,10 +254,8 @@ public class ClientController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             log.info("resetPassword() returns : updatePass");
             return "updatePass";
-        } else {
-            log.info("client already logged in: resetPassword() returns index");
-            return "redirect:/index";
         }
+
     }
 
     @PreAuthorize("hasAuthority('CHANGE_PASSWORD_PRIVILEGE')")

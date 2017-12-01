@@ -28,6 +28,9 @@ public class ClientService {
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private AvatarService avatarService;
+
     private static final Logger log = LogManager.getLogger(ClientService.class);
 
     public ClientDb saveOrUpdate(ClientDb clientDb) throws HibernateException {
@@ -222,9 +225,8 @@ public class ClientService {
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setRole(ClientRole.user.name());
             clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
-            AvatarDb avatarDb = new AvatarDb();
-            avatarDb.setPath(clientJSON.getAvatar());
-            clientDb.setAvatarByAvatar(avatarDb);
+
+            clientDb.setAvatarByAvatar(avatarService.getAvatarById(clientJSON.getAvatar()));
 
         } else {
             log.info("editing existing client");
@@ -235,9 +237,7 @@ public class ClientService {
             clientDb.setLogin(clientJSON.getLogin());
             clientDb.setEmail(clientJSON.getEmail());
 
-            AvatarDb avatarDb = new AvatarDb();
-            avatarDb.setPath(clientJSON.getAvatar());
-            clientDb.setAvatarByAvatar(avatarDb);
+            clientDb.setAvatarByAvatar(avatarService.getAvatarById(clientJSON.getAvatar()));
         }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
