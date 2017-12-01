@@ -80,6 +80,9 @@
                      style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
                         <%--<div style="position: absolute; top: 50%;transform: translate(0, -50%);">--%>
 
+                    <figure class="image is-128x128">
+                        <img v-bind:src="domain + info.avatar">
+                    </figure>
 
                     <h1 class="title">
                         Profile
@@ -101,13 +104,15 @@
                         </p>
                         <br><br>
                         E-mail:<br>
-                        <input class="input is-static" autocomplete="off" type="email" name="email" value={{info.email}}>
+                        <input class="input is-static" autocomplete="off" type="email" name="email"
+                               value={{info.email}}>
                         <p class="help is-danger" style="display: none">
                             Please enter valid email!
                         </p>
                         <br><br>
                         Username:<br>
-                        <input class="input is-static" autocomplete="off" type="text" name="login" readonly="readonly" value={{info.login}}>
+                        <input class="input is-static" autocomplete="off" type="text" name="login" readonly="readonly"
+                               value={{info.login}}>
                         <br><br>
                         Phone number:<br>
                         <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
@@ -126,7 +131,8 @@
 
                         <article class="message is-info messageSuccess" style="display: none;">
                             <div class="message-body">
-                                We have sent you a <strong>letter</strong> to your email with password changing confirmation.
+                                We have sent you a <strong>letter</strong> to your email with password changing
+                                confirmation.
                             </div>
                         </article>
 
