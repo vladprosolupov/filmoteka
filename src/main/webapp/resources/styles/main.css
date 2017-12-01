@@ -698,6 +698,15 @@ a.panel-block:hover .fa-user-circle-o {
     margin-right: 1rem;
 }
 
+.navbar.is-transparent a.navbar-item:hover, .navbar.is-transparent a.navbar-item.is-active,
+.navbar.is-transparent a.navbar-link:hover,
+.navbar.is-transparent a.navbar-link.is-active {
+    background-color: #4e4e4e !important;
+}
+.navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
+    background-color: #4e4e4e !important;
+}
+
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;

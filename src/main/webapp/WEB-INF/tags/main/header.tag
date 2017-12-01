@@ -24,9 +24,16 @@
         <div class="container">
             <nav class="is-centered">
                 <% if (hasAccess == 2) { %>
-                <form class="navbar" id="logout_id" action="${logoutUrl}"
+                <form class="navbar is-transparent" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
+                    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="navbar-menu" id="navbarExampleTransparentExample">
 
                     <a class="navbar-item home" href="/">${logo}</a>
 
@@ -63,6 +70,7 @@
                                                                                            style="margin-right: 5px"
                                                                                            aria-hidden="true"></i>
                                 Log out</a>
+                            </div>
                         </div>
                     </div>
 
