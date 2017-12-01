@@ -164,6 +164,7 @@ public class ClientController {
         clientJSON.setLastName(clientDb.getLastName());
         clientJSON.setLogin(clientDb.getLogin());
         clientJSON.setPhoneNumber(clientDb.getPhoneNumber());
+        clientJSON.setAvatar(clientDb.getAvatarByAvatar().getPath());
 
         log.info("getInfoAboutCurrentUser() returns : clientJSON=" + clientJSON);
         return clientJSON;

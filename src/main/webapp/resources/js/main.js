@@ -314,7 +314,8 @@ $(function () {
                 liked: false,
                 disliked: false,
                 likes: 0,
-                dislikes: 0
+                dislikes: 0,
+                domain: window.location.origin
             },
             beforeCompile: function () {
                 var self = this;

@@ -90,7 +90,7 @@
     <article class="media">
         <figure class="media-left">
             <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
+                <img v-bind:src="domain + currUser.avatar">
             </p>
         </figure>
         <div class="media-content">
@@ -304,7 +304,7 @@
                 <article class="media" v-for="comment in comments" v-bind:data-comment-id="comment.id">
                     <figure class="media-left">
                         <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                            <img v-bind:src="domain + comment.clientAvatar">
                         </p>
                     </figure>
                     <div class="media-content">
