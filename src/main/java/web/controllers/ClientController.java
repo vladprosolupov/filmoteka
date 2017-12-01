@@ -23,6 +23,7 @@ import web.dao.PasswordResetTokenDb;
 import web.events.OnRegistrationCompleteEvent;
 import web.exceptions.NoSuchClientException;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.ClientJSON;
 import web.model.ClientLoginJSON;
 import web.model.ClientPasswordJSON;
@@ -70,13 +71,13 @@ public class ClientController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult, HttpServletRequest request) throws ParsingJsonToDaoException {
+    String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult, HttpServletRequest request) throws ParsingJsonToDaoException, ValidationError {
         log.info("addClient(clientJSON=" + clientJSON + ")");
 
         if (bindingResult.hasErrors()) {
             log.error("Customer does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
@@ -99,13 +100,19 @@ public class ClientController {
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public @ResponseBody
-    String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
+    String editClient(@RequestBody @Valid ClientJSON clientJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("editClient(clientJSON=" + clientJSON + ")");
 
         if (clientJSON == null) {
             log.error("clientJSON is null");
 
             throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
+        if (bindingResult.hasErrors()) {
+            log.error("Validation error");
+
+            throw new ValidationError("Validation is incorrect");
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

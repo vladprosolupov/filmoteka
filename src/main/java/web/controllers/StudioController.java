@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.StudioDb;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.StudioJSON;
 import web.services.StudioService;
 
@@ -31,13 +32,13 @@ public class StudioController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateStudio(@RequestBody @Valid StudioJSON studioJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
+    String addOrUpdateStudio(@RequestBody @Valid StudioJSON studioJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("addOrUpdate(studioJSON=" + studioJSON + ")");
 
         if(bindingResult.hasErrors()) {
             log.error("Studio does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));

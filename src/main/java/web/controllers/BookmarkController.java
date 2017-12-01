@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ClientDb;
 import web.exceptions.NoSuchClientException;
+import web.exceptions.ValidationError;
 import web.model.BookmarkJSON;
 import web.model.FilmJSONIndex;
 import web.services.BookmarkService;
@@ -33,13 +34,13 @@ public class BookmarkController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addBookmark(@RequestBody @Valid BookmarkJSON bookmarkJSON, BindingResult bindingResult) {
+    String addBookmark(@RequestBody @Valid BookmarkJSON bookmarkJSON, BindingResult bindingResult) throws ValidationError {
         log.info("addBookmark(bookmarkJSON=" + bookmarkJSON + ")");
 
         if (bindingResult.hasErrors()) {
             log.error("bookmark does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
         bookmarkService.saveOrUpdate(bookmarkService.convertToBookmarkDbFromBookmark(bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON)));
 
@@ -50,13 +51,13 @@ public class BookmarkController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String deleteBookmark(@RequestBody @Valid BookmarkJSON bookmarkJSON, BindingResult bindingResult) {
+    String deleteBookmark(@RequestBody @Valid BookmarkJSON bookmarkJSON, BindingResult bindingResult) throws ValidationError {
         log.info("deleteBookmark(bookmarkJSON=" + bookmarkJSON + ")");
 
         if (bindingResult.hasErrors()) {
             log.error("bookmark does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
         bookmarkService.delete(bookmarkService.convertToBookmarkDbFromBookmark(bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON)));
 
