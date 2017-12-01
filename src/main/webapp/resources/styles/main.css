@@ -704,7 +704,17 @@ a.panel-block:hover .fa-user-circle-o {
     background-color: #4e4e4e !important;
 }
 .navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
-    background-color: #4e4e4e !important;
+    background-color: transparent !important;
+}
+
+.navbar-burger {
+color: #4e4e4e;
+    height: 3.25rem;
+}
+
+.navbar-burger:hover {
+    background-color: #4e4e4e;
+    color:white;
 }
 
 @media all and (min-width: 769px) and (max-width: 1024px) {

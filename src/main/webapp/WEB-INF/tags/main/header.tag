@@ -19,57 +19,89 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        if ($navbarBurgers.length > 0) {
+
+            $navbarBurgers.forEach(function ($el) {
+                $el.addEventListener('click', function () {
+
+                    var target = $el.dataset.target;
+                    var $target = document.getElementById(target);
+
+                    $el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+
+    });
+
+</script>
+
+
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
             <nav class="is-centered">
                 <% if (hasAccess == 2) { %>
-                <form class="navbar is-transparent" id="logout_id" action="${logoutUrl}"
+                <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <div class="navbar-burger burger" data-target="navburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <div class="navbar-menu" id="navbarExampleTransparentExample">
+                    <div class="navbar-menu" id="navburger">
 
-                    <a class="navbar-item home" href="/">${logo}</a>
+                        <div class="navbar-start">
+                            <a class="navbar-item home" href="/">${logo}</a>
 
-                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
-                                                           aria-hidden="true"></i>Best Rated</a>
-                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
-                                                       aria-hidden="true"></i>You Should Watch</a>
+                            <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                                   aria-hidden="true"></i>Best Rated</a>
+                            <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right"
+                                                               style="margin-right: 5px"
+                                                               aria-hidden="true"></i>You Should Watch</a>
 
-                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
-                                                            aria-hidden="true"></i>About</a>
+                            <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
+                                                                    aria-hidden="true"></i>About</a>
 
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="/admin/"><i class="fa fa-university" style="margin-right: 5px"
-                                                                 aria-hidden="true"></i>Admin Panel</a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link" href="/admin/"><i class="fa fa-university"
+                                                                         style="margin-right: 5px"
+                                                                         aria-hidden="true"></i>Admin Panel</a>
 
-                        <div class="navbar-dropdown is-boxed">
-                            <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i
-                                    class="fa fa-user-circle-o" style="margin-right:5px;" aria-hidden="true"></i>Profile</a>
-                            <hr class="navbar-divider"/>
-                            <a class="navbar-item" href="/admin/films">Films</a>
-                            <a class="navbar-item" href="/admin/actors">Actors</a>
-                            <a class="navbar-item" href="/admin/directors">Directors</a>
-                            <a class="navbar-item" href="/admin/categories">Categories</a>
-                            <a class="navbar-item" href="/admin/networks">Networks</a>
-                            <a class="navbar-item" href="/admin/studios">Studios</a>
-                            <a class="navbar-item" href="/admin/users">Users</a>
+                                <div class="navbar-dropdown is-boxed">
+                                    <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i
+                                            class="fa fa-user-circle-o" style="margin-right:5px;"
+                                            aria-hidden="true"></i>Profile</a>
+                                    <hr class="navbar-divider"/>
+                                    <a class="navbar-item" href="/admin/films">Films</a>
+                                    <a class="navbar-item" href="/admin/actors">Actors</a>
+                                    <a class="navbar-item" href="/admin/directors">Directors</a>
+                                    <a class="navbar-item" href="/admin/categories">Categories</a>
+                                    <a class="navbar-item" href="/admin/networks">Networks</a>
+                                    <a class="navbar-item" href="/admin/studios">Studios</a>
+                                    <a class="navbar-item" href="/admin/users">Users</a>
 
-                            <hr class="navbar-divider"/>
-                            <input type="hidden"
-                                   name="${_csrf.parameterName}"
-                                   value="${_csrf.token}"/>
-                            <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
-                               onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out"
-                                                                                           style="margin-right: 5px"
-                                                                                           aria-hidden="true"></i>
-                                Log out</a>
+                                    <hr class="navbar-divider"/>
+                                    <input type="hidden"
+                                           name="${_csrf.parameterName}"
+                                           value="${_csrf.token}"/>
+                                    <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
+                                       onclick="document.getElementById('logout_id').submit();"><i
+                                            class="fa fa-sign-out"
+                                            style="margin-right: 5px"
+                                            aria-hidden="true"></i>
+                                        Log out</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,126 +138,150 @@
                 <% } else if (hasAccess == 0) { %>
                 <div class="navbar">
 
-                    <a class="navbar-item home" href="/">${logo}</a>
+                    <div class="navbar-burger burger" data-target="navburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
 
-                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
-                                                           aria-hidden="true"></i>Best Rated</a>
-                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
-                                                       aria-hidden="true"></i>You Should Watch</a>
+                    <div class="navbar-menu" id="navburger">
 
-                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
-                                                            aria-hidden="true"></i>About</a>
+                        <a class="navbar-item home" href="/">${logo}</a>
 
-                    <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
+                        <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                               aria-hidden="true"></i>Best Rated</a>
+                        <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
+                                                           aria-hidden="true"></i>You Should Watch</a>
 
-                    <a class="navbar-item" href="/login"><i class="fa fa-sign-in" style="margin-right: 5px"
-                                                            aria-hidden="true"></i>Log in</a>
+                        <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
+                                                                aria-hidden="true"></i>About</a>
 
-                    <div class="is-divider-vertical"></div>
+                        <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
 
-                    <a class="navbar-item" href="/register"><i class="fa fa-check-square-o" style="margin-right: 5px"
-                                                               aria-hidden="true"></i>Sign up</a>
+                        <a class="navbar-item" href="/login"><i class="fa fa-sign-in" style="margin-right: 5px"
+                                                                aria-hidden="true"></i>Log in</a>
 
-                    <div class="navbar-end VueSearch">
-                        <div class="navbar-item has-dropdown centered">
-                            <div class="field has-addons" style="margin: 0">
-                                <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
-                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
-                                           v-on:keyup.down="moveFocusToDropdown" class="input" type="text"
-                                           placeholder="Search...">
-                                    <span class="icon is-small is-left">
+                        <div class="is-divider-vertical"></div>
+
+                        <a class="navbar-item" href="/register"><i class="fa fa-check-square-o"
+                                                                   style="margin-right: 5px"
+                                                                   aria-hidden="true"></i>Sign up</a>
+
+                        <div class="navbar-end VueSearch">
+                            <div class="navbar-item has-dropdown centered">
+                                <div class="field has-addons" style="margin: 0">
+                                    <div class="control has-icons-left">
+                                        <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                               v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                               v-on:keyup.down="moveFocusToDropdown" class="input" type="text"
+                                               placeholder="Search...">
+                                        <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-dark" v-on:click="doSearch">
+                                            Search
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch">
-                                        Search
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
-                                   v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
-                                   v-for="result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
-                                    found
+                                <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                                     style="margin: 0 !important;">
+                                    <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                       v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
+                                       v-for="result in searchResult" v-bind:href="link+result[0]">{{result[1]}}</a>
+                                    <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                        found
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <% } else { %>
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <a class="navbar-item home" href="/">${logo}</a>
-
-                    <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
-                                                           aria-hidden="true"></i> Best Rated</a>
-
-                    <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
-                                                       aria-hidden="true"></i>You Should Watch</a>
-
-                    <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
-                                                            aria-hidden="true"></i>About</a>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-
-                        <a class="navbar-link" href="/profile"><i class="fa fa-user-circle-o" style="margin-right:5px;"
-                                                                  aria-hidden="true"></i>Profile</a>
-
-                        <div class="navbar-dropdown is-boxed">
-
-                            <a class="navbar-item" href="/profile?s=like"><i class="fa fa-heart" style="margin-right: 5px;"
-                                                               aria-hidden="true"></i>Films you've liked</a>
-
-                            <a class="navbar-item" href="/profile?s=book"><i class="fa fa-bookmark" style="margin-right: 5px;"
-                                                               aria-hidden="true"></i> Bookmarks</a>
-
-
-                            <hr class="navbar-divider"/>
-
-                            <input type="hidden"
-                                   name="${_csrf.parameterName}"
-                                   value="${_csrf.token}"/>
-                            <a style="color: #ff5257" class="navbar-item droppeddown" href="javascript:{}"
-                               onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out"
-                                                                                           style="margin-right: 5px"
-                                                                                           aria-hidden="true"></i>Log
-                                out</a>
-                        </div>
+                    <div class="navbar-burger burger" data-target="navburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="navbar-end VueSearch">
-                        <div class="navbar-item has-dropdown centered">
-                            <div class="field has-addons" style="margin: 0">
-                                <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
-                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
-                                           v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers"
-                                           class="input" type="text" placeholder="Search...">
-                                    <span class="icon is-small is-left">
+
+                    <div class="navbar-menu" id="navburger">
+
+                        <a class="navbar-item home" href="/">${logo}</a>
+
+                        <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                               aria-hidden="true"></i> Best Rated</a>
+
+                        <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
+                                                           aria-hidden="true"></i>You Should Watch</a>
+
+                        <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
+                                                                aria-hidden="true"></i>About</a>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+
+                            <a class="navbar-link" href="/profile"><i class="fa fa-user-circle-o"
+                                                                      style="margin-right:5px;"
+                                                                      aria-hidden="true"></i>Profile</a>
+
+                            <div class="navbar-dropdown is-boxed">
+
+                                <a class="navbar-item" href="/profile?s=like"><i class="fa fa-heart"
+                                                                                 style="margin-right: 5px;"
+                                                                                 aria-hidden="true"></i>Films you've
+                                    liked</a>
+
+                                <a class="navbar-item" href="/profile?s=book"><i class="fa fa-bookmark"
+                                                                                 style="margin-right: 5px;"
+                                                                                 aria-hidden="true"></i> Bookmarks</a>
+
+
+                                <hr class="navbar-divider"/>
+
+                                <input type="hidden"
+                                       name="${_csrf.parameterName}"
+                                       value="${_csrf.token}"/>
+                                <a style="color: #ff5257" class="navbar-item droppeddown" href="javascript:{}"
+                                   onclick="document.getElementById('logout_id').submit();"><i class="fa fa-sign-out"
+                                                                                               style="margin-right: 5px"
+                                                                                               aria-hidden="true"></i>Log
+                                    out</a>
+                            </div>
+                        </div>
+                        <div class="navbar-end VueSearch">
+                            <div class="navbar-item has-dropdown centered">
+                                <div class="field has-addons" style="margin: 0">
+                                    <div class="control has-icons-left">
+                                        <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                               v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                               v-on:keyup.down="moveFocusToDropdown"
+                                               v-on:mouseover="removeFocusFromOthers"
+                                               class="input" type="text" placeholder="Search...">
+                                        <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-dark" v-on:click="doSearch">
+                                            Search
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch">
-                                        Search
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
-                                   v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
-                                   v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
-                                    found
+                                <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                                     style="margin: 0 !important;">
+                                    <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                       v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
+                                       v-bind:href="link+result[0]">{{result[1]}}</a>
+                                    <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                        found
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                 </form>
                 <% } %>
