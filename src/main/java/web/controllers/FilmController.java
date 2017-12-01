@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.FilmJSON;
 import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
@@ -95,13 +96,13 @@ public class FilmController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    String saveOrUpdate(@RequestBody @Valid FilmJSON filmToSave, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
+    String saveOrUpdate(@RequestBody @Valid FilmJSON filmToSave, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException, ValidationError {
         log.info("saveOrUpdate(filmsToSave=" + filmToSave + ")");
 
         if(bindingResult.hasErrors()) {
             log.error("Film does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         FilmDb filmDb = filmService.convert(filmToSave);

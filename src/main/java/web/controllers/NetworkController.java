@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.NetworkDb;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.NetworkJSON;
 import web.services.NetworkService;
 
@@ -30,13 +31,13 @@ public class NetworkController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(@RequestBody @Valid NetworkJSON networkJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
+    String addOrUpdate(@RequestBody @Valid NetworkJSON networkJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("addOrUpdate(networkJSON=" + networkJSON + ")");
 
         if(bindingResult.hasErrors()) {
             log.error("Network does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));

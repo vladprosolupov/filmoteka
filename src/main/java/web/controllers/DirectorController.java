@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.DirectorDb;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.DirectorJSON;
 import web.services.DirectorService;
 
@@ -30,13 +31,13 @@ public class DirectorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdate(@RequestBody @Valid DirectorJSON directorJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
+    String addOrUpdate(@RequestBody @Valid DirectorJSON directorJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("addOrUpdate(directorJSON=" + directorJSON + ")");
 
         if(bindingResult.hasErrors()) {
             log.error("Director does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
 

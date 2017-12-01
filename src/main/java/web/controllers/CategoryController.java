@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.CategoryDb;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.CategoryJSON;
 import web.model.FilmJSONIndex;
 import web.services.CategoryService;
@@ -35,13 +36,13 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addOrUpdateCategory(@RequestBody @Valid CategoryJSON categoryJSON, BindingResult bindingResult) throws ParsingJsonToDaoException {
+    String addOrUpdateCategory(@RequestBody @Valid CategoryJSON categoryJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("addOrUpdateCategory(categoryJSON=" + categoryJSON + ")");
 
         if (bindingResult.hasErrors()) {
             log.error("Category does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));

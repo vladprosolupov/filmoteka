@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ActorDb;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.ActorJSON;
 import web.services.ActorService;
 
@@ -33,13 +34,13 @@ public class ActorController {
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addActor(@RequestBody @Valid ActorJSON actorJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException {
+    String addActor(@RequestBody @Valid ActorJSON actorJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException, ValidationError {
         log.info("addActor(actorJSON=" + actorJSON + ")");
 
         if(bindingResult.hasErrors()) {
             log.error("Actor does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
