@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.dao.AvatarDb;
 import web.dao.ClientDb;
 import org.hibernate.Session;
 import web.enums.ClientRole;
@@ -221,6 +222,10 @@ public class ClientService {
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setRole(ClientRole.user.name());
             clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            AvatarDb avatarDb = new AvatarDb();
+            avatarDb.setPath(clientJSON.getAvatar());
+            clientDb.setAvatarByAvatar(avatarDb);
+
         } else {
             log.info("editing existing client");
 
@@ -229,6 +234,10 @@ public class ClientService {
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setLogin(clientJSON.getLogin());
             clientDb.setEmail(clientJSON.getEmail());
+
+            AvatarDb avatarDb = new AvatarDb();
+            avatarDb.setPath(clientJSON.getAvatar());
+            clientDb.setAvatarByAvatar(avatarDb);
         }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
