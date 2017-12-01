@@ -87,31 +87,50 @@
                         {{info.firstName}} {{info.lastName}}
                     </h1>
                     <br>
-                    <form class="subtitle">
+                    <form class="subtitle profile" v-bind:data-id="info.id">
                         First name:<br>
-                        <input class="input is-3" type="text" name="firstname" value={{info.firstName}}>
+                        <input class="input is-3" type="text" name="firstName" value={{info.firstName}}>
+                        <p class="help is-danger" style="display: none">
+                            First name cannot be shorter than 2 symbols and contain numeric!
+                        </p>
                         <br><br>
                         Last name:<br>
-                        <input class="input" type="text" name="lastname" value={{info.lastName}}>
+                        <input class="input" type="text" name="lastName" value={{info.lastName}}>
+                        <p class="help is-danger" style="display: none">
+                            Last name cannot be shorter than 2 symbols and contain numeric!
+                        </p>
                         <br><br>
                         E-mail:<br>
-                        <input class="input" type="email" name="lastname" value={{info.email}}>
+                        <input class="input is-static" autocomplete="off" type="email" name="email" value={{info.email}}>
+                        <p class="help is-danger" style="display: none">
+                            Please enter valid email!
+                        </p>
                         <br><br>
                         Username:<br>
-                        <input class="input" type="text" name="login" value={{info.login}}>
-                        <br><br>
-                        Password:<br>
-                        <input class="input" type="password" name="password" value={{info.password}}>
+                        <input class="input is-static" autocomplete="off" type="text" name="login" readonly="readonly" value={{info.login}}>
                         <br><br>
                         Phone number:<br>
                         <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
+                        <p class="help is-danger" style="display: none">
+                            Phone number cannot be shorter than 6 symbols!
+                        </p>
                         <br><br>
-                        <button class="button is-info is-medium">Save Changes</button>
+                        <button type="button" class="button is-info is-medium is-static save">Save changes</button>
+                        <button type="button" class="button is-dark is-medium pass">Change password</button>
+                        <br><br>
+                        <article class="message is-danger messageError" style="display: none;">
+                            <div class="message-body">
+                                Sorry, an <strong>error</strong> occurred during execution.
+                            </div>
+                        </article>
+
+                        <article class="message is-info messageSuccess" style="display: none;">
+                            <div class="message-body">
+                                We have sent you a <strong>letter</strong> to your email with password changing confirmation.
+                            </div>
+                        </article>
 
                     </form>
-
-
-                        <%--</div>--%>
                 </div>
                 <div class="container column" v-if="currentTab == 'like'"
                      style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">

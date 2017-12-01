@@ -19,32 +19,6 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
-<script type="text/javascript">
-
-    document.addEventListener('DOMContentLoaded', function () {
-
-        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        if ($navbarBurgers.length > 0) {
-
-            $navbarBurgers.forEach(function ($el) {
-                $el.addEventListener('click', function () {
-
-                    var target = $el.dataset.target;
-                    var $target = document.getElementById(target);
-
-                    $el.classList.toggle('is-active');
-                    $target.classList.toggle('is-active');
-
-                });
-            });
-        }
-
-    });
-
-</script>
-
-
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
@@ -104,32 +78,34 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="navbar-end VueSearch">
-                        <div class="navbar-item has-dropdown centered">
-                            <div class="field has-addons" style="margin: 0">
-                                <div class="control has-icons-left">
-                                    <input id="searchInput" autocomplete="off" v-model="searchInput"
-                                           v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
-                                           v-on:keyup.down="moveFocusToDropdown" v-on:mouseover="removeFocusFromOthers"
-                                           class="input" type="text" placeholder="Search...">
-                                    <span class="icon is-small is-left">
+                        <div class="navbar-end VueSearch">
+                            <div class="navbar-item has-dropdown centered">
+                                <div class="field has-addons" style="margin: 0">
+                                    <div class="control has-icons-left">
+                                        <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                               v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                                               v-on:keyup.down="moveFocusToDropdown"
+                                               v-on:mouseover="removeFocusFromOthers"
+                                               class="input" type="text" placeholder="Search...">
+                                        <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-dark" v-on:click="doSearch">
+                                            Search
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="control">
-                                    <a class="button is-dark" v-on:click="doSearch">
-                                        Search
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="navbar-dropdown is-boxed dropdown-menu is-right" style="margin: 0 !important;">
-                                <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
-                                   v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
-                                   v-bind:href="link+result[0]">{{result[1]}}</a>
-                                <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
-                                    found
+                                <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                                     style="margin: 0 !important;">
+                                    <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                                       v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
+                                       v-bind:href="link+result[0]">{{result[1]}}</a>
+                                    <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                                        found
+                                    </div>
                                 </div>
                             </div>
                         </div>

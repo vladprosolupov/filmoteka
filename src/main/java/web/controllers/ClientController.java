@@ -151,6 +151,7 @@ public class ClientController {
 
         ClientJSON clientJSON = new ClientJSON();
 
+        clientJSON.setId(clientDb.getId());
         clientJSON.setEmail(clientDb.getEmail());
         clientJSON.setFirstName(clientDb.getFirstName());
         clientJSON.setLastName(clientDb.getLastName());
@@ -213,7 +214,7 @@ public class ClientController {
             throw new IllegalArgumentException("Verification token has expired");
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication instanceof UsernamePasswordAuthenticationToken) {
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE"))) {
             log.info("resetPassword() Authority CHANGE_PASSWORD_PRIVILEGE is already set");
             log.info("resetPassword() returns : updatePass");
             return "updatePass";

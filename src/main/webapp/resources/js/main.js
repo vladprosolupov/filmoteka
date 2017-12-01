@@ -11,6 +11,27 @@ window.addEventListener("keydown", function (e) {
     }
 }, false);
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    if ($navbarBurgers.length > 0) {
+
+        $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+
+                var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                $el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
+    }
+
+});
+
 function removeWhiteSpaceAndNewLine(input) {
     var result = input.replace(/(\r\n|\n|\r|\s)/gm, "");
     return result;
@@ -924,6 +945,205 @@ $(function () {
                     }
                 }
             }
+        });
+        var flags = [true, true, true, true];
+        var button = $('button[class*="is-info"]');
+        $('input[name="firstName"]').keyup(function () {
+            if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[0] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[0].style.display = "block";
+                button.addClass("is-static");
+                flags[0] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="firstName"]').change(function () {
+            if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[0] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[0].style.display = "block";
+                button.addClass("is-static");
+                flags[0] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="lastName"]').keyup(function () {
+            if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[1] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[1].style.display = "block";
+                button.addClass("is-static");
+                flags[1] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="lastName"]').change(function () {
+            if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[1] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[1].style.display = "block";
+                button.addClass("is-static");
+                flags[1] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="email"]').keyup(function () {
+            if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[2] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[2].style.display = "block";
+                button.addClass("is-static");
+                flags[2] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+
+        $('input[name="email"]').change(function () {
+            if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
+                    $(this).removeClass("is-danger");
+                }
+                flags[2] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
+                $('.help')[2].style.display = "block";
+                button.addClass("is-static");
+                flags[2] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="phoneNumber"]').keyup(function (event) {
+            if (this.value.length > 6) {
+                $('.help')[3].style.display = "none";
+                if (this.classList.contains("is-danger")) {
+                    $(this).removeClass("is-danger");
+                }
+                flags[3] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                $('.help')[3].style.display = "block";
+                if (this.classList.contains("is-success")) {
+                    $(this).removeClass("is-success");
+                }
+                button.addClass("is-static");
+                flags[3] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="phoneNumber"]').change(function (event) {
+            if (this.value.length > 6) {
+                $('.help')[3].style.display = "none";
+                if (this.classList.contains("is-danger")) {
+                    $(this).removeClass("is-danger");
+                }
+                flags[3] = true;
+                if (!flags.includes(false)) {
+                    button.removeClass("is-static");
+                }
+                $(this).addClass("is-success");
+            } else {
+                $('.help')[3].style.display = "block";
+                if (this.classList.contains("is-success")) {
+                    $(this).removeClass("is-success");
+                }
+                button.addClass("is-static");
+                flags[3] = false;
+                $(this).addClass("is-danger");
+            }
+        });
+        $('input[name="phoneNumber"]').keypress(function () {
+            if (event.keyCode < 43 || event.keyCode > 57 || event.keyCode === 44 || event.keyCode === 45 || event.keyCode === 46 || event.keyCode === 47 || (event.keyCode === 43 && this.value.length !== 0))
+                return false;
+        });
+        $('input').keypress(function () {
+            if (event.keyCode === 32)
+                return false;
+        });
+        $('button[class*="save"]').click(function () {
+            alert('clicked');
+        });
+        $('button[class*="pass"]').click(function () {
+            var self = this;
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            var clientEmail = profile.info.email;
+            $(self).addClass("is-loading");
+            $.ajax({
+                url: domain + "/client/forgotPassword",
+                type: 'POST',
+                contentType: 'application/json; utf-8',
+                data: clientEmail,
+                success: function (data) {
+                    if (data.name != "error") {
+                        $(self).removeClass("is-loading");
+                        $('.messageSuccess').slideDown();
+                    } else {
+                        $('.messageError').slideDown();
+                        $(self).removeClass("is-loading");
+                    }
+                },
+                fail: function () {
+                    $('.messageError').slideDown();
+                }
+            });
         });
 
     } else if (window.location.pathname === "/best") {
