@@ -748,7 +748,8 @@ $(function () {
                 currentPage: 1,
                 link: domain + '/film/',
                 pagesNumberLiked: 1,
-                pagesNumberBookmarked: 1
+                pagesNumberBookmarked: 1,
+                domain: window.location.origin
             },
             beforeCompile: function () {
                 var self = this;
