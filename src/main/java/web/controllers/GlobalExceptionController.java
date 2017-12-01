@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import web.exceptions.NoSuchClientException;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.ErrorJSON;
 
 @ControllerAdvice
@@ -17,7 +18,8 @@ public class GlobalExceptionController {
     private static final Logger log = LogManager.getLogger(GlobalExceptionController.class);
 
     @ExceptionHandler(IndexOutOfBoundsException.class)
-    public @ResponseBody ErrorJSON indexOutOfBoundExceptionOccur (IndexOutOfBoundsException e){
+    public @ResponseBody
+    ErrorJSON indexOutOfBoundExceptionOccur(IndexOutOfBoundsException e) {
         log.error("indexOutOfBoundExceptionOccur (e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -30,7 +32,8 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(HibernateException.class)
-    public @ResponseBody ErrorJSON hibernateExceptionOccur(HibernateException e) {
+    public @ResponseBody
+    ErrorJSON hibernateExceptionOccur(HibernateException e) {
         log.error("hibernateExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -43,7 +46,8 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(NumberFormatException.class)
-    public @ResponseBody ErrorJSON numberFormatExceptionOccur(NumberFormatException e){
+    public @ResponseBody
+    ErrorJSON numberFormatExceptionOccur(NumberFormatException e) {
         log.info("numberFormatExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
@@ -56,41 +60,72 @@ public class GlobalExceptionController {
     }
 
     @ExceptionHandler(ParsingJsonToDaoException.class)
-    public @ResponseBody ErrorJSON parsingJSONExceptionOccur(ParsingJsonToDaoException e) {
+    public @ResponseBody
+    ErrorJSON parsingJSONExceptionOccur(ParsingJsonToDaoException e) {
         log.error("parsingJSONExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
         errorJSON.setMessage(e.getCause().getLocalizedMessage());
-        errorJSON.setStatusCode("500 Database error");
+        errorJSON.setStatusCode("500 Server error");
 
         log.error("parsingJSONExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public @ResponseBody ErrorJSON illegalArgumentExceptionOccur(IllegalArgumentException e) {
+    public @ResponseBody
+    ErrorJSON illegalArgumentExceptionOccur(IllegalArgumentException e) {
         log.error("illegalArgumentExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
         errorJSON.setMessage(e.getMessage());
-        errorJSON.setStatusCode("500 Database error");
+        errorJSON.setStatusCode("500 Server error");
 
         log.error("illegalArgumentExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 
     @ExceptionHandler(NoSuchClientException.class)
-    public @ResponseBody ErrorJSON noSuchClientExceptionOccur(IllegalArgumentException e) {
+    public @ResponseBody
+    ErrorJSON noSuchClientExceptionOccur(IllegalArgumentException e) {
         log.error("noSuchClientExceptionOccur(e=" + e + ")");
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
         errorJSON.setMessage(e.getMessage());
-        errorJSON.setStatusCode("500 Database error");
+        errorJSON.setStatusCode("500 Server error");
 
         log.error("noSuchClientExceptionOccur() returns : errorJSON=" + errorJSON);
+        return errorJSON;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public @ResponseBody
+    ErrorJSON generalExceptionOccur(Exception e) {
+        log.error("generalExceptionOccur(e=" + e + ")");
+
+        ErrorJSON errorJSON = new ErrorJSON();
+        errorJSON.setName("error");
+        errorJSON.setMessage(e.getMessage());
+        errorJSON.setStatusCode("500 Server error");
+
+        log.error("generalExceptionOccur() returns : errorJSON=" + errorJSON);
+        return errorJSON;
+    }
+
+    @ExceptionHandler(ValidationError.class)
+    public @ResponseBody
+    ErrorJSON validationExceptionOccur(ValidationError e) {
+        log.error("validationExceptionOccur(e=" + e);
+
+        ErrorJSON errorJSON = new ErrorJSON();
+        errorJSON.setName("error");
+        errorJSON.setMessage(e.getMessage());
+        errorJSON.setStatusCode("400 Client error");
+
+        log.error("validationExceptionOccur() returns : errorJSON=" + errorJSON);
         return errorJSON;
     }
 }

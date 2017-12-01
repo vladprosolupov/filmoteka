@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -59,6 +60,7 @@ public class RootWebController {
     public String login(HttpServletRequest request) {
         log.info("login(request=" + request + ")");
 
+
         String referrer = request.getHeader("Referrer");
 
         if (referrer != null) {
@@ -71,8 +73,7 @@ public class RootWebController {
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info(authentication);
-        if (authentication instanceof AnonymousAuthenticationToken || authentication instanceof UsernamePasswordAuthenticationToken) {
+        if (authentication instanceof AnonymousAuthenticationToken) {
             log.info("login() returns : login");
             return "login";
         } else {

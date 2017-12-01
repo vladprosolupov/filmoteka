@@ -228,6 +228,7 @@ public class ClientService {
             clientDb.setLastName(clientJSON.getLastName());
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setLogin(clientJSON.getLogin());
+            clientDb.setEmail(clientJSON.getEmail());
         }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
