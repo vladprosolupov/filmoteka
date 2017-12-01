@@ -7,9 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -60,8 +60,7 @@ public class RootWebController {
     public String login(HttpServletRequest request) {
         log.info("login(request=" + request + ")");
 
-
-        String referrer = request.getHeader("Referrer");
+        String referrer = request.getHeader("referer");
 
         if (referrer != null) {
             log.info("referrer is not null");
@@ -73,7 +72,8 @@ public class RootWebController {
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication instanceof AnonymousAuthenticationToken) {
+        log.info(authentication);
+        if (authentication instanceof AnonymousAuthenticationToken || authentication.getAuthorities().contains(new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE"))) {
             log.info("login() returns : login");
             return "login";
         } else {
