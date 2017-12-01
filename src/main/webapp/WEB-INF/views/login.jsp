@@ -73,6 +73,7 @@
                                 <c:if test="${param.success == false}">
                                     <div class="msg has-text-centered has-text-danger">Your login or password is
                                         incorrect!
+                                        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
                                     </div>
                                 </c:if>
                                 <div class="columns">
