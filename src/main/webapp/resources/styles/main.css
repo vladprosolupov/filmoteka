@@ -721,10 +721,46 @@ color: #4e4e4e;
     color:white;
 }
 
+.tile.is-parent {
+    padding: 3.75rem;
+}
+
+@media all and (max-width: 769px){
+
+}
+
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;
     }
+
+    /*.navbar-burger span{*/
+        /*width:48px;*/
+        /*left: calc(50% - 24px);*/
+    /*}*/
+    /*.navbar-burger {*/
+        /*cursor: pointer;*/
+        /*display: block;*/
+        /*height: 5rem;*/
+        /*position: relative;*/
+        /*width: 5rem;*/
+        /*margin-left: auto;*/
+    /*}*/
+
+    /*.navbar-burger span:nth-child(1) {*/
+        /*top: calc(50% - 14px);*/
+    /*}*/
+    /*.navbar-burger span:nth-child(2) {*/
+        /*top: calc(50% - 1px);*/
+    /*}*/
+    /*.navbar-burger span:nth-child(3) {*/
+        /*top: calc(50% + 12px);*/
+    /*}*/
+    /*.navbar-burger {*/
+        /*color: #4e4e4e;*/
+        /*height: 5rem;*/
+    /*}*/
+
 }
 
 @media all and (min-width: 1024px) and (max-width: 1215px) {

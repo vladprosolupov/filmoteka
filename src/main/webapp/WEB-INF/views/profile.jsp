@@ -33,10 +33,8 @@
 
 </head>
 <t:header>
-
     <div class="container vue">
-
-        <div class="hero-head2">
+        <div class="hero-head2 tile is-paddingless">
             <div class="navbar">
                 <div class="navbar-item">
                     <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
@@ -67,7 +65,7 @@
             </div>
         </div>
 
-        <section class="hero is-white is-small is-bold has-text-centered">
+        <section class="hero is-white is-small is-bold has-text-centered tile is-parent">
             <div class="hero-body is-paddingless" style="margin-top: 100px">
 
                 <div id="loading" style="position: relative; left: 50%">
@@ -80,62 +78,70 @@
                      style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
                         <%--<div style="position: absolute; top: 50%;transform: translate(0, -50%);">--%>
 
-                    <figure class="image is-128x128">
+                    <figure style="margin-left: auto;margin-right: auto" class="image is-128x128">
                         <img v-bind:src="domain + info.avatar">
                     </figure>
-
                     <h1 class="title">
                         Profile
                         <br>
                         {{info.firstName}} {{info.lastName}}
                     </h1>
-                    <br>
+                    <hr>
+
                     <form class="subtitle profile" v-bind:data-id="info.id">
-                        First name:<br>
-                        <input class="input is-3" type="text" name="firstName" value={{info.firstName}}>
-                        <p class="help is-danger" style="display: none">
-                            First name cannot be shorter than 2 symbols and contain numeric!
-                        </p>
-                        <br><br>
-                        Last name:<br>
-                        <input class="input" type="text" name="lastName" value={{info.lastName}}>
-                        <p class="help is-danger" style="display: none">
-                            Last name cannot be shorter than 2 symbols and contain numeric!
-                        </p>
-                        <br><br>
-                        E-mail:<br>
-                        <input class="input is-static" autocomplete="off" type="email" name="email"
-                               value={{info.email}}>
-                        <p class="help is-danger" style="display: none">
-                            Please enter valid email!
-                        </p>
-                        <br><br>
-                        Username:<br>
-                        <input class="input is-static" autocomplete="off" type="text" name="login" readonly="readonly"
-                               value={{info.login}}>
-                        <br><br>
-                        Phone number:<br>
-                        <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
-                        <p class="help is-danger" style="display: none">
-                            Phone number cannot be shorter than 6 symbols!
-                        </p>
-                        <br><br>
-                        <button type="button" class="button is-info is-medium is-static save">Save changes</button>
-                        <button type="button" class="button is-dark is-medium pass">Change password</button>
-                        <br><br>
-                        <article class="message is-danger messageError" style="display: none;">
-                            <div class="message-body">
-                                Sorry, an <strong>error</strong> occurred during execution.
+                        <div class="box">
+                            <div class="field">
+                                First name:
+                                <input class="input is-3" type="text" name="firstName" value={{info.firstName}}>
+                                <p class="help is-danger" style="display: none">
+                                    First name cannot be shorter than 2 symbols and contain numeric!
+                                </p>
                             </div>
-                        </article>
-
-                        <article class="message is-info messageSuccess" style="display: none;">
-                            <div class="message-body">
-                                We have sent you a <strong>letter</strong> to your email with password changing
-                                confirmation.
+                            <div class="field">
+                                Last name
+                                <input class="input" type="text" name="lastName" value={{info.lastName}}>
+                                <p class="help is-danger" style="display: none">
+                                    Last name cannot be shorter than 2 symbols and contain numeric!
+                                </p>
                             </div>
-                        </article>
+                            <div class="field">
+                                E-mail:
+                                <input class="input is-static" autocomplete="off" type="email" name="email"
+                                       value={{info.email}}>
+                                <p class="help is-danger" style="display: none">
+                                    Please enter valid email!
+                                </p>
+                            </div>
+                            <div class="field">
+                                Username:
+                                <input class="input is-static" autocomplete="off" type="text" name="login"
+                                       readonly="readonly"
+                                       value={{info.login}}>
+                            </div>
+                            <div class="field">
+                                Phone number:
+                                <input class="input" type="tel" name="phoneNumber" value={{info.phoneNumber}}>
+                                <p class="help is-danger" style="display: none">
+                                    Phone number cannot be shorter than 6 symbols!
+                                </p>
+                            </div>
+                            <hr>
+                            <button type="button" class="button is-info is-medium is-static save">Save changes</button>
+                            <button type="button" class="button is-dark is-medium pass">Change password</button>
 
+                            <article class="message is-danger messageError" style="display: none;">
+                                <div class="message-body">
+                                    Sorry, an <strong>error</strong> occurred during execution.
+                                </div>
+                            </article>
+
+                            <article class="message is-info messageSuccess" style="display: none;">
+                                <div class="message-body">
+                                    We have sent you a <strong>letter</strong> to your email with password changing
+                                    confirmation.
+                                </div>
+                            </article>
+                        </div>
                     </form>
                 </div>
                 <div class="container column" v-if="currentTab == 'like'"

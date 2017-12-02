@@ -18,22 +18,22 @@
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
-<body>
+<body class="layout-default">
 <section class="hero background_for_client is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
             <nav class="is-centered">
                 <% if (hasAccess == 2) { %>
-                <form class="navbar" id="logout_id" action="${logoutUrl}"
+                <form class="navbar is-transparent" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <div class="navbar-burger burger" data-target="navburger">
+                    <div class="navbar-burger burger" data-target="navburger-admin">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <div class="navbar-menu" id="navburger">
+                    <div class="navbar-menu" id="navburger-admin">
 
                         <div class="navbar-start">
                             <a class="navbar-item home" href="/">${logo}</a>
@@ -112,15 +112,15 @@
                     </div>
                 </form>
                 <% } else if (hasAccess == 0) { %>
-                <div class="navbar">
+                <div class="navbar is-transparent">
 
-                    <div class="navbar-burger burger" data-target="navburger">
+                    <div class="navbar-burger burger" data-target="navburger-unreg">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <div class="navbar-menu" id="navburger">
+                    <div class="navbar-menu" id="navburger-unreg">
 
                         <a class="navbar-item home" href="/">${logo}</a>
 
@@ -175,16 +175,16 @@
                     </div>
                 </div>
                 <% } else { %>
-                <form class="navbar" id="logout_id" action="${logoutUrl}"
+                <form class="navbar is-transparent" id="logout_id" action="${logoutUrl}"
                       method="post" onsubmit="return false">
 
-                    <div class="navbar-burger burger" data-target="navburger">
+                    <div class="navbar-burger burger" data-target="navburger-user">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <div class="navbar-menu" id="navburger">
+                    <div class="navbar-menu" id="navburger-user">
 
                         <a class="navbar-item home" href="/">${logo}</a>
 
