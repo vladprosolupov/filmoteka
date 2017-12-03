@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <link rel="shortcut icon"
           href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
