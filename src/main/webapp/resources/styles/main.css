@@ -21,7 +21,7 @@
     margin-top: 3%;
 }
 
-section.info-tiles .films {
+.column.is-9 .films {
     display: grid;
     grid-template-columns: 16% 16% 16% 16% 16%;
     grid-column-gap: 5%;
@@ -114,11 +114,11 @@ a.navbar-item {
     color: #4e4e4e;
 }
 
-.navbar {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0px;
-}
+/*.navbar {*/
+    /*width: 100%;*/
+    /*justify-content: center;*/
+    /*margin-bottom: 0px;*/
+/*}*/
 
 a.navbar-link:hover {
     background-color: transparent !important;
@@ -732,6 +732,10 @@ color: #4e4e4e;
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;
+    }
+
+    .column.is-9 .films {
+        grid-template-columns : 75%;
     }
 
     /*.navbar-burger span{*/
