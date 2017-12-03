@@ -924,6 +924,18 @@ $(function () {
                             hideLoadingProfile();
                         });
                     }
+                },
+                chooseImg: function() {
+                    var $radioImgs = $('#radioImgs');
+                    if($radioImgs.css('display') === 'block')
+                        $radioImgs.slideUp();
+                    else
+                        $radioImgs.slideDown();
+                },
+                changeImg: function (event) {
+                    var self = this;
+                    self.info.avatar = $($(event.currentTarget).next().children()[0]).attr('src');
+                    $('button[class*="is-info"]').removeClass("is-static");
                 }
             }
         });
@@ -939,6 +951,7 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.firstName = this.value;
                 $(this).addClass("is-success");
             } else {
                 if (this.classList.contains("is-success")) $(this).removeClass("is-success");
@@ -958,6 +971,7 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.firstName = this.value;
                 $(this).addClass("is-success");
             } else {
                 if (this.classList.contains("is-success")) $(this).removeClass("is-success");
@@ -977,6 +991,7 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.lastName = this.value;
                 $(this).addClass("is-success");
             } else {
                 if (this.classList.contains("is-success")) $(this).removeClass("is-success");
@@ -996,51 +1011,13 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.lastName = this.value;
                 $(this).addClass("is-success");
             } else {
                 if (this.classList.contains("is-success")) $(this).removeClass("is-success");
                 $('.help')[1].style.display = "block";
                 button.addClass("is-static");
                 flags[1] = false;
-                $(this).addClass("is-danger");
-            }
-        });
-        $('input[name="email"]').keyup(function () {
-            if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-                if (this.classList.contains("is-danger")) {
-                    if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
-                    $(this).removeClass("is-danger");
-                }
-                flags[2] = true;
-                if (!flags.includes(false)) {
-                    button.removeClass("is-static");
-                }
-                $(this).addClass("is-success");
-            } else {
-                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
-                $('.help')[2].style.display = "block";
-                button.addClass("is-static");
-                flags[2] = false;
-                $(this).addClass("is-danger");
-            }
-        });
-
-        $('input[name="email"]').change(function () {
-            if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-                if (this.classList.contains("is-danger")) {
-                    if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
-                    $(this).removeClass("is-danger");
-                }
-                flags[2] = true;
-                if (!flags.includes(false)) {
-                    button.removeClass("is-static");
-                }
-                $(this).addClass("is-success");
-            } else {
-                if (this.classList.contains("is-success")) $(this).removeClass("is-success");
-                $('.help')[2].style.display = "block";
-                button.addClass("is-static");
-                flags[2] = false;
                 $(this).addClass("is-danger");
             }
         });
@@ -1054,6 +1031,7 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.phoneNumber = this.value;
                 $(this).addClass("is-success");
             } else {
                 $('.help')[3].style.display = "block";
@@ -1075,6 +1053,7 @@ $(function () {
                 if (!flags.includes(false)) {
                     button.removeClass("is-static");
                 }
+                profile.info.phoneNumber = this.value;
                 $(this).addClass("is-success");
             } else {
                 $('.help')[3].style.display = "block";
@@ -1095,7 +1074,33 @@ $(function () {
                 return false;
         });
         $('button[class*="save"]').click(function () {
-            alert('clicked');
+            var self = this;
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+
+            $(self).addClass("is-loading");
+            $.ajax({
+                url: domain + "/client/edit",
+                type: 'POST',
+                contentType: 'application/json; utf-8',
+                data: JSON.stringify(profile.info),
+                success: function (data) {
+                    if (data.name != "error") {
+                        $(self).removeClass("is-loading");
+                        $('.messageSuccessEdit').slideDown();
+                    } else {
+                        $('.messageError').slideDown();
+                        $(self).removeClass("is-loading");
+                    }
+                },
+                fail: function () {
+                    $('.messageError').slideDown();
+                }
+            });
+
         });
         $('button[class*="pass"]').click(function () {
             var self = this;

@@ -1,9 +1,5 @@
 package web.model;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -26,8 +22,9 @@ public class ClientJSON {
     @NotNull
     @Size(min = 2, max = 64)
     private String login;
-    @NotNull
-    @Size(min = 5, max = 80)
+
+//    @NotNull
+//    @Size(min = 5, max = 80)
     private String password;
 
     @NotNull
@@ -35,7 +32,7 @@ public class ClientJSON {
     private String phoneNumber;
 
     @NotNull
-    @Size(min = 5, max = 6)
+    @Size(min = 5, max = 35)
     private String avatar;
 
     public String getAvatar() {

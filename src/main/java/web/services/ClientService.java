@@ -225,19 +225,17 @@ public class ClientService {
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setRole(ClientRole.user.name());
             clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
-
             clientDb.setAvatarByAvatar(avatarService.getAvatarById(clientJSON.getAvatar()));
 
         } else {
             log.info("editing existing client");
+            clientDb = getClientById(String.valueOf(clientJSON.getId()));
 
             clientDb.setFirstName(clientJSON.getFirstName());
             clientDb.setLastName(clientJSON.getLastName());
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-            clientDb.setLogin(clientJSON.getLogin());
-            clientDb.setEmail(clientJSON.getEmail());
 
-            clientDb.setAvatarByAvatar(avatarService.getAvatarById(clientJSON.getAvatar()));
+            clientDb.setAvatarByAvatar(avatarService.getAvatarByPath(clientJSON.getAvatar()));
         }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);

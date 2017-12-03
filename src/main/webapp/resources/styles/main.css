@@ -335,9 +335,14 @@ a {
     outline: 0;
 }
 
+#loading.is-centered {
+    display: flex;
+    align-self: center;
+    left: 50%;
+}
+
 .pagination.is-centered {
     margin-top: 10%;
-    margin-bottom: 5%;
     position: absolute;
     bottom: -60px;
     width: 60%;
@@ -742,8 +747,26 @@ label.radio > input:checked + figure{
     border:2px solid #209cee;
 }
 
-@media all and (max-width: 769px){
 
+#profileImg:hover img{
+    filter: brightness(70%) blur(3px);
+}
+
+#profileImg:hover a{
+    color: white !important;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+    display: block !important;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+}
+
+
+@media all and (max-width: 769px){
+    .column.is-9 .films {
+        grid-template-columns : 75%;
+    }
 }
 
 @media all and (min-width: 769px) and (max-width: 1024px) {

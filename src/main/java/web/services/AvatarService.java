@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.AvatarDb;
 
+import java.io.StringReader;
+
 @Service("AvatarService")
 @Transactional
 public class AvatarService {
@@ -34,6 +36,25 @@ public class AvatarService {
         session.close();
 
         log.info("getAvatarById() returns : avatarDb=" + avatarDb);
+        return avatarDb;
+    }
+
+    public AvatarDb getAvatarByPath(String path) throws IndexOutOfBoundsException {
+        log.info("getAvatarByPath(path=" + path + ")");
+
+        if(path == null || path.isEmpty()) {
+            log.error("link is null or empty");
+
+            throw new IllegalArgumentException("Path is null or empty");
+        }
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        AvatarDb avatarDb = (AvatarDb) session.createQuery("from AvatarDb a where a.path=?").setParameter(0, path).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getAvatarByPath() returns : avatarDb=" + avatarDb);
         return avatarDb;
     }
 }
