@@ -34,7 +34,8 @@ public class ClientJSON {
     @Size(min = 7, max = 20)
     private String phoneNumber;
 
-
+    @NotNull
+    @Size(min = 5, max = 6)
     private String avatar;
 
     public String getAvatar() {
@@ -104,17 +105,17 @@ public class ClientJSON {
         this.phoneNumber = phoneNumber;
     }
 
-
-
     @Override
     public String toString() {
         return "ClientJSON{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 }

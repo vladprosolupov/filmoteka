@@ -80,25 +80,6 @@ public class ClientController {
             throw new ValidationError("Validation is incorrect");
         }
 
-        Random random = new Random();
-        boolean settingAvatar = true;
-        int randNumber = 0;
-        while(settingAvatar == true) {
-            log.info("setting avatar");
-
-            randNumber = random.nextInt(17);
-            if (randNumber == 0) {
-                randNumber = random.nextInt(17);
-            } else {
-                settingAvatar = false;
-            }
-
-            log.info("avatar set");
-        }
-
-        String pathToAvatar = "icon" + randNumber;
-        clientJSON.setAvatar(pathToAvatar);
-
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
         if (clientDb == null) {
             log.error("Customer does not registered");

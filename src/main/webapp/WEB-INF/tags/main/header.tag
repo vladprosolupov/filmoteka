@@ -17,6 +17,28 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <script type="application/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            if ($navbarBurgers.length > 0) {
+
+                $navbarBurgers.forEach(function ($el) {
+                    $el.addEventListener('click', function () {
+
+                        var target = $el.dataset.target;
+                        var $target = document.getElementById(target);
+
+                        $el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                    });
+                });
+            }
+
+        });
+    </script>
 </head>
 <body class="layout-default">
 <section class="hero background_for_client is-fullheight is-bold white-text">

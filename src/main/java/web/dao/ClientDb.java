@@ -191,6 +191,8 @@ public class ClientDb {
                 ", enabled=" + enabled +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
+                ", clientDataById=" + clientDataById +
+                ", avatarByAvatar=" + avatarByAvatar +
                 '}';
     }
 

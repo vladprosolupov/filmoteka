@@ -47,4 +47,12 @@ public class AvatarDb {
         result = 31 * result + (path != null ? path.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "AvatarDb{" +
+                "id='" + id + '\'' +
+                ", path='" + path + '\'' +
+                '}';
+    }
 }
