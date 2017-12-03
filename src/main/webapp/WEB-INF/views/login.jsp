@@ -2,6 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 <%@page session="true" %>
+
 <html>
 <head>
     <title>Login</title>

@@ -20,12 +20,12 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile</title>
     <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/main.js"/>"></script>
-
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -127,6 +127,7 @@
                             </div>
                             <hr>
                             <button type="button" class="button is-info is-medium is-static save">Save changes</button>
+
                             <button type="button" class="button is-dark is-medium pass">Change password</button>
 
                             <article class="message is-danger messageError" style="display: none;">

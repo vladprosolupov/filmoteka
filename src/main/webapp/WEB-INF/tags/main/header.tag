@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@tag description="Main header tag" pageEncoding="UTF-8" %>
@@ -13,6 +15,7 @@
 <head>
     <link rel="shortcut icon"
           href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
