@@ -29,9 +29,9 @@
     justify-content: center;
 }
 
-.column.is-9.auto-grid{
+.column.is-9.auto-grid {
     display: grid;
-    border:1px solid #000;
+    border: 1px solid #000;
     grid-gap: 10px;
     grid-row-gap: 5vh;
     justify-content: center;
@@ -41,15 +41,14 @@
 
 section.info-tiles .filmsProf {
     display: grid;
-    grid-template-columns:13% 13% 13% 13% 13% 13%;
+    grid-template-columns: 13% 13% 13% 13% 13% 13%;
     grid-column-gap: 4%;
     grid-row-gap: 4vh;
 }
 
 section.info-tiles .filmsProf.card {
-font-size: small;
+    font-size: small;
 }
-
 
 section.info-tiles {
     margin-bottom: 7%;
@@ -126,9 +125,9 @@ a.navbar-item {
 }
 
 /*.navbar {*/
-    /*width: 100%;*/
-    /*justify-content: center;*/
-    /*margin-bottom: 0px;*/
+/*width: 100%;*/
+/*justify-content: center;*/
+/*margin-bottom: 0px;*/
 /*}*/
 
 a.navbar-link:hover {
@@ -353,10 +352,10 @@ a {
 }
 
 /*.pagination.is-centered {*/
-    /*margin-top: 10%;*/
-    /*position: absolute;*/
-    /*bottom: -60px;*/
-    /*width: 60%;*/
+/*margin-top: 10%;*/
+/*position: absolute;*/
+/*bottom: -60px;*/
+/*width: 60%;*/
 /*}*/
 
 .pagination-link {
@@ -563,7 +562,7 @@ aside.menu {
     height: 60px;
 }
 
-form.subtitle.profile input{
+form.subtitle.profile input {
     text-align: center;
 }
 
@@ -695,7 +694,7 @@ a.panel-block.is-active#profile {
     border-left-color: #dbdbdb;
 }
 
-a.panel-block.is-active#profile .fa-user-circle-o{
+a.panel-block.is-active#profile .fa-user-circle-o {
     color: #3273dc;
 }
 
@@ -706,6 +705,7 @@ a.panel-block:hover .fa-user-circle-o {
 .pagination-link.is-current {
     color: #fff !important;
 }
+
 .is-fullsized {
     width: -moz-available;
     width: -webkit-fill-available;
@@ -722,18 +722,19 @@ a.panel-block:hover .fa-user-circle-o {
 .navbar.is-transparent a.navbar-link.is-active {
     background-color: #4e4e4e !important;
 }
+
 .navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
     background-color: transparent !important;
 }
 
 .navbar-burger {
-color: #4e4e4e;
+    color: #4e4e4e;
     height: 3.25rem;
 }
 
 .navbar-burger:hover {
     background-color: #4e4e4e;
-    color:white;
+    color: white;
 }
 
 .tile.is-parent {
@@ -745,24 +746,25 @@ div.control .radio {
     align-items: center;
 }
 
-label.radio > input{
+label.radio > input {
     visibility: hidden;
     position: absolute;
 }
-label.radio > input + img{
-    cursor:pointer;
-    border:2px solid transparent;
-}
-label.radio > input:checked + figure{
-    border:2px solid #209cee;
+
+label.radio > input + img {
+    cursor: pointer;
+    border: 2px solid transparent;
 }
 
+label.radio > input:checked + figure {
+    border: 2px solid #209cee;
+}
 
-#profileImg:hover img{
+#profileImg:hover img {
     filter: brightness(70%) blur(3px);
 }
 
-#profileImg:hover a{
+#profileImg:hover a {
     color: white !important;
     text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
     display: block !important;
@@ -772,14 +774,15 @@ label.radio > input:checked + figure{
     right: 30%;
 }
 
-
-@media all and (max-width: 769px){
+@media all and (max-width: 769px) {
     .column.is-9 .films {
-        grid-template-columns : 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
+
     .is-desktop {
         display: none !important;
     }
+
     .columns {
         margin-right: 0;
     }
@@ -793,13 +796,15 @@ label.radio > input:checked + figure{
     }
 
     .navbar-item.has-dropdown.is-hoverable:hover {
-        color: rgba(255,255,255,1);
+        color: rgba(255, 255, 255, 1);
         background-color: #4e4e4e;
     }
-    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover{
-        color: rgba(255,255,255,1);
+
+    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover {
+        color: rgba(255, 255, 255, 1);
     }
-    .grow:hover{
+
+    .grow:hover {
         transform: scale(1);
     }
 }
@@ -810,7 +815,7 @@ label.radio > input:checked + figure{
     }
 
     .column.is-9 .films {
-        grid-template-columns : 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .is-desktop {
@@ -830,41 +835,42 @@ label.radio > input:checked + figure{
     }
 
     .navbar-item.has-dropdown.is-hoverable:hover {
-        color: rgba(255,255,255,1);
+        color: rgba(255, 255, 255, 1);
         background-color: #4e4e4e;
     }
 
-    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover{
-        color: rgba(255,255,255,1);
+    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover {
+        color: rgba(255, 255, 255, 1);
     }
-    .grow:hover{
+
+    .grow:hover {
         transform: scale(1);
     }
+
     /*.navbar-burger span{*/
-        /*width:48px;*/
-        /*left: calc(50% - 24px);*/
+    /*width:48px;*/
+    /*left: calc(50% - 24px);*/
     /*}*/
     /*.navbar-burger {*/
-        /*cursor: pointer;*/
-        /*display: block;*/
-        /*height: 5rem;*/
-        /*position: relative;*/
-        /*width: 5rem;*/
-        /*margin-left: auto;*/
+    /*cursor: pointer;*/
+    /*display: block;*/
+    /*height: 5rem;*/
+    /*position: relative;*/
+    /*width: 5rem;*/
+    /*margin-left: auto;*/
     /*}*/
-
     /*.navbar-burger span:nth-child(1) {*/
-        /*top: calc(50% - 14px);*/
+    /*top: calc(50% - 14px);*/
     /*}*/
     /*.navbar-burger span:nth-child(2) {*/
-        /*top: calc(50% - 1px);*/
+    /*top: calc(50% - 1px);*/
     /*}*/
     /*.navbar-burger span:nth-child(3) {*/
-        /*top: calc(50% + 12px);*/
+    /*top: calc(50% + 12px);*/
     /*}*/
     /*.navbar-burger {*/
-        /*color: #4e4e4e;*/
-        /*height: 5rem;*/
+    /*color: #4e4e4e;*/
+    /*height: 5rem;*/
     /*}*/
 
 }
@@ -873,8 +879,9 @@ label.radio > input:checked + figure{
     aside.menu {
         width: 150px;
     }
+
     .column.is-9 .films {
-        grid-template-columns : 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -887,5 +894,12 @@ label.radio > input:checked + figure{
 @media all and (min-width: 1408px) {
     aside.menu {
         width: 214px;
+    }
+}
+
+@media all and (max-width: 1216px) {
+
+    .screen-top {
+        margin-top: 10ch;
     }
 }

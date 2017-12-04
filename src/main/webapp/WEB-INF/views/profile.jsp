@@ -34,7 +34,7 @@
 </head>
 <t:header>
     <div class="container vue">
-        <div class="hero-head2 tile is-paddingless">
+        <div class="hero-head2">
             <div class="navbar">
                 <div class="navbar-item">
                     <a id="profile" class="panel-block is-active" v-on:click="goToProfile">
@@ -65,8 +65,8 @@
             </div>
         </div>
 
-        <section class="hero is-white is-small is-bold has-text-centered tile is-parent">
-            <div class="hero-body is-paddingless" style="margin-top: 100px">
+        <section class="hero is-white is-small is-bold has-text-centered" style="margin-top: 2ch">
+            <div class="hero-body is-paddingless" style="margin-top:5ch ;">
 
                 <div id="loading" style="position: relative; left: 50%">
                     <div class="spinner">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="container column" v-if="currentTab == 'profile'"
-                     style="display: none; margin-bottom: 10px; max-width: 400px; height: 100%;">
+                     style="display: none; margin-bottom: 10px; max-width: 400px; height: 130%;">
 
                     <figure id="profileImg" style="margin-left: auto;margin-right: auto" class="image is-128x128">
                         <img id="avatar" v-bind:src="domain + info.avatar">
