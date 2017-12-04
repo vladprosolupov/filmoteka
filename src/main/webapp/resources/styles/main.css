@@ -545,6 +545,7 @@ h6.rating i {
 .container.vue {
     margin-bottom: 1.5rem;
     /*margin-top: 8vh;*/
+    justify-content: center;
 }
 
 .counter:hover {
@@ -784,6 +785,7 @@ label.radio > input:checked + figure {
 @media all and (max-width: 769px) {
     .column.is-9 .films {
         grid-template-columns: 1fr 1fr;
+        margin: 0 0.9rem;
     }
 
     .is-desktop {
