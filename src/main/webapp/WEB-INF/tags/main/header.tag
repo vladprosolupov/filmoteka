@@ -12,6 +12,7 @@
 </security:authorize>
 <c:url var="logoutUrl" value="/do_logout"/>
 <c:set var="logo"><img src="<c:url value="/resources/images/logo(Biger-Size).png"/>"/></c:set>
+<html class="has-navbar-fixed-top">
 <head>
     <link rel="shortcut icon"
           href="<c:url value="/resources/images/icon_sizes/icon48.ico"/>"/>
@@ -74,7 +75,7 @@
                                                              style="margin-right: 5px"
                                                              aria-hidden="true"></i>Admin Panel</a>
 
-                    <div class="navbar-dropdown is-boxed">
+                    <div class="navbar-dropdown is-boxed is-desktop">
                         <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i
                                 class="fa fa-user-circle-o" style="margin-right:5px;"
                                 aria-hidden="true"></i>Profile</a>
@@ -120,7 +121,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                    <div class="navbar-dropdown is-boxed dropdown-menu is-right is-desktop"
                          style="margin: 0 !important;">
                         <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                            v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
@@ -183,7 +184,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                    <div class="navbar-dropdown is-boxed dropdown-menu is-right is-desktop"
                          style="margin: 0 !important;">
                         <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                            v-on:keyup.up="moveFocusUp" v-on:mouseover="removeFocusFromOthers"
@@ -225,7 +226,7 @@
                                                           style="margin-right:5px;"
                                                           aria-hidden="true"></i>Profile</a>
 
-                <div class="navbar-dropdown is-boxed">
+                <div class="navbar-dropdown is-boxed is-desktop">
 
                     <a class="navbar-item" href="/profile?s=like"><i class="fa fa-heart"
                                                                      style="margin-right: 5px;"
@@ -268,7 +269,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="navbar-dropdown is-boxed dropdown-menu is-right"
+                    <div class="navbar-dropdown is-boxed dropdown-menu is-right is-desktop"
                          style="margin: 0 !important;">
                         <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
                            v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
@@ -308,3 +309,5 @@
 </footer>
 
 </body>
+
+</html>

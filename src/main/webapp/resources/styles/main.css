@@ -26,6 +26,7 @@
     grid-template-columns: 16% 16% 16% 16% 16%;
     grid-column-gap: 5%;
     grid-row-gap: 5vh;
+    justify-content: center;
 }
 
 section.info-tiles .filmsProf {
@@ -341,12 +342,12 @@ a {
     left: 50%;
 }
 
-.pagination.is-centered {
-    margin-top: 10%;
-    position: absolute;
-    bottom: -60px;
-    width: 60%;
-}
+/*.pagination.is-centered {*/
+    /*margin-top: 10%;*/
+    /*position: absolute;*/
+    /*bottom: -60px;*/
+    /*width: 60%;*/
+/*}*/
 
 .pagination-link {
     background-color: #fff;
@@ -527,7 +528,7 @@ h6.rating i {
 
 .container.vue {
     margin-bottom: 1.5rem;
-    margin-top: 8vh;
+    /*margin-top: 8vh;*/
 }
 
 .counter:hover {
@@ -695,7 +696,6 @@ a.panel-block:hover .fa-user-circle-o {
 .pagination-link.is-current {
     color: #fff !important;
 }
-
 .is-fullsized {
     width: -moz-available;
     width: -webkit-fill-available;
@@ -767,6 +767,31 @@ label.radio > input:checked + figure{
     .column.is-9 .films {
         grid-template-columns : 75%;
     }
+    .is-desktop {
+        display: none !important;
+    }
+    .columns {
+        margin-right: 0;
+    }
+
+    .navbar-item {
+        text-align: center;
+    }
+
+    .navbar-item.has-dropdown.centered {
+        display: flex;
+    }
+
+    .navbar-item.has-dropdown.is-hoverable:hover {
+        color: rgba(255,255,255,1);
+        background-color: #4e4e4e;
+    }
+    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover{
+        color: rgba(255,255,255,1);
+    }
+    .grow:hover{
+        transform: scale(1);
+    }
 }
 
 @media all and (min-width: 769px) and (max-width: 1024px) {
@@ -778,6 +803,33 @@ label.radio > input:checked + figure{
         grid-template-columns : 75%;
     }
 
+    .is-desktop {
+        display: none !important;
+    }
+
+    .columns {
+        margin-right: 0;
+    }
+
+    .navbar-item {
+        text-align: center;
+    }
+
+    .navbar-item.has-dropdown.centered {
+        display: flex;
+    }
+
+    .navbar-item.has-dropdown.is-hoverable:hover {
+        color: rgba(255,255,255,1);
+        background-color: #4e4e4e;
+    }
+
+    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover{
+        color: rgba(255,255,255,1);
+    }
+    .grow:hover{
+        transform: scale(1);
+    }
     /*.navbar-burger span{*/
         /*width:48px;*/
         /*left: calc(50% - 24px);*/

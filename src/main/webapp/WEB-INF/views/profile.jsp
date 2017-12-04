@@ -287,10 +287,8 @@
 
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination"
                              v-if="pagesNumberLiked != 0">
-                            <a class="pagination-previous" v-if="currentPage != 1"
-                               v-on:click="goToPrevious">Previous</a>
-                            <a class="pagination-next" v-if="currentPage != pagesNumberLiked" v-on:click="goToNext">Next
-                                page</a>
+                            <a class="pagination-previous" v-bind:disabled="currentPage == 1"
+                               v-on:click="goToPrevious($event)">Previous</a>
                             <ul class="pagination-list">
                                 <li>
                                     <a class="pagination-link is-current" v-bind:data-pageNum="1"
@@ -334,6 +332,8 @@
                                        v-on:click="goToPage(pagesNumberLiked)">{{pagesNumberLiked}}</a>
                                 </li>
                             </ul>
+                            <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberLiked" v-on:click="goToNext($event)">Next
+                                page</a>
                         </nav>
 
                     </div>
@@ -377,10 +377,10 @@
 
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination"
                              v-if="pagesNumberBookmarked != 0">
-                            <a class="pagination-previous" v-if="currentPage != 1"
-                               v-on:click="goToPrevious">Previous</a>
-                            <a class="pagination-next" v-if="currentPage != pagesNumberBookmarked"
-                               v-on:click="goToNext">Next page</a>
+                            <a class="pagination-previous" v-bind:disabled="currentPage == 1"
+                               v-on:click="goToPrevious($event)">Previous</a>
+                            <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberBookmarked"
+                               v-on:click="goToNext($event)">Next page</a>
                             <ul class="pagination-list">
                                 <li>
                                     <a class="pagination-link is-current" v-bind:data-pageNum="1"

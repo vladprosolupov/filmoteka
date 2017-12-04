@@ -26,7 +26,7 @@
     </div>
     <div class="container vue" style="display: none">
         <div class="columns">
-            <div class="column is-2">
+            <div class="column is-2 is-desktop">
                 <aside class="menu">
                     <p class="menu-label">
                         Categories
@@ -73,8 +73,7 @@
                     </div>
                 </section>
                 <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
-                    <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
+                    <a class="pagination-previous" v-bind:disabled="currentPage == 1" v-on:click="goToPrevious($event)">Previous</a>
                     <ul class="pagination-list">
                         <li>
                             <a class="pagination-link" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
@@ -109,6 +108,7 @@
                                aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
                         </li>
                     </ul>
+                    <a class="pagination-next" v-bind:disabled="currentPage == pagesNumber" v-on:click="goToNext($event)">Next page</a>
                 </nav>
             </div>
         </div>

@@ -253,27 +253,31 @@ $(function () {
                         hideLoading();
                     });
                 },
-                goToPrevious: function () {
-                    var self = this;
-                    showLoading();
-                    $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) - 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoading();
-                    });
+                goToPrevious: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) - 1;
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            self.films = data;
+                            hideLoading();
+                        });
+                    }
                 },
-                goToNext: function () {
-                    var self = this;
-                    showLoading();
-                    $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) + 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoading();
-                    });
+                goToNext: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) + 1;
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            self.films = data;
+                            hideLoading();
+                        });
+                    }
                 }
             }
         });
@@ -871,67 +875,72 @@ $(function () {
                         });
                     }
                 },
-                goToPrevious: function () {
-                    var self = this;
-                    showLoadingProfile();
-                    if (self.currentTab === "book") {
+                goToPrevious: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
                         showLoadingProfile();
-                        $('a[class*="is-active"]').removeClass("is-active");
-                        $('#bookmarks').addClass("is-active");
-                        $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) - 1), function (films) {
-                            self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                            self.bookmarkedFilms = films;
-                            hideLoadingProfile();
-                        });
-                    } else {
-                        showLoadingProfile();
-                        $('a[class*="is-active"]').removeClass("is-active");
-                        $('#liked').addClass("is-active");
-                        $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) - 1), function (films) {
-                            self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                            self.likedFilms = films;
-                            hideLoadingProfile();
-                        });
+                        if (self.currentTab === "book") {
+                            showLoadingProfile();
+                            $('a[class*="is-active"]').removeClass("is-active");
+                            $('#bookmarks').addClass("is-active");
+                            $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) - 1), function (films) {
+                                self.currentPage = parseInt(self.currentPage) - 1;
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                self.bookmarkedFilms = films;
+                                hideLoadingProfile();
+                            });
+                        } else {
+                            showLoadingProfile();
+                            $('a[class*="is-active"]').removeClass("is-active");
+                            $('#liked').addClass("is-active");
+                            $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) - 1), function (films) {
+                                self.currentPage = parseInt(self.currentPage) - 1;
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                self.likedFilms = films;
+                                hideLoadingProfile();
+                            });
+                        }
                     }
                 },
-                goToNext: function () {
-                    var self = this;
-                    showLoadingProfile();
-                    if (self.currentTab === "book") {
+                goToNext: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
                         showLoadingProfile();
-                        $('a[class*="is-active"]').removeClass("is-active");
-                        $('#bookmarks').addClass("is-active");
-                        $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) + 1), function (films) {
-                            self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                            self.bookmarkedFilms = films;
-                            hideLoadingProfile();
-                        });
-                    } else {
-                        showLoadingProfile();
-                        $('a[class*="is-active"]').removeClass("is-active");
-                        $('#liked').addClass("is-active");
-                        $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) + 1), function (films) {
-                            self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                            self.likedFilms = films;
-                            hideLoadingProfile();
-                        });
+                        if (self.currentTab === "book") {
+                            showLoadingProfile();
+                            $('a[class*="is-active"]').removeClass("is-active");
+                            $('#bookmarks').addClass("is-active");
+                            $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) + 1), function (films) {
+                                self.currentPage = parseInt(self.currentPage) + 1;
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                self.bookmarkedFilms = films;
+                                hideLoadingProfile();
+                            });
+                        } else {
+                            showLoadingProfile();
+                            $('a[class*="is-active"]').removeClass("is-active");
+                            $('#liked').addClass("is-active");
+                            $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) + 1), function (films) {
+                                self.currentPage = parseInt(self.currentPage) + 1;
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                self.likedFilms = films;
+                                hideLoadingProfile();
+                            });
+                        }
                     }
                 },
-                chooseImg: function() {
+                chooseImg: function () {
                     var $radioImgs = $('#radioImgs');
-                    if($radioImgs.css('display') === 'block')
+                    if ($radioImgs.css('display') === 'block')
                         $radioImgs.slideUp();
                     else
                         $radioImgs.slideDown();
-                },
+                }
+                ,
                 changeImg: function (event) {
                     var self = this;
                     self.info.avatar = $($(event.currentTarget).next().children()[0]).attr('src');
@@ -1179,27 +1188,31 @@ $(function () {
                         hideLoading();
                     });
                 },
-                goToPrevious: function () {
-                    var self = this;
-                    showLoading();
-                    $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) - 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoading();
-                    });
+                goToPrevious: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) - 1;
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            self.films = data;
+                            hideLoading();
+                        });
+                    }
                 },
-                goToNext: function () {
-                    var self = this;
-                    showLoading();
-                    $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
-                        self.currentPage = parseInt(self.currentPage) + 1;
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
-                        self.films = data;
-                        hideLoading();
-                    });
+                goToNext: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) + 1;
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            self.films = data;
+                            hideLoading();
+                        });
+                    }
                 }
             }
         });
