@@ -147,7 +147,7 @@
     </div>
     <div class="container vue" style="display: none">
         <div class="columns">
-            <div class="column is-2">
+            <div class="column is-2 is-desktop">
                 <aside class="menu ">
                     <p class="menu-label">
                         Categories
