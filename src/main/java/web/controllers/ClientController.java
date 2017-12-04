@@ -17,12 +17,15 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import web.dao.ClientDb;
 import web.dao.PasswordResetTokenDb;
 import web.events.OnRegistrationCompleteEvent;
 import web.exceptions.NoSuchClientException;
 import web.exceptions.ParsingJsonToDaoException;
+import web.exceptions.ValidationError;
 import web.model.ClientJSON;
 import web.model.ClientLoginJSON;
 import web.model.ClientPasswordJSON;
@@ -70,13 +73,13 @@ public class ClientController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
-    String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult, HttpServletRequest request) throws ParsingJsonToDaoException {
+    String addClient(@ModelAttribute("client") @Valid ClientJSON clientJSON, BindingResult bindingResult, HttpServletRequest request) throws ParsingJsonToDaoException, ValidationError {
         log.info("addClient(clientJSON=" + clientJSON + ")");
 
         if (bindingResult.hasErrors()) {
             log.error("Customer does not pass validation");
 
-            return "Error";
+            throw new ValidationError("Validation is incorrect");
         }
 
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
@@ -99,13 +102,19 @@ public class ClientController {
     @PreAuthorize("hasAnyAuthority('admin', 'user')")
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public @ResponseBody
-    String editClient(@RequestBody @Valid ClientJSON clientJSON) throws ParsingJsonToDaoException {
+    String editClient(@RequestBody @Valid ClientJSON clientJSON, BindingResult bindingResult) throws ParsingJsonToDaoException, ValidationError {
         log.info("editClient(clientJSON=" + clientJSON + ")");
 
         if (clientJSON == null) {
             log.error("clientJSON is null");
 
             throw new IllegalArgumentException("ClientJSON should not be null");
+        }
+
+        if (bindingResult.hasErrors()) {
+            log.error("Validation error");
+
+            throw new ValidationError("Validation is incorrect");
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -151,11 +160,13 @@ public class ClientController {
 
         ClientJSON clientJSON = new ClientJSON();
 
+        clientJSON.setId(clientDb.getId());
         clientJSON.setEmail(clientDb.getEmail());
         clientJSON.setFirstName(clientDb.getFirstName());
         clientJSON.setLastName(clientDb.getLastName());
         clientJSON.setLogin(clientDb.getLogin());
         clientJSON.setPhoneNumber(clientDb.getPhoneNumber());
+        clientJSON.setAvatar(clientDb.getAvatarByAvatar().getPath());
 
         log.info("getInfoAboutCurrentUser() returns : clientJSON=" + clientJSON);
         return clientJSON;
@@ -213,11 +224,11 @@ public class ClientController {
             throw new IllegalArgumentException("Verification token has expired");
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication instanceof UsernamePasswordAuthenticationToken) {
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE"))) {
             log.info("resetPassword() Authority CHANGE_PASSWORD_PRIVILEGE is already set");
             log.info("resetPassword() returns : updatePass");
             return "updatePass";
-        } else if (authentication instanceof AnonymousAuthenticationToken) {
+        } else {
             ClientDb clientDb = passwordResetTokenDb.getClientByIdClient();
             log.info("resetPassword() sets Authority to CHANGE_PASSWORD_PRIVILEGE");
             Authentication auth = new UsernamePasswordAuthenticationToken(
@@ -226,10 +237,8 @@ public class ClientController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             log.info("resetPassword() returns : updatePass");
             return "updatePass";
-        } else {
-            log.info("client already logged in: resetPassword() returns index");
-            return "redirect:/index";
         }
+
     }
 
     @PreAuthorize("hasAuthority('CHANGE_PASSWORD_PRIVILEGE')")
@@ -258,13 +267,14 @@ public class ClientController {
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "all", method = RequestMethod.GET)
-    public List<ClientJSON> getAllClients() {
+    public @ResponseBody
+    List<ClientJSON> getAllClients() {
         log.info("getAllClients()");
 
-        List<ClientDb> allClients = clientService.getAll();
-        List<ClientJSON> allClientsJSON = new ArrayList<>();
+        //List<ClientDb> allClients = clientService.getAll();
+        List<ClientJSON> allClientsJSON = clientService.getAllForAdmin();
 
-        for (ClientDb clientDb : allClients) {
+        /*for (ClientDb clientDb : allClients) {
             log.info("for loop");
 
             ClientJSON clientJSON = new ClientJSON();
@@ -276,7 +286,7 @@ public class ClientController {
             clientJSON.setEmail(clientDb.getEmail());
 
             allClientsJSON.add(clientJSON);
-        }
+        }*/
 
         log.info("getAllClients() returns : allClientsJSON.size()=" + allClientsJSON.size());
         return allClientsJSON;

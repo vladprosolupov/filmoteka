@@ -1,9 +1,5 @@
 package web.model;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -22,18 +18,30 @@ public class ClientJSON {
 
     @NotNull
     private String email;
-    //    private int idAddress;
+
     @NotNull
     @Size(min = 2, max = 64)
     private String login;
-    @NotNull
-    @Size(min = 5, max = 80)
+
+//    @NotNull
+//    @Size(min = 5, max = 80)
     private String password;
-    //    private int enabled;
+
     @NotNull
     @Size(min = 7, max = 20)
     private String phoneNumber;
-//    private ClientRole role;
+
+    @NotNull
+    @Size(min = 5, max = 35)
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public int getId() {
         return id;
@@ -67,13 +75,6 @@ public class ClientJSON {
         this.email = email;
     }
 
-//    public int getIdAddress() {
-//        return idAddress;
-//    }
-//
-//    public void setIdAddress(int idAddress) {
-//        this.idAddress = idAddress;
-//    }
 
     public String getLogin() {
         return login;
@@ -91,13 +92,7 @@ public class ClientJSON {
         this.password = password;
     }
 
-//    public int getEnabled() {
-//        return enabled;
-//    }
-//
-//    public void setEnabled(int enabled) {
-//        this.enabled = enabled;
-//    }
+
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -107,24 +102,17 @@ public class ClientJSON {
         this.phoneNumber = phoneNumber;
     }
 
-//    public ClientRole getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(ClientRole role) {
-//        this.role = role;
-//    }
-
-
     @Override
     public String toString() {
         return "ClientJSON{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 }

@@ -27,8 +27,8 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
-    <div class="container vue" style="display: none">
-        <div class="columns">
+    <div class="container vue columns" style="display: none">
+        <%--<div class="columns">--%>
             <div class="column is-2">
                 <aside class="menu">
                     <p class="menu-label">
@@ -49,7 +49,7 @@
 
                 ${token}
 
-                <section class="info-tiles">
+                <%--<section class="info-tiles">--%>
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">
                             <div class="card-image ">
@@ -72,11 +72,10 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                <%--</section>--%>
                 <br>
                 <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
                     <a class="pagination-previous" v-if="currentPage != 1" v-on:click="goToPrevious">Previous</a>
-                    <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
                     <ul class="pagination-list">
                         <li>
                             <a class="pagination-link is-current" v-bind:data-pageNum="1" aria-label="Goto page {{1}}"
@@ -111,9 +110,10 @@
                                aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
                         </li>
                     </ul>
+                    <a class="pagination-next" v-if="currentPage != pagesNumber" v-on:click="goToNext">Next page</a>
                 </nav>
             </div>
-        </div>
+        <%--</div>--%>
     </div>
 </t:header>
 

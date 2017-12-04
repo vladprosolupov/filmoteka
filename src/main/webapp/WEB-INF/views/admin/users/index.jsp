@@ -36,11 +36,14 @@
             <td>
                 <button class="button is-primary" v-on:click="more(user[0])">More</button>
             </td>
-            <td v-if="user[1] == 1">
-                <button class="button is-danger" v-on:click="blockUser(user[0])">Block</button>
+            <td v-if="user[1] == 1 && user[2] != 'admin'">
+                <button class="button is-danger" v-on:click="blockUser(user[2], $event)">Block</button>
             </td>
-            <td v-if="user[1] == 0">
-                <button class="button is-danger" v-on:click="unblockUser(user[0])">Unblock</button>
+            <td v-if="user[1] == 0 && user[2] != 'admin'">
+                <button class="button is-info" v-on:click="unblockUser(user[2], $event)">Unblock</button>
+            </td>
+            <td v-if="user[2] == 'admin'">
+                <button class="button is-black">ADMIN</button>
             </td>
         </tr>
         </tbody>

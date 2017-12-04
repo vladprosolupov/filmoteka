@@ -85,7 +85,7 @@ public class CommentController {
             json.setClientLogin(comment.getClientByIdClient().getLogin());
             json.setClientFirstName(comment.getClientByIdClient().getFirstName());
             json.setClientLastName(comment.getClientByIdClient().getLastName());
-
+            json.setClientAvatar(comment.getClientByIdClient().getAvatarByAvatar().getPath());
             result.add(json);
         }
 

@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="categories" style="display: none">
+    <div class="show" style="display: none">
         <button class="addCategory button is-primary">Add</button>
     </div>
 
-    <table class="categories table" style="display: none">
+    <table class="categories table show" style="display: none">
         <thead>
         <tr>
             <th>Name</th>

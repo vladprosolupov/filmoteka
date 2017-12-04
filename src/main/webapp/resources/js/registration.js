@@ -1,88 +1,88 @@
-jQuery.fn.shake = function(intShakes, intDistance, intDuration) {
-    this.each(function() {
-        $(this).css("position","relative");
-        for (var x=1; x<=intShakes; x++) {
-            $(this).animate({left:(intDistance*-1)}, (((intDuration/intShakes)/4)))
-                .animate({left:intDistance}, ((intDuration/intShakes)/2))
-                .animate({left:0}, (((intDuration/intShakes)/4)));
+jQuery.fn.shake = function (intShakes, intDistance, intDuration) {
+    this.each(function () {
+        $(this).css("position", "relative");
+        for (var x = 1; x <= intShakes; x++) {
+            $(this).animate({left: (intDistance * -1)}, (((intDuration / intShakes) / 4)))
+                .animate({left: intDistance}, ((intDuration / intShakes) / 2))
+                .animate({left: 0}, (((intDuration / intShakes) / 4)));
         }
     });
     return this;
 };
 
 var domain = window.location.origin;
-var flags = [false, false, false, false, false, false, false];
+var flags = [false, false, false, false, false, false, false, false];
 $(function () {
     $('input[name="firstName"]').keyup(function () {
-        if(this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
+        if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[0] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[0].style.display = "block";
             flags[0] = false;
             $(this).addClass("is-danger");
         }
     });
     $('input[name="firstName"]').change(function () {
-        if(this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
+        if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[0].style.display == "block") $('.help')[0].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[0] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[0].style.display = "block";
             flags[0] = false;
             $(this).addClass("is-danger");
         }
     });
     $('input[name="lastName"]').keyup(function () {
-        if(this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
+        if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[1] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[1].style.display = "block";
             flags[1] = false;
             $(this).addClass("is-danger");
         }
     });
     $('input[name="lastName"]').change(function () {
-        if(this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
+        if (this.value.length >= 2 && !this.value.match(/\d+/g) && this.value.length <= 64) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[1].style.display == "block") $('.help')[1].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[1] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[1].style.display = "block";
             flags[1] = false;
             $(this).addClass("is-danger");
         }
     });
     $('input[name="email"]').keyup(function () {
-        if(this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
+        if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[2] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[2].style.display = "block";
             flags[2] = false;
             $(this).addClass("is-danger");
@@ -90,15 +90,15 @@ $(function () {
     });
 
     $('input[name="email"]').change(function () {
-        if(this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-            if(this.classList.contains("is-danger")) {
-                if($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
+        if (this.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[2].style.display == "block") $('.help')[2].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[2] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")) $(this).removeClass("is-success");
+        } else {
+            if (this.classList.contains("is-success")) $(this).removeClass("is-success");
             $('.help')[2].style.display = "block";
             flags[2] = false;
             $(this).addClass("is-danger");
@@ -106,19 +106,19 @@ $(function () {
     });
 
     $('input[name="login"]').keyup(function () {
-        if(this.value.length >= 2 && this.value.length <= 64){
+        if (this.value.length >= 2 && this.value.length <= 64) {
             var self = this;
             $.getJSON("/client/loginCheck/" + this.value, function (response) {
-                if(response) {
-                    if(self.classList.contains("is-danger")) {
-                        if($('.help')[3].style.display == "block") $('.help')[3].style.display = "none";
-                        if($('.help')[4].style.display == "block") $('.help')[4].style.display = "none";
+                if (response) {
+                    if (self.classList.contains("is-danger")) {
+                        if ($('.help')[3].style.display == "block") $('.help')[3].style.display = "none";
+                        if ($('.help')[4].style.display == "block") $('.help')[4].style.display = "none";
                         $(self).removeClass("is-danger");
                     }
                     flags[3] = true;
                     $(self).addClass("is-success");
-                }else {
-                    if(self.classList.contains("is-success")){
+                } else {
+                    if (self.classList.contains("is-success")) {
                         $(self).removeClass("is-success");
                     }
                     flags[3] = false;
@@ -126,8 +126,8 @@ $(function () {
                     $('.help')[4].style.display = "block";
                 }
             });
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[3] = false;
@@ -136,19 +136,19 @@ $(function () {
         }
     });
     $('input[name="login"]').change(function () {
-        if(this.value.length >= 2 && this.value.length <= 64){
+        if (this.value.length >= 2 && this.value.length <= 64) {
             var self = this;
             $.getJSON("/client/loginCheck/" + this.value, function (response) {
-                if(response) {
-                    if(self.classList.contains("is-danger")) {
-                        if($('.help')[3].style.display == "block") $('.help')[3].style.display = "none";
-                        if($('.help')[4].style.display == "block") $('.help')[4].style.display = "none";
+                if (response) {
+                    if (self.classList.contains("is-danger")) {
+                        if ($('.help')[3].style.display == "block") $('.help')[3].style.display = "none";
+                        if ($('.help')[4].style.display == "block") $('.help')[4].style.display = "none";
                         $(self).removeClass("is-danger");
                     }
                     flags[3] = true;
                     $(self).addClass("is-success");
-                }else {
-                    if(self.classList.contains("is-success")){
+                } else {
+                    if (self.classList.contains("is-success")) {
                         $(self).removeClass("is-success");
                     }
                     flags[3] = false;
@@ -156,8 +156,8 @@ $(function () {
                     $('.help')[4].style.display = "block";
                 }
             });
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[3] = false;
@@ -167,15 +167,15 @@ $(function () {
     });
 
     $('input[name="password"]').keyup(function () {
-        if(this.value.length >= 8){
-            if(this.classList.contains("is-danger")){
-                if($('.help')[5].style.display == "block") $('.help')[5].style.display = "none";
+        if (this.value.length >= 8) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[5].style.display == "block") $('.help')[5].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[4] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[4] = false;
@@ -184,15 +184,15 @@ $(function () {
         }
     });
     $('input[name="password"]').change(function () {
-        if(this.value.length >= 8){
-            if(this.classList.contains("is-danger")){
-                if($('.help')[5].style.display == "block") $('.help')[5].style.display = "none";
+        if (this.value.length >= 8) {
+            if (this.classList.contains("is-danger")) {
+                if ($('.help')[5].style.display == "block") $('.help')[5].style.display = "none";
                 $(this).removeClass("is-danger");
             }
             flags[4] = true;
             $(this).addClass("is-success");
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[4] = false;
@@ -202,27 +202,27 @@ $(function () {
     });
 
     $('input[name="ignore"]').keyup(function () {
-        if(this.value.length >= 8){
-            if($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
-            if($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
-            if(this.value !== $('input[name="password"]').val()){
-                if(this.classList.contains("is-success")){
+        if (this.value.length >= 8) {
+            if ($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
+            if ($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
+            if (this.value !== $('input[name="password"]').val()) {
+                if (this.classList.contains("is-success")) {
                     $(this).removeClass("is-success");
                 }
                 flags[5] = false;
                 $('.help')[7].style.display = "block";
                 $(this).addClass("is-danger");
-            }else {
-                if(this.classList.contains("is-danger")){
-                    if($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
-                    if($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
+            } else {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
+                    if ($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
                     $(this).removeClass("is-danger");
                 }
                 flags[5] = true;
                 $(this).addClass("is-success");
             }
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[5] = false;
@@ -231,27 +231,27 @@ $(function () {
         }
     });
     $('input[name="ignore"]').change(function () {
-        if(this.value.length >= 8){
-            if($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
-            if($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
-            if(this.value !== $('input[name="password"]').val()){
-                if(this.classList.contains("is-success")){
+        if (this.value.length >= 8) {
+            if ($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
+            if ($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
+            if (this.value !== $('input[name="password"]').val()) {
+                if (this.classList.contains("is-success")) {
                     $(this).removeClass("is-success");
                 }
                 flags[5] = false;
                 $('.help')[7].style.display = "block";
                 $(this).addClass("is-danger");
-            }else {
-                if(this.classList.contains("is-danger")){
-                    if($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
-                    if($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
+            } else {
+                if (this.classList.contains("is-danger")) {
+                    if ($('.help')[6].style.display == "block") $('.help')[6].style.display = "none";
+                    if ($('.help')[7].style.display == "block") $('.help')[7].style.display = "none";
                     $(this).removeClass("is-danger");
                 }
                 flags[5] = true;
                 $(this).addClass("is-success");
             }
-        }else {
-            if(this.classList.contains("is-success")){
+        } else {
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
             flags[5] = false;
@@ -259,37 +259,46 @@ $(function () {
             $(this).addClass("is-danger");
         }
     });
-    $('input[name="phoneNumber"]').keyup(function(event){
-        if(this.value.length > 6){
+
+
+    $('a[class*="chooseImg"]').click(function () {
+        if($('a[class*=chooseImg]')[0].classList.contains("is-danger"))
+            $('a[class*=chooseImg]').removeClass("is-danger is-outlined");
+        $('#radioImgs').slideDown();
+        flags[6] = true;
+    });
+
+    $('input[name="phoneNumber"]').keyup(function (event) {
+        if (this.value.length > 6) {
             $('.help')[8].style.display = "none";
-            if(this.classList.contains("is-danger")){
+            if (this.classList.contains("is-danger")) {
                 $(this).removeClass("is-danger");
             }
-            flags[6] = true;
+            flags[7] = true;
             $(this).addClass("is-success");
-        }else {
+        } else {
             $('.help')[8].style.display = "block";
-            if(this.classList.contains("is-success")){
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
-            flags[6] = false;
+            flags[7] = false;
             $(this).addClass("is-danger");
         }
     });
-    $('input[name="phoneNumber"]').change(function(event){
-        if(this.value.length > 6){
+    $('input[name="phoneNumber"]').change(function (event) {
+        if (this.value.length > 6) {
             $('.help')[8].style.display = "none";
-            if(this.classList.contains("is-danger")){
+            if (this.classList.contains("is-danger")) {
                 $(this).removeClass("is-danger");
             }
-            flags[6] = true;
+            flags[7] = true;
             $(this).addClass("is-success");
-        }else {
+        } else {
             $('.help')[8].style.display = "block";
-            if(this.classList.contains("is-success")){
+            if (this.classList.contains("is-success")) {
                 $(this).removeClass("is-success");
             }
-            flags[6] = false;
+            flags[7] = false;
             $(this).addClass("is-danger");
         }
     });
@@ -302,7 +311,8 @@ $(function () {
             return false;
     });
     $('#submitButton').click(function () {
-        if(!flags.includes(false)) {
+        if (!flags.includes(false)) {
+            console.log($('.ClientForm').serialize());
             $(this).addClass("is-loading");
             $.ajax({
                 url: $('.clientForm').attr('action'),
@@ -312,7 +322,31 @@ $(function () {
                     window.location.replace(domain + '/login?confirmed=false');
                 }
             });
-        }else {
+        } else {
+            if (flags[0] === false) {
+                $('input[name="firstName"]').addClass("is-danger");
+            }
+            if (flags[1] === false) {
+                $('input[name="lastName"]').addClass("is-danger");
+            }
+            if (flags[2] === false) {
+                $('input[name="email"]').addClass("is-danger");
+            }
+            if (flags[3] === false) {
+                $('input[name="login"]').addClass("is-danger");
+            }
+            if (flags[4] === false) {
+                $('input[name="password"]').addClass("is-danger");
+            }
+            if (flags[5] === false) {
+                $('input[name="ignore"]').addClass("is-danger");
+            }
+            if (flags[6] === false) {
+                $('a[class*=chooseImg]').addClass("is-danger is-outlined");
+            }
+            if (flags[7] === false) {
+                $('input[name="phoneNumber"]').addClass("is-danger");
+            }
             $('#register-box').shake(5, 10, 3);
             return false;
         }

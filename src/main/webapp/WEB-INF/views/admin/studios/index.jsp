@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="studios" style="display: none">
+    <div class="show" style="display: none">
         <button class="addStudio button is-primary">Add</button>
     </div>
 
-    <table class="studios table" style="display: none">
+    <table class="studios table show" style="display: none">
         <thead>
         <tr>
             <th>Name</th>

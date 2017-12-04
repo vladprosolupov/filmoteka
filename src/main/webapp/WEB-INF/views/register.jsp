@@ -9,7 +9,6 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/registration.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
-
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -26,7 +25,8 @@
                         <h3 class="title has-text-white">Registration</h3>
                         <p class="subtitle has-text-white">Please register to proceed.</p>
                         <div class="box">
-                            <form:form action="/client/save" method="post" class="clientForm" modelAttribute="client" onsubmit="return false">
+                            <form:form action="/client/save" method="post" class="clientForm" modelAttribute="client"
+                                       onsubmit="return false">
                                 <div class="field">
                                     <div class="control has-icons-left">
                                         <form:input class="input is-medium" type="text" name="firstName"
@@ -113,7 +113,114 @@
                                         Passwords are not same!
                                     </p>
                                 </div>
-
+                                <div class="field">
+                                    <div class="control">
+                                        <a class="button chooseImg">
+                                            <i class="fa fa-user-circle-o" style="margin-right: 5px" aria-hidden="true"></i>
+                                            Choose profile image
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="field" id="radioImgs" style="display: none;">
+                                    <div class="control is-grouped is-grouped-multiline">
+                                        <label class="radio" style="margin-left: 0.5em">
+                                            <input type="radio" name="avatar" checked="true" value="icon1">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon1.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon2">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon2.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon3">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon3.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon4">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon4.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon5">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon5.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon6">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon6.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon7">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon7.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon8">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon8.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon9">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon9.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon10">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon10.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon11">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon11.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon12">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon12.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon13">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon13.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon14">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon14.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon15">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon15.png"/>
+                                            </figure>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="avatar" value="icon16">
+                                            <figure class="image is-64x64">
+                                                <img src="/resources/images/avatar/icon16.png"/>
+                                            </figure>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="field">
                                     <div class="control has-icons-left">
                                         <form:input class="input is-medium" type="tel" name="phoneNumber"
@@ -130,7 +237,7 @@
                                        name="${_csrf.parameterName}"
                                        value="${_csrf.token}"/>
                                 <form:button id="submitButton" type="submit"
-                                             class="save button is-primary is-large">Register</form:button>
+                                             class="save button is-info is-large">Register</form:button>
                             </form:form>
                         </div>
                     </div>

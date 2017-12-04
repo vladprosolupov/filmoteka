@@ -28,6 +28,7 @@ public class ClientDb {
     private String role;
     @JsonIgnore
     private Collection<ClientDataDb> clientDataById;
+    private AvatarDb avatarByAvatar;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -190,6 +191,18 @@ public class ClientDb {
                 ", enabled=" + enabled +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
+                ", clientDataById=" + clientDataById +
+                ", avatarByAvatar=" + avatarByAvatar +
                 '}';
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "avatar", referencedColumnName = "id")
+    public AvatarDb getAvatarByAvatar() {
+        return avatarByAvatar;
+    }
+
+    public void setAvatarByAvatar(AvatarDb avatarByAvatar) {
+        this.avatarByAvatar = avatarByAvatar;
     }
 }

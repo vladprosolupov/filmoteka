@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="directors" style="display: none">
+    <div class="show" style="display: none">
         <button class="addDirector button is-primary">Add</button>
     </div>
 
-    <table class="directors table" style="display: none">
+    <table class="directors table show" style="display: none">
         <thead>
         <tr>
             <th>Firs name</th>

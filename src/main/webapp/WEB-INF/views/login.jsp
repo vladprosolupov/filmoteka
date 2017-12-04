@@ -2,6 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main" %>
 <%@page session="true" %>
+
 <html>
 <head>
     <title>Login</title>
@@ -73,6 +74,7 @@
                                 <c:if test="${param.success == false}">
                                     <div class="msg has-text-centered has-text-danger">Your login or password is
                                         incorrect!
+                                        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
                                     </div>
                                 </c:if>
                                 <div class="columns">

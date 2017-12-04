@@ -15,6 +15,15 @@ public class CommentJSON {
     private String clientLogin;
     private String clientFirstName;
     private String clientLastName;
+    private String clientAvatar;
+
+    public String getClientAvatar() {
+        return clientAvatar;
+    }
+
+    public void setClientAvatar(String clientAvatar) {
+        this.clientAvatar = clientAvatar;
+    }
 
     public int getId() {
         return id;

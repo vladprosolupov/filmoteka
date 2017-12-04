@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="actors" style="display: none">
+    <div class="show" style="display: none">
         <button class="addActor button is-primary">Add</button>
     </div>
 
-    <table class="actors table" style="display: none">
+    <table class="actors table show" style="display: none">
         <thead>
         <tr>
             <th>First name</th>

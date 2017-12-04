@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.dao.AvatarDb;
 import web.dao.ClientDb;
 import org.hibernate.Session;
 import web.enums.ClientRole;
@@ -26,6 +27,9 @@ public class ClientService {
 
     @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private AvatarService avatarService;
 
     private static final Logger log = LogManager.getLogger(ClientService.class);
 
@@ -177,7 +181,6 @@ public class ClientService {
 
             throw new IllegalArgumentException("Login should not be null or empty");
         }
-
         ClientDb clientDb = getClientByLogin(login);
         clientDb.setEnabled(0);
         saveOrUpdate(clientDb);
@@ -193,7 +196,6 @@ public class ClientService {
 
             throw new IllegalArgumentException("Login should not be null or empty");
         }
-
         ClientDb clientDb = getClientByLogin(login);
         clientDb.setEnabled(1);
         saveOrUpdate(clientDb);
@@ -223,16 +225,32 @@ public class ClientService {
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
             clientDb.setRole(ClientRole.user.name());
             clientDb.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            clientDb.setAvatarByAvatar(avatarService.getAvatarById(clientJSON.getAvatar()));
+
         } else {
             log.info("editing existing client");
+            clientDb = getClientById(String.valueOf(clientJSON.getId()));
 
             clientDb.setFirstName(clientJSON.getFirstName());
             clientDb.setLastName(clientJSON.getLastName());
             clientDb.setPhoneNumber(clientJSON.getPhoneNumber());
-            clientDb.setLogin(clientJSON.getLogin());
+
+            clientDb.setAvatarByAvatar(avatarService.getAvatarByPath(clientJSON.getAvatar()));
         }
 
         log.info("convertToClientDb() returns : clientDb=" + clientDb);
         return clientDb;
+    }
+
+    public List<ClientJSON> getAllForAdmin(){
+        log.info("getAllForAdmin()");
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ClientJSON> allUsers = session.createQuery("select c.id, c.enabled, c.login, c.email, c.firstName, c.lastName from ClientDb c").list();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getAllForAdmin() returns : allUsers.size()=" + allUsers.size());
+        return allUsers;
     }
 }

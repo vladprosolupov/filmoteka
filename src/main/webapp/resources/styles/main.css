@@ -21,7 +21,7 @@
     margin-top: 3%;
 }
 
-section.info-tiles .films {
+.column.is-9 .films {
     display: grid;
     grid-template-columns: 16% 16% 16% 16% 16%;
     grid-column-gap: 5%;
@@ -114,11 +114,11 @@ a.navbar-item {
     color: #4e4e4e;
 }
 
-.navbar {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0px;
-}
+/*.navbar {*/
+    /*width: 100%;*/
+    /*justify-content: center;*/
+    /*margin-bottom: 0px;*/
+/*}*/
 
 a.navbar-link:hover {
     background-color: transparent !important;
@@ -335,9 +335,14 @@ a {
     outline: 0;
 }
 
+#loading.is-centered {
+    display: flex;
+    align-self: center;
+    left: 50%;
+}
+
 .pagination.is-centered {
     margin-top: 10%;
-    margin-bottom: 5%;
     position: absolute;
     bottom: -60px;
     width: 60%;
@@ -547,6 +552,10 @@ aside.menu {
     height: 60px;
 }
 
+form.subtitle.profile input{
+    text-align: center;
+}
+
 a.navbar-item.home:hover > img {
     filter: invert(98%);
 }
@@ -698,10 +707,104 @@ a.panel-block:hover .fa-user-circle-o {
     margin-right: 1rem;
 }
 
+.navbar.is-transparent a.navbar-item:hover, .navbar.is-transparent a.navbar-item.is-active,
+.navbar.is-transparent a.navbar-link:hover,
+.navbar.is-transparent a.navbar-link.is-active {
+    background-color: #4e4e4e !important;
+}
+.navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
+    background-color: transparent !important;
+}
+
+.navbar-burger {
+color: #4e4e4e;
+    height: 3.25rem;
+}
+
+.navbar-burger:hover {
+    background-color: #4e4e4e;
+    color:white;
+}
+
+.tile.is-parent {
+    padding: 3.75rem;
+}
+
+div.control .radio {
+    display: inline-flex;
+    align-items: center;
+}
+
+label.radio > input{
+    visibility: hidden;
+    position: absolute;
+}
+label.radio > input + img{
+    cursor:pointer;
+    border:2px solid transparent;
+}
+label.radio > input:checked + figure{
+    border:2px solid #209cee;
+}
+
+
+#profileImg:hover img{
+    filter: brightness(70%) blur(3px);
+}
+
+#profileImg:hover a{
+    color: white !important;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+    display: block !important;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+}
+
+
+@media all and (max-width: 769px){
+    .column.is-9 .films {
+        grid-template-columns : 75%;
+    }
+}
+
 @media all and (min-width: 769px) and (max-width: 1024px) {
     .box {
         width: 295px;
     }
+
+    .column.is-9 .films {
+        grid-template-columns : 75%;
+    }
+
+    /*.navbar-burger span{*/
+        /*width:48px;*/
+        /*left: calc(50% - 24px);*/
+    /*}*/
+    /*.navbar-burger {*/
+        /*cursor: pointer;*/
+        /*display: block;*/
+        /*height: 5rem;*/
+        /*position: relative;*/
+        /*width: 5rem;*/
+        /*margin-left: auto;*/
+    /*}*/
+
+    /*.navbar-burger span:nth-child(1) {*/
+        /*top: calc(50% - 14px);*/
+    /*}*/
+    /*.navbar-burger span:nth-child(2) {*/
+        /*top: calc(50% - 1px);*/
+    /*}*/
+    /*.navbar-burger span:nth-child(3) {*/
+        /*top: calc(50% + 12px);*/
+    /*}*/
+    /*.navbar-burger {*/
+        /*color: #4e4e4e;*/
+        /*height: 5rem;*/
+    /*}*/
+
 }
 
 @media all and (min-width: 1024px) and (max-width: 1215px) {

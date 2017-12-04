@@ -1,7 +1,12 @@
 .formStyling {
-    margin-top: 8%;
+    margin-top: 13vh;
 }
 
 .field.saveButton {
     margin-bottom: 5%;
 }
+
+.show {
+    margin: 10px;
+}
+

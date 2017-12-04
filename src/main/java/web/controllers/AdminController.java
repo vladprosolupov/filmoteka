@@ -239,6 +239,7 @@ public class AdminController {
 
             clientDb = clientService.getClientById(id);
         }
+        model.addAttribute("client", clientDb);
         log.info("adminUsersMore() returns : admin/users/more, clientDb.getLogin() = " + clientDb.getLogin());
         return "admin/users/more";
     }
