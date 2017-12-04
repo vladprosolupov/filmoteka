@@ -23,10 +23,20 @@
 
 .column.is-9 .films {
     display: grid;
-    grid-template-columns: 16% 16% 16% 16% 16%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5%;
     grid-row-gap: 5vh;
     justify-content: center;
+}
+
+.column.is-9.auto-grid{
+    display: grid;
+    border:1px solid #000;
+    grid-gap: 10px;
+    grid-row-gap: 5vh;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 2em;
 }
 
 section.info-tiles .filmsProf {
@@ -765,7 +775,7 @@ label.radio > input:checked + figure{
 
 @media all and (max-width: 769px){
     .column.is-9 .films {
-        grid-template-columns : 75%;
+        grid-template-columns : 1fr 1fr;
     }
     .is-desktop {
         display: none !important;
@@ -800,7 +810,7 @@ label.radio > input:checked + figure{
     }
 
     .column.is-9 .films {
-        grid-template-columns : 75%;
+        grid-template-columns : 1fr 1fr 1fr;
     }
 
     .is-desktop {
@@ -862,6 +872,9 @@ label.radio > input:checked + figure{
 @media all and (min-width: 1024px) and (max-width: 1215px) {
     aside.menu {
         width: 150px;
+    }
+    .column.is-9 .films {
+        grid-template-columns : 1fr 1fr 1fr 1fr;
     }
 }
 
