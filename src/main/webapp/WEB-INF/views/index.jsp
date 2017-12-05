@@ -15,10 +15,6 @@
 <html>
 <head>
     <title>Filmoteka</title>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
-    <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
-    <script src="<c:url value="/resources/js/vue.js"/>"></script>
-    <script src="<c:url value="/resources/js/main.js"/>"></script>
 </head>
 <t:header>
     <div id="loading" class="is-centered">
@@ -52,7 +48,7 @@
                 <%--<section class="info-tiles">--%>
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">
-                            <a v-bind:href="link+film[3]"></a>
+                            <a v-bind:href="link+film[3]" v-on:click="filmClicked($event)"></a>
                             <div class="card-image ">
                                 <figure class="image is-3by4">
                                     <img v-bind:src="film[2]" alt="Cover">

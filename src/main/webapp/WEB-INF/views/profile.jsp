@@ -22,10 +22,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile</title>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
-    <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
-    <script src="<c:url value="/resources/js/vue.js"/>"></script>
-    <script src="<c:url value="/resources/js/main.js"/>"></script>
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -66,7 +62,7 @@
         </div>
 
         <section class="hero is-white is-small is-bold has-text-centered" style="margin-top: 2ch">
-            <div class="hero-body is-paddingless" style="margin-top:5ch ;">
+            <div class="hero-body is-paddingless" style="margin-top:18ch ;">
 
                 <div id="loading" style="position: relative; left: 50%">
                     <div class="spinner">
@@ -75,7 +71,7 @@
                     </div>
                 </div>
                 <div class="container column" v-if="currentTab == 'profile'"
-                     style="display: none; margin-bottom: 10px; max-width: 400px; height: 130%;">
+                     style="display: none; margin-bottom: 10px; max-width: 400px; padding: 0.75rem">
 
                     <figure id="profileImg" style="margin-left: auto;margin-right: auto" class="image is-128x128">
                         <img id="avatar" v-bind:src="domain + info.avatar">
@@ -261,10 +257,10 @@
                         <section class="info-tiles">
                             <div class="filmsProf">
                                 <div v-for="film in likedFilms" class="card effect-ruby grow film">
+                                    <a v-bind:href="link+film[3]" v-on:click="filmClicked($event)"></a>
                                     <div class="card-image">
                                         <figure class="image is-3by4">
                                             <img v-bind:src="film[2]" alt="Cover">
-                                            <a v-bind:href="link+film[3]"></a>
                                         </figure>
                                     </div>
                                     <div class="card-content">
@@ -351,10 +347,10 @@
                         <section class="info-tiles">
                             <div class="filmsProf">
                                 <div v-for="film in bookmarkedFilms" class="card effect-ruby grow film">
+                                    <a v-bind:href="link+film[3]" v-on:click="filmClicked($event)"></a>
                                     <div class="card-image">
                                         <figure class="image is-3by4">
                                             <img v-bind:src="film[2]" alt="Cover">
-                                            <a v-bind:href="link+film[3]"></a>
                                         </figure>
                                     </div>
                                     <div class="card-content">

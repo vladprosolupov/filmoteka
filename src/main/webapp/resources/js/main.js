@@ -7,6 +7,8 @@ window.addEventListener("keydown", function (e) {
     if ($('#searchInput').is(':focus') || $('.searchDropdown').is(':focus')) {
         if ([38, 40].indexOf(e.keyCode) > -1) {
             e.preventDefault();
+        } else if ($(window).width() <= 1023) {
+            $(window).scrollTop(0);
         }
     }
 }, false);
@@ -66,6 +68,22 @@ var normalizeSearch = function (title) {
 
 
 $(function () {
+    // $('#searchInput').on('touchstart', function (e) {
+    //     e.preventDefault();
+    //     //$(window).scroll(0,0);
+    //     //$(window).scrollTop(0);
+    //     $('#searchInput').focus();
+    //     $(document).scrollTop(0);
+    //     document.documentElement.scrollTop = 0;
+    //     //alert(document.documentElement.scrollTop);
+    //
+    // });
+    // $('#searchInput').focus(function (e) {
+    //     if($(window).width() <= 1023){
+    //         $(document).scrollTop(0);
+    //     }
+    // });
+
     $(document).click(function (event) {
         $('.centered').removeClass("is-active");
         if ($(event.target.closest("#userDropDown")).length <= 0) {
@@ -73,6 +91,27 @@ $(function () {
                 if ($('#userDropDown')[0].classList.contains("is-active"))
                     $('#userDropDown').removeClass("is-active");
             } catch (e) {
+            }
+        }
+        if (($(event.target).parents().hasClass('hero background_for_client') && $(event.target).parents().hasClass('bd-is-clipped-touch')) || ($(event.target).hasClass('hero background_for_client') && $(event.target).parents().hasClass('bd-is-clipped-touch'))) {
+            var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            if ($navbarBurgers.length > 0) {
+
+                $navbarBurgers.forEach(function ($el) {
+                    var target = $el.dataset.target;
+                    var $target = document.getElementById(target);
+
+                    $('html').toggleClass('bd-is-clipped-touch');
+                    $('body').toggleClass('bd-is-clipped-touch');
+                    $('section[class*="background_for_client"]').toggleClass('is-blurred');
+
+
+                    $($target).slideToggle(600, function () {
+                        $($target).toggleClass('is-active', $(this).is(':visible'));
+                        $($el).toggleClass('is-active');
+                    });
+                });
             }
         }
     });
@@ -92,15 +131,23 @@ $(function () {
             searchInput: function (input) {
                 if (input) {
                     var self = this;
-                    console.log(input);
-                    $.getJSON('/search/film/quick/' + input, function (data) {
-                        self.searchResult = data;
-                        console.log(data);
-                        $('.centered').addClass("is-active");
-                    });
+                    if ($(window).width() >= 1024) {
+                        $.getJSON('/search/film/quick/' + input, function (data) {
+                            self.searchResult = data;
+                            $('.centered').addClass("is-active");
+                        });
+                    }
                 } else {
                     $('.centered').removeClass("is-active");
                 }
+            }
+        },
+        computed: {
+            scroll: function () {
+                if ($(window).width() <= 1023)
+                    return "$(window).scrollTop(0);";
+                else
+                    return '';
             }
         },
         methods: {
@@ -111,7 +158,9 @@ $(function () {
             showDropdown: function () {
                 var self = this;
                 if (self.searchInput) {
-                    $('.centered').addClass("is-active");
+                    if ($(window).width() >= 1024) {
+                        $('.centered').addClass("is-active");
+                    }
                 }
             },
             moveFocusToDropdown: function () {
@@ -223,6 +272,11 @@ $(function () {
                     var date = new Date(Date.parse(val));
                     return date.getFullYear();
                 },
+                filmClicked: function (ev) {
+                    if ($(ev.target).parents().hasClass('layout-default bd-is-clipped-touch') && $(ev.target).parents().hasClass('hero background_for_client')) {
+                        ev.preventDefault();
+                    }
+                },
                 openCategory: function (id) {
                     var self = this;
                     showLoading();
@@ -250,6 +304,7 @@ $(function () {
                         $('a[data-pagenum]').removeClass("is-current");
                         $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
+                        $(window).scrollTop(0);
                         hideLoading();
                     });
                 },
@@ -262,6 +317,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
+                            $(window).scrollTop(0);
                             hideLoading();
                         });
                     }
@@ -275,6 +331,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
+                            $(window).scrollTop(0);
                             hideLoading();
                         });
                     }
@@ -849,6 +906,11 @@ $(function () {
                     var date = new Date(Date.parse(val));
                     return date.getFullYear();
                 },
+                filmClicked: function (ev) {
+                    if ($(ev.target).parents().hasClass('layout-default bd-is-clipped-touch') && $(ev.target).parents().hasClass('hero background_for_client')) {
+                        ev.preventDefault();
+                    }
+                },
                 goToPage: function (pageNum) {
                     var self = this;
                     showLoadingProfile();
@@ -861,6 +923,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.bookmarkedFilms = films;
+                            $(window).scrollTop(0);
                             hideLoadingProfile();
                         });
                     } else {
@@ -871,6 +934,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.likedFilms = films;
+                            $(window).scrollTop(0);
                             hideLoadingProfile();
                         });
                     }
@@ -888,6 +952,7 @@ $(function () {
                                 $('a[data-pagenum]').removeClass("is-current");
                                 $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
+                                $(window).scrollTop(0);
                                 hideLoadingProfile();
                             });
                         } else {
@@ -899,6 +964,7 @@ $(function () {
                                 $('a[data-pagenum]').removeClass("is-current");
                                 $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
+                                $(window).scrollTop(0);
                                 hideLoadingProfile();
                             });
                         }
@@ -917,6 +983,7 @@ $(function () {
                                 $('a[data-pagenum]').removeClass("is-current");
                                 $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
+                                $(window).scrollTop(0);
                                 hideLoadingProfile();
                             });
                         } else {
@@ -928,6 +995,7 @@ $(function () {
                                 $('a[data-pagenum]').removeClass("is-current");
                                 $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
+                                $(window).scrollTop(0);
                                 hideLoadingProfile();
                             });
                         }
@@ -1174,6 +1242,11 @@ $(function () {
                     var date = new Date(Date.parse(val));
                     return date.getFullYear();
                 },
+                filmClicked: function (ev) {
+                    if ($(ev.target).parents().hasClass('layout-default bd-is-clipped-touch') && $(ev.target).parents().hasClass('hero background_for_client')) {
+                        ev.preventDefault();
+                    }
+                },
                 openCategory: function (id) {
                     window.location.replace(domain + '/?c=' + id);
                 },
@@ -1185,6 +1258,7 @@ $(function () {
                         $('a[data-pagenum]').removeClass("is-current");
                         $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
+                        $(window).scrollTop(0);
                         hideLoading();
                     });
                 },
@@ -1197,6 +1271,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
+                            $(window).scrollTop(0);
                             hideLoading();
                         });
                     }
@@ -1210,6 +1285,7 @@ $(function () {
                             $('a[data-pagenum]').removeClass("is-current");
                             $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
+                            $(window).scrollTop(0);
                             hideLoading();
                         });
                     }

@@ -404,6 +404,7 @@ a {
     background-color: white;
     position: absolute;
     width: 100%;
+    z-index: 1;
 }
 
 .image.is-percentage {
@@ -671,6 +672,10 @@ a.navbar-item.home:hover > img {
     filter: blur(3px);
 }
 
+.is-blurred {
+    filter: blur(3px);
+}
+
 a.panel-block:hover .fa-heart {
     color: #ff5257;
 }
@@ -782,51 +787,62 @@ label.radio > input:checked + figure {
     right: 30%;
 }
 
-@media all and (max-width: 769px) {
-    .column.is-9 .films {
-        grid-template-columns: 1fr 1fr;
-        margin: 0 0.9rem;
-    }
 
-    .is-desktop {
+
+
+
+
+
+
+
+@media all and (min-width: 1408px) {
+    aside.menu {
+        width: 214px;
+    }
+    .is-mobile {
         display: none !important;
-    }
-
-    .columns {
-        margin-right: 0;
-    }
-
-    .navbar-item {
-        text-align: center;
-    }
-
-    .navbar-item.has-dropdown.centered {
-        display: flex;
-    }
-
-    .navbar-item.has-dropdown.is-hoverable:hover {
-        color: rgba(255, 255, 255, 1);
-        background-color: #4e4e4e;
-    }
-
-    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover {
-        color: rgba(255, 255, 255, 1);
-    }
-
-    .grow:hover {
-        transform: scale(1);
-    }
-
-    .column {
-        padding: 0.75rem 0 0 0.75rem;
-    }
-
-    .pagination {
-        margin: 0;
     }
 }
 
-@media all and (min-width: 769px) and (max-width: 1024px) {
+@media all and (min-width: 1216px) and (max-width: 1407px) {
+    aside.menu {
+        width: 182px;
+    }
+    .is-mobile {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: 1216px) {
+
+    .screen-top {
+        margin-top: 10ch;
+    }
+    .is-mobile {
+        display: none !important;
+    }
+}
+@media all and (min-width: 1024px) and (max-width: 1215px) {
+    aside.menu {
+        width: 150px;
+    }
+
+    .column.is-9 .films {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .is-mobile {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: 1023px) {
+    .bd-is-clipped-touch {
+        overflow-y: hidden !important;
+        position: relative;
+    }
+}
+
+@media all and (min-width: 769px) and (max-width: 1023px) {
     .box {
         width: 295px;
     }
@@ -837,6 +853,10 @@ label.radio > input:checked + figure {
 
     .is-desktop {
         display: none !important;
+    }
+
+    .is-mobile {
+        display: block !important;
     }
 
     .columns {
@@ -900,31 +920,50 @@ label.radio > input:checked + figure {
 
 }
 
-@media all and (min-width: 1024px) and (max-width: 1215px) {
-    aside.menu {
-        width: 150px;
-    }
-
+@media all and (max-width: 768px) {
     .column.is-9 .films {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        margin: 0 0.9rem;
     }
-}
 
-@media all and (min-width: 1216px) and (max-width: 1407px) {
-    aside.menu {
-        width: 182px;
+    .is-desktop {
+        display: none !important;
     }
-}
 
-@media all and (min-width: 1408px) {
-    aside.menu {
-        width: 214px;
+    .is-mobile {
+        display: block !important;
     }
-}
 
-@media all and (max-width: 1216px) {
+    .columns {
+        margin-right: 0;
+    }
 
-    .screen-top {
-        margin-top: 10ch;
+    .navbar-item {
+        text-align: center;
+    }
+
+    .navbar-item.has-dropdown.centered {
+        display: flex;
+    }
+
+    .navbar-item.has-dropdown.is-hoverable:hover {
+        color: rgba(255, 255, 255, 1);
+        background-color: #4e4e4e;
+    }
+
+    .navbar-item.has-dropdown.is-hoverable a.navbar-link:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .grow:hover {
+        transform: scale(1);
+    }
+
+    .column {
+        padding: 0.75rem 0 0 0.75rem;
+    }
+
+    .pagination {
+        margin: 0;
     }
 }

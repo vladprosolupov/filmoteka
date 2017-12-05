@@ -21,11 +21,6 @@
 <html>
 <head>
     <title>About</title>
-    <link rel="stylesheet" href="<c:url value="/resources/styles/main.css"/>">
-    <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
-    <script src="<c:url value="/resources/js/vue.js"/>"></script>
-    <script src="<c:url value="/resources/js/main.js"/>"></script>
-
     <!-- Including CSRF token to the header -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
