@@ -153,7 +153,7 @@ a.navbar-link {
 }
 
 a.navbar-item:hover {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1) !important;
     background: #4e4e4e;
     cursor: pointer;
 }
@@ -199,7 +199,7 @@ a.navbar-link:hover {
 div.navbar-dropdown.is-boxed {
     /*background-color: rgba(72,72,72,0.98);*/
     background-color: white;
-    margin-top: -6%;
+    /*margin-top: -6%;*/
 }
 
 .table th:first-child {

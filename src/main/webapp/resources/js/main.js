@@ -196,7 +196,7 @@ $(function () {
                 categories: [],
                 link: '/film/',
                 notFound: false,
-                pagesNumber: 0,
+                pagesNumber: 356,
                 currentPage: 1,
                 pageLink: '/film/filmsForIndexPage/'
             },
@@ -260,7 +260,8 @@ $(function () {
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
                             else
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10);
-                        })).done(function () {
+                        })
+                    ).done(function () {
                         // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         hideLoading();
                     });
@@ -298,14 +299,17 @@ $(function () {
                 },
                 goToPage: function (pageNum) {
                     var self = this;
+                    console.log(pageNum);
                     showLoading();
                     $.getJSON(self.pageLink + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         $(window).scrollTop(0);
                         hideLoading();
+                        $(function () {
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        });
                     });
                 },
                 goToPrevious: function (event) {
@@ -314,11 +318,13 @@ $(function () {
                         showLoading();
                         $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
                             hideLoading();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     }
                 },
@@ -328,11 +334,13 @@ $(function () {
                         showLoading();
                         $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
                             hideLoading();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     }
                 }
@@ -920,22 +928,26 @@ $(function () {
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
                         $.getJSON(domain + '/bookmark/getBookmarks/' + pageNum, function (films) {
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.bookmarkedFilms = films;
                             $(window).scrollTop(0);
                             hideLoadingProfile();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     } else {
                         showLoadingProfile();
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#liked').addClass("is-active");
                         $.getJSON(domain + '/likes/getLiked/' + pageNum, function (films) {
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.likedFilms = films;
                             $(window).scrollTop(0);
                             hideLoadingProfile();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     }
                 },
@@ -949,11 +961,13 @@ $(function () {
                             $('#bookmarks').addClass("is-active");
                             $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) - 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) - 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
                                 $(window).scrollTop(0);
                                 hideLoadingProfile();
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                             });
                         } else {
                             showLoadingProfile();
@@ -961,11 +975,13 @@ $(function () {
                             $('#liked').addClass("is-active");
                             $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) - 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) - 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
                                 $(window).scrollTop(0);
                                 hideLoadingProfile();
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                             });
                         }
                     }
@@ -980,11 +996,13 @@ $(function () {
                             $('#bookmarks').addClass("is-active");
                             $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) + 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) + 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
                                 $(window).scrollTop(0);
                                 hideLoadingProfile();
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                             });
                         } else {
                             showLoadingProfile();
@@ -992,11 +1010,13 @@ $(function () {
                             $('#liked').addClass("is-active");
                             $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) + 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) + 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
                                 $(window).scrollTop(0);
                                 hideLoadingProfile();
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                             });
                         }
                     }
@@ -1255,11 +1275,13 @@ $(function () {
                     showLoading();
                     $.getJSON('/film/filmsForBestPage/' + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         $(window).scrollTop(0);
                         hideLoading();
+                        $(function () {
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        });
                     });
                 },
                 goToPrevious: function (event) {
@@ -1268,11 +1290,13 @@ $(function () {
                         showLoading();
                         $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
                             hideLoading();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     }
                 },
@@ -1282,11 +1306,13 @@ $(function () {
                         showLoading();
                         $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
                             hideLoading();
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                         });
                     }
                 }
