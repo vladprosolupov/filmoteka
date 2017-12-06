@@ -113,6 +113,13 @@ public class RootWebController {
         }
     }
 
+    @RequestMapping(value = "/search")
+    public String search() {
+        log.info("search()");
+        log.info("search() returns : search");
+        return "search";
+    }
+
     @RequestMapping(value = "/403")
     public String error403() {
         log.info("error403()");

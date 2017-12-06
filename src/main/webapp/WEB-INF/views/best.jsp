@@ -35,12 +35,27 @@
                 </aside>
             </div>
             <div class="column is-9">
-                <article class="message is-danger" v-if="notFound">
-                    <div class="message-body">
-                        Sorry, but the film you are looking for is <strong>not found</strong>. Please try with other
-                        keyword or choose one film from our library!
+
+                <div class="navbar-end VueSearchOnPage">
+                    <div class="navbar-item has-dropdown centered" v-if="width <= 1023">
+                        <div class="field has-addons" style="margin: 0">
+                            <div class="control has-icons-left">
+                                <input id="searchInput" autocomplete="off" v-model="searchInput"
+                                       v-on:keyup.13="doSearch"
+                                       class="input" type="text" placeholder="Search...">
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-search"></i>
+                                        </span>
+                            </div>
+                            <div class="control">
+                                <a class="button is-dark" v-on:click="doSearch">
+                                    Search
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </div>
+
                 <section class="info-tiles">
                     <div class="films">
                         <div v-for="film in films" class="card effect-ruby grow film">

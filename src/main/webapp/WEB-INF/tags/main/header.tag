@@ -27,39 +27,6 @@
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/main.js"/>"></script>
     <script type="application/javascript">
-
-        jQuery(document).on('touchmove', function (ev) {
-            if (jQuery(ev.target).parents().hasClass('bd-is-clipped-touch')) {
-                ev.preventDefault();
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-
-            var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-            if ($navbarBurgers.length > 0) {
-
-                $navbarBurgers.forEach(function ($el) {
-                    $el.addEventListener('click', function () {
-                        var target = $el.dataset.target;
-                        var $target = document.getElementById(target);
-
-                        $('html').toggleClass('bd-is-clipped-touch');
-                        $('body').toggleClass('bd-is-clipped-touch');
-                        $('section[class*="background_for_client"]').toggleClass('is-blurred');
-
-
-                        $($target).slideToggle(600, function () {
-                            $($target).toggleClass('is-active', $(this).is(':visible'));
-                            $($el).toggleClass('is-active');
-                        });
-
-                    });
-                });
-            }
-
-        });
     </script>
 </head>
 <body class="layout-default">
@@ -122,6 +89,7 @@
                             Log out</a>
                     </div>
                 </div>
+                <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
                 <div class="navbar-item is-mobile">
                     <input type="hidden"
                            name="${_csrf.parameterName}"
@@ -135,7 +103,7 @@
                 </div>
             </div>
             <div class="navbar-end VueSearch">
-                <div class="navbar-item has-dropdown centered">
+                <div class="navbar-item has-dropdown centered" v-if="width >= 1024">
                     <div class="field has-addons" style="margin: 0">
                         <div class="control has-icons-left">
                             <input id="searchInput" autocomplete="off" v-bind:onfocus="scroll" v-model="searchInput"
@@ -188,6 +156,8 @@
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
+            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
+
 
             <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
 
@@ -201,7 +171,7 @@
                                                        aria-hidden="true"></i>Sign up</a>
         </div>
         <div class="navbar-end VueSearch">
-            <div class="navbar-item has-dropdown centered">
+            <div class="navbar-item has-dropdown centered" v-if="width >= 1024">
                 <div class="field has-addons" style="margin: 0">
                     <div class="control has-icons-left">
                         <input id="searchInput" autocomplete="off" v-model="searchInput"
@@ -245,7 +215,7 @@
 
 
     <div class="navbar-menu" id="navburger-user">
-        <div class="navbar-start">
+        < class="navbar-start">
             <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                                                    aria-hidden="true"></i> Best Rated</a>
 
@@ -254,6 +224,8 @@
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
+            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
+
 
             <div class="navbar-item has-dropdown is-hoverable">
 
@@ -298,7 +270,7 @@
             </div>
         </div>
         <div class="navbar-end VueSearch">
-            <div class="navbar-item has-dropdown centered">
+            <div class="navbar-item has-dropdown centered" v-if="width >= 1024">
                 <div class="field has-addons" style="margin: 0">
                     <div class="control has-icons-left">
                         <input id="searchInput" autocomplete="off" v-model="searchInput"
