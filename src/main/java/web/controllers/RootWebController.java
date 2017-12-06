@@ -41,18 +41,20 @@ public class RootWebController {
     public String index() {
         log.info("index()");
 
-        log.info("index() returns : index");
+        log.info("index() returns : index, ");
         return "index";
     }
 
     @RequestMapping("/index")
-    public RedirectView localRedirect() {
+    public RedirectView localRedirect(HttpServletRequest request) {
         log.info("localRedirect()");
 
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8080");
+        String domain = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
 
-        log.info("localRedirect() returns : localhost:8080");
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(domain);
+
+        log.info("localRedirect() returns : " + domain);
         return redirectView;
     }
 
