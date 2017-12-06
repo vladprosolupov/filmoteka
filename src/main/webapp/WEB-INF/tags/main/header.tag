@@ -26,8 +26,6 @@
     <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
     <script src="<c:url value="/resources/js/vue.js"/>"></script>
     <script src="<c:url value="/resources/js/main.js"/>"></script>
-    <script type="application/javascript">
-    </script>
 </head>
 <body class="layout-default">
 <%--<nav class="is-centered">--%>
