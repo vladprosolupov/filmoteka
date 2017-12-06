@@ -41,7 +41,7 @@ public class RootWebController {
     public String index() {
         log.info("index()");
 
-        log.info("index() returns : index, ");
+        log.info("index() returns : index");
         return "index";
     }
 
