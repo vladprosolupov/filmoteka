@@ -67,23 +67,37 @@ var normalizeSearch = function (title) {
 };
 
 
-$(function () {
-    // $('#searchInput').on('touchstart', function (e) {
-    //     e.preventDefault();
-    //     //$(window).scroll(0,0);
-    //     //$(window).scrollTop(0);
-    //     $('#searchInput').focus();
-    //     $(document).scrollTop(0);
-    //     document.documentElement.scrollTop = 0;
-    //     //alert(document.documentElement.scrollTop);
-    //
-    // });
-    // $('#searchInput').focus(function (e) {
-    //     if($(window).width() <= 1023){
-    //         $(document).scrollTop(0);
-    //     }
-    // });
+jQuery(document).on('touchmove', function (ev) {
+    if (jQuery(ev.target).parents().hasClass('bd-is-clipped-touch')) {
+        ev.preventDefault();
+    }
+});
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    if ($navbarBurgers.length > 0) {
+
+        $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+                var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                $('html').toggleClass('bd-is-clipped-touch');
+                $('body').toggleClass('bd-is-clipped-touch');
+                $('section[class*="background_for_client"]').toggleClass('is-blurred');
+
+                $($target).toggleClass('is-active');
+                $($el).toggleClass('is-active');
+            });
+        });
+    }
+
+});
+
+
+$(function () {
     $(document).click(function (event) {
         $('.centered').removeClass("is-active");
         if ($(event.target.closest("#userDropDown")).length <= 0) {
@@ -105,12 +119,8 @@ $(function () {
                     $('html').toggleClass('bd-is-clipped-touch');
                     $('body').toggleClass('bd-is-clipped-touch');
                     $('section[class*="background_for_client"]').toggleClass('is-blurred');
-
-
-                    $($target).slideToggle(600, function () {
-                        $($target).toggleClass('is-active', $(this).is(':visible'));
-                        $($el).toggleClass('is-active');
-                    });
+                    $($target).toggleClass('is-active');
+                    $($el).toggleClass('is-active');
                 });
             }
         }
@@ -120,12 +130,27 @@ $(function () {
         event.stopPropagation();
     });
 
+    $(".VueSearchOnPage").click(function (event) {
+        event.stopPropagation();
+    });
+
     var search = new Vue({
         el: '.VueSearch',
         data: {
             searchResult: [],
             link: "/film/",
-            searchInput: ''
+            searchInput: '',
+            width: 0
+        },
+        created: function () {
+            var self = this;
+            window.addEventListener('resize', function (ev) {
+                self.width = $(window).width();
+            });
+        },
+        beforeCompile: function () {
+            var self = this;
+            self.width = $(window).width();
         },
         watch: {
             searchInput: function (input) {
@@ -180,6 +205,34 @@ $(function () {
             }
         }
     });
+
+    var searchOnPage = new Vue({
+        el: '.VueSearchOnPage',
+        data: {
+            searchResult: [],
+            link: "/film/",
+            searchInput: '',
+            width: 0
+        },
+        created: function () {
+            var self = this;
+            window.addEventListener('resize', function (ev) {
+                self.width = $(window).width();
+            });
+        },
+        beforeCompile: function () {
+            var self = this;
+            self.width = $(window).width();
+        },
+        methods: {
+            doSearch: function () {
+                var self = this;
+                window.location.replace(domain + '/?s=' + self.searchInput);
+            }
+        }
+    });
+
+
     if (window.location.pathname === "" || window.location.pathname === "/" || window.location.pathname === "/index" || window.location.pathname === null) {
         var category = getUrlParameter("c");
         var searchInput = getUrlParameter("s");
@@ -1292,6 +1345,10 @@ $(function () {
                 }
             }
         });
+    } else if (window.location.pathname === "/search") {
+        if ($(window).width() >= 1024) {
+            window.location.replace(domain);
+        }
     }
 
 
