@@ -32,10 +32,14 @@ import web.model.ClientPasswordJSON;
 import web.services.ClientService;
 import web.services.PasswordGenerator;
 import web.services.PasswordResetTokenService;
+import web.tasks.RegisterUserTask;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 @Controller
@@ -46,9 +50,6 @@ public class ClientController {
     private ClientService clientService;
 
     @Autowired
-    private ApplicationEventPublisher eventPublisher;
-
-    @Autowired
     private PasswordResetTokenService passwordResetTokenService;
 
     @Qualifier(value = "messageSource")
@@ -57,6 +58,11 @@ public class ClientController {
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private RegisterUserTask registerUserTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(ClientController.class);
 
@@ -93,7 +99,10 @@ public class ClientController {
         log.info("appURL - " + applicationURL);
         log.info("locale - " + request.getLocale());
 
-        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(applicationURL, clientDb, request.getLocale()));
+
+        registerUserTask.setApplicationURL(applicationURL);
+        registerUserTask.setClientDb(clientDb);
+        executorService.submit(registerUserTask);
 
         log.info("addClient() returns : OK");
         return "OK";
