@@ -1348,6 +1348,12 @@ $(function () {
     } else if (window.location.pathname === "/search") {
         if ($(window).width() >= 1024) {
             window.location.replace(domain);
+        }else {
+            window.addEventListener('resize', function() {
+                if ($(window).width() >= 1024) {
+                    window.location.replace(domain);
+                }
+            });
         }
     }
 
