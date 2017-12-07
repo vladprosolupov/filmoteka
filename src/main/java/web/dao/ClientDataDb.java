@@ -11,6 +11,7 @@ public class ClientDataDb {
     private int id;
     private ClientDb clientByIdClient;
     private FilmDb filmByIdFilm;
+    private int aiPoints;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,12 +61,23 @@ public class ClientDataDb {
         this.filmByIdFilm = filmByIdFilm;
     }
 
+    @Basic
+    @Column(name = "ai_points", nullable = false)
+    public int getAiPoints() {
+        return aiPoints;
+    }
+
+    public void setAiPoints(int aiPoints) {
+        this.aiPoints = aiPoints;
+    }
+
     @Override
     public String toString() {
         return "ClientDataDb{" +
                 "id=" + id +
                 ", clientByIdClient=" + clientByIdClient +
                 ", filmByIdFilm=" + filmByIdFilm +
+                ", aiPoints=" + aiPoints +
                 '}';
     }
 }
