@@ -17,8 +17,12 @@ import web.services.ClientService;
 import web.services.FilmDislikesService;
 import web.services.FilmLikesService;
 import web.services.FilmService;
+import web.tasks.AddClientDislikeTask;
+import web.tasks.AddClientLikeTask;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Controller
 @RequestMapping(value = "/likes")
@@ -35,6 +39,14 @@ public class FilmLikesController {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private AddClientLikeTask addClientLikeTask;
+
+    @Autowired
+    private AddClientDislikeTask addClientDislikeTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 
@@ -64,7 +76,9 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        addClientLikeTask.setClientDb(clientDb);
+        addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(addClientLikeTask);
 
         log.info("succ. added like for film");
         return "OK";
@@ -96,7 +110,9 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        addClientDislikeTask.setClientDb(clientDb);
+        addClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(addClientDislikeTask);
 
         log.info("succ. added dislike for film");
         return "OK";

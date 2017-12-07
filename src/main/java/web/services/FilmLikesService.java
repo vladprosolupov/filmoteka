@@ -31,7 +31,7 @@ public class FilmLikesService {
     private static final Logger log = LogManager.getLogger(FilmLikesService.class);
 
     public void addLike(FilmLikeDb filmLikeDb) throws HibernateException {
-        log.info("addDislike(filmLikeDb=" + filmLikeDb + ")");
+        log.info("addLike(filmLikeDb=" + filmLikeDb + ")");
 
         if(filmLikeDb == null) {
             log.error("filmLikeDb is null");

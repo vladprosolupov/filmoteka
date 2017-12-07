@@ -97,8 +97,6 @@ public class ClientController {
 
         String applicationURL = request.getContextPath();
         log.info("appURL - " + applicationURL);
-        log.info("locale - " + request.getLocale());
-
 
         registerUserTask.setApplicationURL(applicationURL);
         registerUserTask.setClientDb(clientDb);
