@@ -19,6 +19,8 @@ import web.services.FilmLikesService;
 import web.services.FilmService;
 import web.tasks.AddClientDislikeTask;
 import web.tasks.AddClientLikeTask;
+import web.tasks.RemoveClientDislikeTask;
+import web.tasks.RemoveClientLikeTask;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -45,6 +47,12 @@ public class FilmLikesController {
 
     @Autowired
     private AddClientDislikeTask addClientDislikeTask;
+
+    @Autowired
+    private RemoveClientLikeTask removeClientLikeTask;
+
+    @Autowired
+    private RemoveClientDislikeTask removeClientDislikeTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -138,7 +146,9 @@ public class FilmLikesController {
 
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        likesService.deleteLike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
+        removeClientLikeTask.setClientId(clientId);
+        removeClientLikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(removeClientLikeTask);
 
         return "OK";
     }
@@ -163,7 +173,9 @@ public class FilmLikesController {
 
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
+        removeClientDislikeTask.setClientId(clientId);
+        removeClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(removeClientDislikeTask);
 
         return "OK";
     }
