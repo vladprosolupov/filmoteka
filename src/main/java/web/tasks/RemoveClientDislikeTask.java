@@ -20,7 +20,7 @@ public class RemoveClientDislikeTask implements Runnable {
 
     @Override
     public void run() {
-        log.info("run()");
+        log.info("run(); clientId=" + clientId + ", filmLikeJSON=" + filmLikesJSON);
 
         dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
 

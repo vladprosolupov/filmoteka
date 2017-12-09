@@ -24,8 +24,7 @@ public class RegisterUserTask implements Runnable {
 
     @Override
     public void run() {
-        log.info("run()");
-        log.info("eventPublisher - " + eventPublisher);
+        log.info("run(); applicationURL=" + applicationURL + ", clientDb=" + clientDb);
 
         eventPublisher.publishEvent(new OnRegistrationCompleteEvent(applicationURL, clientDb));
 

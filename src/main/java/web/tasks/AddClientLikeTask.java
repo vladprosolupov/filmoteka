@@ -21,7 +21,7 @@ public class AddClientLikeTask implements Runnable {
 
     @Override
     public void run() {
-        log.info("run()");
+        log.info("run(); clientDb=" + clientDb + ", filmLikeJSON=" + filmLikesJSON);
 
         likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 

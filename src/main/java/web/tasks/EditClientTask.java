@@ -21,7 +21,7 @@ public class EditClientTask implements Runnable {
 
     @Override
     public void run() {
-        log.info("run()");
+        log.info("run(); clientJSON=" + clientJSON);
 
         try {
             clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));

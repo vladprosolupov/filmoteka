@@ -21,7 +21,7 @@ public class AddClientDislikeTask implements Runnable {
 
     @Override
     public void run() {
-        log.info("run()");
+        log.info("run(); clinetDb=" + clientDb + ", filmLikeJSON=" + filmLikesJSON);
 
         dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
