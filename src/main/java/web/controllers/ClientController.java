@@ -32,6 +32,7 @@ import web.model.ClientPasswordJSON;
 import web.services.ClientService;
 import web.services.PasswordGenerator;
 import web.services.PasswordResetTokenService;
+import web.tasks.EditClientTask;
 import web.tasks.RegisterUserTask;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,6 +62,9 @@ public class ClientController {
 
     @Autowired
     private RegisterUserTask registerUserTask;
+
+    @Autowired
+    private EditClientTask editClientTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -133,7 +137,9 @@ public class ClientController {
 
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
         clientJSON.setId(clientDb.getId());
-        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+
+        editClientTask.setClientJSON(clientJSON);
+        executorService.submit(editClientTask);
 
         log.info("editClient() returns : OK");
         return "OK";
