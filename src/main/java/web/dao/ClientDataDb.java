@@ -11,7 +11,7 @@ public class ClientDataDb {
     private int id;
     private ClientDb clientByIdClient;
     private FilmDb filmByIdFilm;
-    private int aiPoints;
+    private double aiPoints;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,12 +62,12 @@ public class ClientDataDb {
     }
 
     @Basic
-    @Column(name = "ai_points", nullable = false)
-    public int getAiPoints() {
+    @Column(name = "ai_points", nullable = false, precision = 0)
+    public double getAiPoints() {
         return aiPoints;
     }
 
-    public void setAiPoints(int aiPoints) {
+    public void setAiPoints(double aiPoints) {
         this.aiPoints = aiPoints;
     }
 

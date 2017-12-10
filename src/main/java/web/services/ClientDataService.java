@@ -46,7 +46,7 @@ public class ClientDataService {
 
     }
 
-    public void saveClientDataMap(Map<Integer, Integer> clientDataMap, ClientDb clientDb) {
+    public void saveClientDataMap(Map<Integer, Double> clientDataMap, ClientDb clientDb) {
         log.info("saveClientDataMap(clientDataMap.size()=" + clientDataMap.size() + ", clientDb=" + clientDb + ")");
         if (clientDataMap.isEmpty()) {
             log.error("Error : clientDataMap is empty");
@@ -67,7 +67,7 @@ public class ClientDataService {
 
         //Adding new suggested films
         session.beginTransaction();
-        for (Map.Entry<Integer, Integer> entry : clientDataMap.entrySet())
+        for (Map.Entry<Integer, Double> entry : clientDataMap.entrySet())
         {
             ClientDataDb clientDataDb = new ClientDataDb();
             clientDataDb.setClientByIdClient(clientDb);

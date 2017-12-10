@@ -13,10 +13,7 @@ import web.dao.ClientDb;
 import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
-import web.services.ClientService;
-import web.services.FilmDislikesService;
-import web.services.FilmLikesService;
-import web.services.FilmService;
+import web.services.*;
 
 import java.util.List;
 
@@ -35,6 +32,9 @@ public class FilmLikesController {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    AiService aiService;
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 
@@ -64,8 +64,9 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
+        likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        aiService.generateFilmsForSuggestion(clientDb);
         log.info("succ. added like for film");
         return "OK";
     }
