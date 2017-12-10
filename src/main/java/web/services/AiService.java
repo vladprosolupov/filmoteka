@@ -10,25 +10,23 @@ import web.dao.*;
 import web.model.aiModel.CombinedFilm;
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service("AiService")
 @Transactional
 public class AiService {
+
     @Autowired(required = true)
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Autowired
-    FilmService filmService;
+    private FilmService filmService;
 
     @Autowired
-    ClientService clientService;
+    private ClientService clientService;
 
     @Autowired
-    ClientDataService clientDataService;
+    private ClientDataService clientDataService;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -163,11 +161,43 @@ public class AiService {
         Map<Integer, Double> clientDataMap = new HashMap<>();
         //Generate clientDataMap
 
+        Map<Integer, Integer> categoryPercentage = calculateCategoryPercentage(combinedFilm.getCategories());
+        Set<FilmDb> setOfFilms = new HashSet<>();
+        for(Map.Entry<Integer, Integer> entry : categoryPercentage.entrySet()) {
+            setOfFilms.addAll(getPropCategory(entry.getValue(), entry.getKey()));
+        }
 
+        System.out.println("SET - " + setOfFilms);
 
         //Save clientDataMap
-        clientDataService.saveClientDataMap(clientDataMap, currentClient);
+//        clientDataService.saveClientDataMap(clientDataMap, currentClient);
     }
 
+    private Map<Integer, Integer> calculateCategoryPercentage(Map<Integer, Integer> categories) {
+        Map<Integer, Integer> percentage = new HashMap<>();
+
+        int amount = 0;
+        for(Map.Entry<Integer, Integer> entry : categories.entrySet()) {
+            amount += entry.getValue();
+        }
+
+        for(Map.Entry<Integer, Integer> entry : categories.entrySet()) {
+            int proc = entry.getValue()/amount;
+            proc = proc * 100;
+            percentage.put(entry.getKey(), proc);
+        }
+
+        return percentage;
+    }
+
+    private Set<FilmDb> getPropCategory(int amount, int category) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<FilmDb> list = session.createQuery("from FilmDb f inner join f.filmCategories fc where fc.id=? order by f.rating desc").setParameter(0, category)
+                .setMaxResults(amount).list();
+        Set<FilmDb> filmDbs = new HashSet<>(list);
+
+        return filmDbs;
+    }
 
 }

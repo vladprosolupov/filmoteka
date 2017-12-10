@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Map;
 
 public class CombinedFilm {
+
     private Map<Integer, Integer> categories;
     private Map<String, Integer> titles;
     private Map<Integer, Integer> countries;
