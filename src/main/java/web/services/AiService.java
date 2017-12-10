@@ -10,10 +10,7 @@ import web.dao.*;
 import web.model.aiModel.CombinedFilm;
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service("AiService")
 @Transactional
@@ -76,7 +73,7 @@ public class AiService {
 
         //Getting start row
         session.beginTransaction();
-        long start = Math.max(0, ((long) session.createQuery("select count(f.id) from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
+        long start = Math.max(0, ((long) session.createQuery("select count(fl.filmLike.filmByIdFilm.id) from FilmLikeDb fl where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
         session.getTransaction().commit();
 
 
@@ -151,7 +148,37 @@ public class AiService {
         return combinedFilm;
     }
 
+    public double compareCombinedWithNormal(CombinedFilm combinedFilm, FilmDb normalFilm) {
+        double aiPoints = 0;
+        Set<Integer> categories = new HashSet<>();
+        normalFilm.getFilmCategories().forEach(categoryDb -> categories.add(categoryDb.getId()));
+        aiPoints += getComparisonMapInteger(combinedFilm.getCategories(), categories) * categoryPoints;
 
+        aiPoints += getComparisonMapString(combinedFilm.getTitles(), normalFilm.getTitleSearch()) * titlePoints;
+
+        Set<Integer> countries = new HashSet<>();
+        normalFilm.getFilmCountries().forEach(countryDb -> countries.add(countryDb.getId()));
+        aiPoints += getComparisonMapInteger(combinedFilm.getCountries(), countries) * countryPoints;
+
+        Set<Integer> actors = new HashSet<>();
+        normalFilm.getFilmActorsById().forEach(filmActorDb -> actors.add(filmActorDb.getActorByIdActor().getId()));
+        aiPoints += getComparisonMapInteger(combinedFilm.getActors(), actors) * actorsPoints;
+
+        Set<Integer> directors = new HashSet<>();
+        normalFilm.getFilmDirectors().forEach(directorDb -> directors.add(directorDb.getId()));
+        aiPoints += getComparisonMapInteger(combinedFilm.getDirectors(), directors) * directorsPoints;
+
+        Set<Integer> studios = new HashSet<>();
+        normalFilm.getFilmStudios().forEach(studioDb -> studios.add(studioDb.getId()));
+        aiPoints += getComparisonMapInteger(combinedFilm.getStudios(), studios) * studiosPoints;
+
+        aiPoints += getComparisonMapDate(combinedFilm.getReleaseDates(), normalFilm.getReleaseDate()) * releaseDatePoints;
+
+
+        aiPoints += ratingPoints *  (1 - 1/normalFilm.getRating());
+
+        return aiPoints;
+    }
 
 
     public void generateFilmsForSuggestion(ClientDb currentClient) {
