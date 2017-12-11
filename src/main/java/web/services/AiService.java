@@ -13,6 +13,7 @@ import web.model.aiModel.CombinedFilm;
 import javax.persistence.criteria.Subquery;
 import java.sql.Date;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service("AiService")
 @Transactional
@@ -46,6 +47,9 @@ public class AiService {
         for (int i : set) {
             if (map.containsKey(i))
                 counter += map.get(i);
+        }
+        if(fullSize == 0){
+            return 0;
         }
         return ((double) counter / (double) fullSize);
     }
@@ -83,7 +87,7 @@ public class AiService {
         //Getting categories
         session.beginTransaction();
         Map<Integer, Integer> categories = new HashMap<>();
-        List<CategoryDb> categoryDbList = session.createQuery("select f.filmCategories from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<CategoryDb> categoryDbList = session.createQuery("select f.filmCategories from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         categoryDbList.forEach(categoryDb -> categories.merge(categoryDb.getId(), 1, Integer::sum));
         combinedFilm.setCategories(categories);
         session.getTransaction().commit();
@@ -92,7 +96,7 @@ public class AiService {
         //Getting titles
         session.beginTransaction();
         Map<String, Integer> titles = new HashMap<>();
-        List<String> searchTitles = session.createQuery("select f.titleSearch from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<String> searchTitles = session.createQuery("select f.titleSearch from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         searchTitles.forEach(s -> titles.merge(s, 1, Integer::sum));
         combinedFilm.setTitles(titles);
         session.getTransaction().commit();
@@ -102,7 +106,7 @@ public class AiService {
         session.beginTransaction();
         Map<Integer, Integer> countries = new HashMap<>();
 //        start = Math.max(0, ((int) session.createQuery("select count(f.id) from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
-        List<CountryDb> countryDbList = session.createQuery("select f.filmCountries from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<CountryDb> countryDbList = session.createQuery("select f.filmCountries from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         countryDbList.forEach(countryDb -> countries.merge(countryDb.getId(), 1, Integer::sum));
         combinedFilm.setCountries(countries);
         session.getTransaction().commit();
@@ -112,7 +116,7 @@ public class AiService {
         session.beginTransaction();
         Map<Integer, Integer> actors = new HashMap<>();
 //        start = Math.max(0, ((int) session.createQuery("select f.filmActorsById.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
-        List<ActorDb> actorsDbList = session.createQuery("select f.actorByIdActor from FilmActorDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.filmByIdFilm.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<ActorDb> actorsDbList = session.createQuery("select f.actorByIdActor from FilmActorDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.filmByIdFilm.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         actorsDbList.forEach(actorDb -> actors.merge(actorDb.getId(), 1, Integer::sum));
         combinedFilm.setActors(actors);
         session.getTransaction().commit();
@@ -122,18 +126,17 @@ public class AiService {
         session.beginTransaction();
         Map<Integer, Integer> directors = new HashMap<>();
 //        start = Math.max(0, ((int) session.createQuery("select f.filmCountries.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
-        List<DirectorDb> directorDbList = session.createQuery("select f.filmDirectors from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<DirectorDb> directorDbList = session.createQuery("select f.filmDirectors from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         directorDbList.forEach(directorDb -> directors.merge(directorDb.getId(), 1, Integer::sum));
         combinedFilm.setDirectors(directors);
         session.getTransaction().commit();
-
 
 
         //Getting studios
         session.beginTransaction();
         Map<Integer, Integer> studios = new HashMap<>();
 //        start = Math.max(0, ((int) session.createQuery("select f.filmCountries.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
-        List<StudioDb> studioDbList = session.createQuery("select f.filmStudios from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<StudioDb> studioDbList = session.createQuery("select f.filmStudios from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         studioDbList.forEach(studioDb -> studios.merge(studioDb.getId(), 1, Integer::sum));
         combinedFilm.setStudios(studios);
         session.getTransaction().commit();
@@ -142,7 +145,7 @@ public class AiService {
         //Getting release dates
         session.beginTransaction();
         Map<Date, Integer> dates = new HashMap<>();
-        List<Date> sqlDates = session.createQuery("select f.releaseDate from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int)start).setMaxResults(42).list();
+        List<Date> sqlDates = session.createQuery("select f.releaseDate from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         sqlDates.forEach(date -> dates.merge(date, 1, Integer::sum));
         combinedFilm.setReleaseDates(dates);
         session.getTransaction().commit();
@@ -178,7 +181,7 @@ public class AiService {
         aiPoints += getComparisonMapDate(combinedFilm.getReleaseDates(), normalFilm.getReleaseDate()) * releaseDatePoints;
 
 
-        aiPoints += ratingPoints *  (1 - 1/normalFilm.getRating());
+        aiPoints += ratingPoints * (1 - 1 / normalFilm.getRating());
 
         return aiPoints;
     }
@@ -195,67 +198,75 @@ public class AiService {
 
         // For categories
         Map<Integer, Integer> categoryPercentage = calculatePercentage(combinedFilm.getCategories());
-        Set<FilmDb> setOfFilmsWithCategories = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : categoryPercentage.entrySet()) {
-            setOfFilmsWithCategories.addAll(getPropCategory(entry.getValue(), entry.getKey()));
+        Set<FilmDb> setOfFilms = new HashSet<>();
+        for (Map.Entry<Integer, Integer> entry : categoryPercentage.entrySet()) {
+            setOfFilms.addAll(getPropCategory(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For actors
         Map<Integer, Integer> actorPercentage = calculatePercentage(combinedFilm.getActors());
-        Set<FilmDb> setOfFilmsWithActors = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : actorPercentage.entrySet()) {
-            setOfFilmsWithActors.addAll(getPropActor(entry.getValue(), entry.getKey()));
+        //Set<FilmDb> setOfFilmsWithActors = new HashSet<>();
+        for (Map.Entry<Integer, Integer> entry : actorPercentage.entrySet()) {
+            setOfFilms.addAll(getPropActor(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For directors
         Map<Integer, Integer> directorPercentage = calculatePercentage(combinedFilm.getDirectors());
-        Set<FilmDb> setOfFIlmsWithDirectors = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : directorPercentage.entrySet()) {
-            setOfFIlmsWithDirectors.addAll(getPropDirector(entry.getValue(), entry.getKey()));
+        //Set<FilmDb> setOfFIlmsWithDirectors = new HashSet<>();
+        for (Map.Entry<Integer, Integer> entry : directorPercentage.entrySet()) {
+            setOfFilms.addAll(getPropDirector(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For studios
         Map<Integer, Integer> studioPercentage = calculatePercentage(combinedFilm.getStudios());
-        Set<FilmDb> setOfFilmsWithStudios = new HashSet<>();
+        //Set<FilmDb> setOfFilmsWithStudios = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : studioPercentage.entrySet()) {
-            setOfFilmsWithStudios.addAll(getPropStudios(entry.getValue(), entry.getKey()));
+            setOfFilms.addAll(getPropStudios(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For country
         Map<Integer, Integer> countryPercentage = calculatePercentage(combinedFilm.getCountries());
-        Set<FilmDb> setOfFilmsWithCountries = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : countryPercentage.entrySet()) {
-            setOfFilmsWithCountries.addAll(getPropCountry(entry.getValue(), entry.getKey()));
+        //Set<FilmDb> setOfFilmsWithCountries = new HashSet<>();
+        for (Map.Entry<Integer, Integer> entry : countryPercentage.entrySet()) {
+            setOfFilms.addAll(getPropCountry(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For dates
         Map<Integer, Integer> datesPercentage = calculatePercentage(convertMapToMapDates(combinedFilm.getReleaseDates()));
-        Set<FilmDb> setOfFilmsWithDates = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : datesPercentage.entrySet()) {
-            setOfFilmsWithDates.addAll(getPropDates(entry.getValue(), entry.getKey()));
+        //Set<FilmDb> setOfFilmsWithDates = new HashSet<>();
+        for (Map.Entry<Integer, Integer> entry : datesPercentage.entrySet()) {
+            setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
         }
 
-        System.out.println("SET OF CATEGORIES - " + setOfFilmsWithCategories);
-        System.out.println("SET OF ACTORS - " + setOfFilmsWithActors);
-        System.out.println("SET OF DIRECTORS - " + setOfFIlmsWithDirectors);
-        System.out.println("SET OF STUDIOS- " + setOfFilmsWithStudios);
-        System.out.println("SET OF COUNTRIES - " + setOfFilmsWithCountries);
-        System.out.println("SET OF DATES - " + setOfFilmsWithDates);
 
-        //Save clientDataMap
-//        clientDataService.saveClientDataMap(clientDataMap, currentClient);
+        //Generate AI points for each film
+        for (FilmDb f : setOfFilms) {
+            clientDataMap.put(f.getId(), compareCombinedWithNormal(combinedFilm, f));
+        }
+
+        System.out.println("-----------------------CLient Data MAp-----------------\n" + clientDataMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                )));
+
+//        Save clientDataMap
+        clientDataService.saveClientDataMap(clientDataMap, currentClient);
     }
 
     private Map<Integer, Integer> calculatePercentage(Map<Integer, Integer> map) {
         Map<Integer, Integer> percentage = new HashMap<>();
 
         int amount = 0;
-        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             amount += entry.getValue();
         }
 
-        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            double proc = (double)entry.getValue() / (double) amount;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            double proc = (double) entry.getValue() / (double) amount;
             proc = proc * 100;
             percentage.put(entry.getKey(), (int) proc);
         }
@@ -267,7 +278,7 @@ public class AiService {
         Map<Integer, Integer> mapOfDates = new HashMap<>();
 
         Calendar calendar = Calendar.getInstance();
-        for(Map.Entry<Date, Integer> entry : dates.entrySet()) {
+        for (Map.Entry<Date, Integer> entry : dates.entrySet()) {
             calendar.setTime(entry.getKey());
             mapOfDates.put(calendar.get(Calendar.YEAR), entry.getValue());
         }
@@ -275,10 +286,22 @@ public class AiService {
         return mapOfDates;
     }
 
-    private List<FilmDb> getPropCategory(int amount, int category) {
+    private List<FilmDb> getPropCategory(int amount, int category, ClientDb currentClient) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmDb> list = session.createCriteria(FilmDb.class, "f").createAlias("f.filmCategories", "fc").add(Restrictions.eq("fc.id", category)).addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
+                .createAlias("f.filmCategories", "fc")
+                .add(Restrictions.eq("fc.id", category))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
+                .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
 //        List<FilmDb> list = session.createQuery("from FilmDb f inner join f.filmCategories fc where fc.id=? order by f.rating desc").setParameter(0, category)
 //                .setMaxResults(amount).list();
         //Set<FilmDb> filmDbs = new HashSet<>(list);
@@ -288,10 +311,44 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropActor(int amount, int actor) {
+    private List<FilmDb> getPropActor(int amount, int actor, ClientDb currentClient) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmDb> list = session.createCriteria(FilmDb.class, "f").createAlias("f.filmActorsById", "fa").add(Restrictions.eq("fa.actorByIdActor.id", actor)).addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
+                .createAlias("f.filmActorsById", "fa")
+                .add(Restrictions.eq("fa.actorByIdActor.id", actor))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
+                .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
+        session.getTransaction().commit();
+        session.close();
+
+        return list;
+    }
+
+    private List<FilmDb> getPropDirector(int amount, int director, ClientDb currentClient) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
+                .createAlias("f.filmDirectors", "fd")
+                .add(Restrictions.eq("fd.id", director))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
+                .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
 
         session.getTransaction().commit();
         session.close();
@@ -299,10 +356,22 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropDirector(int amount, int director) {
+    private List<FilmDb> getPropStudios(int amount, int studio, ClientDb currentClient) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmDb> list = session.createCriteria(FilmDb.class, "f").createAlias("f.filmDirectors", "fd").add(Restrictions.eq("fd.id", director)).addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
+                .createAlias("f.filmStudios", "fs")
+                .add(Restrictions.eq("fs.id", studio))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
+                .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
 
         session.getTransaction().commit();
         session.close();
@@ -310,10 +379,22 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropStudios(int amount, int studio) {
+    private List<FilmDb> getPropCountry(int amount, int country, ClientDb currentClient) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmDb> list = session.createCriteria(FilmDb.class, "f").createAlias("f.filmStudios", "fs").add(Restrictions.eq("fs.id", studio)).addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
+                .createAlias("f.filmCountries", "fc")
+                .add(Restrictions.eq("fc.id", country))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
+                .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
 
         session.getTransaction().commit();
         session.close();
@@ -321,18 +402,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropCountry(int amount, int country) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<FilmDb> list = session.createCriteria(FilmDb.class, "f").createAlias("f.filmCountries", "fc").add(Restrictions.eq("fc.id", country)).addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
-
-        session.getTransaction().commit();
-        session.close();
-
-        return list;
-    }
-
-    private List<FilmDb> getPropDates(int amount, int year) {
+    private List<FilmDb> getPropDates(int amount, int year, ClientDb currentClient) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Calendar calendar = Calendar.getInstance();
@@ -342,11 +412,18 @@ public class AiService {
         calendar.set(year, Calendar.DECEMBER, 31);
         java.util.Date hi = calendar.getTime();
 
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .add(Restrictions.between("f.releaseDate", lo, hi))
-                .add(Subqueries.propertyNotIn("filmLike.filmByIdFilm.id", DetachedCriteria.forClass(FilmLikeDb.class)
-                .createAlias("", "")
-                .setProjection(Property.forName("f.id"))))
+                .add(Subqueries.propertyNotIn("f.id", subqueryLike))
+                .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
                 .addOrder(Order.desc("f.rating"))
                 .setMaxResults(amount)
                 .list();
@@ -356,7 +433,6 @@ public class AiService {
 
         return list;
     }
-
 
 
 }

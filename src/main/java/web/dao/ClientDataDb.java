@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -9,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "Client_data", schema = "dbo", catalog = "filmotekaDb")
 public class ClientDataDb {
     private int id;
+    @JsonIgnore
     private ClientDb clientByIdClient;
     private FilmDb filmByIdFilm;
     private double aiPoints;
