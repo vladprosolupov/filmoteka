@@ -38,7 +38,7 @@ public class GlobalExceptionController {
         ErrorJSON errorJSON = new ErrorJSON();
 
         errorJSON.setName("error");
-        errorJSON.setMessage(e.getCause().getLocalizedMessage());
+        errorJSON.setMessage(e.getMessage());
         errorJSON.setStatusCode("500 Database error");
 
         log.error("hibernateExceptionOccur() returns : errorJSON=" + errorJSON);
