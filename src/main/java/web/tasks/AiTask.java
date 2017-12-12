@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import web.dao.ClientDb;
 import web.services.AiService;
 
+import java.util.concurrent.ExecutionException;
+
 @Component("AiTask")
 public class AiTask implements Runnable {
 
@@ -21,7 +23,13 @@ public class AiTask implements Runnable {
     public void run() {
         log.info("run()");
 
-        aiService.generateFilmsForSuggestion(currentClient);
+        try {
+            aiService.generateFilmsForSuggestion(currentClient);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         log.info("run() done");
     }

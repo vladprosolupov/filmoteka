@@ -333,7 +333,7 @@ public class AiService {
                 ));
 
         //Save clientDataMap
-//        clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
+        clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
 
         log.info("generateFilmsForSuggestion() done");
     }
