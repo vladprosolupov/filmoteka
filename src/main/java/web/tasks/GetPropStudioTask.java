@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
-@Component("GetPropActorTask")
-public class GetPropActorTask implements Callable<Set<FilmDb>> {
+@Component("GetPropStudioTask")
+public class GetPropStudioTask implements Callable<Set<FilmDb>> {
 
     @Autowired
     private AiService aiService;
@@ -22,15 +22,15 @@ public class GetPropActorTask implements Callable<Set<FilmDb>> {
     private ClientDb currentClient;
     private Map<Integer, Integer> percentage;
 
-    private static final Logger log = LogManager.getLogger(GetPropActorTask.class);
+    private static final Logger log = LogManager.getLogger(GetPropStudioTask.class);
 
     @Override
     public Set<FilmDb> call() throws Exception {
         log.info("call()");
 
         Set<FilmDb> filmDbSet = new HashSet<>();
-        for(Map.Entry<Integer, Integer> entry : percentage.entrySet()) {
-            filmDbSet.addAll(aiService.getPropActor(entry.getValue(), entry.getKey(), currentClient));
+        for (Map.Entry<Integer, Integer> entry : percentage.entrySet()) {
+            filmDbSet.addAll(aiService.getPropStudios(entry.getValue(), entry.getKey(), currentClient));
         }
 
         log.info("call() returns : filmDbSet.size()=" + filmDbSet.size());

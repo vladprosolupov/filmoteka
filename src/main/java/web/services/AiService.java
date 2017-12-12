@@ -14,6 +14,7 @@ import web.model.aiModel.CombinedFilm;
 import web.tasks.GetPropActorTask;
 import web.tasks.GetPropCategoryTask;
 import web.tasks.GetPropDirectorTask;
+import web.tasks.GetPropStudioTask;
 
 import javax.persistence.criteria.Subquery;
 import java.sql.Date;
@@ -48,6 +49,9 @@ public class AiService {
 
     @Autowired
     private GetPropDirectorTask getPropDirectorTask;
+
+    @Autowired
+    private GetPropStudioTask getPropStudioTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -267,9 +271,13 @@ public class AiService {
 
         // For studios
         Map<Integer, Integer> studioPercentage = calculatePercentage(combinedFilm.getStudios());
-        for (Map.Entry<Integer, Integer> entry : studioPercentage.entrySet()) {
-            setOfFilms.addAll(getPropStudios(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : studioPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropStudios(entry.getValue(), entry.getKey(), currentClient));
+//        }
+
+        getPropStudioTask.setCurrentClient(currentClient);
+        getPropStudioTask.setPercentage(studioPercentage);
+        Future<Set<FilmDb>> futureStudio = executorService.submit(getPropStudioTask);
 
         // For country
         Map<Integer, Integer> countryPercentage = calculatePercentage(combinedFilm.getCountries());
@@ -413,7 +421,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropStudios(int amount, int studio, ClientDb currentClient) {
+    public List<FilmDb> getPropStudios(int amount, int studio, ClientDb currentClient) {
         log.info("getPropStudios(amount=" + amount + ", studio=" + studio + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();
@@ -437,7 +445,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropCountry(int amount, int country, ClientDb currentClient) {
+    public List<FilmDb> getPropCountry(int amount, int country, ClientDb currentClient) {
         log.info("getPropCountry(amount=" + amount + ", country=" + country + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();
@@ -461,7 +469,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropDates(int amount, int year, ClientDb currentClient) {
+    public List<FilmDb> getPropDates(int amount, int year, ClientDb currentClient) {
         log.info("getPropDates(amount=" + amount + ", year=" + year + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();
