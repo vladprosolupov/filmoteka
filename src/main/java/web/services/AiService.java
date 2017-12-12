@@ -48,7 +48,7 @@ public class AiService {
             if (map.containsKey(i))
                 counter += map.get(i);
         }
-        if(fullSize == 0){
+        if (fullSize == 0) {
             return 0;
         }
         return ((double) counter / (double) fullSize);
@@ -105,7 +105,6 @@ public class AiService {
         //Getting countries
         session.beginTransaction();
         Map<Integer, Integer> countries = new HashMap<>();
-//        start = Math.max(0, ((int) session.createQuery("select count(f.id) from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
         List<CountryDb> countryDbList = session.createQuery("select f.filmCountries from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         countryDbList.forEach(countryDb -> countries.merge(countryDb.getId(), 1, Integer::sum));
         combinedFilm.setCountries(countries);
@@ -115,7 +114,6 @@ public class AiService {
         //Getting actors
         session.beginTransaction();
         Map<Integer, Integer> actors = new HashMap<>();
-//        start = Math.max(0, ((int) session.createQuery("select f.filmActorsById.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
         List<ActorDb> actorsDbList = session.createQuery("select f.actorByIdActor from FilmActorDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.filmByIdFilm.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         actorsDbList.forEach(actorDb -> actors.merge(actorDb.getId(), 1, Integer::sum));
         combinedFilm.setActors(actors);
@@ -125,7 +123,6 @@ public class AiService {
         //Getting directors
         session.beginTransaction();
         Map<Integer, Integer> directors = new HashMap<>();
-//        start = Math.max(0, ((int) session.createQuery("select f.filmCountries.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
         List<DirectorDb> directorDbList = session.createQuery("select f.filmDirectors from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         directorDbList.forEach(directorDb -> directors.merge(directorDb.getId(), 1, Integer::sum));
         combinedFilm.setDirectors(directors);
@@ -135,7 +132,6 @@ public class AiService {
         //Getting studios
         session.beginTransaction();
         Map<Integer, Integer> studios = new HashMap<>();
-//        start = Math.max(0, ((int) session.createQuery("select f.filmCountries.size from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).list().get(0)) - 42);
         List<StudioDb> studioDbList = session.createQuery("select f.filmStudios from FilmDb f inner join FilmLikeDb fl on fl.filmLike.filmByIdFilm.id = f.id where fl.filmLike.clientByIdClient.id = ?").setParameter(0, currentClient.getId()).setFirstResult((int) start).setMaxResults(42).list();
         studioDbList.forEach(studioDb -> studios.merge(studioDb.getId(), 1, Integer::sum));
         combinedFilm.setStudios(studios);
@@ -150,6 +146,7 @@ public class AiService {
         combinedFilm.setReleaseDates(dates);
         session.getTransaction().commit();
         session.close();
+
         //returning combined film
         return combinedFilm;
     }
@@ -205,35 +202,30 @@ public class AiService {
 
         // For actors
         Map<Integer, Integer> actorPercentage = calculatePercentage(combinedFilm.getActors());
-        //Set<FilmDb> setOfFilmsWithActors = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : actorPercentage.entrySet()) {
             setOfFilms.addAll(getPropActor(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For directors
         Map<Integer, Integer> directorPercentage = calculatePercentage(combinedFilm.getDirectors());
-        //Set<FilmDb> setOfFIlmsWithDirectors = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : directorPercentage.entrySet()) {
             setOfFilms.addAll(getPropDirector(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For studios
         Map<Integer, Integer> studioPercentage = calculatePercentage(combinedFilm.getStudios());
-        //Set<FilmDb> setOfFilmsWithStudios = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : studioPercentage.entrySet()) {
             setOfFilms.addAll(getPropStudios(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For country
         Map<Integer, Integer> countryPercentage = calculatePercentage(combinedFilm.getCountries());
-        //Set<FilmDb> setOfFilmsWithCountries = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : countryPercentage.entrySet()) {
             setOfFilms.addAll(getPropCountry(entry.getValue(), entry.getKey(), currentClient));
         }
 
         // For dates
         Map<Integer, Integer> datesPercentage = calculatePercentage(convertMapToMapDates(combinedFilm.getReleaseDates()));
-        //Set<FilmDb> setOfFilmsWithDates = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : datesPercentage.entrySet()) {
             setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
         }
@@ -244,17 +236,20 @@ public class AiService {
             clientDataMap.put(f.getId(), compareCombinedWithNormal(combinedFilm, f));
         }
 
-        System.out.println("-----------------------CLient Data MAp-----------------\n" + clientDataMap.entrySet().stream()
+        //Sort map by values and cut it to 30 most matching results
+        LinkedHashMap<Integer, Double> sortedClientDataMap =
+                clientDataMap.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .limit(30)
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
                         (e1, e2) -> e1,
                         LinkedHashMap::new
-                )));
+                ));
 
-//        Save clientDataMap
-        clientDataService.saveClientDataMap(clientDataMap, currentClient);
+        //Save clientDataMap
+        clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
     }
 
     private Map<Integer, Integer> calculatePercentage(Map<Integer, Integer> map) {
@@ -302,9 +297,6 @@ public class AiService {
                 .add(Subqueries.propertyNotIn("f.id", subqueryLike))
                 .add(Subqueries.propertyNotIn("f.id", subqueryDislike))
                 .addOrder(Order.desc("f.rating")).setMaxResults(amount).list();
-//        List<FilmDb> list = session.createQuery("from FilmDb f inner join f.filmCategories fc where fc.id=? order by f.rating desc").setParameter(0, category)
-//                .setMaxResults(amount).list();
-        //Set<FilmDb> filmDbs = new HashSet<>(list);
         session.getTransaction().commit();
         session.close();
 
