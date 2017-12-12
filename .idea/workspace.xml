@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="js added">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/admin/wrapper.tag" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/admin/wrapper.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,18 +99,7 @@
     </PATH>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.tag" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -249,10 +233,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="642" />
-    <option name="width" value="638" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="2560" />
+    <option name="height" value="1335" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -269,9 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -381,6 +362,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -415,32 +399,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0568887c-ce9b-4a98-a2a2-3db7d5289a99.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0568887c-ce9b-4a98-a2a2-3db7d5289a99/storage_v2/_src_/database/filmotekaDb.kMWECA/schema/dbo.sYMBAA.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0abca3f1-4545-4e81-bbdd-3b3a5b725616.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0abca3f1-4545-4e81-bbdd-3b3a5b725616/_metadata_/metadata</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0abca3f1-4545-4e81-bbdd-3b3a5b725616/_metadata_/metadata.values.at</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/ActorController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/BookmarkController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/CommentController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/GlobalExceptionController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/NetworkController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/StudioController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/model/ClientJSON.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/model/CommentJSON.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/ClientService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/js/main.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/styles/main.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/FilmLikesService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -448,26 +412,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/dao/AvatarDb.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/exceptions/ValidationError.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/AvatarService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/darth.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon1.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon10.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon11.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon12.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon13.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon14.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon15.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon16.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon2.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon3.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon4.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon5.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon6.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon7.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon8.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/avatar/icon9.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -475,7 +426,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/images/favicon.ico</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -569,7 +519,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.tomcat 8.5.15">
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -599,14 +549,6 @@
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -626,12 +568,6 @@
       </option>
       <envs />
       <patterns />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -666,6 +602,87 @@
       <envs />
       <properties />
       <listeners />
+    </configuration>
+    <configuration name="tomcat 8.5.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.15" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/login" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="update-resources" />
+      <deployment>
+        <artifact name="filmoteka:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Filmoteka_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63115" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="filmoteka:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -958,80 +975,13 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration name="tomcat 8.5.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.15" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/login" />
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATING_POLICY" value="update-resources" />
-      <deployment>
-        <artifact name="filmoteka:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Filmoteka_2" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="63115" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="filmoteka:war exploded" />
-        </option>
-      </method>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -1093,6 +1043,7 @@
       <workItem from="1512085328545" duration="5347000" />
       <workItem from="1512144303025" duration="4100000" />
       <workItem from="1512217251969" duration="6680000" />
+      <workItem from="1513094985012" duration="95000" />
     </task>
     <task id="LOCAL-00012" summary="Fixes in film addOrUpdate page.">
       <created>1497734377080</created>
@@ -1441,7 +1392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135762000" />
+    <option name="totallyTimeSpent" value="135857000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1453,8 +1404,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="2560" height="1335" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.444" sideWeight="0.51171875" order="7" side_tool="true" content_ui="tabs" />
@@ -1463,6 +1413,7 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1474,8 +1425,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34133333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.48828125" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.48828125" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.341251" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27578124" sideWeight="0.43927124" order="2" side_tool="true" content_ui="tabs" />
@@ -1824,7 +1775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1877,7 +1827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-345">
           <caret line="737" column="36" lean-forward="true" selection-start-line="737" selection-start-column="36" selection-end-line="737" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1885,26 +1834,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="27" column="66" lean-forward="false" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
-          <folding>
-            <element signature="n#style#0;n#figure#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#4;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#article#0;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#article#1;n#div#0;n#form#0;n#div#1;n#div#0;n#section#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1512312266133" expanded="false" signature="7110:7203" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="7238:7351" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="7418:7435" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="8813:8828" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="10331:10339" ph="…" />
-            <marker date="1512312266133" expanded="false" signature="12516:12524" ph="…" />
-            <marker date="1512312266133" expanded="false" signature="13240:13333" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="13368:13481" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="13548:13565" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="14964:14979" ph="..." />
-            <marker date="1512312266133" expanded="false" signature="16495:16503" ph="…" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1936,7 +1866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
           <caret line="7023" column="1" lean-forward="true" selection-start-line="7023" selection-start-column="1" selection-end-line="7023" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1959,7 +1888,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding />
         </state>
       </provider>
