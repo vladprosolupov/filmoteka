@@ -213,7 +213,6 @@ public class AiService {
         //generate CombinedFilm for current user
         CombinedFilm combinedFilm = getCombinedFilmForClient(currentClient);
 
-        System.out.println(combinedFilm);
         //create clientDataMap to fill it later
         Map<Integer, Double> clientDataMap = new HashMap<>();
         //Generate clientDataMap
@@ -421,6 +420,7 @@ public class AiService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
+
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
                 .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
                 .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
@@ -428,6 +428,7 @@ public class AiService {
         DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
                 .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
                 .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmCountries", "fc")
                 .add(Restrictions.eq("fc.id", country))
@@ -454,13 +455,9 @@ public class AiService {
         calendar.set(year, Calendar.DECEMBER, 31);
         java.util.Date hi = calendar.getTime();
 
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
 
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .add(Restrictions.between("f.releaseDate", lo, hi))
@@ -475,6 +472,30 @@ public class AiService {
 
         log.info("getPropDates() returns : list.size()=" + list.size());
         return list;
+    }
+
+    // SQL for getting films which are liked and disliked
+
+    private DetachedCriteria sqlForLikedFilms(ClientDb currentClient) {
+        log.info("sqlForLikedFilms(currentClient=" + currentClient + ")");
+
+        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
+                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+
+        log.info("sqlForLikedFilms() returns : subqueryLike=" + subqueryLike);
+        return subqueryLike;
+    }
+
+    private DetachedCriteria sqlForDislikedFilms(ClientDb currentClient) {
+        log.info("sqlForDislikedFilms(currentClient=" + currentClient + ")");
+
+        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
+                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
+                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+
+        log.info("sqlForDislikedFilms() returns : subqueryDislike=" + subqueryDislike);
+        return subqueryDislike;
     }
 
 

@@ -14,10 +14,7 @@ import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
 import web.services.*;
-import web.tasks.AddClientDislikeTask;
-import web.tasks.AddClientLikeTask;
-import web.tasks.RemoveClientDislikeTask;
-import web.tasks.RemoveClientLikeTask;
+import web.tasks.*;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -50,6 +47,9 @@ public class FilmLikesController {
 
     @Autowired
     private RemoveClientDislikeTask removeClientDislikeTask;
+
+    @Autowired
+    private AiTask aiTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -87,6 +87,9 @@ public class FilmLikesController {
         addClientLikeTask.setClientDb(clientDb);
         addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
         executorService.submit(addClientLikeTask);
+
+        aiTask.setCurrentClient(clientDb);
+        executorService.submit(aiTask);
 
         log.info("succ. added like for film");
         return "OK";
