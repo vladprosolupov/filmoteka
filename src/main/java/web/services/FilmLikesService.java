@@ -42,7 +42,7 @@ public class FilmLikesService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(filmLikeDb);
-        session.getTransaction().commit();;
+        session.getTransaction().commit();
         session.close();
 
         log.info("succ. saved like for film");

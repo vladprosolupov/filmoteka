@@ -13,10 +13,7 @@ import web.dao.ClientDb;
 import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
-import web.services.ClientService;
-import web.services.FilmDislikesService;
-import web.services.FilmLikesService;
-import web.services.FilmService;
+import web.services.*;
 import web.tasks.AddClientDislikeTask;
 import web.tasks.AddClientLikeTask;
 import web.tasks.RemoveClientDislikeTask;
@@ -55,6 +52,9 @@ public class FilmLikesController {
     private RemoveClientDislikeTask removeClientDislikeTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
+
+    @Autowired
+    AiService aiService;
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 

@@ -26,8 +26,8 @@ public class ClientDb {
     private String phoneNumber;
     @JsonIgnore
     private String role;
-    @JsonIgnore
-    private Collection<ClientDataDb> clientDataById;
+    //@JsonIgnore
+    //private Collection<ClientDataDb> clientDataById;
     private AvatarDb avatarByAvatar;
 
     @Id
@@ -169,14 +169,14 @@ public class ClientDb {
         return result;
     }
 
-    @OneToMany(mappedBy = "clientByIdClient")
-    public Collection<ClientDataDb> getClientDataById() {
-        return clientDataById;
-    }
-
-    public void setClientDataById(Collection<ClientDataDb> clientDataById) {
-        this.clientDataById = clientDataById;
-    }
+//    @OneToMany(mappedBy = "clientByIdClient", fetch = FetchType.LAZY)
+//    public Collection<ClientDataDb> getClientDataById() {
+//        return clientDataById;
+//    }
+//
+//    public void setClientDataById(Collection<ClientDataDb> clientDataById) {
+//        this.clientDataById = clientDataById;
+//    }
 
     @Override
     public String toString() {
@@ -191,7 +191,6 @@ public class ClientDb {
                 ", enabled=" + enabled +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role='" + role + '\'' +
-                ", clientDataById=" + clientDataById +
                 ", avatarByAvatar=" + avatarByAvatar +
                 '}';
     }
