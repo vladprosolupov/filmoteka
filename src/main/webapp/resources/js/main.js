@@ -715,12 +715,12 @@ $(function () {
                                 contentType: 'application/json',
                                 data: JSON.stringify(filmLikesJSON),
                                 success: function (response) {
-                                    $.ajax({
-                                        url: domain + '/likes/removeDislike',
-                                        type: 'POST',
-                                        contentType: 'application/json',
-                                        data: JSON.stringify(filmLikesJSON)
-                                    });
+                                    // $.ajax({
+                                    //     url: domain + '/likes/removeDislike',
+                                    //     type: 'POST',
+                                    //     contentType: 'application/json',
+                                    //     data: JSON.stringify(filmLikesJSON)
+                                    // });
                                 }
                             });
                         } else if (!self.liked) {
@@ -758,20 +758,20 @@ $(function () {
                     });
                     if (self.currUser.login != null) {
                         if (self.liked) {
-                            $.ajax({
-                                url: domain + '/likes/removeLike',
-                                type: 'POST',
-                                contentType: 'application/json',
-                                data: JSON.stringify(filmLikesJSON),
-                                success: function (response) {
+                            // $.ajax({
+                            //     url: domain + '/likes/removeLike',
+                            //     type: 'POST',
+                            //     contentType: 'application/json',
+                            //     data: JSON.stringify(filmLikesJSON),
+                            //     success: function (response) {
                                     $.ajax({
                                         url: domain + '/likes/addDislike',
                                         type: 'POST',
                                         contentType: 'application/json',
                                         data: JSON.stringify(filmLikesJSON)
                                     });
-                                }
-                            });
+                            //     }
+                            // });
                             self.liked = false;
                             self.disliked = true;
                             self.dislikes += 1;

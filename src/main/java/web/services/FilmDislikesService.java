@@ -44,7 +44,7 @@ public class FilmDislikesService {
         }
 
         if(filmLikesService.checkLikeFilmByUserId(Integer.toString(filmDislikeDb.getFilmDislike().getFilmByIdFilm().getId()),
-                filmDislikeDb.getFilmDislike().getClientByIdClient().getId()) == false) {
+                filmDislikeDb.getFilmDislike().getClientByIdClient().getId()) == true) {
             log.info("There was like");
 
             filmLikesService.deleteLike(Integer.toString(filmDislikeDb.getFilmDislike().getFilmByIdFilm().getId()),
@@ -80,14 +80,13 @@ public class FilmDislikesService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.createQuery("delete from FilmDislikeDb fl " +
-                "where fl.filmDislike.clientByIdClient=? and fl.filmDislike.filmByIdFilm=?")
-                .setParameter(0, clientId).setParameter(1, filmId).executeUpdate();
+        session.createQuery("delete from FilmDislikeDb fd where fd.filmDislike.clientByIdClient.id=? and fd.filmDislike.filmByIdFilm.id=?")
+                .setParameter(0, Integer.parseInt(clientId)).setParameter(1, Integer.parseInt(filmId)).executeUpdate();
 
         session.getTransaction().commit();
         session.close();
 
-        log.info("succ. deleted like for film");
+        log.info("succ. deleted dislike for film");
     }
 
     public long getDislikesForFilm(String id) {
@@ -144,24 +143,24 @@ public class FilmDislikesService {
         return filmDislikeDb;
     }
 
-    public boolean checkDislikeFilm(String id, ClientDb clientDb) {
-        log.info("checkDislikeFilm(idFilm=" + id + ")");
-
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List list = session.createQuery("select fd.id from FilmDislikeDb fd where fd.id.clientByIdClient.id = " + clientDb.getId() + " and fd.id.filmByIdFilm.id = " + id).list();
-        session.getTransaction().commit();
-        session.close();
-
-        boolean result = !list.isEmpty();
-        log.info("checkDislikeFilm() returns :" + result);
-
-        return result;
-    }
+//    public boolean checkDislikeFilm(String id, ClientDb clientDb) {
+//        log.info("checkDislikeFilm(idFilm=" + id + ")");
+//
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        List list = session.createQuery("select fd.id from FilmDislikeDb fd where fd.id.clientByIdClient.id = " + clientDb.getId() + " and fd.id.filmByIdFilm.id = " + id).list();
+//        session.getTransaction().commit();
+//        session.close();
+//
+//        boolean result = !list.isEmpty();
+//        log.info("checkDislikeFilm() returns :" + result);
+//
+//        return result;
+//    }
 
 
     public boolean checkDislikeFilmWithClientId(String id, int clientId) {
-        log.info("checkDislikeFilmWithClientId(idFilm=" + id + ")");
+        log.info("checkDislikeFilmWithClientId(idFilm=" + id + ", clientId=" + clientId + ")");
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();

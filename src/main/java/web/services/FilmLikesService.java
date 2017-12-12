@@ -43,7 +43,7 @@ public class FilmLikesService {
         }
 
         if(filmDislikesService.checkDislikeFilmWithClientId(Integer.toString(filmLikeDb.getFilmLike().getFilmByIdFilm().getId()),
-                filmLikeDb.getFilmLike().getClientByIdClient().getId()) == false) {
+                filmLikeDb.getFilmLike().getClientByIdClient().getId()) == true) {
             log.info("There was dislike");
 
             filmDislikesService.deleteDislike(Integer.toString(filmLikeDb.getFilmLike().getFilmByIdFilm().getId()),
@@ -80,8 +80,8 @@ public class FilmLikesService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.createQuery("delete from FilmLikeDb fl where fl.filmLike.clientByIdClient=? and fl.filmLike.filmByIdFilm=?")
-                .setParameter(0, clientId).setParameter(1, filmId).executeUpdate();
+        session.createQuery("delete from FilmLikeDb fl where fl.filmLike.clientByIdClient.id=? and fl.filmLike.filmByIdFilm.id=?")
+                .setParameter(0, Integer.parseInt(clientId)).setParameter(1, Integer.parseInt(filmId)).executeUpdate();
 
         session.getTransaction().commit();
         session.close();

@@ -33,6 +33,8 @@ public class AddClientDislikeTask implements Runnable {
 
         dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
+        removeFromClientDataTask.setClientId(Integer.toString(clientDb.getId()));
+        removeFromClientDataTask.setFilmId(Integer.toString(filmLikesJSON.getFilmId()));
         executorService.submit(removeFromClientDataTask);
 
         log.info("succ. added dislike");

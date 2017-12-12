@@ -88,7 +88,7 @@ public class ClientDataService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from ClientDataDb cl where cl.filmByIdFilm.id = ? and cl.clientByIdClient.id = ?")
-                .setParameter(0, filmId).setParameter(1, clientId).executeUpdate();
+                .setParameter(0, Integer.parseInt(filmId)).setParameter(1, Integer.parseInt(clientId)).executeUpdate();
         session.getTransaction().commit();
         session.close();
 
