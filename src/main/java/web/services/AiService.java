@@ -53,6 +53,9 @@ public class AiService {
     @Autowired
     private GetPropCountryTask getPropCountryTask;
 
+    @Autowired
+    private GetPropDatesTask getPropDatesTask;
+
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
     private final int countryPoints = 3;
@@ -228,7 +231,7 @@ public class AiService {
     }
 
 
-    public void generateFilmsForSuggestion(ClientDb currentClient) {
+    public void generateFilmsForSuggestion(ClientDb currentClient) throws ExecutionException, InterruptedException {
         log.info("generateFilmsForSuggestion(currentClient=" + currentClient + ")");
 
         //generate CombinedFilm for current user
@@ -295,7 +298,22 @@ public class AiService {
 //            setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        getPropDatesTask.setCurrentClient(currentClient);
+        getPropDatesTask.setPercentage(datesPercentage);
+        Future<Set<FilmDb>> futureDates = executorService.submit(getPropDatesTask);
 
+        while(!futureActor.isDone() || !futureCategory.isDone()
+                || !futureCountry.isDone() || !futureDates.isDone()
+                || !futureDirector.isDone() || !futureStudio.isDone()) {
+
+        }
+
+        setOfFilms.addAll(futureActor.get());
+        setOfFilms.addAll(futureCategory.get());
+        setOfFilms.addAll(futureCountry.get());
+        setOfFilms.addAll(futureDates.get());
+        setOfFilms.addAll(futureDirector.get());
+        setOfFilms.addAll(futureStudio.get());
 
         //Generate AI points for each film
         for (FilmDb f : setOfFilms) {
