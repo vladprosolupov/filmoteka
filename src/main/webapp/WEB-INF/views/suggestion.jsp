@@ -62,7 +62,7 @@
                     </div>
                 </article>
 
-                <article class="message is-info" v-if="pagesNumber == 0">
+                <article class="message is-info" v-if="pagesNumber == 0 && logged">
                     <div class="message-body" style="text-align: center">
                         You haven't liked any <strong>film</strong> yet, please like one in order to suggest you films.
                     </div>

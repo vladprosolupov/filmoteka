@@ -1393,14 +1393,16 @@ $(function () {
                         self.categories = categories;
                     }),
                     $.getJSON('/client/numberOfSuggested', function (filmsNumber) {
-                        if (self.logged) {
-                            if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
-                                self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
-                            else
-                                self.pagesNumber = parseInt(filmsNumber / 10, 10);
-                        }
+                        if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                        else
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10);
                     })).done(function () {
-                    //$('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                    if (!self.logged)
+                        self.pagesNumber = 0;
+                    $(function () {
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                    });
                     hideLoading();
                 });
             },

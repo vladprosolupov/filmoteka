@@ -262,7 +262,7 @@ public class ClientService {
         int limit = 10;
         int start = (page - 1) * limit;
         session.beginTransaction();
-        List<FilmJSONIndex> list = session.createQuery("select cd.filmByIdFilm.title, cd.filmByIdFilm.releaseDate, cd.filmByIdFilm.cover, cd.filmByIdFilm.id, cd.filmByIdFilm.rating from ClientDataDb cd where cd.clientByIdClient.id = ?").setParameter(0, idClient).setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select cd.filmByIdFilm.title, cd.filmByIdFilm.releaseDate, cd.filmByIdFilm.cover, cd.filmByIdFilm.id, cd.filmByIdFilm.rating from ClientDataDb cd where cd.clientByIdClient.id = ? order by cd.aiPoints desc").setParameter(0, idClient).setFirstResult(start).setMaxResults(limit).list();
         session.getTransaction().commit();
         session.close();
 
