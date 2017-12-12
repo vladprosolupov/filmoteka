@@ -1,5 +1,7 @@
 package web.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -9,8 +11,10 @@ import javax.persistence.*;
 @Table(name = "Client_data", schema = "dbo", catalog = "filmotekaDb")
 public class ClientDataDb {
     private int id;
+    @JsonIgnore
     private ClientDb clientByIdClient;
     private FilmDb filmByIdFilm;
+    private double aiPoints;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,12 +64,23 @@ public class ClientDataDb {
         this.filmByIdFilm = filmByIdFilm;
     }
 
+    @Basic
+    @Column(name = "ai_points", nullable = false, precision = 0)
+    public double getAiPoints() {
+        return aiPoints;
+    }
+
+    public void setAiPoints(double aiPoints) {
+        this.aiPoints = aiPoints;
+    }
+
     @Override
     public String toString() {
         return "ClientDataDb{" +
                 "id=" + id +
                 ", clientByIdClient=" + clientByIdClient +
                 ", filmByIdFilm=" + filmByIdFilm +
+                ", aiPoints=" + aiPoints +
                 '}';
     }
 }

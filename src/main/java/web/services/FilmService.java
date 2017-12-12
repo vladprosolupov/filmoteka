@@ -180,8 +180,8 @@ public class FilmService {
         return result;
     }
 
-    public List<FilmJSONIndex> getFilmsForNewPage(int page) throws HibernateException {
-        log.info("getFilmsForNewPage(page=" + page + ")");
+    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
+        log.info("getFilmsForBestPage(page=" + page + ")");
 
         Session session = sessionFactory.openSession();
         int limit = 10;
@@ -191,7 +191,7 @@ public class FilmService {
         session.getTransaction().commit();
         session.close();
 
-        log.info("getFilmsForNewPage() returns : list.size()=" + list.size());
+        log.info("getFilmsForBestPage() returns : list.size()=" + list.size());
         return list;
     }
 

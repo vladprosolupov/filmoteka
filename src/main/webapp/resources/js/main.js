@@ -313,7 +313,8 @@ $(function () {
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
                             else
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10);
-                        })).done(function () {
+                        })
+                    ).done(function () {
                         // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         hideLoading();
                     });
@@ -354,10 +355,12 @@ $(function () {
                     showLoading();
                     $.getJSON(self.pageLink + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         $(window).scrollTop(0);
+                        $(function () {
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        });
                         hideLoading();
                     });
                 },
@@ -367,10 +370,12 @@ $(function () {
                         showLoading();
                         $.getJSON(self.pageLink + (parseInt(self.currentPage) - 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoading();
                         });
                     }
@@ -381,10 +386,12 @@ $(function () {
                         showLoading();
                         $.getJSON(self.pageLink + (parseInt(self.currentPage) + 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoading();
                         });
                     }
@@ -780,7 +787,7 @@ $(function () {
                             self.dislikes += 1;
                         } else if (self.disliked) {
                             $.ajax({
-                                url: domain + '/likes/addDislike',
+                                url: domain + '/likes/removeDislike',
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify(filmLikesJSON)
@@ -973,10 +980,12 @@ $(function () {
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#bookmarks').addClass("is-active");
                         $.getJSON(domain + '/bookmark/getBookmarks/' + pageNum, function (films) {
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.bookmarkedFilms = films;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoadingProfile();
                         });
                     } else {
@@ -984,10 +993,12 @@ $(function () {
                         $('a[class*="is-active"]').removeClass("is-active");
                         $('#liked').addClass("is-active");
                         $.getJSON(domain + '/likes/getLiked/' + pageNum, function (films) {
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.likedFilms = films;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoadingProfile();
                         });
                     }
@@ -1002,10 +1013,12 @@ $(function () {
                             $('#bookmarks').addClass("is-active");
                             $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) - 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) - 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
                                 $(window).scrollTop(0);
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                                 hideLoadingProfile();
                             });
                         } else {
@@ -1014,10 +1027,12 @@ $(function () {
                             $('#liked').addClass("is-active");
                             $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) - 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) - 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
                                 $(window).scrollTop(0);
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                                 hideLoadingProfile();
                             });
                         }
@@ -1033,10 +1048,12 @@ $(function () {
                             $('#bookmarks').addClass("is-active");
                             $.getJSON(domain + '/bookmark/getBookmarks/' + (parseInt(self.currentPage) + 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) + 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.bookmarkedFilms = films;
                                 $(window).scrollTop(0);
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                                 hideLoadingProfile();
                             });
                         } else {
@@ -1045,10 +1062,12 @@ $(function () {
                             $('#liked').addClass("is-active");
                             $.getJSON(domain + '/likes/getLiked/' + (parseInt(self.currentPage) + 1), function (films) {
                                 self.currentPage = parseInt(self.currentPage) + 1;
-                                $('a[data-pagenum]').removeClass("is-current");
-                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                                 self.likedFilms = films;
                                 $(window).scrollTop(0);
+                                $(function () {
+                                    $('a[data-pagenum]').removeClass("is-current");
+                                    $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                                });
                                 hideLoadingProfile();
                             });
                         }
@@ -1308,10 +1327,12 @@ $(function () {
                     showLoading();
                     $.getJSON('/film/filmsForBestPage/' + pageNum, function (data) {
                         self.currentPage = parseInt(pageNum);
-                        $('a[data-pagenum]').removeClass("is-current");
-                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         self.films = data;
                         $(window).scrollTop(0);
+                        $(function () {
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        });
                         hideLoading();
                     });
                 },
@@ -1321,10 +1342,12 @@ $(function () {
                         showLoading();
                         $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) - 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) - 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoading();
                         });
                     }
@@ -1335,10 +1358,109 @@ $(function () {
                         showLoading();
                         $.getJSON('/film/filmsForBestPage/' + (parseInt(self.currentPage) + 1), function (data) {
                             self.currentPage = parseInt(self.currentPage) + 1;
-                            $('a[data-pagenum]').removeClass("is-current");
-                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                             self.films = data;
                             $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
+                            hideLoading();
+                        });
+                    }
+                }
+            }
+        });
+    } else if (window.location.pathname.indexOf("/suggestion") > -1) {
+        var pageNew = new Vue({
+            el: '.vue',
+            data: {
+                films: [],
+                categories: [],
+                link: "/film/",
+                pagesNumber: 0,
+                currentPage: 1,
+                logged: false
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.when($.getJSON('/client/filmsForSuggestion/1', function (films) {
+                        if (films.name != 'error') {
+                            self.logged = true;
+                            self.films = films;
+                        }
+                    }),
+                    $.getJSON('/category/forNav', function (categories) {
+                        self.categories = categories;
+                    }),
+                    $.getJSON('/client/numberOfSuggested', function (filmsNumber) {
+                        if (filmsNumber / 10 !== parseInt(filmsNumber / 10, 10))
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
+                        else
+                            self.pagesNumber = parseInt(filmsNumber / 10, 10);
+                    })).done(function () {
+                    if (!self.logged)
+                        self.pagesNumber = 0;
+                    $(function () {
+                        $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                    });
+                    hideLoading();
+                });
+            },
+            methods: {
+                getYear: function (val) {
+                    var date = new Date(Date.parse(val));
+                    return date.getFullYear();
+                },
+                filmClicked: function (ev) {
+                    if ($(ev.target).parents().hasClass('layout-default bd-is-clipped-touch') && $(ev.target).parents().hasClass('hero background_for_client')) {
+                        ev.preventDefault();
+                    }
+                },
+                openCategory: function (id) {
+                    window.location.replace(domain + '/?c=' + id);
+                },
+                goToPage: function (pageNum) {
+                    var self = this;
+                    showLoading();
+                    $.getJSON('/client/filmsForSuggestion/' + pageNum, function (data) {
+                        self.currentPage = parseInt(pageNum);
+                        self.films = data;
+                        $(window).scrollTop(0);
+                        $(function () {
+                            $('a[data-pagenum]').removeClass("is-current");
+                            $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                        });
+                        hideLoading();
+                    });
+                },
+                goToPrevious: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON('/client/filmsForSuggestion/' + (parseInt(self.currentPage) - 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) - 1;
+                            self.films = data;
+                            $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
+                            hideLoading();
+                        });
+                    }
+                },
+                goToNext: function (event) {
+                    if (!$(event.currentTarget).attr('disabled')) {
+                        var self = this;
+                        showLoading();
+                        $.getJSON('/client/filmsForSuggestion/' + (parseInt(self.currentPage) + 1), function (data) {
+                            self.currentPage = parseInt(self.currentPage) + 1;
+                            self.films = data;
+                            $(window).scrollTop(0);
+                            $(function () {
+                                $('a[data-pagenum]').removeClass("is-current");
+                                $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
+                            });
                             hideLoading();
                         });
                     }
@@ -1348,6 +1470,12 @@ $(function () {
     } else if (window.location.pathname === "/search") {
         if ($(window).width() >= 1024) {
             window.location.replace(domain);
+        } else {
+            window.addEventListener('resize', function () {
+                if ($(window).width() >= 1024) {
+                    window.location.replace(domain);
+                }
+            });
         }
     }
 

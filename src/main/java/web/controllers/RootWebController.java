@@ -41,7 +41,7 @@ public class RootWebController {
     public String index() {
         log.info("index()");
 
-        log.info("index() returns : index, ");
+        log.info("index() returns : index");
         return "index";
     }
 
@@ -144,6 +144,13 @@ public class RootWebController {
 
         log.info("error500() returns : 500");
         return "500";
+    }
+
+    @RequestMapping(value = "/suggestion", method = RequestMethod.GET)
+    public String suggestion() {
+        log.info("suggestion()");
+        log.info("suggestion() returns : suggestion");
+        return "suggestion";
     }
 
     @RequestMapping(value = "/best", method = RequestMethod.GET)

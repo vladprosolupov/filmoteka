@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import web.enums.ClientRole;
 import web.exceptions.ParsingJsonToDaoException;
 import web.model.ClientJSON;
+import web.model.FilmJSONIndex;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
@@ -63,7 +64,7 @@ public class ClientService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login='" + login + "'").list().get(0);
+        ClientDb client = (ClientDb) session.createQuery("FROM ClientDb c where c.login=?").setParameter(0, login).list().get(0);
         session.getTransaction().commit();
         session.close();
 
@@ -81,7 +82,7 @@ public class ClientService {
         }
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        int clientId = (int) session.createQuery("select c.id FROM ClientDb c where c.login='" + login + "'").list().get(0);
+        int clientId = (int) session.createQuery("select c.id FROM ClientDb c where c.login=?").setParameter(0, login).list().get(0);
         session.getTransaction().commit();
         session.close();
 
@@ -93,7 +94,7 @@ public class ClientService {
     public ClientDb getClientByEmail(String email) throws HibernateException, IndexOutOfBoundsException {
         log.info("getClientByEmail(email=" + email + ")");
 
-        if(email == null || email.isEmpty()) {
+        if (email == null || email.isEmpty()) {
             log.error("Email is null or empty");
 
             throw new IllegalArgumentException("Email should not be null or empty");
@@ -164,7 +165,7 @@ public class ClientService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        long count = (long)session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
+        long count = (long) session.createQuery("select count (c.id) from ClientDb c where c.login = '" + login + "'").list().get(0);
         session.getTransaction().commit();
         boolean result = (count == (long) 0);
         session.close();
@@ -176,7 +177,7 @@ public class ClientService {
     public void blockClient(String login) throws HibernateException, IndexOutOfBoundsException {
         log.info("blockClient(login=" + login + ")");
 
-        if(login == null || login.isEmpty()) {
+        if (login == null || login.isEmpty()) {
             log.error("Login is null");
 
             throw new IllegalArgumentException("Login should not be null or empty");
@@ -191,7 +192,7 @@ public class ClientService {
     public void unblockClient(String login) throws HibernateException, IndexOutOfBoundsException {
         log.info("blockClient(login=" + login + ")");
 
-        if(login == null || login.isEmpty()) {
+        if (login == null || login.isEmpty()) {
             log.error("Login is null");
 
             throw new IllegalArgumentException("Login should not be null or empty");
@@ -214,7 +215,7 @@ public class ClientService {
 
         ClientDb clientDb = new ClientDb();
 
-        if(clientJSON.getId() == 0) {
+        if (clientJSON.getId() == 0) {
             log.info("creating new client");
 
             clientDb.setFirstName(clientJSON.getFirstName());
@@ -242,7 +243,7 @@ public class ClientService {
         return clientDb;
     }
 
-    public List<ClientJSON> getAllForAdmin(){
+    public List<ClientJSON> getAllForAdmin() {
         log.info("getAllForAdmin()");
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -253,4 +254,33 @@ public class ClientService {
         log.info("getAllForAdmin() returns : allUsers.size()=" + allUsers.size());
         return allUsers;
     }
+
+    public List<FilmJSONIndex> getFilmsForSuggestion(int page, int idClient) throws HibernateException {
+        log.info("getFilmsForSuggestion(page=" + page + ", idClient= " + idClient + ")");
+
+        Session session = sessionFactory.openSession();
+        int limit = 10;
+        int start = (page - 1) * limit;
+        session.beginTransaction();
+        List<FilmJSONIndex> list = session.createQuery("select cd.filmByIdFilm.title, cd.filmByIdFilm.releaseDate, cd.filmByIdFilm.cover, cd.filmByIdFilm.id, cd.filmByIdFilm.rating from ClientDataDb cd where cd.clientByIdClient.id = ? order by cd.aiPoints desc").setParameter(0, idClient).setFirstResult(start).setMaxResults(limit).list();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getFilmsForSuggestion() returns : list.size()=" + list.size());
+        return list;
+    }
+
+    public long getNumberOfSuggested(int idClient) throws HibernateException {
+        log.info("getNumberOfSuggested()");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long result = (long) session.createQuery("select count(F.filmByIdFilm.id) from ClientDataDb F where F.clientByIdClient.id = ?").setParameter(0, idClient).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getNumberOfSuggested() returns : result=" + result);
+        return result;
+    }
+
 }
