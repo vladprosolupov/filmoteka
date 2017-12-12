@@ -87,6 +87,7 @@ public class FilmController {
     long getNumberOfFilms() {
         log.info("getNumberOfFilms()");
 
+        log.info("filmService - " + filmService);
         long numberOfFilms = filmService.getNumberOfFilms();
 
         log.info("getNumberOfFilms() returns : numberOfFilms=" + numberOfFilms);

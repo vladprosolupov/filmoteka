@@ -6,19 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java" afterPath="$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" />
+    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="Small changes">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/0abca3f1-4545-4e81-bbdd-3b3a5b725616.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/0abca3f1-4545-4e81-bbdd-3b3a5b725616.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" afterPath="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +22,6 @@
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
@@ -39,43 +30,37 @@
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
     <expand>
       <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="sessionFactory/Hibernate" type="feb32156:DbDataSourceImpl" />
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="Filmoteka" type="e3449647:DbNodeDescriptor" />
       </path>
       <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="sessionFactory/Hibernate" type="feb32156:DbDataSourceImpl" />
-        <item name="filmotekaDb: database" type="bdf80c8a:MssqlImplModel$Database" />
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="Filmoteka" type="e3449647:DbNodeDescriptor" />
+        <item name="filmotekaDb" type="e3449647:DbNodeDescriptor" />
       </path>
       <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="sessionFactory/Hibernate" type="feb32156:DbDataSourceImpl" />
-        <item name="filmotekaDb: database" type="bdf80c8a:MssqlImplModel$Database" />
-        <item name="dbo: schema" type="3adcb6a6:MssqlImplModel$Schema" />
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="Filmoteka" type="e3449647:DbNodeDescriptor" />
+        <item name="filmotekaDb" type="e3449647:DbNodeDescriptor" />
+        <item name="dbo" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="Filmoteka" type="e3449647:DbNodeDescriptor" />
+        <item name="filmotekaDb" type="e3449647:DbNodeDescriptor" />
+        <item name="dbo" type="e3449647:DbNodeDescriptor" />
+        <item name="Category" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Filmoteka" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FilmLikesController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Jsp File" />
         <option value="Class" />
       </list>
@@ -83,36 +68,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>openSession</find>
-      <find>studios/</find>
-      <find>networks/</find>
-      <find>directors/</find>
-      <find>categories/</find>
-      <find>actors/</find>
-      <find>is-del</find>
-      <find>centered</find>
-      <find>getClientByLogin</find>
-      <find>pagina</find>
-      <find>is-ce</find>
-      <find>blu</find>
-      <find>main.js</find>
-      <find>vue.js</find>
-      <find>goToN</find>
-      <find>z-index</find>
-      <find>is-dele</find>
-      <find>.bd</find>
-      <find>goto</find>
-      <find>hero-hea</find>
-      <find>focus</find>
-      <find>bd-</find>
-      <find>scroll</find>
-      <find>is-current</find>
-      <find>.is-mobile</find>
-      <find>filmL</find>
-      <find>setFIrstRes</find>
-      <find>inner join</find>
-      <find>criteria</find>
-      <find>MAp.</find>
+      <find>span</find>
+      <find>&lt;label</find>
+      <find>&lt;input</find>
+      <find>thead</find>
+      <find>a</find>
+      <find>absorb</find>
+      <find>absorbi</find>
+      <find>absorbing</find>
+      <find>abso</find>
+      <find>class=&quot;absorbing-column&quot;</find>
+      <find>bul</find>
+      <find>List</find>
+      <find>property name=&quot;authenticationManager&quot;</find>
+      <find>serv</find>
+      <find>logout</find>
+      <find>film/info</find>
+      <find>user</find>
+      <find>comment</find>
+      <find>jsp</find>
+      <find>FilmDislikeDb</find>
+      <find>hasAnyAuthority</find>
+      <find>film</find>
+      <find>is-outlined</find>
+      <find>edit</find>
+      <find>@Valid</find>
+      <find>where c.login</find>
+      <find>/resources/images/avatars/</find>
+      <find>resetPassword</find>
+      <find>like</find>
+      <find>getNumberOfFilms()</find>
     </findStrings>
     <replaceStrings>
       <replace>/label&gt;</replace>
@@ -120,16 +105,15 @@
       <replace>&lt;table class=&quot;table&quot;</replace>
       <replace>label</replace>
       <replace>&lt;input class=&quot;input&quot;</replace>
+      <replace>Set</replace>
+      <replace>client</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/src/main</dir>
-      <dir>$PROJECT_DIR$/src/main/java/web/services</dir>
-      <dir>$PROJECT_DIR$/src/main/java/web/controllers</dir>
-      <dir>$PROJECT_DIR$/..</dir>
+      <dir>D:\Study\Diploma\src\main\java\web\controllers</dir>
+      <dir>D:\Study\Diploma</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -145,57 +129,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/web/services/BookmarkService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/services/PasswordResetTokenService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/updatePass.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/forgotPass.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/web/services/VerificationTokenService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/actors/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/categories/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/directors/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/networks/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/studios/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/users/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/admin/wrapper.tag" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/users/more.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/studios/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/networks/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/categories/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/actors/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/directors/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/styles/admin.css" />
-        <option value="$PROJECT_DIR$/src/main/java/web/model/CommentJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/CommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/registration.js" />
-        <option value="$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/dao/AvatarDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/exceptions/NoSuchClientException.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en_US.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/PasswordResetTokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/model/ClientPassword.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/FilmService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/model/ClientJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/model/ClientLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/model/FilmUpvotes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/dao/BookmarkDb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/embeddable/Bookmark.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/dao/FilmLikeDb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/embeddable/FilmLike.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/model/FilmLikeJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/FilmUpvotestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/model/FilmLikesJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/FilmDislikesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/BookmarkService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/BookmarkController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
+        <option value="$PROJECT_DIR$/src/main/java/web/exceptions/ValidationError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/GlobalExceptionController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/AvatarService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/ClientService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/styles/main.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/best.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/search.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/FilmLikesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislike.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/services/CategoryService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/model/aiModel/CombinedFilm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/dao/ClientDataDb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/services/ClientDataService.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0568887c-ce9b-4a98-a2a2-3db7d5289a99/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0abca3f1-4545-4e81-bbdd-3b3a5b725616/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/services/AiService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java" />
       </list>
     </option>
   </component>
@@ -220,12 +204,25 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="22" />
-    <option name="width" value="2560" />
-    <option name="height" value="1335" />
+    <option name="x" value="952" />
+    <option name="width" value="976" />
+    <option name="height" value="1038" />
   </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -242,79 +239,76 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="Images" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="JPA.DatabaseSchemaImportDialog" value="0abca3f1-4545-4e81-bbdd-3b3a5b725616" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/styles" />
-    </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="web.dao" />
-      <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/styles" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\Diploma\src\main\webapp\resources\images" />
+      <recent name="D:\Study\Diploma\src\main\resources" />
+      <recent name="D:\Study\Diploma\src\main\webapp\resources" />
     </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -332,11 +326,17 @@
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/0568887c-ce9b-4a98-a2a2-3db7d5289a99.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/controllers/GlobalExceptionController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/dao/ClientDataDb.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/AiService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/resources/js/main.js</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -345,6 +345,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -445,7 +452,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.tomcat 8.5.15">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -467,6 +474,53 @@
       <module name="" />
       <envs />
     </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
@@ -474,6 +528,14 @@
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -494,6 +556,12 @@
       </option>
       <envs />
       <patterns />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -528,86 +596,6 @@
       <envs />
       <properties />
       <listeners />
-    </configuration>
-    <configuration name="tomcat 8.5.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.15" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
-      <deployment>
-        <artifact name="filmoteka:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Filmoteka_2" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="63115" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="filmoteka:war exploded" />
-        </option>
-      </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -745,55 +733,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -902,13 +841,79 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
+    <configuration name="tomcat 8.5.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.15" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="update-resources" />
+      <deployment>
+        <artifact name="filmoteka:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Filmoteka_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63115" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="filmoteka:war exploded" />
+        </option>
+      </method>
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -929,438 +934,438 @@
       <workItem from="1497710466944" duration="24848000" />
       <workItem from="1497737381200" duration="153000" />
       <workItem from="1497781921005" duration="8523000" />
-      <workItem from="1510321529939" duration="10810000" />
-      <workItem from="1510408070614" duration="8876000" />
-      <workItem from="1510512111892" duration="10848000" />
-      <workItem from="1510523947026" duration="81000" />
-      <workItem from="1510524042399" duration="4988000" />
-      <workItem from="1510530207636" duration="8000" />
-      <workItem from="1510605296669" duration="4181000" />
-      <workItem from="1510667662797" duration="12418000" />
-      <workItem from="1510684800882" duration="3861000" />
-      <workItem from="1510772083707" duration="26940000" />
-      <workItem from="1510849862681" duration="4703000" />
-      <workItem from="1510863398499" duration="21870000" />
-      <workItem from="1511011575156" duration="44073000" />
-      <workItem from="1511205679200" duration="26310000" />
-      <workItem from="1511365752737" duration="59662000" />
-      <workItem from="1511717372312" duration="13680000" />
-      <workItem from="1511735287259" duration="8122000" />
-      <workItem from="1511885303740" duration="894000" />
-      <workItem from="1512071826931" duration="12036000" />
-      <workItem from="1512084061975" duration="1014000" />
-      <workItem from="1512144875440" duration="16555000" />
-      <workItem from="1512311063799" duration="12464000" />
-      <workItem from="1512324958700" duration="3015000" />
-      <workItem from="1512422639683" duration="16693000" />
-      <workItem from="1512509145167" duration="3601000" />
-      <workItem from="1512595653894" duration="13253000" />
-      <workItem from="1512919402210" duration="19288000" />
-      <workItem from="1513092332873" duration="2416000" />
+      <workItem from="1510321529939" duration="17272000" />
+      <workItem from="1510408026294" duration="5314000" />
+      <workItem from="1510513395343" duration="9523000" />
+      <workItem from="1510527025804" duration="3063000" />
+      <workItem from="1510562627308" duration="429000" />
+      <workItem from="1510597337385" duration="4212000" />
+      <workItem from="1510602922969" duration="611000" />
+      <workItem from="1510618644114" duration="2100000" />
+      <workItem from="1510663032732" duration="12898000" />
+      <workItem from="1510684659740" duration="390000" />
+      <workItem from="1510688436669" duration="44000" />
+      <workItem from="1510750348269" duration="772000" />
+      <workItem from="1510751144928" duration="1585000" />
+      <workItem from="1510832823320" duration="229000" />
+      <workItem from="1510833254025" duration="9553000" />
+      <workItem from="1510850283887" duration="350000" />
+      <workItem from="1510850662217" duration="2127000" />
+      <workItem from="1510869939503" duration="1149000" />
+      <workItem from="1510932851737" duration="5318000" />
+      <workItem from="1511012082151" duration="5563000" />
+      <workItem from="1511096718166" duration="24222000" />
+      <workItem from="1511201654044" duration="13514000" />
+      <workItem from="1511220289678" duration="4502000" />
+      <workItem from="1511383261679" duration="1005000" />
+      <workItem from="1511384319995" duration="8870000" />
+      <workItem from="1511443283711" duration="11559000" />
+      <workItem from="1511462540041" duration="7861000" />
+      <workItem from="1511472966044" duration="4507000" />
+      <workItem from="1511477525572" duration="100000" />
+      <workItem from="1512131380546" duration="1171000" />
+      <workItem from="1512140856669" duration="1690000" />
+      <workItem from="1512145347090" duration="6199000" />
+      <workItem from="1512156085077" duration="5575000" />
+      <workItem from="1512493765465" duration="11000" />
+      <workItem from="1512508854872" duration="2477000" />
+      <workItem from="1512597468405" duration="786000" />
+      <workItem from="1512598311637" duration="3843000" />
+      <workItem from="1512650314704" duration="5407000" />
+      <workItem from="1512828834408" duration="1537000" />
+      <workItem from="1512943228345" duration="8191000" />
+      <workItem from="1513094868932" duration="577000" />
     </task>
-    <task id="LOCAL-00056" summary="Minor fixes.">
-      <created>1511131570247</created>
+    <task id="LOCAL-00037" summary="Added toString() to the dao classes">
+      <created>1511107967891</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1511107967891</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added toString() to the model classes">
+      <created>1511108128009</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1511108128009</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Added validation to model classes">
+      <created>1511111995721</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1511111995721</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Small changes">
+      <created>1511112477262</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1511112477262</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Small changes">
+      <created>1511115053943</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1511115053943</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Changed log4j2 properties file">
+      <created>1511115913619</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1511115913619</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added validation for the model classes">
+      <created>1511122720332</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1511122720332</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Working on sending confirmational emails">
+      <created>1511211671980</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1511211671980</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added feature of sending email for confirmation user account.">
+      <created>1511222347131</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1511222347131</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Added logo, removed some logs">
+      <created>1511223659554</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1511223659554</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Changed way of working with hibernate session">
+      <created>1511385552629</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1511385552629</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Changed way of working with hibernate session part 2">
+      <created>1511385820608</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1511385820608</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Changed way of working with hibernate session part 3">
+      <created>1511386600660</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1511386600660</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Changed way of working with hibernate session part 4">
+      <created>1511386985522</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1511386985523</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Added exception handling for IlligalArgumentException">
+      <created>1511390133260</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1511390133260</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Minor changes">
+      <created>1511391480476</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1511391480476</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Minor changes connected to hibernate sessions part 2">
+      <created>1511391705305</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1511391705305</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Minor changes connected to hibernate sessions part 3">
+      <created>1511391899644</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1511391899644</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Minor changes connected to hibernate sessions part 2">
+      <created>1511392172512</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1511392172512</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Minor changes connected to hibernate sessions part 4">
+      <created>1511392449447</created>
       <option name="number" value="00056" />
       <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
-      <updated>1511131570247</updated>
+      <updated>1511392449447</updated>
     </task>
-    <task id="LOCAL-00057" summary="Removed unused tables Address and City, made changes corresponding to the deletion.">
-      <created>1511208556209</created>
+    <task id="LOCAL-00057" summary="Added possibility for admin to delete comments">
+      <created>1511392608662</created>
       <option name="number" value="00057" />
       <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
-      <updated>1511208556209</updated>
+      <updated>1511392608662</updated>
     </task>
-    <task id="LOCAL-00058" summary="Added pagination and logic for it. Made changes in services and controllers in order to fit the pagination.">
-      <created>1511223691103</created>
+    <task id="LOCAL-00058" summary="Added possibility for user to change password">
+      <created>1511451533427</created>
       <option name="number" value="00058" />
       <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
-      <updated>1511223691103</updated>
+      <updated>1511451533428</updated>
     </task>
-    <task id="LOCAL-00059" summary="Changed message that email was sending during the registration. Small fixes with home button.">
-      <created>1511225563721</created>
+    <task id="LOCAL-00059" summary="Bug fixes">
+      <created>1511452890508</created>
       <option name="number" value="00059" />
       <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
-      <updated>1511225563721</updated>
+      <updated>1511452890508</updated>
     </task>
-    <task id="LOCAL-00060" summary="Fixes with registration fields going red when you autoinput data. Added message boxes with information after registration/confirmation.">
-      <created>1511263466909</created>
+    <task id="LOCAL-00060" summary="Added all functionalities for editing current customer.">
+      <created>1511455469045</created>
       <option name="number" value="00060" />
       <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
-      <updated>1511263466909</updated>
+      <updated>1511455469045</updated>
     </task>
-    <task id="LOCAL-00061" summary="Added front-end validation of the registration form. Added real-time login availability check. Added registration submit button loading animation on submit.">
-      <created>1511290745603</created>
+    <task id="LOCAL-00061" summary="Now admin can block or unblock clients">
+      <created>1511456562349</created>
       <option name="number" value="00061" />
       <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1511290745603</updated>
+      <updated>1511456562349</updated>
     </task>
-    <task id="LOCAL-00062" summary="Added Sign up link in header tag. Added divider between Log in and Sign up.">
-      <created>1511294364340</created>
+    <task id="LOCAL-00062" summary="Likes/dislikes for film">
+      <created>1511467177095</created>
       <option name="number" value="00062" />
       <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
-      <updated>1511294364340</updated>
+      <updated>1511467177096</updated>
     </task>
-    <task id="LOCAL-00063" summary="Fixes when login and registration boxes were crashing during sizing at particular size.">
-      <created>1511294761398</created>
+    <task id="LOCAL-00063" summary="Showing liked films for customer">
+      <created>1511469464497</created>
       <option name="number" value="00063" />
       <option name="presentableId" value="LOCAL-00063" />
       <option name="project" value="LOCAL" />
-      <updated>1511294761398</updated>
+      <updated>1511469464497</updated>
     </task>
-    <task id="LOCAL-00064" summary="Started working on the comments. Comments already showing on the page, no availability to post them yet. Fixed some glitches with js, causing site not to respond.">
-      <created>1511373884921</created>
+    <task id="LOCAL-00064" summary="Bug fixes">
+      <created>1511470563625</created>
       <option name="number" value="00064" />
       <option name="presentableId" value="LOCAL-00064" />
       <option name="project" value="LOCAL" />
-      <updated>1511373884922</updated>
+      <updated>1511470563625</updated>
     </task>
-    <task id="LOCAL-00065" summary="Working on the comments continued.">
-      <created>1511389276965</created>
+    <task id="LOCAL-00065" summary="Bug fixes">
+      <created>1511473479523</created>
       <option name="number" value="00065" />
       <option name="presentableId" value="LOCAL-00065" />
       <option name="project" value="LOCAL" />
-      <updated>1511389276966</updated>
+      <updated>1511473479524</updated>
     </task>
-    <task id="LOCAL-00066" summary="Fully implemented comments. Admin can delete any comment he want, user can only delete his comments. Small fixes with design in main.css; Fixed typos in About page. Fixed Error caused by lack of @ResponseBody annotation in GlobalExeptionController">
-      <created>1511394785684</created>
+    <task id="LOCAL-00066" summary="Added some features">
+      <created>1511475178908</created>
       <option name="number" value="00066" />
       <option name="presentableId" value="LOCAL-00066" />
       <option name="project" value="LOCAL" />
-      <updated>1511394785684</updated>
+      <updated>1511475178908</updated>
     </task>
-    <task id="LOCAL-00067" summary="Removed unused fields rating and referenced comment from Comment table, implemented changes for that">
-      <created>1511434760695</created>
+    <task id="LOCAL-00067" summary="Small changes">
+      <created>1511475292383</created>
       <option name="number" value="00067" />
       <option name="presentableId" value="LOCAL-00067" />
       <option name="project" value="LOCAL" />
-      <updated>1511434760695</updated>
+      <updated>1511475292383</updated>
     </task>
-    <task id="LOCAL-00068" summary="Small fixes after comment changes.">
-      <created>1511434950008</created>
+    <task id="LOCAL-00068" summary="Bug fixes">
+      <created>1511477571453</created>
       <option name="number" value="00068" />
       <option name="presentableId" value="LOCAL-00068" />
       <option name="project" value="LOCAL" />
-      <updated>1511434950008</updated>
+      <updated>1511477571455</updated>
     </task>
-    <task id="LOCAL-00069" summary="Started working with film likes/dislikes and bookmarks.">
-      <created>1511443366688</created>
+    <task id="LOCAL-00069" summary="Fixed error message from Spring Security Login Handler">
+      <created>1512147870311</created>
       <option name="number" value="00069" />
       <option name="presentableId" value="LOCAL-00069" />
       <option name="project" value="LOCAL" />
-      <updated>1511443366688</updated>
+      <updated>1512147870312</updated>
     </task>
-    <task id="LOCAL-00070" summary="Small css fixes.">
-      <created>1511443581992</created>
+    <task id="LOCAL-00070" summary="Small changes">
+      <created>1512148388215</created>
       <option name="number" value="00070" />
       <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1511443581992</updated>
+      <updated>1512148388215</updated>
     </task>
-    <task id="LOCAL-00071" summary="Started work on Forgot password function.">
-      <created>1511444870656</created>
+    <task id="LOCAL-00071" summary="Db changes">
+      <created>1512150540585</created>
       <option name="number" value="00071" />
       <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1511444870656</updated>
+      <updated>1512150540585</updated>
     </task>
-    <task id="LOCAL-00072" summary="Added bookmarks, likes and dislikes to the DB. Created mapping classes for them.">
-      <created>1511446271119</created>
+    <task id="LOCAL-00072" summary="Added icons">
+      <created>1512156334963</created>
       <option name="number" value="00072" />
       <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1511446271119</updated>
+      <updated>1512156334963</updated>
     </task>
-    <task id="LOCAL-00073" summary="Added BookmarkJSON, BookmarkService.">
-      <created>1511450283422</created>
+    <task id="LOCAL-00073" summary="Added icon">
+      <created>1512156408686</created>
       <option name="number" value="00073" />
       <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
-      <updated>1511450283422</updated>
+      <updated>1512156408686</updated>
     </task>
-    <task id="LOCAL-00074" summary="Fixes when server crashed on start.">
-      <created>1511450565519</created>
+    <task id="LOCAL-00074" summary="Added saving and updating avatar">
+      <created>1512158560870</created>
       <option name="number" value="00074" />
       <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
-      <updated>1511450565519</updated>
+      <updated>1512158560870</updated>
     </task>
-    <task id="LOCAL-00075" summary="Added fully functional bookmarks on films (without bookmarks page).">
-      <created>1511454828766</created>
+    <task id="LOCAL-00075" summary="Minor fixes">
+      <created>1512161973089</created>
       <option name="number" value="00075" />
       <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1511454828766</updated>
+      <updated>1512161973089</updated>
     </task>
-    <task id="LOCAL-00076" summary="Added bookmarks to profile page.">
-      <created>1511468296621</created>
+    <task id="LOCAL-00076" summary="Added new package and class">
+      <created>1512598929568</created>
       <option name="number" value="00076" />
       <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1511468296622</updated>
+      <updated>1512598929570</updated>
     </task>
-    <task id="LOCAL-00077" summary="Small fixes with with Services causing bad data responses.">
-      <created>1511473150374</created>
+    <task id="LOCAL-00077" summary="Small changes">
+      <created>1512600312707</created>
       <option name="number" value="00077" />
       <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1511473150374</updated>
+      <updated>1512600312707</updated>
     </task>
-    <task id="LOCAL-00078" summary="Added ability to like and dislike films. Showing liked in the profile section. Added pagination for the films for liked and bookmarked films in profile section.">
-      <created>1511475117835</created>
+    <task id="LOCAL-00078" summary="Improved speed of registering user">
+      <created>1512651924650</created>
       <option name="number" value="00078" />
       <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1511475117835</updated>
+      <updated>1512651924651</updated>
     </task>
-    <task id="LOCAL-00079" summary="Fixed an error in JS.">
-      <created>1511475155262</created>
+    <task id="LOCAL-00079" summary="Added multithreading for adding likes/dislikes">
+      <created>1512656732416</created>
       <option name="number" value="00079" />
       <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
-      <updated>1511475155262</updated>
+      <updated>1512656732416</updated>
     </task>
-    <task id="LOCAL-00080" summary="Pagination fix on profile page.">
-      <created>1511718367799</created>
+    <task id="LOCAL-00080" summary="Added multithreading for removing likes/dislikes">
+      <created>1512657173939</created>
       <option name="number" value="00080" />
       <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
-      <updated>1511718367800</updated>
+      <updated>1512657173939</updated>
     </task>
-    <task id="LOCAL-00081" summary="Small fixes with pagination in profile and styles improvement. Huge work made with optimization of calls of Film. Removed unused clientDb's and replaced them with simple Id of Client. Added methods, that are removing load of queries to DB. Changes direct HQL queries to Criterias because of Hibernate support of FetchMode.Join.">
-      <created>1511734946623</created>
+    <task id="LOCAL-00081" summary="Added multithreading editing client">
+      <created>1512829571833</created>
       <option name="number" value="00081" />
       <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
-      <updated>1511734946623</updated>
+      <updated>1512829571834</updated>
     </task>
-    <task id="LOCAL-00082" summary="Minor fixes with menu in profile page.">
-      <created>1511768132835</created>
+    <task id="LOCAL-00082" summary="Added option for reseting password for client using multithreads">
+      <created>1512830120716</created>
       <option name="number" value="00082" />
       <option name="presentableId" value="LOCAL-00082" />
       <option name="project" value="LOCAL" />
-      <updated>1511768132835</updated>
+      <updated>1512830120716</updated>
     </task>
-    <task id="LOCAL-00083" summary="Forgot password functionality is fully supported right now, after changing the password, the token is deleted from the DB and the user is given Authority &quot;Anonymous&quot;.">
-      <created>1511821884599</created>
+    <task id="LOCAL-00083" summary="Small changes">
+      <created>1512830291807</created>
       <option name="number" value="00083" />
       <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
-      <updated>1511821884599</updated>
+      <updated>1512830291808</updated>
     </task>
-    <task id="LOCAL-00084" summary="Verification token for email is now being deleted from the DB after successful user confirmation.">
-      <created>1511822284703</created>
+    <task id="LOCAL-00084" summary="Small changes">
+      <created>1512830349100</created>
       <option name="number" value="00084" />
       <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
-      <updated>1511822284703</updated>
+      <updated>1512830349100</updated>
     </task>
-    <task id="LOCAL-00085" summary="Grammar of names fixed.">
-      <created>1511822353890</created>
+    <task id="LOCAL-00085" summary="Working on AI">
+      <created>1512948512359</created>
       <option name="number" value="00085" />
       <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1511822353890</updated>
+      <updated>1512948512360</updated>
     </task>
-    <task id="LOCAL-00086" summary="Fully implemented work with users from Admin page. Small fixes with design on Admin panel, fixed problem with favicon.ico. Added 'Back' button to each 'addOrUpdate' page.">
-      <created>1512080032805</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1512080032806</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Added user administration for Admin to the film page.">
-      <created>1512083822231</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1512083822231</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Fixes with login mapping.">
-      <created>1512147826351</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1512147826351</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Added change password ability for the user. Small changes and fixes in the profile. Small fixes with burger in header.">
-      <created>1512155979585</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1512155979585</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Removed unused favicon. Small changes in services and controllers due to the avatars adding.">
-      <created>1512157685112</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1512157685112</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Added avatar to profile.">
-      <created>1512158496087</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1512158496087</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Added user avatar selection for the registration page, small fixes with burger.">
-      <created>1512315398217</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1512315398218</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Added ability to change avatars from the profile page. Added fully functional user edit. Small fixes and exceptions added in the connected with edit classes. Small styling changes.">
-      <created>1512322246720</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1512322246720</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Optimised resources loading, fixes with search input in navbar, changes in logic of nav-burger appearance. Small css fixes.">
-      <created>1512491987635</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1512491987635</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Small fixes">
-      <created>1512517598093</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1512517598094</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Added search page for mobile use only. Fixed bugs with search on iPhones.">
-      <created>1512598886876</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1512598886877</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Small changes.">
-      <created>1512600412034</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1512600412034</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Typos removed.">
-      <created>1512600474551</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1512600474551</updated>
-    </task>
-    <task id="LOCAL-00099" summary="More fixes with search on mobiles and computers.">
-      <created>1512651481414</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1512651481414</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Changed ClientDataDb, added field with AiPoints. Added ClientDataService.">
-      <created>1512657572047</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1512657572047</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Implementation of AI started. Added few services and methods to work with AI. Added new variable to Client_data table with AI points. Added new library to the project to work with the string comparison.">
-      <created>1512942787665</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1512942787666</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Added method for Combined film comparison with normal film for AI algorithm.">
-      <created>1512946825383</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1512946825383</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Few fixes with AI algorithm.">
-      <created>1513094406724</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1513094406725</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Commit for merge 2 branches.">
-      <created>1513094555429</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1513094555429</updated>
-    </task>
-    <option name="localTasksCounter" value="105" />
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="399959000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="229672000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="2560" height="1335" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5015625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4002193" sideWeight="0.50677085" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939324" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.159375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39904988" sideWeight="0.49726564" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27960527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.49739584" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.4984375" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.82346493" sideWeight="0.49322918" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33223686" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16484375" sideWeight="0.53760886" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16484375" sideWeight="0.46239114" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1640625" sideWeight="0.5131579" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1640625" sideWeight="0.4868421" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1421875" sideWeight="0.5318396" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Azure Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.49586776" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Azure Activity Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="HDInsight Spark Submission" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32779098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5778509" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1396,36 +1401,36 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Pagination fix on profile page." />
-    <MESSAGE value="Small fixes with pagination in profile and styles improvement. Huge work made with optimization of calls of Film. Removed unused clientDb's and replaced them with simple Id of Client. Added methods, that are removing load of queries to DB. Changes direct HQL queries to Criterias because of Hibernate support of FetchMode.Join." />
-    <MESSAGE value="Minor fixes with menu in profile page." />
-    <MESSAGE value="Forgot password functionality is fully supported right now, after changing the password, the token is deleted from the DB and the user is given Authority &quot;Anonymous&quot;." />
-    <MESSAGE value="Verification token for email is now being deleted from the DB after successful user confirmation." />
-    <MESSAGE value="Grammar of names fixed." />
-    <MESSAGE value="Fully implemented work with users from Admin page. Small fixes with design on Admin panel, fixed problem with favicon.ico. Added 'Back' button to each 'addOrUpdate' page." />
-    <MESSAGE value="Added user administration for Admin to the film page." />
-    <MESSAGE value="Fixes with login mapping." />
-    <MESSAGE value="Added change password ability for the user. Small changes and fixes in the profile. Small fixes with burger in header." />
-    <MESSAGE value="Removed unused favicon. Small changes in services and controllers due to the avatars adding." />
-    <MESSAGE value="Added avatar to profile." />
-    <MESSAGE value="Added user avatar selection for the registration page, small fixes with burger." />
-    <MESSAGE value="Added ability to change avatars from the profile page. Added fully functional user edit. Small fixes and exceptions added in the connected with edit classes. Small styling changes." />
-    <MESSAGE value="Optimised resources loading, fixes with search input in navbar, changes in logic of nav-burger appearance. Small css fixes." />
-    <MESSAGE value="Small fixes" />
-    <MESSAGE value="Added search page for mobile use only. Fixed bugs with search on iPhones." />
-    <MESSAGE value="Small changes." />
-    <MESSAGE value="Typos removed." />
-    <MESSAGE value="More fixes with search on mobiles and computers." />
-    <MESSAGE value="Changed ClientDataDb, added field with AiPoints. Added ClientDataService." />
-    <MESSAGE value="Implementation of AI started. Added few services and methods to work with AI. Added new variable to Client_data table with AI points. Added new library to the project to work with the string comparison." />
-    <MESSAGE value="Added method for Combined film comparison with normal film for AI algorithm." />
-    <MESSAGE value="Few fixes with AI algorithm." />
-    <MESSAGE value="Commit for merge 2 branches." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit for merge 2 branches." />
+    <MESSAGE value="Minor changes connected to hibernate sessions part 3" />
+    <MESSAGE value="Minor changes connected to hibernate sessions part 2" />
+    <MESSAGE value="Minor changes connected to hibernate sessions part 4" />
+    <MESSAGE value="Added possibility for admin to delete comments" />
+    <MESSAGE value="Added possibility for user to change password" />
+    <MESSAGE value="Added all functionalities for editing current customer." />
+    <MESSAGE value="Now admin can block or unblock clients" />
+    <MESSAGE value="Likes/dislikes for film" />
+    <MESSAGE value="Showing liked films for customer" />
+    <MESSAGE value="Added some features" />
+    <MESSAGE value="Bug fixes" />
+    <MESSAGE value="Fixed error message from Spring Security Login Handler" />
+    <MESSAGE value="Db changes" />
+    <MESSAGE value="Added icons" />
+    <MESSAGE value="Added icon" />
+    <MESSAGE value="Added saving and updating avatar" />
+    <MESSAGE value="Minor fixes" />
+    <MESSAGE value="Added new package and class" />
+    <MESSAGE value="Improved speed of registering user" />
+    <MESSAGE value="Added multithreading for adding likes/dislikes" />
+    <MESSAGE value="Added multithreading for removing likes/dislikes" />
+    <MESSAGE value="Added multithreading editing client" />
+    <MESSAGE value="Added option for reseting password for client using multithreads" />
+    <MESSAGE value="Small changes" />
+    <MESSAGE value="Working on AI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on AI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="31" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1434,404 +1439,325 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/actors/addOrUpdate.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/embeddable/FilmLike.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="96" lean-forward="true" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+        <state relative-caret-position="539">
+          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/directors/addOrUpdate.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmLikeDb.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="95" lean-forward="false" selection-start-line="18" selection-start-column="95" selection-end-line="18" selection-end-column="95" />
+        <state relative-caret-position="208">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/networks/addOrUpdate.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/model/FilmLikesJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="94" lean-forward="false" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+        <state relative-caret-position="208">
+          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/studios/addOrUpdate.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmDislikesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+        <state relative-caret-position="339">
+          <caret line="146" column="70" lean-forward="true" selection-start-line="146" selection-start-column="70" selection-end-line="146" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/BookmarkService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state relative-caret-position="487">
+          <caret line="158" column="73" lean-forward="false" selection-start-line="158" selection-start-column="73" selection-end-line="158" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/styles/admin.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/BookmarkController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/films/addOrUpdate.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="241" column="47" lean-forward="false" selection-start-line="241" selection-start-column="47" selection-end-line="241" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="119" column="27" lean-forward="false" selection-start-line="119" selection-start-column="27" selection-end-line="119" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7052">
-          <caret line="975" column="46" lean-forward="true" selection-start-line="975" selection-start-column="46" selection-end-line="975" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/authentication/BadCredentialsException.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/authentication/UsernamePasswordAuthenticationToken.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/forgotPass.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/e416320/0568887c-ce9b-4a98-a2a2-3db7d5289a99/filmotekaDb.dbo.PasswordResetToken">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/model/CommentJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1006">
-          <caret line="87" column="94" lean-forward="false" selection-start-line="87" selection-start-column="94" selection-end-line="87" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-616">
-          <caret line="89" column="27" lean-forward="true" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="186" column="44" lean-forward="true" selection-start-line="186" selection-start-column="44" selection-end-line="186" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ActorDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/AvatarDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/registration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="332" column="63" lean-forward="false" selection-start-line="332" selection-start-column="63" selection-end-line="332" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/e416320/0568887c-ce9b-4a98-a2a2-3db7d5289a99/filmotekaDb.dbo.Avatar">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/AvatarService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/model/ClientJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+        <state relative-caret-position="495">
+          <caret line="100" column="75" lean-forward="false" selection-start-line="100" selection-start-column="75" selection-end-line="100" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="73" column="100" lean-forward="false" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/about.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-858">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/film.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="74" lean-forward="true" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/best.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="52" lean-forward="true" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/search.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="81" column="72" lean-forward="true" selection-start-line="81" selection-start-column="72" selection-end-line="81" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/e416320/0568887c-ce9b-4a98-a2a2-3db7d5289a99/filmotekaDb.dbo.VerificationToken">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/e416320/0568887c-ce9b-4a98-a2a2-3db7d5289a99/filmotekaDb.dbo.Client">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main/header.tag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="136" column="46" lean-forward="false" selection-start-line="136" selection-start-column="46" selection-end-line="136" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="83" column="109" lean-forward="false" selection-start-line="83" selection-start-column="109" selection-end-line="83" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="198" column="30" lean-forward="false" selection-start-line="198" selection-start-column="30" selection-end-line="198" selection-end-column="30" />
+        <state relative-caret-position="217">
+          <caret line="127" column="35" lean-forward="false" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="753" column="40" lean-forward="true" selection-start-line="753" selection-start-column="40" selection-end-line="753" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/exceptions/NoSuchClientException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/exceptions/ValidationError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/GlobalExceptionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="111" column="52" lean-forward="true" selection-start-line="111" selection-start-column="52" selection-end-line="111" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="75" column="99" lean-forward="true" selection-start-line="75" selection-start-column="99" selection-end-line="75" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/DirectorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="39" column="63" lean-forward="false" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/AvatarDb.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="335" column="78" lean-forward="false" selection-start-line="335" selection-start-column="78" selection-end-line="335" selection-end-column="78" />
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/CommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="47" column="68" lean-forward="false" selection-start-line="47" selection-start-column="68" selection-end-line="47" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-177">
+          <caret line="90" column="21" lean-forward="false" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/CommentDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ClientDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/ec4fa129/0abca3f1-4545-4e81-bbdd-3b3a5b725616/filmotekaDb.dbo.Avatar">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ActorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="430">
+          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/AvatarService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="20" column="77" lean-forward="false" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/ec4fa129/0abca3f1-4545-4e81-bbdd-3b3a5b725616/filmotekaDb.dbo.PasswordResetToken">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.9.RELEASE/spring-context-4.3.9.RELEASE.jar!/org/springframework/context/ApplicationEventPublisher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/ec4fa129/0abca3f1-4545-4e81-bbdd-3b3a5b725616/filmotekaDb.dbo.VerificationToken">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/ec4fa129/0abca3f1-4545-4e81-bbdd-3b3a5b725616/filmotekaDb.dbo.Client">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ClientService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="157" column="45" lean-forward="false" selection-start-line="157" selection-start-column="44" selection-end-line="157" selection-end-column="45" />
+        <state relative-caret-position="293">
+          <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CategoryService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/RootWebController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="136" column="49" lean-forward="false" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/ClientDataDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
-          <folding>
-            <element signature="e#1724#1725#0" expanded="false" />
-            <element signature="e#1764#1765#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmActorDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="160" column="49" lean-forward="false" selection-start-line="160" selection-start-column="49" selection-end-line="160" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/ClientDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="80" column="24" lean-forward="true" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+        <state relative-caret-position="26">
+          <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmLikesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="44" column="42" lean-forward="false" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
+        <state relative-caret-position="-962">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="177" column="56" lean-forward="false" selection-start-line="177" selection-start-column="56" selection-end-line="177" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/listeners/RegistrationListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="66" column="16" lean-forward="false" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        <state relative-caret-position="338">
+          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="216" column="60" lean-forward="false" selection-start-line="216" selection-start-column="60" selection-end-line="216" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/AiService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="246" column="39" lean-forward="true" selection-start-line="246" selection-start-column="39" selection-end-line="246" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0568887c-ce9b-4a98-a2a2-3db7d5289a99/console.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ActorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="322" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="322" />
+        <state relative-caret-position="-579">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0abca3f1-4545-4e81-bbdd-3b3a5b725616/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="83" lean-forward="false" selection-start-line="2" selection-start-column="83" selection-end-line="2" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/FilmService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="90" column="46" lean-forward="true" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/CategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/model/aiModel/CombinedFilm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="26">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/services/AiService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2131">
+          <caret line="299" column="42" lean-forward="false" selection-start-line="299" selection-start-column="42" selection-end-line="299" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#459#460#0" expanded="false" />
-            <element signature="e#492#493#0" expanded="false" />
-            <element signature="e#559#560#0" expanded="false" />
-            <element signature="e#603#604#0" expanded="false" />
-            <element signature="e#650#651#0" expanded="false" />
-            <element signature="e#679#680#0" expanded="false" />
-            <element signature="e#737#738#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#824#825#0" expanded="false" />
-            <element signature="e#856#857#0" expanded="false" />
-            <element signature="e#921#922#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#1011#1012#0" expanded="false" />
-            <element signature="e#1040#1041#0" expanded="false" />
-            <element signature="e#1099#1100#0" expanded="false" />
-            <element signature="e#1135#1136#0" expanded="false" />
-            <element signature="e#1186#1187#0" expanded="false" />
-            <element signature="e#1218#1219#0" expanded="false" />
-            <element signature="e#1283#1284#0" expanded="false" />
-            <element signature="e#1325#1326#0" expanded="false" />
-            <element signature="e#1374#1375#0" expanded="false" />
-            <element signature="e#1404#1405#0" expanded="false" />
-            <element signature="e#1465#1466#0" expanded="false" />
-            <element signature="e#1503#1504#0" expanded="false" />
-            <element signature="e#1554#1555#0" expanded="false" />
-            <element signature="e#1589#1590#0" expanded="false" />
-            <element signature="e#1657#1658#0" expanded="false" />
-            <element signature="e#1705#1706#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="3539">
+          <caret line="323" column="5" lean-forward="false" selection-start-line="323" selection-start-column="5" selection-end-line="323" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1848,6 +1774,18 @@
               <list>
                 <option value="0.2" />
                 <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <last-edited>Rostyk</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -1903,7 +1841,18 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <last-edited>sqljdbc42</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
