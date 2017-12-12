@@ -8,11 +8,19 @@ import web.dao.ClientDb;
 import web.model.FilmLikesJSON;
 import web.services.FilmLikesService;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Component("AddClientLikeTask")
 public class AddClientLikeTask implements Runnable {
 
     @Autowired
     private FilmLikesService likesService;
+
+    @Autowired
+    private AiTask aiTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private ClientDb clientDb;
     private FilmLikesJSON filmLikesJSON;
@@ -24,6 +32,9 @@ public class AddClientLikeTask implements Runnable {
         log.info("run(); clientDb=" + clientDb + ", filmLikeJSON=" + filmLikesJSON);
 
         likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+
+        aiTask.setCurrentClient(clientDb);
+        executorService.submit(aiTask);
 
         log.info("succ added like");
     }

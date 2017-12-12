@@ -48,9 +48,6 @@ public class FilmLikesController {
     @Autowired
     private RemoveClientDislikeTask removeClientDislikeTask;
 
-    @Autowired
-    private AiTask aiTask;
-
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Autowired
@@ -88,8 +85,6 @@ public class FilmLikesController {
         addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
         executorService.submit(addClientLikeTask);
 
-        aiTask.setCurrentClient(clientDb);
-        executorService.submit(aiTask);
 
         log.info("succ. added like for film");
         return "OK";

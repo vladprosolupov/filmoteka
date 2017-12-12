@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.*;
 import web.model.aiModel.CombinedFilm;
+import web.tasks.GetPropCategoryTask;
 
 import javax.persistence.criteria.Subquery;
 import java.sql.Date;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 @Service("AiService")
@@ -33,7 +38,8 @@ public class AiService {
     @Autowired
     private ClientDataService clientDataService;
 
-    private static final Logger log = LogManager.getLogger(AiService.class);
+    @Autowired
+    private GetPropCategoryTask getPropCategoryTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -44,6 +50,9 @@ public class AiService {
     private final int releaseDatePoints = 2;
     private final int titlePoints = 2;
 
+    private ExecutorService executorService = Executors.newCachedThreadPool();
+
+    private static final Logger log = LogManager.getLogger(AiService.class);
 
     public double getComparisonMapInteger(Map<Integer, Integer> map, Set<Integer> set) {
         log.info("getComparisonMapInteger(map=" + map + ", set=" + set + ")");
@@ -220,9 +229,13 @@ public class AiService {
         // For categories
         Map<Integer, Integer> categoryPercentage = calculatePercentage(combinedFilm.getCategories());
         Set<FilmDb> setOfFilms = new HashSet<>();
-        for (Map.Entry<Integer, Integer> entry : categoryPercentage.entrySet()) {
-            setOfFilms.addAll(getPropCategory(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : categoryPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropCategory(entry.getValue(), entry.getKey(), currentClient));
+//        }
+
+        getPropCategoryTask.setCurrentClient(currentClient);
+        getPropCategoryTask.setPercentage(categoryPercentage);
+        Future<Set<FilmDb>> futureCategory = executorService.submit(getPropCategoryTask);
 
         // For actors
         Map<Integer, Integer> actorPercentage = calculatePercentage(combinedFilm.getActors());
@@ -255,6 +268,7 @@ public class AiService {
         }
 
 
+
         //Generate AI points for each film
         for (FilmDb f : setOfFilms) {
             clientDataMap.put(f.getId(), compareCombinedWithNormal(combinedFilm, f));
@@ -273,7 +287,7 @@ public class AiService {
                 ));
 
         //Save clientDataMap
-        clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
+//        clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
 
         log.info("generateFilmsForSuggestion() done");
     }
@@ -313,18 +327,16 @@ public class AiService {
         return mapOfDates;
     }
 
-    private List<FilmDb> getPropCategory(int amount, int category, ClientDb currentClient) {
+    public List<FilmDb> getPropCategory(int amount, int category, ClientDb currentClient) {
         log.info("getPropCategory(amount=" + amount + ", category=" + category + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
+
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmCategories", "fc")
                 .add(Restrictions.eq("fc.id", category))
@@ -343,13 +355,11 @@ public class AiService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
+
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmActorsById", "fa")
                 .add(Restrictions.eq("fa.actorByIdActor.id", actor))
@@ -368,13 +378,11 @@ public class AiService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
+
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmDirectors", "fd")
                 .add(Restrictions.eq("fd.id", director))
@@ -394,13 +402,11 @@ public class AiService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
+
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
+
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmStudios", "fs")
                 .add(Restrictions.eq("fs.id", studio))
@@ -421,13 +427,9 @@ public class AiService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
-                .add(Restrictions.eq("filmLike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmLike.filmByIdFilm.id"));
+        DetachedCriteria subqueryLike = sqlForLikedFilms(currentClient);
 
-        DetachedCriteria subqueryDislike = DetachedCriteria.forClass(FilmDislikeDb.class)
-                .add(Restrictions.eq("filmDislike.clientByIdClient.id", currentClient.getId()))
-                .setProjection(Property.forName("filmDislike.filmByIdFilm.id"));
+        DetachedCriteria subqueryDislike = sqlForDislikedFilms(currentClient);
 
         List<FilmDb> list = session.createCriteria(FilmDb.class, "f")
                 .createAlias("f.filmCountries", "fc")
