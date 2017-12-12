@@ -2,9 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import web.dao.AwardDb;
 import web.dao.FilmDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -76,7 +74,7 @@ public class FilmController {
         log.info("getFilmsForBestPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);
-        List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForNewPage(pageNum);
+        List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForBestPage(pageNum);
 
         log.info("getFilmsForBestPage(page: " + page + " ) returns : filmsForBestPage.size()=" + filmsForBestPage.size());
         return filmsForBestPage;

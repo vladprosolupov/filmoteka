@@ -146,6 +146,13 @@ public class RootWebController {
         return "500";
     }
 
+    @RequestMapping(value = "/suggestion", method = RequestMethod.GET)
+    public String suggestion() {
+        log.info("suggestion()");
+        log.info("suggestion() returns : suggestion");
+        return "suggestion";
+    }
+
     @RequestMapping(value = "/best", method = RequestMethod.GET)
     public String best() {
         log.info("best()");

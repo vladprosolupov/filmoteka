@@ -29,6 +29,7 @@ import web.exceptions.ValidationError;
 import web.model.ClientJSON;
 import web.model.ClientLoginJSON;
 import web.model.ClientPasswordJSON;
+import web.model.FilmJSONIndex;
 import web.services.ClientService;
 import web.services.PasswordGenerator;
 import web.services.PasswordResetTokenService;
@@ -263,6 +264,45 @@ public class ClientController {
         log.info("succ. changed user password");
 
         return "OK";
+    }
+
+    @PreAuthorize("hasAnyAuthority('admin','user')")
+    @RequestMapping(value = "/filmsForSuggestion/{page}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<FilmJSONIndex> getSuggestionsForPage(@PathVariable("page") String page) {
+        log.info("getSuggestionsForPage(page= " + page + ")");
+        int pageNum = Integer.parseInt(page);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        List<FilmJSONIndex> list = clientService.getFilmsForSuggestion(pageNum, clientService.getClientIdByLogin(authentication.getName()));
+
+        log.info("getSuggestionsForPage() returns : list.size() = " + list.size());
+        return list;
+    }
+
+    @PreAuthorize("hasAnyAuthority('admin', 'user')")
+    @RequestMapping(value = "/numberOfSuggested", method = RequestMethod.GET)
+    public @ResponseBody
+    long getNumberOfSuggested() {
+        log.info("getNumberOfSuggested()");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("If statement, user is not logged in, throwing exception");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        long result = clientService.getNumberOfSuggested(clientService.getClientIdByLogin(authentication.getName()));
+
+        log.info("getNumberOfSuggested() returns : result = " + result);
+        return result;
     }
 
     @PreAuthorize("hasAuthority('admin')")

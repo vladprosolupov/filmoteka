@@ -49,7 +49,7 @@
 
                 <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                                                        aria-hidden="true"></i>Best Rated</a>
-                <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right"
+                <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right"
                                                    style="margin-right: 5px"
                                                    aria-hidden="true"></i>You Should Watch</a>
 
@@ -149,7 +149,7 @@
         <div class="navbar-start">
             <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                                                    aria-hidden="true"></i>Best Rated</a>
-            <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
+            <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
                                                aria-hidden="true"></i>You Should Watch</a>
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
@@ -213,11 +213,11 @@
 
 
     <div class="navbar-menu" id="navburger-user">
-        < class="navbar-start">
+        <div class="navbar-start">
             <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                                                    aria-hidden="true"></i> Best Rated</a>
 
-            <a class="navbar-item" href="/"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
+            <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
                                                aria-hidden="true"></i>You Should Watch</a>
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
