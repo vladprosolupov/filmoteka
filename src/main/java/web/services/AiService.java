@@ -13,6 +13,7 @@ import web.dao.*;
 import web.model.aiModel.CombinedFilm;
 import web.tasks.GetPropActorTask;
 import web.tasks.GetPropCategoryTask;
+import web.tasks.GetPropDirectorTask;
 
 import javax.persistence.criteria.Subquery;
 import java.sql.Date;
@@ -44,6 +45,9 @@ public class AiService {
 
     @Autowired
     private GetPropActorTask getPropActorTask;
+
+    @Autowired
+    private GetPropDirectorTask getPropDirectorTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -253,9 +257,13 @@ public class AiService {
 
         // For directors
         Map<Integer, Integer> directorPercentage = calculatePercentage(combinedFilm.getDirectors());
-        for (Map.Entry<Integer, Integer> entry : directorPercentage.entrySet()) {
-            setOfFilms.addAll(getPropDirector(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : directorPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropDirector(entry.getValue(), entry.getKey(), currentClient));
+//        }
+
+        getPropDirectorTask.setCurrentClient(currentClient);
+        getPropDirectorTask.setPercentage(directorPercentage);
+        Future<Set<FilmDb>> futureDirector = executorService.submit(getPropDirectorTask);
 
         // For studios
         Map<Integer, Integer> studioPercentage = calculatePercentage(combinedFilm.getStudios());
