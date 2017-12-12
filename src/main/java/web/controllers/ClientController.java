@@ -33,10 +33,16 @@ import web.model.FilmJSONIndex;
 import web.services.ClientService;
 import web.services.PasswordGenerator;
 import web.services.PasswordResetTokenService;
+import web.tasks.EditClientTask;
+import web.tasks.RegisterUserTask;
+import web.tasks.SendForgotPasswordEmailTask;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 @Controller
@@ -47,17 +53,18 @@ public class ClientController {
     private ClientService clientService;
 
     @Autowired
-    private ApplicationEventPublisher eventPublisher;
-
-    @Autowired
     private PasswordResetTokenService passwordResetTokenService;
 
-    @Qualifier(value = "messageSource")
     @Autowired
-    private MessageSource messages;
+    private RegisterUserTask registerUserTask;
 
     @Autowired
-    private JavaMailSender mailSender;
+    private EditClientTask editClientTask;
+
+    @Autowired
+    private SendForgotPasswordEmailTask sendForgotPasswordEmailTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(ClientController.class);
 
@@ -91,10 +98,10 @@ public class ClientController {
         }
 
         String applicationURL = request.getContextPath();
-        log.info("appURL - " + applicationURL);
-        log.info("locale - " + request.getLocale());
 
-        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(applicationURL, clientDb, request.getLocale()));
+        registerUserTask.setApplicationURL(applicationURL);
+        registerUserTask.setClientDb(clientDb);
+        executorService.submit(registerUserTask);
 
         log.info("addClient() returns : OK");
         return "OK";
@@ -127,7 +134,9 @@ public class ClientController {
 
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
         clientJSON.setId(clientDb.getId());
-        clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
+
+        editClientTask.setClientJSON(clientJSON);
+        executorService.submit(editClientTask);
 
         log.info("editClient() returns : OK");
         return "OK";
@@ -188,9 +197,11 @@ public class ClientController {
 
         if (clientDb == null) {
             log.error("There is no such client with given email");
+
             throw new NoSuchClientException("There is no such client with given email");
 
         }
+
         String token = UUID.randomUUID().toString();
 
         PasswordResetTokenDb passwordResetTokenDb = new PasswordResetTokenDb();
@@ -199,7 +210,12 @@ public class ClientController {
 
         passwordResetTokenService.savePasswordResetToken(passwordResetTokenDb);
 
-        sendResetPasswordEmail(clientEmail, token, clientDb.getFirstName(), clientDb.getLastName());
+        sendForgotPasswordEmailTask.setClientEmail(clientEmail);
+        sendForgotPasswordEmailTask.setToken(token);
+        sendForgotPasswordEmailTask.setClientFirstName(clientDb.getFirstName());
+        sendForgotPasswordEmailTask.setClientLastName(clientDb.getLastName());
+
+        executorService.submit(sendForgotPasswordEmailTask);
 
         return "OK";
 
@@ -366,37 +382,4 @@ public class ClientController {
         return "OK";
     }
 
-    // Simple methods.
-
-    /**
-     * This method sends email to the user.
-     *
-     * @param clientEmail
-     * @param token
-     * @param firstName
-     * @param lastName
-     */
-    private void sendResetPasswordEmail(String clientEmail, String token, String firstName, String lastName) {
-        log.info("sendResetPasswordEmail(clientEmail=" + clientEmail + ", token=" + token + ", firstName="
-                + firstName + ", lastName=" + lastName + ")");
-
-        try {
-            String greet = messages.getMessage("message.greet", null, Locale.US);
-            String head = messages.getMessage("message.resetPasswordHead", null, Locale.US);
-            String foot = messages.getMessage("message.regFoot", null, Locale.US);
-            String link = messages.getMessage("message.link", null, Locale.US);
-
-            String confirmationUrl = "/client/resetPassword/" + token;
-
-            SimpleMailMessage email = new SimpleMailMessage();
-            email.setTo(clientEmail);
-            email.setSubject("Password Reset");
-            email.setText(greet + " " + firstName + " " + lastName + head + link + confirmationUrl + foot);
-            mailSender.send(email);
-        } catch (Exception e) {
-            log.error("EXCEPTION - " + e);
-        }
-
-        log.info("mail was sent to user");
-    }
 }

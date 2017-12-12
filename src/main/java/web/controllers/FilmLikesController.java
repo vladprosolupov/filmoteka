@@ -13,12 +13,12 @@ import web.dao.ClientDb;
 import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
-import web.services.ClientService;
-import web.services.FilmDislikesService;
-import web.services.FilmLikesService;
-import web.services.FilmService;
+import web.services.*;
+import web.tasks.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Controller
 @RequestMapping(value = "/likes")
@@ -35,6 +35,23 @@ public class FilmLikesController {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private AddClientLikeTask addClientLikeTask;
+
+    @Autowired
+    private AddClientDislikeTask addClientDislikeTask;
+
+    @Autowired
+    private RemoveClientLikeTask removeClientLikeTask;
+
+    @Autowired
+    private RemoveClientDislikeTask removeClientDislikeTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
+
+    @Autowired
+    AiService aiService;
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 
@@ -64,7 +81,10 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        likesService.addLike(likesService.convertToFilmLikeDbFromFilmLike(likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        addClientLikeTask.setClientDb(clientDb);
+        addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(addClientLikeTask);
+
 
         log.info("succ. added like for film");
         return "OK";
@@ -96,7 +116,9 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+        addClientDislikeTask.setClientDb(clientDb);
+        addClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(addClientDislikeTask);
 
         log.info("succ. added dislike for film");
         return "OK";
@@ -122,7 +144,9 @@ public class FilmLikesController {
 
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        likesService.deleteLike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
+        removeClientLikeTask.setClientId(clientId);
+        removeClientLikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(removeClientLikeTask);
 
         return "OK";
     }
@@ -147,7 +171,9 @@ public class FilmLikesController {
 
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
-        dislikesService.deleteDislike(Integer.toString(filmLikesJSON.getFilmId()), Integer.toString(clientId));
+        removeClientDislikeTask.setClientId(clientId);
+        removeClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
+        executorService.submit(removeClientDislikeTask);
 
         return "OK";
     }

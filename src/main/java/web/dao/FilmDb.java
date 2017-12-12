@@ -3,6 +3,8 @@ package web.dao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import web.embeddable.FilmDislike;
+import web.embeddable.FilmLike;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -35,6 +37,8 @@ public class FilmDb {
     private Set<ScreenshotDb> screenshotsById;
     private Set<TrailerDb> trailersById;
     private Set<CountryDb> filmCountries;
+//    private Set<FilmLike> filmLikes;
+//    private Set<FilmDislike> filmDislikes;
     //TODO Check the right query
     @JsonIgnore
     private Collection<CommentDb> commentsById;

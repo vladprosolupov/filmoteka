@@ -313,7 +313,8 @@ $(function () {
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10) + 1;
                             else
                                 self.pagesNumber = parseInt(filmsNumber / 10, 10);
-                        })).done(function () {
+                        })
+                    ).done(function () {
                         // $('a[data-pagenum=' + self.currentPage + ']').addClass("is-current");
                         hideLoading();
                     });
@@ -786,7 +787,7 @@ $(function () {
                             self.dislikes += 1;
                         } else if (self.disliked) {
                             $.ajax({
-                                url: domain + '/likes/addDislike',
+                                url: domain + '/likes/removeDislike',
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify(filmLikesJSON)
