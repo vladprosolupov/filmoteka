@@ -1,6 +1,8 @@
 package web.services;
 
 import org.apache.commons.text.similarity.LevenshteinDistance;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.*;
@@ -31,6 +33,8 @@ public class AiService {
     @Autowired
     private ClientDataService clientDataService;
 
+    private static final Logger log = LogManager.getLogger(AiService.class);
+
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
     private final int countryPoints = 3;
@@ -42,6 +46,8 @@ public class AiService {
 
 
     public double getComparisonMapInteger(Map<Integer, Integer> map, Set<Integer> set) {
+        log.info("getComparisonMapInteger(map=" + map + ", set=" + set + ")");
+
         int fullSize = map.size();
         int counter = 0;
         for (int i : set) {
@@ -51,30 +57,43 @@ public class AiService {
         if (fullSize == 0) {
             return 0;
         }
-        return ((double) counter / (double) fullSize);
+
+        double result = ((double) counter / (double) fullSize);
+
+        log.info("getComparisonMapInteger() returns : result=" + result);
+        return result;
     }
 
     public double getComparisonMapString(Map<String, Integer> map, String string) {
+        log.info("getComparisonMapString(map=" + map + ", string=" + string + ")");
+
         LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
         double counter = 0;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             counter += (1 - (double) levenshteinDistance.apply(entry.getKey(), string) / Math.max(entry.getKey().length(), string.length())) * entry.getValue();
         }
+
+        log.info("getComparisonMapString() returns : counter=" + counter);
         return counter;
     }
 
     public double getComparisonMapDate(Map<Date, Integer> map, Date date) {
+        log.info("getComparisonMapDate(map=" + map + ", date=" + date + ")");
+
         double counter = 0;
         for (Map.Entry<Date, Integer> entry : map.entrySet()) {
             counter += (1 / Math.max(1, Math.abs(entry.getKey().getTime() - date.getTime()))) * entry.getValue();
         }
+
+        log.info("getComparisonMapDate() returns : counter=" + counter);
         return counter;
     }
 
 
     private CombinedFilm getCombinedFilmForClient(ClientDb currentClient) {
-        CombinedFilm combinedFilm = new CombinedFilm();
+        log.info("getCombinedFilmForClient(currentClient=" + currentClient + ")");
 
+        CombinedFilm combinedFilm = new CombinedFilm();
 
         Session session = sessionFactory.openSession();
 
@@ -147,11 +166,14 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getCombinedFilmForClient() returns : combinedFilm=" + combinedFilm);
         //returning combined film
         return combinedFilm;
     }
 
     public double compareCombinedWithNormal(CombinedFilm combinedFilm, FilmDb normalFilm) {
+        log.info("compareCombinedWithNormal(combinedFilm=" + combinedFilm + ", normalFilm=" + normalFilm + ")");
+
         double aiPoints = 0;
         Set<Integer> categories = new HashSet<>();
         normalFilm.getFilmCategories().forEach(categoryDb -> categories.add(categoryDb.getId()));
@@ -180,11 +202,14 @@ public class AiService {
 
         aiPoints += ratingPoints * (1 - 1 / normalFilm.getRating());
 
+        log.info("compareCombinedWithNormal() returns : aiPoints=" + aiPoints);
         return aiPoints;
     }
 
 
     public void generateFilmsForSuggestion(ClientDb currentClient) {
+        log.info("generateFilmsForSuggestion(currentClient=" + currentClient + ")");
+
         //generate CombinedFilm for current user
         CombinedFilm combinedFilm = getCombinedFilmForClient(currentClient);
 
@@ -250,9 +275,13 @@ public class AiService {
 
         //Save clientDataMap
         clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
+
+        log.info("generateFilmsForSuggestion() done");
     }
 
     private Map<Integer, Integer> calculatePercentage(Map<Integer, Integer> map) {
+        log.info("calculatePercentage(map=" + map + ")");
+
         Map<Integer, Integer> percentage = new HashMap<>();
 
         int amount = 0;
@@ -266,10 +295,13 @@ public class AiService {
             percentage.put(entry.getKey(), (int) proc);
         }
 
+        log.info("calculatePercentage() returns : percentage.size()=" + percentage.size());
         return percentage;
     }
 
     private Map<Integer, Integer> convertMapToMapDates(Map<Date, Integer> dates) {
+        log.info("convertMapToMapDates(dates=" + dates + ")");
+
         Map<Integer, Integer> mapOfDates = new HashMap<>();
 
         Calendar calendar = Calendar.getInstance();
@@ -278,10 +310,13 @@ public class AiService {
             mapOfDates.put(calendar.get(Calendar.YEAR), entry.getValue());
         }
 
+        log.info("convertMapToMapDates() returns : mapOfDates.size()=" + mapOfDates.size());
         return mapOfDates;
     }
 
     private List<FilmDb> getPropCategory(int amount, int category, ClientDb currentClient) {
+        log.info("getPropCategory(amount=" + amount + ", category=" + category + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
@@ -300,10 +335,13 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropCategory() returns : list.size()=" + list.size());
         return list;
     }
 
     private List<FilmDb> getPropActor(int amount, int actor, ClientDb currentClient) {
+        log.info("getPropActor(amount=" + amount + ", actor=" + actor + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
@@ -322,10 +360,13 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropActor() returns : list.size()=" + list.size());
         return list;
     }
 
     private List<FilmDb> getPropDirector(int amount, int director, ClientDb currentClient) {
+        log.info("getPropDirector(amount=" + amount + ", director=" + director + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
@@ -345,10 +386,13 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropDirector() returns : list.size()=" + list.size());
         return list;
     }
 
     private List<FilmDb> getPropStudios(int amount, int studio, ClientDb currentClient) {
+        log.info("getPropStudios(amount=" + amount + ", studio=" + studio + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
@@ -368,10 +412,13 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropStudios() returns : list.size()=" + list.size());
         return list;
     }
 
     private List<FilmDb> getPropCountry(int amount, int country, ClientDb currentClient) {
+        log.info("getPropCountry(amount=" + amount + ", country=" + country + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         DetachedCriteria subqueryLike = DetachedCriteria.forClass(FilmLikeDb.class)
@@ -391,10 +438,13 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropCountry() returns : list.size()=" + list.size());
         return list;
     }
 
     private List<FilmDb> getPropDates(int amount, int year, ClientDb currentClient) {
+        log.info("getPropDates(amount=" + amount + ", year=" + year + ", currentClient=" + currentClient + ")");
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Calendar calendar = Calendar.getInstance();
@@ -423,6 +473,7 @@ public class AiService {
         session.getTransaction().commit();
         session.close();
 
+        log.info("getPropDates() returns : list.size()=" + list.size());
         return list;
     }
 
