@@ -735,7 +735,7 @@ $(function () {
                             self.dislikes += 1;
                         } else if (self.disliked) {
                             $.ajax({
-                                url: domain + '/likes/addDislike',
+                                url: domain + '/likes/removeDislike',
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify(filmLikesJSON)
