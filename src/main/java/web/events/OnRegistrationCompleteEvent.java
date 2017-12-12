@@ -8,14 +8,12 @@ import java.util.Locale;
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
     private String applicationUrl;
-    private Locale locale;
     private ClientDb clientDb;
 
-    public OnRegistrationCompleteEvent(String applicationUrl, ClientDb clientDb, Locale locale) {
+    public OnRegistrationCompleteEvent(String applicationUrl, ClientDb clientDb) {
         super(clientDb);
 
         this.applicationUrl = applicationUrl;
-        this.locale = locale;
         this.clientDb = clientDb;
     }
 
@@ -25,14 +23,6 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
     public void setApplicationUrl(String applicationUrl) {
         this.applicationUrl = applicationUrl;
-    }
-
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
     }
 
     public ClientDb getClientDb() {

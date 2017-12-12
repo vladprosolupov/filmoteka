@@ -6,8 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="Removed unused tables Address and City, made changes corresponding to the deletion.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="563eefce-8c2e-4440-82f5-c6d18df7dccb" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/AddClientDislikeTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/AddClientLikeTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/EditClientTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RegisterUserTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientDislikeTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/RemoveClientLikeTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/web/tasks/SendForgotPasswordEmailTask.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CategoryController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ClientController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java" afterPath="$PROJECT_DIR$/src/main/java/web/events/OnRegistrationCompleteEvent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/web/services/PasswordGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +60,18 @@
     <favorites_list name="Filmoteka" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="FilmLikesController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -227,6 +249,41 @@
             <path>
               <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
               <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="filmoteka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="filmoteka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -899,14 +956,7 @@
       <workItem from="1512509145167" duration="3601000" />
       <workItem from="1512595653894" duration="13253000" />
       <workItem from="1512919402210" duration="19288000" />
-      <workItem from="1513092332873" duration="2144000" />
-    </task>
-    <task id="LOCAL-00055" summary="Fixes with registration form on email glitch. Added 403, 404, 500 pages. Fix with stackOverFlowException caused by toString() method inside of dao classes.">
-      <created>1511130892081</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1511130892081</updated>
+      <workItem from="1513092332873" duration="2416000" />
     </task>
     <task id="LOCAL-00056" summary="Minor fixes.">
       <created>1511131570247</created>
@@ -1244,11 +1294,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513094406725</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Commit for merge 2 branches.">
+      <created>1513094555429</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1513094555429</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="399687000" />
+    <option name="totallyTimeSpent" value="399959000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1261,6 +1318,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1335" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5015625" order="7" side_tool="true" content_ui="tabs" />
@@ -1286,7 +1344,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16484375" sideWeight="0.53760886" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16484375" sideWeight="0.46239114" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16484375" sideWeight="0.46239114" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1338,7 +1396,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed an error in JS." />
     <MESSAGE value="Pagination fix on profile page." />
     <MESSAGE value="Small fixes with pagination in profile and styles improvement. Huge work made with optimization of calls of Film. Removed unused clientDb's and replaced them with simple Id of Client. Added methods, that are removing load of queries to DB. Changes direct HQL queries to Criterias because of Hibernate support of FetchMode.Join." />
     <MESSAGE value="Minor fixes with menu in profile page." />
@@ -1363,7 +1420,8 @@
     <MESSAGE value="Implementation of AI started. Added few services and methods to work with AI. Added new variable to Client_data table with AI points. Added new library to the project to work with the string comparison." />
     <MESSAGE value="Added method for Combined film comparison with normal film for AI algorithm." />
     <MESSAGE value="Few fixes with AI algorithm." />
-    <option name="LAST_COMMIT_MESSAGE" value="Few fixes with AI algorithm." />
+    <MESSAGE value="Commit for merge 2 branches." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit for merge 2 branches." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1706,14 +1764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="68" column="55" lean-forward="false" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/dao/FilmDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -1727,7 +1777,7 @@
         <state relative-caret-position="659">
           <caret line="246" column="39" lean-forward="true" selection-start-line="246" selection-start-column="39" selection-end-line="246" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1745,36 +1795,44 @@
         <state relative-caret-position="90">
           <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-            <element signature="e#1325#1326#0" expanded="true" />
-            <element signature="e#1374#1375#0" expanded="true" />
-            <element signature="e#1404#1405#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1503#1504#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1589#1590#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#459#460#0" expanded="false" />
+            <element signature="e#492#493#0" expanded="false" />
+            <element signature="e#559#560#0" expanded="false" />
+            <element signature="e#603#604#0" expanded="false" />
+            <element signature="e#650#651#0" expanded="false" />
+            <element signature="e#679#680#0" expanded="false" />
+            <element signature="e#737#738#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#824#825#0" expanded="false" />
+            <element signature="e#856#857#0" expanded="false" />
+            <element signature="e#921#922#0" expanded="false" />
+            <element signature="e#963#964#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+            <element signature="e#1040#1041#0" expanded="false" />
+            <element signature="e#1099#1100#0" expanded="false" />
+            <element signature="e#1135#1136#0" expanded="false" />
+            <element signature="e#1186#1187#0" expanded="false" />
+            <element signature="e#1218#1219#0" expanded="false" />
+            <element signature="e#1283#1284#0" expanded="false" />
+            <element signature="e#1325#1326#0" expanded="false" />
+            <element signature="e#1374#1375#0" expanded="false" />
+            <element signature="e#1404#1405#0" expanded="false" />
+            <element signature="e#1465#1466#0" expanded="false" />
+            <element signature="e#1503#1504#0" expanded="false" />
+            <element signature="e#1554#1555#0" expanded="false" />
+            <element signature="e#1589#1590#0" expanded="false" />
+            <element signature="e#1657#1658#0" expanded="false" />
+            <element signature="e#1705#1706#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/FilmLikesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -12,7 +12,7 @@ public class PasswordGenerator {
     private static final Logger log = LogManager.getLogger(PasswordGenerator.class);
 
     public static String hashPassword(String password) {
-        log.info("hashPassword(password=" + password + ")");
+        log.info("hashPassword(password.length()=" + password.length() + ")");
 
         if (password == null || password.isEmpty()) {
             log.error("Error : password is null");
