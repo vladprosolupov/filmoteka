@@ -29,10 +29,7 @@ public class ActorController {
     @Autowired
     private ActorService actorService;
 
-
     private static final Logger log = LogManager.getLogger(ActorController.class);
-
-
 
     @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/save", method = RequestMethod.POST)

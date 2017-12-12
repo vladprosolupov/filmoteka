@@ -8,14 +8,22 @@ import web.dao.ClientDb;
 import web.model.FilmLikesJSON;
 import web.services.FilmDislikesService;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Component("AddClientDislikeTask")
 public class AddClientDislikeTask implements Runnable {
 
     @Autowired
     private FilmDislikesService dislikesService;
 
+    @Autowired
+    private RemoveFromClientDataTask removeFromClientDataTask;
+
     private ClientDb clientDb;
     private FilmLikesJSON filmLikesJSON;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(AddClientDislikeTask.class);
 
@@ -24,6 +32,8 @@ public class AddClientDislikeTask implements Runnable {
         log.info("run(); clinetDb=" + clientDb + ", filmLikeJSON=" + filmLikesJSON);
 
         dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+
+        executorService.submit(removeFromClientDataTask);
 
         log.info("succ. added dislike");
     }

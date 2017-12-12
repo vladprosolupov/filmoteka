@@ -30,7 +30,7 @@ public class FilmDislikesService {
     private FilmService filmService;
 
     @Autowired
-    private ClientService clientService;
+    private FilmLikesService filmLikesService;
 
     private static final Logger log = LogManager.getLogger(FilmDislikesService.class);
 
@@ -41,6 +41,16 @@ public class FilmDislikesService {
             log.error("filmDislikeDb is null");
 
             throw new IllegalArgumentException("FilmDislikeDb is null");
+        }
+
+        if(filmLikesService.checkLikeFilmByUserId(Integer.toString(filmDislikeDb.getFilmDislike().getFilmByIdFilm().getId()),
+                filmDislikeDb.getFilmDislike().getClientByIdClient().getId()) == false) {
+            log.info("There was like");
+
+            filmLikesService.deleteLike(Integer.toString(filmDislikeDb.getFilmDislike().getFilmByIdFilm().getId()),
+                    Integer.toString(filmDislikeDb.getFilmDislike().getClientByIdClient().getId()));
+
+            log.info("succ. removed like");
         }
 
         Session session = sessionFactory.openSession();
@@ -70,17 +80,10 @@ public class FilmDislikesService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        FilmDislikeDb filmDislikeDb = (FilmDislikeDb) session.createQuery("from FilmDislikeDb fl where fl.filmDislike.clientByIdClient=" + clientId + " and fl.filmDislike.filmByIdFilm=" + filmId).list().get(0);
+        session.createQuery("delete from FilmDislikeDb fl " +
+                "where fl.filmDislike.clientByIdClient=? and fl.filmDislike.filmByIdFilm=?")
+                .setParameter(0, clientId).setParameter(1, filmId).executeUpdate();
 
-        if(filmDislikeDb == null) {
-            log.error("This client hasn't disliked this film");
-
-            session.getTransaction().commit();
-            session.close();
-
-            throw new IllegalArgumentException("This client hasn't disliked this film");
-        }
-        session.delete(filmDislikeDb);
         session.getTransaction().commit();
         session.close();
 

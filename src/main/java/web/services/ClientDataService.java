@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.ClientDataDb;
 import web.dao.ClientDb;
+import web.dao.FilmDb;
 
 import java.util.Map;
 
@@ -79,6 +80,19 @@ public class ClientDataService {
 
         //Closing session
         session.close();
+    }
+
+    public void removeFilm(String filmId, String clientId) {
+        log.info("removeFilm(filmId=" + filmId + ", clientId=" + clientId + ")");
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.createQuery("delete from ClientDataDb cl where cl.filmByIdFilm.id = ? and cl.clientByIdClient.id = ?")
+                .setParameter(0, filmId).setParameter(1, clientId).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("succ. deleted film");
     }
 
 }
