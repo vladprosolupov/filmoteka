@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.*;
 import web.model.aiModel.CombinedFilm;
-import web.tasks.GetPropActorTask;
-import web.tasks.GetPropCategoryTask;
-import web.tasks.GetPropDirectorTask;
-import web.tasks.GetPropStudioTask;
+import web.tasks.*;
 
 import javax.persistence.criteria.Subquery;
 import java.sql.Date;
@@ -52,6 +49,9 @@ public class AiService {
 
     @Autowired
     private GetPropStudioTask getPropStudioTask;
+
+    @Autowired
+    private GetPropCountryTask getPropCountryTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -281,15 +281,19 @@ public class AiService {
 
         // For country
         Map<Integer, Integer> countryPercentage = calculatePercentage(combinedFilm.getCountries());
-        for (Map.Entry<Integer, Integer> entry : countryPercentage.entrySet()) {
-            setOfFilms.addAll(getPropCountry(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : countryPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropCountry(entry.getValue(), entry.getKey(), currentClient));
+//        }
+
+        getPropCountryTask.setCurrentClient(currentClient);
+        getPropCountryTask.setPercentage(countryPercentage);
+        Future<Set<FilmDb>> futureCountry = executorService.submit(getPropCountryTask);
 
         // For dates
         Map<Integer, Integer> datesPercentage = calculatePercentage(convertMapToMapDates(combinedFilm.getReleaseDates()));
-        for (Map.Entry<Integer, Integer> entry : datesPercentage.entrySet()) {
-            setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : datesPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
+//        }
 
 
 
