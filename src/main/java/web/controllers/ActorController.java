@@ -29,6 +29,7 @@ public class ActorController {
     @Autowired
     private ActorService actorService;
 
+
     private static final Logger log = LogManager.getLogger(ActorController.class);
 
     @PreAuthorize("hasAuthority('admin')")
@@ -37,7 +38,7 @@ public class ActorController {
     String addActor(@RequestBody @Valid ActorJSON actorJSON, BindingResult bindingResult) throws ParseException, ParsingJsonToDaoException, ValidationError {
         log.info("addActor(actorJSON=" + actorJSON + ")");
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             log.error("Actor does not pass validation");
 
             throw new ValidationError("Validation is incorrect");
@@ -61,7 +62,7 @@ public class ActorController {
         return "OK";
     }
 
-//    @PreAuthorize("hasAuthority('admin')")
+    //    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody
     List<ActorDb> getAll() {
