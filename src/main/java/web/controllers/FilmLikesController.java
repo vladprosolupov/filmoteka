@@ -14,6 +14,10 @@ import web.exceptions.NoSuchClientException;
 import web.model.FilmJSONIndex;
 import web.model.FilmLikesJSON;
 import web.services.*;
+import web.tasks.AddClientDislikeTask;
+import web.tasks.AddClientLikeTask;
+import web.tasks.RemoveClientDislikeTask;
+import web.tasks.RemoveClientLikeTask;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
