@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.*;
 import web.model.aiModel.CombinedFilm;
+import web.tasks.GetPropActorTask;
 import web.tasks.GetPropCategoryTask;
 
 import javax.persistence.criteria.Subquery;
@@ -40,6 +41,9 @@ public class AiService {
 
     @Autowired
     private GetPropCategoryTask getPropCategoryTask;
+
+    @Autowired
+    private GetPropActorTask getPropActorTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -239,9 +243,13 @@ public class AiService {
 
         // For actors
         Map<Integer, Integer> actorPercentage = calculatePercentage(combinedFilm.getActors());
-        for (Map.Entry<Integer, Integer> entry : actorPercentage.entrySet()) {
-            setOfFilms.addAll(getPropActor(entry.getValue(), entry.getKey(), currentClient));
-        }
+//        for (Map.Entry<Integer, Integer> entry : actorPercentage.entrySet()) {
+//            setOfFilms.addAll(getPropActor(entry.getValue(), entry.getKey(), currentClient));
+//        }
+
+        getPropActorTask.setCurrentClient(currentClient);
+        getPropActorTask.setPercentage(actorPercentage);
+        Future<Set<FilmDb>> futureActor = executorService.submit(getPropActorTask);
 
         // For directors
         Map<Integer, Integer> directorPercentage = calculatePercentage(combinedFilm.getDirectors());
@@ -350,7 +358,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropActor(int amount, int actor, ClientDb currentClient) {
+    public List<FilmDb> getPropActor(int amount, int actor, ClientDb currentClient) {
         log.info("getPropActor(amount=" + amount + ", actor=" + actor + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();
@@ -373,7 +381,7 @@ public class AiService {
         return list;
     }
 
-    private List<FilmDb> getPropDirector(int amount, int director, ClientDb currentClient) {
+    public List<FilmDb> getPropDirector(int amount, int director, ClientDb currentClient) {
         log.info("getPropDirector(amount=" + amount + ", director=" + director + ", currentClient=" + currentClient + ")");
 
         Session session = sessionFactory.openSession();

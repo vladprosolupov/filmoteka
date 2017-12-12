@@ -18,7 +18,6 @@ public class EditClientTask implements Runnable {
 
     private static final Logger log = LogManager.getLogger(EditClientTask.class);
 
-
     @Override
     public void run() {
         log.info("run(); clientJSON=" + clientJSON);
