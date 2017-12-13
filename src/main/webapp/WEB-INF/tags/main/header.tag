@@ -87,6 +87,8 @@
                             Log out</a>
                     </div>
                 </div>
+                <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
+                                                        aria-hidden="true"></i>Categories</a>
                 <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
                 <div class="navbar-item is-mobile">
                     <input type="hidden"
@@ -154,6 +156,9 @@
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
+
+            <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
+                                                                   aria-hidden="true"></i>Categories</a>
             <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
 
 
@@ -222,6 +227,9 @@
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
+            <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
+                                                                   aria-hidden="true"></i>Categories</a>
+
             <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
 
 

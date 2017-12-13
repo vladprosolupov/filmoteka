@@ -1484,6 +1484,27 @@ $(function () {
                 }
             }
         });
+    } else if (window.location.pathname === "/categories") {
+        var categories = new Vue({
+            el: '.vue',
+            data: {
+                categories: []
+            },
+            beforeCompile: function () {
+                var self = this;
+                $.getJSON(domain + '/category/all', function (data) {
+                    if (data.name !== "error") {
+                        self.categories = data;
+                    }
+                });
+                hideLoading();
+            },
+            methods: {
+                goToCategory: function (id) {
+                    window.location.replace(domain + '/?c=' + id);
+                }
+            }
+        });
     } else if (window.location.pathname === "/search") {
         if ($(window).width() >= 1024) {
             window.location.replace(domain);
