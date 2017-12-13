@@ -3,7 +3,7 @@ package web.dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Avatar", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Avatar", schema = "dbo", catalog = "inzS13009")
 public class AvatarDb {
     private String id;
     private String path;

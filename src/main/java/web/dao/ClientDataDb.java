@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Client_data", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Client_data", schema = "dbo", catalog = "inzS13009")
 public class ClientDataDb {
     private int id;
     @JsonIgnore

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "PasswordResetToken", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "PasswordResetToken", schema = "dbo", catalog = "inzS13009")
 public class PasswordResetTokenDb {
     private long id;
     private String token;

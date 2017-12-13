@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Link_to_network", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Link_to_network", schema = "dbo", catalog = "inzS13009")
 public class LinkToNetworkDb {
     private int id;
     private String link;

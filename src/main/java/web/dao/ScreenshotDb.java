@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Screenshot", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Screenshot", schema = "dbo", catalog = "inzS13009")
 public class ScreenshotDb {
     private int id;
     private String link;

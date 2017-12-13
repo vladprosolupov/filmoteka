@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Award", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Award", schema = "dbo", catalog = "inzS13009")
 public class AwardDb {
     private int id;
     private String awardName;

@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Film_Actor", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Film_Actor", schema = "dbo", catalog = "inzS13009")
 public class FilmActorDb {
     private int id;
     private String role;

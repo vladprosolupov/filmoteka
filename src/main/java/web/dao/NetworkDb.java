@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Network", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Network", schema = "dbo", catalog = "inzS13009")
 public class NetworkDb {
     private int id;
     private String networkName;

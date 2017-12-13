@@ -15,7 +15,7 @@ import java.util.Set;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Film", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Film", schema = "dbo", catalog = "inzS13009")
 public class FilmDb {
     private int id;
     private String title;
@@ -191,7 +191,7 @@ public class FilmDb {
     }
 
     @ManyToMany
-    @JoinTable(name = "Film_Category", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "Film_Category", catalog = "inzS13009", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false))
     @Fetch(FetchMode.JOIN)
     public Set<CategoryDb> getFilmCategories() {
         return filmCategories;
@@ -202,7 +202,7 @@ public class FilmDb {
     }
 
     @ManyToMany
-    @JoinTable(name = "Film_studio", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_studio", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "Film_studio", catalog = "inzS13009", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_studio", referencedColumnName = "id", nullable = false))
     @Fetch(FetchMode.JOIN)
     public Set<StudioDb> getFilmStudios() {
         return filmStudios;
@@ -213,7 +213,7 @@ public class FilmDb {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Film_network", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_link_to_network", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "Film_network", catalog = "inzS13009", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_link_to_network", referencedColumnName = "id", nullable = false))
     @Fetch(FetchMode.JOIN)
     public Set<LinkToNetworkDb> getFilmNetworks() {
         return filmNetworks;
@@ -224,7 +224,7 @@ public class FilmDb {
     }
 
     @ManyToMany
-    @JoinTable(name = "Film_director", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_director", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "Film_director", catalog = "inzS13009", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_director", referencedColumnName = "id", nullable = false))
     @Fetch(FetchMode.JOIN)
     public Set<DirectorDb> getFilmDirectors() {
         return filmDirectors;
@@ -286,7 +286,7 @@ public class FilmDb {
     }
 
     @ManyToMany
-    @JoinTable(name = "Film_country", catalog = "filmotekaDb", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "Film_country", catalog = "inzS13009", schema = "dbo", joinColumns = @JoinColumn(name = "id_film", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false))
     @Fetch(FetchMode.JOIN)
     public Set<CountryDb> getFilmCountries() {
         return filmCountries;

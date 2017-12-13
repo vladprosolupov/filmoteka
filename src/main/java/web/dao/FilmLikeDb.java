@@ -5,7 +5,7 @@ import web.embeddable.FilmLike;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Film_like", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Film_like", schema = "dbo", catalog = "inzS13009")
 public class FilmLikeDb {
     @EmbeddedId
     private FilmLike filmLike;

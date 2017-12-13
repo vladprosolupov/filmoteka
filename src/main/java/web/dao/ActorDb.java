@@ -11,7 +11,7 @@ import java.util.Collection;
  * Created by vladyslavprosolupov on 11.06.17.
  */
 @Entity
-@Table(name = "Actor", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Actor", schema = "dbo", catalog = "inzS13009")
 public class ActorDb {
     private int id;
     private String firstName;

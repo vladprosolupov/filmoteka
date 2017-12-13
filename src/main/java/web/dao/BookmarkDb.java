@@ -5,7 +5,7 @@ import web.embeddable.Bookmark;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Bookmark", schema = "dbo", catalog = "filmotekaDb")
+@Table(name = "Bookmark", schema = "dbo", catalog = "inzS13009")
 public class BookmarkDb {
     @EmbeddedId
     private Bookmark bookmark;
