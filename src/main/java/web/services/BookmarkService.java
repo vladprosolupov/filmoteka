@@ -93,18 +93,12 @@ public class BookmarkService {
         return result;
     }
 
-    public Bookmark convertToBookmarkFromBookmarkJSON(BookmarkJSON bookmarkJSON) {
+    public Bookmark convertToBookmarkFromBookmarkJSON(BookmarkJSON bookmarkJSON, ClientDb clientDb) {
         log.info("convertToBookmarkFromBookmarkJSON(bookmarkJSON=" + bookmarkJSON + ")");
 
         FilmDb filmDb = filmService.getFilmWithId(String.valueOf(bookmarkJSON.getIdFilm()));
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if ((authentication instanceof AnonymousAuthenticationToken)) {
-            log.error("Error : user is not logged in");
 
-            throw new IllegalArgumentException("User is not logged in");
-        }
-        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
         Bookmark bookmark = new Bookmark();
         bookmark.setClientByIdClient(clientDb);

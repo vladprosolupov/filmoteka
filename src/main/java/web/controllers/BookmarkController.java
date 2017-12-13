@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -55,7 +56,17 @@ public class BookmarkController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
         addBookmarkTask.setBookmarkJSON(bookmarkJSON);
+        addBookmarkTask.setClientDb(clientDb);
         executorService.execute(addBookmarkTask);
 
         log.info("addBookmark() returns : OK");
@@ -74,6 +85,16 @@ public class BookmarkController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if ((authentication instanceof AnonymousAuthenticationToken)) {
+            log.error("Error : user is not logged in");
+
+            throw new IllegalArgumentException("User is not logged in");
+        }
+
+        ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
+
+        removeBookmarkTask.setClientDb(clientDb);
         removeBookmarkTask.setBookmarkJSON(bookmarkJSON);
         executorService.execute(removeBookmarkTask);
 

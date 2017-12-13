@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import web.dao.ClientDb;
 import web.model.BookmarkJSON;
 import web.services.BookmarkService;
 
@@ -14,6 +15,7 @@ public class RemoveBookmarkTask implements Runnable {
     private BookmarkService bookmarkService;
 
     private BookmarkJSON bookmarkJSON;
+    private ClientDb clientDb;
 
     private static final Logger log = LogManager.getLogger(RemoveBookmarkTask.class);
 
@@ -23,7 +25,7 @@ public class RemoveBookmarkTask implements Runnable {
 
         bookmarkService.delete(
                 bookmarkService.convertToBookmarkDbFromBookmark(
-                        bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON)));
+                        bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON, clientDb)));
 
 
         log.info("run() done");
@@ -35,5 +37,13 @@ public class RemoveBookmarkTask implements Runnable {
 
     public void setBookmarkJSON(BookmarkJSON bookmarkJSON) {
         this.bookmarkJSON = bookmarkJSON;
+    }
+
+    public ClientDb getClientDb() {
+        return clientDb;
+    }
+
+    public void setClientDb(ClientDb clientDb) {
+        this.clientDb = clientDb;
     }
 }
