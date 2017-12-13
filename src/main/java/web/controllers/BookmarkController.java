@@ -17,6 +17,7 @@ import web.model.FilmJSONIndex;
 import web.services.BookmarkService;
 import web.services.ClientService;
 import web.tasks.AddBookmarkTask;
+import web.tasks.RemoveBookmarkTask;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,6 +38,9 @@ public class BookmarkController {
 
     @Autowired
     private AddBookmarkTask addBookmarkTask;
+
+    @Autowired
+    private RemoveBookmarkTask removeBookmarkTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -69,7 +73,9 @@ public class BookmarkController {
 
             throw new ValidationError("Validation is incorrect");
         }
-        bookmarkService.delete(bookmarkService.convertToBookmarkDbFromBookmark(bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON)));
+
+        removeBookmarkTask.setBookmarkJSON(bookmarkJSON);
+        executorService.execute(removeBookmarkTask);
 
         log.info("deleteBookmark() returns : OK");
         return "OK";
