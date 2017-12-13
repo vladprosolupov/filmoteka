@@ -84,6 +84,7 @@ div.card.effect-ruby a {
     width: 100%;
     height: 100%;
     z-index: 20;
+    left: 0;
 }
 
 /*figure.effect-ruby span{*/
