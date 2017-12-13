@@ -420,6 +420,8 @@ $(function () {
             beforeCompile: function () {
                 var self = this;
 
+                var flag = false;
+
                 var filmLikesJSON = {};
                 filmLikesJSON['filmId'] = id;
                 var token = $("meta[name='_csrf']").attr("content");
@@ -441,26 +443,38 @@ $(function () {
                     $.getJSON('/client/getCurrentUser', function (user) {
                         self.currUser = user;
                         if (self.currUser.login != null) {
-                            $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
-                                self.bookmarked = flag;
-                            });
-                            $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
-                                if (liked.name !== 'error') {
-                                    self.liked = liked;
+                            $.when(
+                                $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
+                                    self.bookmarked = flag;
+                                }),
+                                $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
+                                    if (liked.name !== 'error') {
+                                        self.liked = liked;
 
-                                    if (liked) {
-                                        self.disliked = false;
+                                        if (liked) {
+                                            self.disliked = false;
+                                        } else {
+                                            $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
+                                                self.disliked = disliked;
+                                            });
+                                        }
                                     } else {
-                                        $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
-                                            self.disliked = disliked;
-                                        });
+                                        self.liked = false;
+                                        self.disliked = false;
                                     }
-                                } else {
-                                    self.liked = false;
-                                    self.disliked = false;
-                                }
 
+                                })
+                            ).done(function () {
+                                if (!flag)
+                                    flag = true;
+                                else
+                                    hideLoading();
                             });
+                        } else {
+                            if (!flag)
+                                flag = true;
+                            else
+                                hideLoading();
                         }
                     }),
                     $.ajax({
@@ -473,7 +487,10 @@ $(function () {
                             self.dislikes = response.dislikes;
                         }
                     })).done(function () {
-                    hideLoading();
+                    if (flag)
+                        hideLoading();
+                    else
+                        flag = true;
                 });
             },
             watch: {
