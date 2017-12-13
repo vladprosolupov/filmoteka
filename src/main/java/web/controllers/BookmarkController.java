@@ -16,9 +16,12 @@ import web.model.BookmarkJSON;
 import web.model.FilmJSONIndex;
 import web.services.BookmarkService;
 import web.services.ClientService;
+import web.tasks.AddBookmarkTask;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Controller
 @RequestMapping("/bookmark")
@@ -32,6 +35,11 @@ public class BookmarkController {
     @Autowired
     private ClientService clientService;
 
+    @Autowired
+    private AddBookmarkTask addBookmarkTask;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public @ResponseBody
     String addBookmark(@RequestBody @Valid BookmarkJSON bookmarkJSON, BindingResult bindingResult) throws ValidationError {
@@ -42,7 +50,9 @@ public class BookmarkController {
 
             throw new ValidationError("Validation is incorrect");
         }
-        bookmarkService.saveOrUpdate(bookmarkService.convertToBookmarkDbFromBookmark(bookmarkService.convertToBookmarkFromBookmarkJSON(bookmarkJSON)));
+
+        addBookmarkTask.setBookmarkJSON(bookmarkJSON);
+        executorService.execute(addBookmarkTask);
 
         log.info("addBookmark() returns : OK");
         return "OK";
