@@ -33,64 +33,49 @@
 <form class="navbar is-transparent is-fixed-top" id="logout_id" action="${logoutUrl}"
       method="post" onsubmit="return false">
 
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item home" href="/">${logo}</a>
-            <div class="navbar-burger burger" data-target="navburger-admin">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <%--<div class="container">--%>
+    <div class="navbar-brand">
+        <a class="navbar-item home" href="/">${logo}</a>
+        <div class="navbar-burger burger" data-target="navburger-admin">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+    </div>
 
-        <div class="navbar-menu" id="navburger-admin">
+    <div class="navbar-menu" id="navburger-admin">
 
-            <div class="navbar-start">
+        <div class="navbar-start">
 
-                <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
-                                                       aria-hidden="true"></i>Best Rated</a>
-                <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right"
-                                                   style="margin-right: 5px"
-                                                   aria-hidden="true"></i>You Should Watch</a>
+            <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
+                                                   aria-hidden="true"></i>Best Rated</a>
+            <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right"
+                                                         style="margin-right: 5px"
+                                                         aria-hidden="true"></i>You Should Watch</a>
 
-                <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
-                                                        aria-hidden="true"></i>About</a>
+            <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
+                                                    aria-hidden="true"></i>About</a>
 
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="/admin/" style="padding-left: 2.5em"><i class="fa fa-university"
-                                                                                         style="margin-right: 5px"
-                                                                                         aria-hidden="true"></i>Admin
-                        Panel</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="/admin/" style="padding-left: 2.5em"><i class="fa fa-university"
+                                                                                     style="margin-right: 5px"
+                                                                                     aria-hidden="true"></i>Admin
+                    Panel</a>
 
-                    <div class="navbar-dropdown is-boxed is-desktop">
-                        <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i
-                                class="fa fa-user-circle-o" style="margin-right:5px;"
-                                aria-hidden="true"></i>Profile</a>
-                        <hr class="navbar-divider"/>
-                        <a class="navbar-item" href="/admin/films">Films</a>
-                        <a class="navbar-item" href="/admin/actors">Actors</a>
-                        <a class="navbar-item" href="/admin/directors">Directors</a>
-                        <a class="navbar-item" href="/admin/categories">Categories</a>
-                        <a class="navbar-item" href="/admin/networks">Networks</a>
-                        <a class="navbar-item" href="/admin/studios">Studios</a>
-                        <a class="navbar-item" href="/admin/users">Users</a>
+                <div class="navbar-dropdown is-boxed is-desktop">
+                    <a class="navbar-item " style="margin-top: 6px;" href="/profile"><i
+                            class="fa fa-user-circle-o" style="margin-right:5px;"
+                            aria-hidden="true"></i>Profile</a>
+                    <hr class="navbar-divider"/>
+                    <a class="navbar-item" href="/admin/films">Films</a>
+                    <a class="navbar-item" href="/admin/actors">Actors</a>
+                    <a class="navbar-item" href="/admin/directors">Directors</a>
+                    <a class="navbar-item" href="/admin/categories">Categories</a>
+                    <a class="navbar-item" href="/admin/networks">Networks</a>
+                    <a class="navbar-item" href="/admin/studios">Studios</a>
+                    <a class="navbar-item" href="/admin/users">Users</a>
 
-                        <hr class="navbar-divider"/>
-                        <input type="hidden"
-                               name="${_csrf.parameterName}"
-                               value="${_csrf.token}"/>
-                        <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
-                           onclick="document.getElementById('logout_id').submit();"><i
-                                class="fa fa-sign-out"
-                                style="margin-right: 5px"
-                                aria-hidden="true"></i>
-                            Log out</a>
-                    </div>
-                </div>
-                <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
-                                                        aria-hidden="true"></i>Categories</a>
-                <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
-                <div class="navbar-item is-mobile">
+                    <hr class="navbar-divider"/>
                     <input type="hidden"
                            name="${_csrf.parameterName}"
                            value="${_csrf.token}"/>
@@ -102,38 +87,54 @@
                         Log out</a>
                 </div>
             </div>
-            <div class="navbar-end VueSearch">
-                <div class="navbar-item has-dropdown centered" v-if="width >= 1024">
-                    <div class="field has-addons" style="margin: 0">
-                        <div class="control has-icons-left">
-                            <input id="searchInput" autocomplete="off" v-bind:onfocus="scroll" v-model="searchInput"
-                                   v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
-                                   v-on:keyup.down="moveFocusToDropdown"
-                                   v-on:mouseover="removeFocusFromOthers"
-                                   class="input" type="text" placeholder="Search...">
-                            <span class="icon is-small is-left">
+            <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
+                                                                   aria-hidden="true"></i>Categories</a>
+            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;"
+                                                               aria-hidden="true"></i>Search</a>
+            <div class="navbar-item is-mobile">
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+                <a class="navbar-item droppeddown" style="color: #ff5257" href="javascript:{}"
+                   onclick="document.getElementById('logout_id').submit();"><i
+                        class="fa fa-sign-out"
+                        style="margin-right: 5px"
+                        aria-hidden="true"></i>
+                    Log out</a>
+            </div>
+        </div>
+        <div class="navbar-end VueSearch">
+            <div class="navbar-item has-dropdown centered" v-if="width >= 1024">
+                <div class="field has-addons" style="margin: 0">
+                    <div class="control has-icons-left">
+                        <input id="searchInput" autocomplete="off" v-bind:onfocus="scroll" v-model="searchInput"
+                               v-on:focusin="showDropdown" v-on:keyup.13="doSearch"
+                               v-on:keyup.down="moveFocusToDropdown"
+                               v-on:mouseover="removeFocusFromOthers"
+                               class="input" type="text" placeholder="Search...">
+                        <span class="icon is-small is-left">
                                         <i class="fa fa-search"></i>
                                         </span>
-                        </div>
-                        <div class="control">
-                            <a class="button is-dark" v-on:click="doSearch">
-                                Search
-                            </a>
-                        </div>
                     </div>
-                    <div class="navbar-dropdown is-boxed dropdown-menu is-right is-desktop"
-                         style="margin: 0 !important;">
-                        <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
-                           v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
-                           v-bind:href="link+result[0]">{{result[1]}}</a>
-                        <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
-                            found
-                        </div>
+                    <div class="control">
+                        <a class="button is-dark" v-on:click="doSearch">
+                            Search
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-dropdown is-boxed dropdown-menu is-right is-desktop"
+                     style="margin: 0 !important;">
+                    <a class="navbar-item searchDropdown" v-on:keyup.down="moveFocusDown"
+                       v-on:keyup.up="moveFocusUp" v-for="result in searchResult"
+                       v-bind:href="link+result[0]">{{result[1]}}</a>
+                    <div class="navbar-item" v-if="searchResult.length == 0" style="cursor: default">Not
+                        found
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <%--</div>--%>
 </form>
 <% } else if (hasAccess == 0) { %>
 <div class="navbar is-transparent is-fixed-top">
@@ -152,14 +153,15 @@
             <a class="navbar-item" href="/best"><i class="fa fa-star" style="margin-right: 5px"
                                                    aria-hidden="true"></i>Best Rated</a>
             <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
-                                               aria-hidden="true"></i>You Should Watch</a>
+                                                         aria-hidden="true"></i>You Should Watch</a>
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
 
             <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
                                                                    aria-hidden="true"></i>Categories</a>
-            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
+            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;"
+                                                               aria-hidden="true"></i>Search</a>
 
 
             <div class="is-divider-vertical" style="opacity: 0">bumbum</div>
@@ -223,14 +225,15 @@
                                                    aria-hidden="true"></i> Best Rated</a>
 
             <a class="navbar-item" href="/suggestion"><i class="fa fa-caret-square-o-right" style="margin-right: 5px"
-                                               aria-hidden="true"></i>You Should Watch</a>
+                                                         aria-hidden="true"></i>You Should Watch</a>
 
             <a class="navbar-item" href="/about"><i class="fa fa-question" style="margin-right: 5px"
                                                     aria-hidden="true"></i>About</a>
             <a class="navbar-item is-mobile" href="/categories"><i class="fa" style="margin-right: 5px"
                                                                    aria-hidden="true"></i>Categories</a>
 
-            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;" aria-hidden="true"></i>Search</a>
+            <a class="navbar-item is-mobile" href="/search"><i class="fa fa-search" style="margin-right: 5px;"
+                                                               aria-hidden="true"></i>Search</a>
 
 
             <div class="navbar-item has-dropdown is-hoverable">

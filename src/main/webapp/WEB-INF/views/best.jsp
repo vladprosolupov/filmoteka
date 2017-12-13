@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </section>
-                <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                <nav class="pagination is-centered" role="navigation" aria-label="pagination" v-if="pagesNumber != 0">
                     <a class="pagination-previous" v-bind:disabled="currentPage == 1" v-on:click="goToPrevious($event)">Previous</a>
                     <ul class="pagination-list">
                         <li>
