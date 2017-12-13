@@ -59,7 +59,13 @@ public class DirectorService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(directorDb);
+        if(directorDb.getId() == 0){
+            long maxId = (long) session.createQuery("select max(d.id) from DirectorDb d").list().get(0);
+            int id = (int)maxId + 1;
+            directorDb.setId(id);
+            session.saveOrUpdate(directorDb);
+        }else
+            session.saveOrUpdate(directorDb);
         session.getTransaction().commit();
         session.close();
 

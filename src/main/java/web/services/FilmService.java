@@ -128,7 +128,13 @@ public class FilmService {
         }
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(filmToSave);
+        if(filmToSave.getId() == 0){
+            long maxId = (long) session.createQuery("select max(f.id) from FilmDb f").list().get(0);
+            int id = (int)maxId + 1;
+            filmToSave.setId(id);
+            session.saveOrUpdate(filmToSave);
+        }else
+            session.saveOrUpdate(filmToSave);
         session.getTransaction().commit();
         session.close();
 

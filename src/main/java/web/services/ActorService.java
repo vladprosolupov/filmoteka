@@ -64,7 +64,13 @@ public class ActorService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(actorDb);
+        if(actorDb.getId() == 0){
+            long maxId = (long) session.createQuery("select max(a.id) from ActorDb a").list().get(0);
+            int id = (int)maxId + 1;
+            actorDb.setId(id);
+            session.saveOrUpdate(actorDb);
+        }else
+            session.saveOrUpdate(actorDb);
         session.getTransaction().commit();
         session.close();
 

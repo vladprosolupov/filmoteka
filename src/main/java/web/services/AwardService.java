@@ -77,7 +77,13 @@ public class AwardService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(awardDb);
+        if(awardDb.getId() == 0){
+            long maxId = (long) session.createQuery("select max(a.id) from AwardDb a").list().get(0);
+            int id = (int)maxId + 1;
+            awardDb.setId(id);
+            session.saveOrUpdate(awardDb);
+        }else
+            session.saveOrUpdate(awardDb);
         session.getTransaction().commit();
         session.close();
 
