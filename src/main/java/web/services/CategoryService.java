@@ -32,7 +32,7 @@ public class CategoryService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<CategoryDb> result = session.createQuery("from CategoryDb").list();
+        List<CategoryDb> result = session.createQuery("from CategoryDb order by name").list();
         session.getTransaction().commit();
         session.close();
 

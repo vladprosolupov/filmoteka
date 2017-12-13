@@ -14,7 +14,7 @@ public class DirectorDb {
     private CountryDb countryByIdCountry;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
