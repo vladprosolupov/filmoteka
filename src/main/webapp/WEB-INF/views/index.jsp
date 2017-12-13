@@ -33,6 +33,7 @@
                     <ul class="menu-list categories">
                         <li v-for="category in categories"><a v-on:click="openCategory(category[0])" v-bind:data-category="category[0]">{{category[1]}}</a>
                         </li>
+                        <li><a href="/categories">More...</a></li>
                     </ul>
                 </aside>
             </div>
