@@ -16,7 +16,7 @@ public class RemoveClientDislikeTask implements Runnable {
     private int clientId;
     private FilmLikesJSON filmLikesJSON;
 
-    private static final Logger log = LogManager.getLogger(AddClientLikeTask.class);
+    private static final Logger log = LogManager.getLogger(RemoveClientDislikeTask.class);
 
     @Override
     public void run() {
