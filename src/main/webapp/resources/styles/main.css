@@ -791,6 +791,10 @@ label.radio > input:checked + figure {
     right: 30%;
 }
 
+#profileHero.hero-body.is-paddingless {
+    margin-top: 6ch;
+}
+
 @media all and (min-width: 1408px) {
     aside.menu {
         width: 214px;
@@ -893,6 +897,10 @@ label.radio > input:checked + figure {
         margin: 0;
     }
 
+    #profileHero.hero-body.is-paddingless {
+        margin-top: 18ch;
+    }
+
     /*.navbar-burger span{*/
     /*width:48px;*/
     /*left: calc(50% - 24px);*/
@@ -941,6 +949,10 @@ label.radio > input:checked + figure {
 
     .navbar-item {
         text-align: center;
+    }
+
+    #profileHero.hero-body.is-paddingless {
+        margin-top: 18ch;
     }
 
     .navbar-item.has-dropdown.centered {

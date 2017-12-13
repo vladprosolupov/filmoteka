@@ -62,7 +62,7 @@
         </div>
 
         <section class="hero is-white is-small is-bold has-text-centered" style="margin-top: 2ch">
-            <div class="hero-body is-paddingless" style="margin-top:18ch ;">
+            <div id="profileHero" class="hero-body is-paddingless">
 
                 <div id="loading" style="position: relative; left: 50%">
                     <div class="spinner">
