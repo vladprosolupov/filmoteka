@@ -35,7 +35,7 @@ public class AddClientDislikeTask implements Runnable {
 
         removeFromClientDataTask.setClientId(Integer.toString(clientDb.getId()));
         removeFromClientDataTask.setFilmId(Integer.toString(filmLikesJSON.getFilmId()));
-        executorService.submit(removeFromClientDataTask);
+        executorService.execute(removeFromClientDataTask);
 
         log.info("succ. added dislike");
     }

@@ -101,7 +101,7 @@ public class ClientController {
 
         registerUserTask.setApplicationURL(applicationURL);
         registerUserTask.setClientDb(clientDb);
-        executorService.submit(registerUserTask);
+        executorService.execute(registerUserTask);
 
         log.info("addClient() returns : OK");
         return "OK";
@@ -136,7 +136,7 @@ public class ClientController {
         clientJSON.setId(clientDb.getId());
 
         editClientTask.setClientJSON(clientJSON);
-        executorService.submit(editClientTask);
+        executorService.execute(editClientTask);
 
         log.info("editClient() returns : OK");
         return "OK";
@@ -215,7 +215,7 @@ public class ClientController {
         sendForgotPasswordEmailTask.setClientFirstName(clientDb.getFirstName());
         sendForgotPasswordEmailTask.setClientLastName(clientDb.getLastName());
 
-        executorService.submit(sendForgotPasswordEmailTask);
+        executorService.execute(sendForgotPasswordEmailTask);
 
         return "OK";
 

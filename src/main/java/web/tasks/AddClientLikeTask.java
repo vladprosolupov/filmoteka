@@ -36,7 +36,7 @@ public class AddClientLikeTask implements Runnable {
                         likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
         aiTask.setCurrentClient(clientDb);
-        executorService.submit(aiTask);
+        executorService.execute(aiTask);
 
         log.info("succ added like");
     }

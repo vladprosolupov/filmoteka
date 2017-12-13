@@ -83,7 +83,7 @@ public class FilmLikesController {
 
         addClientLikeTask.setClientDb(clientDb);
         addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
-        executorService.submit(addClientLikeTask);
+        executorService.execute(addClientLikeTask);
 
 
         log.info("succ. added like for film");
@@ -118,7 +118,7 @@ public class FilmLikesController {
 
         addClientDislikeTask.setClientDb(clientDb);
         addClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
-        executorService.submit(addClientDislikeTask);
+        executorService.execute(addClientDislikeTask);
 
         log.info("succ. added dislike for film");
         return "OK";
@@ -146,7 +146,7 @@ public class FilmLikesController {
 
         removeClientLikeTask.setClientId(clientId);
         removeClientLikeTask.setFilmLikesJSON(filmLikesJSON);
-        executorService.submit(removeClientLikeTask);
+        executorService.execute(removeClientLikeTask);
 
         return "OK";
     }
@@ -173,7 +173,7 @@ public class FilmLikesController {
 
         removeClientDislikeTask.setClientId(clientId);
         removeClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
-        executorService.submit(removeClientDislikeTask);
+        executorService.execute(removeClientDislikeTask);
 
         return "OK";
     }
