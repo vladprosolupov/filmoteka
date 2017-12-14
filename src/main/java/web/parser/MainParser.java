@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.awt.windows.ThemeReader;
 import web.dao.*;
 import web.exceptions.ParsingJsonToDaoException;
 import web.services.*;
@@ -78,7 +79,7 @@ public class MainParser {
     }
 
     public void kekMain() throws IOException, InterruptedException, ParseException, ParsingJsonToDaoException {
-        List<JSONObject> jsonObjectList = getFilmsFromSearch("y");
+        List<JSONObject> jsonObjectList = getFilmsFromSearch("av");
 
         System.out.println(jsonObjectList);
 
@@ -295,11 +296,18 @@ public class MainParser {
     }
 
     private JSONObject getCreditsForFilm(Object id) throws InterruptedException, IOException {
-        Thread.sleep(500);
-
-        JSONObject credits = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
-                id.toString() +
-                "/credits?api_key=00ea1df0a2ba585296e9c9ac50f2289f");
+        Thread.sleep(2000);
+        JSONObject credits;
+        try {
+            credits = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/credits?api_key=00ea1df0a2ba585296e9c9ac50f2289f");
+        }catch (Exception e){
+            Thread.sleep(10000);
+            credits = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/credits?api_key=00ea1df0a2ba585296e9c9ac50f2289f");
+        }
         return credits;
     }
 
@@ -312,7 +320,7 @@ public class MainParser {
     }
 
     private JSONObject getFilmFromArray(Object id) throws IOException, InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         JSONObject film = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
                 id.toString() + "?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
