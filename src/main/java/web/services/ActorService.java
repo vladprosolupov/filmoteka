@@ -118,15 +118,15 @@ public class ActorService {
         }
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsed = format.parse(actorJSON.getBirthdate());
+//        Date parsed = format.parse(actorJSON.getBirthdate());
 
         ActorDb actorDb = new ActorDb();
         actorDb.setFirstName(actorJSON.getFirstName());
         actorDb.setLastName(actorJSON.getLastName());
         actorDb.setId(actorJSON.getId());
-        actorDb.setBirthdate(new java.sql.Date(parsed.getTime()));
-        actorDb.setCountryByIdCountry(
-                countryService.getCountryWithId(actorJSON.getCountry()));
+//        actorDb.setBirthdate(new java.sql.Date(parsed.getTime()));
+//        actorDb.setCountryByIdCountry(
+//                countryService.getCountryWithId(actorJSON.getCountry()));
 
         log.info("convertToActorDb() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
         return actorDb;

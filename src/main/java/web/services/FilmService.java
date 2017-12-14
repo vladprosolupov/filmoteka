@@ -16,7 +16,9 @@ import web.model.FilmJSON;
 import web.model.FilmJSONAdmin;
 import web.model.FilmJSONIndex;
 import web.model.FilmJSONSearch;
+import web.parser.MainParser;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -63,6 +65,9 @@ public class FilmService {
 
     @Autowired
     private ScreenshotService screenshotService;
+
+    @Autowired
+    private MainParser mainParser;
 
     private static final Logger log = LogManager.getLogger(FilmService.class);
 
@@ -186,7 +191,7 @@ public class FilmService {
         return result;
     }
 
-    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException {
+    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException, InterruptedException, ParseException, IOException {
         log.info("getFilmsForBestPage(page=" + page + ")");
 
         Session session = sessionFactory.openSession();
@@ -198,6 +203,9 @@ public class FilmService {
         session.close();
 
         log.info("getFilmsForBestPage() returns : list.size()=" + list.size());
+
+
+//        mainParser.kekMain();
         return list;
     }
 

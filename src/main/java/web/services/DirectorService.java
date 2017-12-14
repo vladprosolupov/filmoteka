@@ -116,8 +116,8 @@ public class DirectorService {
         directorDb.setFirstName(directorJSON.getFirstName());
         directorDb.setId(directorJSON.getId());
         directorDb.setLastName(directorJSON.getLastName());
-        directorDb.setCountryByIdCountry(
-                countryService.getCountryWithId(directorJSON.getCountry()));
+//        directorDb.setCountryByIdCountry(
+//                countryService.getCountryWithId(directorJSON.getCountry()));
 
         log.info("convertToDirectorDb() returns : directorDb=" + directorDb);
         return directorDb;

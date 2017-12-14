@@ -16,8 +16,8 @@ public class ActorDb {
     private int id;
     private String firstName;
     private String lastName;
-    private Date birthdate;
-    private CountryDb countryByIdCountry;
+    //private Date birthdate;
+    //private CountryDb countryByIdCountry;
     @JsonIgnore
     private Collection<FilmActorDb> filmActorsById;
 
@@ -52,15 +52,15 @@ public class ActorDb {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "birthdate", nullable = true)
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
+//    @Basic
+//    @Column(name = "birthdate", nullable = true)
+//    public Date getBirthdate() {
+//        return birthdate;
+//    }
+//
+//    public void setBirthdate(Date birthdate) {
+//        this.birthdate = birthdate;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -72,7 +72,7 @@ public class ActorDb {
         if (id != actorDb.id) return false;
         if (firstName != null ? !firstName.equals(actorDb.firstName) : actorDb.firstName != null) return false;
         if (lastName != null ? !lastName.equals(actorDb.lastName) : actorDb.lastName != null) return false;
-        if (birthdate != null ? !birthdate.equals(actorDb.birthdate) : actorDb.birthdate != null) return false;
+        //if (birthdate != null ? !birthdate.equals(actorDb.birthdate) : actorDb.birthdate != null) return false;
 
         return true;
     }
@@ -82,19 +82,19 @@ public class ActorDb {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
+        //result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
-    public CountryDb getCountryByIdCountry() {
-        return countryByIdCountry;
-    }
-
-    public void setCountryByIdCountry(CountryDb countryByIdCountry) {
-        this.countryByIdCountry = countryByIdCountry;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
+//    public CountryDb getCountryByIdCountry() {
+//        return countryByIdCountry;
+//    }
+//
+//    public void setCountryByIdCountry(CountryDb countryByIdCountry) {
+//        this.countryByIdCountry = countryByIdCountry;
+//    }
 
     @OneToMany(mappedBy = "actorByIdActor")
     public Collection<FilmActorDb> getFilmActorsById() {
@@ -111,8 +111,8 @@ public class ActorDb {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthdate=" + birthdate +
-                ", countryByIdCountry=" + countryByIdCountry +
+               //", birthdate=" + birthdate +
+               // ", countryByIdCountry=" + countryByIdCountry +
                 '}';
     }
 }

@@ -62,7 +62,7 @@ public class LanguageDb {
     }
 
     @Basic
-    @Column(name = "iso_639-1", nullable = false, length = 2)
+    @Column(name = "iso_6391", nullable = false, length = 2)
     public String getIso6391() {
         return iso6391;
     }

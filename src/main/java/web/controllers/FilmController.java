@@ -16,6 +16,7 @@ import web.model.FilmJSONIndex;
 import web.services.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class FilmController {
 
     @RequestMapping(value = "/filmsForBestPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException {
+    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException, InterruptedException, ParseException, IOException {
         log.info("getFilmsForBestPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);

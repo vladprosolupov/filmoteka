@@ -26,7 +26,7 @@ public class FilmActorController {
 //    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
 //    public @ResponseBody String save(@RequestBody FilmActorJSON filmActorJSON){
 //        FilmActorDb filmActorDb = filmActorService.convert(filmActorJSON);
-//        int id = filmActorService.saveFilmActor(filmActorDb);
+//        int id = filmActorService.saveOrUpdate(filmActorDb);
 //        return Integer.toString(id);
 //    }
 //

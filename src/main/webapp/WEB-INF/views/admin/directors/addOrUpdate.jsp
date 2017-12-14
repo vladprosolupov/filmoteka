@@ -36,18 +36,18 @@
                         <input class="input" type="text" value="${director.lastName}" name="lastName"/>
                     </p>
                 </div>
-                <div class="field">
-                    <label class="label">Country</label>
-                    <p class="control">
-                        <span class="select">
-                             <select name="country">
-                                 <c:forEach items="${countries}" var="country">
-                                     <option value="${country.id}" ${country.id == director.countryByIdCountry.id ? 'selected="selected"' : ''}>${country.name}</option>
-                                 </c:forEach>
-                             </select>
-                         </span>
-                    </p>
-                </div>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Country</label>--%>
+                    <%--<p class="control">--%>
+                        <%--<span class="select">--%>
+                             <%--<select name="country">--%>
+                                 <%--<c:forEach items="${countries}" var="country">--%>
+                                     <%--<option value="${country.id}" ${country.id == director.countryByIdCountry.id ? 'selected="selected"' : ''}>${country.name}</option>--%>
+                                 <%--</c:forEach>--%>
+                             <%--</select>--%>
+                         <%--</span>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
             </form>
             <div class="field saveButton">
                 <p class="control">
@@ -69,18 +69,18 @@
                         <input class="input" type="text" name="lastName"/>
                     </p>
                 </div>
-                <div class="field">
-                    <label class="label">Country</label>
-                    <p class="control">
-                         <span class="select">
-                             <select name="country">
-                                 <c:forEach items="${countries}" var="country">
-                                     <option value="${country.id}">${country.name}</option>
-                                 </c:forEach>
-                             </select>
-                         </span>
-                    </p>
-                </div>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Country</label>--%>
+                    <%--<p class="control">--%>
+                         <%--<span class="select">--%>
+                             <%--<select name="country">--%>
+                                 <%--<c:forEach items="${countries}" var="country">--%>
+                                     <%--<option value="${country.id}">${country.name}</option>--%>
+                                 <%--</c:forEach>--%>
+                             <%--</select>--%>
+                         <%--</span>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
             </form>
             <div class="field saveButton">
                 <p class="control">

@@ -56,8 +56,8 @@ public class FilmActorService {
         return filmActorDb;
     }
 
-    public int saveFilmActor(FilmActorDb filmActorDb) throws HibernateException {
-        log.info("saveFilmActor(filmActorDb=" + filmActorDb + ")");
+    public int saveOrUpdate(FilmActorDb filmActorDb) throws HibernateException {
+        log.info("saveOrUpdate(filmActorDb=" + filmActorDb + ")");
 
         if (filmActorDb == null) {
             log.error("Error : filmActorDb is null");
@@ -67,30 +67,11 @@ public class FilmActorService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(filmActorDb);
+        session.saveOrUpdate(filmActorDb);
         session.getTransaction().commit();
         session.close();
 
-        log.info("saveFilmActor() returns : filmActorDb.getId()=" + filmActorDb.getId());
-        return filmActorDb.getId();
-    }
-
-    public int updateFilmActor(FilmActorDb filmActorDb) throws HibernateException {
-        log.info("updateFilmActor(filmActorDb=" + filmActorDb + ")");
-
-        if (filmActorDb == null) {
-            log.error("Error : filmActorDb is null");
-
-            throw new IllegalArgumentException("FilmActorDb should not be null");
-        }
-
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.update(filmActorDb);
-        session.getTransaction().commit();
-        session.close();
-
-        log.info("updateFilmActor() returns : filmActorDb.getId=" + filmActorDb.getId());
+        log.info("saveOrUpdate() returns : filmActorDb.getId()=" + filmActorDb.getId());
         return filmActorDb.getId();
     }
 

@@ -11,7 +11,7 @@ public class DirectorDb {
     private int id;
     private String firstName;
     private String lastName;
-    private CountryDb countryByIdCountry;
+    //private CountryDb countryByIdCountry;
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,15 +66,15 @@ public class DirectorDb {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
-    public CountryDb getCountryByIdCountry() {
-        return countryByIdCountry;
-    }
-
-    public void setCountryByIdCountry(CountryDb countryByIdCountry) {
-        this.countryByIdCountry = countryByIdCountry;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "id_country", referencedColumnName = "id", nullable = false)
+//    public CountryDb getCountryByIdCountry() {
+//        return countryByIdCountry;
+//    }
+//
+//    public void setCountryByIdCountry(CountryDb countryByIdCountry) {
+//        this.countryByIdCountry = countryByIdCountry;
+//    }
 
     @Override
     public String toString() {
@@ -82,7 +82,7 @@ public class DirectorDb {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", countryByIdCountry=" + countryByIdCountry +
+                //", countryByIdCountry=" + countryByIdCountry +
                 '}';
     }
 }

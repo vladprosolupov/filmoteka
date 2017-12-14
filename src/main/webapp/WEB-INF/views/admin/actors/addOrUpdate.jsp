@@ -36,27 +36,27 @@
                         <input class="input" type="text" value="${actor.lastName}" name="lastName"/>
                     </p>
                 </div>
-                <div class="field">
-                    <label class="label">Birthday</label>
-                    <p class="control">
-                        <input class="input" type="date" value="${actor.birthdate}" name="birthdate"/>
-                    </p>
-                </div>
-                <div class="field">
-                    <label class="label">Country</label>
-                    <div class="control">
-                        <p class="control">
-                            <span class="select">
-                                <select name="country">
-                                    <c:forEach items="${countries}" var="country">
-                                        <option value="${country.id}" ${country.id == actor.countryByIdCountry.id ? 'selected="selected"' : ''}
-                                        >${country.name}</option>
-                                    </c:forEach>
-                                </select>
-                            </span>
-                        </p>
-                    </div>
-                </div>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Birthday</label>--%>
+                    <%--<p class="control">--%>
+                        <%--<input class="input" type="date" value="${actor.birthdate}" name="birthdate"/>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Country</label>--%>
+                    <%--<div class="control">--%>
+                        <%--<p class="control">--%>
+                            <%--<span class="select">--%>
+                                <%--<select name="country">--%>
+                                    <%--<c:forEach items="${countries}" var="country">--%>
+                                        <%--<option value="${country.id}" ${country.id == actor.countryByIdCountry.id ? 'selected="selected"' : ''}--%>
+                                        <%-->${country.name}</option>--%>
+                                    <%--</c:forEach>--%>
+                                <%--</select>--%>
+                            <%--</span>--%>
+                        <%--</p>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </form>
             <div class="field saveButton">
                 <p class="control">
@@ -78,26 +78,26 @@
                         <input class="input" type="text" name="lastName"/>
                     </p>
                 </div>
-                <div class="field">
-                    <label class="label">Birthday</label>
-                    <p class="control">
-                        <input class="input" type="date" name="birthdate"/>
-                    </p>
-                </div>
-                <div class="field">
-                    <label class="label">Country</label>
-                    <div class="control">
-                        <p class="control">
-                            <span class="select">
-                                <select name="country">
-                                    <c:forEach items="${countries}" var="country">
-                                        <option value="${country.id}">${country.name}</option>
-                                    </c:forEach>
-                                </select>
-                            </span>
-                        </p>
-                    </div>
-                </div>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Birthday</label>--%>
+                    <%--<p class="control">--%>
+                        <%--<input class="input" type="date" name="birthdate"/>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+                <%--<div class="field">--%>
+                    <%--<label class="label">Country</label>--%>
+                    <%--<div class="control">--%>
+                        <%--<p class="control">--%>
+                            <%--<span class="select">--%>
+                                <%--<select name="country">--%>
+                                    <%--<c:forEach items="${countries}" var="country">--%>
+                                        <%--<option value="${country.id}">${country.name}</option>--%>
+                                    <%--</c:forEach>--%>
+                                <%--</select>--%>
+                            <%--</span>--%>
+                        <%--</p>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </form>
             <div class="field saveButton">
                 <p class="control">

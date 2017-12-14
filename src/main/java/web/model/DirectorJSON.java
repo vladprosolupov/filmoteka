@@ -18,7 +18,7 @@ public class DirectorJSON {
     @Size(min = 2, max = 64, message = "Last name should at least have 2 symbols and it should be not bigger than 64")
     @Pattern(regexp = "^[a-zA-Z]+$", message = "Last name should only include letters")
     private String lastName;
-    private String country;
+    //private String country;
 
     public int getId() {
         return id;
@@ -44,13 +44,13 @@ public class DirectorJSON {
         this.lastName = lastName;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+//    public String getCountry() {
+//        return country;
+//    }
+//
+//    public void setCountry(String country) {
+//        this.country = country;
+//    }
 
     @Override
     public String toString() {
@@ -58,7 +58,7 @@ public class DirectorJSON {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", country='" + country + '\'' +
+                //", country='" + country + '\'' +
                 '}';
     }
 }
