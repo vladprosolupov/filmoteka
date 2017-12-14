@@ -170,7 +170,7 @@ public class FilmService {
         int limit = 10;
         int start = (page - 1) * limit;
         session.beginTransaction();
-        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc").setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select F.title, F.releaseDate, F.cover, F.id, F.rating from FilmDb F order by F.releaseDate desc, F.rating desc").setFirstResult(start).setMaxResults(limit).list();
         session.getTransaction().commit();
         session.close();
 

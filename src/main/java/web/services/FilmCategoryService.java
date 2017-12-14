@@ -35,7 +35,7 @@ public class FilmCategoryService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<FilmJSONIndex> list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id = " + id).setFirstResult(start).setMaxResults(limit).list();
+        List<FilmJSONIndex> list = session.createQuery("select f.title, f.releaseDate, f.cover, f.id, f.rating from FilmDb f INNER JOIN f.filmCategories fc WHERE fc.id =? order by f.rating desc").setParameter(0, Integer.parseInt(id)).setFirstResult(start).setMaxResults(limit).list();
         session.getTransaction().commit();
         session.close();
 
