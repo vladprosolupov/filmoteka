@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class CountryDb {
     private int id;
     private String name;
+    private String iso;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +59,15 @@ public class CountryDb {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Basic
+    @Column(name = "iso", nullable = false, length = 2)
+    public String getIso() {
+        return iso;
+    }
+
+    public void setIso(String iso) {
+        this.iso = iso;
     }
 }

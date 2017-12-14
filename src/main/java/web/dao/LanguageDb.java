@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class LanguageDb {
     private int id;
     private String name;
+    private String iso6391;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +59,15 @@ public class LanguageDb {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Basic
+    @Column(name = "iso_639-1", nullable = false, length = 2)
+    public String getIso6391() {
+        return iso6391;
+    }
+
+    public void setIso6391(String iso6391) {
+        this.iso6391 = iso6391;
     }
 }

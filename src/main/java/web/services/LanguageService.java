@@ -37,6 +37,25 @@ public class LanguageService {
         return result;
     }
 
+    public LanguageDb getLanguageWithISO(String iso) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getLanguageWithISO(iso=" + iso + ")");
+
+        if (iso == null || iso.isEmpty()) {
+            log.error("Error : iso is incorrect");
+
+            throw new IllegalArgumentException("iso should not be null or empty");
+        }
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        LanguageDb languageDb = (LanguageDb) session.createQuery("from  LanguageDb l where l.iso6391 =?").setParameter(0, iso).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getLanguageWithISO() returns : languageDb=" + languageDb);
+        return languageDb;
+    }
+
     public LanguageDb getLanguageWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getLanguageWithId(id=" + id + ")");
 

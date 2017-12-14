@@ -43,6 +43,25 @@ public class CountryService {
         return countryDb;
     }
 
+    public CountryDb getCountryWithISO(String iso) throws HibernateException, IndexOutOfBoundsException {
+        log.info("getCountryWithISO(id=" + iso + ")");
+
+        if (iso == null || iso.isEmpty()) {
+            log.error("Error : iso is incorrect");
+
+            throw new IllegalArgumentException("iso should not be null or empty");
+        }
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        CountryDb countryDb = (CountryDb) session.createQuery("from CountryDb  c where c.iso=?").setParameter(0, iso).list().get(0);
+        session.getTransaction().commit();
+        session.close();
+
+        log.info("getCountryWithISO() returns : countryDb=" + countryDb);
+        return countryDb;
+    }
+
     public void saveOrUpdateCountry(CountryDb countryDb) throws HibernateException {
         log.info("saveOrUpdateCountry(countryDb=" + countryDb + ")");
 
