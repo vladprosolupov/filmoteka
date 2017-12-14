@@ -319,7 +319,7 @@
                                        aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
                                 </li>
 
-                                <li v-if="currentPage <= (pagesNumberLiked-5)"><span class="pagination-ellipsis">&hellip;</span>
+                                <li v-if="currentPage <= (pagesNumberLiked-3)"><span class="pagination-ellipsis">&hellip;</span>
                                 </li>
                                 <li v-if="pagesNumberLiked != 1">
                                     <a class="pagination-link" v-bind:data-pageNum="pagesNumberLiked"
@@ -411,7 +411,7 @@
                                        aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
                                 </li>
 
-                                <li v-if="currentPage <= (pagesNumberBookmarked-5)"><span class="pagination-ellipsis">&hellip;</span>
+                                <li v-if="currentPage <= (pagesNumberBookmarked-3)"><span class="pagination-ellipsis">&hellip;</span>
                                 </li>
                                 <li v-if="pagesNumberBookmarked != 1">
                                     <a class="pagination-link" v-bind:data-pageNum="pagesNumberBookmarked"

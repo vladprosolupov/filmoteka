@@ -124,7 +124,7 @@
                                aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
                         </li>
 
-                        <li v-if="currentPage <= (pagesNumber-5)"><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li v-if="currentPage <= (pagesNumber-3)"><span class="pagination-ellipsis">&hellip;</span></li>
                         <li v-if="pagesNumber >= 2">
                             <a class="pagination-link" v-bind:data-pageNum="pagesNumber" aria-label="Goto page {{pagesNumber}}"
                                aria-current="page" v-on:click="goToPage(pagesNumber)">{{pagesNumber}}</a>
