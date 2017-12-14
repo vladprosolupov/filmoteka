@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.dao.*;
+import web.exceptions.ParsingJsonToDaoException;
 import web.services.*;
 
 import java.io.*;
@@ -49,6 +50,12 @@ public class MainParser {
     @Autowired
     private DirectorService directorService;
 
+    @Autowired
+    private ScreenshotService screenshotService;
+
+    @Autowired
+    private TrailerService trailerService;
+
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -70,8 +77,8 @@ public class MainParser {
         }
     }
 
-    public void kekMain() throws IOException, InterruptedException, ParseException {
-        List<JSONObject> jsonObjectList = getFilmsFromSearch("t");
+    public void kekMain() throws IOException, InterruptedException, ParseException, ParsingJsonToDaoException {
+        List<JSONObject> jsonObjectList = getFilmsFromSearch("a");
 
         System.out.println(jsonObjectList);
 
@@ -103,12 +110,21 @@ public class MainParser {
                     try {
                         filmDb.setRating(Double.parseDouble(jsonObject.get("vote_average").toString()));
                     } catch (NumberFormatException e) {
-                        filmDb.setRating(0.0);
+                        continue;
                     }
 
                     filmDb.setCover("https://image.tmdb.org/t/p/w780" + jsonObject.get("poster_path").toString());
-                    filmDb.setReleaseDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.get("release_date").toString()).getTime()));
-                    filmDb.setLanguageByIdLanguage(languageService.getLanguageWithISO(jsonObject.get("original_language").toString()));
+                    try {
+                        filmDb.setReleaseDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.get("release_date").toString()).getTime()));
+                    } catch (Exception e) {
+                        continue;
+                    }
+
+                    try {
+                        filmDb.setLanguageByIdLanguage(languageService.getLanguageWithISO(jsonObject.get("original_language").toString()));
+                    } catch (IndexOutOfBoundsException e) {
+                        continue;
+                    }
 
                     JSONArray categoryArray = jsonObject.getJSONArray("genres");
 
@@ -136,16 +152,20 @@ public class MainParser {
                     }
                     filmDb.setFilmStudios(studioDbSet);
 
-                    JSONArray countryArray = jsonObject.getJSONArray("production_countries");
 
-                    Set<CountryDb> countryDbSet = new HashSet<>();
-                    for (int j = 0; j < countryArray.length(); j++) {
-                        JSONObject country = countryArray.getJSONObject(j);
-                        CountryDb countryDb = countryService.getCountryWithISO(country.get("iso_3166_1").toString());
-                        countryDbSet.add(countryDb);
+                    try {
+                        JSONArray countryArray = jsonObject.getJSONArray("production_countries");
+
+                        Set<CountryDb> countryDbSet = new HashSet<>();
+                        for (int j = 0; j < countryArray.length(); j++) {
+                            JSONObject country = countryArray.getJSONObject(j);
+                            CountryDb countryDb = countryService.getCountryWithISO(country.get("iso_3166_1").toString());
+                            countryDbSet.add(countryDb);
+                        }
+                        filmDb.setFilmCountries(countryDbSet);
+                    } catch (IndexOutOfBoundsException e) {
+                        continue;
                     }
-                    filmDb.setFilmCountries(countryDbSet);
-
 
                     JSONObject credits = getCreditsForFilm(jsonObject.get("id"));
 
@@ -155,11 +175,16 @@ public class MainParser {
                     for (int j = 0; j < crewArray.length(); j++) {
                         if (crewArray.getJSONObject(j).get("job").toString().equals("Director")) {
                             int lastSpace = crewArray.getJSONObject(j).get("name").toString().lastIndexOf(" ");
-                            String[] credentials = {crewArray.getJSONObject(j).get("name").toString().substring(0, lastSpace), crewArray.getJSONObject(j).get("name").toString().substring(lastSpace + 1)};
                             DirectorDb directorDb = new DirectorDb();
+                            if (lastSpace != -1) {
+                                String[] credentials = {crewArray.getJSONObject(j).get("name").toString().substring(0, lastSpace), crewArray.getJSONObject(j).get("name").toString().substring(lastSpace + 1)};
+                                directorDb.setFirstName(credentials[0]);
+                                directorDb.setLastName(credentials[1]);
+                            } else {
+                                directorDb.setFirstName(crewArray.getJSONObject(j).get("name").toString());
+                                directorDb.setLastName(" ");
+                            }
                             directorDb.setId(Integer.parseInt(crewArray.getJSONObject(j).get("id").toString()));
-                            directorDb.setFirstName(credentials[0]);
-                            directorDb.setLastName(credentials[1]);
                             directorService.saveOrUpdate(directorDb);
                             directorDbSet.add(directorDb);
                         }
@@ -175,11 +200,16 @@ public class MainParser {
                     for (int j = 0; j < actorArray.length(); j++) {
                         FilmActorDb filmActorDb = new FilmActorDb();
                         ActorDb actorDb = new ActorDb();
-                        int lastSpace = crewArray.getJSONObject(j).get("name").toString().lastIndexOf(" ");
-                        String[] credentials = {crewArray.getJSONObject(j).get("name").toString().substring(0, lastSpace), crewArray.getJSONObject(j).get("name").toString().substring(lastSpace + 1)};
+                        int lastSpace = actorArray.getJSONObject(j).get("name").toString().lastIndexOf(" ");
+                        if (lastSpace != -1) {
+                            String[] credentials = {actorArray.getJSONObject(j).get("name").toString().substring(0, lastSpace), actorArray.getJSONObject(j).get("name").toString().substring(lastSpace + 1)};
+                            actorDb.setFirstName(credentials[0]);
+                            actorDb.setLastName(credentials[1]);
+                        } else {
+                            actorDb.setFirstName(actorArray.getJSONObject(j).get("name").toString());
+                            actorDb.setLastName("");
+                        }
                         actorDb.setId(Integer.parseInt(actorArray.getJSONObject(j).get("id").toString()));
-                        actorDb.setFirstName(credentials[0]);
-                        actorDb.setLastName(credentials[1]);
                         actorService.saveOrUpdate(actorDb);
 
                         filmActorDb.setFilmByIdFilm(filmDb);
@@ -189,6 +219,30 @@ public class MainParser {
                         filmActorDbSet.add(filmActorDb);
                     }
                     filmDb.setFilmActorsById(filmActorDbSet);
+
+
+                    JSONObject screenshotsJSON = getImagesForFilm(jsonObject.get("id"));
+
+                    Set<ScreenshotDb> screenshotDbSet = new HashSet<>();
+                    JSONArray imageArray = screenshotsJSON.getJSONArray("backdrops");
+                    List<String> images = new ArrayList<>();
+                    for (int j = 0; j < imageArray.length(); j++) {
+                        images.add("https://image.tmdb.org/t/p/w780" + imageArray.getJSONObject(j).get("file_path").toString());
+                    }
+                    Set<ScreenshotDb> setOfScreenShots = screenshotService.createScreenshotSet(images);
+                    filmDb.setScreenshotsById(setOfScreenShots);
+
+                    JSONObject videosJSON = getVideosForFilm(jsonObject.get("id"));
+                    JSONArray videoArray = videosJSON.getJSONArray("results");
+                    Set<TrailerDb> trailerDbSet = new HashSet<>();
+                    List<String> trailers = new ArrayList<>();
+                    for (int j = 0; j < videoArray.length(); j++) {
+                        if(videoArray.getJSONObject(j).get("type").toString().equals("Trailer") && videoArray.getJSONObject(j).get("site").toString().equals("YouTube"))
+                            trailers.add("https://www.youtube.com/embed/" + videoArray.getJSONObject(j).get("key").toString());
+                    }
+
+                    Set<TrailerDb> setOfTrailers = trailerService.createTrailerDbSet(trailers);
+                    filmDb.setTrailersById(setOfTrailers);
 
                     System.out.println("---------------FILM DB-------------- " + filmDb);
                     filmService.saveOrUpdate(filmDb);
@@ -252,6 +306,24 @@ public class MainParser {
         JSONObject film = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
                 id.toString() + "?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
         return film;
+    }
+
+    private JSONObject getImagesForFilm(Object id) throws IOException, InterruptedException {
+        Thread.sleep(500);
+
+        JSONObject images = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                id.toString() +
+                "/images?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US&include_image_language=en");
+        return images;
+    }
+
+    private JSONObject getVideosForFilm(Object id) throws IOException, InterruptedException {
+        Thread.sleep(500);
+
+        JSONObject videos = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                id.toString() +
+                "/videos?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
+        return videos;
     }
 
 }

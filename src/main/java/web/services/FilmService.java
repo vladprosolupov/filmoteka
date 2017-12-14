@@ -191,7 +191,7 @@ public class FilmService {
         return result;
     }
 
-    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException, InterruptedException, ParseException, IOException {
+    public List<FilmJSONIndex> getFilmsForBestPage(int page) throws HibernateException, InterruptedException, ParseException, IOException, ParsingJsonToDaoException {
         log.info("getFilmsForBestPage(page=" + page + ")");
 
         Session session = sessionFactory.openSession();

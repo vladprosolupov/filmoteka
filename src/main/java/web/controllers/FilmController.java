@@ -71,7 +71,7 @@ public class FilmController {
 
     @RequestMapping(value = "/filmsForBestPage/{page}", method = RequestMethod.GET)
     public @ResponseBody
-    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException, InterruptedException, ParseException, IOException {
+    List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException, InterruptedException, ParseException, IOException, ParsingJsonToDaoException {
         log.info("getFilmsForBestPage(page: " + page + " )");
 
         int pageNum = Integer.parseInt(page);

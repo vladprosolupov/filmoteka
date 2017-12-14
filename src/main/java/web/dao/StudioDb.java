@@ -23,7 +23,7 @@ public class StudioDb {
     }
 
     @Basic
-    @Column(name = "studio_name", nullable = true, length = 64)
+    @Column(name = "studio_name", nullable = true, length = -1)
     public String getStudioName() {
         return studioName;
     }
