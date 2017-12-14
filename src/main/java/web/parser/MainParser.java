@@ -78,7 +78,7 @@ public class MainParser {
     }
 
     public void kekMain() throws IOException, InterruptedException, ParseException, ParsingJsonToDaoException {
-        List<JSONObject> jsonObjectList = getFilmsFromSearch("a");
+        List<JSONObject> jsonObjectList = getFilmsFromSearch("y");
 
         System.out.println(jsonObjectList);
 
@@ -230,6 +230,10 @@ public class MainParser {
                         images.add("https://image.tmdb.org/t/p/w780" + imageArray.getJSONObject(j).get("file_path").toString());
                     }
                     Set<ScreenshotDb> setOfScreenShots = screenshotService.createScreenshotSet(images);
+                    setOfScreenShots.forEach(screenshotDb -> {
+                        screenshotDb.setFilmByIdFilm(filmDb);
+                        screenshotService.saveOrUpdate(screenshotDb);
+                    });
                     filmDb.setScreenshotsById(setOfScreenShots);
 
                     JSONObject videosJSON = getVideosForFilm(jsonObject.get("id"));
@@ -242,7 +246,14 @@ public class MainParser {
                     }
 
                     Set<TrailerDb> setOfTrailers = trailerService.createTrailerDbSet(trailers);
+                    setOfTrailers.forEach(trailerDb -> {
+                        trailerDb.setFilmByIdFilm(filmDb);
+                        trailerService.saveOrUpdate(trailerDb);
+                    });
                     filmDb.setTrailersById(setOfTrailers);
+
+                    System.out.println("---------------SET OF IMAGES--------------" + setOfScreenShots);
+                    System.out.println("---------------SET OF TRAILERS--------------" + setOfTrailers);
 
                     System.out.println("---------------FILM DB-------------- " + filmDb);
                     filmService.saveOrUpdate(filmDb);
@@ -309,20 +320,36 @@ public class MainParser {
     }
 
     private JSONObject getImagesForFilm(Object id) throws IOException, InterruptedException {
-        Thread.sleep(500);
-
-        JSONObject images = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
-                id.toString() +
-                "/images?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US&include_image_language=en");
+        Thread.sleep(2000);
+        JSONObject images;
+        try {
+            images = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/images?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US&include_image_language=en");
+        }catch (Exception e){
+            Thread.sleep(10000);
+            images = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/images?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US&include_image_language=en");
+        }
         return images;
     }
 
     private JSONObject getVideosForFilm(Object id) throws IOException, InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
-        JSONObject videos = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
-                id.toString() +
-                "/videos?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
+
+        JSONObject videos;
+        try {
+            videos = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/videos?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
+        }catch (Exception e){
+            Thread.sleep(10000);
+            videos = readJsonFromUrl("https://api.themoviedb.org/3/movie/" +
+                    id.toString() +
+                    "/videos?api_key=00ea1df0a2ba585296e9c9ac50f2289f&language=en-US");
+        }
         return videos;
     }
 

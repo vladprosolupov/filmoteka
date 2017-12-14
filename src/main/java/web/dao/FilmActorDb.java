@@ -28,7 +28,7 @@ public class FilmActorDb {
     }
 
     @Basic
-    @Column(name = "role", nullable = true, length = 64)
+    @Column(name = "role", nullable = true, length = -1)
     public String getRole() {
         return role;
     }
