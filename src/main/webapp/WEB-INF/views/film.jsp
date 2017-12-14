@@ -260,25 +260,25 @@
                                                 aria-hidden="true"></i> <i v-if="film.rating == 10" class="fa fa-star"
                                                                            aria-hidden="true"></i> <span
                                                 style="margin-left: 1%">{{film.rating}}</span></h6>
-                                    <h6>Length: {{calculateTime(film.lenght)}}</h6>
+                                    <h6 v-if="film.lenght != 0">Length: {{calculateTime(film.lenght)}}</h6>
                                     <h6>Release date: {{formatReleaseDate(film.releaseDate)}}</h6>
-                                    <h6>Countries: <span v-for="country in film.filmCountries">{{country.name}}<span
+                                    <h6 v-if="film.filmCountries.length != 0">Countries: <span v-for="country in film.filmCountries">{{country.name}}<span
                                             v-if="country != film.filmCountries[film.filmCountries.length - 1]">, </span></span>
                                     </h6>
-                                    <h6>Genre: <span v-for="category in film.filmCategories">{{category.name}}<span
+                                    <h6 v-if="film.filmCategories.length != 0">Genre: <span v-for="category in film.filmCategories">{{category.name}}<span
                                             v-if="category != film.filmCategories[film.filmCategories.length - 1]">, </span></span>
                                     </h6>
-                                    <h6>Budget: {{film.budget}}</h6>
-                                    <h6>Awards: <span v-for="award in film.awardsById">{{award.awardName}}({{award.awardYear}})<span
-                                            v-if="award != film.awardsById[film.awardsById.length - 1]">, </span></span>
-                                    </h6>
-                                    <h6>Actors: <span v-for="filmActor in film.filmActorsById">{{filmActor.actorByIdActor.firstName}} {{filmActor.actorByIdActor.lastName}}<span
+                                    <h6 v-if="film.budget !== '$0'">Budget: {{film.budget}}</h6>
+                                        <%--<h6>Awards: <span v-for="award in film.awardsById">{{award.awardName}}({{award.awardYear}})<span--%>
+                                        <%--v-if="award != film.awardsById[film.awardsById.length - 1]">, </span></span>--%>
+                                        <%--</h6>--%>
+                                    <h6 v-if="film.filmActorsById.length != 0">Actors: <span v-for="filmActor in film.filmActorsById">{{filmActor.role}} : {{filmActor.actorByIdActor.firstName}} {{filmActor.actorByIdActor.lastName}}<span
                                             v-if="filmActor != film.filmActorsById[film.filmActorsById.length -1]">, </span></span>
                                     </h6>
-                                    <h6>Directors: <span v-for="director in film.filmDirectors">{{director.firstName}} {{director.lastName}}<span
+                                    <h6 v-if="film.filmDirectors.length != 0">Directors: <span v-for="director in film.filmDirectors">{{director.firstName}} {{director.lastName}}<span
                                             v-if="director != film.filmDirectors[film.filmDirectors.length -1]">, </span></span>
                                     </h6>
-                                    <h6>Studios: <span v-for="studio in film.filmStudios">{{studio.studioName}}<span
+                                    <h6 v-if="film.filmStudios.length != 0">Studios: <span v-for="studio in film.filmStudios">{{studio.studioName}}<span
                                             v-if="studio != film.filmStudios[film.filmStudios.length -1]">, </span></span>
                                     </h6>
                                     <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
@@ -295,6 +295,17 @@
                     <h5>{{film.description}}</h5>
                 </div>
                 <br>
+
+                <iframe width="420" height="315" v-for="trailer in film.trailersById"
+                        v-bind:src="trailer.link">
+                </iframe>
+
+                <div class="images" v-if="film.screenshotsById.length != 0">
+                    <div v-for="screenshot in film.screenshotsById">
+                        <img v-bind:src="screenshot.link"/>
+                    </div>
+                </div>
+
                 <hr>
 
                     ${comment}
