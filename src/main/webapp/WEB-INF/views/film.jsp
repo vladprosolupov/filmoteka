@@ -19,7 +19,7 @@
 
 <c:set var="bookmark">
     <% if (hasAccess != 0) { %>
-    <div class="is-pulled-right">
+    <div class="is-pulled-right" style="padding: 1ch">
         <a id="bookmark" v-if="!bookmarked" class="is-size-3" v-on:click="addRemoveBookMark($event)">
             <i class="fa fa-bookmark-o" aria-hidden="true"></i>
             <i class="fa fa-bookmark" aria-hidden="true"></i>
@@ -77,7 +77,7 @@
 
 <c:set var="edit">
     <% if (hasAccess == 2) {%>
-    <div class="is-pulled-right">
+    <div class="is-pulled-right" style="padding: 1ch">
         <button id="edit" class="button is-info" v-on:click="goToEdit(film.id)">
             Edit
         </button>
@@ -93,7 +93,7 @@
                 <img v-bind:src="domain + currUser.avatar">
             </p>
         </figure>
-        <div class="media-content">
+        <div class="comment-content">
             <div class="field">
                 <p class="control">
                     <textarea id="newComment" v-on:keydown.13="submitCommentOrMoveLine($event)" class="textarea"
@@ -196,6 +196,8 @@
                             </figure>
                             <div class="media-content">
                                 <div class="content">
+                                        ${edit}
+                                        ${bookmark}
                                     <h3><b>{{film.title}}</b></h3>
                                     <hr>
                                     <h6 class="rating" style="display: inline-flex">Rating: <i v-if="film.rating == 0"
@@ -284,27 +286,113 @@
                                     <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
                                 </div>
                             </div>
-                                ${edit}
-                                ${bookmark}
+
 
                         </article>
                     </div>
                 </section>
+
+
+                <div class="content forMob" style="padding: 3ch">
+                        ${edit}
+                        ${bookmark}
+                    <h3><b>{{film.title}}</b></h3>
+                    <hr>
+                    <h6 class="rating" style="display: inline-flex">Rating: <i v-if="film.rating == 0"
+                                                                               class="fa fa-star-o"
+                                                                               aria-hidden="true"></i>
+                        <i
+                                v-if="film.rating > 0 && film.rating < 1" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 1" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 1"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 1 && film.rating < 2" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 2" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 2"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 2 && film.rating < 3" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 3" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 3"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 3 && film.rating < 4" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 4" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 4"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 4 && film.rating < 5" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 5" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 5"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 5 && film.rating < 6" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 6" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 6"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 6 && film.rating < 7" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 7" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 7"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 7 && film.rating < 8" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 8" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 8"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 8 && film.rating < 9" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating >= 9" class="fa fa-star"
+                                                           aria-hidden="true"></i> <i
+                                v-if="film.rating <= 9"
+                                class="fa fa-star-o"
+                                aria-hidden="true"></i> <i
+                                v-if="film.rating > 9 && film.rating < 10" class="fa fa-star-half-o"
+                                aria-hidden="true"></i> <i v-if="film.rating == 10" class="fa fa-star"
+                                                           aria-hidden="true"></i> <span
+                                style="margin-left: 1%">{{film.rating}}</span></h6>
+                    <h6 v-if="film.lenght != 0">Length: {{calculateTime(film.lenght)}}</h6>
+                    <h6>Release date: {{formatReleaseDate(film.releaseDate)}}</h6>
+                    <h6 v-if="film.filmCountries.length != 0">Countries: <span v-for="country in film.filmCountries">{{country.name}}<span
+                            v-if="country != film.filmCountries[film.filmCountries.length - 1]">, </span></span>
+                    </h6>
+                    <h6 v-if="film.filmCategories.length != 0">Genre: <span v-for="category in film.filmCategories">{{category.name}}<span
+                            v-if="category != film.filmCategories[film.filmCategories.length - 1]">, </span></span>
+                    </h6>
+                    <h6 v-if="film.budget !== '$0'">Budget: {{film.budget}}</h6>
+                        <%--<h6>Awards: <span v-for="award in film.awardsById">{{award.awardName}}({{award.awardYear}})<span--%>
+                        <%--v-if="award != film.awardsById[film.awardsById.length - 1]">, </span></span>--%>
+                        <%--</h6>--%>
+                    <h6 v-if="film.filmActorsById.length != 0">Actors: <span v-for="filmActor in film.filmActorsById">{{filmActor.role}} : {{filmActor.actorByIdActor.firstName}} {{filmActor.actorByIdActor.lastName}}<span
+                            v-if="filmActor != film.filmActorsById[film.filmActorsById.length -1]">, </span></span>
+                    </h6>
+                    <h6 v-if="film.filmDirectors.length != 0">Directors: <span v-for="director in film.filmDirectors">{{director.firstName}} {{director.lastName}}<span
+                            v-if="director != film.filmDirectors[film.filmDirectors.length -1]">, </span></span>
+                    </h6>
+                    <h6 v-if="film.filmStudios.length != 0">Studios: <span v-for="studio in film.filmStudios">{{studio.studioName}}<span
+                            v-if="studio != film.filmStudios[film.filmStudios.length -1]">, </span></span>
+                    </h6>
+                    <p><h6>Language: {{film.languageByIdLanguage.name}}</h6>
+                </div>
                 <div class="info desc">
                     <h2 class="subtitle">Description:</h2>
                     <h5>{{film.description}}</h5>
                 </div>
                 <br>
 
-                <iframe width="420" height="315" v-for="trailer in film.trailersById"
+
+                <iframe style="padding: 3ch"  width="420" height="315" v-for="trailer in film.trailersById"
                         v-bind:src="trailer.link">
                 </iframe>
-
-                <div class="images" v-if="film.screenshotsById.length != 0">
-                    <div v-for="screenshot in film.screenshotsById">
-                        <img v-bind:src="screenshot.link"/>
-                    </div>
-                </div>
 
                 <hr>
 

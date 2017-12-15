@@ -12,6 +12,10 @@
 
 }
 
+.forMob{
+    display: none;
+}
+
 .white-text {
     color: white;
 }
@@ -551,6 +555,17 @@ h6.rating i {
     margin-left: 0.3%;
 }
 
+.comment-content {
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    text-align: left;
+}
+
 .columns {
     margin-top: 0;
 }
@@ -826,6 +841,10 @@ label.radio > input:checked + figure {
     }
 }
 
+.imgcentered{
+    justify-content: center;
+}
+
 @media all and (min-width: 1216px) and (max-width: 1407px) {
     aside.menu {
         width: 182px;
@@ -967,6 +986,16 @@ label.radio > input:checked + figure {
 }
 
 @media all and (max-width: 768px) {
+
+
+    .media-content {
+        display:none;
+    }
+
+    .forMob{
+        display: inherit;
+    }
+
     .column.is-9 .films {
         grid-template-columns: 1fr 1fr;
         margin: 0 0.9rem;
