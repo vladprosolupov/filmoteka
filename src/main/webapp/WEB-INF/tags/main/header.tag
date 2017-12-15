@@ -236,6 +236,7 @@
                                                                aria-hidden="true"></i>Search</a>
 
 
+
             <div class="navbar-item has-dropdown is-hoverable">
 
                 <a class="navbar-link" href="/profile" style="padding-left: 2.5em"><i class="fa fa-user-circle-o"
