@@ -21,12 +21,12 @@
         </div>
     </div>
     <div class="container vue" style="display: none">
-        <div class="columns">
-            <div class="column is-9">
-                <ul>
-                    <li v-for="category in categories"><a v-on:click="goToCategory(category.id)">{{category.name}}</a></li>
-                </ul>
-            </div>
+        <div class="columns centered" style="margin-top: 2ch">
+            <aside>
+            <ul v-for="category in categories" class="menu-list" >
+                    <li><a v-on:click="goToCategory(category.id)">{{category.name}}</a></li>
+            </ul>
+            </aside>
         </div>
     </div>
 </t:header>

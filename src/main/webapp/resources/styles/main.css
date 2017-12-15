@@ -29,21 +29,32 @@
     justify-content: center;
 }
 
-.column.is-9.auto-grid {
+.films {
     display: grid;
-    border: 1px solid #000;
-    grid-gap: 10px;
+    margin-right: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5%;
     grid-row-gap: 5vh;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin-bottom: 2em;
 }
+
+/*.column.is-9.auto-grid {*/
+    /*display: grid;*/
+    /*border: 1px solid #000;*/
+    /*grid-gap: 10px;*/
+    /*grid-row-gap: 5vh;*/
+    /*justify-content: center;*/
+    /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+    /*margin-bottom: 2em;*/
+/*}*/
 
 section.info-tiles .filmsProf {
     display: grid;
-    grid-template-columns: 13% 13% 13% 13% 13% 13%;
-    grid-column-gap: 4%;
-    grid-row-gap: 4vh;
+    margin-right: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5%;
+    grid-row-gap: 5vh;
+    justify-content: center;
 }
 
 section.info-tiles .filmsProf.card {
@@ -782,6 +793,15 @@ label.radio > input:checked + figure {
     filter: brightness(70%) blur(3px);
 }
 
+@media screen and (min-width: 769px){
+    .column.is-9, .column.is-9-tablet {
+        -webkit-box-flex: 0;
+        -ms-flex: none;
+        /* flex: none; */
+         width: 85%;
+    }
+}
+
 #profileImg:hover a {
     color: white !important;
     text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
@@ -836,6 +856,14 @@ label.radio > input:checked + figure {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
+    .films {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    section.info-tiles.filmsProf{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
     .is-mobile {
         display: none !important;
     }
@@ -849,11 +877,19 @@ label.radio > input:checked + figure {
 }
 
 @media all and (min-width: 769px) and (max-width: 1023px) {
-    .box {
-        width: 295px;
-    }
+    /*.box {*/
+        /*width: 295px;*/
+    /*}*/
 
     .column.is-9 .films {
+         grid-template-columns: 1fr 1fr 1fr;
+     }
+
+    .films {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    section.info-tiles.filmsProf{
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -932,6 +968,16 @@ label.radio > input:checked + figure {
 
 @media all and (max-width: 768px) {
     .column.is-9 .films {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 0.9rem;
+    }
+
+    .films {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 0.9rem;
+    }
+
+    section.info-tiles.filmsProf{
         grid-template-columns: 1fr 1fr;
         margin: 0 0.9rem;
     }

@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <section class="hero is-white is-small is-bold has-text-centered" style="margin-top: 2ch">
+        <section class="hero is-white is-small is-bold has-text-centered columns" style="margin-top: 2ch">
             <div id="profileHero" class="hero-body is-paddingless">
 
                 <div id="loading" style="position: relative; left: 50%">
@@ -80,97 +80,113 @@
                     <div class="field" id="radioImgs" style="display: none;">
                         <div class="control is-grouped is-grouped-multiline" style="left: 5%">
                             <label class="radio" style="margin-left: 0.5em">
-                                <input type="radio" name="avatar" value="icon1" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon1.png'">
+                                <input type="radio" name="avatar" value="icon1" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon1.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon1.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon2" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon2.png'">
+                                <input type="radio" name="avatar" value="icon2" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon2.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon2.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon3" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon3.png'">
+                                <input type="radio" name="avatar" value="icon3" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon3.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon3.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon4" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon4.png'">
+                                <input type="radio" name="avatar" value="icon4" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon4.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon4.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon5" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon5.png'">
+                                <input type="radio" name="avatar" value="icon5" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon5.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon5.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon6" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon6.png'">
+                                <input type="radio" name="avatar" value="icon6" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon6.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon6.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon7" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon7.png'">
+                                <input type="radio" name="avatar" value="icon7" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon7.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon7.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon8" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon8.png'">
+                                <input type="radio" name="avatar" value="icon8" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon8.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon8.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon9" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon9.png'">
+                                <input type="radio" name="avatar" value="icon9" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon9.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon9.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon10" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon10.png'">
+                                <input type="radio" name="avatar" value="icon10" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon10.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon10.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon11" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon11.png'">
+                                <input type="radio" name="avatar" value="icon11" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon11.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon11.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon12" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon12.png'">
+                                <input type="radio" name="avatar" value="icon12" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon12.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon12.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon13" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon13.png'">
+                                <input type="radio" name="avatar" value="icon13" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon13.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon13.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon14" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon14.png'">
+                                <input type="radio" name="avatar" value="icon14" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon14.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon14.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon15" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon15.png'">
+                                <input type="radio" name="avatar" value="icon15" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon15.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon15.png"/>
                                 </figure>
                             </label>
                             <label class="radio">
-                                <input type="radio" name="avatar" value="icon16" v-on:click="changeImg($event)" :checked = "info.avatar === '/resources/images/avatar/icon16.png'">
+                                <input type="radio" name="avatar" value="icon16" v-on:click="changeImg($event)"
+                                       :checked="info.avatar === '/resources/images/avatar/icon16.png'">
                                 <figure class="image is-64x64">
                                     <img src="/resources/images/avatar/icon16.png"/>
                                 </figure>
@@ -222,9 +238,13 @@
                                 </p>
                             </div>
                             <hr>
-                            <button type="button" class="button is-info is-medium is-static save" style="margin: 5px;">Save changes</button>
+                            <button type="button" class="button is-info is-medium is-static save" style="margin: 5px;">
+                                Save changes
+                            </button>
 
-                            <button type="button" class="button is-dark is-medium pass" style="margin: 5px;">Change password</button>
+                            <button type="button" class="button is-dark is-medium pass" style="margin: 5px;">Change
+                                password
+                            </button>
 
                             <article class="message is-danger messageError" style="display: none;">
                                 <div class="message-body">
@@ -245,8 +265,10 @@
                         </div>
                     </form>
                 </div>
+
+
                 <div class="container column" v-if="currentTab == 'like'"
-                     style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">
+                     style="display: none; position: relative; margin: 0 0.7rem 0.7rem 0; height: 100%;">
                     <div style="position: absolute; display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
                         <article class="message is-info" style="margin-top: 20px;" v-if="likedFilms.length == 0">
                             <div class="message-body">
@@ -254,8 +276,9 @@
                             </div>
                         </article>
 
+
                         <section class="info-tiles">
-                            <div class="filmsProf">
+                            <div class="films">
                                 <div v-for="film in likedFilms" class="card effect-ruby grow film">
                                     <a v-bind:href="link+film[3]" v-on:click="filmClicked($event)"></a>
                                     <div class="card-image">
@@ -279,58 +302,63 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <nav class="pagination is-centered" role="navigation" aria-label="pagination"
+                                 v-if="pagesNumberLiked != 0">
+                                <a class="pagination-previous" v-bind:disabled="currentPage == 1"
+                                   v-on:click="goToPrevious($event)">Previous</a>
+                                <ul class="pagination-list">
+                                    <li>
+                                        <a class="pagination-link is-current" v-bind:data-pageNum="1"
+                                           aria-label="Goto page 1"
+                                           aria-current="page" v-on:click="goToPage(1)">1</a>
+                                    </li>
+                                    <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
+
+                                    <li v-if="currentPage - 2 > 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage-2"
+                                           aria-label="Goto page {{currentPage-2}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
+                                    </li>
+                                    <li v-if="currentPage - 1 > 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage-1"
+                                           aria-label="Goto page {{currentPage-1}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
+                                    </li>
+                                    <li v-if="currentPage != pagesNumberLiked && currentPage != 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage"
+                                           aria-label="Goto page {{currentPage}}"
+                                           aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
+                                    </li>
+                                    <li v-if="currentPage + 1 < pagesNumberLiked">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage+1"
+                                           aria-label="Goto page {{currentPage+1}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
+                                    </li>
+                                    <li v-if="currentPage + 2 < pagesNumberLiked">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage+2"
+                                           aria-label="Goto page {{currentPage+2}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
+                                    </li>
+
+                                    <li v-if="currentPage <= (pagesNumberLiked-3)"><span class="pagination-ellipsis">&hellip;</span>
+                                    </li>
+                                    <li v-if="pagesNumberLiked != 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="pagesNumberLiked"
+                                           aria-label="Goto page {{pagesNumberLiked}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(pagesNumberLiked)">{{pagesNumberLiked}}</a>
+                                    </li>
+                                </ul>
+                                <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberLiked"
+                                   v-on:click="goToNext($event)">Next
+                                    page</a>
+                            </nav>
                         </section>
-
-                        <nav class="pagination is-centered" role="navigation" aria-label="pagination"
-                             v-if="pagesNumberLiked != 0">
-                            <a class="pagination-previous" v-bind:disabled="currentPage == 1"
-                               v-on:click="goToPrevious($event)">Previous</a>
-                            <ul class="pagination-list">
-                                <li>
-                                    <a class="pagination-link is-current" v-bind:data-pageNum="1"
-                                       aria-label="Goto page 1"
-                                       aria-current="page" v-on:click="goToPage(1)">1</a>
-                                </li>
-                                <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
-
-                                <li v-if="currentPage - 2 > 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-2"
-                                       aria-label="Goto page {{currentPage-2}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
-                                </li>
-                                <li v-if="currentPage - 1 > 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-1"
-                                       aria-label="Goto page {{currentPage-1}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
-                                </li>
-                                <li v-if="currentPage != pagesNumberLiked && currentPage != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage"
-                                       aria-label="Goto page {{currentPage}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
-                                </li>
-                                <li v-if="currentPage + 1 < pagesNumberLiked">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+1"
-                                       aria-label="Goto page {{currentPage+1}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
-                                </li>
-                                <li v-if="currentPage + 2 < pagesNumberLiked">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+2"
-                                       aria-label="Goto page {{currentPage+2}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
-                                </li>
-
-                                <li v-if="currentPage <= (pagesNumberLiked-3)"><span class="pagination-ellipsis">&hellip;</span>
-                                </li>
-                                <li v-if="pagesNumberLiked != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumberLiked"
-                                       aria-label="Goto page {{pagesNumberLiked}}"
-                                       aria-current="page"
-                                       v-on:click="goToPage(pagesNumberLiked)">{{pagesNumberLiked}}</a>
-                                </li>
-                            </ul>
-                            <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberLiked" v-on:click="goToNext($event)">Next
-                                page</a>
-                        </nav>
 
                     </div>
                 </div>
@@ -369,57 +397,64 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <nav class="pagination is-centered" role="navigation" aria-label="pagination"
+                                 v-if="pagesNumberBookmarked != 0">
+                                <a class="pagination-previous" v-bind:disabled="currentPage == 1"
+                                   v-on:click="goToPrevious($event)">Previous</a>
+                                <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberBookmarked"
+                                   v-on:click="goToNext($event)">Next page</a>
+                                <ul class="pagination-list">
+                                    <li>
+                                        <a class="pagination-link is-current" v-bind:data-pageNum="1"
+                                           aria-label="Goto page {{1}}"
+                                           aria-current="page" v-on:click="goToPage(1)">1</a>
+                                    </li>
+                                    <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
+
+                                    <li v-if="currentPage - 2 > 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage-2"
+                                           aria-label="Goto page {{currentPage-2}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
+                                    </li>
+                                    <li v-if="currentPage - 1 > 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage-1"
+                                           aria-label="Goto page {{currentPage-1}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
+                                    </li>
+                                    <li v-if="currentPage != pagesNumberBookmarked && currentPage != 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage"
+                                           aria-label="Goto page {{currentPage}}"
+                                           aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
+                                    </li>
+                                    <li v-if="currentPage + 1 < pagesNumberBookmarked">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage+1"
+                                           aria-label="Goto page {{currentPage+1}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
+                                    </li>
+                                    <li v-if="currentPage + 2 < pagesNumberBookmarked">
+                                        <a class="pagination-link" v-bind:data-pageNum="currentPage+2"
+                                           aria-label="Goto page {{currentPage+2}}"
+                                           aria-current="page"
+                                           v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
+                                    </li>
+
+                                    <li v-if="currentPage <= (pagesNumberBookmarked-3)"><span
+                                            class="pagination-ellipsis">&hellip;</span>
+                                    </li>
+                                    <li v-if="pagesNumberBookmarked != 1">
+                                        <a class="pagination-link" v-bind:data-pageNum="pagesNumberBookmarked"
+                                           aria-label="Goto page {{pagesNumberBookmarked}}"
+                                           aria-current="page" v-on:click="goToPage(pagesNumberBookmarked)">{{pagesNumberBookmarked}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
                         </section>
-
-                        <nav class="pagination is-centered" role="navigation" aria-label="pagination"
-                             v-if="pagesNumberBookmarked != 0">
-                            <a class="pagination-previous" v-bind:disabled="currentPage == 1"
-                               v-on:click="goToPrevious($event)">Previous</a>
-                            <a class="pagination-next" v-bind:disabled="currentPage == pagesNumberBookmarked"
-                               v-on:click="goToNext($event)">Next page</a>
-                            <ul class="pagination-list">
-                                <li>
-                                    <a class="pagination-link is-current" v-bind:data-pageNum="1"
-                                       aria-label="Goto page {{1}}"
-                                       aria-current="page" v-on:click="goToPage(1)">1</a>
-                                </li>
-                                <li v-if="currentPage > 3"><span class="pagination-ellipsis">&hellip;</span></li>
-
-                                <li v-if="currentPage - 2 > 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-2"
-                                       aria-label="Goto page {{currentPage-2}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage-2)">{{currentPage-2}}</a>
-                                </li>
-                                <li v-if="currentPage - 1 > 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage-1"
-                                       aria-label="Goto page {{currentPage-1}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage-1)">{{currentPage-1}}</a>
-                                </li>
-                                <li v-if="currentPage != pagesNumberBookmarked && currentPage != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage"
-                                       aria-label="Goto page {{currentPage}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage)">{{currentPage}}</a>
-                                </li>
-                                <li v-if="currentPage + 1 < pagesNumberBookmarked">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+1"
-                                       aria-label="Goto page {{currentPage+1}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage+1)">{{currentPage+1}}</a>
-                                </li>
-                                <li v-if="currentPage + 2 < pagesNumberBookmarked">
-                                    <a class="pagination-link" v-bind:data-pageNum="currentPage+2"
-                                       aria-label="Goto page {{currentPage+2}}"
-                                       aria-current="page" v-on:click="goToPage(currentPage+2)">{{currentPage+2}}</a>
-                                </li>
-
-                                <li v-if="currentPage <= (pagesNumberBookmarked-3)"><span class="pagination-ellipsis">&hellip;</span>
-                                </li>
-                                <li v-if="pagesNumberBookmarked != 1">
-                                    <a class="pagination-link" v-bind:data-pageNum="pagesNumberBookmarked"
-                                       aria-label="Goto page {{pagesNumberBookmarked}}"
-                                       aria-current="page" v-on:click="goToPage(pagesNumberBookmarked)">{{pagesNumberBookmarked}}</a>
-                                </li>
-                            </ul>
-                        </nav>
 
                     </div>
                 </div>
