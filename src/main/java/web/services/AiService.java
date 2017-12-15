@@ -302,7 +302,7 @@ public class AiService {
         getPropDatesTask.setPercentage(datesPercentage);
         Future<Set<FilmDb>> futureDates = executorService.submit(getPropDatesTask);
 
-        while(!futureActor.isDone() || !futureCategory.isDone()
+        while (!futureActor.isDone() || !futureCategory.isDone()
                 || !futureCountry.isDone() || !futureDates.isDone()
                 || !futureDirector.isDone() || !futureStudio.isDone()) {
 
@@ -323,14 +323,15 @@ public class AiService {
         //Sort map by values and cut it to 30 most matching results
         LinkedHashMap<Integer, Double> sortedClientDataMap =
                 clientDataMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
-                .limit(30)
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (e1, e2) -> e1,
-                        LinkedHashMap::new
-                ));
+                        .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                        .filter(e -> !e.getValue().isInfinite())
+                        .limit(30)
+                        .collect(Collectors.toMap(
+                                Map.Entry::getKey,
+                                Map.Entry::getValue,
+                                (e1, e2) -> e1,
+                                LinkedHashMap::new
+                        ));
 
         //Save clientDataMap
         clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
