@@ -442,40 +442,21 @@ $(function () {
                     }),
                     $.getJSON('/client/getCurrentUser', function (user) {
                         self.currUser = user;
-                        if (self.currUser.login != null) {
-                            $.when(
-                                $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
-                                    self.bookmarked = flag;
-                                }),
-                                $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
-                                    if (liked.name !== 'error') {
-                                        self.liked = liked;
-
-                                        if (liked) {
-                                            self.disliked = false;
-                                        } else {
-                                            $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
-                                                self.disliked = disliked;
-                                            });
-                                        }
-                                    } else {
-                                        self.liked = false;
-                                        self.disliked = false;
-                                    }
-
-                                })
-                            ).done(function () {
-                                if (!flag)
-                                    flag = true;
-                                else
-                                    hideLoading();
-                            });
-                        } else {
-                            if (!flag)
-                                flag = true;
-                            else
-                                hideLoading();
-                        }
+                    }),
+                    $.getJSON('/bookmark/checkBookmarkFilm/' + id, function (flag) {
+                        self.bookmarked = flag;
+                    }),
+                    $.getJSON('/likes/checkLikeFilm/' + id, function (liked) {
+                        if (liked.name !== 'error')
+                            self.liked = liked;
+                        else
+                            self.liked = false;
+                    }),
+                    $.getJSON('/likes/checkDislikeFilm/' + id, function (disliked) {
+                        if (disliked.name !== 'error')
+                            self.disliked = disliked;
+                        else
+                            self.disliked = false;
                     }),
                     $.ajax({
                         url: domain + '/likes/getLikesAndDislikes',
@@ -487,10 +468,7 @@ $(function () {
                             self.dislikes = response.dislikes;
                         }
                     })).done(function () {
-                    if (flag)
                         hideLoading();
-                    else
-                        flag = true;
                 });
             },
             watch: {
