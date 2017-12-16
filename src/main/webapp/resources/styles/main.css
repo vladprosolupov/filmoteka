@@ -808,6 +808,10 @@ label.radio > input:checked + figure {
     filter: brightness(70%) blur(3px);
 }
 
+iframe {
+    padding: 3ch;
+}
+
 @media screen and (min-width: 769px){
     .column.is-9, .column.is-9-tablet {
         -webkit-box-flex: 0;
@@ -957,6 +961,14 @@ label.radio > input:checked + figure {
         margin-top: 18ch;
     }
 
+    #commentControl {
+        padding-right: 1em;
+    }
+
+    iframe {
+        width: 100%;
+    }
+
     /*.navbar-burger span{*/
     /*width:48px;*/
     /*left: calc(50% - 24px);*/
@@ -988,9 +1000,9 @@ label.radio > input:checked + figure {
 @media all and (max-width: 768px) {
 
 
-    .media-content {
-        display:none;
-    }
+    /*.media-content {*/
+        /*display:none;*/
+    /*}*/
 
     .forMob{
         display: inherit;
@@ -1054,5 +1066,13 @@ label.radio > input:checked + figure {
 
     .pagination {
         margin: 0;
+    }
+
+    #commentControl {
+        padding-right: 1em;
+    }
+
+    iframe {
+        width: 100%;
     }
 }

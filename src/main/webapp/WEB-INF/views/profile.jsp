@@ -268,8 +268,8 @@
 
 
                 <div class="container column" v-if="currentTab == 'like'"
-                     style="display: none; position: relative; margin: 0 0.7rem 0.7rem 0; height: 100%;">
-                    <div style="position: absolute; display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
+                     style="display: none; position: relative; margin: 0 0.7rem 0.7rem 0;">
+                    <div style="display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
                         <article class="message is-info" style="margin-top: 20px;" v-if="likedFilms.length == 0">
                             <div class="message-body">
                                 You haven't liked any <strong>films</strong> yet.
@@ -363,8 +363,8 @@
                     </div>
                 </div>
                 <div class="container column" v-if="currentTab == 'book'"
-                     style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0; height: 100%;">
-                    <div style="position: absolute; display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
+                     style="display: none; position: relative; overflow: scroll; margin: 0 0.7rem 0.7rem 0;">
+                    <div style="display: flex; width: -webkit-fill-available; width: -moz-available; justify-content: center;">
                         <article class="message is-info" style="margin-top: 20px;" v-if="bookmarkedFilms.length == 0">
                             <div class="message-body">
                                 You don't have any <strong>films</strong> in bookmarks yet.

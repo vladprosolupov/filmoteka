@@ -95,7 +95,7 @@
         </figure>
         <div class="comment-content">
             <div class="field">
-                <p class="control">
+                <p class="control" id="commentControl">
                     <textarea id="newComment" v-on:keydown.13="submitCommentOrMoveLine($event)" class="textarea"
                               placeholder="Add a comment..."></textarea>
                 </p>
@@ -172,13 +172,13 @@
                     <div class="hero-body">
                         <div id="filmInfo">
                             <%--<figure class="media-left">--%>
+                                <div class="has-text-centered">
+                                    <h2><b>{{film.title}}</b></h2>
+                                </div>
                                     ${edit}
                                     ${bookmark}
                                 <br>
                                 <hr>
-                                <div class="has-text-centered">
-                                <h2><b>{{film.title}}</b></h2>
-                                </div>
                                 <figure class="image">
                                     <img style="margin-left: auto;margin-right: auto;max-width: 350px;"  v-bind:src='film.cover'>
                                 </figure>
@@ -401,7 +401,7 @@
                     </div>
                 </figure>
 
-                <iframe style="padding: 3ch"  width="420" height="315" v-for="trailer in film.trailersById"
+                <iframe width="420" height="315" v-for="trailer in film.trailersById"
                         v-bind:src="trailer.link">
                 </iframe>
 
