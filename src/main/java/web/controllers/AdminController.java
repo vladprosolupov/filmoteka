@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import web.dao.*;
@@ -25,31 +26,33 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    FilmService filmService;
-
-    @Autowired
-    LanguageService languageService;
-
-    @Autowired
-    CountryService countryService;
-
-    @Autowired
-    CategoryService categoryService;
-
-    @Autowired
-    DirectorService directorService;
-
-    @Autowired
-    NetworkService networkService;
-
-    @Autowired
-    StudioService studioService;
-
-    @Autowired
-    ActorService actorService;
-
-    @Autowired
-    ClientService clientService;
+    private SessionFactory sessionFactory;
+//    @Autowired
+//    FilmService filmService;
+//
+//    @Autowired
+//    LanguageService languageService;
+//
+//    @Autowired
+//    CountryService countryService;
+//
+//    @Autowired
+//    CategoryService categoryService;
+//
+//    @Autowired
+//    DirectorService directorService;
+//
+//    @Autowired
+//    NetworkService networkService;
+//
+//    @Autowired
+//    StudioService studioService;
+//
+//    @Autowired
+//    ActorService actorService;
+//
+//    @Autowired
+//    ClientService clientService;
 
     private static final Logger log = LogManager.getLogger(AdminController.class);
 
@@ -72,6 +75,8 @@ public class AdminController {
         log.info("adminActorsAddOrUpdate(id=" + id + ", model=" + model + ")");
 
         ActorDb actorDb = new ActorDb();
+        CountryService countryService = new CountryService(sessionFactory);
+        ActorService actorService = new ActorService(sessionFactory);
         List<CountryDb> counties = countryService.getAll();
 
         if (!id.equals("0")) {
@@ -99,6 +104,8 @@ public class AdminController {
     public String adminCategoriesAddOrUpdate(@PathVariable("id") String id, Model model) {
         log.info("adminCategoriesAddOrUpdate(id=" + id + ", model=" + model + ")");
 
+        CategoryService categoryService = new CategoryService(sessionFactory);
+
         CategoryDb categoryDb = new CategoryDb();
         if (!id.equals("0")) {
             log.info("if statement, id is not 0");
@@ -125,6 +132,8 @@ public class AdminController {
         log.info("adminDirectorsAddOrUpdate(id=" + id + ", model=" + model + ")");
 
         DirectorDb directorDb = new DirectorDb();
+        CountryService countryService = new CountryService(sessionFactory);
+        DirectorService directorService = new DirectorService(sessionFactory);
         List<CountryDb> counties = countryService.getAll();
         if (!id.equals("0")) {
             log.info("if statement, id is not 0");
@@ -151,6 +160,9 @@ public class AdminController {
     @RequestMapping(value = "/films/addOrUpdate/{id}")
     public String adminFilmsAddOrUpdate(@PathVariable("id") String id, Model model) {
         log.info("adminFilmsAddOrUpdate(id=" + id + ", model=" + model + ")");
+
+        FilmService filmService = new FilmService(sessionFactory);
+        LanguageService languageService = new LanguageService(sessionFactory);
 
         FilmDb filmDb = new FilmDb();
         if (!id.equals("0")) {
@@ -184,6 +196,8 @@ public class AdminController {
     public String adminNetworksAddOrUpdate(@PathVariable("id") String id, Model model) {
         log.info("adminNetworksAddOrUpdate(id=" + id + ", model=" + model + ")");
 
+
+        NetworkService networkService = new NetworkService(sessionFactory);
         NetworkDb networkDb = new NetworkDb();
         if (!id.equals("0")) {
             log.info("if statement, id is not 0");
@@ -209,6 +223,8 @@ public class AdminController {
     public String adminStudiosAddOrUpdate(@PathVariable("id") String id, Model model) {
         log.info("adminStudiosAddOrUpdate(id=" + id + ", model=" + model + ")");
 
+
+        StudioService studioService = new StudioService(sessionFactory);
         StudioDb studioDb = new StudioDb();
         if (!id.equals("0")) {
             log.info("if statement, id is not 0");
@@ -233,6 +249,8 @@ public class AdminController {
     @RequestMapping(value = "/users/more/{id}")
     public String adminUsersMore(@PathVariable( value = "id") String id, Model model){
         log.info("adminUsersMore(id=" + id + ", Model=" + model);
+
+        ClientService clientService = new ClientService(sessionFactory);
         ClientDb clientDb = new ClientDb();
         if (!id.equals("0")) {
             log.info("if statement, id is not 0");

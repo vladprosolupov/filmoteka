@@ -3,6 +3,7 @@ package web.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import web.exceptions.ParsingJsonToDaoException;
 import web.exceptions.ValidationError;
 import web.model.ActorJSON;
 import web.services.ActorService;
+import web.services.SearchService;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -26,8 +28,11 @@ import java.util.List;
 @RequestMapping(value = "/actor")
 public class ActorController {
 
+//    @Autowired
+//    private ActorService actorService;
+
     @Autowired
-    private ActorService actorService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(ActorController.class);
 
@@ -43,6 +48,8 @@ public class ActorController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        ActorService actorService = new ActorService(sessionFactory);
+
         actorService.saveOrUpdate(actorService.convertToActorDb(actorJSON));
 
         log.info("addActor() returns : OK");
@@ -55,6 +62,7 @@ public class ActorController {
     String deleteActor(@PathVariable("id") String id) {
         log.info("deleteActor(id=" + id + ")");
 
+        ActorService actorService = new ActorService(sessionFactory);
         actorService.delete(id);
 
         log.info("deleteActor() returns : OK");
@@ -67,6 +75,7 @@ public class ActorController {
     List<ActorDb> getAll() {
         log.info("getAll()");
 
+        ActorService actorService = new ActorService(sessionFactory);
         List<ActorDb> all = actorService.getAll();
 
         log.info("getAll() returns list.size() : " + all.size());

@@ -3,6 +3,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,7 +27,8 @@ import java.util.List;
 public class CommentController {
 
     @Autowired
-    private CommentService commentService;
+    private SessionFactory sessionFactory;
+//    private CommentService commentService;
 
     private static final Logger log = LogManager.getLogger(CommentController.class);
 
@@ -44,7 +46,7 @@ public class CommentController {
 
             return "Error";
         }
-
+        CommentService commentService = new CommentService(sessionFactory);
         commentService.saveOrUpdate(commentService.convertToCommentRatingDB(commentJSON));
 
         log.info("addOrUpdateComment() returns : OK");
@@ -56,6 +58,7 @@ public class CommentController {
     String deleteComment(@PathVariable("id") String id) {
         log.info("deleteComment(id=" + id + ")");
 
+        CommentService commentService = new CommentService(sessionFactory);
         commentService.deleteComment(id);
 
         log.info("deleteComment() returns : OK");
@@ -67,6 +70,8 @@ public class CommentController {
         log.info("getAllCommentsForFilm(id=" + id + ")");
 
         List<CommentJSON> result = new ArrayList<>();
+
+        CommentService commentService = new CommentService(sessionFactory);
         List<CommentDb> commentDbList = commentService.getAllCommentsForFilm(id);
         for (CommentDb comment : commentDbList) {
             log.info("for loop");

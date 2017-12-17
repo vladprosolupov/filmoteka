@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -32,16 +33,19 @@ public class BookmarkController {
     private static final Logger log = LogManager.getLogger(BookmarkController.class);
 
     @Autowired
-    private BookmarkService bookmarkService;
+    private SessionFactory sessionFactory;
 
-    @Autowired
-    private ClientService clientService;
-
-    @Autowired
-    private AddBookmarkTask addBookmarkTask;
-
-    @Autowired
-    private RemoveBookmarkTask removeBookmarkTask;
+//    @Autowired
+//    private BookmarkService bookmarkService;
+//
+//    @Autowired
+//    private ClientService clientService;
+//
+//    @Autowired
+//    private AddBookmarkTask addBookmarkTask;
+//
+//    @Autowired
+//    private RemoveBookmarkTask removeBookmarkTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -62,6 +66,9 @@ public class BookmarkController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+
+        ClientService clientService = new ClientService(sessionFactory);
+        AddBookmarkTask addBookmarkTask = new AddBookmarkTask(sessionFactory);
 
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
@@ -91,6 +98,8 @@ public class BookmarkController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+        ClientService clientService = new ClientService(sessionFactory);
+        RemoveBookmarkTask removeBookmarkTask = new RemoveBookmarkTask(sessionFactory);
 
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
@@ -106,6 +115,8 @@ public class BookmarkController {
     public @ResponseBody
     boolean checkBookmarkFilm(@PathVariable("id") String id) {
         log.info("checkBookmarkFilm(idFilm=" + id + ")");
+        BookmarkService bookmarkService = new BookmarkService(sessionFactory);
+
         boolean result = bookmarkService.checkBookmarkFilm(id);
         log.info("checkBookmarkFilm() returns : " + result);
         return result;
@@ -116,6 +127,8 @@ public class BookmarkController {
     List<FilmJSONIndex> getBookmarkedFilms(@PathVariable("page") String page) {
         log.info("getBookmarkedFilms(page=" + page + ")");
 
+
+        BookmarkService bookmarkService = new BookmarkService(sessionFactory);
         List<FilmJSONIndex> list = bookmarkService.getBookmarkedFilms(page);
 
         log.info("getBookmarkedFilms() returns : list.size()=" + list.size() + ")");
@@ -128,6 +141,10 @@ public class BookmarkController {
         log.info("getNumberOfBookmarkedFilms()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        ClientService clientService = new ClientService(sessionFactory);
+        BookmarkService bookmarkService = new BookmarkService(sessionFactory);
+
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         long result = bookmarkService.getNumbersOfBookmarkByUserId(clientId);

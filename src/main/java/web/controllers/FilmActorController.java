@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,8 @@ import web.services.FilmActorService;
 public class FilmActorController {
 
     @Autowired
-    private FilmActorService filmActorService;
+    private SessionFactory sessionFactory;
+//    private FilmActorService filmActorService;
 
     private static final Logger log = LogManager.getLogger(FilmActorController.class);
 
@@ -43,6 +45,8 @@ public class FilmActorController {
     public @ResponseBody String delete(@PathVariable("id") String id){
         log.info("delete(id=" + id + ")");
 
+
+        FilmActorService filmActorService = new FilmActorService(sessionFactory);
         filmActorService.deleteFilmActor(id);
 
         log.info("delete() returns : OK");

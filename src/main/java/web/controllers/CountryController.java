@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ import java.util.List;
 public class CountryController {
 
     @Autowired
-    private CountryService countryService;
+    private SessionFactory sessionFactory;
+//    private CountryService countryService;
 
     private static final Logger log = LogManager.getLogger(CountryController.class);
 
@@ -29,6 +31,7 @@ public class CountryController {
     String addOrUpdate(@RequestBody CountryDb countryDb) {
         log.info("addOrUpdate(countryDb=" + countryDb + ")");
 
+        CountryService countryService = new CountryService(sessionFactory);
         countryService.saveOrUpdateCountry(countryDb);
 
         log.info("addOrUpdate() returns : OK");
@@ -41,6 +44,7 @@ public class CountryController {
     String deleteCountry(@PathVariable("id") String id) {
         log.info("deleteCountry(id=" + id + ")");
 
+        CountryService countryService = new CountryService(sessionFactory);
         countryService.deleteCountry(id);
 
         log.info("deleteCountry() returns : OK");
@@ -53,6 +57,7 @@ public class CountryController {
     List<CountryDb> getAll() {
         log.info("getAll()");
 
+        CountryService countryService = new CountryService(sessionFactory);
         List<CountryDb> countryDbs = countryService.getAll();
 
         log.info("getAll() returns : countryDbs.size()=" + countryDbs.size());

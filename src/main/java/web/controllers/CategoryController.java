@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -26,10 +27,11 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    FilmCategoryService filmCategoryService;
+    private SessionFactory sessionFactory;
+//    private CategoryService categoryService;
+//
+//    @Autowired
+//    FilmCategoryService filmCategoryService;
 
     private static final Logger log = LogManager.getLogger(CategoryController.class);
 
@@ -45,6 +47,8 @@ public class CategoryController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        CategoryService categoryService = new CategoryService(sessionFactory);
+
         categoryService.saveOrUpdate(categoryService.convertToCategoryDb(categoryJSON));
 
         log.info("addOrUpdateCategory() returns : OK");
@@ -57,6 +61,7 @@ public class CategoryController {
     String deleteCategory(@PathVariable("id") String id) {
         log.info("deleteCategory(id=" + id + ")");
 
+        CategoryService categoryService = new CategoryService(sessionFactory);
         categoryService.deleteCategory(id);
 
         log.info("deleteCategory() returns : OK");
@@ -68,6 +73,7 @@ public class CategoryController {
     List<FilmJSONIndex> getFilmsForCategory(@PathVariable("id") String id, @PathVariable("page") String page) {
         log.info("getFilmsForCategory(id" + id + ", page " + page + ")");
 
+        FilmCategoryService filmCategoryService = new FilmCategoryService(sessionFactory);
         List<FilmJSONIndex> filmsForCategory = filmCategoryService.getFilmsForCategory(id, page);
 
         log.info("getFilmsForCategory() returns filmsForCategory.size() : " + filmsForCategory.size());
@@ -79,6 +85,7 @@ public class CategoryController {
     long getNumberOfFilmsForCategory(@PathVariable("id") String id) {
         log.info("getNumberOfFilmsForCategory(id" + id + ")");
 
+        FilmCategoryService filmCategoryService = new FilmCategoryService(sessionFactory);
         long result = filmCategoryService.getNumberOfFilmsForCategory(id);
 
         log.info("getNumberOfFilmsForCategory() returns : result=" + result);
@@ -91,6 +98,7 @@ public class CategoryController {
     List<CategoryDb> getAll() {
         log.info("getAll()");
 
+        CategoryService categoryService = new CategoryService(sessionFactory);
         List<CategoryDb> allCategories = categoryService.getAllCategories();
 
         log.info("getAll() returns : allCategories.size()=" + allCategories.size());
@@ -102,6 +110,8 @@ public class CategoryController {
     List<CategoryJSON> getForNav() {
         log.info("getForNav()");
 
+
+        CategoryService categoryService = new CategoryService(sessionFactory);
         List<CategoryJSON> allForNav = categoryService.getForNav();
         log.info("getForNav() returns : allCategories.size()=" + allForNav.size());
         return allForNav;

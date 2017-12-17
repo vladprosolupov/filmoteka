@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ import java.util.List;
 public class DirectorController {
 
     @Autowired
-    private DirectorService directorService;
+    private SessionFactory sessionFactory;
+//    private DirectorService directorService;
 
     private static final Logger log = LogManager.getLogger(DirectorController.class);
 
@@ -40,7 +42,7 @@ public class DirectorController {
             throw new ValidationError("Validation is incorrect");
         }
 
-
+        DirectorService directorService = new DirectorService(sessionFactory);
         directorService.saveOrUpdate(directorService.convertToDirectorDb(directorJSON));
 
         log.info("addOrUpdate() returns : OK");
@@ -53,6 +55,7 @@ public class DirectorController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        DirectorService directorService = new DirectorService(sessionFactory);
         directorService.delete(id);
 
         log.info("delete() returns : OK");
@@ -65,6 +68,7 @@ public class DirectorController {
     List<DirectorDb> getAll() {
         log.info("getAll()");
 
+        DirectorService directorService = new DirectorService(sessionFactory);
         List<DirectorDb> directorDbs = directorService.getAll();
 
         log.info("getAll() returns : directorsDbs.size()" + directorDbs.size());

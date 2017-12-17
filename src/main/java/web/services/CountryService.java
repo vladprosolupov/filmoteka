@@ -20,7 +20,7 @@ import java.util.List;
 public class CountryService {
 
     @Autowired(required = true)
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(CountryService.class);
 

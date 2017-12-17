@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
@@ -49,20 +50,22 @@ import java.util.concurrent.Executors;
 @RequestMapping(value = "/client")
 public class ClientController {
 
-    @Autowired(required = true)
-    private ClientService clientService;
-
     @Autowired
-    private PasswordResetTokenService passwordResetTokenService;
-
-    @Autowired
-    private RegisterUserTask registerUserTask;
-
-    @Autowired
-    private EditClientTask editClientTask;
-
-    @Autowired
-    private SendForgotPasswordEmailTask sendForgotPasswordEmailTask;
+    private SessionFactory sessionFactory;
+//    @Autowired(required = true)
+//    private ClientService clientService;
+//
+//    @Autowired
+//    private PasswordResetTokenService passwordResetTokenService;
+//
+//    @Autowired
+//    private RegisterUserTask registerUserTask;
+//
+//    @Autowired
+//    private EditClientTask editClientTask;
+//
+//    @Autowired
+//    private SendForgotPasswordEmailTask sendForgotPasswordEmailTask;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -73,6 +76,7 @@ public class ClientController {
     boolean loginCheck(@PathVariable("login") String login) {
         log.info("loginCheck(login=" + login + ")");
 
+        ClientService clientService = new ClientService(sessionFactory);
         boolean result = clientService.loginCheck(login);
 
         log.info("loginCheck() returns: " + result);
@@ -90,6 +94,7 @@ public class ClientController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         ClientDb clientDb = clientService.saveOrUpdate(clientService.convertToClientDb(clientJSON));
         if (clientDb == null) {
             log.error("Customer does not registered");
@@ -99,6 +104,7 @@ public class ClientController {
 
         String applicationURL = request.getContextPath();
 
+        RegisterUserTask registerUserTask = new RegisterUserTask();
         registerUserTask.setApplicationURL(applicationURL);
         registerUserTask.setClientDb(clientDb);
         executorService.execute(registerUserTask);
@@ -132,9 +138,12 @@ public class ClientController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
+
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
         clientJSON.setId(clientDb.getId());
 
+        EditClientTask editClientTask = new EditClientTask(sessionFactory);
         editClientTask.setClientJSON(clientJSON);
         executorService.execute(editClientTask);
 
@@ -148,6 +157,8 @@ public class ClientController {
     String deleteClient(@PathVariable("id") String id) {
         log.info("deleteClient(id=" + id + ")");
 
+
+        ClientService clientService = new ClientService(sessionFactory);
         clientService.delete(id);
 
         log.info("deleteClient() returns : OK");
@@ -165,6 +176,8 @@ public class ClientController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+
+        ClientService clientService = new ClientService(sessionFactory);
 
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
@@ -193,6 +206,7 @@ public class ClientController {
             throw new IllegalArgumentException("ClientEmail should not be null or empty");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         ClientDb clientDb = clientService.getClientByEmail(clientEmail);
 
         if (clientDb == null) {
@@ -208,8 +222,10 @@ public class ClientController {
         passwordResetTokenDb.setClientByIdClient(clientDb);
         passwordResetTokenDb.setToken(token);
 
+        PasswordResetTokenService passwordResetTokenService = new PasswordResetTokenService(sessionFactory);
         passwordResetTokenService.savePasswordResetToken(passwordResetTokenDb);
 
+        SendForgotPasswordEmailTask sendForgotPasswordEmailTask = new SendForgotPasswordEmailTask();
         sendForgotPasswordEmailTask.setClientEmail(clientEmail);
         sendForgotPasswordEmailTask.setToken(token);
         sendForgotPasswordEmailTask.setClientFirstName(clientDb.getFirstName());
@@ -225,6 +241,7 @@ public class ClientController {
     public String resetPassword(@PathVariable("token") String token) {
         log.info("resetPassword(token=" + token + ")");
 
+        PasswordResetTokenService passwordResetTokenService = new PasswordResetTokenService(sessionFactory);
         PasswordResetTokenDb passwordResetTokenDb = passwordResetTokenService.getPasswordResetToken(token);
 
         if (passwordResetTokenDb == null) {
@@ -267,12 +284,16 @@ public class ClientController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
 
+        ClientService clientService = new ClientService(sessionFactory);
+
         ClientDb clientDb = clientService.getClientByLogin(name);
         clientDb.setPassword(PasswordGenerator.hashPassword(clientPassword.getPassword()));
         clientService.saveOrUpdate(clientDb);
 
         Authentication auth = new AnonymousAuthenticationToken("ANONYMOUS_USER", clientDb.getLogin(), Arrays.asList(new SimpleGrantedAuthority("ANONYMOUS_USER")));
         SecurityContextHolder.getContext().setAuthentication(auth);
+
+        PasswordResetTokenService passwordResetTokenService = new PasswordResetTokenService(sessionFactory);
 
         PasswordResetTokenDb passwordResetTokenDb = passwordResetTokenService.getPasswordResetToken(token);
         passwordResetTokenService.removePasswordResetToken(passwordResetTokenDb);
@@ -296,6 +317,8 @@ public class ClientController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+
+        ClientService clientService = new ClientService(sessionFactory);
         List<FilmJSONIndex> list = clientService.getFilmsForSuggestion(pageNum, clientService.getClientIdByLogin(authentication.getName()));
 
         log.info("getSuggestionsForPage() returns : list.size() = " + list.size());
@@ -315,6 +338,7 @@ public class ClientController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         long result = clientService.getNumberOfSuggested(clientService.getClientIdByLogin(authentication.getName()));
 
         log.info("getNumberOfSuggested() returns : result = " + result);
@@ -328,6 +352,7 @@ public class ClientController {
         log.info("getAllClients()");
 
         //List<ClientDb> allClients = clientService.getAll();
+        ClientService clientService = new ClientService(sessionFactory);
         List<ClientJSON> allClientsJSON = clientService.getAllForAdmin();
 
         /*for (ClientDb clientDb : allClients) {
@@ -360,6 +385,7 @@ public class ClientController {
             throw new IllegalArgumentException("ClientLoginJSON should not be empty");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         clientService.blockClient(clientLogin.getLogin());
 
         return "OK";
@@ -377,6 +403,7 @@ public class ClientController {
             throw new IllegalArgumentException("ClientLoginJSON should not be empty");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         clientService.unblockClient(clientLogin.getLogin());
 
         return "OK";

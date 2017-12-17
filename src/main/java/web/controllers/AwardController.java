@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,8 @@ import java.util.List;
 public class AwardController {
 
     @Autowired
-    private AwardService awardService;
+    private SessionFactory sessionFactory;
+//    private AwardService awardService;
 
     private static final Logger log = LogManager.getLogger(AwardController.class);
 
@@ -32,6 +34,7 @@ public class AwardController {
     String addOrUpdate(AwardDb awardDb) {
         log.info("addOrUpdate(award=" + awardDb + ")");
 
+        AwardService awardService = new AwardService(sessionFactory);
         awardService.saveOrUpdateAward(awardDb);
 
         log.info("addOrUpdate() returns : OK");
@@ -44,6 +47,7 @@ public class AwardController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        AwardService awardService = new AwardService(sessionFactory);
         awardService.deleteAward(id);
 
         log.info("delete() returns : OK");
@@ -55,6 +59,8 @@ public class AwardController {
     public @ResponseBody
     List<AwardDb> getAll() {
         log.info("getAll()");
+
+        AwardService awardService = new AwardService(sessionFactory);
 
         List<AwardDb> awardDbs = awardService.getAll();
 
