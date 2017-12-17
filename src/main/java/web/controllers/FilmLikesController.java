@@ -37,9 +37,6 @@ public class FilmLikesController {
     private FilmService filmService;
 
     @Autowired
-    private AddClientLikeTask addClientLikeTask;
-
-    @Autowired
     private AddClientDislikeTask addClientDislikeTask;
 
     @Autowired
@@ -51,7 +48,7 @@ public class FilmLikesController {
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Autowired
-    AiService aiService;
+    private AiService aiService;
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 
@@ -81,8 +78,11 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
+        AddClientLikeTask addClientLikeTask = new AddClientLikeTask();
         addClientLikeTask.setClientDb(clientDb);
         addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
+        addClientLikeTask.setAiService(aiService);
+        addClientLikeTask.setLikesService(likesService);
         executorService.execute(addClientLikeTask);
 
 

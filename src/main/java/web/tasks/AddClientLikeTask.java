@@ -6,19 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import web.dao.ClientDb;
 import web.model.FilmLikesJSON;
+import web.services.AiService;
 import web.services.FilmLikesService;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Component("AddClientLikeTask")
 public class AddClientLikeTask implements Runnable {
 
-    @Autowired
     private FilmLikesService likesService;
 
-    @Autowired
-    private AiTask aiTask;
+    private AiService aiService;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -35,7 +33,9 @@ public class AddClientLikeTask implements Runnable {
                 likesService.convertToFilmLikeDbFromFilmLike(
                         likesService.convertToFilmLikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
 
+        AiTask aiTask = new AiTask();
         aiTask.setCurrentClient(clientDb);
+        aiTask.setAiService(aiService);
         executorService.execute(aiTask);
 
         log.info("succ added like");
@@ -55,5 +55,13 @@ public class AddClientLikeTask implements Runnable {
 
     public void setFilmLikesJSON(FilmLikesJSON filmLikesJSON) {
         this.filmLikesJSON = filmLikesJSON;
+    }
+
+    public void setLikesService(FilmLikesService likesService) {
+        this.likesService = likesService;
+    }
+
+    public void setAiService(AiService aiService) {
+        this.aiService = aiService;
     }
 }

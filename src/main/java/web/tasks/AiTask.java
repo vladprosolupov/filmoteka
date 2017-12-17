@@ -9,10 +9,8 @@ import web.services.AiService;
 
 import java.util.concurrent.ExecutionException;
 
-@Component("AiTask")
 public class AiTask implements Runnable {
 
-    @Autowired
     private AiService aiService;
 
     private ClientDb currentClient;
@@ -23,12 +21,15 @@ public class AiTask implements Runnable {
     public void run() {
         log.info("run()");
 
+
+        log.info("aiservice - " + aiService);
+
         try {
             aiService.generateFilmsForSuggestion(currentClient);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            log.error("ERROR - " + e);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("ERROR - " + e);
         }
 
         log.info("run() done");
@@ -40,5 +41,9 @@ public class AiTask implements Runnable {
 
     public void setCurrentClient(ClientDb currentClient) {
         this.currentClient = currentClient;
+    }
+
+    public void setAiService(AiService aiService) {
+        this.aiService = aiService;
     }
 }

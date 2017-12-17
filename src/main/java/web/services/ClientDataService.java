@@ -66,6 +66,8 @@ public class ClientDataService {
         session.getTransaction().commit();
 
 
+
+
         //Adding new suggested films
         session.beginTransaction();
         for (Map.Entry<Integer, Double> entry : clientDataMap.entrySet())
