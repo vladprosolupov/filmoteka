@@ -19,10 +19,14 @@ import java.util.List;
 @Transactional
 public class LanguageService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(LanguageService.class);
+
+    public LanguageService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public List<LanguageDb> getAllLanguages() throws HibernateException {
         log.info("getAllLanguages()");

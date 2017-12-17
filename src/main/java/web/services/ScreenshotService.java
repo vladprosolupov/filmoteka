@@ -22,11 +22,15 @@ import java.util.Set;
 @Transactional
 public class ScreenshotService {
 
-    @Autowired
+//    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
+    public ScreenshotService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    //    @Autowired
+//    private FilmService filmService;
 
     private static final Logger log = LogManager.getLogger(ScreenshotService.class);
 
@@ -139,9 +143,10 @@ public class ScreenshotService {
         session.beginTransaction();
         session.createQuery("delete from ScreenshotDb s where s.filmByIdFilm=" + idFilm).executeUpdate();
 
+        FilmService filmService = new FilmService(sessionFactory);
+
         for (ScreenshotDb screenshotDb : screenshotDbSet) {
             log.info("for loop");
-
             screenshotDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(screenshotDb);
         }

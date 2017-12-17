@@ -17,8 +17,12 @@ import java.util.Calendar;
 @Transactional
 public class PasswordResetTokenService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    public PasswordResetTokenService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private final int EXPIRIANCE_TIME = 60 * 24;
 

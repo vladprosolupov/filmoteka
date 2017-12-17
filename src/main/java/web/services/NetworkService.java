@@ -21,10 +21,14 @@ import java.util.List;
 @Transactional
 public class NetworkService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(NetworkService.class);
+
+    public NetworkService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public NetworkDb getNetworkWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getNetworkWithId(id=" + id + ")");

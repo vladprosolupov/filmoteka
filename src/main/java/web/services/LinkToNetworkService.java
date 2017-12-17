@@ -23,13 +23,17 @@ import java.util.Set;
 @Transactional
 public class LinkToNetworkService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private NetworkService networkService;
+//    @Autowired
+//    private NetworkService networkService;
 
     private static final Logger log = LogManager.getLogger(LinkToNetworkService.class);
+
+    public LinkToNetworkService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public LinkToNetworkDb getLinkWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getLinkWithID(id=" + id + ")");
@@ -119,6 +123,8 @@ public class LinkToNetworkService {
         Set<LinkToNetworkDb> linkToNetworkDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : links.entrySet()) {
             log.info("for loop");
+
+            NetworkService networkService = new NetworkService(sessionFactory);
 
             LinkToNetworkDb linkToNetworkDb = new LinkToNetworkDb();
             linkToNetworkDb.setLink(m.getKey());

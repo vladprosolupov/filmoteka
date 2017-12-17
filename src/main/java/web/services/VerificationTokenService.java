@@ -20,10 +20,14 @@ public class VerificationTokenService {
 
     private final int EXPIRIANCE_TIME = 60 * 24;
 
-    @Autowired
+//    @Autowired
     private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(VerificationTokenService.class);
+
+    public VerificationTokenService(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
 
     public void saveToken(VerificationTokenDb tokenDb) throws HibernateException {
         log.info("saveToken(tokenDb=" + tokenDb + ")");

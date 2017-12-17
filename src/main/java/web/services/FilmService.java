@@ -30,44 +30,48 @@ import java.util.*;
 @Transactional
 public class FilmService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private SearchService searchService;
+    public FilmService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-    @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private CountryService countryService;
-
-    @Autowired
-    private DirectorService directorService;
-
-    @Autowired
-    private LinkToNetworkService linkToNetworkService;
-
-    @Autowired
-    private StudioService studioService;
-
-    @Autowired
-    private FilmActorService filmActorService;
-
-    @Autowired
-    private LanguageService languageService;
-
-    @Autowired
-    private AwardService awardService;
-
-    @Autowired
-    private TrailerService trailerService;
-
-    @Autowired
-    private ScreenshotService screenshotService;
-
-    @Autowired
-    private MainParser mainParser;
+    //    @Autowired
+//    private SearchService searchService;
+//
+//    @Autowired
+//    private CategoryService categoryService;
+//
+//    @Autowired
+//    private CountryService countryService;
+//
+//    @Autowired
+//    private DirectorService directorService;
+//
+//    @Autowired
+//    private LinkToNetworkService linkToNetworkService;
+//
+//    @Autowired
+//    private StudioService studioService;
+//
+//    @Autowired
+//    private FilmActorService filmActorService;
+//
+//    @Autowired
+//    private LanguageService languageService;
+//
+//    @Autowired
+//    private AwardService awardService;
+//
+//    @Autowired
+//    private TrailerService trailerService;
+//
+//    @Autowired
+//    private ScreenshotService screenshotService;
+//
+//    @Autowired
+//    private MainParser mainParser;
 
     private static final Logger log = LogManager.getLogger(FilmService.class);
 
@@ -254,6 +258,20 @@ public class FilmService {
 
     public FilmDb convert(FilmJSON filmJSON) throws ParsingJsonToDaoException, ParseException {
         log.info("convert(filmJSON=" + filmJSON + ")");
+
+
+        LanguageService languageService = new LanguageService(sessionFactory);
+        SearchService searchService = new SearchService();
+        CategoryService categoryService = new CategoryService(sessionFactory);
+        CountryService countryService = new CountryService(sessionFactory);
+        DirectorService directorService = new DirectorService(sessionFactory);
+        LinkToNetworkService linkToNetworkService = new LinkToNetworkService(sessionFactory);
+        StudioService studioService = new StudioService(sessionFactory);
+        FilmActorService filmActorService = new FilmActorService(sessionFactory);
+        AwardService awardService = new AwardService(sessionFactory);
+        TrailerService trailerService = new TrailerService(sessionFactory);
+        ScreenshotService screenshotService = new ScreenshotService(sessionFactory);
+
 
         if (filmJSON == null) {
             log.error("Error : filmJSON is null");

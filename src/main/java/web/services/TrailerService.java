@@ -23,11 +23,15 @@ import java.util.Set;
 @Transactional
 public class TrailerService {
 
-    @Autowired
+//    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
+    public TrailerService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    //    @Autowired
+//    private FilmService filmService;
 
     private static final Logger log = LogManager.getLogger(TrailerService.class);
 
@@ -139,10 +143,10 @@ public class TrailerService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from TrailerDb t where t.filmByIdFilm=" + idFilm).executeUpdate();
+        FilmService filmService = new FilmService(sessionFactory);
 
         for (TrailerDb trailerDb : trailerDbSet) {
             log.info("for loop");
-
             trailerDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
             session.saveOrUpdate(trailerDb);
         }

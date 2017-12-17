@@ -21,8 +21,12 @@ import java.util.List;
 @Transactional
 public class StudioService {
 
-    @Autowired(required = true)
+//    @Autowired(required = true)
     private SessionFactory sessionFactory;
+
+    public StudioService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private static final Logger log = LogManager.getLogger(StudioService.class);
 
