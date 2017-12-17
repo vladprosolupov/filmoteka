@@ -26,13 +26,13 @@ import java.util.List;
 @Transactional
 public class ClientService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private AvatarService avatarService;
-
     private static final Logger log = LogManager.getLogger(ClientService.class);
+
+    public ClientService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public ClientDb saveOrUpdate(ClientDb clientDb) throws HibernateException {
         log.info("saveOrUpdate(clientDb=" + clientDb + ")");
@@ -215,7 +215,10 @@ public class ClientService {
 
         ClientDb clientDb = new ClientDb();
 
+        AvatarService avatarService = new AvatarService(sessionFactory);
+
         if (clientJSON.getId() == 0) {
+
             log.info("creating new client");
 
             clientDb.setFirstName(clientJSON.getFirstName());

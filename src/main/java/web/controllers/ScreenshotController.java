@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,7 @@ import java.util.List;
 public class ScreenshotController {
 
     @Autowired
-    private ScreenshotService screenshotService;
-
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(ScreenshotController.class);
 
@@ -33,6 +33,7 @@ public class ScreenshotController {
     String addOrUpdate(ScreenshotDb screenshotDb) {
         log.info("addOrUpdate(screenshotDb=" + screenshotDb + ")");
 
+        ScreenshotService screenshotService = new ScreenshotService(sessionFactory);
         screenshotService.saveOrUpdate(screenshotDb);
 
         log.info("addOrUpdate() returns : OK");
@@ -45,6 +46,7 @@ public class ScreenshotController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        ScreenshotService screenshotService = new ScreenshotService(sessionFactory);
         screenshotService.delete(id);
 
         log.info("delete() returns : OK");
@@ -57,6 +59,7 @@ public class ScreenshotController {
     List<ScreenshotDb> getAll() {
         log.info("getAll()");
 
+        ScreenshotService screenshotService = new ScreenshotService(sessionFactory);
         List<ScreenshotDb> screenshotDbs = screenshotService.getAll();
 
         log.info("getAll() returns : screenshotDbs.size()=" + screenshotDbs.size());

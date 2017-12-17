@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import java.util.List;
 public class TrailerController {
 
     @Autowired
-    private TrailerService trailerService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(TrailerController.class);
 
@@ -32,6 +33,7 @@ public class TrailerController {
     String addOrUpdate(TrailerDb trailerDb) {
         log.info("addOrUpdate(trailerDb=" + trailerDb + ")");
 
+        TrailerService trailerService = new TrailerService(sessionFactory);
         trailerService.saveOrUpdate(trailerDb);
 
         log.info("addORUpdate() returns : OK");
@@ -44,6 +46,7 @@ public class TrailerController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        TrailerService trailerService = new TrailerService(sessionFactory);
         trailerService.delete(id);
 
         log.info("delete() returns : OK");
@@ -56,6 +59,7 @@ public class TrailerController {
     List<TrailerDb> getAll() {
         log.info("getAll()");
 
+        TrailerService trailerService = new TrailerService(sessionFactory);
         List<TrailerDb> all = trailerService.getAll();
 
         log.info("getAll() returns : all.size()=" + all.size());

@@ -25,7 +25,7 @@ import java.util.List;
 public class StudioController {
 
     @Autowired
-    private StudioService studioService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(StudioController.class);
 
@@ -41,6 +41,7 @@ public class StudioController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        StudioService studioService = new StudioService(sessionFactory);
         studioService.saveOrUpdateStudio(studioService.convertToStudioDb(studioJSON));
 
         log.info("addOrUpdate() returns : OK");
@@ -53,6 +54,7 @@ public class StudioController {
     String deleteStudio(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        StudioService studioService = new StudioService(sessionFactory);
         studioService.deleteStudio(id);
 
         log.info("delete() returns : OK");
@@ -65,6 +67,7 @@ public class StudioController {
     List<StudioDb> getAll() {
         log.info("getAll()");
 
+        StudioService studioService = new StudioService(sessionFactory);
         List<StudioDb> studioDbs = studioService.getAll();
 
         log.info("getAll() returns : studioDbs.size()=" + studioDbs.size());

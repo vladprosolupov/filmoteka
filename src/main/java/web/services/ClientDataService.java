@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class ClientDataService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
     private static final Logger log = LogManager.getLogger(ClientDataService.class);
+
+    public ClientDataService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void saveOrUpdate(ClientDataDb clientDataDb) throws HibernateException {
 
@@ -65,8 +65,7 @@ public class ClientDataService {
         session.createQuery("delete from ClientDataDb where clientByIdClient.id=?").setParameter(0,clientDb.getId()).executeUpdate();
         session.getTransaction().commit();
 
-
-
+        FilmService filmService = new FilmService(sessionFactory);
 
         //Adding new suggested films
         session.beginTransaction();

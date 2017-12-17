@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.validation.BindingResult;
 import web.dao.FilmDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +30,7 @@ import java.util.List;
 public class FilmController {
 
     @Autowired
-    FilmService filmService;
-
-    @Autowired
-    AwardService awardService;
-
-    @Autowired
-    FilmActorService filmActorService;
-
-    @Autowired
-    TrailerService trailerService;
-
-    @Autowired
-    ScreenshotService screenshotService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(FilmController.class);
 
@@ -51,6 +40,7 @@ public class FilmController {
     List<FilmJSONAdmin> getAllFilms() {
         log.info("getAllFilms()");
 
+        FilmService filmService = new FilmService(sessionFactory);
         List<FilmJSONAdmin> allFilms = filmService.getAllFilms();
 
         log.info("getAllFilms() returns : allFilms.size()=" + allFilms.size());
@@ -62,6 +52,7 @@ public class FilmController {
     List<FilmJSONIndex> getFilmsForIndexPage(@PathVariable("page") String page) throws NumberFormatException {
         log.info("getFilmsForIndexPage(page: " + page + " )");
 
+        FilmService filmService = new FilmService(sessionFactory);
         int pageNum = Integer.parseInt(page);
         List<FilmJSONIndex> filmsForIndexPage = filmService.getFilmsForIndexPage(pageNum);
 
@@ -74,6 +65,7 @@ public class FilmController {
     List<FilmJSONIndex> getFilmsForNewPage(@PathVariable("page") String page) throws NumberFormatException, InterruptedException, ParseException, IOException, ParsingJsonToDaoException {
         log.info("getFilmsForBestPage(page: " + page + " )");
 
+        FilmService filmService = new FilmService(sessionFactory);
         int pageNum = Integer.parseInt(page);
         List<FilmJSONIndex> filmsForBestPage = filmService.getFilmsForBestPage(pageNum);
 
@@ -86,6 +78,7 @@ public class FilmController {
     long getNumberOfFilms() {
         log.info("getNumberOfFilms()");
 
+        FilmService filmService = new FilmService(sessionFactory);
         long numberOfFilms = filmService.getNumberOfFilms();
 
         log.info("getNumberOfFilms() returns : numberOfFilms=" + numberOfFilms);
@@ -104,7 +97,14 @@ public class FilmController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        FilmService filmService = new FilmService(sessionFactory);
+
         FilmDb filmDb = filmService.convert(filmToSave);
+
+        AwardService awardService = new AwardService(sessionFactory);
+        FilmActorService filmActorService = new FilmActorService(sessionFactory);
+        ScreenshotService screenshotService = new ScreenshotService(sessionFactory);
+        TrailerService trailerService = new TrailerService(sessionFactory);
 
         filmService.saveOrUpdate(filmDb);
         awardService.checkForAwards(filmDb.getId(), filmDb.getAwardsById());
@@ -122,6 +122,7 @@ public class FilmController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
         filmService.delete(id);
 
         log.info("delete() returns : OK");
@@ -142,6 +143,7 @@ public class FilmController {
     FilmDb getFilmInfo(@PathVariable("id") String id) {
         log.info("getFilmInfo(id=" + id + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
         FilmDb film = filmService.getFilmWithId(id);
 
         log.info("getFilmInfo() returns : film=" + film.getTitle());

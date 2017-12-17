@@ -2,6 +2,7 @@ package web.tasks;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import web.dao.ClientDb;
@@ -14,24 +15,28 @@ import java.util.concurrent.Executors;
 @Component("AddClientDislikeTask")
 public class AddClientDislikeTask implements Runnable {
 
-    @Autowired
-    private FilmDislikesService dislikesService;
-
-    @Autowired
-    private RemoveFromClientDataTask removeFromClientDataTask;
-
     private ClientDb clientDb;
     private FilmLikesJSON filmLikesJSON;
+
+    private SessionFactory sessionFactory;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(AddClientDislikeTask.class);
 
+    public AddClientDislikeTask(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void run() {
         log.info("run(); clinetDb=" + clientDb + ", filmLikeJSON=" + filmLikesJSON);
 
+        FilmDislikesService dislikesService = new FilmDislikesService(sessionFactory);
+
         dislikesService.addDislike(dislikesService.convertToFilmLikeDbFromFilmLike(dislikesService.convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON, clientDb)));
+
+        RemoveFromClientDataTask removeFromClientDataTask = new RemoveFromClientDataTask(sessionFactory);
 
         removeFromClientDataTask.setClientId(Integer.toString(clientDb.getId()));
         removeFromClientDataTask.setFilmId(Integer.toString(filmLikesJSON.getFilmId()));

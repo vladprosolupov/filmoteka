@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class LinkToNetworkController {
     private static final Logger log = LogManager.getLogger(LinkToNetworkController.class);
 
     @Autowired
-    private LinkToNetworkService linkToNetworkService;
+    private SessionFactory sessionFactory;
 
 //    @PreAuthorize("hasAuthority('admin')")
 //    @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -43,6 +44,7 @@ public class LinkToNetworkController {
     public @ResponseBody String delete(@PathVariable("id") String id){
         log.info("delete(id=" + id + ")");
 
+        LinkToNetworkService linkToNetworkService = new LinkToNetworkService(sessionFactory);
         linkToNetworkService.delete(id);
 
         log.info("delete() returns : OK");

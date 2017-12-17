@@ -20,13 +20,13 @@ import java.util.*;
 @Transactional
 public class AwardService {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
     private static final Logger log = LogManager.getLogger(AwardService.class);
+
+    public AwardService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public AwardDb getAwardWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getAwardWithId(id=" + id + ")");
@@ -160,6 +160,7 @@ public class AwardService {
         session.beginTransaction();
         session.createQuery("delete from AwardDb a where a.filmByIdFilm=" + filmId).executeUpdate();
 
+        FilmService filmService = new FilmService(sessionFactory);
         for (AwardDb a : awardDbSet) {
             a.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmId)));
             session.saveOrUpdate(a);

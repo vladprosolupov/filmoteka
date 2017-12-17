@@ -23,16 +23,13 @@ import java.util.*;
 @Transactional
 public class CommentService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private ClientService clientService;
-
     private static final Logger log = LogManager.getLogger(CommentService.class);
+
+    public CommentService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void saveOrUpdate(CommentDb commentDb) throws HibernateException {
         log.info("saveOrUpdate(commentDb=" + commentDb + ")");
@@ -105,6 +102,9 @@ public class CommentService {
         }
 
         CommentDb commentDb = new CommentDb();
+
+        FilmService filmService = new FilmService(sessionFactory);
+        ClientService clientService = new ClientService(sessionFactory);
 
         commentDb.setId(commentJSON.getId());
         commentDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(commentJSON.getIdFilm())));

@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ import java.util.List;
 public class NetworkController {
 
     @Autowired
-    private NetworkService networkService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(NetworkController.class);
 
@@ -40,6 +41,7 @@ public class NetworkController {
             throw new ValidationError("Validation is incorrect");
         }
 
+        NetworkService networkService = new NetworkService(sessionFactory);
         networkService.saveOrUpdate(networkService.convertToNetworkDb(networkJSON));
 
         log.info("addOrUpdate() returns : OK");
@@ -52,6 +54,7 @@ public class NetworkController {
     String delete(@PathVariable("id") String id) {
         log.info("delete(id=" + id + ")");
 
+        NetworkService networkService = new NetworkService(sessionFactory);
         networkService.delete(id);
 
         log.info("delete() returns : OK");
@@ -64,6 +67,7 @@ public class NetworkController {
     List<NetworkDb> getAll() {
         log.info("getAll()");
 
+        NetworkService networkService = new NetworkService(sessionFactory);
         List<NetworkDb> networkDbs = networkService.getAll();
 
         log.info("getAll() returns : networkDbs.size()=" + networkDbs.size());

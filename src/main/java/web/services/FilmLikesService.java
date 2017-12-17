@@ -22,16 +22,13 @@ import static java.lang.Math.toIntExact;
 @Transactional
 public class FilmLikesService {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private FilmDislikesService filmDislikesService;
-
     private static final Logger log = LogManager.getLogger(FilmLikesService.class);
+
+    public FilmLikesService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void addLike(FilmLikeDb filmLikeDb) throws HibernateException {
         log.info("addLike(filmLikeDb=" + filmLikeDb + ")");
@@ -41,6 +38,8 @@ public class FilmLikesService {
 
             throw new IllegalArgumentException("FilmLikeDb is null");
         }
+
+        FilmDislikesService filmDislikesService = new FilmDislikesService(sessionFactory);
 
         if(filmDislikesService.checkDislikeFilmWithClientId(Integer.toString(filmLikeDb.getFilmLike().getFilmByIdFilm().getId()),
                 filmLikeDb.getFilmLike().getClientByIdClient().getId()) == true) {
@@ -109,6 +108,8 @@ public class FilmLikesService {
 
     public FilmLike convertToFilmLikeFromFilmLikesJSON(FilmLikesJSON filmLikesJSON, ClientDb clientDb) {
         log.info("convertToFilmLikeFromFilmLikesJSON(filmLikesJSON=" + filmLikesJSON + ")");
+
+        FilmService filmService = new FilmService(sessionFactory);
 
         FilmDb filmDb = filmService.getFilmWithId(Integer.toString(filmLikesJSON.getFilmId()));
 

@@ -26,13 +26,13 @@ import java.util.List;
 @Transactional
 public class ActorService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private CountryService countryService;
-
     private static final Logger log = LogManager.getLogger(ActorService.class);
+
+    public ActorService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public ActorDb getActorWithId(int id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getActorWithId(id=" + id + ")");
@@ -131,4 +131,5 @@ public class ActorService {
         log.info("convertToActorDb() returns : actorDb.getFirstName()=" + actorDb.getFirstName());
         return actorDb;
     }
+
 }

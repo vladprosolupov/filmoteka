@@ -16,16 +16,13 @@ import java.util.List;
 @Transactional
 public class FilmCategoryService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private CategoryService categoryService;
-
     private static final Logger log = LogManager.getLogger(FilmCategoryService.class);
+
+    public FilmCategoryService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public List<FilmJSONIndex> getFilmsForCategory(String id, String page) throws HibernateException, NumberFormatException {
         log.info("getFilmsForCategory(id=" + id + ", page=" + page + ")");

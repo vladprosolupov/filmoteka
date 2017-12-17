@@ -26,35 +26,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class AiService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
-
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private ClientService clientService;
-
-    @Autowired
-    private ClientDataService clientDataService;
-
-    @Autowired
-    private GetPropCategoryTask getPropCategoryTask;
-
-    @Autowired
-    private GetPropActorTask getPropActorTask;
-
-    @Autowired
-    private GetPropDirectorTask getPropDirectorTask;
-
-    @Autowired
-    private GetPropStudioTask getPropStudioTask;
-
-    @Autowired
-    private GetPropCountryTask getPropCountryTask;
-
-    @Autowired
-    private GetPropDatesTask getPropDatesTask;
 
     private final int categoryPoints = 10;
     private final int ratingPoints = 8;
@@ -68,6 +40,10 @@ public class AiService {
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static final Logger log = LogManager.getLogger(AiService.class);
+
+    public AiService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public double getComparisonMapInteger(Map<Integer, Integer> map, Set<Integer> set) {
         log.info("getComparisonMapInteger(map=" + map + ", set=" + set + ")");
@@ -248,6 +224,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropCategory(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropCategoryTask getPropCategoryTask = new GetPropCategoryTask(sessionFactory);
         getPropCategoryTask.setCurrentClient(currentClient);
         getPropCategoryTask.setPercentage(categoryPercentage);
         Future<Set<FilmDb>> futureCategory = executorService.submit(getPropCategoryTask);
@@ -258,6 +235,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropActor(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropActorTask getPropActorTask = new GetPropActorTask(sessionFactory);
         getPropActorTask.setCurrentClient(currentClient);
         getPropActorTask.setPercentage(actorPercentage);
         Future<Set<FilmDb>> futureActor = executorService.submit(getPropActorTask);
@@ -268,6 +246,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropDirector(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropDirectorTask getPropDirectorTask = new GetPropDirectorTask(sessionFactory);
         getPropDirectorTask.setCurrentClient(currentClient);
         getPropDirectorTask.setPercentage(directorPercentage);
         Future<Set<FilmDb>> futureDirector = executorService.submit(getPropDirectorTask);
@@ -278,6 +257,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropStudios(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropStudioTask getPropStudioTask = new GetPropStudioTask(sessionFactory);
         getPropStudioTask.setCurrentClient(currentClient);
         getPropStudioTask.setPercentage(studioPercentage);
         Future<Set<FilmDb>> futureStudio = executorService.submit(getPropStudioTask);
@@ -288,6 +268,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropCountry(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropCountryTask getPropCountryTask = new GetPropCountryTask(sessionFactory);
         getPropCountryTask.setCurrentClient(currentClient);
         getPropCountryTask.setPercentage(countryPercentage);
         Future<Set<FilmDb>> futureCountry = executorService.submit(getPropCountryTask);
@@ -298,6 +279,7 @@ public class AiService {
 //            setOfFilms.addAll(getPropDates(entry.getValue(), entry.getKey(), currentClient));
 //        }
 
+        GetPropDatesTask getPropDatesTask = new GetPropDatesTask(sessionFactory);
         getPropDatesTask.setCurrentClient(currentClient);
         getPropDatesTask.setPercentage(datesPercentage);
         Future<Set<FilmDb>> futureDates = executorService.submit(getPropDatesTask);
@@ -334,6 +316,7 @@ public class AiService {
                         ));
 
         //Save clientDataMap
+        ClientDataService clientDataService = new ClientDataService(sessionFactory);
         clientDataService.saveClientDataMap(sortedClientDataMap, currentClient);
 
         log.info("generateFilmsForSuggestion() done");

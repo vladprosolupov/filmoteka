@@ -22,10 +22,13 @@ import java.util.List;
 @Transactional
 public class CategoryService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(CategoryService.class);
+
+    public CategoryService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public List<CategoryDb> getAllCategories() throws HibernateException {
         log.info("getAllCategories()");

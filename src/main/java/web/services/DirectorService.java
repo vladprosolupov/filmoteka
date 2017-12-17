@@ -21,13 +21,13 @@ import java.util.List;
 @Transactional
 public class DirectorService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private CountryService countryService;
-
     private static final Logger log = LogManager.getLogger(DirectorService.class);
+
+    public DirectorService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public DirectorDb getDirectorWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getDirectorWithId(id=" + id + ")");

@@ -15,10 +15,13 @@ import java.io.StringReader;
 @Transactional
 public class AvatarService {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(AvatarService.class);
+
+    public AvatarService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public AvatarDb getAvatarById(String id) throws IndexOutOfBoundsException {
         log.info("getAvatarById(id=" + id + ")");

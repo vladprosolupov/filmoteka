@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -25,30 +26,9 @@ import java.util.concurrent.Executors;
 public class FilmLikesController {
 
     @Autowired
-    private FilmLikesService likesService;
-
-    @Autowired
-    private FilmDislikesService dislikesService;
-
-    @Autowired
-    private ClientService clientService;
-
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private AddClientDislikeTask addClientDislikeTask;
-
-    @Autowired
-    private RemoveClientLikeTask removeClientLikeTask;
-
-    @Autowired
-    private RemoveClientDislikeTask removeClientDislikeTask;
+    private SessionFactory sessionFactory;
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
-
-    @Autowired
-    private AiService aiService;
 
     private static final Logger log = LogManager.getLogger(FilmLikesController.class);
 
@@ -70,6 +50,7 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
         if(clientDb == null) {
@@ -78,11 +59,9 @@ public class FilmLikesController {
             throw new NoSuchClientException("There is no such client");
         }
 
-        AddClientLikeTask addClientLikeTask = new AddClientLikeTask();
+        AddClientLikeTask addClientLikeTask = new AddClientLikeTask(sessionFactory);
         addClientLikeTask.setClientDb(clientDb);
         addClientLikeTask.setFilmLikesJSON(filmLikesJSON);
-        addClientLikeTask.setAiService(aiService);
-        addClientLikeTask.setLikesService(likesService);
         executorService.execute(addClientLikeTask);
 
 
@@ -108,6 +87,7 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         ClientDb clientDb = clientService.getClientByLogin(authentication.getName());
 
         if(clientDb == null) {
@@ -115,6 +95,8 @@ public class FilmLikesController {
 
             throw new NoSuchClientException("There is no such client");
         }
+
+        AddClientDislikeTask addClientDislikeTask = new AddClientDislikeTask(sessionFactory);
 
         addClientDislikeTask.setClientDb(clientDb);
         addClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
@@ -142,7 +124,10 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
+
+        RemoveClientLikeTask removeClientLikeTask = new RemoveClientLikeTask(sessionFactory);
 
         removeClientLikeTask.setClientId(clientId);
         removeClientLikeTask.setFilmLikesJSON(filmLikesJSON);
@@ -169,8 +154,10 @@ public class FilmLikesController {
             throw new IllegalArgumentException("User is not logged in");
         }
 
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
+        RemoveClientDislikeTask removeClientDislikeTask = new RemoveClientDislikeTask(sessionFactory);
         removeClientDislikeTask.setClientId(clientId);
         removeClientDislikeTask.setFilmLikesJSON(filmLikesJSON);
         executorService.execute(removeClientDislikeTask);
@@ -181,6 +168,9 @@ public class FilmLikesController {
     @RequestMapping(value = "/getLikesAndDislikes", method = RequestMethod.POST)
     public @ResponseBody FilmLikesJSON getLikesAndDislikesForFilm(@RequestBody FilmLikesJSON filmLikesJSON) {
         log.info("getLikesAndDislikesForFilm(filmLikesJSON=" + filmLikesJSON + ")");
+
+        FilmLikesService likesService= new FilmLikesService(sessionFactory);
+        FilmDislikesService dislikesService = new FilmDislikesService(sessionFactory);
 
         filmLikesJSON.setLikes(likesService.getLikesForFilm(Integer.toString(filmLikesJSON.getFilmId())));
         filmLikesJSON.setDislikes(dislikesService.getDislikesForFilm(Integer.toString(filmLikesJSON.getFilmId())));
@@ -195,7 +185,12 @@ public class FilmLikesController {
         log.info("getLikedFilms(page=" + page + ")");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        ClientService clientService = new ClientService(sessionFactory);
+
         int clientId = clientService.getClientIdByLogin(authentication.getName());
+
+        FilmLikesService likesService= new FilmLikesService(sessionFactory);
 
         List<FilmJSONIndex> likedFilmsByUser = likesService.getLikedFilmsByUserId(clientId, page);
 
@@ -213,7 +208,10 @@ public class FilmLikesController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
+
+        FilmLikesService likesService= new FilmLikesService(sessionFactory);
 
         boolean result = likesService.checkLikeFilmByUserId(id, clientId);
 
@@ -231,7 +229,10 @@ public class FilmLikesController {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
+
+        FilmDislikesService dislikesService = new FilmDislikesService(sessionFactory);
 
         boolean result = dislikesService.checkDislikeFilmWithClientId(id, clientId);
 
@@ -245,7 +246,10 @@ public class FilmLikesController {
         log.info("getNumberOfLikedFilms()");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
+
+        FilmLikesService likesService= new FilmLikesService(sessionFactory);
 
         long result = likesService.getNumbersOfLikeByUserId(clientId);
 

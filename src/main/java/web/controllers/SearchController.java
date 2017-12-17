@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,10 +21,7 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private SearchService searchService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(SearchController.class);
 
@@ -32,6 +30,8 @@ public class SearchController {
     List<FilmJSONSearch> searchQuick(@PathVariable("title") String title) {
         log.info("searchQuick(title=" + title + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
+        SearchService searchService = new SearchService();
         List<FilmJSONSearch> filmsWithTitleForQuick = filmService.getFilmsWithTitleForQuick(searchService.titleToTitleSearch(title));
 
         log.info("searchQuick() returns : filmsWithTitleForQuick.size()=" + filmsWithTitleForQuick.size());
@@ -43,6 +43,8 @@ public class SearchController {
     long numberOfFilmsWithTitle(@PathVariable("title") String title) {
         log.info("numberOfFilmsWithTitle(title=" + title + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
+        SearchService searchService = new SearchService();
         long result = filmService.getNumberOfFilmsWithTitle(searchService.titleToTitleSearch(title));
 
         log.info("numberOfFilmsWithTitle() returns : result=" + result);
@@ -54,6 +56,8 @@ public class SearchController {
     List<FilmJSONIndex> search(@PathVariable("title") String title, @PathVariable("page") String page) {
         log.info("search(title=" + title + ", page=" + page + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
+        SearchService searchService = new SearchService();
         List<FilmJSONIndex> filmsWithTitle = filmService.getFilmsWithTitle(searchService.titleToTitleSearch(title), page);
 
         log.info("search() returns : filmsWithTitle.size()=" + filmsWithTitle.size());

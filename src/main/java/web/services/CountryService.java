@@ -24,6 +24,10 @@ public class CountryService {
 
     private static final Logger log = LogManager.getLogger(CountryService.class);
 
+    public CountryService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     public CountryDb getCountryWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getCountryWithId(id=" + id + ")");
 

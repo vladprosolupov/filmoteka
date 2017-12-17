@@ -23,16 +23,13 @@ import java.util.List;
 @Transactional
 public class FilmDislikesService {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private FilmService filmService;
-
-    @Autowired
-    private FilmLikesService filmLikesService;
-
     private static final Logger log = LogManager.getLogger(FilmDislikesService.class);
+
+    public FilmDislikesService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void addDislike(FilmDislikeDb filmDislikeDb) {
         log.info("addDislike(filmDislikeDb=" + filmDislikeDb + ")");
@@ -42,6 +39,8 @@ public class FilmDislikesService {
 
             throw new IllegalArgumentException("FilmDislikeDb is null");
         }
+
+        FilmLikesService filmLikesService = new FilmLikesService(sessionFactory);
 
         if(filmLikesService.checkLikeFilmByUserId(Integer.toString(filmDislikeDb.getFilmDislike().getFilmByIdFilm().getId()),
                 filmDislikeDb.getFilmDislike().getClientByIdClient().getId()) == true) {
@@ -109,6 +108,8 @@ public class FilmDislikesService {
 
     public FilmDislike convertToFilmDislikeFromFilmLikesJSON(FilmLikesJSON filmLikesJSON, ClientDb clientDb) {
         log.info("convertToFilmDislikeFromFilmLikesJSON(filmLikesJSON=" + filmLikesJSON + ")");
+
+        FilmService filmService = new FilmService(sessionFactory);
 
         FilmDb filmDb = filmService.getFilmWithId(Integer.toString(filmLikesJSON.getFilmId()));
 

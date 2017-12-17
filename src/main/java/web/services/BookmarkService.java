@@ -25,14 +25,11 @@ import java.util.List;
 public class BookmarkService {
     private static final Logger log = LogManager.getLogger(BookmarkService.class);
 
-    @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private ClientService clientService;
-
-    @Autowired
-    private FilmService filmService;
+    public BookmarkService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void saveOrUpdate(BookmarkDb bookmarkDb) throws HibernateException {
         log.info("saveOrUpdate(bookmarkDb=" + bookmarkDb + ")");
@@ -79,6 +76,7 @@ public class BookmarkService {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         Session session = sessionFactory.openSession();
@@ -96,9 +94,9 @@ public class BookmarkService {
     public Bookmark convertToBookmarkFromBookmarkJSON(BookmarkJSON bookmarkJSON, ClientDb clientDb) {
         log.info("convertToBookmarkFromBookmarkJSON(bookmarkJSON=" + bookmarkJSON + ")");
 
+        FilmService filmService = new FilmService(sessionFactory);
+
         FilmDb filmDb = filmService.getFilmWithId(String.valueOf(bookmarkJSON.getIdFilm()));
-
-
 
         Bookmark bookmark = new Bookmark();
         bookmark.setClientByIdClient(clientDb);
@@ -130,6 +128,7 @@ public class BookmarkService {
 
             throw new IllegalArgumentException("User is not logged in");
         }
+        ClientService clientService = new ClientService(sessionFactory);
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         Session session = sessionFactory.openSession();

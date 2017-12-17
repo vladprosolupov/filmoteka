@@ -25,16 +25,13 @@ import java.util.Set;
 @Transactional
 public class FilmActorService {
 
-    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private ActorService actorService;
-
-    @Autowired
-    private FilmService filmService;
-
     private static final Logger log = LogManager.getLogger(FilmActorService.class);
+
+    public FilmActorService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public FilmActorDb getFilmActorWithId(String id) throws HibernateException, IndexOutOfBoundsException {
         log.info("getFilmActorWithId(id=" + id + ")");
@@ -102,6 +99,8 @@ public class FilmActorService {
             throw new IllegalArgumentException("Actors should not be null");
         }
 
+        ActorService actorService = new ActorService(sessionFactory);
+
         Set<FilmActorDb> actorDbSet = new HashSet<>();
         for (Map.Entry<String, Integer> m : actors.entrySet()) {
             log.info("for loop");
@@ -130,6 +129,7 @@ public class FilmActorService {
             throw new IllegalArgumentException("FilmActorDbSet should not be null");
         }
 
+        FilmService filmService = new FilmService(sessionFactory);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from FilmActorDb f where f.filmByIdFilm=" + idFilm).executeUpdate();

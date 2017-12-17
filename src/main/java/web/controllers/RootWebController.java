@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -30,10 +31,7 @@ import java.util.List;
 public class RootWebController {
 
     @Autowired
-    private VerificationTokenService tokenService;
-
-    @Autowired
-    private ClientService clientService;
+    private SessionFactory sessionFactory;
 
     private static final Logger log = LogManager.getLogger(RootWebController.class);
 
@@ -186,6 +184,7 @@ public class RootWebController {
     public String registrationConfirm(@PathVariable("token") String token) {
         log.info("registrationConfirm(token=" + token + ")");
 
+        VerificationTokenService tokenService = new VerificationTokenService(sessionFactory);
         List<VerificationTokenDb> tokenDbs = tokenService.getVerificationToken(token);
 
         for (VerificationTokenDb verificationTokenDb : tokenDbs) {
@@ -205,6 +204,8 @@ public class RootWebController {
 
             if (clientDb.getEnabled() == 0) {
                 log.info("User is unblocked now");
+
+                ClientService clientService = new ClientService(sessionFactory);
 
                 clientDb.setEnabled(1);
                 clientService.saveOrUpdate(clientDb);
