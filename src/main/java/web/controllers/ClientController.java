@@ -52,6 +52,16 @@ public class ClientController {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
+    @Qualifier(value = "messageSource")
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
+    private JavaMailSender mailSender;
 //    @Autowired(required = true)
 //    private ClientService clientService;
 //
@@ -107,6 +117,7 @@ public class ClientController {
         RegisterUserTask registerUserTask = new RegisterUserTask();
         registerUserTask.setApplicationURL(applicationURL);
         registerUserTask.setClientDb(clientDb);
+        registerUserTask.setEventPublisher(eventPublisher);
         executorService.execute(registerUserTask);
 
         log.info("addClient() returns : OK");
@@ -230,6 +241,8 @@ public class ClientController {
         sendForgotPasswordEmailTask.setToken(token);
         sendForgotPasswordEmailTask.setClientFirstName(clientDb.getFirstName());
         sendForgotPasswordEmailTask.setClientLastName(clientDb.getLastName());
+        sendForgotPasswordEmailTask.setMailSender(mailSender);
+        sendForgotPasswordEmailTask.setMessages(messages);
 
         executorService.execute(sendForgotPasswordEmailTask);
 

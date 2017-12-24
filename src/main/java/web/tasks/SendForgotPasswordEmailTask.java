@@ -14,17 +14,12 @@ import java.util.Locale;
 @Component("SendForgotPasswordEmailTask")
 public class SendForgotPasswordEmailTask implements Runnable {
 
-    @Qualifier(value = "messageSource")
-    @Autowired
-    private MessageSource messages;
-
-    @Autowired
-    private JavaMailSender mailSender;
-
     private String clientEmail;
     private String token;
     private String clientFirstName;
     private String clientLastName;
+    private MessageSource messages;
+    private JavaMailSender mailSender;
 
     private static final Logger log = LogManager.getLogger(SendForgotPasswordEmailTask.class);
 
@@ -99,5 +94,21 @@ public class SendForgotPasswordEmailTask implements Runnable {
 
     public void setClientLastName(String clientLastName) {
         this.clientLastName = clientLastName;
+    }
+
+    public MessageSource getMessages() {
+        return messages;
+    }
+
+    public void setMessages(MessageSource messages) {
+        this.messages = messages;
+    }
+
+    public JavaMailSender getMailSender() {
+        return mailSender;
+    }
+
+    public void setMailSender(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
     }
 }

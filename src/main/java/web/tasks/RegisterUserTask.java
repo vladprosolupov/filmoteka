@@ -14,9 +14,7 @@ import java.util.Locale;
 @Component("RegisterUserTask")
 public class RegisterUserTask implements Runnable {
 
-    @Autowired
     private ApplicationEventPublisher eventPublisher;
-
     private String applicationURL;
     private ClientDb clientDb;
 
@@ -45,5 +43,13 @@ public class RegisterUserTask implements Runnable {
 
     public void setClientDb(ClientDb clientDb) {
         this.clientDb = clientDb;
+    }
+
+    public ApplicationEventPublisher getEventPublisher() {
+        return eventPublisher;
+    }
+
+    public void setEventPublisher(ApplicationEventPublisher eventPublisher) {
+        this.eventPublisher = eventPublisher;
     }
 }
