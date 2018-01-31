@@ -68,16 +68,17 @@ public class ClientDataService {
         FilmService filmService = new FilmService(sessionFactory);
 
         //Adding new suggested films
-        session.beginTransaction();
+
         for (Map.Entry<Integer, Double> entry : clientDataMap.entrySet())
         {
+            session.beginTransaction();
             ClientDataDb clientDataDb = new ClientDataDb();
             clientDataDb.setClientByIdClient(clientDb);
             clientDataDb.setFilmByIdFilm(filmService.getFilmWithId(String.valueOf(entry.getKey())));
             clientDataDb.setAiPoints(entry.getValue());
             session.saveOrUpdate(clientDataDb);
+            session.getTransaction().commit();
         }
-        session.getTransaction().commit();
 
         //Closing session
         session.close();
