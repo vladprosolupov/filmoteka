@@ -373,7 +373,7 @@
 
 
                         <section class="info-tiles">
-                            <div class="filmsProf">
+                            <div class="films">
                                 <div v-for="film in bookmarkedFilms" class="card effect-ruby grow film">
                                     <a v-bind:href="link+film[3]" v-on:click="filmClicked($event)"></a>
                                     <div class="card-image">

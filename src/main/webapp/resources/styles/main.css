@@ -864,6 +864,9 @@ iframe {
     .screen-top {
         margin-top: 10ch;
     }
+    .column.is-9 {
+        width: 85%;
+    }
 
     .is-mobile {
         display: none !important;
@@ -905,15 +908,22 @@ iframe {
     /*}*/
 
     .column.is-9 .films {
-         grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 3rem;
      }
+
+    .column.is-9 {
+        width: 100%;
+    }
 
     .films {
         grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 3rem;
     }
 
     section.info-tiles.filmsProf{
         grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 3rem;
     }
 
     .is-desktop {
@@ -1011,6 +1021,10 @@ iframe {
     .column.is-9 .films {
         grid-template-columns: 1fr 1fr;
         margin: 0 0.9rem;
+    }
+
+    .column.is-9 {
+        width: 100%;
     }
 
     .films {
