@@ -307,7 +307,7 @@ public class AiService {
                 clientDataMap.entrySet().stream()
                         .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
                         .filter(e -> !e.getValue().isInfinite())
-                        .limit(30)
+//                        .limit(30)
                         .collect(Collectors.toMap(
                                 Map.Entry::getKey,
                                 Map.Entry::getValue,

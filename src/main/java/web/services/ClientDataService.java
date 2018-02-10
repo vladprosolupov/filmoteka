@@ -68,16 +68,24 @@ public class ClientDataService {
         FilmService filmService = new FilmService(sessionFactory);
 
         //Adding new suggested films
-
+        int i = 0;
         for (Map.Entry<Integer, Double> entry : clientDataMap.entrySet())
         {
-            session.beginTransaction();
-            ClientDataDb clientDataDb = new ClientDataDb();
-            clientDataDb.setClientByIdClient(clientDb);
-            clientDataDb.setFilmByIdFilm(filmService.getFilmWithId(String.valueOf(entry.getKey())));
-            clientDataDb.setAiPoints(entry.getValue());
-            session.saveOrUpdate(clientDataDb);
-            session.getTransaction().commit();
+            if(i == 30) {
+                break;
+            }
+            try {
+                session.beginTransaction();
+                ClientDataDb clientDataDb = new ClientDataDb();
+                clientDataDb.setClientByIdClient(clientDb);
+                clientDataDb.setFilmByIdFilm(filmService.getFilmWithId(String.valueOf(entry.getKey())));
+                clientDataDb.setAiPoints(entry.getValue());
+                session.saveOrUpdate(clientDataDb);
+                session.getTransaction().commit();
+                i++;
+            } catch (Exception e) {
+                log.error("This is fucking stupid shit, some error - " + e);
+            }
         }
 
         //Closing session
