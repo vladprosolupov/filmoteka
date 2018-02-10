@@ -169,7 +169,7 @@ public class FilmLikesService {
         log.info("getLikedFilmsByUserId(clientId=" + clientId + ", p=" + p + ")");
 
         int page = Integer.parseInt(p);
-        int limit = 6;
+        int limit = 10;
         int start = (page - 1) * limit;
 
         Session session = sessionFactory.openSession();

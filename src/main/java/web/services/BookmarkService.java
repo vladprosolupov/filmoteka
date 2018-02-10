@@ -132,7 +132,7 @@ public class BookmarkService {
         int clientId = clientService.getClientIdByLogin(authentication.getName());
 
         Session session = sessionFactory.openSession();
-        int limit = 6;
+        int limit = 10;
         int start = (page - 1) * limit;
         session.beginTransaction();
         List<FilmJSONIndex> list = session.createQuery("select b.bookmark.filmByIdFilm.title, b.bookmark.filmByIdFilm.releaseDate, b.bookmark.filmByIdFilm.cover, b.bookmark.filmByIdFilm.id, b.bookmark.filmByIdFilm.rating from BookmarkDb b where b.bookmark.clientByIdClient.id = " + clientId).setFirstResult(start).setMaxResults(limit).list();
