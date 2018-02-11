@@ -1023,6 +1023,10 @@ iframe {
         margin: 0 0.9rem;
     }
 
+    .films.categories {
+        margin: 0 3rem;
+    }
+
     .column.is-9 {
         width: 100%;
     }

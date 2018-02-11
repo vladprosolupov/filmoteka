@@ -21,9 +21,9 @@
 <section class="hero background_for_admin is-fullheight is-bold white-text">
     <div class="hero-head">
         <div class="container">
-            <nav class="breadcrumb is-centered">
+            <nav class="breadcrumb is-centered" style="display: flex; flex-direction: row; justify-content: center;">
                 <form class="navbar" id="logout_id" action="${logoutUrl}"
-                      method="post">
+                      method="post" style="margin-bottom: 0px;">
 
                     <a class="navbar-item" href="/">Home</a>
                     <a class="navbar-item" href="/admin/films">Films</a>
@@ -57,7 +57,7 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="columns is-vcentered">
-                <div class="column is-6 is-offset-3">
+                <div class="column is-6 is-offset-3" style="margin-top: 5%;">
                     <div class="success modal">
                         <div class="modal-background"></div>
                         <div class="modal-content">

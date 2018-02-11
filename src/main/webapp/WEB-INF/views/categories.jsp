@@ -22,11 +22,18 @@
     </div>
     <div class="container vue" style="display: none">
         <div class="columns centered" style="margin-top: 2ch">
-            <aside>
-            <ul v-for="category in categories" class="menu-list" >
-                    <li><a v-on:click="goToCategory(category.id)">{{category.name}}</a></li>
-            </ul>
-            </aside>
+            <div class="films categories">
+                <div v-for="category in categories" class="card effect-ruby grow film">
+                    <a v-on:click="goToCategory(category.id)"></a>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-6" style="text-align: center; white-space: nowrap;">{{category.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </t:header>
