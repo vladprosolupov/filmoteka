@@ -84,7 +84,7 @@ public class ClientDataService {
                 session.getTransaction().commit();
                 i++;
             } catch (Exception e) {
-                log.error("This is fucking stupid shit, some error - " + e);
+                log.error("Some error has occured - " + e);
             }
         }
 
