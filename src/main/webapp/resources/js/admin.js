@@ -41,7 +41,7 @@ $(function () {
                 var self = this;
                 $.getJSON('/film/all', function (data) {
                     $('#loading').hide();
-                    $('.show').show();
+                    $('.show').css("display", "block");
                     self.films = data;
                 });
             },
