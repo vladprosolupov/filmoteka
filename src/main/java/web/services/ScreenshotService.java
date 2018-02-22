@@ -142,15 +142,22 @@ public class ScreenshotService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from ScreenshotDb s where s.filmByIdFilm=" + idFilm).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
 
         FilmService filmService = new FilmService(sessionFactory);
 
         for (ScreenshotDb screenshotDb : screenshotDbSet) {
             log.info("for loop");
+
             screenshotDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
-            session.saveOrUpdate(screenshotDb);
+
+            Session session1 = sessionFactory.openSession();
+            session1.beginTransaction();
+            session1.saveOrUpdate(screenshotDb);
+            session1.getTransaction().commit();
+            session1.close();
         }
-        session.getTransaction().commit();
-        session.close();
+
     }
 }

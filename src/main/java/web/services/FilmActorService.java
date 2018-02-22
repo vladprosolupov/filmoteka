@@ -133,14 +133,21 @@ public class FilmActorService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from FilmActorDb f where f.filmByIdFilm=" + idFilm).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
         for (FilmActorDb filmActorDb : filmActorDbSet) {
             log.info("for loop");
 
             filmActorDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
-            session.saveOrUpdate(filmActorDb);
+
+            Session session1 = sessionFactory.openSession();
+            session1.beginTransaction();
+            session1.saveOrUpdate(filmActorDb);
+            session1.getTransaction().commit();
+            session1.close();
         }
-        session.getTransaction().commit();
-        session.close();
+
 
         log.info("checked");
     }

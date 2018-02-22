@@ -92,6 +92,7 @@ public class FilmController {
         log.info("saveOrUpdate(filmsToSave=" + filmToSave + ")");
 
         if(bindingResult.hasErrors()) {
+            log.error(bindingResult.getAllErrors());
             log.error("Film does not pass validation");
 
             throw new ValidationError("Validation is incorrect");

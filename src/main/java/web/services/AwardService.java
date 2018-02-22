@@ -159,15 +159,18 @@ public class AwardService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from AwardDb a where a.filmByIdFilm=" + filmId).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
 
         FilmService filmService = new FilmService(sessionFactory);
         for (AwardDb a : awardDbSet) {
             a.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(filmId)));
-            session.saveOrUpdate(a);
+            Session session1 = sessionFactory.openSession();
+            session1.beginTransaction();
+            session1.saveOrUpdate(a);
+            session1.getTransaction().commit();
+            session1.close();
         }
-
-        session.getTransaction().commit();
-        session.close();
 
         log.info("succ. get results");
     }

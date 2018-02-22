@@ -14,7 +14,7 @@ public class FilmJSON {
     private int id;
 
     @NotNull
-    @Size(min = 2, max = 100)
+    @Size(min = 2)
     private String title;
 
     @NotNull
@@ -27,15 +27,15 @@ public class FilmJSON {
     private int lenght;
 
     @NotNull
-    @Size(min = 10, max = 200)
+    @Size(min = 10)
     private String description;
 
     private String slogan;
 
     private double rating;
-
-    @Min(0)
-    @Max(200)
+//
+//    @Min(0)
+//    @Max(200)
     private int age;
 
     private String budget;

@@ -143,15 +143,22 @@ public class TrailerService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery("delete from TrailerDb t where t.filmByIdFilm=" + idFilm).executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
         FilmService filmService = new FilmService(sessionFactory);
 
         for (TrailerDb trailerDb : trailerDbSet) {
             log.info("for loop");
+
             trailerDb.setFilmByIdFilm(filmService.getFilmWithId(Integer.toString(idFilm)));
-            session.saveOrUpdate(trailerDb);
+            Session session1 = sessionFactory.openSession();
+            session1.beginTransaction();
+            session1.saveOrUpdate(trailerDb);
+            session1.getTransaction().commit();
+            session1.close();
         }
-        session.getTransaction().commit();
-        session.close();
+
 
         log.info("checked");
     }
