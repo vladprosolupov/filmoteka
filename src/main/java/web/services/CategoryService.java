@@ -88,8 +88,8 @@ public class CategoryService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         if(categoryDb.getId() == 0){
-            long maxId = (long) session.createQuery("select max(c.id) from CategoryDb c").list().get(0);
-            int id = (int)maxId + 1;
+            int maxId = (int) session.createQuery("select max(c.id) from CategoryDb c").list().get(0);
+            int id = maxId + 1;
             categoryDb.setId(id);
             session.saveOrUpdate(categoryDb);
         }else

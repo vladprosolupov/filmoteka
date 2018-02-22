@@ -902,7 +902,7 @@ $(function () {
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    succ(domain + "/studios");
+                    succ(domain + "/admin/studios");
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error in Operation');

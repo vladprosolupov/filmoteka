@@ -59,8 +59,8 @@ public class StudioService {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         if(studioDb.getId() == 0){
-            long maxId = (long) session.createQuery("select max(s.id) from StudioDb s").list().get(0);
-            int id = (int)maxId + 1;
+            int maxId = (int) session.createQuery("select max(s.id) from StudioDb s").list().get(0);
+            int id = maxId + 1;
             studioDb.setId(id);
             session.saveOrUpdate(studioDb);
         }else
